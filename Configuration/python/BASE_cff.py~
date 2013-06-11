@@ -1,0 +1,32 @@
+import FWCore.ParameterSet.Config as cms
+
+
+
+#Import tool that creates the cut sequence
+from UWAnalysis.Configuration.tools.CutSequenceProducer import *
+
+
+analysisConfigurator = CutSequenceProducer(initialCounter  = 'initialEvents',
+                                  pyModuleName = __name__,
+                                  pyNameSpace  = locals())
+
+#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','systematicsMET')
+
+zMuMuAnalysisConfigurator.addDiCandidateModule('zMuMuCandidates','PATMuPairProducer', 'patMuonsForAnalysis','patMuonsForAnalysis','patMETs','patOverloadedJets',0,9999,text = '',leadingObjectsOnly = False,dR = 0.15,recoMode = "")
+zMuMuAnalysisConfigurator.addSorter('zMuMuCandidatesSorted','PATMuPairSorter')
+zMuMuAnalysisConfigurator.addSelector('zMuMuCandidatesID','PATMuPairSelector','leg1.userFloat("isWWMuon")&&leg2.userFloat("isWWMuon")&&leg1.pt()>15&&leg2.pt()>15&&abs(leg1.eta)<2.5&&abs(leg2.eta)<2.5','ZMuMuID')
+
+zMuMuAnalysisConfigurator.addDiCandidateModule('zJJCandidates','PATJetPairProducer', 'patOverloadedJets','patOverloadedJets','patMETs','patOverloadedJets',0,9999,text = '',leadingObjectsOnly = False,dR = 0.15,recoMode = "")
+zMuMuAnalysisConfigurator.addSorter('zJJCandidatesSorted','PATJetPairSorter')
+zMuMuAnalysisConfigurator.addSelector('zJJCandidatesID','PATJetPairSelector','leg1.pt()>25&&leg2.pt()>25&&abs(leg1.eta)<3&&abs(leg2.eta)<3','ZJJID') 
+
+zMuMuAnalysisConfigurator.addDiCandidateModule('zzMuMuJJ','PATMuMuJJQuadProducer','zMuMuCandidatesID','zJJCandidatesID','patMETs','patOverloadedJets',1,9999,text='MuMuJJAtLeastOneZZ',leadingObjectsOnly = False,dR = 0.5,recoMode ="",genParticles='genDaughters')
+
+zMuMuAnalysisConfigurator.addCrossCleanerModule('zMuMuJJCleanedCands','PATMuMuJJQuadCrossCleaner',1,9999,text='MMJJAtLeastOneZZCleanedCandidate',dR = 0.5)  
+
+
+selectionSequence =analysisConfigurator.returnSequence()
+
+
+
+

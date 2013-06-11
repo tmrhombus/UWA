@@ -1,0 +1,129 @@
+#rm -r /scratch/ojalvo/sandbox_11_18_MC8TeV
+#mkdir /scratch/ojalvo/sandbox_1_8_MC8TeV
+cd /scratch/ojalvo/sandbox_1_6_MC8TeV
+
+
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall80.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall81.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall82.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall83.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall84.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall85.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall86.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall87.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall88.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall89.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall812.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall813.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall814.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall815.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall816.root
+#find /scratch/$USER/DYall8-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DYall817.root
+
+#hadd DYall.root DYall80.root DYall81.root DYall82.root DYall83.root DYall84.root DYall85.root DYall86.root DYall87.root DYall88.root DYall89.root DYall812.root DYall813.root DYall814.root DYall815.root DYall816.root DYall817.root
+#rm  DYall80.root DYall81.root DYall82.root DYall83.root DYall84.root DYall85.root DYall86.root DYall87.root DYall88.root DYall89.root DYall812.root DYall813.root DYall814.root DYall815.root DYall816.root DYall817.root
+
+
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W80.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W81.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W82.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W83.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W84.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W85.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W86.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W87.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W88.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W89.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W812.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W813.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W814.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W815.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W816.root
+#find /scratch/$USER/W8-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W817.root
+
+#hadd W.root W80.root W81.root W82.root W83.root W84.root W85.root W86.root W87.root W88.root W89.root W812.root W813.root W814.root W815.root W816.root W817.root
+#rm  W80.root W81.root W82.root W83.root W84.root W85.root W86.root W87.root W88.root W89.root W812.root W813.root W814.root W815.root W816.root W817.root
+
+
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1000.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1001.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1002.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1003.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1004.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1005.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1006.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1007.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1008.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt1009.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt10012.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt10013.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt10014.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt10015.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt10016.root
+#find /scratch/$USER/WPt100-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WPt10017.root
+#hadd WPt100.root WPt1000.root WPt1001.root WPt1002.root WPt1003.root WPt1004.root WPt1005.root WPt1006.root WPt1007.root WPt1008.root WPt1009.root WPt10012.root WPt10013.root WPt10014.root WPt10015.root WPt10016.root WPt10017.root
+#rm  WPt1000.root WPt1001.root WPt1002.root WPt1003.root WPt1004.root WPt1005.root WPt1006.root WPt1007.root WPt1008.root WPt1009.root WPt10012.root WPt10013.root WPt10014.root WPt10015.root WPt10016.root WPt10017.root
+
+#find /scratch/$USER/TOP8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TOP.root
+find /scratch/$USER/T_t8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_t.root
+find /scratch/$USER/T_s8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_s.root
+find /scratch/$USER/Tbar_t8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_t.root
+find /scratch/$USER/Tbar_s8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_s.root
+find /scratch/$USER/T_tWDR8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_tWDR.root
+find /scratch/$USER/Tbar_tWDR8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tWDR.root
+find /scratch/$USER/WZ8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ.root
+find /scratch/$USER/WW8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW.root
+##find /scratch/$USER/ZZ8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ.root
+
+#EventWeightsIterative outputFile='W.root'          weight=36257.2 type=1 histoName='summary/results' branch="__WEIGHT3__"
+#EventWeightsIterative outputFile='WPt100.root'     weight=362.2 type=1 histoName='summary/results'  branch="__WEIGHT3__"
+#EventWeightsIterative outputFile='TOP.root'        weight=234     type=2 histoName='summary/results' branch="__WEIGHT3__"    #jgw2kb@virgina.edu higgsbbar	  
+#EventWeightsIterative outputFile='DYall.root'      weight=3505.71 type=3 histoName='summary/results' branch="__WEIGHT3__" 	  
+EventWeightsIterative outputFile='T_t.root'        weight=56.4    type=4 histoName='summary/results'  branch="__WEIGHT3__"
+EventWeightsIterative outputFile='T_s.root'        weight=3.79    type=5 histoName='summary/results'  branch="__WEIGHT3__"
+EventWeightsIterative outputFile='Tbar_t.root'     weight=30.7    type=6 histoName='summary/results' branch="__WEIGHT3__"
+EventWeightsIterative outputFile='Tbar_s.root'     weight=1.76    type=7 histoName='summary/results' branch="__WEIGHT3__"
+EventWeightsIterative outputFile='T_tWDR.root'     weight=11.1    type=8 histoName='summary/results' branch="__WEIGHT3__"
+EventWeightsIterative outputFile='Tbar_tWDR.root'  weight=11.1    type=9 histoName='summary/results' branch="__WEIGHT3__"
+EventWeightsIterative outputFile='WZ.root'         weight=32.3161 type=11 histoName='summary/results'  branch="__WEIGHT3__"
+EventWeightsIterative outputFile='WW.root'         weight=57.1097  type=12 histoName='summary/results'  branch="__WEIGHT3__"
+##EventWeightsIterative outputFile='ZZ.root'         weight=8.2     type=13  histoName='summary/results'  branch="__WEIGHT3__"
+
+hadd Tt.root T_t.root Tbar_t.root
+hadd Ts.root Tbar_s.root T_s.root
+hadd TtWDR.root T_tWDR.root Tbar_tWDR.root
+rm T_tWDR.root Tbar_tWDR.root
+rm T_t.root T_s.root
+rm Tbar_t.root Tbar_s.root
+#hadd VV.root WW.root WZ.root 
+#rm WW.root WZ.root ZZ.root
+
+
+#EventWeightsEff outputFile='WPt100.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'    
+#EventWeightsEff outputFile='W.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'    
+#EventWeightsEff outputFile='TOP.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'      
+#EventWeightsEff outputFile='DYall.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'
+#EventWeightsEff outputFile='T.root' brancheta='EffWEIGHTeta'  branchpt='EffWEIGHTpt'       
+#EventWeightsEff outputFile='Tbar.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'       
+#EventWeightsEff outputFile='TtWDR.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'       
+#EventWeightsEff outputFile='QCD.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'      
+#EventWeightsEff outputFile='WZ.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'       
+#EventWeightsEff outputFile='WW.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt'       
+
+
+
+#BTagScaleFactorsHighJet outputFile='W.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='TOP.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='DYall.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='Tt.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='Ts.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='Tbar.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='TtWDR.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='QCD.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='WZ.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='WW.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+#BTagScaleFactorsHighJet outputFile='WPt100.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'
+
+
+
+

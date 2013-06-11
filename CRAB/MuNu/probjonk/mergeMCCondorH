@@ -1,0 +1,9 @@
+#rm -r /scratch/ojalvo/sandbox_11_18_MC8TeV
+mkdir /scratch/ojalvo/sandbox_1_6_MC8TeV
+cd /scratch/ojalvo/sandbox_1_6_MC8TeV
+
+#find /scratch/$USER/Higgs125_8TeV-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WH125.root
+find /scratch/$USER/ggHZZ_125_8TeV-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ggHZZ125.root
+find /scratch/$USER/VBF_HZZ_125_8TeV-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f VBFHZZ125.root
+
+#EventWeightsIterative outputFile='W.root'          weight=36257.2 type=1 histoName='summary/results' branch="__WEIGHT3__"

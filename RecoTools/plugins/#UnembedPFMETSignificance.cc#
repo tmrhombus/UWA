@@ -1,0 +1,36 @@
+
+#include "FWCore/Framework/interface/Frameworkfwd.h"
+#include "FWCore/Framework/interface/Event.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
+#include "FWCore/Framework/interface/EDProducer.h"
+
+#include "FinalStateAnalysis/DataFormats/interface/PATFinalStateEvent.h"
+#include "FinalStateAnalysis/DataFormats/interface/PATFinalStateEventFwd.h"
+#include "AnalysisDataFormats/TauAnalysis/interface/PFMEtSignCovMatrix.h"
+
+class UnembedPFMETSignificance : public edm::EDProducer {
+  public:
+    UnembedPFMETSignificance(const edm::ParameterSet& pset);
+    virtual ~UnembedPFMETSignificance(){}
+    void produce(edm::Event& evt, const edm::EventSetup& es);
+  private:
+    edm::InputTag src_;
+};
+
+UnembedPFMETSignificance::UnembedPFMETSignificance(const edm::ParameterSet& pset) {
+  src_ = pset.getParameter<edm::InputTag>("src");
+  produces<PFMEtSignCovMatrix>();
+}
+void UnembedPFMETSignificance::produce(edm::Event& evt, const edm::EventSetup& es) {
+
+  edm::Handle<PATFinalStateEventCollection> handle;
+  evt.getByLabel(src_, handle);
+
+  std::auto_ptr<PFMEtSignCovMatrix> covMatrix_ptr(new PFMEtSignCovMatrix(
+        handle->at(0).metCovariance()));
+  evt.put(covMatrix_ptr);
+}
+
+#include "FWCore/Framework/interface/MakerMacros.h"
+DEFINE_FWK_MODULE(UnembedPFMETSignificance);

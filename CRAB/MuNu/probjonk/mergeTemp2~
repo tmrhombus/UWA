@@ -1,0 +1,56 @@
+cd /scratch/ojalvo/sandbox_9_18_MC8TeVb
+
+find /scratch/$USER/T_t8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_t.root
+find /scratch/$USER/T_s8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_s.root
+find /scratch/$USER/Tbar_t8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_t.root
+find /scratch/$USER/Tbar_s8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_s.root
+find /scratch/$USER/TtWDR8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_tWDR.root
+find /scratch/$USER/Tbar_tWDR8-MuNuPAT/*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tWDR.root
+
+EventWeightsIterative outputFile='W.root'          weight=36257.2 type=1 histoName='summary/results' 	  
+EventWeightsIterative outputFile='TOP.root'        weight=234     type=2 histoName='summary/results' #jgw2kb@virgina.edu higgsbbar	  
+EventWeightsIterative outputFile='DYall.root'      weight=3505.71 type=3 histoName='summary/results' 	  
+EventWeightsIterative outputFile='T_t.root'        weight=56.4    type=4 histoName='summary/results' 	  
+EventWeightsIterative outputFile='T_s.root'        weight=3.79    type=5 histoName='summary/results'
+EventWeightsIterative outputFile='Tbar_t.root'     weight=30.7    type=6 histoName='summary/results' 	  
+EventWeightsIterative outputFile='Tbar_s.root'     weight=1.76    type=7 histoName='summary/results' 	   	  
+EventWeightsIterative outputFile='T_tWDR.root'     weight=11.1    type=8 histoName='summary/results'
+EventWeightsIterative outputFile='Tbar_tWDR.root'  weight=11.1    type=9 histoName='summary/results'
+EventWeightsIterative outputFile='WZ.root'         weight=32.3161 type=11 histoName='summary/results' 
+EventWeightsIterative outputFile='WW.root'         weight=57.1097  type=12 histoName='summary/results' 
+##EventWeightsIterative outputFile='ZZ.root'         weight=8.2     type=13  histoName='summary/results' 
+
+hadd T.root T_t.root T_s.root
+hadd Tbar.root Tbar_t.root Tbar_s.root
+hadd TtWDR.root T_tWDR.root Tbar_tWDR.root
+rm T_tWDR.root Tbar_tWDR.root
+rm T_t.root T_s.root
+rm Tbar_t.root Tbar_s.root
+#hadd VV.root WW.root WZ.root 
+#rm WW.root WZ.root ZZ.root
+
+
+EventWeightsEff outputFile='WPt100.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' &
+EventWeightsEff outputFile='W.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' &
+EventWeightsEff outputFile='TOP.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' & 
+EventWeightsEff outputFile='T.root' brancheta='EffWEIGHTeta'  branchpt='EffWEIGHTpt' &  
+EventWeightsEff outputFile='Tbar.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' &     
+EventWeightsEff outputFile='TtWDR.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' &      
+EventWeightsEff outputFile='WZ.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' &  
+EventWeightsEff outputFile='WW.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' &
+Eventweightseff outputFile='DYall.root' brancheta='EffWEIGHTeta' branchpt='EffWEIGHTpt' 
+
+BTagScaleFactorsHighJet outputFile='WPt100.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' &
+BTagScaleFactorsHighJet outputFile='W.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' &
+BTagScaleFactorsHighJet outputFile='TOP.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' &
+BTagScaleFactorsHighJet outputFile='DYall.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT'  
+BTagScaleFactorsHighJet outputFile='T.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' &
+BTagScaleFactorsHighJet outputFile='Tbar.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' &
+BTagScaleFactorsHighJet outputFile='TtWDR.root' csvl1Jet='EffWEIGHTCSVL' typeTop=1 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' &
+BTagScaleFactorsHighJet outputFile='WZ.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' &
+BTagScaleFactorsHighJet outputFile='WW.root' csvl1Jet='EffWEIGHTCSVL' typeTop=0 csvm1Jet='EffWEIGHTCSVM' csvt1Jet='EffWEIGHTCSVT' 
+
+
+
+
+

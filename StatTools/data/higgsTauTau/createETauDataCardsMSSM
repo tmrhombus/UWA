@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+
+binning='binningHighStat=0.,20.,40.,60.,80.,100.,120.,140.,160.,180.,200.,250.,300.,350.,400.,450.,500.,600.,700.,800. binningLowStat=0.,25.,50.,75.,100.,125.,150.,175.,200.,225.,250.,275.,300.,350.,400.,500.,750.,1000.'
+
+
+
+MakeDataCard channel='eleTau'  shifts='Tau'  dataFile='../inputs/ltau/DATA.root' zttFile='../inputs/ltau/ZJETS.root' zllFile='../inputs/ltau/ZJETS.root' wFile='../inputs/ltau/W.root' vvFile='../inputs/ltau/VV.root' topFile='../inputs/ltau/TOP.root' zEmbeddedSample='../inputs/ltau/ETEM.root' wThreeJetsFile=''  preselection='pt1>24&&pt2>20&&vertices>0&&diLeptons==0&&lPFIsoDB<0.1&tauLooseMVAIso>0'       oswselection='charge==0&&pZeta<-40'	       ossignalselection='charge==0&&pZeta>-20'         sswselection='charge!=0&&pZeta<-40'	      sssignalselection='charge!=0&&pZeta>-20'  qcdselection='pt1>24&&pt2>20&&vertices>0&&diLeptons==0&&charge!=0&&pZeta>-20'  luminosityErr=0.045 qcdfactor=1.07 qcdfactorErr=0.05 vvErr=0.2  zttScale=1.004 zttScaleErr=0.033    wFactorErr=0.06    zjfterr=0.1  zlfterr=0.1   topErr=0.075 	muID=0.0 muIDErr=0.00 eleID=1.00 eleIDErr=0.01 tauID=1.0 tauIDErr=0.064 outputFile='eleTau.root' dir='../inputs/ltau/'  bID=0.97  bIDErr=0.10  bMisID=1.1  bMisIDErr=0.17    bitmask=1,1,0,0 $binning vbfSelection0='(nJetsPt30==0&&nJetsBTagCSVMPt20==0&&met>30)' vbfSelection1='(nJetsPt30>=1&&nJetsBTagCSVMPt20==0&&met>30&&(!(vbfMVA>0.5&&nJetsPt30>=2&&vbfNJetsGap30==0)))' vbfSelection2='(nJetsPt30<=1&&nJetsBTagCSVMPt20>0)'   relaxedSelection='pt1>24&&pt2>20&&pZeta>-20'     weight='(__WEIGHT__*__CORR__)' vbfFactorZ=1.13 vbfFactorZErr=0.04  vbfFactorW=1.13 vbfFactorWErr=0.04 boostFactorZ=0.95 boostFactorZErr=0.05 boostFactorW=0.95 boostFactorWErr=0.05 zlftErr=0.1 zlftFactor=0.85 luminosity=5010. variable='svMass'
+

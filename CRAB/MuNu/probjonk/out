@@ -1,0 +1,1839 @@
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_100_1_9as/MuNuPAT-output_100_1_9as.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_101_1_nye/MuNuPAT-output_101_1_nye.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:13:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_102_1_7Gm/MuNuPAT-output_102_1_7Gm.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_103_1_jrA/MuNuPAT-output_103_1_jrA.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_104_1_LL6/MuNuPAT-output_104_1_LL6.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_105_1_eno/MuNuPAT-output_105_1_eno.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_106_1_ZPa/MuNuPAT-output_106_1_ZPa.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_107_1_Ezj/MuNuPAT-output_107_1_Ezj.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_108_1_Xvn/MuNuPAT-output_108_1_Xvn.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_109_1_Yxc/MuNuPAT-output_109_1_Yxc.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_10_1_Ytb/MuNuPAT-output_10_1_Ytb.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:14:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_110_2_I50/MuNuPAT-output_110_2_I50.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_111_1_o2t/MuNuPAT-output_111_1_o2t.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_112_1_eN0/MuNuPAT-output_112_1_eN0.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_113_1_jI1/MuNuPAT-output_113_1_jI1.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_114_1_ftW/MuNuPAT-output_114_1_ftW.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:19:06 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_115_2_b7x/MuNuPAT-output_115_2_b7x.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_116_1_rCn/MuNuPAT-output_116_1_rCn.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:32 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_117_1_aOT/MuNuPAT-output_117_1_aOT.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:32 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_118_1_wro/MuNuPAT-output_118_1_wro.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:33 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_119_1_4UQ/MuNuPAT-output_119_1_4UQ.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:29 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_11_1_RPK/MuNuPAT-output_11_1_RPK.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:01 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_120_1_C72/MuNuPAT-output_120_1_C72.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:15:52 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_121_1_LSF/MuNuPAT-output_121_1_LSF.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:15:53 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_122_1_7Rf/MuNuPAT-output_122_1_7Rf.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:15:53 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_123_1_UeO/MuNuPAT-output_123_1_UeO.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:15:53 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_124_1_INw/MuNuPAT-output_124_1_INw.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:25 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_125_1_FM6/MuNuPAT-output_125_1_FM6.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:15:53 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_126_1_AYG/MuNuPAT-output_126_1_AYG.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:19:40 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_127_1_Dem/MuNuPAT-output_127_1_Dem.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:19:40 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_128_1_upc/MuNuPAT-output_128_1_upc.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:15:54 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_129_1_hYK/MuNuPAT-output_129_1_hYK.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:15:53 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_12_1_jSU/MuNuPAT-output_12_1_jSU.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:04 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_130_1_Jrc/MuNuPAT-output_130_1_Jrc.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:42 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_131_1_lcV/MuNuPAT-output_131_1_lcV.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:19:58 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_132_1_B6l/MuNuPAT-output_132_1_B6l.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:30 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_133_1_Mvq/MuNuPAT-output_133_1_Mvq.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:16:31 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_134_1_kLU/MuNuPAT-output_134_1_kLU.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:19:58 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_135_1_9Yy/MuNuPAT-output_135_1_9Yy.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:19:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_136_1_tuS/MuNuPAT-output_136_1_tuS.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:20:00 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_137_1_pRo/MuNuPAT-output_137_1_pRo.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:20:00 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_138_1_zFX/MuNuPAT-output_138_1_zFX.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:20:00 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_139_1_kg7/MuNuPAT-output_139_1_kg7.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:20:00 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_13_1_kib/MuNuPAT-output_13_1_kib.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:20:58 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_140_2_G5i/MuNuPAT-output_140_2_G5i.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:20:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_141_1_tJC/MuNuPAT-output_141_1_tJC.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:02 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_142_1_ffS/MuNuPAT-output_142_1_ffS.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:03 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_143_1_xMr/MuNuPAT-output_143_1_xMr.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:03 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_144_1_yxD/MuNuPAT-output_144_1_yxD.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:03 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_145_2_Kg8/MuNuPAT-output_145_2_Kg8.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:00 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_146_1_2gN/MuNuPAT-output_146_1_2gN.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:07 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_147_1_YJ4/MuNuPAT-output_147_1_YJ4.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:13 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_148_1_WFd/MuNuPAT-output_148_1_WFd.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:31 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_149_1_DUQ/MuNuPAT-output_149_1_DUQ.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:35 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_149_2_CiP/MuNuPAT-output_149_2_CiP.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:37 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_14_2_XXu/MuNuPAT-output_14_2_XXu.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:39 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_150_1_ViC/MuNuPAT-output_150_1_ViC.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:40 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_151_2_SPi/MuNuPAT-output_151_2_SPi.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:40 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_152_1_mQh/MuNuPAT-output_152_1_mQh.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:21:39 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_153_1_n1C/MuNuPAT-output_153_1_n1C.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:23:06 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_154_1_Sh1/MuNuPAT-output_154_1_Sh1.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:24:12 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_155_1_Sya/MuNuPAT-output_155_1_Sya.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:24:47 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_156_1_NDR/MuNuPAT-output_156_1_NDR.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:24:47 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_158_1_Fv1/MuNuPAT-output_158_1_Fv1.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:25:07 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_159_1_MbG/MuNuPAT-output_159_1_MbG.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:25:08 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_15_1_dce/MuNuPAT-output_15_1_dce.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:25:08 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_160_1_BtW/MuNuPAT-output_160_1_BtW.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:25:08 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_161_1_6ZL/MuNuPAT-output_161_1_6ZL.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:25:08 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_162_1_Zeu/MuNuPAT-output_162_1_Zeu.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:25:09 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_163_1_ql7/MuNuPAT-output_163_1_ql7.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:25:09 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_164_1_iZJ/MuNuPAT-output_164_1_iZJ.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:05 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_165_1_GKY/MuNuPAT-output_165_1_GKY.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:05 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_166_1_usW/MuNuPAT-output_166_1_usW.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:09 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_167_2_40e/MuNuPAT-output_167_2_40e.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:11 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_168_2_QWU/MuNuPAT-output_168_2_QWU.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:11 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_169_1_pEs/MuNuPAT-output_169_1_pEs.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:11 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_16_1_Qdu/MuNuPAT-output_16_1_Qdu.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:11 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_170_1_c00/MuNuPAT-output_170_1_c00.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:52 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_171_1_dRM/MuNuPAT-output_171_1_dRM.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:58 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_172_1_kAU/MuNuPAT-output_172_1_kAU.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:26:37 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_173_1_w7l/MuNuPAT-output_173_1_w7l.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:27:24 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_174_1_8L6/MuNuPAT-output_174_1_8L6.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:27:30 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_175_1_azv/MuNuPAT-output_175_1_azv.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:27:35 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_176_1_pDx/MuNuPAT-output_176_1_pDx.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:27:32 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_177_1_daP/MuNuPAT-output_177_1_daP.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:27:53 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_178_1_gUc/MuNuPAT-output_178_1_gUc.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:27:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_179_1_s3h/MuNuPAT-output_179_1_s3h.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:29:01 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_17_1_O4M/MuNuPAT-output_17_1_O4M.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:29:20 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_180_1_423/MuNuPAT-output_180_1_423.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:29:54 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_181_2_eRB/MuNuPAT-output_181_2_eRB.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:29:54 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_182_1_rk9/MuNuPAT-output_182_1_rk9.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_183_1_PHk/MuNuPAT-output_183_1_PHk.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_184_1_v4l/MuNuPAT-output_184_1_v4l.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_186_1_YQ2/MuNuPAT-output_186_1_YQ2.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_187_1_OFJ/MuNuPAT-output_187_1_OFJ.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_188_1_Xyo/MuNuPAT-output_188_1_Xyo.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:16 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_189_1_qaE/MuNuPAT-output_189_1_qaE.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:16 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_18_1_sbS/MuNuPAT-output_18_1_sbS.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_190_2_R2z/MuNuPAT-output_190_2_R2z.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_191_1_W6Y/MuNuPAT-output_191_1_W6Y.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_192_2_vpF/MuNuPAT-output_192_2_vpF.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_193_2_m0H/MuNuPAT-output_193_2_m0H.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_194_1_Sk7/MuNuPAT-output_194_1_Sk7.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:25 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_195_1_4t4/MuNuPAT-output_195_1_4t4.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:31 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_196_1_Ud0/MuNuPAT-output_196_1_Ud0.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_197_1_845/MuNuPAT-output_197_1_845.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_198_2_fh0/MuNuPAT-output_198_2_fh0.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_199_1_v6i/MuNuPAT-output_199_1_v6i.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_19_1_FhI/MuNuPAT-output_19_1_FhI.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_1_1_HmH/MuNuPAT-output_1_1_HmH.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_200_1_OQe/MuNuPAT-output_200_1_OQe.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_201_1_mt4/MuNuPAT-output_201_1_mt4.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_202_1_fiQ/MuNuPAT-output_202_1_fiQ.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:05 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_203_1_a4X/MuNuPAT-output_203_1_a4X.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:05 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_204_1_Gl1/MuNuPAT-output_204_1_Gl1.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_205_1_xEd/MuNuPAT-output_205_1_xEd.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_206_1_WEc/MuNuPAT-output_206_1_WEc.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:46 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_207_1_BjE/MuNuPAT-output_207_1_BjE.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:17 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_207_2_Aop/MuNuPAT-output_207_2_Aop.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:45 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_208_1_MFR/MuNuPAT-output_208_1_MFR.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_209_2_eMO/MuNuPAT-output_209_2_eMO.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:15 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_20_1_6Ai/MuNuPAT-output_20_1_6Ai.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_210_1_nlq/MuNuPAT-output_210_1_nlq.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:08 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_211_1_Dzm/MuNuPAT-output_211_1_Dzm.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_212_1_EpB/MuNuPAT-output_212_1_EpB.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:06 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_213_1_3uM/MuNuPAT-output_213_1_3uM.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:06 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_214_2_Vpr/MuNuPAT-output_214_2_Vpr.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:17 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_215_2_fJb/MuNuPAT-output_215_2_fJb.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:30 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_216_1_Xlb/MuNuPAT-output_216_1_Xlb.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:13 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_217_2_sua/MuNuPAT-output_217_2_sua.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:10 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_218_2_zOS/MuNuPAT-output_218_2_zOS.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:57 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_219_2_uzB/MuNuPAT-output_219_2_uzB.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:57 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_21_1_YEG/MuNuPAT-output_21_1_YEG.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:56 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_220_1_vfB/MuNuPAT-output_220_1_vfB.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:19 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_221_1_Vh6/MuNuPAT-output_221_1_Vh6.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:19 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_222_1_gnK/MuNuPAT-output_222_1_gnK.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:30:20 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_223_2_V0z/MuNuPAT-output_223_2_V0z.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:11 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_224_1_Kv7/MuNuPAT-output_224_1_Kv7.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:11 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_225_1_uHx/MuNuPAT-output_225_1_uHx.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:17 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_226_1_ShY/MuNuPAT-output_226_1_ShY.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_227_1_Snz/MuNuPAT-output_227_1_Snz.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_228_2_7Sz/MuNuPAT-output_228_2_7Sz.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_229_1_CLx/MuNuPAT-output_229_1_CLx.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_22_1_yhp/MuNuPAT-output_22_1_yhp.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:31:43 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_230_1_QEK/MuNuPAT-output_230_1_QEK.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:03 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_231_1_Jzn/MuNuPAT-output_231_1_Jzn.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:05 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_232_1_aDB/MuNuPAT-output_232_1_aDB.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:39 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_233_1_8Gp/MuNuPAT-output_233_1_8Gp.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:41 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_234_1_ZOM/MuNuPAT-output_234_1_ZOM.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:49 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_235_1_RZR/MuNuPAT-output_235_1_RZR.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:32:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_236_1_VIR/MuNuPAT-output_236_1_VIR.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:34:19 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_237_1_PKt/MuNuPAT-output_237_1_PKt.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:34:26 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_238_1_Eij/MuNuPAT-output_238_1_Eij.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:01 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_239_1_nRB/MuNuPAT-output_239_1_nRB.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:01 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_23_2_Axw/MuNuPAT-output_23_2_Axw.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:14 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_240_1_RQV/MuNuPAT-output_240_1_RQV.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:21 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_241_1_fcd/MuNuPAT-output_241_1_fcd.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:25 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_242_1_YZc/MuNuPAT-output_242_1_YZc.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:26 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_243_1_cRG/MuNuPAT-output_243_1_cRG.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:26 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_244_1_UAc/MuNuPAT-output_244_1_UAc.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:27 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_245_1_Qdw/MuNuPAT-output_245_1_Qdw.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:27 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_246_1_C0g/MuNuPAT-output_246_1_C0g.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:28 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_247_1_7SO/MuNuPAT-output_247_1_7SO.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:28 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_248_1_N2o/MuNuPAT-output_248_1_N2o.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:28 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_249_1_tTo/MuNuPAT-output_249_1_tTo.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:37 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_24_1_fhg/MuNuPAT-output_24_1_fhg.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:54 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_250_1_JNP/MuNuPAT-output_250_1_JNP.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_251_1_PoX/MuNuPAT-output_251_1_PoX.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:35:59 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_252_1_CDU/MuNuPAT-output_252_1_CDU.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:05 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_253_1_mEh/MuNuPAT-output_253_1_mEh.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:08 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_254_1_hxr/MuNuPAT-output_254_1_hxr.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:07 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_255_1_Uw8/MuNuPAT-output_255_1_Uw8.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:08 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_256_1_AZW/MuNuPAT-output_256_1_AZW.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:06 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_257_1_wyD/MuNuPAT-output_257_1_wyD.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:13 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_258_1_VAW/MuNuPAT-output_258_1_VAW.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:13 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_259_1_D6p/MuNuPAT-output_259_1_D6p.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:15 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_25_1_Yxg/MuNuPAT-output_25_1_Yxg.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:15 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_260_1_ukr/MuNuPAT-output_260_1_ukr.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:18 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_261_1_CDu/MuNuPAT-output_261_1_CDu.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:17 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_262_1_mAS/MuNuPAT-output_262_1_mAS.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:17 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_263_1_1Bk/MuNuPAT-output_263_1_1Bk.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:23 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_264_1_IMC/MuNuPAT-output_264_1_IMC.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:25 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_265_1_hzw/MuNuPAT-output_265_1_hzw.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:25 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_266_1_xdh/MuNuPAT-output_266_1_xdh.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:25 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_267_1_ApQ/MuNuPAT-output_267_1_ApQ.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:25 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_267_2_T3k/MuNuPAT-output_267_2_T3k.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:36:49 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_268_1_kOo/MuNuPAT-output_268_1_kOo.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:37:10 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_269_1_bYR/MuNuPAT-output_269_1_bYR.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:37:13 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_26_1_nZh/MuNuPAT-output_26_1_nZh.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:37:34 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_270_1_1kE/MuNuPAT-output_270_1_1kE.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:37:40 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_271_1_LEG/MuNuPAT-output_271_1_LEG.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:37:57 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_272_1_pWL/MuNuPAT-output_272_1_pWL.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:37:49 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_273_1_jmS/MuNuPAT-output_273_1_jmS.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:37:57 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_274_1_kEe/MuNuPAT-output_274_1_kEe.err <==
+----- Begin Fatal Exception 14-Sep-2012 14:38:07 CDT-----------------------
+An exception of category 'StdException' occurred while
+   [0] Initializing plug-in manager
+Exception Message:
+A std::exception was thrown.
+boost::filesystem::status: Permission denied: "/afs/hep.wisc.edu/cms/ojalvo/UWCode2012c/CMSSW_5_3_2_patch4/lib/slc5_amd64_gcc462"
+----- End Fatal Exception -------------------------------------------------
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_275_1_3kW/MuNuPAT-output_275_1_3kW.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_276_1_x8v/MuNuPAT-output_276_1_x8v.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_277_1_3b5/MuNuPAT-output_277_1_3b5.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_278_1_yFD/MuNuPAT-output_278_1_yFD.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_279_2_jRe/MuNuPAT-output_279_2_jRe.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_27_1_qn0/MuNuPAT-output_27_1_qn0.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_280_1_eQF/MuNuPAT-output_280_1_eQF.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_281_1_uC1/MuNuPAT-output_281_1_uC1.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_282_1_aUN/MuNuPAT-output_282_1_aUN.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_283_1_ibc/MuNuPAT-output_283_1_ibc.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_284_1_3p8/MuNuPAT-output_284_1_3p8.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_285_1_nxQ/MuNuPAT-output_285_1_nxQ.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_286_1_OVn/MuNuPAT-output_286_1_OVn.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_287_1_OIM/MuNuPAT-output_287_1_OIM.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_288_1_fWq/MuNuPAT-output_288_1_fWq.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_289_1_RhC/MuNuPAT-output_289_1_RhC.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_28_1_0Pz/MuNuPAT-output_28_1_0Pz.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_290_1_TbZ/MuNuPAT-output_290_1_TbZ.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_291_1_zFs/MuNuPAT-output_291_1_zFs.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_292_2_VNo/MuNuPAT-output_292_2_VNo.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_293_1_tMw/MuNuPAT-output_293_1_tMw.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_294_1_I46/MuNuPAT-output_294_1_I46.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_295_1_7vb/MuNuPAT-output_295_1_7vb.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_296_1_cIi/MuNuPAT-output_296_1_cIi.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_297_1_Mi3/MuNuPAT-output_297_1_Mi3.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_298_1_rWu/MuNuPAT-output_298_1_rWu.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_299_1_G3P/MuNuPAT-output_299_1_G3P.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_29_1_hd3/MuNuPAT-output_29_1_hd3.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_2_1_h6s/MuNuPAT-output_2_1_h6s.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_300_1_EyD/MuNuPAT-output_300_1_EyD.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_301_2_o8d/MuNuPAT-output_301_2_o8d.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_302_1_Rjx/MuNuPAT-output_302_1_Rjx.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_303_1_Fpt/MuNuPAT-output_303_1_Fpt.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_304_1_ZcR/MuNuPAT-output_304_1_ZcR.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_305_1_AkE/MuNuPAT-output_305_1_AkE.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_306_1_JKc/MuNuPAT-output_306_1_JKc.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_307_1_QJ5/MuNuPAT-output_307_1_QJ5.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_308_1_rJR/MuNuPAT-output_308_1_rJR.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_309_1_1BI/MuNuPAT-output_309_1_1BI.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_30_1_NmM/MuNuPAT-output_30_1_NmM.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_310_1_O2H/MuNuPAT-output_310_1_O2H.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_311_1_Ot3/MuNuPAT-output_311_1_Ot3.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_312_1_SHA/MuNuPAT-output_312_1_SHA.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_313_1_2X6/MuNuPAT-output_313_1_2X6.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_314_1_TMW/MuNuPAT-output_314_1_TMW.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_315_1_Vvj/MuNuPAT-output_315_1_Vvj.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_316_1_4wu/MuNuPAT-output_316_1_4wu.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_317_1_8WW/MuNuPAT-output_317_1_8WW.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_318_1_Zm9/MuNuPAT-output_318_1_Zm9.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_319_1_JUj/MuNuPAT-output_319_1_JUj.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_31_2_8YM/MuNuPAT-output_31_2_8YM.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_320_1_HwK/MuNuPAT-output_320_1_HwK.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_321_1_BL3/MuNuPAT-output_321_1_BL3.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_322_1_4DZ/MuNuPAT-output_322_1_4DZ.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_323_1_Xvv/MuNuPAT-output_323_1_Xvv.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_324_1_xI7/MuNuPAT-output_324_1_xI7.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_325_1_aX5/MuNuPAT-output_325_1_aX5.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_326_1_i4r/MuNuPAT-output_326_1_i4r.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_327_1_8MJ/MuNuPAT-output_327_1_8MJ.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_328_1_LIw/MuNuPAT-output_328_1_LIw.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_329_1_MQP/MuNuPAT-output_329_1_MQP.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_32_1_GUx/MuNuPAT-output_32_1_GUx.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_330_1_2su/MuNuPAT-output_330_1_2su.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_331_1_FvG/MuNuPAT-output_331_1_FvG.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_332_1_6aV/MuNuPAT-output_332_1_6aV.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_333_1_q4j/MuNuPAT-output_333_1_q4j.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_33_1_C19/MuNuPAT-output_33_1_C19.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_34_1_yJa/MuNuPAT-output_34_1_yJa.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_35_1_3jB/MuNuPAT-output_35_1_3jB.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_36_2_dun/MuNuPAT-output_36_2_dun.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_37_1_Vs5/MuNuPAT-output_37_1_Vs5.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_38_1_uEg/MuNuPAT-output_38_1_uEg.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_39_1_ixq/MuNuPAT-output_39_1_ixq.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_3_2_olr/MuNuPAT-output_3_2_olr.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_40_1_Drn/MuNuPAT-output_40_1_Drn.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_41_1_Gmb/MuNuPAT-output_41_1_Gmb.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_41_2_Sfy/MuNuPAT-output_41_2_Sfy.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_42_1_VKD/MuNuPAT-output_42_1_VKD.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_43_1_BlU/MuNuPAT-output_43_1_BlU.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_44_1_582/MuNuPAT-output_44_1_582.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_45_1_PcZ/MuNuPAT-output_45_1_PcZ.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_46_1_Ch8/MuNuPAT-output_46_1_Ch8.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_47_1_XJP/MuNuPAT-output_47_1_XJP.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_48_1_fN4/MuNuPAT-output_48_1_fN4.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_49_1_tfn/MuNuPAT-output_49_1_tfn.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_50_1_Z7c/MuNuPAT-output_50_1_Z7c.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_51_1_Y85/MuNuPAT-output_51_1_Y85.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_52_1_tI1/MuNuPAT-output_52_1_tI1.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_53_1_gF5/MuNuPAT-output_53_1_gF5.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_54_2_ANp/MuNuPAT-output_54_2_ANp.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_55_1_2zP/MuNuPAT-output_55_1_2zP.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_56_1_JNc/MuNuPAT-output_56_1_JNc.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_57_1_rli/MuNuPAT-output_57_1_rli.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_58_1_9x6/MuNuPAT-output_58_1_9x6.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_59_1_b7U/MuNuPAT-output_59_1_b7U.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_5_2_01A/MuNuPAT-output_5_2_01A.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_60_1_bef/MuNuPAT-output_60_1_bef.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_61_1_hFF/MuNuPAT-output_61_1_hFF.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_62_1_Q2l/MuNuPAT-output_62_1_Q2l.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_63_1_F8O/MuNuPAT-output_63_1_F8O.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_64_1_s5d/MuNuPAT-output_64_1_s5d.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_65_1_tIy/MuNuPAT-output_65_1_tIy.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_66_1_ON4/MuNuPAT-output_66_1_ON4.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_67_2_0dz/MuNuPAT-output_67_2_0dz.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_68_1_S61/MuNuPAT-output_68_1_S61.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_69_1_bbg/MuNuPAT-output_69_1_bbg.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_6_1_c2V/MuNuPAT-output_6_1_c2V.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_70_1_auY/MuNuPAT-output_70_1_auY.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_72_1_k4T/MuNuPAT-output_72_1_k4T.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_73_1_ZZA/MuNuPAT-output_73_1_ZZA.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_74_1_j9K/MuNuPAT-output_74_1_j9K.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_75_1_HPm/MuNuPAT-output_75_1_HPm.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_76_1_PuS/MuNuPAT-output_76_1_PuS.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_77_1_Gie/MuNuPAT-output_77_1_Gie.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_78_1_mwe/MuNuPAT-output_78_1_mwe.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_79_1_dxr/MuNuPAT-output_79_1_dxr.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_80_1_Kq5/MuNuPAT-output_80_1_Kq5.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_81_1_E7Y/MuNuPAT-output_81_1_E7Y.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_82_2_of3/MuNuPAT-output_82_2_of3.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_83_2_xPh/MuNuPAT-output_83_2_xPh.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_84_1_CnM/MuNuPAT-output_84_1_CnM.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_85_1_UMI/MuNuPAT-output_85_1_UMI.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_86_1_twj/MuNuPAT-output_86_1_twj.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_87_1_txi/MuNuPAT-output_87_1_txi.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_88_1_ZLK/MuNuPAT-output_88_1_ZLK.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_89_1_WGv/MuNuPAT-output_89_1_WGv.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_8_1_Iqv/MuNuPAT-output_8_1_Iqv.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_90_2_WBc/MuNuPAT-output_90_2_WBc.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_91_1_fMX/MuNuPAT-output_91_1_fMX.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_92_1_Cyx/MuNuPAT-output_92_1_Cyx.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_93_1_9OP/MuNuPAT-output_93_1_9OP.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_94_3_Zzx/MuNuPAT-output_94_3_Zzx.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_95_1_sDp/MuNuPAT-output_95_1_sDp.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_96_1_oO6/MuNuPAT-output_96_1_oO6.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_97_1_4nt/MuNuPAT-output_97_1_4nt.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_98_1_dik/MuNuPAT-output_98_1_dik.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_99_1_HnM/MuNuPAT-output_99_1_HnM.err <==
+
+==> /scratch/ojalvo/WZ8-MuNuPAT/MuNuPAT-output_9_1_cC7/MuNuPAT-output_9_1_cC7.err <==

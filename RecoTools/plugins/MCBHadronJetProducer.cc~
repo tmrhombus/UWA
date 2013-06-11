@@ -1,0 +1,19 @@
+
+
+// system include files
+#include <memory>
+
+// user include files
+#include "UWAnalysis/RecoTools/plugins/MCBHadronJetProducer.h"
+
+//#include "AnalysisDataFormats/BAnalysis/interface/SimBHadron.h"
+//#include "AnalysisDataFormats/BAnalysis/interface/SimSecondaryVertex.h"
+
+#include "ZSV/BAnalysis/interface/SimBHadron.h"
+#include "ZSV/BAnalysis/interface/SimSecondaryVertex.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/PluginManager/interface/ModuleDef.h"
+
+
+//define this as a plug-in
+DEFINE_FWK_MODULE(MCBHadronJetProducer);

@@ -1,0 +1,61 @@
+#!/bin/sh
+voms-proxy-init --voms cms --valid 100:00
+
+cat MNu-MCPat.py  > MuNuPAT.py
+cat CONDORPT.py >> MuNuPAT.py
+
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/swanson/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v2/ WJets $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/swanson/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/W1JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3/ W1Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/swanson/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/W2JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3/ W2Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/swanson/W3JetsToLNu_TuneZ2Star_8TeV-madgraph/W3JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3 W3Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/swanson/W4JetsToLNu_TuneZ2Star_8TeV-madgraph/W4JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3/ W4Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+
+
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v1/ Drell $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/ TTJets $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/ Tbar_tW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/ T_tW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+
+#--output-dag-file=/scratch/ojalvo/DAGs/$1/WJets
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-12-13-8TeV-53X-PatTuple_HCP2012/VBF_HToZZTo2L2Q_M-125_8TeV-powheg-pythia6/ VBF_HZZ_125_8TeV $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-12-13-8TeV-53X-PatTuple_HCP2012/GluGluToHToZZTo2L2Q_M-125_8TeV-powheg-pythia6/ ggHZZ_125_8TeV $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-08-02-8TeV-PatTuple/WH_WToLNu_HToBB_M-125/ Higgs125_8TeV $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-10-02-8TeV-53X-PatTuple_ShareFSFix/T_t-channel_TuneZ2star_8TeV-powheg-tauola  T_t8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-10-02-8TeV-53X-PatTuple_ShareFSFix/T_s-channel_TuneZ2star_8TeV-powheg-tauola/ T_s8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-10-02-8TeV-53X-PatTuple_ShareFSFix/Tbar_s-channel_TuneZ2star_8TeV-powheg-tauola/ Tbar_s8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-10-02-8TeV-53X-PatTuple_ShareFSFix/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/ Tbar_t8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball DYall8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py 
+
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-16-8TeV-PatTuple/WJetsToLNu_PtW-100_TuneZ2star_8TeV-madgraph/ WPt100 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/WZJetsTo2L2Q_TuneZ2star_8TeV-madgraph-tauola/ WZ8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball_v2/ W8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/ T_tWDR8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py 
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/ Tbar_tWDR8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py 
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola/ TOP8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py 
+#
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/WWJetsTo2L2Nu_TuneZ2star_8TeV-madgraph-tauola/ WW8 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+###
+
+###farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/ W1Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+###farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/ W2Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+###farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/W3JetsToLNu_TuneZ2Star_8TeV-madgraph/ W3Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+###farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/W4JetsToLNu_TuneZ2Star_8TeV-madgraph/ W4Jet $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+
+#--resubmit-failed-jobs
+#--input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola/ 
+#/store/user/tapas/2012-09-18-8TeV-53X-PatTuple/WZJetsTo2L2Q_TuneZ2star_8TeV-madgraph-tauola/
+#/store/user/tapas/2012-09-10-7TeV-PatTuple/Tbar_s_Powheg
+#/store/user/tapas/2012-09-10-7TeV-PatTuple/T_s_Powheg
+#/store/user/tapas/2012-09-10-7TeV-PatTuple/Tbar_t_Powheg
+#/store/user/tapas/2012-09-10-7TeV-PatTuple/T_t_Powheg
+#
+#/store/user/tapas/2012-10-02-8TeV-53X-PatTuple_ShareFSFix/data_SingleMu_Run2012C_
+#data_SingleMu_Run2012C_24Aug2012_v1/                   data_SingleMu_Run2012C_PromptReco_v2_Run198934_201264/ data_SingleMu_Run2012C_PromptReco_v2_Run201265_203755/ 
+#
+#
+#
+#
+
+
+rm MuNuPAT.py
