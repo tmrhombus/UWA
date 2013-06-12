@@ -22,3 +22,5 @@ git clone https://github.com/tmrhombus/UWAnalysis.git
 
 scram build -c
 scramv1 build -j 8 
+
+#for future compiling, only run <scramv1 build -j 8>
