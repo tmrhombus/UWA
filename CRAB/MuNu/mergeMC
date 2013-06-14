@@ -1,125 +1,97 @@
-mkdir /scratch/$USER/sandbox_0_0_MC8TeV
+###mkdir /scratch/$USER/sandbox_0_0_MC8TeV
 cd /scratch/$USER/sandbox_0_0_MC8TeV
 
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet0.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet1.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet2.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet3.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet4.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet5.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet6.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet7.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet8.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet9.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet10.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet11.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet12.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet13.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet14.root
-find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet15.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet0.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet1.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet2.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet3.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet4.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet5.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet6.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet7.root
+###find /scratch/$USER/W1Jet-MuNuPAT/MuNuPAT-output_9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet8.root
 
-hadd W1Jet.root W1Jet0.root W1Jet1.root W1Jet2.root W1Jet3.root W1Jet4.root W1Jet5.root W1Jet6.root W1Jet7.root W1Jet8.root W1Jet9.root W1Jet10.root W1Jet11.root W1Jet12.root W1Jet13.root W1Jet14.root W1Jet15.root
-rm  W1Jet0.root W1Jet1.root W1Jet2.root W1Jet3.root W1Jet4.root W1Jet5.root W1Jet6.root W1Jet7.root W1Jet8.root W1Jet9.root W1Jet10.root W1Jet11.root W1Jet12.root W1Jet13.root W1Jet14.root W1Jet15.root
+###hadd W1Jet.root W1Jet0.root W1Jet1.root W1Jet2.root W1Jet3.root W1Jet4.root W1Jet5.root W1Jet6.root W1Jet7.root W1Jet8.root 
+###rm  W1Jet0.root W1Jet1.root W1Jet2.root W1Jet3.root W1Jet4.root W1Jet5.root W1Jet6.root W1Jet7.root W1Jet8.root 
 
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet0.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet1.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet2.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet3.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet4.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet5.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet6.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet7.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet8.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet9.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet10.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet11.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet12.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet13.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet14.root
-find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet15.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet1.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet2.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet3.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet4.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet5.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet6.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet7.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet8.root
+###find /scratch/$USER/W2Jet-MuNuPAT/MuNuPAT-output_9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet9.root
 
-hadd W2Jet.root W2Jet0.root W2Jet1.root W2Jet2.root W2Jet3.root W2Jet4.root W2Jet5.root W2Jet6.root W2Jet7.root W2Jet8.root W2Jet9.root W2Jet10.root W2Jet11.root W2Jet12.root W2Jet13.root W2Jet14.root W2Jet15.root
-rm  W2Jet0.root W2Jet1.root W2Jet2.root W2Jet3.root W2Jet4.root W2Jet5.root W2Jet6.root W2Jet7.root W2Jet8.root W2Jet9.root W2Jet10.root W2Jet11.root W2Jet12.root W2Jet13.root W2Jet14.root W2Jet15.root
+###hadd W2Jet.root W2Jet1.root W2Jet2.root W2Jet3.root W2Jet4.root W2Jet5.root W2Jet6.root W2Jet7.root W2Jet8.root W2Jet9.root
+###rm W2Jet1.root W2Jet2.root W2Jet3.root W2Jet4.root W2Jet5.root W2Jet6.root W2Jet7.root W2Jet8.root W2Jet9.root 
 
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet0.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet1.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet2.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet3.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet4.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet5.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet6.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet7.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet8.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet9.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet10.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet11.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet12.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet13.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet14.root
-find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet15.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet1.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet2.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet3.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet4.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet5.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet6.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet7.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet8.root
+###find /scratch/$USER/W3Jet-MuNuPAT/MuNuPAT-output_9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet9.root
 
-hadd W3Jet.root W3Jet0.root W3Jet1.root W3Jet2.root W3Jet3.root W3Jet4.root W3Jet5.root W3Jet6.root W3Jet7.root W3Jet8.root W3Jet9.root W3Jet10.root W3Jet11.root W3Jet12.root W3Jet13.root W3Jet14.root W3Jet15.root
-rm  W3Jet0.root W3Jet1.root W3Jet2.root W3Jet3.root W3Jet4.root W3Jet5.root W3Jet6.root W3Jet7.root W3Jet8.root W3Jet9.root W3Jet10.root W3Jet11.root W3Jet12.root W3Jet13.root W3Jet14.root W3Jet15.root
+###hadd W3Jet.root W3Jet1.root W3Jet2.root W3Jet3.root W3Jet4.root W3Jet5.root W3Jet6.root W3Jet7.root W3Jet8.root W3Jet9.root
+###rm W3Jet1.root W3Jet2.root W3Jet3.root W3Jet4.root W3Jet5.root W3Jet6.root W3Jet7.root W3Jet8.root W3Jet9.root
 
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet0.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet1.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet2.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet3.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet4.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet5.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet6.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet7.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet8.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet9.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet10.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet11.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet12.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet13.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet14.root
-find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet15.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet1.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet2.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet3.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet4.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet5.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet6.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet7.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet8.root
+###find /scratch/$USER/W4Jet-MuNuPAT/MuNuPAT-output_9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet9.root
 
-hadd W4Jet.root W4Jet0.root W4Jet1.root W4Jet2.root W4Jet3.root W4Jet4.root W4Jet5.root W4Jet6.root W4Jet7.root W4Jet8.root W4Jet9.root W4Jet10.root W4Jet11.root W4Jet12.root W4Jet13.root W4Jet14.root W4Jet15.root
-rm  W4Jet0.root W4Jet1.root W4Jet2.root W4Jet3.root W4Jet4.root W4Jet5.root W4Jet6.root W4Jet7.root W4Jet8.root W4Jet9.root W4Jet10.root W4Jet11.root W4Jet12.root W4Jet13.root W4Jet14.root W4Jet15.root
+###hadd W4Jet.root W4Jet1.root W4Jet2.root W4Jet3.root W4Jet4.root W4Jet5.root W4Jet6.root W4Jet7.root W4Jet8.root W4Jet9.root
+###rm  W4Jet1.root W4Jet2.root W4Jet3.root W4Jet4.root W4Jet5.root W4Jet6.root W4Jet7.root W4Jet8.root W4Jet9.root
 
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell0.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell1.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell2.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell3.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell4.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell5.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell6.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell7.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell8.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell9.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell10.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell11.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell12.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell13.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell14.root
-find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell15.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell0.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell1.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell2.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell3.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell4.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell5.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell6.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell7.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell8.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell9.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell10.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell11.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell12.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell13.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell14.root
+###find /scratch/$USER/Drell-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell15.root
 
-hadd Drell.root Drell0.root Drell1.root Drell2.root Drell3.root Drell4.root Drell5.root Drell6.root Drell7.root Drell8.root Drell9.root Drell10.root Drell11.root Drell12.root Drell13.root Drell14.root Drell15.root
-rm Drell0.root Drell1.root Drell2.root Drell3.root Drell4.root Drell5.root Drell6.root Drell7.root Drell8.root Drell9.root Drell10.root Drell11.root Drell12.root Drell13.root Drell14.root Drell15.root
+###hadd Drell.root Drell0.root Drell1.root Drell2.root Drell3.root Drell4.root Drell5.root Drell6.root Drell7.root Drell8.root Drell9.root Drell10.root Drell11.root Drell12.root Drell13.root Drell14.root Drell15.root
+###rm Drell0.root Drell1.root Drell2.root Drell3.root Drell4.root Drell5.root Drell6.root Drell7.root Drell8.root Drell9.root Drell10.root Drell11.root Drell12.root Drell13.root Drell14.root Drell15.root
 
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW0.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW1.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW2.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW3.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW4.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW5.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW6.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW7.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW8.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW9.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW10.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW11.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW12.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW13.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW14.root
-find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW15.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW0.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW1.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-2*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW2.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-3*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW3.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-4*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW4.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-5*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW5.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-6*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW6.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-7*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW7.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-8*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW8.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-9*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW9.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-A*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW10.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-B*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW11.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-C*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW12.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-D*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW13.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-E*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW14.root
+###find /scratch/$USER/Tbar_tW-MuNuPAT/MuNuPAT-patTuple_cfg-F*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW15.root
 
-hadd Tbar_tW.root Tbar_tW0.root Tbar_tW1.root Tbar_tW2.root Tbar_tW3.root Tbar_tW4.root Tbar_tW5.root Tbar_tW6.root Tbar_tW7.root Tbar_tW8.root Tbar_tW9.root Tbar_tW10.root Tbar_tW11.root Tbar_tW12.root Tbar_tW13.root Tbar_tW14.root Tbar_tW15.root
-rm Tbar_tW0.root Tbar_tW1.root Tbar_tW2.root Tbar_tW3.root Tbar_tW4.root Tbar_tW5.root Tbar_tW6.root Tbar_tW7.root Tbar_tW8.root Tbar_tW9.root Tbar_tW10.root Tbar_tW11.root Tbar_tW12.root Tbar_tW13.root Tbar_tW14.root Tbar_tW15.root
+###hadd Tbar_tW.root Tbar_tW0.root Tbar_tW1.root Tbar_tW2.root Tbar_tW3.root Tbar_tW4.root Tbar_tW5.root Tbar_tW6.root Tbar_tW7.root Tbar_tW8.root Tbar_tW9.root Tbar_tW10.root Tbar_tW11.root Tbar_tW12.root Tbar_tW13.root Tbar_tW14.root Tbar_tW15.root
+###rm Tbar_tW0.root Tbar_tW1.root Tbar_tW2.root Tbar_tW3.root Tbar_tW4.root Tbar_tW5.root Tbar_tW6.root Tbar_tW7.root Tbar_tW8.root Tbar_tW9.root Tbar_tW10.root Tbar_tW11.root Tbar_tW12.root Tbar_tW13.root Tbar_tW14.root Tbar_tW15.root
 
 find /scratch/$USER/TTJets-MuNuPAT/MuNuPAT-patTuple_cfg-0*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTJets0.root
 find /scratch/$USER/TTJets-MuNuPAT/MuNuPAT-patTuple_cfg-1*/*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTJets1.root

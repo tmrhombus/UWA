@@ -45,17 +45,6 @@ farmoutAnalysisJobs $1 --input-files-per-job=1 --output-dir=. --input-dir=root:/
 #--resubmit-failed-jobs
 #--input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-09-18-8TeV-53X-PatTuple/TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola/ 
 #/store/user/tapas/2012-09-18-8TeV-53X-PatTuple/WZJetsTo2L2Q_TuneZ2star_8TeV-madgraph-tauola/
-#/store/user/tapas/2012-09-10-7TeV-PatTuple/Tbar_s_Powheg
-#/store/user/tapas/2012-09-10-7TeV-PatTuple/T_s_Powheg
-#/store/user/tapas/2012-09-10-7TeV-PatTuple/Tbar_t_Powheg
-#/store/user/tapas/2012-09-10-7TeV-PatTuple/T_t_Powheg
-#
-#/store/user/tapas/2012-10-02-8TeV-53X-PatTuple_ShareFSFix/data_SingleMu_Run2012C_
-#data_SingleMu_Run2012C_24Aug2012_v1/                   data_SingleMu_Run2012C_PromptReco_v2_Run198934_201264/ data_SingleMu_Run2012C_PromptReco_v2_Run201265_203755/ 
-#
-#
-#
-#
 
 
 rm MuNuPAT.py

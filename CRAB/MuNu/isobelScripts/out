@@ -1,0 +1,486 @@
+  *******************************************
+  *                                         *
+  *        W E L C O M E  to  R O O T       *
+  *                                         *
+  *   Version   5.32/00   2 December 2011   *
+  *                                         *
+  *  You are welcome to visit our Web site  *
+  *          http://root.cern.ch            *
+  *                                         *
+  *******************************************
+
+ROOT 5.32/00 (branches/v5-32-00-patches@42372, Apr 26 2012, 14:56:00 on linuxx8664gcc)
+
+CINT/ROOT C/C++ Interpreter version 5.18.00, July 2, 2010
+Type ? for help. Commands must be C++ statements.
+Enclose multiple statements between { }.
+
+Processing plotBTAG.C...
+PlottinghighestJetEta
+this is where I die
+data_obs Events = 3882
+this is where I die
+W Events = 0.479559
+this is where I die
+Wbb Events = 38.1381
+this is where I die
+Wc Events = 0.0563589
+this is where I die
+Wcc Events = 25.1593
+this is where I die
+TOP Events = 3728.05
+this is where I die
+Z_jets Events = 16.5937
+this is where I die
+WZ Events = 1.016
+this is where I die
+WW Events = 1.71697
+this is where I die
+T Events = 54.9681
+this is where I die
+Tbar Events = 6.92905
+this is where I die
+tW Events = 98.9018
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 35.3358
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 0.864973
+this is where I die
+QCD Events = 217
+Total MC = 4034.053955
+S/B = 0.009544
+S/sqrt(S+B) = 0.600465
+Excess Wbb? = -2.986935
+Excess Wcc? = -5.043652
+38.13810.479559$\pm$0.047955925.2156$\pm$5.0431316.5937$\pm$1.659373728.05$\pm$223.683160.799$\pm$8.522341.71697$\pm$0.08584841.016$\pm$0.040639862.0464$\pm$12.40934034.05$\pm$252.7843882$\pm$62.3057
+& 38.1& 0.5& 0.1 &25.2 & 16.6&3728.0&160.8 &1.7 &1.0 &62.0 &4034.1 &3882.0  
+& & $\pm 0.0$& $\pm 5.0$& $\pm 1.7$&$\pm 223.7$&$\pm 8.5$ &$\pm 0.1$ &$\pm 0.0$& $\pm 12.4$&$\pm 252.8$& $\pm 62.3$ 
+Num: 3882.000000, Den: 4034.053972
+PlottingsecondJetEta
+this is where I die
+data_obs Events = 3882
+this is where I die
+W Events = 0.479559
+this is where I die
+Wbb Events = 38.1381
+this is where I die
+Wc Events = 0.0563589
+this is where I die
+Wcc Events = 25.1593
+this is where I die
+TOP Events = 3728.05
+this is where I die
+Z_jets Events = 16.5937
+this is where I die
+WZ Events = 1.016
+this is where I die
+WW Events = 1.71697
+this is where I die
+T Events = 54.9681
+this is where I die
+Tbar Events = 6.92905
+this is where I die
+tW Events = 98.9018
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 35.3358
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 0.864973
+this is where I die
+QCD Events = 217
+Total MC = 4034.055176
+S/B = 0.009544
+S/sqrt(S+B) = 0.600465
+Excess Wbb? = -2.986967
+Excess Wcc? = -5.043701
+38.13810.479559$\pm$0.047955925.2156$\pm$5.0431316.5937$\pm$1.659373728.05$\pm$223.683160.799$\pm$8.522341.71697$\pm$0.08584841.016$\pm$0.040639862.0464$\pm$12.40934034.06$\pm$252.7843882$\pm$62.3057
+& 38.1& 0.5& 0.1 &25.2 & 16.6&3728.0&160.8 &1.7 &1.0 &62.0 &4034.1 &3882.0  
+& & $\pm 0.0$& $\pm 5.0$& $\pm 1.7$&$\pm 223.7$&$\pm 8.5$ &$\pm 0.1$ &$\pm 0.0$& $\pm 12.4$&$\pm 252.8$& $\pm 62.3$ 
+Num: 3882.000000, Den: 4034.055105
+PlottinghighestJetEta
+this is where I die
+data_obs Events = 4454
+this is where I die
+W Events = 4.82892
+this is where I die
+Wbb Events = 42.151
+this is where I die
+Wc Events = 0.600153
+this is where I die
+Wcc Events = 34.5669
+this is where I die
+TOP Events = 4251.36
+this is where I die
+Z_jets Events = 22.1623
+this is where I die
+WZ Events = 1.1971
+this is where I die
+WW Events = 1.80451
+this is where I die
+T Events = 63.3552
+this is where I die
+Tbar Events = 7.75747
+this is where I die
+tW Events = 115.162
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 39.9588
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 1.02776
+this is where I die
+QCD Events = 254
+Total MC = 4619.016113
+S/B = 0.009210
+S/sqrt(S+B) = 0.620202
+Excess Wbb? = -2.914877
+Excess Wcc? = -3.773817
+42.1514.82892$\pm$0.48289235.1671$\pm$7.0334122.1623$\pm$2.216234251.36$\pm$255.081186.274$\pm$9.872531.80451$\pm$0.09022531.1971$\pm$0.047884174.0733$\pm$14.81474619.02$\pm$290.3384454$\pm$66.7383
+& 42.2& 4.8& 0.6 &34.6 & 22.2&4251.4&186.3 &1.8 &1.2 &74.1 &4619.0 &4454.0  
+& & $\pm 0.5$& $\pm 7.0$& $\pm 2.2$&$\pm 255.1$&$\pm 9.9$ &$\pm 0.1$ &$\pm 0.0$& $\pm 14.8$&$\pm 290.3$& $\pm 66.7$ 
+Num: 4454.000000, Den: 4619.016159
+PlottingsecondJetEta
+this is where I die
+data_obs Events = 4454
+this is where I die
+W Events = 4.82892
+this is where I die
+Wbb Events = 42.151
+this is where I die
+Wc Events = 0.600153
+this is where I die
+Wcc Events = 34.5669
+this is where I die
+TOP Events = 4251.36
+this is where I die
+Z_jets Events = 22.1623
+this is where I die
+WZ Events = 1.1971
+this is where I die
+WW Events = 1.80451
+this is where I die
+T Events = 63.3552
+this is where I die
+Tbar Events = 7.75747
+this is where I die
+tW Events = 115.162
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 39.9588
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 1.02776
+this is where I die
+QCD Events = 254
+Total MC = 4619.016113
+S/B = 0.009210
+S/sqrt(S+B) = 0.620202
+Excess Wbb? = -2.914877
+Excess Wcc? = -3.773817
+42.1514.82892$\pm$0.48289235.1671$\pm$7.0334122.1623$\pm$2.216234251.36$\pm$255.081186.274$\pm$9.872531.80451$\pm$0.09022531.1971$\pm$0.047884174.0733$\pm$14.81474619.02$\pm$290.3384454$\pm$66.7383
+& 42.2& 4.8& 0.6 &34.6 & 22.2&4251.4&186.3 &1.8 &1.2 &74.1 &4619.0 &4454.0  
+& & $\pm 0.5$& $\pm 7.0$& $\pm 2.2$&$\pm 255.1$&$\pm 9.9$ &$\pm 0.1$ &$\pm 0.0$& $\pm 14.8$&$\pm 290.3$& $\pm 66.7$ 
+Num: 4454.000000, Den: 4619.016071
+PlottingsecondJetPt
+this is where I die
+data_obs Events = 3859
+this is where I die
+W Events = 0.479559
+this is where I die
+Wbb Events = 34.5824
+this is where I die
+Wc Events = 0.0563589
+this is where I die
+Wcc Events = 22.778
+this is where I die
+TOP Events = 3703.15
+this is where I die
+Z_jets Events = 16.1139
+this is where I die
+WZ Events = 1.016
+this is where I die
+WW Events = 1.71697
+this is where I die
+T Events = 54.2128
+this is where I die
+Tbar Events = 6.71595
+this is where I die
+tW Events = 97.6785
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 35.1298
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 0.864973
+this is where I die
+QCD Events = 215
+Total MC = 3999.851074
+S/B = 0.008721
+S/sqrt(S+B) = 0.546807
+Excess Wbb? = -3.072907
+Excess Wcc? = -5.183642
+34.58240.479559$\pm$0.047955922.8344$\pm$4.5668716.1139$\pm$1.611393703.15$\pm$222.189158.607$\pm$8.406181.71697$\pm$0.08584841.016$\pm$0.040639861.3523$\pm$12.27053999.85$\pm$250.3933859$\pm$62.1208
+& 34.6& 0.5& 0.1 &22.8 & 16.1&3703.1&158.6 &1.7 &1.0 &61.4 &3999.9 &3859.0  
+& & $\pm 0.0$& $\pm 4.6$& $\pm 1.6$&$\pm 222.2$&$\pm 8.4$ &$\pm 0.1$ &$\pm 0.0$& $\pm 12.3$&$\pm 250.4$& $\pm 62.1$ 
+Num: 3859.000000, Den: 3999.851049
+PlottinghighestJetPt
+this is where I die
+data_obs Events = 3703
+this is where I die
+W Events = 0.479559
+this is where I die
+Wbb Events = 28.9603
+this is where I die
+Wc Events = 0.0563589
+this is where I die
+Wcc Events = 16.6563
+this is where I die
+TOP Events = 3552.83
+this is where I die
+Z_jets Events = 15.3323
+this is where I die
+WZ Events = 0.965208
+this is where I die
+WW Events = 1.6029
+this is where I die
+T Events = 49.5505
+this is where I die
+Tbar Events = 6.11461
+this is where I die
+tW Events = 88.4758
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 34.1901
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 0.660256
+this is where I die
+QCD Events = 205
+Total MC = 3818.818604
+S/B = 0.007642
+S/sqrt(S+B) = 0.468639
+Excess Wbb? = -2.999220
+Excess Wcc? = -5.953421
+28.96030.479559$\pm$0.047955916.7127$\pm$3.3425415.3323$\pm$1.533233552.83$\pm$213.17144.141$\pm$7.639461.6029$\pm$0.08014510.965208$\pm$0.038608357.7921$\pm$11.55843818.82$\pm$238.6353703$\pm$60.8523
+& 29.0& 0.5& 0.1 &16.7 & 15.3&3552.8&144.1 &1.6 &1.0 &57.8 &3818.8 &3703.0  
+& & $\pm 0.0$& $\pm 3.3$& $\pm 1.5$&$\pm 213.2$&$\pm 7.6$ &$\pm 0.1$ &$\pm 0.0$& $\pm 11.6$&$\pm 238.6$& $\pm 60.9$ 
+Num: 3703.000000, Den: 3818.818678
+PlottingsecondJetPt
+this is where I die
+data_obs Events = 4421
+this is where I die
+W Events = 4.82892
+this is where I die
+Wbb Events = 38.5954
+this is where I die
+Wc Events = 0.600153
+this is where I die
+Wcc Events = 32.1856
+this is where I die
+TOP Events = 4217.19
+this is where I die
+Z_jets Events = 21.6824
+this is where I die
+WZ Events = 1.1971
+this is where I die
+WW Events = 1.80451
+this is where I die
+T Events = 62.3388
+this is where I die
+Tbar Events = 7.43249
+this is where I die
+tW Events = 113.476
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 39.5619
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 0.941754
+this is where I die
+QCD Events = 251
+Total MC = 4574.451172
+S/B = 0.008509
+S/sqrt(S+B) = 0.570645
+Excess Wbb? = -2.975891
+Excess Wcc? = -3.767690
+38.59544.82892$\pm$0.48289232.7858$\pm$6.5571621.6825$\pm$2.168254217.19$\pm$253.031183.248$\pm$9.712121.80451$\pm$0.09022531.1971$\pm$0.047884173.1202$\pm$14.6244574.45$\pm$287.2954421$\pm$66.4906
+& 38.6& 4.8& 0.6 &32.2 & 21.7&4217.2&183.2 &1.8 &1.2 &73.1 &4574.5 &4421.0  
+& & $\pm 0.5$& $\pm 6.6$& $\pm 2.2$&$\pm 253.0$&$\pm 9.7$ &$\pm 0.1$ &$\pm 0.0$& $\pm 14.6$&$\pm 287.3$& $\pm 66.5$ 
+Num: 4421.000000, Den: 4574.450865
+PlottinghighestJetPt
+this is where I die
+data_obs Events = 4226
+this is where I die
+W Events = 4.82892
+this is where I die
+Wbb Events = 32.9733
+this is where I die
+Wc Events = 0.600153
+this is where I die
+Wcc Events = 26.064
+this is where I die
+TOP Events = 4029.58
+this is where I die
+Z_jets Events = 19.8497
+this is where I die
+WZ Events = 1.14631
+this is where I die
+WW Events = 1.69044
+this is where I die
+T Events = 56.7812
+this is where I die
+Tbar Events = 6.67269
+this is where I die
+tW Events = 101.651
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 38.0781
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 0.719407
+this is where I die
+QCD Events = 240
+Total MC = 4351.490234
+S/B = 0.007635
+S/sqrt(S+B) = 0.499854
+Excess Wbb? = -2.805817
+Excess Wcc? = -3.814701
+32.97334.82892$\pm$0.48289226.6641$\pm$5.3328319.8497$\pm$1.984974029.58$\pm$241.775165.105$\pm$8.750581.69044$\pm$0.08452211.14631$\pm$0.045852669.6541$\pm$13.93084351.49$\pm$273.0184226$\pm$65.0077
+& 33.0& 4.8& 0.6 &26.1 & 19.8&4029.6&165.1 &1.7 &1.1 &69.7 &4351.5 &4226.0  
+& & $\pm 0.5$& $\pm 5.3$& $\pm 2.0$&$\pm 241.8$&$\pm 8.8$ &$\pm 0.1$ &$\pm 0.0$& $\pm 13.9$&$\pm 273.0$& $\pm 65.0$ 
+Num: 4226.000000, Den: 4351.490126
+PlottingJ1SVMassb
+this is where I die
+data_obs Events = 3878
+this is where I die
+W Events = 0.479559
+this is where I die
+Wbb Events = 38.1381
+this is where I die
+Wc Events = 0.0563589
+this is where I die
+Wcc Events = 25.1593
+this is where I die
+TOP Events = 3725
+this is where I die
+Z_jets Events = 16.5937
+this is where I die
+WZ Events = 1.016
+this is where I die
+WW Events = 1.71697
+this is where I die
+T Events = 54.9681
+this is where I die
+Tbar Events = 6.92905
+this is where I die
+tW Events = 98.5404
+this is where I die
+Wq Events = 0
+this is where I die
+TOPq Events = 35.3358
+this is where I die
+Z_jetsq Events = 0
+this is where I die
+WZq Events = 0
+this is where I die
+WWq Events = 0
+this is where I die
+Tq Events = 0.267852
+this is where I die
+Tbarq Events = 0
+this is where I die
+tWq Events = 0.864973
+this is where I die
+QCD Events = 217
+Total MC = 4030.643311
+S/B = 0.009552
+S/sqrt(S+B) = 0.600719
+Excess Wbb? = -3.002389
+Excess Wcc? = -5.067077
+38.13810.479559$\pm$0.047955925.2156$\pm$5.0431316.5937$\pm$1.659373725$\pm$223.5160.438$\pm$8.503191.71697$\pm$0.08584841.016$\pm$0.040639862.0464$\pm$12.40934030.64$\pm$252.5823878$\pm$62.2736
+& 38.1& 0.5& 0.1 &25.2 & 16.6&3725.0&160.4 &1.7 &1.0 &62.0 &4030.6 &3878.0  
+& & $\pm 0.0$& $\pm 5.0$& $\pm 1.7$&$\pm 223.5$&$\pm 8.5$ &$\pm 0.1$ &$\pm 0.0$& $\pm 12.4$&$\pm 252.6$& $\pm 62.3$ 
+Num: 3878.000000, Den: 4030.643353
