@@ -14,7 +14,6 @@ std::vector<float> mc;
 edm::Lumi3DReWeighting *LumiWeights;
 edm::LumiReWeighting *LumiWeightsOld;
 
-
  Double_t weightsMC_[50] = {
    0.00905444,
    0.019661,
@@ -68,7 +67,6 @@ edm::LumiReWeighting *LumiWeightsOld;
      2.50012e-05
  };
 
-
  Double_t weights_[50] = {
    0.00268287,
    0.0111378,
@@ -121,8 +119,6 @@ edm::LumiReWeighting *LumiWeightsOld;
    0,
      0
  };
-
-
 
 //68mb
 //  Double_t weightsMC_[50] = {
@@ -180,8 +176,6 @@ edm::LumiReWeighting *LumiWeightsOld;
 
 void readdir(TDirectory *dir,optutl::CommandLineParser parser,float ev,int doPU,bool doRho,TH1F* puWeight,TH1F* rhoWeight); 
 
-
-
 int main (int argc, char* argv[]) 
 {
    optutl::CommandLineParser parser ("Sets Event Weights in the ntuple");
@@ -190,10 +184,8 @@ int main (int argc, char* argv[])
    parser.addOption("type",optutl::CommandLineParser::kInteger,"Type",0);
    parser.addOption("branch",optutl::CommandLineParser::kString,"Branch","__WEIGHT__");
    parser.addOption("doOneD",optutl::CommandLineParser::kInteger,"Do OneD",0);
-
    
    parser.parseArguments (argc, argv);
-   
 
    //read PU info
    TH1F *puWeight=0;
@@ -201,16 +193,18 @@ int main (int argc, char* argv[])
    TFile *fPU = new TFile("../puInfo2012.root");
 
    if(fPU!=0 && fPU->IsOpen()) {
-     puWeight = (TH1F*)fPU->Get("weight");
+     puWeight = (TH1F*)fPU->Get("pileup");
+     //puWeight = (TH1F*)fPU->Get("weight");
      doPU=1;
      printf("ENABLING PU WEIGHTING USING VERTICES\n");
-
+std::cout<<"one"<<std::endl;
    }
 
    TFile *fPU2 = new TFile("../puInfo3D.root");
    TFile *fPU22 = new TFile("../puInfoMC3D.root");
    TFile *fPU3 = new TFile("../Weight3D.root");
    TFile *fPU4 = new TFile("Weight3D.root");
+std::cout<<"two"<<std::endl;
 
    if(fPU2!=0 && fPU2->IsOpen()&& fPU22!=0 && fPU22->IsOpen() && (!(fPU3!=0 && fPU3->IsOpen())) &&(!(fPU4!=0 && fPU4->IsOpen()))){
      doPU=2;
@@ -244,28 +238,23 @@ int main (int argc, char* argv[])
        mc.push_back(weightsMC_[i]);
        data.push_back(weights_[i]);
      }
-
-
+     std::cout<<"three"<<std::endl;
      LumiWeightsOld = new edm::LumiReWeighting(mc,data);
-
-     
-   }
-   
-
-
-   //read PU info
-   TH1F *rhoWeight=0;
-   bool doRho=false;
-   TFile *fRho = new TFile("../rhoInfo.root");
-
-   if(fRho!=0 && fRho->IsOpen()) {
-     rhoWeight = (TH1F*)fRho->Get("weight");
-     doRho=true;
-     printf("ENABLING Rho WEIGHTING\n");
-
    }
 
+//read PU info
+TH1F *rhoWeight=0;
+bool doRho=false;
+TFile *fRho = new TFile("../rhoInfo.root");
 
+if(fRho!=0 && fRho->IsOpen()) {
+  rhoWeight = (TH1F*)fRho->Get("weight");
+  doRho=true;
+  printf("ENABLING Rho WEIGHTING\n");
+}
+
+
+std::cout<<"four"<<std::endl;
    TFile *f = new TFile(parser.stringValue("outputFile").c_str(),"UPDATE");
 
    TH1F* evC  = (TH1F*)f->Get(parser.stringValue("histoName").c_str());
@@ -273,39 +262,31 @@ int main (int argc, char* argv[])
 
 
    printf("Found  %f Events Counted\n",ev);
-
+std::cout<<"five"<<std::endl;
    readdir(f,parser,ev,doPU,doRho,puWeight,rhoWeight);
-
-
+std::cout<<"six"<<std::endl;
    f->Close();
    if(fPU!=0 && fPU->IsOpen())
      fPU->Close();
 
    if(fPU2!=0 && fPU2->IsOpen())
      fPU2->Close();
-
-
-
 } 
 
 
-void readdir(TDirectory *dir,optutl::CommandLineParser parser,float ev,int doPU,bool doRho,TH1F *puWeight,TH1F *rhoWeight) 
-{
+void readdir(TDirectory *dir,optutl::CommandLineParser parser,float ev,int doPU,bool doRho,TH1F *puWeight,TH1F *rhoWeight){
 
   TDirectory *dirsav = gDirectory;
-
   TIter next(dir->GetListOfKeys());
-
   TKey *key;
 
   while ((key = (TKey*)next())) {
     printf("Found key=%s \n",key->GetName());
 
-
+std::cout<<"un"<<std::endl;
     TString string = (TString) key->GetName();
     if(string == "summary")
       return;
-
 
     TObject *obj = key->ReadObj();
 
@@ -319,7 +300,6 @@ void readdir(TDirectory *dir,optutl::CommandLineParser parser,float ev,int doPU,
       TTree *t = (TTree*)obj;
       float weight = parser.doubleValue("weight")/(ev);
       int   type = parser.integerValue("type");
-
 
       TBranch *newBranch = t->Branch(parser.stringValue("branch").c_str(),&weight,(parser.stringValue("branch")+"/F").c_str());
       TBranch *typeBranch = t->Branch("TYPE",&type,"TYPE/I");
@@ -344,9 +324,15 @@ void readdir(TDirectory *dir,optutl::CommandLineParser parser,float ev,int doPU,
       for(Int_t i=0;i<t->GetEntries();++i)
 	{
 	  t->GetEntry(i);
+std::cout<<"deux"<<std::endl;
 	  weight = parser.doubleValue("weight")/(ev);
+std::cout<<"trois"<<std::endl;
+std::cout<<"doPU "<<doPU<<std::endl;
 	  if(doPU==1) {
+std::cout<<"quatre"<<std::endl;
+std::cout<<"vertices "<<vertices<<std::endl;
 	    int bin=puWeight->FindBin(vertices);
+std::cout<<"cinq"<<std::endl;
 	    if(bin>puWeight->GetNbinsX())
 	      {
 		x +=1;
@@ -376,7 +362,6 @@ void readdir(TDirectory *dir,optutl::CommandLineParser parser,float ev,int doPU,
 	  newBranch->Fill();
 	  typeBranch->Fill();
 
-
 	}
       printf("Overflow bins used %i\n",x);
       t->Write("",TObject::kOverwrite);
@@ -396,8 +381,5 @@ void readdir(TDirectory *dir,optutl::CommandLineParser parser,float ev,int doPU,
 //       h->SetDirectory(gDirectory);
 //       h->Write("resultsWeighted");
 //     }
-
-
   }
-
 }
