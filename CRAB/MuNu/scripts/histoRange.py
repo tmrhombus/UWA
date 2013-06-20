@@ -4,118 +4,98 @@ def ranger(leaf):
  steps = None
  xmin = None
  xmax = None
- lumi = 4895.
- if leaf=='Mt':
+# lumi = 13498.
+ if leaf=='Mt' or leaf == 'muonPt' :
    steps =50 
    xmin = 0.
    xmax = 200.
    xtitle = 'Transverse Mass'
    xunits = 'GeV'
- elif leaf == 'met' or leaf == 'metjesMpt' or leaf == 'metjesPpt' or leaf =='metonept' or leaf=='meta':
+ elif leaf == 'MET' or leaf == 'met':
    steps = 50
    xmin = 0.
    xmax = 200.
    xtitle = 'MET'
    xunits = 'GeV'
- elif leaf == 'massDiMuon':
-   steps = 50
+ elif leaf == 'vertices':
+   steps = 60
+   xmin = 0.
+   xmax = 60.
+   xtitle = 'Nr. Vertices'
+   xunits = 'xx'
+ elif leaf == 'DiMuonMass':
+   steps = 100
    xmin = 0.
    xmax = 200.
-   xtitle ='diMuon Mass'
+   xtitle = 'Mass Di-Muon'
    xunits = 'GeV'
- elif leaf == 'jet1BTag_CSV':
-   steps = 40
-   xmin = 0.
-   xmax = 1.
-   xtitle = 'Jet 1 bTag CSV'
-   xunits = 'none'
- elif leaf == 'jet2BTag_CSV':
-   steps =40
-   xmin = 0.
-   xmax = 1.
-   xtitle = 'Jet 2 bTag CSV'
-   xunits = 'none'
- elif leaf == 'ptMu':
-   steps = 50
-   xmin = 0.
-   xmax = 250.
-   xtitle = 'MET'
-   xunits = 'GeV'
- elif leaf == 'isoMuPF':
-   steps = 30
-   xmin = 0.
-   xmax = 1.5
-   xtitle = 'Isolation'
-   xunits = 'none'
- elif leaf == 'massDiJets':
-   steps = 50
-   xmin = 0.
-   xmax = 700.
-   xtitle = 'MET'
-   xunits = 'GeV'
- elif leaf == 'ptDiJets':
-   steps = 50
-   xmin = 0.
-   xmax = 350.
-   xtitle = 'MET'
-   xunits = 'GeV'
- elif leaf == 'isoMuPFIsoRho':
-   steps = 15
-   xmin = 0.
-   xmax = 0.15
-   xtitle = 'MET'
-   xunits = 'GeV'
- elif leaf == 'etaMu':
-   steps = 50
-   xmin = -3.
-   xmax = 5.
-   xtitle = 'MET'
-   xunits = 'GeV'
- elif leaf == 'jet1eta':
-   steps = 50
+ elif leaf == 'muonEta':
+   steps = 20
    xmin = -3.
    xmax = 3.
-   xtitle = 'MET'
+   xtitle = 'Muon #Eta'
+   xunits = 'xx'
+ elif leaf == 'muonPhi':
+   steps = 20
+   xmin = -3.5
+   xmax = 6.5
+   xtitle = 'Muon #Phi'
+   xunits = 'xx'
+ elif leaf == 'ht':
+   steps = 100
+   xmin = 0.
+   xmax = 200.
+   xtitle = 'ht'
    xunits = 'GeV'
- elif leaf == 'jet2eta':
-   steps = 50
+ elif leaf == 'highestJetEta' or leaf=='secondJetEta' or leaf == 'thirdJetEta':
+   steps = 20
    xmin = -3.
    xmax = 3.
-   xtitle = 'MET'
-   xunits = 'GeV'
- elif leaf == 'massDiNoBJets':
-   steps = 50#100
+   xtitle = 'Jet #Eta'
+   xunits = 'xx'
+ elif leaf == 'highestJetPhi' or leaf=='secondJetPhi' or leaf=='thirdJetPhi':
+   steps = 20
+   xmin = -4.5
+   xmax = 6.5
+   xtitle = 'Jet Phi'
+   xunits = 'xx'
+ elif leaf == 'highestJetPt' or leaf=='secondJetPt' or leaf=='thirdJetPt':
+   steps = 100
    xmin = 0.
-   xmax = 200.#1000.
-   xtitle = 'Mass Di NoB Jets'
+   xmax = 200
+   xtitle = 'Jet Pt'
    xunits = 'GeV'
- elif leaf == 'jet1pt':
+ elif leaf == 'mjj' or leaf == 'mJ3J4':
    steps = 100
-   xmin = 30.
-   xmax = 130.
-   xtitle = 'MET'
+   xmin = 0.
+   xmax = 300.
+   xtitle = 'Dijet Mass'
    xunits = 'GeV'
- elif leaf == 'jet2pt':
+ elif leaf == 'ptJJ':
    steps = 100
-   xmin = 30.
-   xmax = 130.
-   xtitle = 'MET'
+   xmin = 0.
+   xmax = 300.
+   xtitle = 'Dijet Pt'
    xunits = 'GeV'
- elif leaf == 'jet1BTag_SSVMass':
-   steps = 10
-   xmin = -1.5
-   xmax = 1.5
-   xtitle = 'Jet 1 BTag SSV Mass'
-   xunits = 'no units'
+ elif leaf == 'WPt':
+   steps = 100
+   xmin = 0.
+   xmax = 300.
+   xtitle = 'W Pt'
+   xunits = 'GeV'
  else :
-   steps = 0
    print("\n\n")
    print "YOU ARE A NINNY! The leaf's name isn't valid"
    print("\n\n")
+   steps = 100
+   xmin = 0.
+   xmax = 200.
+   xtitle = leaf
+   xunits = 'xxx'
 
 # print leaf
 # print steps
 # print xmin
 # print xmax
 
- return lumi,steps,xmin,xmax,xtitle,xunits
+ return steps,xmin,xmax,xtitle,xunits
