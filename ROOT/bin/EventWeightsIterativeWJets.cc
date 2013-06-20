@@ -43,13 +43,16 @@ int main (int argc, char* argv[])
    TFile *fPU3 = new TFile("../Weight3D.root");
    TFile *fPU4 = new TFile("Weight3D.root");
 
+     printf("un\n");
    if(fPU2!=0 && fPU2->IsOpen()&& fPU22!=0 && fPU22->IsOpen() && (!(fPU3!=0 && fPU3->IsOpen())) &&(!(fPU4!=0 && fPU4->IsOpen()))){
+     printf("a\n");
      doPU=2;
      printf("ENABLING PU WEIGHTING USING 3D- I HAVE TO CALCULATE WEIGHTS SORRY\n");
      LumiWeights = new edm::Lumi3DReWeighting("../puInfoMC3D.root","../puInfo3D.root","pileup","pileup","");
      LumiWeights->weight3D_init(1.0);
    }
    else  if(fPU3!=0 && fPU3->IsOpen()) {
+     printf("b\n");
      doPU=2;
      printf("ENABLING PU WEIGHTING USING 3D with ready distribution\n");
      fPU3->Close();
@@ -57,60 +60,64 @@ int main (int argc, char* argv[])
      LumiWeights->weight3D_init("../Weight3D.root");
    }
    else   if(fPU4!=0 && fPU4->IsOpen()) {
+     printf("c\n");
      //searxch in this folder
        doPU=2;
        printf("ENABLING PU WEIGHTING USING 3D with  distribution you just made\n");
        fPU4->Close();
        LumiWeights = new edm::Lumi3DReWeighting(mc,data,"");
        LumiWeights->weight3D_init("Weight3D.root");
-
    }
    else if(parser.integerValue("doOneD")) {
+     printf("d\n");
      doPU=3;
      
-     LumiWeightsOld = new edm::LumiReWeighting("../PileUp/MC_Summer12_PU_S10-600bins.root ","../PileUp/Data_Pileup_2012_Moriond-600bins.root","pileup","pileup");
+     LumiWeightsOld = new edm::LumiReWeighting("../puInfo2012.root","../Data_Pileup_2012_ReReco-600bins.root","pileup","pileup"); //second spot - data PU info
+     //LumiWeightsOld = new edm::LumiReWeighting("../PileUp/MC_Summer12_PU_S10-600bins.root ","../PileUp/Data_Pileup_2012_Moriond-600bins.root","pileup","pileup");
    }
+     printf("deux\n");
    
    //read PU info
    TH1F *rhoWeight=0;
    bool doRho=false;
    TFile *fRho = new TFile("../rhoInfo.root");
+     printf("triox\n");
 
    if(fRho!=0 && fRho->IsOpen()) {
      rhoWeight = (TH1F*)fRho->Get("weight");
      doRho=true;
      printf("ENABLING Rho WEIGHTING\n");
    }
+     printf("quatre\n");
  
    TFile *w = new TFile("WJets.root","UPDATE");
-
    TH1F* evC  = (TH1F*)w->Get(parser.stringValue("histoName").c_str());
    float evW = evC->GetBinContent(1);
    
    w->Close();
    
-   TFile *w1 = new TFile("W1JETS.root","UPDATE");
+   TFile *w1 = new TFile("W1Jet.root","UPDATE");
 
    TH1F* evC1  = (TH1F*)w1->Get(parser.stringValue("histoName").c_str());
    float evW1 = evC1->GetBinContent(1);
    
    w1->Close();   
 
-   TFile *w2 = new TFile("W2JETS.root","UPDATE");
+   TFile *w2 = new TFile("W2Jet.root","UPDATE");
 
    TH1F* evC2  = (TH1F*)w2->Get(parser.stringValue("histoName").c_str());
    float evW2 = evC2->GetBinContent(1);
    
    w2->Close();
 
-   TFile *w3 = new TFile("W3JETS.root","UPDATE");
+   TFile *w3 = new TFile("W3Jet.root","UPDATE");
 
    TH1F* evC3  = (TH1F*)w3->Get(parser.stringValue("histoName").c_str());
    float evW3 = evC3->GetBinContent(1);
    
    w3->Close();
 
-   TFile *w4 = new TFile("W4JETS.root","UPDATE");
+   TFile *w4 = new TFile("W4Jet.root","UPDATE");
 
    TH1F* evC4  = (TH1F*)w4->Get(parser.stringValue("histoName").c_str());
    float evW4 = evC4->GetBinContent(1);
@@ -131,23 +138,23 @@ int main (int argc, char* argv[])
    ev.push_back(evW3/0.0168926);
    ev.push_back(evW4/0.00692218);
    
-   TFile *f0 = new TFile("W.root","UPDATE");   
+   TFile *f0 = new TFile("WJets.root","UPDATE");   
    readdir(f0,parser,ev,doPU,doRho,puWeight,rhoWeight);
    f0->Close();
    
-   TFile *f1 = new TFile("W1JETS.root","UPDATE");   
+   TFile *f1 = new TFile("W1Jet.root","UPDATE");   
    readdir(f1,parser,ev,doPU,doRho,puWeight,rhoWeight);
    f1->Close();
    
-   TFile *f2 = new TFile("W2JETS.root","UPDATE");   
+   TFile *f2 = new TFile("W2Jet.root","UPDATE");   
    readdir(f2,parser,ev,doPU,doRho,puWeight,rhoWeight);
    f2->Close();
    
-   TFile *f3 = new TFile("W3JETS.root","UPDATE");   
+   TFile *f3 = new TFile("W3Jet.root","UPDATE");   
    readdir(f3,parser,ev,doPU,doRho,puWeight,rhoWeight);
    f3->Close();
    
-   TFile *f4 = new TFile("W4JETS.root","UPDATE");   
+   TFile *f4 = new TFile("W4Jet.root","UPDATE");   
    readdir(f4,parser,ev,doPU,doRho,puWeight,rhoWeight);
    f4->Close();
    
@@ -156,8 +163,6 @@ int main (int argc, char* argv[])
 
    if(fPU2!=0 && fPU2->IsOpen())
      fPU2->Close();
-
-
 } 
 
 

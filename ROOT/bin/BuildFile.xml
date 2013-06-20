@@ -41,6 +41,8 @@
 </bin>
 <bin   name="EventWeightsIterative" file="EventWeightsIterative.cc">
 </bin>
+<bin   name="EventWeightsIterativeWJets" file="EventWeightsIterativeWJets.cc">
+</bin>
 <bin   name="EventWeightsKFactors" file="EventWeightsKFactors.cc">
 </bin>
 
@@ -59,8 +61,6 @@
 <bin   name="EventWeightsForEfficiencyHisto" file="EventWeightsForEfficiencyHisto.cc">
 </bin>
 
-<bin   name="EventWeightsIterativeWJets" file="EventWeightsIterativeWJets.cc">
-</bin>
 
 <bin   name="OSLSMTMethodLikelihood" file="OSLSMTMethodLikelihood.cc">
 </bin>
