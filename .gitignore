@@ -5,6 +5,7 @@
 *.d
 ._*
 *.root
+*.log
 
 .todo
 *.png
