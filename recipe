@@ -43,3 +43,5 @@ cvs co -r V00-04-00 CondFormats/EgammaObjects
 cvs co -r bMinimalSVfit-08-03-11 AnalysisDataFormats/TauAnalysis
 cvs co -r bMinimalSVfit_2012May13 TauAnalysis/CandidateTools
 cvs co -r V04-01-03      RecoLuminosity/LumiDB
+
+cvs co PhysicsTools/PythonAnalysis
