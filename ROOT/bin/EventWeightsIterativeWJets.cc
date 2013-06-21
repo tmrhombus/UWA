@@ -91,10 +91,14 @@ int main (int argc, char* argv[])
      printf("quatre\n");
  
    TFile *w = new TFile("WJets.root","UPDATE");
+     printf("cinq\n");
    TH1F* evC  = (TH1F*)w->Get(parser.stringValue("histoName").c_str());
+     printf("six\n");
    float evW = evC->GetBinContent(1);
+     printf("sept\n");
    
    w->Close();
+     printf("huit\n");
    
    TFile *w1 = new TFile("W1Jet.root","UPDATE");
 
@@ -123,6 +127,7 @@ int main (int argc, char* argv[])
    float evW4 = evC4->GetBinContent(1);
    
    w4->Close();
+     printf("neuf\n");
 
       
    printf("Found  %f W+nJet Events\n",evW);
