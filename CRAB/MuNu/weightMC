@@ -1,28 +1,24 @@
 # weights the MC samples
 cd ./data
 
-EventWeightsIterativeWJets doOneD=1 weight=36257.2 type=1 histoName='summary/results'
+cd ./W
+EventWeightsIterativeWJets doOneD=1 weight=36257.2 histoName='summary/results' branch='weightFactor'
+cd ../
 
-EventWeightsIterative outputFile='TTbar.root'        weight=234     type=2 histoName='summary/results' branch="__WEIGHT3__" 
-EventWeightsIterative outputFile='Drell.root'      weight=3503.71 type=3 histoName='summary/results' branch="__WEIGHT3__" 	  
+EventWeightsIterative doOneD=1 outputFile='TTbar.root'   weight=234      histoName='summary/results' branch="weightFactor" 
+EventWeightsIterative doOneD=1 outputFile='Drell.root'   weight=3503.71  histoName='summary/results' branch="weightFactor"
 
-EventWeightsIterative outputFile='T_t.root'        weight=56.4    type=4 histoName='summary/results'  branch="__WEIGHT3__"
-EventWeightsIterative outputFile='T_s.root'        weight=3.79    type=5 histoName='summary/results'  branch="__WEIGHT3__"
-EventWeightsIterative outputFile='Tbar_t.root'     weight=30.7    type=6 histoName='summary/results' branch="__WEIGHT3__"
-EventWeightsIterative outputFile='Tbar_s.root'     weight=1.76    type=7 histoName='summary/results' branch="__WEIGHT3__"
-EventWeightsIterative outputFile='T_tW.root'     weight=11.1    type=8 histoName='summary/results' branch="__WEIGHT3__"
-EventWeightsIterative outputFile='Tbar_tW.root'  weight=11.1    type=9 histoName='summary/results' branch="__WEIGHT3__"
+cd ./SingleTop
+EventWeightsIterative doOneD=1 outputFile='T_t.root'     weight=56.4     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='T_s.root'     weight=3.79     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='Tbar_t.root'  weight=30.7     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='Tbar_s.root'  weight=1.76     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='T_tW.root'    weight=11.1     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='Tbar_tW.root' weight=11.1     histoName='summary/results' branch="weightFactor"
+cd ../
 
-#EventWeightsIterative outputFile='WZ.root'         weight=32.3161 type=11 histoName='summary/results'  branch="__WEIGHT3__"
-#EventWeightsIterative outputFile='WW.root'         weight=57.1097  type=12 histoName='summary/results'  branch="__WEIGHT3__"
-#EventWeightsIterative outputFile='ZZ.root'         weight=8.2     type=13  histoName='summary/results'  branch="__WEIGHT3__"
-
-#hadd T_t.root T_t.root Tbar_t.root
-#hadd T_s.root T_bar_s.root T_s.root
-#hadd T_tW.root T_tW.root Tbar_tWDR.root
-#rm T_tW.root Tbar_tW.root
-#rm T_t.root T_s.root
-#rm Tbar_t.root Tbar_s.root
-#hadd VV.root WW.root WZ.root ZZ.root
-#rm WW.root WZ.root ZZ.root
-
+cd ./VV
+EventWeightsIterative doOneD=1 outputFile='WZ.root'      weight=32.3161  histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='WW.root'      weight=57.1097  histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='ZZ.root'      weight=8.2      histoName='summary/results' branch="weightFactor"
+cd ../
