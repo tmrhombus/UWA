@@ -9,21 +9,22 @@ from ROOT import TLatex
 from ROOT import gROOT,gStyle
 from ROOT import *
 
-import cuts as ct
-import histoRange as hr
-import aHisto as h
+import aHisto as h #function to make histograms
+import cuts as ct  #function which makes cut strings
+import histoRange as hr #manages range, lables for plots
 
 #import scaleqcd as qs
 
-# define some parameters
+# define some parameters to be used in ct.cutmaker
 iso_value = 0.12
 antiIso_value = 0.2
-jNr = 2 #number of jets
-bNr = 0 #number of btags
-I = 0 # for integration initial bin
-F = 200 # final bin
 lumi = 13498. #luminosity 
-lumiTitle = '#int L dt = %.1f pb^{-1}' %(lumi/1000.)
+mt = 50. #transverse mass cut
+bNr = 0 #number of btags
+btype = 't' # t , m , l
+jNr = 2 #number of jets
+I = 0 # for integration initial bin
+F = 20 # final bin
  
 qcdFromData = False 
 qcdFromMC = False
@@ -34,154 +35,81 @@ tRescale = False
 ttRescale = False
 vRescale = False
 dRescale = False
-sf_Drell = 3503.71 / 3.02386400000000000e+07
-sf_sT_tW = 22.2    / 9.91118000000000000e+05
-sf_ttbar = 225.    / 6.88773100000000000e+06
-sf_wjets = 37509.  / 5.31329400000000000e+07
+sf_qcd = 1.
+sf_drell = 1. # 3503.71 / 3.02386400000000000e+07
+sf_st = 1. # 22.2    / 9.91118000000000000e+05
+sf_ttbar = 1. # 225.    / 6.88773100000000000e+06
+sf_wjets = 1. # 37509.  / 5.31329400000000000e+07
+sf_vv = 1.
 
-if qcdRescale:
- qcdScale = qs.scaleMe(isNr,jNr,bNr,I,F,qcdFromData,qcdFromMC,qcdFromDsubMC)
-
-if bNr==0:
- #TD = 'wtPU*wtEffIsotComb*'+str(lumi)
- TD =str(lumi)
- btag = 'Skim'
-#### C2
-#if bNr==1:
-# TD = 'CSVM1Jet*wtPU*wtEffIsotComb*'+str(lumi)
-# btag = 'SomeBtag'
-# ### C1 or C3
-#if bNr==2:
-# TD = 'CSVM2Jets*wtPU*wtEffIsotComb*'+str(lumi)
-## btag = 'TwoBtag'
-# btag = 'Skim'
-
-if jNr==2:
- jtag = 'Skim'
-#if jNr==3:
-# jtag = '3jets'
-#if jNr==4:
-# jtag = '4jets'
-
-qcdScale = 1
-#dScale = 1
-#qcdScale = 1
-#tScale = 1
-#vScale = 1
-#ttScale = 1
-
-#dScale = 1.00323
-#qcdScale = 0.313351
-#tScale = 1.00342
-#vScale = 1.11233
-#ttScale = 1.00986
-
-#Iso='(lPFIsoDB<0.12)'
-#Iso='(muNuRelPFIso<0.12)'
-#NonIso = '(lPFIsoDB>=0.'+str(antiIso_value)+')'
-#NonIso = '(muNuRelPFIso>=0.'+str(antiIso_value)+')'
-#Wtau = '(abs(genWLeptonID)!=13)'
-#Wbx = '(genWBs==1&&abs(genWLeptonID)==13)'
-#Wbb = '(genWBs>1&&abs(genWLeptonID)==13)'
-#Wcc='(genWBs<1&&(foundC>0&&foundCbar>0)&&(abs(foundC-foundCbar)%2==0&&abs(genWLeptonID)==13))'
-#Wc='(genWBs<1&&(foundC>0||foundCbar>0)&&(abs(foundC-foundCbar)%2!=0)&&abs(genWLeptonID)==13)'
-#Wl = '(genWBs<1&&foundC<=0&&foundCbar<=0&&abs(genWLeptonID)==13)'
-
-## temporary scale factors
-#sf_Drell = 17.7   / 2659250
-#sf_sT_tW = 22.2   / 155687
-#sf_ttbar = 225.   / 1191101
-#sf_wjets = 37509. / 1404553
-
-#Available cuts: Skim, NoMuMu, JetEta, MT, OneMuNuCand, JetPt20, JetPt30, JetPt40, 4jets30, IsDiBJet, IsDiNoBJet
-nrcuts =1
-cut1 = 'Skim'
-cut2 = jtag
-cut3 = btag
-cut4 = ''
-cut5 = ''
-cut6 = ''
-cut7 = ''
-cut8 = ''
-cut9 = ''
-
-CutList = []
-CutList.append(cut1)
-CutList.append(cut2)
-CutList.append(cut3)
-CutList.append(cut4)
-CutList.append(cut5)
-CutList.append(cut6)
-CutList.append(cut7)
-CutList.append(cut8)
-
-cutt = ct.cutmaker(iso_value,antiIso_value)
-theCut = ''
-for i in range(nrcuts):
-  theCut += '&&'+cutt[CutList[i]] 
-
-#CutsMCi = '(('+Iso+theCut+'))'
-CutsMCi = '('+TD+'*('+cutt['Iso']+theCut+'))'
-CutsDatai = '('+cutt['Iso']+theCut+')'
-#CutsWtaui =  '('+TD+'*('+Wtau+'&&'+Iso+theCut+'))'
-#CutsWbxi = '('+TD+'*('+Wbx+'&&'+Iso+theCut+'))'
-#CutsWbbi = '('+TD+'*('+Wbb+'&&'+Iso+theCut+'))'
-#CutsWcci =  '('+TD+'*('+Wcc+'&&'+Iso+theCut+'))'
-#CutsWci =  '('+TD+'*('+Wc+'&&'+Iso+theCut+'))'
-#CutsWli = '('+TD+'*('+Wl+'&&'+Iso+theCut+'))'
-#
-CutsMCn = '('+TD+'*('+cutt['NonIso']+theCut+'))'
-CutsDatan = '('+cutt['NonIso']+theCut+')'
+#isolationValue,antiIsoValue,lumi,massTrans,bnr,btype,jnr
+CutsMCn,CutsMCi,CutsDatan,CutsDatai,CutsMCnw,CutsMCiw,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
+ iso_value,antiIso_value,lumi,mt,0,'t',2
+ )
 
 datafilename = '../data/wMuNuData.root'
-ttfilename = '../data/SingleTop_tW.root'
-tsfilename = '../data/SingleTop_tW.root'
-ttwfilename = '../data/SingleTop_tW.root'
-stfilename = '../data/SingleTop_tW.root'
-ttbfilename = '../data/TTJets.root'
-dfilename = '../data/SingleTop_tW.root'
-wfilename = '../data/WJets.root'
+sttfilename = '../data/SingleTop/SingleTop_t.root'
+stsfilename = '../data/SingleTop/SingleTop_s.root'
+sttwfilename = '../data/SingleTop/SingleTop_tW.root'
+#stfilename = '../data/SingleTop.root'
+ttbfilename = '../data/TTbar.root'
+dfilename = '../data/VV.root'
+#wfilename = '../data/W.root'
+wnfilename = '../data/W/WJets.root'
+w1filename = '../data/W/W1Jet.root'
+w2filename = '../data/W/W2Jet.root'
+w3filename = '../data/W/W3Jet.root'
+w4filename = '../data/W/W4Jet.root'
 zfilename = '../data/Drell.root'
-#qfilename = '../data/QCDMu_V13.root'
 
 datafile = TFile(datafilename)
-ttfile = TFile(ttfilename)
-tsfile = TFile(tsfilename)
-ttwfile = TFile(ttwfilename)
+sttfile = TFile(sttfilename)
+stsfile = TFile(stsfilename)
+sttwfile = TFile(sttwfilename)
+#stfile = TFile(stfilename)
 ttbfile = TFile(ttbfilename)
-stfile = TFile(stfilename)
 dfile = TFile(dfilename)
-wfile = TFile(wfilename)
+#wfile = TFile(wfilename)
+wnfile = TFile(wnfilename)
+w1file = TFile(w1filename)
+w2file = TFile(w2filename)
+w3file = TFile(w3filename)
+w4file = TFile(w4filename)
 zfile = TFile(zfilename)
-#qfile = TFile(qfilename)
 
 eventTreeLocation = 'muNuEventTree/eventTree'
 
 dataTree = datafile.Get(eventTreeLocation)
-#ttTree = ttfile.Get(eventTreeLocation)
-#tsTree = tsfile.Get(eventTreeLocation)
-stTree = stfile.Get(eventTreeLocation)
-#ttwTree = ttwfile.Get(eventTreeLocation)
-ttbTree = ttbfile.Get(eventTreeLocation)
-#dTree = dfile.Get(eventTreeLocation)
-wTree = wfile.Get(eventTreeLocation)
-zTree = zfile.Get(eventTreeLocation)
-#qTree = qfile.Get(eventTreeLocation)
+sttTree = sttfile.Get(eventTreeLocation)    #T(bar)_t
+stsTree = stsfile.Get(eventTreeLocation)    #T(bar)_s
+sttwTree = sttwfile.Get(eventTreeLocation)  #T(bar)_tW
+#stTree = stfile.Get(eventTreeLocation)      #SingleTop all
+ttbTree = ttbfile.Get(eventTreeLocation)    #TTbar
+dTree = dfile.Get(eventTreeLocation)        #Diboson
+#wTree = wfile.Get(eventTreeLocation)        #Combined W
+wnTree = wnfile.Get(eventTreeLocation)      #W + nJets
+w1Tree = w1file.Get(eventTreeLocation)      #W + 1Jets
+w2Tree = w2file.Get(eventTreeLocation)      #W + 2Jets
+w3Tree = w3file.Get(eventTreeLocation)      #W + 3Jets
+w4Tree = w4file.Get(eventTreeLocation)      #W + 4Jets
+zTree = zfile.Get(eventTreeLocation)        #Drell-Yan
 
-#naming
+#naming where output goes
 fitrange = '_'+str(I)+'_'+str(F)
 re = 'unscaled'
 if qcdRescale:
  re = 'rescaled'
-path = '../plots/newerAvecQCD_'
-extraName = str(jNr)+'j'+str(bNr)+'bIso'#+str(antiIso_value)+re+fitrange
+path = '../plots/'
+extraName = str(jNr)+'j'+str(bNr)+'b'#+str(antiIso_value)+re+fitrange
 
 #Start the Plotting Program
-leafs = ['muonEta','ht','highestJetEta','secondJetEta','thirdJetEta','highestJetPhi','secondJetPhi','thirdJetPhi','highestJetPt','secondJetPt','thirdJetPt','mjj','mJ3J4','ptJJ','muonPhi','WPt']
-#leafs = ['muonPt','Mt','MET','vertices','DiMuonMass','met','MtCal','muonEta','ht','highestJetEta','secondJetEta','thirdJetEta','highestJetPhi','secondJetPhi','thirdJetPhi','highestJetPt','secondJetPt','thirdJetPt','mjj','mJ3J4','ptJJ','muonPhi','WPt']
+#leafs = ['Mt']
+#leafs = ['vertices']
+#leafs = ['mJJ','J1CVSbtag','J1CSVMVAbtag','J2CVSbtag','J2CSVMVAbtag','J1DR','J2DR']
+leafs = ['muonPt','MET','J1CSVbtag','J2CSVbtag','vertices','muonPhi','J1DR','J2DR','WPt','DiMuonMass','mJ3J4','ptJJ','met','MtCal','muonEta','ht','highestJetEta','secondJetEta','thirdJetEta','highestJetPhi','secondJetPhi','thirdJetPhi','highestJetPt','secondJetPt','thirdJetPt']
 for leaf in leafs:
 
- steps, xmin, xmax, xtitle, xunits = hr.ranger(leaf)
+ steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
  outFile=gROOT.FindObject(path+leaf+extraName+'.root')
  if outFile : outFile.Close()
@@ -189,77 +117,110 @@ for leaf in leafs:
  
  log = open(path+leaf+extraName+'.log','w')
  
- print('----------------')
- print('     --'+leaf+'--')
+ print('----------------------------')
+ print('      --'+leaf+'--')
  print(extraName)
- print('----------------')
+ print('----------------------------')
  
- ##
+ ###
  datanh,datanhSize,datanhSizePart = h.gram(dataTree,leaf,xmin,xmax,steps,CutsDatan,I,F)
  print('For QCD Shape')
  print('data nonIso')
  datanh.SetName('datanh')
  print('  '+str(datanhSize))
  print('  '+str(datanhSizePart))
- ##
+####
  print('  z nonIso')
-# print("Cut: ")
-# print(CutsMCn)
-# print("")
-# print(sf_Drell)
  znh,znhSize,znhSizePart = h.gram(zTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
  znh.SetName('znh')
- znh.Scale(sf_Drell)
+ znh.Scale(sf_drell)
  print('    '+str(znhSize))
  print('    '+str(znhSizePart))
-# ###
-# print('  d nonIso')
-# dnh,dnhSize,dnhSizePart = h.gram(dTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
-# dnh.SetName('dnh')
-# print('    '+str(dnhSize))
-# print('    '+str(dnhSizePart))
-# ###
- print('  singletop nonIso')
-# print("Cut: ")
-# print(CutsMCn)
-# print("")
-# print(sf_sT_tW)
- stnh,stnhSize,stnhSizePart = h.gram(stTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
- stnh.SetName('stnh')
- stnh.Scale(sf_sT_tW)
- print('    '+str(stnhSize))
- print('    '+str(stnhSizePart))
+####
+ print('  d nonIso')
+ dnh,dnhSize,dnhSizePart = h.gram(dTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+ dnh.SetName('dnh')
+ dnh.Scale(sf_vv)
+ print('    '+str(dnhSize))
+ print('    '+str(dnhSizePart))
+####
+ print('  singletop t nonIso')
+ sttnh,sttnhSize,sttnhSizePart = h.gram(sttTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+ sttnh.SetName('sttnh')
+ sttnh.Scale(sf_st)
+ print('    '+str(sttnhSize))
+ print('    '+str(sttnhSizePart))
  ###
+ print('  singletop s nonIso')
+ stsnh,stsnhSize,stsnhSizePart = h.gram(stsTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+ stsnh.SetName('stsnh')
+ stsnh.Scale(sf_st)
+ print('    '+str(stsnhSize))
+ print('    '+str(stsnhSizePart))
+ ###
+ print('  singletop tw nonIso')
+ sttwnh,sttwnhSize,sttwnhSizePart = h.gram(sttwTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+ sttwnh.SetName('sttwnh')
+ sttwnh.Scale(sf_st)
+ print('    '+str(sttwnhSize))
+ print('    '+str(sttwnhSizePart))
+####
  print('  ttbar nonIso')
-# print("Cut: ")
-# print(CutsMCn)
-# print("")
-# print(sf_ttbar)
  ttbnh,ttbnhSize,ttbnhSizePart = h.gram(ttbTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
  ttbnh.SetName('ttbnh')
  ttbnh.Scale(sf_ttbar)
  print('    '+str(ttbnhSize))
  print('    '+str(ttbnhSizePart))
+####
+ print('  wn nonIso')
+ wnnh,wnnhSize,wnnhSizePart = h.gram(wnTree,leaf,xmin,xmax,steps,CutsMCnw,I,F)
+ wnnh.SetName('wnnh')
+ wnnh.Scale(sf_wjets)
+ print('    '+str(wnnhSize))
+ print('    '+str(wnnhSizePart))
+ print('  w1 nonIso')
  ###
- print('  w nonIso')
-# print("Cut: ")
-# print(CutsMCn)
-# print("")
-# print(sf_wjets)
- wnh,wnhSize,wnhSizePart = h.gram(wTree,leaf,xmin,xmax,steps,CutsMCn,I,F)
- wnh.SetName('wnh')
- wnh.Scale(sf_wjets)
- print('    '+str(wnhSize))
- print('    '+str(wnhSizePart))
-
+ w1nh,w1nhSize,w1nhSizePart = h.gram(w1Tree,leaf,xmin,xmax,steps,CutsMCnw,I,F)
+ w1nh.SetName('w1nh')
+ w1nh.Scale(sf_wjets)
+ print('    '+str(w1nhSize))
+ print('    '+str(w1nhSizePart))
+ print('  w2 nonIso')
+ ###
+ w2nh,w2nhSize,w2nhSizePart = h.gram(w2Tree,leaf,xmin,xmax,steps,CutsMCnw,I,F)
+ w2nh.SetName('w2nh')
+ w2nh.Scale(sf_wjets)
+ print('    '+str(w2nhSize))
+ print('    '+str(w2nhSizePart))
+ print('  w3 nonIso')
+ ###
+ w3nh,w3nhSize,w3nhSizePart = h.gram(w3Tree,leaf,xmin,xmax,steps,CutsMCnw,I,F)
+ w3nh.SetName('w3nh')
+ w3nh.Scale(sf_wjets)
+ print('    '+str(w3nhSize))
+ print('    '+str(w3nhSizePart))
+ print('  w4 nonIso')
+ ###
+ w4nh,w4nhSize,w4nhSizePart = h.gram(w4Tree,leaf,xmin,xmax,steps,CutsMCnw,I,F)
+ w4nh.SetName('w4nh')
+ w4nh.Scale(sf_wjets)
+ print('    '+str(w4nhSize))
+ print('    '+str(w4nhSizePart))
+#
  print('subtracting non-iso MC from Data ')
  qh = datanh.Clone()
  qh.SetName('qh')
  qh.Add(znh,-1)
-# qh.Add(dnh,-1)
- qh.Add(stnh,-1)
+ qh.Add(dnh,-1)
+ qh.Add(sttnh,-1)
+ qh.Add(stsnh,-1)
+ qh.Add(sttwnh,-1)
  qh.Add(ttbnh,-1)
- qh.Add(wnh,-1)
+ qh.Add(wnnh,-1)
+ qh.Add(w1nh,-1)
+ qh.Add(w2nh,-1)
+ qh.Add(w3nh,-1)
+ qh.Add(w4nh,-1)
 
  print('qcd')
  qh.SetTitle('')
@@ -268,231 +229,323 @@ for leaf in leafs:
  bIq = qh.GetXaxis().FindBin(I)
  bFq = qh.GetXaxis().FindBin(F)
  qhSizePart = qh.Integral(bIq,bFq)
- qh.Scale(qcdScale)
+ qh.Scale(sf_qcd)
  qhSize = qh.Integral(bminq,bmaxq)
  print('  '+str(qhSize))
  print('  '+str(qhSizePart))
- # 
- 
+ ###
  ###
  print('')
  print('Isolated Variables Now')
  print("data Iso") 
- #print(CutsDatai)
  dataih,dataihSize,dataihSizePart = h.gram(dataTree,leaf,xmin,xmax,steps,CutsDatai,I,F)
  dataih.SetName('dataih')
  print('  '+str(dataihSize))
  print('  '+str(dataihSizePart))
  dimax = dataih.GetMaximum()
- ###
+####
  print("z Iso")
- #print(CutsMCi)
  zih,zihSize,zihSizePart = h.gram(zTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  zih.SetName('zih')
- #zih.Scale(vScale)
- zih.Scale(sf_Drell)
+ zih.Scale(sf_drell)
  print('  '+str(zihSize))
  print('  '+str(zihSizePart))
+####
+ print("d Iso")
+ dih,dihSize,dihSizePart = h.gram(dTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+ dih.SetName('dih')
+ dih.Scale(sf_vv)
+ print('  '+str(dihSize))
+ print('  '+str(dihSizePart))
+####
+ print('single top s Iso')
+ stsih,stsihSize,stsihSizePart = h.gram(stsTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+ stsih.SetName('stsih')
+ stsih.Scale(sf_st)
+ print('  '+str(stsihSize))
+ print('  '+str(stsihSizePart))
  ###
- #print("d Iso")
- #dih,dihSize,dihSizePart = h.gram(dTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
- #dih.SetName('dih')
- #dih.Scale(dScale)
- #print('  '+str(dihSize))
- #print('  '+str(dihSizePart))
+ print('single top t Iso')
+ sttih,sttihSize,sttihSizePart = h.gram(sttTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+ sttih.SetName('sttih')
+ sttih.Scale(sf_st)
+ print('  '+str(sttihSize))
+ print('  '+str(sttihSizePart))
  ###
- ##print('tt Iso')
- ##ttih,ttihSize,ttihSizePart = h.gram(ttTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
- ##ttih.SetName('ttih')
- ##ttih.Scale(tScale)
- ##print('  '+str(ttihSize))
- ##print('  '+str(ttihSizePart))
- #####
- ##print('ts Iso')
- ##tsih,tsihSize,tsihSizePart = h.gram(tsTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
- ##tsih.SetName('tsih')
- ##tsih.Scale(tScale)
- ##print('  '+str(tsihSize))
- ##print('  '+str(tsihSizePart))
- #####
- ##print('ttw Iso')
- ##ttwih,ttwihSize,ttwihSizePart = h.gram(ttwTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
- ##ttwih.SetName('ttwih')
- ##ttwih.Scale(tScale)
- ##print('  '+str(ttwihSize))
- ##print('  '+str(ttwihSizePart))
- ###
- print('st Iso')
- #print(CutsMCi)
- stih,stihSize,stihSizePart = h.gram(stTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
- stih.SetName('stih')
- stih.Scale(sf_sT_tW)
- #stih.Scale(tScale)
- print('  '+str(stihSize))
- print('  '+str(stihSizePart))
- ###
+ print('single top tW Iso')
+ sttwih,sttwihSize,sttwihSizePart = h.gram(sttwTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+ sttwih.SetName('sttwih')
+ sttwih.Scale(sf_st)
+ print('  '+str(sttwihSize))
+ print('  '+str(sttwihSizePart))
+####
  print('ttb Iso')
- #print(CutsMCi)
  ttbih,ttbihSize,ttbihSizePart = h.gram(ttbTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  ttbih.SetName('ttbih')
  ttbih.Scale(sf_ttbar)
- #ttbih.Scale(ttScale)
  print('  '+str(ttbihSize))
  print('  '+str(ttbihSizePart))
- ###
- print('w Iso')
- #print(CutsMCi)
- wih,wihSize,wihSizePart = h.gram(wTree,leaf,xmin,xmax,steps,CutsMCi,I,F)
- wih.SetName('wih')
- wih.Scale(sf_wjets)
- #wih.Scale(vScale)
- print('  '+str(wihSize))
- print('  '+str(wihSizePart))
- ##print('wtau Iso')
- ##wtih,wtihSize,wtihSizePart = h.gram(wTree,leaf,xmin,xmax,steps,CutsWtaui,I,F)
- ##wtih.SetName('wtih')
- ##wtih.Scale(vScale)
- ##print('  '+str(wtihSize))
- ##print('  '+str(wtihSizePart))
- #####
- ##print('wbx Iso')
- ##wbih,wbihSize,wbihSizePart = h.gram(wTree,leaf,xmin,xmax,steps,CutsWbxi,I,F)
- ##wbih.SetName('wbih')
- ##wbih.Scale(vScale)
- ##print('  '+str(wbihSize))
- ##print('  '+str(wbihSizePart))
- #####
- ##print('wbb Iso')
- ##wbbih,wbbihSize,wbbihSizePart = h.gram(wTree,leaf,xmin,xmax,steps,CutsWbbi,I,F)
- ##wbbih.SetName('wbbih')
- ##wbbih.Scale(vScale)
- ##print('  '+str(wbbihSize))
- ##print('  '+str(wbbihSizePart))
- #####
- ##print('wcc Iso')
- ##wccih,wccihSize,wccihSizePart = h.gram(wTree,leaf,xmin,xmax,steps,CutsWcci,I,F)
- ##wccih.SetName('wccih')
- ##wccih.Scale(vScale)
- ##print('  '+str(wccihSize))
- ##print('  '+str(wccihSizePart))
- #####
- ##print('wc Iso')
- ##wcih.SetName('wcih')
- ##wcih.Scale(vScale)
- ##print('  '+str(wcihSize))
- ##print('  '+str(wcihSizePart))
- #####
- ##print('wl Iso')
- ##wlih,wlihSize,wlihSizePart = h.gram(wTree,leaf,xmin,xmax,steps,CutsWli,I,F)
- ##wlih.SetName('wlih')
- ##wlih.Scale(vScale)
- ##print('  '+str(wlihSize))
- ##print('  '+str(wlihSizePart))
- 
- hh = TH1F('hh','hh',steps,xmin,xmax)
- hh.Add(qh)
- hh.Add(zih)
- #hh.Add(dih)
- #hh.Add(ttih)
- hh.Add(stih)
- #hh.Add(ttwih)
- hh.Add(ttbih)
- hh.Add(wih)
- #hh.Add(wtih)
- #hh.Add(wbih)
- #hh.Add(wbbih)
- #hh.Add(wccih)
- #hh.Add(wcih)
- #hh.Add(wlih)
- hh.Draw()
+####
+####
+ print('wl n Iso')
+ wlnih,wlnihSize,wlnihSizePart = h.gram(wnTree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
+ wlnih.SetName('wlnih')
+ wlnih.Scale(sf_wjets)
+ print('  '+str(wlnihSize))
+ print('  '+str(wlnihSizePart))
+ ####
+ print('wc n Iso')
+ wcnih,wcnihSize,wcnihSizePart = h.gram(wnTree,leaf,xmin,xmax,steps,CutsMCiwc,I,F)
+ wcnih.SetName('wcnih')
+ wcnih.Scale(sf_wjets)
+ print('  '+str(wcnihSize))
+ print('  '+str(wcnihSizePart))
+ ####
+ print('wcc n Iso')
+ wccnih,wccnihSize,wccnihSizePart = h.gram(wnTree,leaf,xmin,xmax,steps,CutsMCiwcc,I,F)
+ wccnih.SetName('wccnih')
+ wccnih.Scale(sf_wjets)
+ print('  '+str(wccnihSize))
+ print('  '+str(wccnihSizePart))
+ ####
+ print('wbb n Iso')
+ wbbnih,wbbnihSize,wbbnihSizePart = h.gram(wnTree,leaf,xmin,xmax,steps,CutsMCiwbb,I,F)
+ wbbnih.SetName('wbbnih')
+ wbbnih.Scale(sf_wjets)
+ print('  '+str(wbbnihSize))
+ print('  '+str(wbbnihSizePart))
+#####
+ print('wl 1 Iso')
+ wl1ih,wl1ihSize,wl1ihSizePart = h.gram(w1Tree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
+ wl1ih.SetName('wl1ih')
+ wl1ih.Scale(sf_wjets)
+ print('  '+str(wl1ihSize))
+ print('  '+str(wl1ihSizePart))
+ ####
+ print('wc 1 Iso')
+ wc1ih,wc1ihSize,wc1ihSizePart = h.gram(w1Tree,leaf,xmin,xmax,steps,CutsMCiwc,I,F)
+ wc1ih.SetName('wc1ih')
+ wc1ih.Scale(sf_wjets)
+ print('  '+str(wc1ihSize))
+ print('  '+str(wc1ihSizePart))
+ ####
+ print('wcc 1 Iso')
+ wcc1ih,wcc1ihSize,wcc1ihSizePart = h.gram(w1Tree,leaf,xmin,xmax,steps,CutsMCiwcc,I,F)
+ wcc1ih.SetName('wcc1ih')
+ wcc1ih.Scale(sf_wjets)
+ print('  '+str(wcc1ihSize))
+ print('  '+str(wcc1ihSizePart))
+ ####
+ print('wbb 1 Iso')
+ wbb1ih,wbb1ihSize,wbb1ihSizePart = h.gram(w1Tree,leaf,xmin,xmax,steps,CutsMCiwbb,I,F)
+ wbb1ih.SetName('wbb1ih')
+ wbb1ih.Scale(sf_wjets)
+ print('  '+str(wbb1ihSize))
+ print('  '+str(wbb1ihSizePart))
+#####
+ print('wl 2 Iso')
+ wl2ih,wl2ihSize,wl2ihSizePart = h.gram(w2Tree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
+ wl2ih.SetName('wl2ih')
+ wl2ih.Scale(sf_wjets)
+ print('  '+str(wl2ihSize))
+ print('  '+str(wl2ihSizePart))
+ ####
+ print('wc 2 Iso')
+ wc2ih,wc2ihSize,wc2ihSizePart = h.gram(w2Tree,leaf,xmin,xmax,steps,CutsMCiwc,I,F)
+ wc2ih.SetName('wc2ih')
+ wc2ih.Scale(sf_wjets)
+ print('  '+str(wc2ihSize))
+ print('  '+str(wc2ihSizePart))
+ ####
+ print('wcc 2 Iso')
+ wcc2ih,wcc2ihSize,wcc2ihSizePart = h.gram(w2Tree,leaf,xmin,xmax,steps,CutsMCiwcc,I,F)
+ wcc2ih.SetName('wcc2ih')
+ wcc2ih.Scale(sf_wjets)
+ print('  '+str(wcc2ihSize))
+ print('  '+str(wcc2ihSizePart))
+ ####
+ print('wbb 2 Iso')
+ wbb2ih,wbb2ihSize,wbb2ihSizePart = h.gram(w2Tree,leaf,xmin,xmax,steps,CutsMCiwbb,I,F)
+ wbb2ih.SetName('wbb2ih')
+ wbb2ih.Scale(sf_wjets)
+ print('  '+str(wbb2ihSize))
+ print('  '+str(wbb2ihSizePart))
+#####
+ print('wl 3 Iso')
+ wl3ih,wl3ihSize,wl3ihSizePart = h.gram(w3Tree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
+ wl3ih.SetName('wl3ih')
+ wl3ih.Scale(sf_wjets)
+ print('  '+str(wl3ihSize))
+ print('  '+str(wl3ihSizePart))
+ ####
+ print('wc 3 Iso')
+ wc3ih,wc3ihSize,wc3ihSizePart = h.gram(w3Tree,leaf,xmin,xmax,steps,CutsMCiwc,I,F)
+ wc3ih.SetName('wc3ih')
+ wc3ih.Scale(sf_wjets)
+ print('  '+str(wc3ihSize))
+ print('  '+str(wc3ihSizePart))
+ ####
+ print('wcc 3 Iso')
+ wcc3ih,wcc3ihSize,wcc3ihSizePart = h.gram(w3Tree,leaf,xmin,xmax,steps,CutsMCiwcc,I,F)
+ wcc3ih.SetName('wcc3ih')
+ wcc3ih.Scale(sf_wjets)
+ print('  '+str(wcc3ihSize))
+ print('  '+str(wcc3ihSizePart))
+ ####
+ print('wbb 3 Iso')
+ wbb3ih,wbb3ihSize,wbb3ihSizePart = h.gram(w3Tree,leaf,xmin,xmax,steps,CutsMCiwbb,I,F)
+ wbb3ih.SetName('wbb3ih')
+ wbb3ih.Scale(sf_wjets)
+ print('  '+str(wbb3ihSize))
+ print('  '+str(wbb3ihSizePart))
+#####
+ print('wl 4 Iso')
+ wl4ih,wl4ihSize,wl4ihSizePart = h.gram(w4Tree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
+ wl4ih.SetName('wl4ih')
+ wl4ih.Scale(sf_wjets)
+ print('  '+str(wl4ihSize))
+ print('  '+str(wl4ihSizePart))
+ ####
+ print('wc 4 Iso')
+ wc4ih,wc4ihSize,wc4ihSizePart = h.gram(w4Tree,leaf,xmin,xmax,steps,CutsMCiwc,I,F)
+ wc4ih.SetName('wc4ih')
+ wc4ih.Scale(sf_wjets)
+ print('  '+str(wc4ihSize))
+ print('  '+str(wc4ihSizePart))
+ ####
+ print('wcc 4 Iso')
+ wcc4ih,wcc4ihSize,wcc4ihSizePart = h.gram(w4Tree,leaf,xmin,xmax,steps,CutsMCiwcc,I,F)
+ wcc4ih.SetName('wcc4ih')
+ wcc4ih.Scale(sf_wjets)
+ print('  '+str(wcc4ihSize))
+ print('  '+str(wcc4ihSizePart))
+ ####
+ print('wbb 4 Iso')
+ wbb4ih,wbb4ihSize,wbb4ihSizePart = h.gram(w4Tree,leaf,xmin,xmax,steps,CutsMCiwbb,I,F)
+ wbb4ih.SetName('wbb4ih')
+ wbb4ih.Scale(sf_wjets)
+ print('  '+str(wbb4ihSize))
+ print('  '+str(wbb4ihSizePart))
  
  outFile.Write()
  print('')
  print('Your File is here: '+path+leaf+extraName+'.root')
  print('')
  
- #log.write('------------------------------------------------\n')
- #log.write('No QCD or Data  \n')
- #log.write('QCD from Data:    '+str(qcdFromData)+'\n')
- #log.write('QCD from MC:      '+str(qcdFromMC)+'\n')
- #log.write('QCD from Data-MC: '+str(qcdFromDsubMC)+'\n\n')
- #log.write('Non Isolated\n')
- #log.write('---------------------------\n')
- #log.write(' Cuts MC:  '+str(CutsMCn)+'\n\n')
- #log.write(' Cuts Data: '+str(CutsDatan)+'\n\n')
- #log.write('Isolated\n')
- #log.write('---------------------------\n')
- #log.write(' Cuts MC:  '+str(CutsMCi)+'\n\n')
- #log.write(' Cuts Data: '+str(CutsDatai)+'\n\n')
- #log.write(' Cuts Wtau: '+str(CutsWtaui)+'\n\n')
- #log.write(' Cuts Wbx: '+str(CutsWbxi)+'\n\n')
- #log.write(' Cuts Wbb: '+str(CutsWbbi)+'\n\n')
- #log.write(' Cuts Wcc: '+str(CutsWcci)+'\n\n')
- #log.write(' Cuts Wc: '+str(CutsWci)+'\n\n')
- #log.write(' Cuts Wl: '+str(CutsWli)+'\n\n')
- #log.write('Anti-Isolated Sizes\n')
- #log.write('---------------------------\n')
- #log.write(' W Size:---------'+str(wnhSize)+'\n')
- #log.write(' tt Size:--------'+str(ttbnhSize)+'\n')
- #log.write(' singletop Size:-'+str(stnhSize)+'\n')
- #log.write(' WW,WZ Size:-----'+str(dnhSize)+'\n')
- #log.write(' Drell-Yan Size:-'+str(znhSize)+'\n')
- #log.write(' QCD Size:-------'+str(qhSize)+'\n')
- #log.write(' Data Size:      '+str(datanhSize)+'\n')
- #log.write('---------------------------\n')
- #log.write('Anti-Isolated Sizes from '+str(I)+' to '+str(F)+'\n')
- #log.write('---------------------------\n')
- #log.write(' W Size:---------'+str(wnhSizePart)+'\n')
- #log.write(' tt Size:--------'+str(ttbnhSizePart)+'\n')
- #log.write(' singletop Size:-'+str(stnhSizePart)+'\n')
- #log.write(' WW,WZ Size:-----'+str(dnhSizePart)+'\n')
- #log.write(' Drell-Yan Size:-'+str(znhSizePart)+'\n')
- #log.write(' QCD Size:-------'+str(qhSizePart)+'\n')
- #log.write(' Data Size:      '+str(datanhSizePart)+'\n')
- #log.write('---------------------------------------------\n')
- #log.write('QCD Scale:   '+str(qcdScale)+'\n')
- #log.write('W,Z Scale:   '+str(vScale)+'\n')
- #log.write('t Scale:     '+str(tScale)+'\n')
- #log.write('tt Scale:    '+str(ttScale)+'\n')
- #log.write('Dibo Scale:  '+str(dScale)+'\n')
- #log.write('---------------------------------------------\n')
- #log.write('Isolated Sizes from '+str(I)+' to '+str(F)+'\n')
- #log.write('---------------------------\n')
- #log.write('W+light:--------'+str(wlihSizePart)+'\n')
- #log.write('W+c:------------'+str(wcihSizePart)+'\n')
- #log.write('W+cc:-----------'+str(wccihSizePart)+'\n')
- #log.write('W+bb:-----------'+str(wbbihSizePart)+'\n')
- #log.write('W+bx:-----------'+str(wbihSizePart)+'\n')
- #log.write('W+tau:----------'+str(wtihSizePart)+'\n')
- #log.write('tt Size:--------'+str(ttbihSizePart)+'\n')
- #log.write('t_tW Size:------'+str(ttwihSizePart)+'\n')
- #log.write('t_s Size:-------'+str(tsihSizePart)+'\n')
- #log.write('t_t Size:-------'+str(ttihSizePart)+'\n')
- #log.write('WW,WZ Size:-----'+str(dihSizePart)+'\n')
- #log.write('Drell-Yan Size:-'+str(zihSizePart)+'\n')
- #log.write('MC Size (no QCD):   '+str(zihSizePart+dihSizePart+ttihSizePart+tsihSizePart+ttwihSizePart+ttbihSizePart+wtihSizePart+wbihSizePart+wbbihSizePart+wccihSizePart+wcihSizePart+wlihSizePart)+'\n')
- #log.write('MC Size (with QCD):   '+str(zihSizePart+dihSizePart+ttihSizePart+tsihSizePart+ttwihSizePart+ttbihSizePart+wtihSizePart+wbihSizePart+wbbihSizePart+wccihSizePart+wcihSizePart+wlihSizePart+qhSizePart)+'\n')
- #log.write('Data Size:          '+str(dataihSizePart)+'\n')
- #log.write('---------------------------------------------\n')
- #log.write('Isolated Sizes\n')
- #log.write('---------------------------\n')
- #log.write('W+light:--------'+str(wlihSize)+'\n')
- #log.write('W+c:------------'+str(wcihSize)+'\n')
- #log.write('W+cc:-----------'+str(wccihSize)+'\n')
- #log.write('W+bb:-----------'+str(wbbihSize)+'\n')
- #log.write('W+bx:-----------'+str(wbihSize)+'\n')
- #log.write('W+tau:----------'+str(wtihSize)+'\n')
- #log.write('tt Size:--------'+str(ttbihSize)+'\n')
- #log.write('t_tW Size:------'+str(ttwihSize)+'\n')
- #log.write('t_s Size:-------'+str(tsihSize)+'\n')
- #log.write('t_t Size:-------'+str(ttihSize)+'\n')
- #log.write('WW,WZ Size:-----'+str(dihSize)+'\n')
- #log.write('Drell-Yan Size:-'+str(zihSize)+'\n')
- #log.write('MC Size (no QCD):   '+str(zihSize+dihSize+ttihSize+tsihSize+ttwihSize+ttbihSize+wtihSize+wbihSize+wbbihSize+wccihSize+wcihSize+wlihSize)+'\n')
- #log.write('MC Size (with QCD): '+str(zihSize+dihSize+qhSize+ttihSize+tsihSize+ttwihSize+ttbihSize+wtihSize+wbihSize+wbbihSize+wccihSize+wcihSize+wlihSize)+'\n')
- #log.write('Data Size:          '+str(dataihSize)+'\n')
- #log.write('---------------------------\n')
- #log.write('---------------------------------------------\n')
+CutsMCn,CutsMCi,CutsDatan,CutsDatai,CutsMCnw,CutsMCiw,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
+ print('    '+str(wnnhSize))
+ log.write('------------------------------------------------\n')
+ log.write('QCD from Data:    '+str(qcdFromData)+'\n')
+ log.write('Non Isolated\n')
+ log.write('---------------------------\n')
+ log.write(' Cuts MC:  '+str(CutsMCn)+'\n\n')
+ log.write(' Cuts Data: '+str(CutsDatan)+'\n\n')
+ log.write(' Cuts MCw:  '+str(CutsMCnw)+'\n\n')
+ log.write('Isolated\n')
+ log.write('---------------------------\n')
+ log.write(' Cuts MC:  '+str(CutsMCi)+'\n\n')
+ log.write(' Cuts Data: '+str(CutsDatai)+'\n\n')
+ log.write(' Cuts Wbb: '+str(CutsMCiwbb)+'\n\n')
+ log.write(' Cuts Wcc: '+str(CutsMCiwcc)+'\n\n')
+ log.write(' Cuts Wc: '+str(CutsMCiwc)+'\n\n')
+ log.write(' Cuts Wl: '+str(CutsMCiwl)+'\n\n')
+ log.write('Anti-Isolated Sizes\n')
+ log.write('---------------------------\n')
+ log.write(' Wn Size:--------'+str(wnnhSize)+'\n')
+ log.write(' W1 Size:--------'+str(w1nhSize)+'\n')
+ log.write(' W2 Size:--------'+str(w2nhSize)+'\n')
+ log.write(' W3 Size:--------'+str(w3nhSize)+'\n')
+ log.write(' W4 Size:--------'+str(w4nhSize)+'\n')
+ log.write(' tt Size:--------'+str(ttbnhSize)+'\n')
+ log.write(' singletop Size:-'+str(stnhSize)+'\n')
+ log.write(' WW,WZ,ZZ Size:--'+str(dnhSize)+'\n')
+ log.write(' Drell-Yan Size:-'+str(znhSize)+'\n')
+ log.write(' QCD Size:-------'+str(qhSize)+'\n')
+ log.write(' Data Size:      '+str(datanhSize)+'\n')
+ log.write('---------------------------\n')
+ log.write('Anti-Isolated Sizes from '+str(I)+' to '+str(F)+'\n')
+ log.write('---------------------------\n')
+ log.write(' Wn Size:--------'+str(wnnhSizePart)+'\n')
+ log.write(' W1 Size:--------'+str(w1nhSizePart)+'\n')
+ log.write(' W2 Size:--------'+str(w2nhSizePart)+'\n')
+ log.write(' W3 Size:--------'+str(w3nhSizePart)+'\n')
+ log.write(' W4 Size:--------'+str(w4nhSizePart)+'\n')
+ log.write(' tt Size:--------'+str(ttbnhSizePart)+'\n')
+ log.write(' singletop Size:-'+str(stnhSizePart)+'\n')
+ log.write(' WW,WZ,ZZ Size:--'+str(dnhSizePart)+'\n')
+ log.write(' Drell-Yan Size:-'+str(znhSizePart)+'\n')
+ log.write(' QCD Size:-------'+str(qhSizePart)+'\n')
+ log.write(' Data Size:      '+str(datanhSizePart)+'\n')
+ log.write('---------------------------------------------\n')
+ log.write('QCD Scale:   '+str(sf_qcd)+'\n')
+ log.write('Drell Scale: '+str(sf_drell)+'\n')
+ log.write('t Scale:     '+str(sf_st)+'\n')
+ log.write('tt Scale:    '+str(sf_ttbar)+'\n')
+ log.write('W+x Scale:   '+str(sf_wjets)+'\n')
+ log.write('---------------------------------------------\n\n')
+ log.write('Isolated Sizes from '+str(I)+' to '+str(F)+'\n')
+ log.write('---------------------------\n')
+ log.write('W:\n')
+ log.write('  W+light:--------'+str(wlnihSizePart)+'\n')
+ log.write('  W+light:--------'+str(wl1ihSizePart)+'\n')
+ log.write('  W+light:--------'+str(wl2ihSizePart)+'\n')
+ log.write('  W+light:--------'+str(wl3ihSizePart)+'\n')
+ log.write('  W+light:--------'+str(wl4ihSizePart)+'\n\n')
+ log.write('  W+c:------------'+str(wcnihSizePart)+'\n')
+ log.write('  W+c:------------'+str(wc1ihSizePart)+'\n')
+ log.write('  W+c:------------'+str(wc2ihSizePart)+'\n')
+ log.write('  W+c:------------'+str(wc3ihSizePart)+'\n')
+ log.write('  W+c:------------'+str(wc4ihSizePart)+'\n\n')
+ log.write('  W+cc:-----------'+str(wccnihSizePart)+'\n')
+ log.write('  W+cc:-----------'+str(wcc1ihSizePart)+'\n')
+ log.write('  W+cc:-----------'+str(wcc2ihSizePart)+'\n')
+ log.write('  W+cc:-----------'+str(wcc3ihSizePart)+'\n')
+ log.write('  W+cc:-----------'+str(wcc4ihSizePart)+'\n\n')
+ log.write('  W+bb:-----------'+str(wbbnihSizePart)+'\n')
+ log.write('  W+bb:-----------'+str(wbb1ihSizePart)+'\n')
+ log.write('  W+bb:-----------'+str(wbb2ihSizePart)+'\n')
+ log.write('  W+bb:-----------'+str(wbb3ihSizePart)+'\n')
+ log.write('  W+bb:-----------'+str(wbb4ihSizePart)+'\n')
+ log.write('tt Size:--------'+str(ttbihSizePart)+'\n')
+ log.write('t_tW Size:------'+str(ttwihSizePart)+'\n')
+ log.write('t_s Size:-------'+str(tsihSizePart)+'\n')
+ log.write('t_t Size:-------'+str(ttihSizePart)+'\n')
+ log.write('WW,WZ Size:-----'+str(dihSizePart)+'\n')
+ log.write('Drell-Yan Size:-'+str(zihSizePart)+'\n')
+ log.write('Data Size:          '+str(dataihSizePart)+'\n')
+ log.write('---------------------------------------------\n')
+ log.write('Isolated Sizes\n')
+ log.write('---------------------------\n')
+ log.write('W:\n')
+ log.write('  Wn+light:--------'+str(wlnihSize)+'\n')
+ log.write('  W1+light:--------'+str(wl1ihSize)+'\n')
+ log.write('  W2+light:--------'+str(wl2ihSize)+'\n')
+ log.write('  W3+light:--------'+str(wl3ihSize)+'\n')
+ log.write('  W4+light:--------'+str(wl4ihSize)+'\n\n')
+ log.write('  Wn+c:------------'+str(wcnihSize)+'\n')
+ log.write('  W1+c:------------'+str(wc1ihSize)+'\n')
+ log.write('  W2+c:------------'+str(wc2ihSize)+'\n')
+ log.write('  W3+c:------------'+str(wc3ihSize)+'\n')
+ log.write('  W4+c:------------'+str(wc4ihSize)+'\n\n')
+ log.write('  Wn+cc:-----------'+str(wccnihSize)+'\n')
+ log.write('  W1+cc:-----------'+str(wcc1ihSize)+'\n')
+ log.write('  W2+cc:-----------'+str(wcc2ihSize)+'\n')
+ log.write('  W3+cc:-----------'+str(wcc3ihSize)+'\n')
+ log.write('  W4+cc:-----------'+str(wcc4ihSize)+'\n\n')
+ log.write('  Wn+bb:-----------'+str(wbbnihSize)+'\n')
+ log.write('  W1+bb:-----------'+str(wbb1ihSize)+'\n')
+ log.write('  W2+bb:-----------'+str(wbb2ihSize)+'\n')
+ log.write('  W3+bb:-----------'+str(wbb3ihSize)+'\n')
+ log.write('  W4+bb:-----------'+str(wbb4ihSize)+'\n')
+ log.write('tt Size:--------'+str(ttbihSize)+'\n')
+ log.write('t_tW Size:------'+str(ttwihSize)+'\n')
+ log.write('t_s Size:-------'+str(tsihSize)+'\n')
+ log.write('t_t Size:-------'+str(ttihSize)+'\n')
+ log.write('WW,WZ Size:-----'+str(dihSize)+'\n')
+ log.write('Drell-Yan Size:-'+str(zihSize)+'\n')
+ log.write('Data Size:          '+str(dataihSize)+'\n')
+ log.write('---------------------------\n')
+ log.write('---------------------------------------------\n')
  
  log.close()
  
