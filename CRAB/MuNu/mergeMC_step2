@@ -9,6 +9,13 @@ hadd W4Jet.root /scratch/$USER/v3/W/W4Jet/W4Jet_*.root
 
 hadd Drell.root /scratch/$USER/v3/Drell/Drell_*.root
 
+cp /scratch/$USER/v3/SingleTop/T_s/T_s.root .
+cp /scratch/$USER/v3/SingleTop/Tbar_s/Tbar_s.root .
+cp /scratch/$USER/v3/SingleTop/T_t/T_t.root .
+cp /scratch/$USER/v3/SingleTop/Tbar_t/Tbar_t.root .
+cp /scratch/$USER/v3/SingleTop/Tbar_tW/Tbar_tW.root .
+cp /scratch/$USER/v3/SingleTop/Tbar_tW/Tbar_tW.root .
+
 hadd Tbar_s.root  /scratch/$USER/v3/SingleTop/Tbar_s/Tbar_s_*.root
 hadd Tbar_t.root  /scratch/$USER/v3/SingleTop/Tbar_t/Tbar_t_*.root
 hadd Tbar_tW.root /scratch/$USER/v3/SingleTop/Tbar_tW/Tbar_tW_*.root
