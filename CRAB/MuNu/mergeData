@@ -1,6 +1,7 @@
-cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data
+cd /scratch/$USER/v3
 mkdir wMuNuData
 
+cd wMuNuData
 find /hdfs/store/user/$USER/DATA1_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA1_0.root
 find /hdfs/store/user/$USER/DATA1_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA1_1.root
 find /hdfs/store/user/$USER/DATA1_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA1_2.root
@@ -18,8 +19,7 @@ find /hdfs/store/user/$USER/DATA1_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-D*
 find /hdfs/store/user/$USER/DATA1_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA1_E.root
 find /hdfs/store/user/$USER/DATA1_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA1_F.root
 
-hadd wMuNuData_1.root DATA1_*.root
-mv DATA1_*.root wMuNuData
+hadd ../wMuNuData_1.root DATA1_*.root
 
 find /hdfs/store/user/$USER/DATA2_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA2_0.root
 find /hdfs/store/user/$USER/DATA2_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA2_1.root
@@ -38,8 +38,7 @@ find /hdfs/store/user/$USER/DATA2_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-D*
 find /hdfs/store/user/$USER/DATA2_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA2_E.root
 find /hdfs/store/user/$USER/DATA2_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA2_F.root
 
-hadd wMuNuData_2.root DATA2_*.root
-mv DATA2_*.root wMuNuData
+hadd ../wMuNuData_2.root DATA2_*.root
 
 find /hdfs/store/user/$USER/DATA3_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA3_0.root
 find /hdfs/store/user/$USER/DATA3_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA3_1.root
@@ -58,8 +57,7 @@ find /hdfs/store/user/$USER/DATA3_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-D*
 find /hdfs/store/user/$USER/DATA3_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA3_E.root
 find /hdfs/store/user/$USER/DATA3_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA3_F.root
 
-hadd wMuNuData_3.root DATA3_*.root
-mv DATA3_*.root wMuNuData
+hadd ../wMuNuData_3.root DATA3_*.root
 
 find /hdfs/store/user/$USER/DATA4_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA4_0.root
 find /hdfs/store/user/$USER/DATA4_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA4_1.root
@@ -78,8 +76,7 @@ find /hdfs/store/user/$USER/DATA4_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-D*
 find /hdfs/store/user/$USER/DATA4_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA4_E.root
 find /hdfs/store/user/$USER/DATA4_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA4_F.root
 
-hadd wMuNuData_4.root DATA4_*.root
-mv DATA4_*.root wMuNuData
+hadd ../wMuNuData_4.root DATA4_*.root
 
 find /hdfs/store/user/$USER/DATA5_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA5_0.root
 find /hdfs/store/user/$USER/DATA5_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA5_1.root
@@ -98,8 +95,7 @@ find /hdfs/store/user/$USER/DATA5_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-D*
 find /hdfs/store/user/$USER/DATA5_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA5_E.root
 find /hdfs/store/user/$USER/DATA5_8TeV_sfs-MuNuPATDat/MuNuPATDat-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f DATA5_F.root
 
-hadd wMuNuData_5.root DATA5_*.root
-mv DATA5_*.root wMuNuData
+hadd ../wMuNuData_5.root DATA5_*.root
 
-hadd wMuNuData.root wMuNuData_*.root
-mv wMuNuData_*.root wMuNuData
+cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data
+hadd wMuNuData.root /scratch/$USER/v3/wMuNuData_*.root
