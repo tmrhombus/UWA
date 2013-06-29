@@ -9,20 +9,11 @@ from ROOT import TLegend,TCanvas,TPad,TLatex,TLine
 from ROOT import gROOT,gStyle
 import histoRange as hr
 import cmsPrelim as cpr
-
-lumi = 13498. #luminosity 
-path = '../plots/'
-tex = ROOT.TLatex()
-tex.SetTextSize(0.07)
-tex.SetTextAlign(13)
-tex.SetNDC(True)
-gStyle.SetOptStat('')
-
-jNr = 2
-bNr = 0
+import parameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
-sf_qcd = 1+(486395.0-(70228.7539062+3820.58770752+261.598018646+3045.22140503+3501.15155029+40844.8603516+30151.6518555+3103.32769775+65838.4931641+52626.2958984+39184.6586914+41183.0043945))/(41183.0043945) # Mt > 0. && 0.98 eff correction
+sf_qcd = 4.21767
+#sf_qcd = 1+(486395.0-(70228.7539062+3820.58770752+261.598018646+3045.22140503+3501.15155029+40844.8603516+30151.6518555+3103.32769775+65838.4931641+52626.2958984+39184.6586914+41183.0043945))/(41183.0043945) # Mt > 0. && 0.98 eff correction
 # sf_qcd   = 1+(486395.0-(71661.6357422+3898.57788086+266.936691284+3107.36975098+3572.60089111+41678.2138672+30766.9594727+3166.66146851+67181.9228516+53699.9023438+39984.6865234+41038.4926758))/(41038.4926758) # Mt > 0. no eff correction
 
 sf_drell = 1.# 3503.71 / 3.02386400000000000e+07
@@ -32,8 +23,12 @@ sf_wjets = 1.# 37509.  / 5.31329400000000000e+07
 sf_vv    = 1.
  
 #canvas attributes
-canx = 700
+# for single plot on page
+canx = 700 
 cany = 900
+# for three plots on page
+#canx = 500
+#cany = 900
 
 #color scheme
 d = 1
@@ -48,14 +43,15 @@ wl = ROOT.EColor.kAzure+10
 wc = ROOT.EColor.kBlue+1
 wcc = ROOT.EColor.kAzure+2
 wbb = 51#ROOT.EColor.kCyan
- 
-#leafs = ['LHEProduct']
-#leafs = ['muonPt','MET','vertices','muonPhi','WPt','DiMuonMass','mjj','mJ3J4','ptJJ','met','MtCal','muonEta','ht','highestJetEta','secondJetEta','thirdJetEta','highestJetPhi','secondJetPhi','thirdJetPhi','highestJetPt','secondJetPt','thirdJetPt']
-#leafs=['Mt']
-#leafs=['vertices']
-#leafs = ['muonPt','MET','vertices','muonPhi','WPt','DiMuonMass','mJ3J4','ptJJ','met','MtCal','muonEta','ht','highestJetEta','secondJetEta','thirdJetEta','highestJetPhi','secondJetPhi','thirdJetPhi','highestJetPt','secondJetPt','thirdJetPt']
-leafs = ['muonPt','MET','J1CSVbtag','J2CSVbtag','vertices','muonPhi','J1DR','J2DR']
 
+tex = ROOT.TLatex()
+tex.SetTextSize(0.07)
+tex.SetTextAlign(13)
+tex.SetNDC(True)
+gStyle.SetOptStat('')
+
+# get parameters to run on
+lumi,bNr,btype,jNr,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD = p.arams() 
 for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
@@ -66,7 +62,7 @@ for leaf in leafs:
  title = xtitle #+' Data v MC'
  
  name = []
- name.append(leaf+str(jNr)+'j'+str(bNr)+'b')
+ name.append(leaf+extraName)
  
  for i in name:
   c = TCanvas('c','Canvas Named c',canx,cany)
@@ -84,54 +80,102 @@ for leaf in leafs:
   dataih.SetMarkerSize(1.2)
   dmax = dataih.GetMaximum()
   
+ #### QCD
   qh = theFile.Get('qh')
   qh.SetFillColor(q)
   qh.Rebin(rebin)
   qh.Scale(sf_qcd)
   qh.Draw()
-  #raw_input("qcd")
-  ###
+ #### Drell
   zih = theFile.Get('zih')
   zih.SetFillColor(z)
   zih.Rebin(rebin)
   zih.Scale(sf_drell)
   zih.Draw()
-  #raw_input("drell")
+ #### Diboson
+  wwih = theFile.Get('wwih')
+  wwih.SetFillColor(d)
+  wwih.Rebin(rebin)
+  wwih.Scale(sf_vv)
+  wwih.Draw()
   ###
-  dih = theFile.Get('dih')
-  dih.SetFillColor(d)
-  dih.Rebin(rebin)
-  dih.Scale(sf_vv)
+  wzih = theFile.Get('wzih')
+  wzih.SetFillColor(d)
+  wzih.Rebin(rebin)
+  wzih.Scale(sf_vv)
+  wzih.Draw()
+  ###
+  zzih = theFile.Get('zzih')
+  zzih.SetFillColor(d)
+  zzih.Rebin(rebin)
+  zzih.Scale(sf_vv)
+  zzih.Draw()
+  ####
+  dih = wwih.Clone()
+  dih.SetName('dih')
+  dih.Add(wzih)
+  dih.Add(zzih)
   dih.Draw()
-  #raw_input("diboson)
+ #### Single Top
+  # s
+  t_sih = theFile.Get('t_sih')
+  t_sih.SetFillColor(ts)
+  t_sih.Rebin(rebin)
+  t_sih.Scale(sf_st)
+  t_sih.Draw()
   ###
-  stsih = theFile.Get('stsih')
-  stsih.SetFillColor(ts)
-  stsih.Rebin(rebin)
-  stsih.Scale(sf_st)
+  tb_sih = theFile.Get('tb_sih')
+  tb_sih.SetFillColor(ts)
+  tb_sih.Rebin(rebin)
+  tb_sih.Scale(sf_st)
+  tb_sih.Draw()
+  #### 
+  stsih = t_sih.Clone()
+  stsih.SetName('stsih')
+  stsih.Add(tb_sih)
   stsih.Draw()
-  #raw_input("single top t")
   ###
-  sttih = theFile.Get('sttih')
-  sttih.SetFillColor(tt)
-  sttih.Rebin(rebin)
-  sttih.Scale(sf_st)
+  # t
+  t_tih = theFile.Get('t_tih')
+  t_tih.SetFillColor(tt)
+  t_tih.Rebin(rebin)
+  t_tih.Scale(sf_st)
+  t_tih.Draw()
+  ###
+  tb_tih = theFile.Get('tb_tih')
+  tb_tih.SetFillColor(tt)
+  tb_tih.Rebin(rebin)
+  tb_tih.Scale(sf_st)
+  tb_tih.Draw()
+  #### 
+  sttih = t_tih.Clone()
+  sttih.SetName('sttih')
+  sttih.Add(tb_tih)
   sttih.Draw()
-  #raw_input("single top s")
   ###
-  sttwih = theFile.Get('sttwih')
-  sttwih.SetFillColor(ttw)
-  sttwih.Rebin(rebin)
-  sttwih.Scale(sf_st)
+  # tw
+  t_twih = theFile.Get('t_twih')
+  t_twih.SetFillColor(ttw)
+  t_twih.Rebin(rebin)
+  t_twih.Scale(sf_st)
+  t_twih.Draw()
+  ###
+  tb_twih = theFile.Get('tb_twih')
+  tb_twih.SetFillColor(ttw)
+  tb_twih.Rebin(rebin)
+  tb_twih.Scale(sf_st)
+  tb_twih.Draw()
+  #### 
+  sttwih = t_twih.Clone()
+  sttwih.SetName('sttwih')
+  sttwih.Add(tb_twih)
   sttwih.Draw()
-  #raw_input("single top tw")
-  ###
+ #### TTbar
   ttbih = theFile.Get('ttbih')
   ttbih.SetFillColor(ttb)
   ttbih.Rebin(rebin)
   ttbih.Scale(sf_ttbar)
   ttbih.Draw()
-  #raw_input("ttbar")
 
   bmin = ttbih.GetXaxis().FindBin(xmin)
   bmax = ttbih.GetXaxis().FindBin(xmax)
@@ -278,7 +322,8 @@ for leaf in leafs:
  
   hs = THStack('hs','')
   hs.SetTitle('')
-  hs.Add(qh)
+  if drawQCD:
+   hs.Add(qh)
   hs.Add(zih)
   hs.Add(dih)
   hs.Add(sttih)
@@ -292,7 +337,8 @@ for leaf in leafs:
  
   hs.Draw()
   hs.GetXaxis().SetTitle(xlabel)
- # hs.GetXaxis().SetRangeUser(50,140)
+  if leaf=="Mt":
+   hs.GetXaxis().SetRangeUser(50,140)
   hs.GetYaxis().SetTitleOffset(1.5)
   hs.GetYaxis().SetTitle(ylabel)
   hsmax = hs.GetMaximum()
@@ -310,23 +356,31 @@ for leaf in leafs:
   leg.AddEntry(sttih,'t_t','f')
   leg.AddEntry(dih,'WW,WZ,ZZ','f')
   leg.AddEntry(zih,'Drell-Yan','f')
-  leg.AddEntry(qh,'QCD','f')
+  if drawQCD:
+   leg.AddEntry(qh,'QCD','f')
   leg.SetFillColor(0)
   leg.SetBorderSize(0)
- 
-  if dmax>hsmax:
-   hs.SetMaximum(1.2*dmax)
-  else:
-   hs.SetMaximum(1.2*hsmax)
+  
+  theMax = max(dmax,hsmax) 
+  hs.SetMaximum(1.2*theMax)
   c.cd()
   p1.cd()
   hs.Draw()
   dataih.Draw('sames')
   leg.Draw('sames')
-  cpr.prelim(lumi)
+  cpr.prelim_alt(lumi)
   tex.SetTextAlign(11)#left, bottom
   tex.DrawLatex(0.17,0.9,title)
- 
+  ## Draw Z Line
+  if drawZ == True:
+   zline = TLine(91.188,0,91.188,1.1*theMax)
+   zline.SetLineStyle(3)
+   zline.Draw()
+  ## Draw W Line
+  if drawW == True:
+   wline = TLine(80.385,0,80.385,1.1*theMax)
+   wline.SetLineStyle(3)
+   wline.Draw()
   c.Update()
  #####
   c.cd()
@@ -338,7 +392,8 @@ for leaf in leafs:
   datar = TH1F('datar','datar',steps,xmin,xmax)
   hh = TH1F('hh','hh',steps,xmin,xmax)
   hh.Rebin(rebin)
-  hh.Add(qh)
+  if drawQCD:
+   hh.Add(qh)
   hh.Add(zih)
   hh.Add(dih)
   hh.Add(sttih)
@@ -352,22 +407,24 @@ for leaf in leafs:
  #
   datar = dataih.Clone()
   datar.SetName('datar')
- # datar.GetXaxis().SetRangeUser(50,140)
+  if leaf =="Mt":
+   datar.GetXaxis().SetRangeUser(50,140)
   datar.GetYaxis().SetRangeUser(0.8,1.2) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
   
-  if 1 > 2:
-   print('something is wrong')
+  if leaf=="Mt":
+   l = TLine(50,1,140,1)
+   l.SetLineStyle(3)
+   l.Draw()
   else:
    l = TLine(xmin,1,xmax,1)
- #  l = TLine(50,1,140,1)
    l.SetLineStyle(3)
    l.Draw()
   c.Update()
-  save2 = raw_input ('Press Enter to Continue (type save to save)\n')
-  if save2 == 'save':
-   c.Print(path+i+'.png')
-#  c.Print(path+i+'.png')
+#  save2 = raw_input ('Press Enter to Continue (type save to save)\n')
+#  if save2 == 'save':
+#   c.Print(path+i+'.png')
+  c.Print(path+i+'.png')
   c.Close()
