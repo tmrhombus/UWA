@@ -26,7 +26,7 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
   global TriggerPaths
   TriggerPaths= triggerPaths
   process.analysisSequence = cms.Sequence()
-  #
+
   #Add trigger Matching
   muonTriggerMatchPT(process,triggerProcess)
   electronTriggerMatchPT(process,triggerProcess)
@@ -34,7 +34,6 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
 
   #Build good vertex collection
   goodVertexFilter(process)
-  #
 
   #jetMCMatching(process,"selectedPatJets")
   jetOverloading(process,"selectedPatJets")#patJetMCMatched
@@ -44,12 +43,26 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
   applyDefaultSelectionsPT(process)
   #Default selections for systematics
 
-
   #Build MVA MET
   #mvaMet(process)
   genHadrons(process)
 
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
+
+##### Rochester Corrections?
+  process.corrMuons = cms.EDProducer("PATMuonCalibrationChooser",
+   src = cms.InputTag("looseMu"),
+   rochcorType = cms.string("RochCor2012") # Rochester Correction types: RochCor2011A, RochCor2011B, RochCor2012
+  #rochcorType = cms.string(rochCor) # Rochester Correction types: RochCor2011A, RochCor2011B, RochCor2012
+  )
+  process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
+   #src = cms.InputTag("corrMuons"),
+   src = cms.InputTag("looseMu"),
+   #isMC = cms.bool(isMC),
+   isMC = cms.bool(True),
+   isSync = cms.bool(True), #use fake smearing for synchronization purposes
+   #isSync = cms.bool(isSync), #use fake smearing for synchronization purposes
+  )
 
 def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_Mu9','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v2','HLT_Mu15_v1','HLT_Mu15_v2']):
   process.load("UWAnalysis.Configuration.startUpSequence_cff")
