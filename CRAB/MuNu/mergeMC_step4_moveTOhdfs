@@ -1,5 +1,9 @@
-gsido  #you must call this prior to running this script
+# you must call these two before running the script
+#voms-proxy-init
+#gsido  
 cd /hdfs/store/user/tperry/
 
+mkdir v3
+cd v3
 mv /scratch/tperry/v3 ./
 exit  #leave gsido environment

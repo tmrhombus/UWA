@@ -1,0 +1,6 @@
+cd /scratch/$USER/v3/
+rm -rf Drell
+rm -rf SingleTop
+rm -rf TTbar
+rm -rf VV
+rm -rf W
