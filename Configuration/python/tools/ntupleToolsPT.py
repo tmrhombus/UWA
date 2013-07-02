@@ -1915,7 +1915,7 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                                J2track1Pt = cms.PSet(
                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                   src        = cms.InputTag(src),
-                                  tag        = cms.string("J1Track1Pt"),
+                                  tag        = cms.string("J2Track1Pt"),
                                   method     = cms.string('(userFloat("SSV_track1_px")^2+userFloat("SSV_track1_py")^2+userFloat("SSV_track1_pz")^2)^(1/2)'),
                                   rank       = cms.untracked.double(1)
                               ),
