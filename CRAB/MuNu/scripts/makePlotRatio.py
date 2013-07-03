@@ -13,8 +13,6 @@ import parameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
 sf_qcd = 4.21767
-#sf_qcd = 1+(486395.0-(70228.7539062+3820.58770752+261.598018646+3045.22140503+3501.15155029+40844.8603516+30151.6518555+3103.32769775+65838.4931641+52626.2958984+39184.6586914+41183.0043945))/(41183.0043945) # Mt > 0. && 0.98 eff correction
-# sf_qcd   = 1+(486395.0-(71661.6357422+3898.57788086+266.936691284+3107.36975098+3572.60089111+41678.2138672+30766.9594727+3166.66146851+67181.9228516+53699.9023438+39984.6865234+41038.4926758))/(41038.4926758) # Mt > 0. no eff correction
 
 sf_drell = 1.# 3503.71 / 3.02386400000000000e+07
 sf_st    = 1.# 22.2    / 9.91118000000000000e+05
@@ -23,12 +21,13 @@ sf_wjets = 1.# 37509.  / 5.31329400000000000e+07
 sf_vv    = 1.
  
 #canvas attributes
-# for single plot on page
-canx = 700 
+canx = 800 # for one plot on page
+#canx = 550 # for two plots on page with text
+#canx = 600 # for two plots on page just title
+#canx = 500 # for three plots on page with text
+#canx = 400 # for three plots on page with just title
+
 cany = 900
-# for three plots on page
-#canx = 500
-#cany = 900
 
 #color scheme
 d = 1
@@ -51,14 +50,14 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting = p.arams() 
 for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
- rebin = 1
+ rebin = 3
  xlabel = xtitle+' ['+xunits+']'
- ylabel = 'Events/ %.001f' %(float((xmax-xmin))/(steps*rebin))
+ ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps*rebin))
  title = xtitle #+' Data v MC'
  
  name = []
@@ -73,19 +72,21 @@ for leaf in leafs:
   p1.SetLogy(setLogY)
   theFile = TFile(path+i+'.root')
   
-  dataih = theFile.Get('dataih')
-  dataih.Rebin(rebin)
-  dataih.Sumw2()
-  dataih.SetMarkerStyle(22)
-  dataih.SetMarkerSize(1.2)
-  dmax = dataih.GetMaximum()
+  if drawData:
+   dataih = theFile.Get('dataih')
+   dataih.Rebin(rebin)
+   dataih.Sumw2()
+   dataih.SetMarkerStyle(22)
+   dataih.SetMarkerSize(1.2)
+   dmax = dataih.GetMaximum()
   
- #### QCD
-  qh = theFile.Get('qh')
-  qh.SetFillColor(q)
-  qh.Rebin(rebin)
-  qh.Scale(sf_qcd)
-  qh.Draw()
+  if drawQCD:
+  #### QCD
+   qh = theFile.Get('qh')
+   qh.SetFillColor(q)
+   qh.Rebin(rebin)
+   qh.Scale(sf_qcd)
+   qh.Draw()
  #### Drell
   zih = theFile.Get('zih')
   zih.SetFillColor(z)
@@ -337,6 +338,7 @@ for leaf in leafs:
  
   hs.Draw()
   hs.GetXaxis().SetTitle(xlabel)
+  hs.GetXaxis().SetRangeUser(xmin,xmax)
   if leaf=="Mt":
    hs.GetXaxis().SetRangeUser(50,140)
   hs.GetYaxis().SetTitleOffset(1.5)
@@ -344,12 +346,13 @@ for leaf in leafs:
   hsmax = hs.GetMaximum()
   
   leg=TLegend(0.68,0.2,0.9,0.8)
-  leg.AddEntry(dataih,'data')
+  if drawData:
+   leg.AddEntry(dataih,'data')
  
   leg.AddEntry(wlih,'W(#mu#nu)+light','f')
   leg.AddEntry(wcih,'W(#mu#nu)+c','f')
-  leg.AddEntry(wccih,'W(#mu#nu)+cc','f')
-  leg.AddEntry(wbbih,'W(#mu#nu)+bb','f')
+  leg.AddEntry(wccih,'W(#mu#nu)+c#bar{c}','f')
+  leg.AddEntry(wbbih,'W(#mu#nu)+b#bar{b}','f')
   leg.AddEntry(ttbih,'t#bar{t}','f')
   leg.AddEntry(sttwih,'t_tW','f')
   leg.AddEntry(stsih,'t_s','f')
@@ -361,12 +364,14 @@ for leaf in leafs:
   leg.SetFillColor(0)
   leg.SetBorderSize(0)
   
-  theMax = max(dmax,hsmax) 
+  theMax = hsmax 
+  #theMax = max(dmax,hsmax) 
   hs.SetMaximum(1.2*theMax)
   c.cd()
   p1.cd()
   hs.Draw()
-  dataih.Draw('sames')
+  if drawData:
+   dataih.Draw('sames')
   leg.Draw('sames')
   cpr.prelim_alt(lumi)
   tex.SetTextAlign(11)#left, bottom
@@ -405,11 +410,14 @@ for leaf in leafs:
   hh.Add(wcih)
   hh.Add(wlih)
  #
-  datar = dataih.Clone()
+  if drawData:
+   datar = dataih.Clone()
+  else:
+   datar = hh.Clone()
   datar.SetName('datar')
   if leaf =="Mt":
    datar.GetXaxis().SetRangeUser(50,140)
-  datar.GetYaxis().SetRangeUser(0.8,1.2) 
+  datar.GetYaxis().SetRangeUser(0.6,1.4) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
@@ -423,8 +431,10 @@ for leaf in leafs:
    l.SetLineStyle(3)
    l.Draw()
   c.Update()
-#  save2 = raw_input ('Press Enter to Continue (type save to save)\n')
-#  if save2 == 'save':
-#   c.Print(path+i+'.png')
-  c.Print(path+i+'.png')
+  print('you are on '+leaf)
+  save2 = raw_input ('Press Enter to Continue (type save to save)\n')
+  if save2 == 'save':
+   c.Print(path+i+'.png')
+#  c.Print(path+i+'.png')
+  print('')
   c.Close()
