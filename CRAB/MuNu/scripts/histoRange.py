@@ -104,19 +104,25 @@ def ranger(leaf):
    xmax = 11.
    xtitle = leaf
    xunits = 'xx'
- elif leaf=='J1CVSbtag'or'J1CSVMVAbtag'or'J2CVSbtag'or'J2CSVMVAbtag':
+ elif leaf=='J1CSVbtag'or leaf=='J1CSVMVAbtag'or leaf=='J2CSVbtag'or leaf=='J2CSVMVAbtag':
    steps = 20
    xmin = 0.
    xmax = 1.
    xtitle = leaf
    xunits = 'xx'
    setLogY = True
- elif leaf=='J1DR'or'J2DR':
+ elif leaf=='J1DR'or leaf=='J2DR':
    steps = 20
    xmin = 0.
    xmax = 1.
    xtitle = leaf
    xunits = 'xx'
+ elif leaf=='J1JetParton' or leaf =='J2JetParton':
+   steps = 14
+   xmin = -7.
+   xmax = 7.
+   xtitle = leaf
+   xunits = 'flavor'
  else :
    print("\n\n")
    print "YOU ARE A NINNY! The leaf's name isn't valid"
