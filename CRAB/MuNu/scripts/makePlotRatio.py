@@ -50,12 +50,13 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region = p.arams() 
+
 for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
- rebin = 3
+ rebin = 1
  xlabel = xtitle+' ['+xunits+']'
  ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps*rebin))
  title = xtitle #+' Data v MC'

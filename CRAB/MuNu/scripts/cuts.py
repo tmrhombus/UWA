@@ -4,7 +4,7 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=13498.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',wSplitting='had'):
+def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=13498.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,wSplitting='had',Control=True,Z_Region=False):
  
  Control = True
  Z_Region   = False
@@ -13,11 +13,19 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=13498.,bnr=0,btype='t',jn
  muon_selection = '(nMuons==1&&abs(muonEta)<2.1&&muonPt>25)'
  dimuon_selection = '(nMuons==2&&abs(muonEta)<2.1&&muonPt>25)'
  vertex = '(abs(dz)<0.5&&abs(l1DXY)<0.02)'
- twoJets = '(nJetsPt'+njetPt+' == 2 && highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.5 && abs(secondJetEta)<2.5)'
- #twoJets = '(nJetsPt'+njetPt+' >= 2 && highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.5 && abs(secondJetEta)<2.5)'
- threeJets = '('+twoJets+'&& nJetsPt'+njetPt+' >= 3 && thirdJetPt > '+jetPt+' && abs(thirdJetEta)<2.5)'
- fourJets = '('+threeJets+'&& nJetsPt'+njetPt+' >= 4 && mJ3J4 > 0)'
  mt = '(Mt>50)'
+
+ twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.5 && abs(secondJetEta)<2.5)'
+ thJ = '('+twJ+'&& thirdJetPt >'+jetPt+' && abs(thirdJetEta)<2.5)'
+ frJ = '('+thJ+'&& mJ3J4 > 0)'
+ if not jetVeto:
+  twoJets   = '('+twJ+' && nJetsPt'+njetPt'>=2)'
+  threeJets = '('+thJ+' && nJetsPt'+njetPt'>=3)'
+  fourJets  = '('+frJ+' && nJetsPt'+njetPt'>=4)'
+ if jetVeto:
+  twoJets   = '('+twJ+' && nJetsPt'+njetPt'==2)'
+  threeJets = '('+thJ+' && nJetsPt'+njetPt'==3)'
+  fourJets  = '('+frJ+' && nJetsPt'+njetPt'==4)'
 
  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+')'
  Iso='(lPFIsoDB<'+str(isolationValue)+')'

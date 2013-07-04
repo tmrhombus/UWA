@@ -16,16 +16,6 @@ import parameters as p
 
 #import scaleqcd as qs
 
-## define some parameters to be used in ct.cutmaker
-#iso_value = 0.12
-#antiIso_value = 0.2
-#lumi = 13498. #luminosity 
-#bNr = 0 #number of btags
-#btype = 't' # t , m , l
-#jNr = 2 #number of jets
-#I = 0 # for integration initial bin
-#F = 20 # final bin
- 
 qcdRescale = False
 tRescale = False
 ttRescale = False
@@ -39,10 +29,10 @@ sf_wjets = 1. # 37509.  / 5.31329400000000000e+07
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region = p.arams() 
 
 CutsMCn,CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
- iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,wSplitting
+ iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,wSplitting,Control,Z_Region
 )
 
 data_filename  = '../data/wMuNuData.root'
