@@ -1,0 +1,13 @@
+wMuNuData.root   1       1
+WJets.root	 37509   56359000 
+TTbar.root       225.197 6776900 
+Drell.root       3503    30225660 
+T_t.root          56.4   99876
+T_s.root          3.79   259961 
+Tbar_t.root       30.7   1888396
+Tbar_s.root       1.76   139974
+T_tW.root        11.1    476157  
+Tbar_tW.root     11.1    482716 
+WZ.root          33.21   9720478 
+WW.root          54.838  9187017 
+ZZ.root          8.059   9673776  
