@@ -51,7 +51,7 @@ def ranger(leaf):
    xtitle = '#phi^{#mu}'
    xunits = 'xx'
  elif leaf == 'ht':
-   steps = 100
+   steps = 50
    xmin = 50.
    xmax = 400.
    xtitle = 'h_{T}'
@@ -69,7 +69,7 @@ def ranger(leaf):
    xtitle = leaf
    xunits = 'xx'
  elif leaf == 'highestJetPt' or leaf=='secondJetPt' or leaf=='thirdJetPt':
-   steps = 100
+   steps = 50
    xmin = 0.
    xmax = 200.
    xtitle = leaf

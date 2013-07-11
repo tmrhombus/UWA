@@ -12,7 +12,9 @@ import cmsPrelim as cpr
 import parameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
-sf_qcd = 4.21767
+sf_qcd = 1.34517 # for legacy cuts 
+#sf_qcd = 2.73457 # for legacy cuts old data
+#sf_qcd = 4.21767 # for my cuts old data
 
 sf_drell = 1.# 3503.71 / 3.02386400000000000e+07
 sf_st    = 1.# 22.2    / 9.91118000000000000e+05
@@ -50,13 +52,13 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region,legacy = p.arams() 
 
 for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
- rebin = 1
+ rebin = 2
  xlabel = xtitle+' ['+xunits+']'
  ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps*rebin))
  title = xtitle #+' Data v MC'
@@ -340,7 +342,7 @@ for leaf in leafs:
   hs.Draw()
   hs.GetXaxis().SetTitle(xlabel)
   hs.GetXaxis().SetRangeUser(xmin,xmax)
-  if leaf=="Mt":
+  if leaf=="Mt" and not legacy:
    hs.GetXaxis().SetRangeUser(50,140)
   hs.GetYaxis().SetTitleOffset(1.5)
   hs.GetYaxis().SetTitle(ylabel)
@@ -366,7 +368,8 @@ for leaf in leafs:
   leg.SetBorderSize(0)
   
   theMax = hsmax 
-  #theMax = max(dmax,hsmax) 
+  if drawData:
+   theMax = max(dmax,hsmax) 
   hs.SetMaximum(1.2*theMax)
   c.cd()
   p1.cd()
@@ -416,14 +419,14 @@ for leaf in leafs:
   else:
    datar = hh.Clone()
   datar.SetName('datar')
-  if leaf =="Mt":
+  if leaf =="Mt" and not legacy:
    datar.GetXaxis().SetRangeUser(50,140)
   datar.GetYaxis().SetRangeUser(0.6,1.4) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
   
-  if leaf=="Mt":
+  if leaf=="Mt" and not legacy:
    l = TLine(50,1,140,1)
    l.SetLineStyle(3)
    l.Draw()
