@@ -29,13 +29,13 @@ int main (int argc, char* argv[]) {
  TFile fPU,fPU2,fPU22,fPU3,fPU4;
 
  std::string base = std::getenv("CMSSW_BASE");
- std::string fPUloc =     "/src/UWAnalysis/CRAB/MuNu/pileup/puInfo2012.root";
- std::string fPU3Dloc =   "/src/UWAnalysis/CRAB/MuNu/pileup/puInfo3D.root";
- std::string fPUMC3Dloc = "/src/UWAnalysis/CRAB/MuNu/pileup/puInfoMC3D.root";
- std::string fPUW3Dloc =  "/src/UWAnalysis/CRAB/MuNu/pileup/Weight3D.root";
+ std::string fPUloc =     "/src/UWAnalysis/CRAB/MuNu/weights/puInfo2012.root";
+ std::string fPU3Dloc =   "/src/UWAnalysis/CRAB/MuNu/weights/puInfo3D.root";
+ std::string fPUMC3Dloc = "/src/UWAnalysis/CRAB/MuNu/weights/puInfoMC3D.root";
+ std::string fPUW3Dloc =  "/src/UWAnalysis/CRAB/MuNu/weights/Weight3D.root";
  std::string fPUW3Dbloc = "/src/UWAnalysis/CRAB/MuNu/data/Weight3D.root";
- std::string fPUMCloc =   "/src/UWAnalysis/CRAB/MuNu/pileup/MC_Summer12_PU_S10-600bins.root";
- std::string fPUDATAloc = "/src/UWAnalysis/CRAB/MuNu/pileup/Data_Pileup_2012_ReReco-600bins.root";
+ std::string fPUMCloc =   "/src/UWAnalysis/CRAB/MuNu/weights/MC_Summer12_PU_S10-600bins.root";
+ std::string fPUDATAloc = "/src/UWAnalysis/CRAB/MuNu/weights/Data_Pileup_2012_ReReco-600bins.root";
  std::string fPUname =     base+fPUloc;
  std::string fPU3Dname =   base+fPU3Dloc ;
  std::string fPUMC3Dname = base+fPUMC3Dloc;
