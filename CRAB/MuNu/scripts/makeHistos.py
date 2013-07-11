@@ -29,10 +29,10 @@ sf_wjets = 1. # 37509.  / 5.31329400000000000e+07
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region,legacy = p.arams() 
 
 CutsMCn,CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
- iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,wSplitting,Control,Z_Region
+ iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,wSplitting,Control,Z_Region,legacy
 )
 
 data_filename  = '../data/wMuNuData.root'
