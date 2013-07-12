@@ -218,55 +218,44 @@ class CompositePtrCandidateTMEtAlgorithm
       compositePtrCandidate.setGenMt(compMt(compositePtrCandidate.p4Leptongen(), compositePtrCandidate.trueMEx(),compositePtrCandidate.trueMEy()));
     }
 
-
     return compositePtrCandidate;
   }
 
  private: 
   void efficiencies(CompositePtrCandidateTMEt<T>& compositePtrCandidate){
-    edm::FileInPath file1("UWAnalysis/Configuration/data/MuonEfficiencies_11June2012_52X.root");
-    //edm::FileInPath file2("UWAnalysis/Configuration/data/eff_mu.root");
+
+    // Muon ID Eficiency   DATA_over_MC_Tight_eta_pt20-500  for each eta, mult by a factor
+    edm::FileInPath fileID("UWAnalysis/Configuration/data/MuonEfficiencies_Run2012ReReco_53X.root");
+    // Muon ISO Efficiency  DATA_over_MC_combRelIsoPF04dBeta<012_Tight_eta_pt20-500
+    edm::FileInPath fileIS("UWAnalysis/Configuration/data/MuonEfficiencies_ISO_Run_2012ReReco_53X.root");
+    // Muon Trigger Efficiency  IsoMu24_eta2p1_DATA_over_MC_TightID_ETA_pt25-500_2012ABCD
+    edm::FileInPath fileTR("UWAnalysis/Configuration/data/SingleMuonTriggerEfficiencies_eta2p1_Run2012ABCD_v5trees.root");
     
-    TFile *fc = new TFile(file1.fullPath().c_str());
-    //TFile *ft = new TFile(file2.fullPath().c_str());
-    //    readdir(fc,ft,lepton);
-    // }
+    TFile *fID = new TFile(fileID.fullPath().c_str());
+    TFile *fIS = new TFile(fileIS.fullPath().c_str());
+    TFile *fTR = new TFile(fileTR.fullPath().c_str());
 
-    //void readdir(TFile* fc, TFile* ft,const TPtr lepton){
-    //read directory
-
-    double pt = compositePtrCandidate.lepton()->pt();
     double eta = compositePtrCandidate.lepton()->eta();
-    float weightpt = 1.0;
-    float weighteta = 1.0;
+    float weight_etaID = 1.0;
+    float weight_etaIS = 1.0;
+    float weight_etaTR = 1.0;
 
-      RooHist *ptMCB_2012 = (RooHist*)fc->Get("MC_IsoMu24_eta2p1_TightIso_pt_abseta<1.2");
-      RooHist *ptMCE_2012 = (RooHist*)fc->Get("MC_IsoMu24_eta2p1_TightIso_pt_abseta>1.2");
+    TGraphAsymmErrors *gID = (TGraphAsymmErrors*)fID->Get("DATA_over_MC_Tight_eta_pt20-500");
+    TGraphAsymmErrors *gIS = (TGraphAsymmErrors*)fIS->Get("DATA_over_MC_combRelIsoPF04dBeta<012_Tight_eta_pt20-500");
+    TGraphAsymmErrors *gTR = (TGraphAsymmErrors*)fTR->Get("IsoMu24_eta2p1_DATA_over_MC_TightID_ETA_pt25-500_2012ABCD");
 
-      RooHist *ptDataB_2012 = (RooHist*)fc->Get("DATA_IsoMu24_eta2p1_TightIso_pt_abseta<1.2");
-      RooHist *ptDataE_2012 = (RooHist*)fc->Get("DATA_IsoMu24_eta2p1_TightIso_pt_abseta>1.2");
+    weight_etaID = (float) gID->Eval(eta);
+    weight_etaIS = (float) gIS->Eval(eta);
+    weight_etaTR = (float) gTR->Eval(eta);
 
-      if(fabs(eta)<1.2)//abs eta less than 1.2
-	{
-	  weightpt= (float) ptDataB_2012->Eval(pt)/(ptMCB_2012->Eval(pt));
+    compositePtrCandidate.setEffWEIGHTeta_ID(weight_etaID);
+    compositePtrCandidate.setEffWEIGHTeta_IS(weight_etaIS);
+    compositePtrCandidate.setEffWEIGHTeta_TR(weight_etaTR);
 
-	}
-      else if(fabs(eta)>=1.2)//abs eta greater than = 1.2
-	{
-	  weightpt = (float) ptDataE_2012->Eval(pt)/(ptMCE_2012->Eval(pt));
-	}
-
-      RooHist *etaData_2012 = (RooHist*)fc->Get("DATA_IsoMu24_eta2p1_TightIso_eta_pt26-100");
-      RooHist *etaMC_2012 = (RooHist*)fc->Get("MC_IsoMu24_eta2p1_TightIso_eta_pt26-100");
-      
-      if(pt>26)//abs eta less than 1.2
-	{
-	  weighteta = etaData_2012->Eval(eta)/etaMC_2012->Eval(eta);
-	}
-      compositePtrCandidate.setEffWEIGHTeta(weighteta);	
-      compositePtrCandidate.setEffWEIGHTpt(weightpt);	
-      fc->Close();
-      return;      
+    fID->Close();
+    fIS->Close();
+    fTR->Close();
+    return;      
   }
   
 

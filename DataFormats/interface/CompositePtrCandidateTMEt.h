@@ -131,8 +131,9 @@ class CompositePtrCandidateTMEt : public reco::LeafCandidate
   double SFCSVT2T() const {return SFCSVT2T_;}
   double SFSSVHE1T() const {return SFSSVHE1T_;}
   double SFSSVHE2T() const {return SFSSVHE2T_;}
-  double EffWEIGHTpt() const {return EffWEIGHTpt_;}
-  double EffWEIGHTeta() const {return EffWEIGHTeta_; }
+  double EffWEIGHTeta_ID() const {return EffWEIGHTeta_ID_; }
+  double EffWEIGHTeta_IS() const {return EffWEIGHTeta_IS_; }
+  double EffWEIGHTeta_TR() const {return EffWEIGHTeta_TR_; }
   double metjj() const {return metjj_;}
   double leptonjj() const {return leptonjj_;}
 
@@ -190,8 +191,9 @@ class CompositePtrCandidateTMEt : public reco::LeafCandidate
   void setSFCSVT2T(double SFCSVT2T) { SFCSVT2T_ = SFCSVT2T; }
   void setSFSSVHE1T(double SFSSVHE1T) { SFSSVHE1T_ = SFSSVHE1T; }
   void setSFSSVHE2T(double SFSSVHE2T) { SFSSVHE2T_ = SFSSVHE2T; }
-  void setEffWEIGHTpt(double EffWEIGHTpt) { EffWEIGHTpt_ = EffWEIGHTpt; }
-  void setEffWEIGHTeta(double EffWEIGHTeta) { EffWEIGHTeta_ = EffWEIGHTeta; }
+  void setEffWEIGHTeta_IS(double EffWEIGHTeta_IS) { EffWEIGHTeta_IS_ = EffWEIGHTeta_IS; }
+  void setEffWEIGHTeta_ID(double EffWEIGHTeta_ID) { EffWEIGHTeta_ID_ = EffWEIGHTeta_ID; }
+  void setEffWEIGHTeta_TR(double EffWEIGHTeta_TR) { EffWEIGHTeta_TR_ = EffWEIGHTeta_TR; }
   void setMassZ(double massZ) { massZ_ = massZ; }
   void setMt(double mt) { mt_ = mt; }
   void setPx(double px) { px_ = px; }
@@ -267,8 +269,9 @@ class CompositePtrCandidateTMEt : public reco::LeafCandidate
   double corPy_;
   double corPt_;
 
-  double EffWEIGHTeta_;
-  double EffWEIGHTpt_;
+  double EffWEIGHTeta_IS_;
+  double EffWEIGHTeta_ID_;
+  double EffWEIGHTeta_TR_;
 
   reco::Candidate::LorentzVector calibratedMET_;
 

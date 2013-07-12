@@ -2203,20 +2203,41 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                                    method     = cms.string("SFSSVHE2"),
                                    leadingOnly=cms.untracked.bool(True)
                                ),
-                               muNuEffTrig = cms.PSet(
+#                               muNuEffTrig = cms.PSet(
+#                                   pluginType = cms.string("PATMuonNuPairFiller"),
+#                                   src        = cms.InputTag(src),
+#                                   tag        = cms.string("EffWEIGHTeta"),
+#                                   method     = cms.string("EffWEIGHTeta"),
+#                                   leadingOnly=cms.untracked.bool(True)
+#                               ),
+                               muNuEffTrig_IS = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairFiller"),
                                    src        = cms.InputTag(src),
-                                   tag        = cms.string("EffWEIGHTeta"),
-                                   method     = cms.string("EffWEIGHTeta"),
+                                   tag        = cms.string("weightEtaMuonIso"),
+                                   method     = cms.string("EffWEIGHTeta_IS"),
                                    leadingOnly=cms.untracked.bool(True)
                                ),
-                               muNuEffPt = cms.PSet(
+                               muNuEffTrig_ID = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairFiller"),
                                    src        = cms.InputTag(src),
-                                   tag        = cms.string("EffWEIGHTpt"),
-                                   method     = cms.string("EffWEIGHTpt"),
+                                   tag        = cms.string("weightEtaMuonID"),
+                                   method     = cms.string("EffWEIGHTeta_ID"),
                                    leadingOnly=cms.untracked.bool(True)
                                ),
+                               muNuEffTrig_TR = cms.PSet(
+                                   pluginType = cms.string("PATMuonNuPairFiller"),
+                                   src        = cms.InputTag(src),
+                                   tag        = cms.string("weightEtaMuonTrig"),
+                                   method     = cms.string("EffWEIGHTeta_TR"),
+                                   leadingOnly=cms.untracked.bool(True)
+                               ),
+#                               muNuEffPt = cms.PSet(
+#                                   pluginType = cms.string("PATMuonNuPairFiller"),
+#                                   src        = cms.InputTag(src),
+#                                   tag        = cms.string("EffWEIGHTpt"),
+#                                   method     = cms.string("EffWEIGHTpt"),
+#                                   leadingOnly=cms.untracked.bool(True)
+#                               ),
                                muonPt = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairFiller"),
                                    src        = cms.InputTag(src),
