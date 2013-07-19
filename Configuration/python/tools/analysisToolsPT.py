@@ -38,14 +38,15 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
   #ReNameJetColl(process)
   ReRunJetsMC(process)            
 
-  BTAGGING(process)
+  #BTAGGING(process)
   ##jetMCMatching(process,"NewSelectedPatJets")
   jetOverloading(process,"NewSelectedPatJets")#patJetMCMatched   
   BpmReconstruction(process,"patOverloadedJets")   
-#  BReconstruction(process,"patBpmRecoJets")  
+  BReconstruction(process,"patBpmRecoJets")  
 
   rochesterCorrections(process)
-  applyDefaultSelectionsPT(process,"patOverloadedJets","recorrMuons")  #default selections (for systematics)
+  applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")  #default selections (for systematics)
+  #applyDefaultSelectionsPT(process,"patOverloadedJets","recorrMuons")  #default selections (for systematics)
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
   #mvaMet(process) #Build MVA MET
@@ -348,99 +349,99 @@ def ReNameJetColl(process):
   process.reNameJetPath = cms.Path(process.reNameJetSeq)
 
 
-def BTAGGING(process):
-  process.load('RecoVertex/AdaptiveVertexFinder/inclusiveVertexing_cff')
-  process.load('RecoBTag/SecondaryVertex/bToCharmDecayVertexMerger_cfi')
-    
-  process.ak5JetTracksAssociatorAtVertex= cms.EDProducer("JetTracksAssociatorAtVertex",
-      tracks = cms.InputTag("generalTracks"),
-      jets = cms.InputTag("ak5PFJets"),
-      coneSize = cms.double(0.5)
-  )
-  
-  process.load('RecoBTag/ImpactParameter/impactParameter_cff')
-  process.load('RecoBTag/SecondaryVertex/secondaryVertex_cff')
-  
-  process.btagging = cms.Sequence(
-   (
-   # impact parameters and IP-only algorithms
-    impactParameterTagInfos *
-    (trackCountingHighEffBJetTags +
-     trackCountingHighPurBJetTags +
-     jetProbabilityBJetTags +
-     jetBProbabilityBJetTags +
-     # SV tag infos depending on IP tag infos, and SV (+IP) based algos
-     secondaryVertexTagInfos *
-     (simpleSecondaryVertexHighEffBJetTags +
-      simpleSecondaryVertexHighPurBJetTags +
-      combinedSecondaryVertexBJetTags +
-      combinedSecondaryVertexMVABJetTags
-     )+
-     secondaryVertexNegativeTagInfos*
-     simpleSecondaryVertexNegativeHighEffBJetTags+
-     ghostTrackVertexTagInfos *
-     ghostTrackBJetTags
-    )
-   ))
-  
-  process.patJetsForBTagging = cms.EDProducer("PATJetProducer",
-    addJetCharge = cms.bool(False),
-    addGenJetMatch = cms.bool(False),
-    embedPFCandidates = cms.bool(False),
-    embedGenJetMatch = cms.bool(False),
-    addAssociatedTracks = cms.bool(False),
-    addGenPartonMatch = cms.bool(False),
-    genPartonMatch = cms.InputTag(""),
-    addTagInfos = cms.bool(True),
-    addPartonJetMatch = cms.bool(False),
-    embedGenPartonMatch = cms.bool(False),
-    jetSource = cms.InputTag("ak5PFJets"),
-    addEfficiencies = cms.bool(False),
-    trackAssociationSource = cms.InputTag("ak5JetTracksAssociatorAtVertex"),
-    tagInfoSources = cms.VInputTag(
-      cms.InputTag("impactParameterTagInfos"), 
-      cms.InputTag("secondaryVertexTagInfos"), 
-      cms.InputTag("secondaryVertexNegativeTagInfos"),
-      # cms.InputTag("softMuonTagInfos")
-    ),
-    discriminatorSources = cms.VInputTag(
-      cms.InputTag("jetBProbabilityBJetTags"), 
-      cms.InputTag("jetProbabilityBJetTags"), 
-      cms.InputTag("trackCountingHighPurBJetTags"), 
-      cms.InputTag("trackCountingHighEffBJetTags"),
-      cms.InputTag("simpleSecondaryVertexHighEffBJetTags"), 
-      cms.InputTag("simpleSecondaryVertexHighPurBJetTags"),
-      cms.InputTag("combinedSecondaryVertexBJetTags"),
-      cms.InputTag("combinedSecondaryVertexMVABJetTags"),
-      cms.InputTag("simpleInclusiveSecondaryVertexHighEffBJetTags"),
-      cms.InputTag("simpleInclusiveSecondaryVertexHighPurBJetTags"),
-      cms.InputTag("doubleSecondaryVertexHighEffBJetTags"),
-      #cms.InputTag("softMuonBJetTags"),
-      # cms.InputTag("softMuonByPtBJetTags"), cms.InputTag("softMuonByIP3dBJetTags")
-    ),
-    addBTagInfo = cms.bool(True),
-    embedCaloTowers = cms.bool(False),
-    addResolutions = cms.bool(False),
-    getJetMCFlavour = cms.bool(False),
-    addDiscriminators = cms.bool(True),
-    jetChargeSource = cms.InputTag("patJetCharge"),
-    addJetCorrFactors = cms.bool(False),
-    jetIDMap = cms.InputTag("ak5JetID"),
-    addJetID = cms.bool(False)
-  )
-  
-  process.reDOBTAGGING = cms.Path(
-     process.inclusiveVertexing *
-     process.inclusiveMergedVerticesFiltered *
-     process.bToCharmDecayVertexMerged * 
-     process.ak5JetTracksAssociatorAtVertex * 
-     process.btagging * 
-     process.inclusiveSecondaryVertexFinderTagInfosFiltered *
-     process.simpleInclusiveSecondaryVertexHighEffBJetTags *
-     process.simpleInclusiveSecondaryVertexHighPurBJetTags *
-     process.doubleSecondaryVertexHighEffBJetTags * 
-     process.patJetsForBTagging
-  )
+#def BTAGGING(process):
+#  process.load('RecoVertex/AdaptiveVertexFinder/inclusiveVertexing_cff')
+#  process.load('RecoBTag/SecondaryVertex/bToCharmDecayVertexMerger_cfi')
+#    
+#  process.ak5JetTracksAssociatorAtVertex= cms.EDProducer("JetTracksAssociatorAtVertex",
+#      tracks = cms.InputTag("generalTracks"),
+#      jets = cms.InputTag("ak5PFJets"),
+#      coneSize = cms.double(0.5)
+#  )
+#  
+#  process.load('RecoBTag/ImpactParameter/impactParameter_cff')
+#  process.load('RecoBTag/SecondaryVertex/secondaryVertex_cff')
+#  
+#  process.btagging = cms.Sequence(
+#   (
+#   # impact parameters and IP-only algorithms
+#    impactParameterTagInfos *
+#    (trackCountingHighEffBJetTags +
+#     trackCountingHighPurBJetTags +
+#     jetProbabilityBJetTags +
+#     jetBProbabilityBJetTags +
+#     # SV tag infos depending on IP tag infos, and SV (+IP) based algos
+#     secondaryVertexTagInfos *
+#     (simpleSecondaryVertexHighEffBJetTags +
+#      simpleSecondaryVertexHighPurBJetTags +
+#      combinedSecondaryVertexBJetTags +
+#      combinedSecondaryVertexMVABJetTags
+#     )+
+#     secondaryVertexNegativeTagInfos*
+#     simpleSecondaryVertexNegativeHighEffBJetTags+
+#     ghostTrackVertexTagInfos *
+#     ghostTrackBJetTags
+#    )
+#   ))
+#  
+#  process.patJetsForBTagging = cms.EDProducer("PATJetProducer",
+#    addJetCharge = cms.bool(False),
+#    addGenJetMatch = cms.bool(False),
+#    embedPFCandidates = cms.bool(False),
+#    embedGenJetMatch = cms.bool(False),
+#    addAssociatedTracks = cms.bool(False),
+#    addGenPartonMatch = cms.bool(False),
+#    genPartonMatch = cms.InputTag(""),
+#    addTagInfos = cms.bool(True),
+#    addPartonJetMatch = cms.bool(False),
+#    embedGenPartonMatch = cms.bool(False),
+#    jetSource = cms.InputTag("ak5PFJets"),
+#    addEfficiencies = cms.bool(False),
+#    trackAssociationSource = cms.InputTag("ak5JetTracksAssociatorAtVertex"),
+#    tagInfoSources = cms.VInputTag(
+#      cms.InputTag("impactParameterTagInfos"), 
+#      cms.InputTag("secondaryVertexTagInfos"), 
+#      cms.InputTag("secondaryVertexNegativeTagInfos"),
+#      # cms.InputTag("softMuonTagInfos")
+#    ),
+#    discriminatorSources = cms.VInputTag(
+#      cms.InputTag("jetBProbabilityBJetTags"), 
+#      cms.InputTag("jetProbabilityBJetTags"), 
+#      cms.InputTag("trackCountingHighPurBJetTags"), 
+#      cms.InputTag("trackCountingHighEffBJetTags"),
+#      cms.InputTag("simpleSecondaryVertexHighEffBJetTags"), 
+#      cms.InputTag("simpleSecondaryVertexHighPurBJetTags"),
+#      cms.InputTag("combinedSecondaryVertexBJetTags"),
+#      cms.InputTag("combinedSecondaryVertexMVABJetTags"),
+#      cms.InputTag("simpleInclusiveSecondaryVertexHighEffBJetTags"),
+#      cms.InputTag("simpleInclusiveSecondaryVertexHighPurBJetTags"),
+#      cms.InputTag("doubleSecondaryVertexHighEffBJetTags"),
+#      #cms.InputTag("softMuonBJetTags"),
+#      # cms.InputTag("softMuonByPtBJetTags"), cms.InputTag("softMuonByIP3dBJetTags")
+#    ),
+#    addBTagInfo = cms.bool(True),
+#    embedCaloTowers = cms.bool(False),
+#    addResolutions = cms.bool(False),
+#    getJetMCFlavour = cms.bool(False),
+#    addDiscriminators = cms.bool(True),
+#    jetChargeSource = cms.InputTag("patJetCharge"),
+#    addJetCorrFactors = cms.bool(False),
+#    jetIDMap = cms.InputTag("ak5JetID"),
+#    addJetID = cms.bool(False)
+#  )
+#  
+#  process.reDOBTAGGING = cms.Path(
+#     process.inclusiveVertexing *
+#     process.inclusiveMergedVerticesFiltered *
+#     process.bToCharmDecayVertexMerged * 
+#     process.ak5JetTracksAssociatorAtVertex * 
+#     process.btagging * 
+#     process.inclusiveSecondaryVertexFinderTagInfosFiltered *
+#     process.simpleInclusiveSecondaryVertexHighEffBJetTags *
+#     process.simpleInclusiveSecondaryVertexHighPurBJetTags *
+#     process.doubleSecondaryVertexHighEffBJetTags * 
+#     process.patJetsForBTagging
+#  )
 
 def muonTriggerMatchPT(process,triggerProcess):
    process.triggeredPatMuons = cms.EDProducer("MuonTriggerMatcher",

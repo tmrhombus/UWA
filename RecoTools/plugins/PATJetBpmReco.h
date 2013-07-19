@@ -98,22 +98,23 @@ class PATJetBpmReco : public edm::EDProducer {
 	std::vector<reco::PFCandidatePtr> secVertexBpmNoD0;
 
 	////adding D meson Code Here--> Take Vector of particles and loop
-	printf("Gets Here1\n");
-	const reco::SecondaryVertexTagInfo& secVertInfo = *jet.tagInfoSecondaryVertex("secondaryVertex");
-	printf("Gets Here2\n");
-	if(secVertInfo.nVertices()>0){
+	//const reco::SecondaryVertexTagInfo& secVertInfo = *jet.tagInfoSecondaryVertex("secondaryVertex");
+        const reco::SecondaryVertexTagInfo* secInfo = jet.tagInfoSecondaryVertex("secondaryVertex");
+	//if(secVertInfo.nVertices()>0){
+        if (secInfo && secInfo->vertexTracks().size()>0) {
 	  //float pt = secVertInfo.taggingVariables().size();//
 	  //printf("track IP 2d above Charm: %f\n",pt);
 std::cout<<"un"<<std::endl;
-	  const reco::Vertex&sv= secVertInfo.secondaryVertex(0);
+	  const reco::Vertex&sv= secInfo->secondaryVertex(0);
+	  //const reco::Vertex&sv= secInfo.secondaryVertex(0);
 	  //float pt = secVertInfo.taggingVariables().get(TaggingVariableName(41));//
 	  //printf("number sec vertices %i\n",secVertInfo.secondaryVertex(0));
 	  if ( sv.tracksSize()>1){
-//std::cout<<"deux"<<std::endl;
+std::cout<<"deux"<<std::endl;
 	    for(reco::Vertex::trackRef_iterator track = sv.tracks_begin(); track!= sv.tracks_end(); ++track){
-//std::cout<<"trios"<<std::endl;
+std::cout<<"trios"<<std::endl;
 	      for(unsigned int pfj=0;pfj<jet.getPFConstituents().size();++pfj) {
-//std::cout<<"quatre"<<std::endl;
+std::cout<<"quatre"<<std::endl;
 		pfcand = jet.getPFConstituents().at(pfj);
 std::cout<<"cinq"<<std::endl;
 		if(pfcand.isNonnull()){
