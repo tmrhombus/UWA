@@ -98,29 +98,38 @@ class PATJetBpmReco : public edm::EDProducer {
 	std::vector<reco::PFCandidatePtr> secVertexBpmNoD0;
 
 	////adding D meson Code Here--> Take Vector of particles and loop
-	//printf("Gets Here1\n");
+	printf("Gets Here1\n");
 	const reco::SecondaryVertexTagInfo& secVertInfo = *jet.tagInfoSecondaryVertex("secondaryVertex");
-	//printf("Gets Here2\n");
+	printf("Gets Here2\n");
 	if(secVertInfo.nVertices()>0){
 	  //float pt = secVertInfo.taggingVariables().size();//
 	  //printf("track IP 2d above Charm: %f\n",pt);
-
+std::cout<<"un"<<std::endl;
 	  const reco::Vertex&sv= secVertInfo.secondaryVertex(0);
 	  //float pt = secVertInfo.taggingVariables().get(TaggingVariableName(41));//
 	  //printf("number sec vertices %i\n",secVertInfo.secondaryVertex(0));
 	  if ( sv.tracksSize()>1){
-	    for(reco::Vertex::trackRef_iterator track = sv.tracks_begin(); track!= sv.tracks_end(); ++track)
+//std::cout<<"deux"<<std::endl;
+	    for(reco::Vertex::trackRef_iterator track = sv.tracks_begin(); track!= sv.tracks_end(); ++track){
+//std::cout<<"trios"<<std::endl;
 	      for(unsigned int pfj=0;pfj<jet.getPFConstituents().size();++pfj) {
+//std::cout<<"quatre"<<std::endl;
 		pfcand = jet.getPFConstituents().at(pfj);
-		if(pfcand.isNonnull())
-		  if(abs(pfcand->pdgId())==211&&pfcand->pt()>0.25&&pfcand->charge()!=0) ///create charged particle collection
-		    if((*track).key() == pfcand->trackRef().key())
+std::cout<<"cinq"<<std::endl;
+		if(pfcand.isNonnull()){
+std::cout<<"six"<<std::endl;
+		  if(abs(pfcand->pdgId())==211&&pfcand->pt()>0.25&&pfcand->charge()!=0){ ///create charged particle collection
+std::cout<<"sept"<<std::endl;
+		    if((*track).key() == pfcand->trackRef().key()){
 		      secVertexBpm.push_back(pfcand);
-		
+                    }
+                  }
+		}
 	      }
+            }
 	  }
 	}
-	
+std::cout<<"uno"<<std::endl;	
 	if(jet.pt()>20&&secVertexBpm.size()>1){
 	  math::PtEtaPhiMLorentzVector total(0,0,0,0);
 	  for(unsigned int k = 0; k<secVertexBpm.size()-1;k++){
@@ -175,6 +184,7 @@ class PATJetBpmReco : public edm::EDProducer {
 		  finalkaon = j;
 		  //printf("k= %i th particle pt %f, j= %i th particle pt %f \n",k,secVertexBpm.at(k)->pt(),j,secVertexBpm.at(j)->pt());
 		}
+std::cout<<"dos"<<std::endl;
 	      }
 
 	jet.addUserFloat("sec_massD0",massD0);
@@ -222,17 +232,19 @@ class PATJetBpmReco : public edm::EDProducer {
 		    printf("BPM mass %f\n",massBpm2);
 		  }
 		}
+std::cout<<"trace"<<std::endl;
 	}
 	jet.addUserFloat("sec_massBpm_charge",charge);
 	jet.addUserFloat("sec_massBpm",massBpm2);
 	/////////////
 
-
+std::cout<<"push push"<<std::endl;
 	jets->push_back(jet);
 
       }
-
+    std::cout<<"just before that"<<std::endl;
     iEvent.put(jets);
+    std::cout<<"almost to the end"<<std::endl;
   }
   
   // ----------member data ---------------------------
