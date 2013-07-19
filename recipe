@@ -46,4 +46,4 @@ cvs co -r V04-01-03      RecoLuminosity/LumiDB
 
 cvs co PhysicsTools/PythonAnalysis
 cvs co FWCore/PythonUtilities
-# RecoBTag/ImpactParameter
+# cvs co RecoBTag/ImpactParameter
