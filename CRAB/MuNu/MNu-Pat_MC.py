@@ -8,7 +8,7 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V10::All' #START52_V9
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(1000)
 )
 
 process.source = cms.Source("PoolSource",
@@ -75,12 +75,12 @@ addMuNuEventTreePt(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSorted
 addMuNuEventTreePt(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown')
 addMuNuEventTreePt(process,'muNuEventTreeJetUp','wCandsJetsUCEUp','diMuonsSortedUCEUp')
 addMuNuEventTreePt(process,'muNuEventTreeJetDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
-process.TFileService.fileName = cms.string('analysis_Maria_O_rochester.root') 
+process.TFileService.fileName = cms.string('analysis.root') 
 
-process.out = cms.OutputModule("PoolOutputModule",
- fileName = cms.untracked.string('/scratch/tperry/analysis_Maria_O_rochester.root'),
- outputCommands = cms.untracked.vstring(
-                       'keep *'),
- )
-process.e = cms.EndPath(process.out)
-
+# makes EDM output of all collections
+#process.out = cms.OutputModule("PoolOutputModule",
+# fileName = cms.untracked.string('/scratch/tperry/analysis.root'),
+# outputCommands = cms.untracked.vstring(
+#                       'keep *'),
+# )
+#process.e = cms.EndPath(process.out)
