@@ -16,6 +16,10 @@ process.source.inputCommands=cms.untracked.vstring(
  'drop *_patFinalStateEvent*_*_*'
 )
 
+process.load("FWCore.MessageLogger.MessageLogger_cfi")
+process.MessageLogger.cerr.threshold = 'ERROR'
+process.MessageLogger.cerr.FwkReport.reportEvery = 100000
+
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
 

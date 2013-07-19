@@ -1,5 +1,5 @@
 # merges from /scratch into /$CMSSW_BASE/.../data
-cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data
+cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/
 
 hadd WJets.root /scratch/$USER/v3/W/WJets/WJets_*.root
 hadd W1Jet.root /scratch/$USER/v3/W/W1Jet/W1Jet_*.root

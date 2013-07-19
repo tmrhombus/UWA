@@ -8,7 +8,7 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V10::All' #START52_V9
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10000)
+    input = cms.untracked.int32(100)
 )
 
 process.source = cms.Source("PoolSource",
@@ -23,18 +23,24 @@ process.source = cms.Source("PoolSource",
  )
 )
 
+process.load("FWCore.MessageLogger.MessageLogger_cfi")
+process.MessageLogger.cerr.threshold = 'ERROR'
+process.MessageLogger.cerr.FwkReport.reportEvery = 100000
+
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
+
 defaultReconstructionPTMC(process,
  'HLT',
  ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v']
 )
 
+
+
 createGeneratedParticles(process,
  'genWs',
  ["keep++ pdgId = {W+}","keep++ pdgId = {W-}"]
 )
-
 createGeneratedParticles(process,
  'genbbCands',
  ["keep abs(pdgId) = 5"]
@@ -49,9 +55,7 @@ createGeneratedParticles(process,
 'genccCands',
  ["keep abs(pdgId) = 4"]
 )
-
 process.load("UWAnalysis.Configuration.wMuNuAnalysisPT_cff")
-
 process.eventSelection = cms.Path(process.selectionSequence) ##changing to multiples see below
 process.eventSelectionMuonUp    = createSystematics(process,process.selectionSequence,'MuonUp',1.01,1.0,1.0,0,1.0)
 process.eventSelectionMuonDown  = createSystematics(process,process.selectionSequence,'MuonDown',0.99,1.0,1.0,0,1.0)
@@ -61,7 +65,6 @@ process.eventSelectionUCEUp     = createSystematics(process,process.selectionSeq
 process.eventSelectionUCEDown   = createSystematics(process,process.selectionSequence,'UCEDown',1.0,1.0,1.0,0,0.9)
 
 from UWAnalysis.Configuration.tools.ntupleToolsPT import *
-
 addMuNuEventTreePt(process,'muNuEventTree')
 #addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
 addEventSummary(process,True)
@@ -72,4 +75,12 @@ addMuNuEventTreePt(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSorted
 addMuNuEventTreePt(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown')
 addMuNuEventTreePt(process,'muNuEventTreeJetUp','wCandsJetsUCEUp','diMuonsSortedUCEUp')
 addMuNuEventTreePt(process,'muNuEventTreeJetDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
+process.TFileService.fileName = cms.string('analysis_Maria_O_rochester.root') 
+
+process.out = cms.OutputModule("PoolOutputModule",
+ fileName = cms.untracked.string('/scratch/tperry/analysis_Maria_O_rochester.root'),
+ outputCommands = cms.untracked.vstring(
+                       'keep *'),
+ )
+process.e = cms.EndPath(process.out)
 
