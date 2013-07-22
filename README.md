@@ -19,7 +19,7 @@ git clone https://github.com/tmrhombus/UWAnalysis.git
 ./UWAnalysis/recipe
 
 #check before compiling
-#showtags #should give 38 (34 could mean cvs not up)
+#showtags #should give 40 (fewer could mean cvs not up)
 
 scramv1 build -c
 scramv1 build
