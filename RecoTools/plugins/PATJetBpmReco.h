@@ -102,25 +102,19 @@ class PATJetBpmReco : public edm::EDProducer {
         const reco::SecondaryVertexTagInfo* secInfo = jet.tagInfoSecondaryVertex("secondaryVertex");
 	//if(secVertInfo.nVertices()>0){
         if (secInfo && secInfo->vertexTracks().size()>0) {
+std::cout<<"OOOOOOOOOOOOOOOOOOOOOOO"<<std::endl;
 	  //float pt = secVertInfo.taggingVariables().size();//
 	  //printf("track IP 2d above Charm: %f\n",pt);
-std::cout<<"un"<<std::endl;
 	  const reco::Vertex&sv= secInfo->secondaryVertex(0);
 	  //const reco::Vertex&sv= secInfo.secondaryVertex(0);
 	  //float pt = secVertInfo.taggingVariables().get(TaggingVariableName(41));//
 	  //printf("number sec vertices %i\n",secVertInfo.secondaryVertex(0));
 	  if ( sv.tracksSize()>1){
-std::cout<<"deux"<<std::endl;
 	    for(reco::Vertex::trackRef_iterator track = sv.tracks_begin(); track!= sv.tracks_end(); ++track){
-std::cout<<"trios"<<std::endl;
 	      for(unsigned int pfj=0;pfj<jet.getPFConstituents().size();++pfj) {
-std::cout<<"quatre"<<std::endl;
 		pfcand = jet.getPFConstituents().at(pfj);
-std::cout<<"cinq"<<std::endl;
 		if(pfcand.isNonnull()){
-std::cout<<"six"<<std::endl;
 		  if(abs(pfcand->pdgId())==211&&pfcand->pt()>0.25&&pfcand->charge()!=0){ ///create charged particle collection
-std::cout<<"sept"<<std::endl;
 		    if((*track).key() == pfcand->trackRef().key()){
 		      secVertexBpm.push_back(pfcand);
                     }
@@ -130,7 +124,6 @@ std::cout<<"sept"<<std::endl;
             }
 	  }
 	}
-std::cout<<"uno"<<std::endl;	
 	if(jet.pt()>20&&secVertexBpm.size()>1){
 	  math::PtEtaPhiMLorentzVector total(0,0,0,0);
 	  for(unsigned int k = 0; k<secVertexBpm.size()-1;k++){
@@ -185,7 +178,6 @@ std::cout<<"uno"<<std::endl;
 		  finalkaon = j;
 		  //printf("k= %i th particle pt %f, j= %i th particle pt %f \n",k,secVertexBpm.at(k)->pt(),j,secVertexBpm.at(j)->pt());
 		}
-std::cout<<"dos"<<std::endl;
 	      }
 
 	jet.addUserFloat("sec_massD0",massD0);
@@ -233,19 +225,15 @@ std::cout<<"dos"<<std::endl;
 		    printf("BPM mass %f\n",massBpm2);
 		  }
 		}
-std::cout<<"trace"<<std::endl;
 	}
 	jet.addUserFloat("sec_massBpm_charge",charge);
 	jet.addUserFloat("sec_massBpm",massBpm2);
 	/////////////
 
-std::cout<<"push push"<<std::endl;
 	jets->push_back(jet);
 
       }
-    std::cout<<"just before that"<<std::endl;
     iEvent.put(jets);
-    std::cout<<"almost to the end"<<std::endl;
   }
   
   // ----------member data ---------------------------

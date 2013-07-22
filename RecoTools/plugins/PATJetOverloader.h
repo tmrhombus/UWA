@@ -70,7 +70,6 @@ class PATJetOverloader : public edm::EDProducer {
 
   virtual void produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
   {
-    std::cout<<"bonjour"<<std::endl;
     using namespace edm;
     using namespace reco;
     std::auto_ptr<pat::JetCollection> jets(new pat::JetCollection);
@@ -90,7 +89,6 @@ class PATJetOverloader : public edm::EDProducer {
 
 	//printf("Gets Here1.0\n");
 	pat::Jet jet = cands->at(l);
-        std::cout<<"Found this jet  "<<jet<<std::endl;
 	//float trackSIP =jet.get(trackSip2dValAboveCharm);
 	//bool taginfosize = jet.hasTagInfo("vertexMass");
 	//bool taginfosize = jet.tagInfo().hasTracks();
@@ -156,7 +154,6 @@ class PATJetOverloader : public edm::EDProducer {
 	std::vector<reco::PFCandidatePtr> elecs;
 	int t = 0; ///number of charged particles
 	for(unsigned int j=0;j<jet.getPFConstituents().size();++j) {
-          std::cout<<j<<" jet.getPFConstituents"<<std::endl;
 	  pt = jet.getPFConstituents().at(j)->pt();
 	  pdgid = jet.getPFConstituents().at(j)->pdgId();
 
@@ -321,7 +318,6 @@ class PATJetOverloader : public edm::EDProducer {
 
 	jet.addUserFloat("massBpmElecs",massBpmElecs);
 	*/
-        std::cout<<" yo yo yo "<<std::endl;
 	if(iEvent.getByLabel(leptons_,leptons)){
 	  for(unsigned int k =0; k!=leptons->size();k++){
 
@@ -412,15 +408,12 @@ class PATJetOverloader : public edm::EDProducer {
 	jet.addUserFloat("ptRMS",sqrt(sumPt2/(sumPt*sumPt)));
 	jets->push_back(jet);
       }
-    std::cout<<" MAMA "<<std::endl;
     iEvent.put(jets);
-    std::cout<<" DADA "<<std::endl;
   } 
   
       // ----------member data ---------------------------
   edm::InputTag src_;
   edm::InputTag leptons_;
   edm::InputTag vertex_;
- //std::cout<<" are you ok "<<std::endl; 
 };
 
