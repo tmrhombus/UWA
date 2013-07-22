@@ -5,7 +5,7 @@ sys.setrecursionlimit(10000)
 process = cms.Process("ANALYSIS")
 
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = 'START53_V10::All' #START52_V9
+process.GlobalTag.globaltag = 'START53_V27::All' #START52_V9
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1000)
