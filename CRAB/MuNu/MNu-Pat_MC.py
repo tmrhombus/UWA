@@ -14,7 +14,8 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("PoolSource",
  fileNames = cms.untracked.vstring(
   # $inputFileNames
-  'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTBar_LL-SUB-MC/SUB-MC-patTuple_cfg-FE19EA66-3398-E211-A88B-003048FFD71A.root'
+  'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
+  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTBar_LL-SUB-MC/SUB-MC-patTuple_cfg-FE19EA66-3398-E211-A88B-003048FFD71A.root'
   #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball_v1_WJets8TeV-9ec8fe3/304ffda35e6a6d2ac3103ac6153835e2/output_1000_2_wBh.root'
  ),
  inputCommands=cms.untracked.vstring(
@@ -78,10 +79,10 @@ addMuNuEventTreePt(process,'muNuEventTreeJetUp','wCandsJetsUCEUp','diMuonsSorted
 addMuNuEventTreePt(process,'muNuEventTreeJetDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
 process.TFileService.fileName = cms.string('analysis.root') 
 
-# makes EDM output of all collections
-process.out = cms.OutputModule("PoolOutputModule",
- fileName = cms.untracked.string('/scratch/tperry/analysis.root'),
- outputCommands = cms.untracked.vstring(
-                       'keep *'),
- )
-process.e = cms.EndPath(process.out)
+## makes EDM output of all collections
+#process.out = cms.OutputModule("PoolOutputModule",
+# fileName = cms.untracked.string('/scratch/tperry/analysis.root'),
+# outputCommands = cms.untracked.vstring(
+#                       'keep *'),
+# )
+#process.e = cms.EndPath(process.out)
