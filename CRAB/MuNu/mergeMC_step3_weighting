@@ -1,20 +1,19 @@
+#!/bin/sh
 # weights the MC samples in /$CMSSW_BASE/.../data
-cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/test
+cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/
 
 EventWeightsIterativeWJets doOneD=1 weight=37509.0 histoName='summary/results' branch='weightFactor'
-#EventWeightsIterativeWJets doOneD=1 weight=36257.2 histoName='summary/results' branch='weightFactor'
 
-EventWeightsIterative doOneD=1 outputFile='TTbar.root'   weight=245.8     histoName='summary/results' branch="weightFactor" 
-#EventWeightsIterative doOneD=1 outputFile='TTbar.root'   weight=234.     histoName='summary/results' branch="weightFactor" 
-#EventWeightsIterative doOneD=1 outputFile='Drell.root'   weight=3503.71  histoName='summary/results' branch="weightFactor"
-#
-#EventWeightsIterative doOneD=1 outputFile='T_t.root'     weight=56.4     histoName='summary/results' branch="weightFactor"
-#EventWeightsIterative doOneD=1 outputFile='T_s.root'     weight=3.79     histoName='summary/results' branch="weightFactor"
-#EventWeightsIterative doOneD=1 outputFile='Tbar_t.root'  weight=30.7     histoName='summary/results' branch="weightFactor"
-#EventWeightsIterative doOneD=1 outputFile='Tbar_s.root'  weight=1.76     histoName='summary/results' branch="weightFactor"
-#EventWeightsIterative doOneD=1 outputFile='T_tW.root'    weight=11.1     histoName='summary/results' branch="weightFactor"
-#EventWeightsIterative doOneD=1 outputFile='Tbar_tW.root' weight=11.1     histoName='summary/results' branch="weightFactor"
-#
-#EventWeightsIterative doOneD=1 outputFile='WZ.root'      weight=32.3161  histoName='summary/results' branch="weightFactor"
-#EventWeightsIterative doOneD=1 outputFile='WW.root'      weight=57.1097  histoName='summary/results' branch="weightFactor"
-#EventWeightsIterative doOneD=1 outputFile='ZZ.root'      weight=8.2      histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='TTbar.root'   weight=245.8    histoName='summary/results' branch="weightFactor" 
+EventWeightsIterative doOneD=1 outputFile='Drell.root'   weight=3503.71  histoName='summary/results' branch="weightFactor"
+
+EventWeightsIterative doOneD=1 outputFile='T_t.root'     weight=56.4     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='T_s.root'     weight=3.79     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='Tbar_t.root'  weight=30.7     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='Tbar_s.root'  weight=1.76     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='T_tW.root'    weight=11.1     histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='Tbar_tW.root' weight=11.1     histoName='summary/results' branch="weightFactor"
+
+EventWeightsIterative doOneD=1 outputFile='WZ.root'      weight=32.3161  histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='WW.root'      weight=57.1097  histoName='summary/results' branch="weightFactor"
+EventWeightsIterative doOneD=1 outputFile='ZZ.root'      weight=8.2      histoName='summary/results' branch="weightFactor"

@@ -1,30 +1,32 @@
+#!/bin/sh
 # merges from /scratch into /$CMSSW_BASE/.../data
+version="v5"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/
 
-hadd WJets.root /scratch/$USER/v3/W/WJets/WJets_*.root
-hadd W1Jet.root /scratch/$USER/v3/W/W1Jet/W1Jet_*.root
-hadd W2Jet.root /scratch/$USER/v3/W/W2Jet/W2Jet_*.root
-hadd W3Jet.root /scratch/$USER/v3/W/W3Jet/W3Jet_*.root
-hadd W4Jet.root /scratch/$USER/v3/W/W4Jet/W4Jet_*.root
+hadd WJets.root /scratch/$USER/$version/W/WJets/p1/WJets_*.root /scratch/$USER/${version}/p2/WJets_*.root
+hadd W1Jet.root /scratch/$USER/$version/W/W1Jet/josh/W1Jet_*.root /scratch/$USER/$version/W/W1Jet/tapas/W1Jet_*.root
+hadd W2Jet.root /scratch/$USER/$version/W/W2Jet/josh/W2Jet_*.root /scratch/$USER/$version/W/W2Jet/tapas/W2Jet_*.root
+hadd W3Jet.root /scratch/$USER/$version/W/W3Jet/p1/W3Jet_*.root /scratch/$USER/$version/W/W3Jet/p2/W3Jet_*.root
+hadd W4Jet.root /scratch/$USER/$version/W/W4Jet/W4Jet_*.root
 
-hadd Drell.root /scratch/$USER/v3/Drell/Drell_*.root
+hadd Drell.root /scratch/$USER/$version/Drell/Drell_*.root
 
-cp /scratch/$USER/v3/SingleTop/T_s/T_s.root .
-cp /scratch/$USER/v3/SingleTop/Tbar_s/Tbar_s.root .
-cp /scratch/$USER/v3/SingleTop/T_t/T_t.root .
-cp /scratch/$USER/v3/SingleTop/Tbar_t/Tbar_t.root .
-cp /scratch/$USER/v3/SingleTop/Tbar_tW/Tbar_tW.root .
-cp /scratch/$USER/v3/SingleTop/Tbar_tW/Tbar_tW.root .
+cp /scratch/$USER/$version/SingleTop/T_s/T_s.root .
+cp /scratch/$USER/$version/SingleTop/Tbar_s/Tbar_s.root .
+cp /scratch/$USER/$version/SingleTop/T_t/T_t.root .
+cp /scratch/$USER/$version/SingleTop/Tbar_t/Tbar_t.root .
+cp /scratch/$USER/$version/SingleTop/Tbar_tW/Tbar_tW.root .
+cp /scratch/$USER/$version/SingleTop/Tbar_tW/Tbar_tW.root .
 
-hadd Tbar_s.root  /scratch/$USER/v3/SingleTop/Tbar_s/Tbar_s_*.root
-hadd Tbar_t.root  /scratch/$USER/v3/SingleTop/Tbar_t/Tbar_t_*.root
-hadd Tbar_tW.root /scratch/$USER/v3/SingleTop/Tbar_tW/Tbar_tW_*.root
-hadd T_s.root  /scratch/$USER/v3/SingleTop/T_s/T_s_*.root
-hadd T_t.root  /scratch/$USER/v3/SingleTop/T_t/T_t_*.root
-hadd T_tW.root /scratch/$USER/v3/SingleTop/T_tW/T_tW_*.root
+hadd Tbar_s.root  /scratch/$USER/$version/SingleTop/Tbar_s/Tbar_s_*.root
+hadd Tbar_t.root  /scratch/$USER/$version/SingleTop/Tbar_t/Tbar_t_*.root
+hadd Tbar_tW.root /scratch/$USER/$version/SingleTop/Tbar_tW/Tbar_tW_*.root
+hadd T_s.root  /scratch/$USER/$version/SingleTop/T_s/T_s_*.root
+hadd T_t.root  /scratch/$USER/$version/SingleTop/T_t/T_t_*.root
+hadd T_tW.root /scratch/$USER/$version/SingleTop/T_tW/T_tW_*.root
 
-hadd TTbar.root /scratch/$USER/v3/TTbar/TTbar_*.root
+hadd TTbar.root /scratch/$USER/$version/TTbar/full/TTbar_*.root /scratch/$USER/$version/TTbar/semi/TTbar_*.root
 
-hadd WW.root /scratch/$USER/v3/VV/WW/WW_*.root
-hadd WZ.root /scratch/$USER/v3/VV/WZ/WZ_*.root
-hadd ZZ.root /scratch/$USER/v3/VV/ZZ/ZZ_*.root
+hadd WW.root /scratch/$USER/$version/VV/WW/WW_*.root
+hadd WZ.root /scratch/$USER/$version/VV/WZ/WZ_*.root
+hadd ZZ.root /scratch/$USER/$version/VV/ZZ/ZZ_*.root

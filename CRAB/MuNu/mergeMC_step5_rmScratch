@@ -1,4 +1,6 @@
-cd /scratch/$USER/v3/
+#!/bin/sh
+version="v5"
+cd /scratch/$USER/${version}/
 rm -rf Drell
 rm -rf SingleTop
 rm -rf TTbar

@@ -1,105 +1,171 @@
+#!/bin/sh
 # merges from /hdfs into /scratch
+version="v5"
+
 cd /scratch/$USER
-mkdir v3
-cd v3
+mkdir ${version}
+cd ${version}
 
 mkdir W
 cd ./W
 mkdir WJets
 cd WJets
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_0.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_1.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_2.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_3.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_4.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_5.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_6.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_7.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_8.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_9.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_A.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_B.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_C.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_D.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_E.root
-find /hdfs/store/user/$USER/WJets_v3-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_F.root
+mkdir p1
+cd p1
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_0.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_1.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_2.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_3.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_4.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_5.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_6.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_7.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_8.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_9.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_A.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_B.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_C.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_D.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_E.root
+find /hdfs/store/user/$USER/WJets_p1_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_F.root
 cd ../
+mkdir p2
+cd p2
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_0.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_1.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_2.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_3.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_4.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_5.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_6.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_7.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_8.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_9.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_A.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_B.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_C.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_D.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_E.root
+find /hdfs/store/user/$USER/WJets_p2_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WJets_F.root
+cd ../../
 
 
 mkdir W1Jet
 cd W1Jet
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_1.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_2.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_3.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_4.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_5.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_6.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_7.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_8.root
-find /hdfs/store/user/$USER/W1Jet_v3-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_9.root
+mkdir josh
+cd josh
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_1.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_2.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_3.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_4.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_5.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_6.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_7.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_8.root
+find /hdfs/store/user/$USER/W1Jet_josh_${version}-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_9.root
 cd ../
+mkdir tapas
+cd tapas
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_1.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_2.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_3.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_4.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_5.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_6.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_7.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_8.root
+find /hdfs/store/user/$USER/W1Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W1Jet_9.root
+cd ../../
 
 
 mkdir W2Jet
 cd W2Jet
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_1.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_2.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_3.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_4.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_5.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_6.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_7.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_8.root
-find /hdfs/store/user/$USER/W2Jet_v3-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_9.root
+mkdir josh
+cd josh
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_1.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_2.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_3.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_4.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_5.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_6.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_7.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_8.root
+find /hdfs/store/user/$USER/W2Jet_josh_${version}-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_9.root
 cd ../
+mkdir tapas
+cd tapas
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_1.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_2.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_3.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_4.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_5.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_6.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_7.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_8.root
+find /hdfs/store/user/$USER/W2Jet_tapas_${version}-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W2Jet_9.root
+cd ../../
 
 
 mkdir W3Jet
 cd W3Jet
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_1.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_2.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_3.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_4.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_5.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_6.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_7.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_8.root
-find /hdfs/store/user/$USER/W3Jet_v3-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_9.root
+mkdir p1
+cd p1
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_1.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_2.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_3.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_4.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_5.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_6.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_7.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_8.root
+find /hdfs/store/user/$USER/W3Jet_p1_${version}-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_9.root
 cd ../
+mkdir p2
+cd p2
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_1.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_2.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_3.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_4.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_5.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_6.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_7.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_8.root
+find /hdfs/store/user/$USER/W3Jet_p2_${version}-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W3Jet_9.root
+cd ../../
 
 
 mkdir W4Jet
 cd W4Jet
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_1.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_2.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_3.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_4.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_5.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_6.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_7.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_8.root
-find /hdfs/store/user/$USER/W4Jet_v3-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_9.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_1.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_2.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_3.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_4.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_5.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_6.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_7.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_8.root
+find /hdfs/store/user/$USER/W4Jet_${version}-MuNuPAT/MuNuPAT-output_9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f W4Jet_9.root
 cd ../../
 
 
 mkdir Drell
 cd Drell
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_0.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_1.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_2.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_3.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_4.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_5.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_6.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_7.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_8.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_9.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_A.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_B.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_C.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_D.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_E.root
-find /hdfs/store/user/$USER/Drell_v3-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_F.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_0.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_1.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_2.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_3.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_4.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_5.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_6.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_7.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_8.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_9.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_A.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_B.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_C.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_D.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_E.root
+find /hdfs/store/user/$USER/Drell_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Drell_F.root
 cd ../
 
 
@@ -107,121 +173,142 @@ mkdir SingleTop
 cd SingleTop
 mkdir T_tW
 cd T_tW
-find /hdfs/store/user/$USER/T_tW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_tW.root
+find /hdfs/store/user/$USER/T_tW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_tW.root
 cd ../
 
 
 mkdir Tbar_tW
 cd Tbar_tW
-find /hdfs/store/user/$USER/Tbar_tW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW.root
+find /hdfs/store/user/$USER/Tbar_tW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_tW.root
 cd ../
 
 
 mkdir T_t
 cd T_t
-find /hdfs/store/user/$USER/T_t_v3-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_t.root
+find /hdfs/store/user/$USER/T_t_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_t.root
 cd ../
 
 
 mkdir Tbar_t
 cd Tbar_t
-find /hdfs/store/user/$USER/Tbar_t_v3-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_t.root
+find /hdfs/store/user/$USER/Tbar_t_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_t.root
 cd ../
 
 
 mkdir T_s
 cd T_s
-find /hdfs/store/user/$USER/T_s_v3-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_s.root
+find /hdfs/store/user/$USER/T_s_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f T_s.root
 cd ../
 
 
 mkdir Tbar_s
 cd Tbar_s
-find /hdfs/store/user/$USER/Tbar_s_v3-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_s.root
+find /hdfs/store/user/$USER/Tbar_s_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f Tbar_s.root
 cd ../../
 
 
 mkdir TTbar
 cd TTbar
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_0.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_1.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_2.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_3.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_4.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_5.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_6.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_7.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_8.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_9.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_A.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_B.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_C.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_D.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_E.root
-find /hdfs/store/user/$USER/TTbar_v3-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_F.root
+mkdir full
+cd full
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_0.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_1.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_2.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_3.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_4.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_5.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_6.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_7.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_8.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_9.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_A.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_B.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_C.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_D.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_E.root
+find /hdfs/store/user/$USER/TTbar_full_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_F.root
 cd ../
+mkdir semi
+cd semi
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_0.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_1.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_2.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_3.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_4.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_5.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_6.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_7.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_8.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_9.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_A.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_B.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_C.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_D.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_E.root
+find /hdfs/store/user/$USER/TTbar_semi_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f TTbar_F.root
+cd ../../
 
 
 mkdir VV
 cd VV
 mkdir WW
 cd WW
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_0.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_1.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_2.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_3.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_4.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_5.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_6.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_7.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_8.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_9.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_A.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_B.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_C.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_D.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_E.root
-find /hdfs/store/user/$USER/WW_v3-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_F.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_0.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_1.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_2.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_3.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_4.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_5.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_6.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_7.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_8.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_9.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_A.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_B.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_C.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_D.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_E.root
+find /hdfs/store/user/$USER/WW_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WW_F.root
 cd ../
 
 
 mkdir WZ
 cd WZ
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_0.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_1.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_2.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_3.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_4.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_5.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_6.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_7.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_8.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_9.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_A.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_B.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_C.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_D.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_E.root
-find /hdfs/store/user/$USER/WZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_F.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_0.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_1.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_2.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_3.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_4.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_5.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_6.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_7.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_8.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_9.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_A.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_B.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_C.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_D.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_E.root
+find /hdfs/store/user/$USER/WZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f WZ_F.root
 cd ../
 
 
 mkdir ZZ
 cd ZZ
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_0.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_1.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_2.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_3.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_4.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_5.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_6.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_7.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_8.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_9.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_A.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_B.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_C.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_D.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_E.root
-find /hdfs/store/user/$USER/ZZ_v3-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_F.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-0*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_0.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-1*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_1.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-2*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_2.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-3*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_3.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-4*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_4.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-5*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_5.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-6*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_6.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-7*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_7.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-8*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_8.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-9*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_9.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-A*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_A.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-B*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_B.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-C*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_C.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-D*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_D.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-E*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_E.root
+find /hdfs/store/user/$USER/ZZ_${version}-MuNuPAT/MuNuPAT-patTuple_cfg-F*.root |xargs ls -l|awk '{if ($5 > 1000) print $9}'|xargs hadd -f ZZ_F.root
 cd ../../

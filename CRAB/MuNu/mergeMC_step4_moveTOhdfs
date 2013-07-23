@@ -1,9 +1,11 @@
+#!/bin/sh
 # you must call these two before running the script
 #voms-proxy-init
 #gsido  
+version='v5'
 cd /hdfs/store/user/tperry/
 
-mkdir v3
-cd v3
-mv /scratch/tperry/v3 ./
+mkdir ${version}
+cd ${version}
+mv /scratch/tperry/${version} ./
 exit  #leave gsido environment
