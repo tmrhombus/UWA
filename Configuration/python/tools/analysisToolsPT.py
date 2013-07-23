@@ -79,15 +79,19 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #Build good vertex collection
   goodVertexFilter(process)
 
-  jetOverloading(process,"selectedPatJets")
-  BpmReconstruction(process,"patOverloadedJets")
-  BReconstruction(process,"patBpmRecoJets")
-  applyDefaultSelectionsPT(process)
+  ReNameJetColl(process)
+  jetOverloading(process,"NewSelectedPatJets")
+  #jetOverloading(process,"selectedPatJets")
+  SVReconstructionData(process,"patOverloadedJets")
+#  BpmReconstruction(process,"patOverloadedJets")
+#  BReconstruction(process,"patBpmRecoJets")
+  rochesterCorrections(process)
+  applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
+  process.runAnalysisSequence = cms.Path(process.analysisSequence)
   #Default selections for systematics
   #Build MVA MET
   #mvaMet(process)
 
-  process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
 
 def jetMCMatching(process,jets):
@@ -99,6 +103,33 @@ def jetMCMatching(process,jets):
   #process.patDefaultSequence*=process.jetOverloading
   process.createJetMCMatching=cms.Path(process.jetMCMatching)
   return process.createJetMCMatching
+
+def SVReconstructionData(process,jets):
+
+#  # Original (Maria, to be cleaned)
+#  process.patSSVJets=cms.EDProducer("PATSSVJetEmbedder",
+#				src = cms.InputTag(jets)
+#			)
+#
+  # Exended1 (Isobel)
+  process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData',
+                                        src = cms.InputTag(jets),
+                                        #src = cms.InputTag("patSSVJets"),
+                                        leptons = cms.InputTag("cleanPatMuons"),
+                                        vertices=cms.InputTag("offlinePrimaryVertices")
+  )
+
+  # Exended2 (Isobel)
+  process.patBRecoJets = cms.EDProducer('PATJetBReco',
+                                        src = cms.InputTag("patBpmRecoJets"),
+                                        leptons = cms.InputTag("cleanPatMuons"),
+                                        vertices=cms.InputTag("offlinePrimaryVertices")
+  )
+  process.BReconstruction = cms.Sequence(process.patBpmRecoJets*process.patBRecoJets)
+  #process.BReconstruction = cms.Sequence(process.patSSVJets*process.patBpmRecoJets*process.patBRecoJets)
+  process.createBRecoJets=cms.Path(process.BReconstruction)
+  return process.createBRecoJets
+
 
 def SVReconstruction(process,jets):
 
@@ -124,6 +155,7 @@ def SVReconstruction(process,jets):
   process.createBRecoJets=cms.Path(process.BReconstruction)
   return process.createBRecoJets
 
+
 def BReconstruction(process,jets):
   process.patBRecoJets = cms.EDProducer('PATJetBReco',
                                         src = cms.InputTag(jets),
@@ -133,6 +165,16 @@ def BReconstruction(process,jets):
   process.BReconstruction = cms.Sequence(process.patBRecoJets)
   process.createBRecoJets=cms.Path(process.BReconstruction)
   return process.createBRecoJets
+
+
+def BpmReconstruction(process,jets):
+  process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco',
+                                        src = cms.InputTag(jets),
+                                        leptons = cms.InputTag("cleanPatMuons"),
+                                        vertices=cms.InputTag("offlinePrimaryVertices")
+  )
+  process.BpmReconstruction = cms.Sequence(process.patBpmRecoJets)
+  process.createBpmRecoJets=cms.Path(process.BpmReconstruction)
 
 
 def rochesterCorrections(process):
@@ -161,17 +203,6 @@ def rochesterCorrections(process):
   #process.rochesterCorrectionSeq = cms.Sequence(process.looseMu * process.corrMuons * process.recorrMuons)
   process.rochesterCorrectionPath = cms.Path(process.rochesterCorrectionSeq)
   return process.rochesterCorrectionPath
-
-def BpmReconstruction(process,jets):
-  process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco',
-                                        src = cms.InputTag(jets),
-                                        leptons = cms.InputTag("cleanPatMuons"),
-                                        vertices=cms.InputTag("offlinePrimaryVertices")
-  )
-  process.BpmReconstruction = cms.Sequence(process.patBpmRecoJets)
-  process.createBpmRecoJets=cms.Path(process.BpmReconstruction)
-
-
 
 def jetOverloading(process,jets):
   process.patOverloadedJets = cms.EDProducer('PATJetOverloader',
@@ -429,6 +460,7 @@ def ReNameJetColl(process):
   process.NewSelectedPatJets = process.selectedPatJets.clone(src = cms.InputTag("selectedPatJets"))
   process.reNameJetSeq = cms.Sequence(process.NewSelectedPatJets)
   process.reNameJetPath = cms.Path(process.reNameJetSeq)
+  return process.reNameJetPath
 
 
 def BTAGGING(process):
