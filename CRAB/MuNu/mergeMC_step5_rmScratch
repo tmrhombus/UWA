@@ -1,8 +1,0 @@
-#!/bin/sh
-version="v5"
-cd /scratch/$USER/${version}/
-rm -rf Drell
-rm -rf SingleTop
-rm -rf TTbar
-rm -rf VV
-rm -rf W

@@ -1,32 +1,25 @@
 #!/bin/sh
-# merges from /scratch into /$CMSSW_BASE/.../data
+# Author: T.M.Perry UW-Madison
+# Moves/Merges files from /hdfs/... to working directory
+
 version="v5"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/
+mkdir ${version}
+cd ${version}
 
-hadd WJets.root /scratch/$USER/$version/W/WJets/p1/WJets_*.root /scratch/$USER/${version}/p2/WJets_*.root
-hadd W1Jet.root /scratch/$USER/$version/W/W1Jet/josh/W1Jet_*.root /scratch/$USER/$version/W/W1Jet/tapas/W1Jet_*.root
-hadd W2Jet.root /scratch/$USER/$version/W/W2Jet/josh/W2Jet_*.root /scratch/$USER/$version/W/W2Jet/tapas/W2Jet_*.root
-hadd W3Jet.root /scratch/$USER/$version/W/W3Jet/p1/W3Jet_*.root /scratch/$USER/$version/W/W3Jet/p2/W3Jet_*.root
-hadd W4Jet.root /scratch/$USER/$version/W/W4Jet/W4Jet_*.root
-
-hadd Drell.root /scratch/$USER/$version/Drell/Drell_*.root
-
-cp /scratch/$USER/$version/SingleTop/T_s/T_s.root .
-cp /scratch/$USER/$version/SingleTop/Tbar_s/Tbar_s.root .
-cp /scratch/$USER/$version/SingleTop/T_t/T_t.root .
-cp /scratch/$USER/$version/SingleTop/Tbar_t/Tbar_t.root .
-cp /scratch/$USER/$version/SingleTop/Tbar_tW/Tbar_tW.root .
-cp /scratch/$USER/$version/SingleTop/Tbar_tW/Tbar_tW.root .
-
-hadd Tbar_s.root  /scratch/$USER/$version/SingleTop/Tbar_s/Tbar_s_*.root
-hadd Tbar_t.root  /scratch/$USER/$version/SingleTop/Tbar_t/Tbar_t_*.root
-hadd Tbar_tW.root /scratch/$USER/$version/SingleTop/Tbar_tW/Tbar_tW_*.root
-hadd T_s.root  /scratch/$USER/$version/SingleTop/T_s/T_s_*.root
-hadd T_t.root  /scratch/$USER/$version/SingleTop/T_t/T_t_*.root
-hadd T_tW.root /scratch/$USER/$version/SingleTop/T_tW/T_tW_*.root
-
-hadd TTbar.root /scratch/$USER/$version/TTbar/full/TTbar_*.root /scratch/$USER/$version/TTbar/semi/TTbar_*.root
-
-hadd WW.root /scratch/$USER/$version/VV/WW/WW_*.root
-hadd WZ.root /scratch/$USER/$version/VV/WZ/WZ_*.root
-hadd ZZ.root /scratch/$USER/$version/VV/ZZ/ZZ_*.root
+scp /hdfs/store/user/$USER/merged_${version}_Drell-mergeFilesJob/*.root .
+hadd TTbar.root /hdfs/store/user/$USER/merged_${version}_TTbar_full-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_TTbar_semi-mergeFilesJob/*.root
+scp /hdfs/store/user/$USER/merged_${version}_T_s-mergeFilesJob/*.root .
+scp /hdfs/store/user/$USER/merged_${version}_T_t-mergeFilesJob/*.root .
+scp /hdfs/store/user/$USER/merged_${version}_T_tW-mergeFilesJob/*.root .
+scp /hdfs/store/user/$USER/merged_${version}_Tbar_s-mergeFilesJob/*.root .
+scp /hdfs/store/user/$USER/merged_${version}_Tbar_t-mergeFilesJob/*.root .
+scp /hdfs/store/user/$USER/merged_${version}_Tbar_tW-mergeFilesJob/*.root .
+hadd W1Jet.root /hdfs/store/user/$USER/merged_${version}_W1Jet_josh-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W1Jet_tapas-mergeFilesJob/*.root
+hadd W2Jet.root /hdfs/store/user/$USER/merged_${version}_W2Jet_josh-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W2Jet_tapas-mergeFilesJob/*.root
+hadd W3Jet.root /hdfs/store/user/$USER/merged_${version}_W3Jet_p1-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W3Jet_p2-mergeFilesJob/*.root
+scp /hdfs/store/user/$USER/merged_${version}_W4Jet-mergeFilesJob/*.root .
+hadd WJets.root /hdfs/store/user/$USER/merged_${version}_WJets_p1-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_WJets_p2-mergeFilesJob/*.root
+scp /hdfs/store/user/$USER/merged_${version}_WW-mergeFilesJob/*.root .
+scp /hdfs/store/user/$USER/merged_${version}_WZ-mergeFilesJob/*.root .
+scp /hdfs/store/user/$USER/merged_${version}_ZZ-mergeFilesJob/*.root .
