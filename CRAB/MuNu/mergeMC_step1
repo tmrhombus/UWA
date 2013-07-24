@@ -1,6 +1,6 @@
 #!/bin/sh
-# does some pre-merging with farmout
-# T.M.Perry UW-Madison
+# Author: T.M.Perry UW-Madison
+# Merges MC samples using farmout (uses mergeFiles.C)
 
 voms-proxy-init --voms cms --valid 100:00
 

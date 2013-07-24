@@ -1,6 +1,6 @@
 #!/bin/sh
 # Author: T.M.Perry UW-Madison
-# Moves/Merges files from /hdfs/... to working directory
+# Moves/Merges MC files from /hdfs/... to working directory
 
 version="v5"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/

@@ -1,6 +1,7 @@
 #!/bin/sh
 # Author: T.M.Perry UW-Madison
 # weights the MC samples in /$CMSSW_BASE/.../data/{version}
+
 version="v5"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/${version}
 
