@@ -1,0 +1,49 @@
+#!/bin/sh
+# Author: T.M.Perry UW-Madison
+# Merges Data samples using farmout (uses mergeFiles.C)
+
+voms-proxy-init --voms cms --valid 100:00
+
+version="v5"
+
+farmoutAnalysisJobs \
+   --merge \
+   --input-files-per-job=9999 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DATA1_8TeV_${version}-MuNuPAT \
+   merged_${version}_DATA1 \
+   $CMSSW_BASE
+
+farmoutAnalysisJobs \
+   --merge \
+   --input-files-per-job=9999 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DATA2_8TeV_${version}-MuNuPAT \
+   merged_${version}_DATA2 \
+   $CMSSW_BASE
+
+farmoutAnalysisJobs \
+   --merge \
+   --input-files-per-job=9999 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DATA3_8TeV_${version}-MuNuPAT \
+   merged_${version}_DATA3 \
+   $CMSSW_BASE
+
+farmoutAnalysisJobs \
+   --merge \
+   --input-files-per-job=9999 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DATA4_8TeV_${version}-MuNuPAT \
+   merged_${version}_DATA4 \
+   $CMSSW_BASE
+
+farmoutAnalysisJobs \
+   --merge \
+   --input-files-per-job=9999 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DATA5_8TeV_${version}-MuNuPAT \
+   merged_${version}_DATA5 \
+   $CMSSW_BASE
+
+farmoutAnalysisJobs \
+   --merge \
+   --input-files-per-job=9999 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DATA6_8TeV_${version}-MuNuPAT \
+   merged_${version}_DATA6 \
+   $CMSSW_BASE
