@@ -29,13 +29,13 @@ int main (int argc, char* argv[]) {
  TFile fPU,fPU2,fPU22,fPU3,fPU4;
 
  std::string base = std::getenv("CMSSW_BASE");
- std::string fPUloc =     "/src/UWAnalysis/CRAB/MuNu/weights/puInfo2012.root";
- std::string fPU3Dloc =   "/src/UWAnalysis/CRAB/MuNu/weights/puInfo3D.root";
- std::string fPUMC3Dloc = "/src/UWAnalysis/CRAB/MuNu/weights/puInfoMC3D.root";
- std::string fPUW3Dloc =  "/src/UWAnalysis/CRAB/MuNu/weights/Weight3D.root";
- std::string fPUW3Dbloc = "/src/UWAnalysis/CRAB/MuNu/data/Weight3D.root";
- std::string fPUMCloc =   "/src/UWAnalysis/CRAB/MuNu/weights/MC_Summer12_PU_S10-600bins.root";
- std::string fPUDATAloc = "/src/UWAnalysis/CRAB/MuNu/weights/Data_Pileup_2012_ReReco-600bins.root";
+ std::string fPUloc =     "/src/UWAnalysis/Configuration/data/puInfo2012.root";
+ std::string fPU3Dloc =   "/src/UWAnalysis/Configuration/data/puInfo3D.root";
+ std::string fPUMC3Dloc = "/src/UWAnalysis/Configuration/data/puInfoMC3D.root";
+ std::string fPUW3Dloc =  "/src/UWAnalysis/Configuration/data/Weight3D.root";
+ std::string fPUW3Dbloc = "/src/UWAnalysis/Configuration/data/Weight3D.root";
+ std::string fPUMCloc =   "/src/UWAnalysis/Configuration/data/MC_Summer12_PU_S10-600bins.root";
+ std::string fPUDATAloc = "/src/UWAnalysis/Configuration/data/Data_Pileup_2012_ReReco-600bins.root";
  std::string fPUname =     base+fPUloc;
  std::string fPU3Dname =   base+fPU3Dloc ;
  std::string fPUMC3Dname = base+fPUMC3Dloc;
@@ -77,13 +77,13 @@ int main (int argc, char* argv[]) {
   LumiWeights->weight3D_init(fPUW3Dbname);
  }
  else if(fPU3Dis && fPUMC3Dis){
-  TFile *fPU2 = new TFile("$CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/puInfo3D.root");
-  TFile *fPU22 = new TFile("$CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/puInfoMC3D.root");
+  TFile *fPU2 = new TFile( "$CMSSW_BASE/src/UWAnalysis/Configuration/data/puInfo3D.root");
+  TFile *fPU22 = new TFile("$CMSSW_BASE/src/UWAnalysis/Configuration/data/puInfoMC3D.root");
   doPU=2;
   printf("ENABLING PU WEIGHTING USING 3D- I HAVE TO CALCULATE WEIGHTS SORRY\n");
   LumiWeights = new edm::Lumi3DReWeighting(
-   "$CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/puInfoMC3D.root",
-   "$CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/puInfo3D.root",
+   "$CMSSW_BASE/src/UWAnalysis/Configuration/data/puInfoMC3D.root",
+   "$CMSSW_BASE/src/UWAnalysis/Configuration/data/puInfo3D.root",
    "pileup","pileup","pileup");
   LumiWeights->weight3D_init(1.0);
  }
@@ -98,11 +98,11 @@ int main (int argc, char* argv[]) {
  //rho reweighting
  TH1F *rhoWeight=0;
  bool doRho=false;
- std::string fRholoc = "/src/UWAnalysis/CRAB/MuNu/rhoInfo.root";
+ std::string fRholoc = "/src/UWAnalysis/Configuration/data/rhoInfo.root";
  std::string fRhoname = base+fRholoc ;
  bool fRhois = boost::filesystem::exists(fRhoname);
  if(fRhois){
-  TFile *fRho = new TFile("$CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/rhoInfo.root");
+  TFile *fRho = new TFile("$CMSSW_BASE/src/UWAnalysis/Configuration/data/rhoInfo.root");
   rhoWeight = (TH1F*)fRho->Get("weight");
   doRho=true;
   printf("ENABLING Rho WEIGHTING\n");
@@ -182,7 +182,8 @@ void readdir(TDirectory *dir,optutl::CommandLineParser parser,std::vector<float>
    TString string = (TString) key->GetName();
    printf("Found key=%s \n",key->GetName());
   //to run faster, take out this line when doing systematics
-  if(string == "muNuEventTreeMuonUp")  return;
+  if(string == "summary")  return;
+  //if(string == "muNuEventTreeMuonUp")  return;
 
   TObject *obj = key->ReadObj();
 
