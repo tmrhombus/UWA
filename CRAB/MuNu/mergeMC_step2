@@ -2,24 +2,35 @@
 # Author: T.M.Perry UW-Madison
 # Moves/Merges MC files from /hdfs/... to working directory
 
-version="v5"
+version="v6"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/
 mkdir ${version}
 cd ${version}
 
-scp /hdfs/store/user/$USER/merged_${version}_Drell-mergeFilesJob/*.root .
-hadd TTbar.root /hdfs/store/user/$USER/merged_${version}_TTbar_full-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_TTbar_semi-mergeFilesJob/*.root
-scp /hdfs/store/user/$USER/merged_${version}_T_s-mergeFilesJob/*.root .
-scp /hdfs/store/user/$USER/merged_${version}_T_t-mergeFilesJob/*.root .
-scp /hdfs/store/user/$USER/merged_${version}_T_tW-mergeFilesJob/*.root .
-scp /hdfs/store/user/$USER/merged_${version}_Tbar_s-mergeFilesJob/*.root .
-scp /hdfs/store/user/$USER/merged_${version}_Tbar_t-mergeFilesJob/*.root .
-scp /hdfs/store/user/$USER/merged_${version}_Tbar_tW-mergeFilesJob/*.root .
-hadd W1Jet.root /hdfs/store/user/$USER/merged_${version}_W1Jet_josh-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W1Jet_tapas-mergeFilesJob/*.root
-hadd W2Jet.root /hdfs/store/user/$USER/merged_${version}_W2Jet_josh-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W2Jet_tapas-mergeFilesJob/*.root
-hadd W3Jet.root /hdfs/store/user/$USER/merged_${version}_W3Jet_p1-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W3Jet_p2-mergeFilesJob/*.root
-scp /hdfs/store/user/$USER/merged_${version}_W4Jet-mergeFilesJob/*.root .
-hadd WJets.root /hdfs/store/user/$USER/merged_${version}_WJets_p1-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_WJets_p2-mergeFilesJob/*.root
-scp /hdfs/store/user/$USER/merged_${version}_WW-mergeFilesJob/*.root .
-scp /hdfs/store/user/$USER/merged_${version}_WZ-mergeFilesJob/*.root .
-scp /hdfs/store/user/$USER/merged_${version}_ZZ-mergeFilesJob/*.root .
+echo "merging drell"
+mergeFiles Drell.root /hdfs/store/user/$USER/merged_${version}_Drell-mergeFilesJob/*.root
+echo "merging ttbar"
+mergeFiles TTbar.root /hdfs/store/user/$USER/merged_${version}_TTbar_full-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_TTbar_semi-mergeFilesJob/*.root
+echo "merging single top"
+mergeFiles T_s.root /hdfs/store/user/$USER/merged_${version}_T_s-mergeFilesJob/*.root
+mergeFiles T_t.root /hdfs/store/user/$USER/merged_${version}_T_t-mergeFilesJob/*.root
+mergeFiles T_tW.root /hdfs/store/user/$USER/merged_${version}_T_tW-mergeFilesJob/*.root
+mergeFiles Tbar_s.root /hdfs/store/user/$USER/merged_${version}_Tbar_s-mergeFilesJob/*.root 
+mergeFiles Tbar_t.root /hdfs/store/user/$USER/merged_${version}_Tbar_t-mergeFilesJob/*.root 
+mergeFiles Tbar_tW.root /hdfs/store/user/$USER/merged_${version}_Tbar_tW-mergeFilesJob/*.root 
+echo "merging w1jet"
+mergeFiles W1Jet.root /hdfs/store/user/$USER/merged_${version}_W1Jet_josh-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W1Jet_tapas-mergeFilesJob/*.root
+echo "merging w2jet"
+mergeFiles W2Jet.root /hdfs/store/user/$USER/merged_${version}_W2Jet_josh-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W2Jet_tapas-mergeFilesJob/*.root
+echo "merging w3jet"
+mergeFiles W3Jet.root /hdfs/store/user/$USER/merged_${version}_W3Jet_p1-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_W3Jet_p2-mergeFilesJob/*.root
+echo "merging w4jet"
+mergeFiles W4Jet.root /hdfs/store/user/$USER/merged_${version}_W4Jet-mergeFilesJob/*.root
+echo "merging wjets"
+mergeFiles WJets.root /hdfs/store/user/$USER/merged_${version}_WJets_p1-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_WJets_p2-mergeFilesJob/*.root
+echo "merging ww"
+mergeFiles WW.root /hdfs/store/user/$USER/merged_${version}_WW-mergeFilesJob/*.root
+echo "merging wz"
+mergeFiles WZ.root /hdfs/store/user/$USER/merged_${version}_WZ-mergeFilesJob/*.root
+echo "merging zz"
+mergeFiles ZZ.root /hdfs/store/user/$USER/merged_${version}_ZZ-mergeFilesJob/*.root
