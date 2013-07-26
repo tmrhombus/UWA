@@ -1384,8 +1384,8 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                               ),
                               muNuLHEProduct = cms.PSet(
                                   pluginType = cms.string("LHEProductFiller"),
-                                  #src = cms.InputTag("externalLHEProducer"), #use this for running over new patuples
-                                  src = cms.InputTag("source"),  #use this for the old patuples
+                                  src = cms.InputTag("externalLHEProducer"), #use this for running over new patuples
+                                  #src = cms.InputTag("source"),  #use this for the old patuples
                                   tag = cms.string("LHEProduct"),
                               ),
                               simBHadronsSIZE = cms.PSet(
