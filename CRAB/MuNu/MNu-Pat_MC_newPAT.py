@@ -67,7 +67,7 @@ process.eventSelectionJetDown   = createSystematics(process,process.selectionSeq
 process.eventSelectionUCEUp     = createSystematics(process,process.selectionSequence,'UCEUp',1.00,1.0,1.0,0,1.1)
 process.eventSelectionUCEDown   = createSystematics(process,process.selectionSequence,'UCEDown',1.0,1.0,1.0,0,0.9)
 
-from UWAnalysis.Configuration.tools.ntupleToolsPT import *
+from UWAnalysis.Configuration.tools.ntupleToolsPT_newPAT import *
 addMuNuEventTreePt(process,'muNuEventTree')
 #addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
 addEventSummary(process,True)
