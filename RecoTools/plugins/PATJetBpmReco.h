@@ -102,7 +102,7 @@ class PATJetBpmReco : public edm::EDProducer {
         const reco::SecondaryVertexTagInfo* secInfo = jet.tagInfoSecondaryVertex("secondaryVertex");
 	//if(secVertInfo.nVertices()>0){
         if (secInfo && secInfo->vertexTracks().size()>0) {
-std::cout<<"OOOOOOOOOOOOOOOOOOOOOOO"<<std::endl;
+std::cout<<"Found Secondary Vertex"<<std::endl;
 	  //float pt = secVertInfo.taggingVariables().size();//
 	  //printf("track IP 2d above Charm: %f\n",pt);
 	  const reco::Vertex&sv= secInfo->secondaryVertex(0);
