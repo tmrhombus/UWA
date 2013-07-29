@@ -85,6 +85,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   NonIso ='(lPFIsoDB>=0.2)'
   theCut = '(nMuons==1 && abs(muonEta)<2.1 && muonPt>25 && highestJetPt > 25 && secondJetPt > 25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4 && nJetsPt25==2 && (J1CSVbtag>0.898) && (J2CSVbtag>0.898) && J1SVMassb>0 && J2SVMassb>0 && DiMuonMass<=60 && nElectrons==0 && nJets24Pt25==0 && Mt > 45)'
   weight = '(weightFactor*'+str(lumi)+'*'+str(trigEff)+'*EffWEIGHTCSVT)'
+  weightW = '(weightFactorW*'+str(lumi)+'*'+str(trigEff)+'*EffWEIGHTCSVT)'
 
  if wSplitting == 'had':
   # for splitting up the W sample :: hadron splitting
@@ -108,17 +109,18 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   Wcc = '((!'+twoBs+'&&'+oneC+'&&'+twoCs+'))'
   Wbb = '('+twoBs+')'
  
- cutDataNonIso  = '('+NonIso+'&&'+theCut+')' #Data Non Iso
- cutDataIso     = '('+Iso+'&&'+theCut+')'    #Data Iso
- cutMcNonIso    = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
- cutMcIso       = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
- cutMcWlNonIso  = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wl+'))'
- cutMcWlIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wl+'))'
- cutMcWcNonIso  = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wc+'))'
- cutMcWcIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wc+'))'
- cutMcWccNonIso = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wcc+'))'
- cutMcWccIso    = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wcc+'))'
- cutMcWbbNonIso = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wbb+'))'
- cutMcWbbIso    = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wbb+'))'
- return cutMcNonIso, cutMcIso, cutDataNonIso, cutDataIso, cutMcWlNonIso, cutMcWlIso, cutMcWcNonIso, cutMcWcIso, cutMcWccNonIso, cutMcWccIso, cutMcWbbNonIso, cutMcWbbIso
+ cutDataNonIso   = '('+NonIso+'&&'+theCut+')' #Data Non Iso
+ cutDataIso      = '('+Iso+'&&'+theCut+')'    #Data Iso
+ cutMcNonIso     = '('+weight+ '*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutMcNonIsoW    = '('+weightW+'*('+NonIso+'&&'+theCut+'))' #MC Non IsoW
+ cutMcIso        = '('+weight+ '*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcWlNonIso   = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wl+'))'
+ cutMcWlIso      = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wl+'))'
+ cutMcWcNonIso   = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wc+'))'
+ cutMcWcIso      = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wc+'))'
+ cutMcWccNonIso  = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wcc+'))'
+ cutMcWccIso     = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wcc+'))'
+ cutMcWbbNonIso  = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wbb+'))'
+ cutMcWbbIso     = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wbb+'))'
+ return cutMcNonIso, cutMcNonIsoW, cutMcIso, cutDataNonIso, cutDataIso, cutMcWlNonIso, cutMcWlIso, cutMcWcNonIso, cutMcWcIso, cutMcWccNonIso, cutMcWccIso, cutMcWbbNonIso, cutMcWbbIso
 

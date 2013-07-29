@@ -31,27 +31,27 @@ sf_vv = 1.
 #get parameters (used in cutmaker)
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region,legacy = p.arams() 
 
-CutsMCn,CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
+CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,wSplitting,Control,Z_Region,legacy
 )
 
-data_filename  = '../data/wMuNuData.root'
-t_t_filename   = '../data/T_t.root'
-t_s_filename   = '../data/T_s.root'
-t_tw_filename  = '../data/T_tW.root'
-tb_t_filename  = '../data/Tbar_t.root'
-tb_s_filename  = '../data/Tbar_s.root'
-tb_tw_filename = '../data/Tbar_tW.root'
-ttb_filename   = '../data/TTbar.root'
-ww_filename    = '../data/WW.root'
-wz_filename    = '../data/WZ.root'
-zz_filename    = '../data/ZZ.root'
-wn_filename    = '../data/WJets.root'
-w1_filename    = '../data/W1Jet.root'
-w2_filename    = '../data/W2Jet.root'
-w3_filename    = '../data/W3Jet.root'
-w4_filename    = '../data/W4Jet.root'
-z_filename     = '../data/Drell.root'
+data_filename  = '../data/v5/wMuNuData.root'
+t_t_filename   = '../data/v5/T_t.root'
+t_s_filename   = '../data/v5/T_s.root'
+t_tw_filename  = '../data/v5/T_tW.root'
+tb_t_filename  = '../data/v5/Tbar_t.root'
+tb_s_filename  = '../data/v5/Tbar_s.root'
+tb_tw_filename = '../data/v5/Tbar_tW.root'
+ttb_filename   = '../data/v5/TTbar.root'
+ww_filename    = '../data/v5/WW.root'
+wz_filename    = '../data/v5/WZ.root'
+zz_filename    = '../data/v5/ZZ.root'
+wn_filename    = '../data/v5/WJets.root'
+w1_filename    = '../data/v5/W1Jet.root'
+w2_filename    = '../data/v5/W2Jet.root'
+w3_filename    = '../data/v5/W3Jet.root'
+w4_filename    = '../data/v5/W4Jet.root'
+z_filename     = '../data/v5/Drell.root'
 
 data_file  = TFile( data_filename )
 t_t_file   = TFile( t_t_filename  )
@@ -194,35 +194,35 @@ for leaf in leafs:
   print('    '+str(ttbnhSizePart))
  ####  W
   print('  wn nonIso')
-  wnnh,wnnhSize,wnnhSizePart = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+  wnnh,wnnhSize,wnnhSizePart = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
   wnnh.SetName('wnnh')
   wnnh.Scale(sf_wjets)
   print('    '+str(wnnhSize))
   print('    '+str(wnnhSizePart))
   print('  w1 nonIso')
   ###
-  w1nh,w1nhSize,w1nhSizePart = h.gram(w1_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+  w1nh,w1nhSize,w1nhSizePart = h.gram(w1_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
   w1nh.SetName('w1nh')
   w1nh.Scale(sf_wjets)
   print('    '+str(w1nhSize))
   print('    '+str(w1nhSizePart))
   print('  w2 nonIso')
   ###
-  w2nh,w2nhSize,w2nhSizePart = h.gram(w2_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+  w2nh,w2nhSize,w2nhSizePart = h.gram(w2_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
   w2nh.SetName('w2nh')
   w2nh.Scale(sf_wjets)
   print('    '+str(w2nhSize))
   print('    '+str(w2nhSizePart))
   print('  w3 nonIso')
   ###
-  w3nh,w3nhSize,w3nhSizePart = h.gram(w3_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+  w3nh,w3nhSize,w3nhSizePart = h.gram(w3_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
   w3nh.SetName('w3nh')
   w3nh.Scale(sf_wjets)
   print('    '+str(w3nhSize))
   print('    '+str(w3nhSizePart))
   print('  w4 nonIso')
   ###
-  w4nh,w4nhSize,w4nhSizePart = h.gram(w4_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+  w4nh,w4nhSize,w4nhSizePart = h.gram(w4_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
   w4nh.SetName('w4nh')
   w4nh.Scale(sf_wjets)
   print('    '+str(w4nhSize))

@@ -5,7 +5,7 @@ Author: T.M.Perry
 '''
 
 def arams():
- lumi = 19109. # old 13498.
+ lumi = 19429. #19109. # old 13498.
  bNr = 0
  btype = 't'
  jNr = 2
@@ -33,7 +33,7 @@ def arams():
  legacy = True #voids everything else and puts parametrs from 7Tev analysis
 
  #naming where output goes
- path = '../plots/legacy_'
+ path = '../plots/'
  fitrange = '_'+str(I)+'_'+str(F)
  extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_'+wSplitting
  #extraName = str(jNr)+'j'+str(bNr)+'b'+btype+fitrange
