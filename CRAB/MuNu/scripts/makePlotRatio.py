@@ -12,9 +12,7 @@ import cmsPrelim as cpr
 import parameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
-sf_qcd = 1.34517 # for legacy cuts 
-#sf_qcd = 2.73457 # for legacy cuts old data
-#sf_qcd = 4.21767 # for my cuts old data
+sf_qcd = 2.04437  
 
 sf_drell = 1.# 3503.71 / 3.02386400000000000e+07
 sf_st    = 1.# 22.2    / 9.91118000000000000e+05
@@ -58,7 +56,7 @@ for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
- rebin = 2
+ rebin = 1
  xlabel = xtitle+' ['+xunits+']'
  ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps*rebin))
  title = xtitle #+' Data v MC'
@@ -421,7 +419,7 @@ for leaf in leafs:
   datar.SetName('datar')
   if leaf =="Mt" and not legacy:
    datar.GetXaxis().SetRangeUser(50,140)
-  datar.GetYaxis().SetRangeUser(0.6,1.4) 
+  datar.GetYaxis().SetRangeUser(0.8,1.2) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
@@ -439,6 +437,5 @@ for leaf in leafs:
   save2 = raw_input ('Press Enter to Continue (type save to save)\n')
   if save2 == 'save':
    c.Print(path+i+'.png')
-#  c.Print(path+i+'.png')
   print('')
   c.Close()
