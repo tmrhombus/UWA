@@ -291,9 +291,9 @@ class CompositePtrCandidateTMEtAlgorithm
       j2parton = jets.at(1)->partonFlavour();
       if(j1csv>value_){
 	if(fabs(j1parton)==5||fabs(j1parton)==4){
-	  effCSV1 = 1.02658*(1+0.0195388*j1pt)/(1+(0.0209145*j1pt));
+	  effCSV1 = 0.997942*((1.+(0.00923753*j1pt))/(1.+(0.0096119*j1pt)));
 	  SFCSVL1Jet = effCSV1;
-	  SFCSVL1JetT = 1.01;
+	  SFCSVL1JetT = 1.01; // this will need to be updated 
 	}
 	else{
 	  fakeCSV1 = LightLookupCSVL(j1pt, j1eta);
@@ -303,7 +303,7 @@ class CompositePtrCandidateTMEtAlgorithm
       }
       if(j2csv>value_){
 	if(fabs(j2parton)==5||fabs(j2parton)==4){
-	  effCSV2 = 1.02658*(1+0.0195388*j2pt)/(1+(0.0209145*j2pt)); 
+	  effCSV2 = 0.997942*((1.+(0.00923753*j2pt))/(1.+(0.0096119*j2pt))); 
 	  if(effCSV1>0){SFCSVL1Jet = (effCSV1+effCSV2)/2; SFCSVL2Jet = effCSV1*effCSV2;  SFCSVL1JetT = 1.01;  SFCSVL2JetT = 1.01*1.01;}
 	  else if(fakeCSV1>0){SFCSVL1Jet = fakeCSV1*effCSV2; SFCSVL2Jet = fakeCSV1*effCSV2;SFCSVL1JetT = 1.01*fakeCSV1;SFCSVL2JetT=SFCSVL1JetT;}
 	  else {SFCSVL1Jet = effCSV2;  SFCSVL1JetT = 1.01;}
@@ -362,14 +362,14 @@ class CompositePtrCandidateTMEtAlgorithm
       SFCSVM1Jet =1;
       SFCSVM2Jet =1;
       //do loop for 1 Btagged Loose x = 0.679;
-      float x = 0.679;
+      float x = 0.679;  //isn't this (threshold) the same as value_
       if(j1csv>x){
 	if(fabs(j1parton)==5||fabs(j1parton)==4){
 	  if(TOP){
-	    effCSV1 = 0.97;
+	    effCSV1 = 0.97; // will need to be updated
 	  }
 	  else{
-	    effCSV1 = 0.6981*((1.+(0.414063*j1pt))/(1.+(0.300155*j1pt)));
+	    effCSV1 = (0.938887+(0.00017124*j1pt))+(-2.76366e-07*(j1pt*j1pt));
 	  }
 	}
 	else{
@@ -385,7 +385,7 @@ class CompositePtrCandidateTMEtAlgorithm
 	    else SFCSVM1Jet = effCSV2;
 	  }
 	  else{
-	    effCSV2 = 0.6981*((1.+(0.414063*j2pt))/(1.+(0.300155*j2pt))); 
+	    effCSV2 = (0.938887+(0.00017124*j2pt))+(-2.76366e-07*(j2pt*j2pt)); 
 	    if(effCSV1>0){SFCSVM1Jet = (effCSV1+effCSV2)/2; SFCSVM2Jet = effCSV1*effCSV2;}
 	    else if(fakeCSV1>0){SFCSVM1Jet = fakeCSV1*effCSV2; SFCSVM2Jet = fakeCSV1*effCSV2;}
 	    else SFCSVM1Jet = effCSV2;
@@ -447,7 +447,7 @@ class CompositePtrCandidateTMEtAlgorithm
       j2parton = jets.at(1)->partonFlavour();
       if(j1csv>value_){
 	if(fabs(j1parton)==5||fabs(j1parton)==4){
-	  effCSV1 = 0.901615*(1+0.552628*j1pt)/(1+(0.547195*j1pt)); 
+	  effCSV1 = (0.927563+(1.55479e-05*j1pt))+(-1.90666e-07*(j1pt*j1pt)); 
 	  SFCSVT1Jet = effCSV1;
 	  SFCSVT1JetT = 0.96;
 	}
@@ -459,7 +459,7 @@ class CompositePtrCandidateTMEtAlgorithm
       }
       if(j2csv>value_){
 	if(fabs(j2parton)==5||fabs(j2parton)==4){
-	  effCSV2 = 0.901615*(1+0.552628*j2pt)/(1+(0.547195*j2pt)); 
+	  effCSV2 = (0.927563+(1.55479e-05*j2pt))+(-1.90666e-07*(j2pt*j2pt)); 
 	  if(effCSV1>0){SFCSVT1Jet =(effCSV1+effCSV2)/2;SFCSVT1JetT = 0.96; SFCSVT2Jet = effCSV1*effCSV2;SFCSVT2JetT = 0.96*0.96;}
 	  else if(fakeCSV1>0){SFCSVT1Jet =fakeCSV1*effCSV2; SFCSVT2Jet = fakeCSV1*effCSV2;SFCSVT1JetT = 0.96*fakeCSV2;SFCSVT2JetT = 0.96*fakeCSV2;}
 	  else {SFCSVT1Jet = effCSV2; SFCSVT1JetT = 0.96;}
@@ -704,16 +704,15 @@ class CompositePtrCandidateTMEtAlgorithm
   float LightLookupCSVM(float pt, float eta){
     if(fabs(eta)>0&&fabs(eta)<0.8)
       {//mean
-	return ((1.06182+(0.000617034*pt))+(-1.5732e-06*(pt*pt)))+(3.02909e-10*(pt*(pt*pt)));
+	return ((1.07541+(0.00231827*pt))+(-4.74249e-06*(pt*pt)))+(2.70862e-09*(pt*(pt*pt)));
       }
     else if(fabs(eta)>0.8&&fabs(eta)<1.6)
-      {
-	//mean
-      return ((1.111+(-9.64191e-06*pt))+(1.80811e-07*(pt*pt)))+(-5.44868e-10*(pt*(pt*pt)));
+      {//mean
+      return ((1.05613+(0.00114031*pt))+(-2.56066e-06*(pt*pt)))+(1.67792e-09*(pt*(pt*pt)));
       }
     else if( fabs(eta)>1.6 && fabs(eta)<2.4)
       {//mean
-	return ((1.08498+(-0.000701422*pt))+(3.43612e-06*(pt*pt)))+(-4.11794e-09*(pt*(pt*pt)));
+      return ((1.05625+(0.000487231*pt))+(-2.22792e-06*(pt*pt)))+(1.70262e-09*(pt*(pt*pt))); 
     }
     return 0;
   }
@@ -722,19 +721,19 @@ class CompositePtrCandidateTMEtAlgorithm
     
     if(fabs(eta)>0.0&&fabs(eta)<0.5){//mean
       
-    return (float) ((1.07536+(0.000175506*pt))+(-8.63317e-07*(pt*pt)))+(3.27516e-10*(pt*(pt*pt)));
+    return (float) ((1.01177+(0.0023066*pt))+(-4.56052e-06*(pt*pt)))+(2.57917e-09*(pt*(pt*pt)));
     }
     else if( fabs(eta)>0.5 && fabs(eta)<1.0){//mean
       
-      return (float) ((1.07846+(0.00032458*pt))+(-1.30258e-06*(pt*pt)))+(8.50608e-10*(pt*(pt*pt)));
+      return (float) ((0.975966+(0.00196354*pt))+(-3.83768e-06*(pt*pt)))+(2.17466e-09*(pt*(pt*pt)));
     }
     else if( fabs(eta)>1.0 && fabs(eta)<1.5){//mean
       
-      return (float) ((1.08294+(0.000474818*pt))+(-1.43857e-06*(pt*pt)))+(1.13308e-09*(pt*(pt*pt)));
+      return (float) ((0.93821+(0.00180935*pt))+(-3.86937e-06*(pt*pt)))+(2.43222e-09*(pt*(pt*pt)));
     }
     else if( fabs(eta)>1.5 && fabs(eta)<2.4){//mean
       
-      return (float) ((1.0617+(0.000173654*pt))+(-5.29009e-07*(pt*pt)))+(5.55931e-10*(pt*(pt*pt)));
+      return (float) ((1.00022+(0.0010998*pt))+(-3.10672e-06*(pt*pt)))+(2.35006e-09*(pt*(pt*pt)));
     }
     
     return 0;
@@ -742,7 +741,7 @@ class CompositePtrCandidateTMEtAlgorithm
   
   float LightLookupCSVT(float pt, float eta){
     if(fabs(eta) >0.0 && fabs(eta)<2.4){
-      return (float) ((0.948463+(0.00288102*pt))+(-7.98091e-06*(pt*pt)))+(5.50157e-09*(pt*(pt*pt)));
+      return (float) ((1.00462+(0.00325971*pt))+(-7.79184e-06*(pt*pt)))+(5.22506e-09*(pt*(pt*pt)));
     }
     return 0;
   }
