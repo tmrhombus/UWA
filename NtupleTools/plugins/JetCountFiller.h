@@ -78,10 +78,11 @@ class JetCountFiller : public NtupleFillerBase {
 
 
     }
-    else
-      {
-	printf("Obj not found \n");
-      }
+//    else
+//      {
+//        MessageLogger.LogDebug("Obj not found\n")
+//	//printf("Obj not found \n");
+//      }
     //    vbranch->Fill();
   }
   

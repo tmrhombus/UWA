@@ -69,10 +69,10 @@ class PATIsolationFiller : public NtupleFillerBase {
 
 
     }
-    else
-      {
-	printf("Obj not found \n");
-      }
+//    else
+//      {
+//	printf("Obj not found \n");
+//      }
     //    vbranch->Fill();
   }
   

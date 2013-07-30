@@ -55,10 +55,10 @@ class HighestPtJetVarFiller : public NtupleFillerBase {
 		singleValue = (*function)(*(handle->at(0).jets().at(i)));
 	      }
     }
-    else
-      {
-	printf("Obj not found \n");
-      }
+//    else
+//      {
+//	printf("Obj not found \n");
+//      }
     //    vbranch->Fill();
   }
   
