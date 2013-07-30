@@ -6,11 +6,11 @@ Author: T.M.Perry
 
 def arams():
  lumi = 19429. #19109. # old 13498.
- bNr = 0
+ bNr = 2
  btype = 't'
  jNr = 2
- njetcut = '30' #20,25,26,30,40
- jetcut = '30'
+ njetcut = '25' #20,25,26,30,40
+ jetcut = '25'
  I = 0
  F = 20
  iso_value = 0.12
@@ -27,20 +27,19 @@ def arams():
  drawZ = False
  #drawZ = True
 
- jetVeto = False
+ jetVeto = True
  Control = True #one muon
  Z_Region = False # two muons, no mT cut
- legacy = True #voids everything else and puts parametrs from 7Tev analysis
+ legacy = False #voids everything else and puts parametrs from 7Tev analysis
 
  #naming where output goes
  path = '../plots/'
  fitrange = '_'+str(I)+'_'+str(F)
- extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_'+wSplitting
- #extraName = str(jNr)+'j'+str(bNr)+'b'+btype+fitrange
- #extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+fitrange
+ extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype
 
  #leafs = ['highestJetPt','highestJetEta','highestJetPhi','secondJetPt','secondJetEta','secondJetPhi']
- #leafs = ['highestJetPt','highestJetEta','highestJetPhi']
+ #leafs = ['secondJetPt','secondJetEta','secondJetPhi']
+ leafs = ['highestJetPt','highestJetEta','highestJetPhi']
  #leafs =['J1DR','J2DR']
  #leafs=['muonPt','muonEta','muonPhi']
  #leafs = ['DiMuonMass']
@@ -56,5 +55,5 @@ def arams():
 
  #leafs = ['MET','vertices']
 
- leafs = ['highestJetPt','highestJetEta','highestJetPhi','secondJetPt','secondJetEta','secondJetPhi','J1DR','J2DR','muonPt','muonEta','muonPhi','Mt','WPt','ptJJ','ht','MET','vertices']
+ #leafs = ['highestJetPt','highestJetEta','highestJetPhi','secondJetPt','secondJetEta','secondJetPhi','J1DR','J2DR','muonPt','muonEta','muonPhi','Mt']#,'WPt','ptJJ','ht','MET','vertices']
  return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region,legacy

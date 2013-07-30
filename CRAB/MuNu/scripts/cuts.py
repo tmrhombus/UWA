@@ -13,8 +13,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  mt = '(Mt>45)'
  noFJ = '(nJets24Pt25==0)'
 
- twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.5 && abs(secondJetEta)<2.5)'
- thJ = '('+twJ+'&& thirdJetPt >'+jetPt+' && abs(thirdJetEta)<2.5)'
+ twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4)'
+ thJ = '('+twJ+'&& thirdJetPt >'+jetPt+' && abs(thirdJetEta)<2.4)'
  frJ = '('+thJ+'&& mJ3J4 > 0)'
  if not jetVeto:
   twoJets   = '('+twJ+' && nJetsPt'+njetPt+'>=2)'
@@ -25,14 +25,23 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   threeJets = '('+thJ+' && nJetsPt'+njetPt+'==3)'
   fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
 
+ #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
  Iso='(lPFIsoDB<'+str(isolationValue)+')'
  NonIso ='(lPFIsoDB>='+str(antiIsoValue)+')'
  Z='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')'
 
- trigEff = 0.98
- #trigEff= '(EffWEIGHTpt*EffWEIGHTtrigeta)'
- weight = '('+'weightFactor*'+str(lumi)+'*'+str(trigEff)+')'
+ weightEff = '(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig)'
+ weight = '('+' weightFactor*' +str(lumi)+'*'+str(weightEff)+')'
+ weightW = '('+'weightFactorW*'+str(lumi)+'*'+str(weightEff)+')'
+
+ if legacy:
+  Iso='(lPFIsoDB<0.12)'
+  NonIso ='(lPFIsoDB>=0.2)'
+  theCut = '(nMuons==1 && abs(muonEta)<2.1 && muonPt>25 && highestJetPt > 25 && secondJetPt > 25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4 && nJetsPt25==2 && (J1CSVbtag>0.898) && (J2CSVbtag>0.898) && J1SVMassb>0 && J2SVMassb>0 && DiMuonMass<=60 && nElectrons==0 && nJets24Pt25==0 && Mt > 45 && (abs(dz)<0.5&&abs(l1DXY)<0.02) )'
+  weight = '(weightFactor*'+str(lumi)+'*'+str(weightEff)+'*EffWEIGHTCSVT)'
+  weightW = '(weightFactorW*'+str(lumi)+'*'+str(weightEff)+'*EffWEIGHTCSVT)'
+
 
  if btype == 'tight' or btype == 't':
   bcut = 0.898
@@ -79,13 +88,6 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   theCut = '('+theCut+'&&'+threeJets+')'
  if jnr == 4:
   theCut = '('+theCut+'&&'+fourJets+')'
-
- if legacy:
-  Iso='(lPFIsoDB<0.12)'
-  NonIso ='(lPFIsoDB>=0.2)'
-  theCut = '(nMuons==1 && abs(muonEta)<2.1 && muonPt>25 && highestJetPt > 25 && secondJetPt > 25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4 && nJetsPt25==2 && (J1CSVbtag>0.898) && (J2CSVbtag>0.898) && J1SVMassb>0 && J2SVMassb>0 && DiMuonMass<=60 && nElectrons==0 && nJets24Pt25==0 && Mt > 45)'
-  weight = '(weightFactor*'+str(lumi)+'*'+str(trigEff)+'*EffWEIGHTCSVT)'
-  weightW = '(weightFactorW*'+str(lumi)+'*'+str(trigEff)+'*EffWEIGHTCSVT)'
 
  if wSplitting == 'had':
   # for splitting up the W sample :: hadron splitting
