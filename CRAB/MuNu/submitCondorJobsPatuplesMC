@@ -1,7 +1,7 @@
 #!/bin/sh
 voms-proxy-init --voms cms --valid 100:00
 
-version="v6"
+version="v0"
 
 cat MNu-Pat_MC.py  > MuNuPAT.py
 cat CONDOR_MC.py >> MuNuPAT.py
@@ -33,7 +33,7 @@ farmoutAnalysisJobs $1 --input-files-per-job=1 \
   ${version}_W2Jet_josh $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
 
 farmoutAnalysisJobs $1 --input-files-per-job=1 \
-  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/2013-06-25-8TeV-53X-PatTuple_Master/ \
+  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/2013-06-25-8TeV-53X-PatTuple_Master \
   ${version}_W2Jet_tapas $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT_newPAT.py
 
 # W3 Jet
