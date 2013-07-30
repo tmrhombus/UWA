@@ -2,15 +2,17 @@
 # Author: T.M.Perry UW-Madison
 # Moves/Merges MC files from /hdfs/... to working directory
 
-version="v6"
+version="v0"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/
 mkdir ${version}
 cd ${version}
 
 echo "merging drell"
 mergeFiles Drell.root /hdfs/store/user/$USER/merged_${version}_Drell-mergeFilesJob/*.root
-echo "merging ttbar"
-mergeFiles TTbar.root /hdfs/store/user/$USER/merged_${version}_TTbar_full-mergeFilesJob/*.root /hdfs/store/user/$USER/merged_${version}_TTbar_semi-mergeFilesJob/*.root
+echo "merging ttbar full"
+mergeFiles TTbar_full.root /hdfs/store/user/$USER/merged_${version}_TTbar_full-mergeFilesJob/*.root 
+echo "merging ttbar semi"
+mergeFiles TTbar_semi.root /hdfs/store/user/$USER/merged_${version}_TTbar_semi-mergeFilesJob/*.root
 echo "merging single top"
 mergeFiles T_s.root /hdfs/store/user/$USER/merged_${version}_T_s-mergeFilesJob/*.root
 mergeFiles T_t.root /hdfs/store/user/$USER/merged_${version}_T_t-mergeFilesJob/*.root
