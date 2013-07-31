@@ -77,7 +77,11 @@ farmoutAnalysisJobs $1 --input-files-per-job=1 \
 #tt
 farmoutAnalysisJobs $1 --input-files-per-job=1 \
   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/T_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v3/AODSIM/2013-02-25-8TeV-53X-PatTuple_Master/ \
-  ${version}_T_t $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+  ${version}_T_t_p1 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+
+farmoutAnalysisJobs $1 --input-files-per-job=1 \
+  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/cepeda/T_t-channel_TuneZ2star_8TeV-powheg-tauola/T_t-channel_TuneZ2star_8TeV-powheg-tauola_Take1/ \
+  ${version}_T_t_p2 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
 
 farmoutAnalysisJobs $1 --input-files-per-job=1 \
   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tapas/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/2013-02-25-8TeV-53X-PatTuple_Master/ \
