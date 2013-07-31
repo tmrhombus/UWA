@@ -8,6 +8,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
 
  trigger = '(HLT_IsoMu24_eta2p1_v_fired)'
  muon_selection = '(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
+ oneMUoneELE = '(DiMuonMass<=60 && nElectrons==1 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
  dimuon_selection = '(nMuons==2&&abs(muonEta)<2.1&&muonPt>25)'
  vertex = '(abs(dz)<0.5&&abs(l1DXY)<0.02)'
  mt = '(Mt>45)'
@@ -26,6 +27,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
 
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
+ #Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
  Iso='(lPFIsoDB<'+str(isolationValue)+')'
  NonIso ='(lPFIsoDB>='+str(antiIsoValue)+')'
@@ -50,8 +52,6 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  if btype == 'loose' or btype == 'l':
   bcut = 0.244
   
-# OneBtag='((J1CSVbtag>'+str(bcut)+')||(J2CSVbtag>'+str(bcut)+'))'
-# TwoBtag='((J1CSVbtag>'+str(bcut)+')&&(J2CSVbtag>'+str(bcut)+'))'
  OneBtag='((J1CSVbtag>'+str(bcut)+'&&J1SVMassb>0)||(J2CSVbtag>'+str(bcut)+'&&J2SVMassb>0))'
  TwoBtag='((J1CSVbtag>'+str(bcut)+'&&J1SVMassb>0)&&(J2CSVbtag>'+str(bcut)+'&&J2SVMassb>0))'
 
@@ -84,7 +84,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
 
  if jnr == 2:
   theCut = '('+theCut+'&&'+twoJets+')'
- if jnr >= 3:
+ if jnr == 3:
   theCut = '('+theCut+'&&'+threeJets+')'
  if jnr == 4:
   theCut = '('+theCut+'&&'+fourJets+')'
