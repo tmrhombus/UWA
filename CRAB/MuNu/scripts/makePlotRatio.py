@@ -65,6 +65,16 @@ for leaf in leafs:
  name.append(extraName+'_'+leaf)
  
  for i in name:
+
+  log = open(path+i+'.log','a')
+  log.write('\n\nOn Plotting SF QCD: '+str(sf_qcd)+'\n') 
+  log.write('On Plotting SF Drell: '+str(sf_drell)+'\n')
+  log.write('On Plotting SF Single Top: '+str(sf_st)+'\n')
+  log.write('On Plotting SF TTbar: '+str(sf_ttbar)+'\n')
+  log.write('On Plotting SF W: '+str(sf_wjets)+'\n')
+  log.write('On Plotting SF Diboson: '+str(sf_vv)+'\n')
+  log.close()
+
   c = TCanvas('c','Canvas Named c',canx,cany)
   p1 = TPad('p1','p1',0,0.3,1,1)
   p1.SetBottomMargin(0.08)
