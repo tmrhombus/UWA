@@ -96,11 +96,11 @@ for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
- outFile=gROOT.FindObject(path+leaf+extraName+'.root')
+ outFile=gROOT.FindObject(path+extraName+'_'+leaf+'.root')
  if outFile : outFile.Close()
- outFile = TFile(path+leaf+extraName+'.root','RECREATE','Demo ROOT file')
+ outFile = TFile(path+extraName+'_'+leaf+'.root','RECREATE','Demo ROOT file')
  
- log = open(path+leaf+extraName+'.log','w')
+ log = open(path+extraName+'_'+leaf+'.log','w')
  
  print('----------------------------')
  print('      --'+leaf+'--')
@@ -490,7 +490,7 @@ for leaf in leafs:
  
  outFile.Write()
  print('')
- print('Your File is here: '+path+leaf+extraName+'.root')
+ print('Your File is here: '+path+extraName+'_'+leaf+'.root')
  print('')
  
  log.write('------------------------------------------------\n')
@@ -637,4 +637,3 @@ for leaf in leafs:
  
  print(".log written")
  log.close()
- 

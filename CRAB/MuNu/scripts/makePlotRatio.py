@@ -16,7 +16,7 @@ sf_qcd = 2.04437
 
 sf_drell = 1.# 3503.71 / 3.02386400000000000e+07
 sf_st    = 1.# 22.2    / 9.91118000000000000e+05
-sf_ttbar = 1.# 225.    / 6.88773100000000000e+06
+sf_ttbar = 249.5/234.# 225.    / 6.88773100000000000e+06
 sf_wjets = 1.# 37509.  / 5.31329400000000000e+07
 sf_vv    = 1.
  
@@ -62,7 +62,7 @@ for leaf in leafs:
  title = xtitle #+' Data v MC'
  
  name = []
- name.append(leaf+extraName)
+ name.append(extraName+'_'+leaf)
  
  for i in name:
   c = TCanvas('c','Canvas Named c',canx,cany)
@@ -433,7 +433,7 @@ for leaf in leafs:
    l.SetLineStyle(3)
    l.Draw()
   c.Update()
-  print('you are on '+leaf)
+  print('you just read '+leaf)
   save2 = raw_input ('Press Enter to Continue (type save to save)\n')
   if save2 == 'save':
    c.Print(path+i+'.png')
