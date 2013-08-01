@@ -13,6 +13,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  vertex = '(abs(dz)<0.5&&abs(l1DXY)<0.02)'
  mt = '(Mt>45)'
  noFJ = '(nJets24Pt25==0)'
+ muPlus = '(muonCharge > 0)'
+ muMinus = '(muonCharge < 0)'
 
  twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4)'
  thJ = '('+twJ+'&& thirdJetPt >'+jetPt+' && abs(thirdJetEta)<2.4)'
@@ -29,6 +31,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
  #Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
+ #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muPlus+')'
+ #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muMinus+')'
  Iso='(lPFIsoDB<'+str(isolationValue)+')'
  NonIso ='(lPFIsoDB>='+str(antiIsoValue)+')'
  Z='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')'
@@ -62,6 +66,9 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  else:
   print("\n\n In parameters.py, choose Control or Z_Region True\n\n")
 
+ newCSVT2 = '(0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt))*(0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt))'
+ oldCSVT2 = '(0.901615*(1+0.552628*highestJetPt)/(1+(0.547195*highestJetPt)))*(0.901615*(1+0.552628*secondJetPt)/(1+(0.547195*secondJetPt)))'
+
  if bnr == 1:
   if btype == 'tight' or btype == 't':
    beffWeight = 'EffWEIGHTCSVT'
@@ -74,7 +81,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
 
  if bnr == 2:
   if btype == 'tight' or btype == 't':
-   beffWeight = 'EffWEIGHTCSVT2'
+   beffWeight = newCSVT2
+   #beffWeight = 'EffWEIGHTCSVT2'
   if btype == 'medium' or btype == 'med' or btype == 'm':
    beffWeight = 'EffWEIGHTCSVM2'
   if btype == 'loose' or btype == 'l':
