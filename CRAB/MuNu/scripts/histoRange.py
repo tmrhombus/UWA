@@ -123,13 +123,31 @@ def ranger(leaf):
    xmax = 7.
    xtitle = leaf
    xunits = 'flavor'
+ elif leaf=='J1SVMassb' or leaf =='J2SVMassb':
+   steps = 10
+   xmin = 0.
+   xmax = 15.
+   xtitle = leaf
+   xunits = 'GeV'
+ elif leaf=='muonCharge':
+   steps = 5
+   xmin = -2.
+   xmax = 2.
+   xtitle = leaf
+   xunits = 'e'
+ elif leaf == '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))':
+   steps = 20
+   xmin = 0.
+   xmax = 2.
+   xtitle = '#Delta #phi^{2}+#Delta #eta^{2}'
+   xunits = 'xx'
  else :
    print("\n\n")
    print "YOU ARE A NINNY! The leaf's name isn't valid"
    print("\n\n")
-   steps = 100
+   steps = 20
    xmin = 0.
-   xmax = 200.
+   xmax = 1.
    xtitle = leaf
    xunits = 'xx'
 
