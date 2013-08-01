@@ -4,13 +4,14 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,wSplitting='had',Control=True,Z_Region=False,legacy=False):
+def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,wSplitting='had',Control=True,Z_Region=False,legacy=False,noMT=False):
 
  trigger = '(HLT_IsoMu24_eta2p1_v_fired)'
  muon_selection = '(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
  oneMUoneELE = '(DiMuonMass<=60 && nElectrons==1 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
  dimuon_selection = '(nMuons==2&&abs(muonEta)<2.1&&muonPt>25)'
  vertex = '(abs(dz)<0.5&&abs(l1DXY)<0.02)'
+ vertexNoDZ = '(abs(l1DXY)<0.02)'
  mt = '(Mt>45)'
  noFJ = '(nJets24Pt25==0)'
  muPlus = '(muonCharge > 0)'
@@ -28,11 +29,13 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   threeJets = '('+thJ+' && nJetsPt'+njetPt+'==3)'
   fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
 
- #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
- #Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
+ SkimNoMT='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
+ #Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
+ #Skim='('+trigger+'&&'+muon_selection+'&&'+vertexNoDZ+'&&'+noFJ+')'
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muPlus+')'
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muMinus+')'
+
  Iso='(lPFIsoDB<'+str(isolationValue)+')'
  NonIso ='(lPFIsoDB>='+str(antiIsoValue)+')'
  Z='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')'
@@ -63,6 +66,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   theCut = Skim
  elif Z_Region:
   theCut = Z
+ elif noMT:
+  theCut = SkimNoMT
  else:
   print("\n\n In parameters.py, choose Control or Z_Region True\n\n")
 
