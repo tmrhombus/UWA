@@ -19,6 +19,7 @@ def cutmaker():
  twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4)'
  twoJets   = '('+twJ+' && nJetsPt'+njetPt+'>=2)'
 
+ #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')'
  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
  Iso='(lPFIsoDB<'+str(isolationValue)+')'
 

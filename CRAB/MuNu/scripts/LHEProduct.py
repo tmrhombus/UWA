@@ -45,7 +45,7 @@ leaf = 'LHEProduct'
 steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
 
 path = '../plots/'
-extraName='_scaled'
+extraName=''
 outFile=gROOT.FindObject(path+leaf+extraName+'.root')
 if outFile : outFile.Close()
 outFile = TFile(path+leaf+extraName+'.root','RECREATE','Demo ROOT file')
@@ -59,31 +59,31 @@ print('----------------------------')
 I = 4
 F = 10
 print('wbb n Iso')
-wbbnih,wbbnihSize,wbbnihSizePart = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+wbbnih,wbbnihSize,wbbnihSizePart,wbbnihEvents = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
 wbbnih.SetName('wbbnih')
 print('  '+str(wbbnihSize))
 print('  '+str(wbbnihSizePart))
 ####
 print('wbb 1 Iso')
-wbb1ih,wbb1ihSize,wbb1ihSizePart = h.gram(w1_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+wbb1ih,wbb1ihSize,wbb1ihSizePart,wbb1inEvents = h.gram(w1_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
 wbb1ih.SetName('wbb1ih')
 print('  '+str(wbb1ihSize))
 print('  '+str(wbb1ihSizePart))
 ####
 print('wbb 2 Iso')
-wbb2ih,wbb2ihSize,wbb2ihSizePart = h.gram(w2_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+wbb2ih,wbb2ihSize,wbb2ihSizePart,wbb2ihEvents = h.gram(w2_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
 wbb2ih.SetName('wbb2ih')
 print('  '+str(wbb2ihSize))
 print('  '+str(wbb2ihSizePart))
 ####
 print('wbb 3 Iso')
-wbb3ih,wbb3ihSize,wbb3ihSizePart = h.gram(w3_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+wbb3ih,wbb3ihSize,wbb3ihSizePart,wbb3ihEvents = h.gram(w3_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
 wbb3ih.SetName('wbb3ih')
 print('  '+str(wbb3ihSize))
 print('  '+str(wbb3ihSizePart))
 ####
 print('wbb 4 Iso')
-wbb4ih,wbb4ihSize,wbb4ihSizePart = h.gram(w4_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+wbb4ih,wbb4ihSize,wbb4ihSizePart,wbb4ihEvents = h.gram(w4_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
 wbb4ih.SetName('wbb4ih')
 print('  '+str(wbb4ihSize))
 print('  '+str(wbb4ihSizePart))
