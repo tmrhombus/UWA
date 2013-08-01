@@ -1367,6 +1367,10 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                               coreCollections = cms.VInputTag(
                                    cms.InputTag(src)
                               ),
+                              topweight= cms.PSet(
+                                   pluginType = cms.string("TopWeight"),
+                                   src = cms.InputTag("genParticles")
+                              ),
                               PVs = cms.PSet(
                                     pluginType = cms.string("VertexSizeFiller"),
                                     src = cms.InputTag("primaryVertexFilter"),

@@ -1367,6 +1367,10 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                               coreCollections = cms.VInputTag(
                                    cms.InputTag(src)
                               ),
+                              topweight= cms.PSet(
+                                   pluginType = cms.string("TopWeight"),
+                                   src = cms.InputTag("genParticles")
+                              ),
                               PVs = cms.PSet(
                                     pluginType = cms.string("VertexSizeFiller"),
                                     src = cms.InputTag("primaryVertexFilter"),
@@ -1392,20 +1396,20 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                                   pluginType = cms.string("CollectionSizeFiller"),
                                   src = cms.InputTag("bhadrons"),
                                   tag = cms.string("nbHadrons"),
-                                  ),
-                               DiJetSVSVMass = cms.PSet(
+                              ),
+                              DiJetSVSVMass = cms.PSet(
                                   pluginType = cms.string("PATMuonNuPairFiller"),
                                   src = cms.InputTag(src),
                                   tag = cms.string("DiSVMass"),
                                   method = cms.string('SV1SV2M')
                               ),
-                               DiJetSVSVPt = cms.PSet(
+                              DiJetSVSVPt = cms.PSet(
                                   pluginType = cms.string("PATMuonNuPairFiller"),
                                   src = cms.InputTag(src),
                                   tag = cms.string("DiSVPt"),
                                   method = cms.string('SV1SV2Pt')
                               ),
-                               J1SV_M = cms.PSet(
+                              J1SV_M = cms.PSet(
                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                   src = cms.InputTag(src),
                                   tag = cms.string("J1SVM"),
@@ -2101,6 +2105,16 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                                   tag = cms.string("J3JetParton"),
                                   method = cms.string('partonFlavour()'),
                                   rank = cms.untracked.double(2)
+                              ),
+                              gent = cms.PSet(
+                                  pluginType = cms.string("CollectionSizeFiller"),
+                                  src = cms.InputTag("gentCands"),
+                                  tag = cms.string("genTs"),
+                              ),
+                              gentbar = cms.PSet(
+                                  pluginType = cms.string("CollectionSizeFiller"),
+                                  src = cms.InputTag("gentbarCands"),
+                                  tag = cms.string("genTbars"),
                               ),
                               genbb = cms.PSet(
                                   pluginType = cms.string("CollectionSizeFiller"),
