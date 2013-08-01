@@ -14,7 +14,7 @@ def ranger(leaf):
    xmax = 200.
    xtitle = 'p_{T}^{#mu}'
    xunits = 'GeV'
- elif leaf=='Mt':
+ elif leaf=='Mt' or leaf == 'MtCal':
    steps =50 
    xmin = 0.
    xmax = 200.
@@ -124,9 +124,9 @@ def ranger(leaf):
    xtitle = leaf
    xunits = 'flavor'
  elif leaf=='J1SVMassb' or leaf =='J2SVMassb':
-   steps = 10
+   steps = 16
    xmin = 0.
-   xmax = 15.
+   xmax = 8.
    xtitle = leaf
    xunits = 'GeV'
  elif leaf=='muonCharge':
@@ -138,8 +138,20 @@ def ranger(leaf):
  elif leaf == '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))':
    steps = 20
    xmin = 0.
-   xmax = 2.
-   xtitle = '#Delta #phi^{2}+#Delta #eta^{2}'
+   xmax = 5.
+   xtitle = '#Delta #phi^{2}_{j1j2}+#Delta #eta^{2}_{j1j2}'
+   xunits = 'xx'
+ elif leaf=='dz':
+   steps = 40
+   xmin = -0.2
+   xmax = 0.2
+   xtitle = leaf
+   xunits = 'xx'
+ elif leaf=='nJetsPt20':
+   steps = 6
+   xmin = 0.
+   xmax = 6
+   xtitle = leaf
    xunits = 'xx'
  else :
    print("\n\n")
