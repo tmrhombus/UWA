@@ -25,4 +25,5 @@ def gram(tree,leaf,xmin=0,xmax=200,steps=20,cuts='(2>1)',I=-1,F=-1):
  
  size = histo.Integral(bmin,bmax)
  sizePart = histo.Integral(bminI,bmaxF)
- return histo,size,sizePart
+ entries = histo.GetEntries()
+ return histo,size,sizePart,entries
