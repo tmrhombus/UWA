@@ -9,7 +9,8 @@ analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
                                   pyModuleName = __name__,
                                   pyNameSpace = locals())
 
-analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','systematicsMET')#cleanPatJets
+analysisConfigurator.addSmearing('patOverloadedTaus','recorrMuons','cleanPatElectrons','cleanPatJets','systematicsMET')#cleanPatJets
+#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','systematicsMET')#cleanPatJets
 #analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','NewSelectedPatJets','systematicsMET')#cleanPatJets
 #analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','NewCleanedPatJets','systematicsMET')#cleanPatJets
 #analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','patJetMCMatched','systematicsMET')#cleanPatJets

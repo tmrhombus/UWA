@@ -42,12 +42,12 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
 
   ##jetMCMatching(process,"NewSelectedPatJets")
   jetOverloading(process,"NewSelectedPatJets")
-  #rochesterCorrections(process)
-  #SVReconstruction(process,"patOverloadedJets","recorrMuons")  
-  SVReconstruction(process,"patOverloadedJets","cleanPatMuons")  
+  rochesterCorrections(process)
+  SVReconstruction(process,"patOverloadedJets","recorrMuons")  
+  #SVReconstruction(process,"patOverloadedJets","cleanPatMuons")  
 
-  #applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
-  applyDefaultSelectionsPT(process,"patBRecoJets","cleanPatMuons")
+  applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
+  #applyDefaultSelectionsPT(process,"patBRecoJets","cleanPatMuons")
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
   #mvaMet(process) #Build MVA MET
