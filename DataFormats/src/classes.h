@@ -1,4 +1,3 @@
-
 #include "UWAnalysis/DataFormats/interface/CompositePtrCandidateT1T2MEt.h"
 #include "UWAnalysis/DataFormats/interface/CompositePtrCandidateT1T2MEtFwd.h"
 #include "UWAnalysis/DataFormats/interface/CompositePtrCandidateTMEt.h"
@@ -8,7 +7,7 @@
 #include "DataFormats/PatCandidates/interface/Muon.h"
 #include "DataFormats/PatCandidates/interface/Tau.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
-
+#include "UWAnalysis/DataFormats/interface/BCandFinalState.h"
 
 namespace {
   struct UWanalysis_DataFormats_dictionary {
@@ -32,9 +31,6 @@ namespace {
     edm::Ptr<reco::RecoChargedCandidate> dummyRecoChargeCandPtr;
     edm::Ptr<reco::RecoEcalCandidate> dummyRecoEcalCandPtr;
     std::vector<edm::Ptr<pat::Jet> > dummyPATJetPtrVector;
-
-
-
 
     /// create dictionaries for 
     ///  o edm::Ptr<reco::CaloJet>
@@ -62,7 +58,6 @@ namespace {
     edm::Wrapper<PATJetPairCollection> dummyPATJetPairCollectionWrapper;
     edm::Ptr<PATJetPair> dummyPATJetPairPtr;
 
-
     /// create dictionaries for PATElecPair objects
     PATElecPair dummyPATElecPair;
     edm::Wrapper<PATElecPair> dummyPATElecPairWrapper;
@@ -70,15 +65,12 @@ namespace {
     edm::Wrapper<PATElecPairCollection> dummyPATElecPairCollectionWrapper;
     edm::Ptr<PATElecPair> dummyPATElecPairPtr;
 
-
-
     /// create dictionaries for PATMuPair objects
     PATMuPair dummyPATMuPair;
     edm::Wrapper<PATMuPair> dummyPATMuPairWrapper;
     PATMuPairCollection dummyPATMuPairCollection;
     edm::Wrapper<PATMuPairCollection> dummyPATMuPairCollectionWrapper;
     edm::Ptr<PATMuPair> dummyPATMuPairPtr;
-
 
     /// create dictionaries for PATElecTauPair objects
     PATElecTauPair dummyPATElecTauPair;
@@ -90,7 +82,6 @@ namespace {
     edm::RefProd<PATElecTauPairCollection> dummyPATElecTauPairRefProd;
     edm::Ptr<PATElecTauPair> dummyPATElecTauPairPtr;
 
-
     /// create dictionaries for PATElecSCPair objects
     PATElecSCPair dummyPATElecSCPair;
     edm::Wrapper<PATElecSCPair> dummyPATElecSCPairWrapper;
@@ -100,8 +91,6 @@ namespace {
     edm::RefVector<PATElecSCPairCollection> dummyPATElecSCPairRefVector;
     edm::RefProd<PATElecSCPairCollection> dummyPATElecSCPairRefProd;
     edm::Ptr<PATElecSCPair> dummyPATElecSCPairPtr;
-
-
 
     /// create dictionaries for PATMuTauPair objects
     PATMuTauPair dummyPATMuTauPair;
@@ -113,7 +102,6 @@ namespace {
     edm::RefProd<PATMuTauPairCollection> dummyPATMuTauPairRefProd;
     edm::Ptr<PATMuTauPair> dummyPATMuTauPairPtr;
 
-
     /// create dictionaries for PATMuJetPair objects
     PATMuTauPair dummyPATMuJetPair;
     edm::Wrapper<PATMuJetPair> dummyPATMuJetPairWrapper;
@@ -123,7 +111,6 @@ namespace {
     edm::RefVector<PATMuJetPairCollection> dummyPATMuJetPairRefVector;
     edm::RefProd<PATMuJetPairCollection> dummyPATMuJetPairRefProd;
     edm::Ptr<PATMuJetPair> dummyPATMuJetPairPtr;
-
 
     /// create dictionaries for PATMuTauPair objects
     PATMuTrackPair dummyPATMuTrackPair;
@@ -135,7 +122,6 @@ namespace {
     edm::RefProd<PATMuTrackPairCollection> dummyPATMuTrackPairRefProd;
     edm::Ptr<PATMuTrackPair> dummyPATMuTrackPairPtr;
 
-
     /// create dictionaries for PATEleTrackPair objects
     PATEleTrackPair dummyPATEleTrackPair;
     edm::Wrapper<PATEleTrackPair> dummyPATEleTrackPairWrapper;
@@ -145,7 +131,6 @@ namespace {
     edm::RefVector<PATEleTrackPairCollection> dummyPATEleTrackPairRefVector;
     edm::RefProd<PATEleTrackPairCollection> dummyPATEleTrackPairRefProd;
     edm::Ptr<PATEleTrackPair> dummyPATEleTrackPairPtr;
-
 
     /// create dictionaries for PATDiTauPair objects
     PATDiTauPair dummyPATDiTauPair;
@@ -157,7 +142,6 @@ namespace {
     edm::RefProd<PATDiTauPairCollection> dummyPATDiTauPairRefProd;
     edm::Ptr<PATDiTauPair> dummyPATDiTauPairPtr;
     
-
     /// create dictionaries for PATElecMuPair objects
     PATElecMuPair dummyPATElecMuPair;
     edm::Wrapper<PATElecMuPair> dummyPATElecMuPairWrapper;
@@ -167,7 +151,6 @@ namespace {
     edm::RefVector<PATElecMuPairCollection> dummyPATElecMuPairRefVector;
     edm::RefProd<PATElecMuPairCollection> dummyPATElecMuPairRefProd;
     edm::Ptr<PATElecMuPair> dummyPATElecMuPairPtr;
-
 
     /// create dictionaries for PATTauNuPair objects
     PATTauNuPair dummyPATTauNuPair;
@@ -209,7 +192,6 @@ namespace {
     edm::RefProd<PATMuMuJJQuadCollection> dummyPATMuMuJJQuadRefProd;
     edm::Ptr<PATMuMuJJQuad> dummyPATMuMuJJQuadPtr;
 
-	
     /// create dictionaries for PATMuMuMuTauQuad objects
     PATMuMuMuTauQuad dummyPATMuMuMuTauQuad;
     edm::Wrapper<PATMuMuMuTauQuad> dummyPATMuMuMuTauTauQuadWrapper;
@@ -270,7 +252,6 @@ namespace {
     edm::RefProd<PATMuMuMuMuQuadCollection> dummyPATMuMuMuMuQuadRefProd;
     edm::Ptr<PATMuMuMuMuQuad> dummyPATMuMuMuMuQuadPtr;
 
-
     /// create dictionaries for PATEleEleEleTauQuad objects
     PATEleEleEleTauQuad dummyPATEleEleEleTauQuad;
     edm::Wrapper<PATEleEleEleTauQuad> dummyPATEleEleEleTauTauQuadWrapper;
@@ -321,7 +302,7 @@ namespace {
     edm::RefProd<PATEleEleEleMuQuadCollection> dummyPATEleEleEleMuQuadRefProd;
     edm::Ptr<PATEleEleEleMuQuad> dummyPATEleEleEleMuQuadPtr;
 
-    /// create dictionaries for PATEleEleMuMuQuad objects                                                                                                                                               
+    /// create dictionaries for PATEleEleMuMuQuad objects
     PATEleEleMuMuQuad dummyPATEleEleMuMuQuad;
     edm::Wrapper<PATEleEleMuMuQuad> dummyPATEleEleMuMuQuadWrapper;
     PATEleEleMuMuQuadCollection dummyPATEleEleMuMuQuadCollection;
@@ -331,5 +312,11 @@ namespace {
     edm::RefProd<PATEleEleMuMuQuadCollection> dummyPATEleEleMuMuQuadRefProd;
     edm::Ptr<PATEleEleMuMuQuad> dummyPATEleEleMuMuQuadPtr;
 
+    // BCand class
+    BCandFinalState bcfs;
+    BCandFinalStateCollection bcfsc;
+    BCandFinalStateRefProd bcfsrp;
+    BCandFinalStateRefVector bcrv;
+    edm::Wrapper<BCandFinalStateCollection> wrbc;
   };
 }

@@ -7,14 +7,8 @@
 
   <!-- create dictionaries for edm::Ptr<pat::Electron>, edm::Ptr<pat::Muon>, edm::Ptr<pat::Tau> and edm::Ptr<pat::Jet>
        as these dictionaries are not yet created in DataFormats/PatCandidates/src/classes.h -->
-
-
-
-
   <class name="edm::Ptr<reco::RecoChargedCandidate>"/>
   <class name="edm::Ptr<reco::RecoEcalCandidate>"/>
-
-
 
   <class name="std::vector<edm::Ptr<pat::Jet> >"/>
 
@@ -73,7 +67,6 @@
   <class name="edm::RefProd<PATElecSCPairCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<pat::Electron, reco::RecoEcalCandidate> >"/>
 
-
   <!-- create dictionaries for PATMuTauPair objects -->
   <class name="CompositePtrCandidateT1T2MEt<pat::Muon, pat::Tau>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<pat::Muon, pat::Tau> >"/>
@@ -84,7 +77,6 @@
   <class name="edm::RefProd<PATMuTauPairCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<pat::Muon, pat::Tau> >"/>
 
-
   <!-- create dictionaries for PATMuJetPair objects -->
   <class name="CompositePtrCandidateT1T2MEt<pat::Muon, pat::Jet>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<pat::Muon, pat::Jet> >"/>
@@ -94,7 +86,6 @@
   <class name="edm::RefVector<PATMuJetPairCollection,PATMuJetPair,edm::refhelper::FindUsingAdvance<PATMuJetPairCollection,PATMuJetPair> >"/>
   <class name="edm::RefProd<PATMuJetPairCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<pat::Muon, pat::Jet> >"/>
-
 
   <!-- create dictionaries for PATMuTrackPair objects -->
   <class name="CompositePtrCandidateT1T2MEt<pat::Muon, reco::RecoChargedCandidate>"/>
@@ -116,7 +107,6 @@
   <class name="edm::RefProd<PATEleTrackPairCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<pat::Electron, reco::RecoChargedCandidate> >"/>
 
-
   <!-- create dictionaries for PATDiTauPair objects -->
   <class name="CompositePtrCandidateT1T2MEt<pat::Tau, pat::Tau>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<pat::Tau, pat::Tau> >"/>
@@ -126,9 +116,6 @@
   <class name="edm::RefVector<PATDiTauPairCollection,PATDiTauPair,edm::refhelper::FindUsingAdvance<PATDiTauPairCollection,PATDiTauPair> >"/>
   <class name="edm::RefProd<PATDiTauPairCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<pat::Tau, pat::Tau> >"/>
-
-
-
 
   <!-- create dictionaries for PATElecMuPair objects -->
   <class name="CompositePtrCandidateT1T2MEt<pat::Electron, pat::Muon>"/>
@@ -140,7 +127,6 @@
   <class name="edm::RefProd<PATElecMuPairCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<pat::Electron, pat::Muon> >"/>
 
-
   <!-- create dictionaries for PATMuMuJJQuad objects -->
   <class name="CompositePtrCandidateT1T2MEt<PATMuPair, PATJetPair>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<PATMuPair, PATJetPair> >"/>
@@ -150,7 +136,6 @@
   <class name="edm::RefVector<PATMuMuJJQuadCollection,PATMuMuJJQuad,edm::refhelper::FindUsingAdvance<PATMuMuJJQuadCollection,PATMuMuJJQuad> >"/>
   <class name="edm::RefProd<PATMuMuJJQuadCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<PATMuPair, PATJetPair> >"/>
-
 
   <!-- create dictionaries for PATMuMuMuTauQuad objects -->
   <class name="CompositePtrCandidateT1T2MEt<PATMuPair, PATMuTauPair>"/>
@@ -222,7 +207,7 @@
   <class name="edm::RefProd<PATEleEleEleTauQuadCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<PATElecPair, PATElecTauPair> >"/>
  
- <!-- create dictionaries for PATEleEleTauTauQuad objects -->
+  <!-- create dictionaries for PATEleEleTauTauQuad objects -->
   <class name="CompositePtrCandidateT1T2MEt<PATElecPair, PATDiTauPair>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<PATElecPair, PATDiTauPair> >"/>
   <class name="edm::Wrapper<CompositePtrCandidateT1T2MEt<PATElecPair, PATDiTauPair> >"/>
@@ -232,7 +217,7 @@
   <class name="edm::RefProd<PATEleEleTauTauQuadCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<PATElecPair, PATDiTauPair> >"/>
 
- <!-- create dictionaries for PATEleEleEleEleQuad objects -->
+  <!-- create dictionaries for PATEleEleEleEleQuad objects -->
   <class name="CompositePtrCandidateT1T2MEt<PATElecPair, PATElecPair>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<PATElecPair, PATElecPair> >"/>
   <class name="edm::Wrapper<CompositePtrCandidateT1T2MEt<PATElecPair, PATElecPair> >"/>
@@ -242,7 +227,7 @@
   <class name="edm::RefProd<PATEleEleEleEleQuadCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<PATElecPair, PATElecPair> >"/>
 
- <!-- create dictionaries for PATEleEleMuTauQuad objects -->
+  <!-- create dictionaries for PATEleEleMuTauQuad objects -->
   <class name="CompositePtrCandidateT1T2MEt<PATElecPair, PATMuTauPair>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<PATElecPair, PATMuTauPair> >"/>
   <class name="edm::Wrapper<CompositePtrCandidateT1T2MEt<PATElecPair, PATMuTauPair> >"/>
@@ -252,7 +237,7 @@
   <class name="edm::RefProd<PATEleEleMuTauQuadCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<PATElecPair, PATMuTauPair> >"/>
 
- <!-- create dictionaries for PATEleEleEleMuQuad objects -->
+  <!-- create dictionaries for PATEleEleEleMuQuad objects -->
   <class name="CompositePtrCandidateT1T2MEt<PATElecPair, PATElecMuPair>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<PATElecPair, PATElecMuPair> >"/>
   <class name="edm::Wrapper<CompositePtrCandidateT1T2MEt<PATElecPair, PATElecMuPair> >"/>
@@ -262,7 +247,7 @@
   <class name="edm::RefProd<PATEleEleEleMuQuadCollection>"/>
   <class name="edm::Ptr<CompositePtrCandidateT1T2MEt<PATElecPair, PATElecMuPair> >"/>
 
-   <!-- create dictionaries for PATEleEleMuMuQuad objects -->
+  <!-- create dictionaries for PATEleEleMuMuQuad objects -->
   <class name="CompositePtrCandidateT1T2MEt<PATElecPair, PATMuPair>"/>
   <class name="std::vector<CompositePtrCandidateT1T2MEt<PATElecPair, PATMuPair> >"/>
   <class name="edm::Wrapper<CompositePtrCandidateT1T2MEt<PATElecPair, PATMuPair> >"/>
@@ -279,14 +264,12 @@
   <class name="edm::Wrapper<std::vector<CompositePtrCandidateTMEt<pat::Tau> > >"/>
   <class name="edm::Ptr<CompositePtrCandidateTMEt<pat::Tau> >"/>
 
-
   <!-- create dictionaries for PATElectronNuPair objects -->
   <class name="CompositePtrCandidateTMEt<pat::Electron>"/>
   <class name="std::vector<CompositePtrCandidateTMEt<pat::Electron> >"/>
   <class name="edm::Wrapper<CompositePtrCandidateTMEt<pat::Electron> >"/>
   <class name="edm::Wrapper<std::vector<CompositePtrCandidateTMEt<pat::Electron> > >"/>
   <class name="edm::Ptr<CompositePtrCandidateTMEt<pat::Electron> >"/>
-
 
   <!-- create dictionaries for PATMuonNuPair objects -->
   <class name="CompositePtrCandidateTMEt<pat::Muon>"/>
@@ -301,7 +284,11 @@
   <class name="edm::Wrapper<CompositePtrCandidateTMEt<reco::Candidate> >"/>
   <class name="edm::Wrapper<std::vector<CompositePtrCandidateTMEt<reco::Candidate> > >"/>
 
-
-
+  <!-- create dictionaries for BCandFinalState objects -->
+  <class name="BCandFinalState"/>
+  <class name="BCandFinalStateCollection"/>
+  <class name="BCandFinalStateRefProd"/>
+  <class name="BCandFinalStateRefVector"/>
+  <class name="edm::Wrapper<BCandFinalStateCollection>"/>
 
 </lcgdict>

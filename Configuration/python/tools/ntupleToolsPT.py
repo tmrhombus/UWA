@@ -1604,6 +1604,62 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                                    method = cms.string("phi()"),
                                    leadingOnly=cms.untracked.bool(False)
                                    ),
+                                bCandidates1PT= cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidate1Pt'),
+                                   method     = cms.string("BC1PT()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ),
+                                bCandidates2PT = cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidate2Pt'),
+                                   method     = cms.string("BC2PT()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ),
+                                bCandidates1ETA = cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidate1Eta'),
+                                   method     = cms.string("BC1ETA()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ),
+                                bCandidates2ETA = cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidate2Eta'),
+                                   method     = cms.string("BC2ETA()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ),
+                                bCandidates1PHI = cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidate1Phi'),
+                                   method     = cms.string("BC1PHI()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ),
+                                bCandidates2PHI = cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidate2Phi'),
+                                   method     = cms.string("BC2PHI()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ),
+                                bCandidatesBDeltaR = cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidateBDeltaR'),
+                                   method     = cms.string("BCDeltaR()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ),
+                                bCandidatesBDeltaPhi = cms.PSet(
+                                   pluginType = cms.string("bCandidatesFiller"),
+                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+                                   tag        = cms.string('bCandidateDeltaPhi'),
+                                   method     = cms.string("BDeltaPHI()"),
+                                   leadingOnly=cms.untracked.bool(False)
+                                   ), 
                               cSIZE2= cms.PSet(
                                   pluginType = cms.string("CollectionSizeFiller"),
                                   src = cms.InputTag("cbarCands"),
