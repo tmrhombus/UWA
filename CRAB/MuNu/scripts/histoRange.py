@@ -87,13 +87,13 @@ def ranger(leaf):
    xtitle = 'm^{J_{3}J_{4}}'
    xunits = 'GeV'
  elif leaf == 'ptJJ':
-   steps = 100
+   steps = 50
    xmin = 0.
    xmax = 300.
    xtitle = 'p_{T}^{JJ}'
    xunits = 'GeV'
  elif leaf == 'WPt':
-   steps = 100
+   steps = 50
    xmin = 0.
    xmax = 300.
    xtitle = 'p_{T}^{W}'
@@ -113,8 +113,8 @@ def ranger(leaf):
    setLogY = True
  elif leaf=='J1DR'or leaf=='J2DR':
    steps = 20
-   xmin = 0.
-   xmax = 1.
+   xmin = 0.3
+   xmax = 0.7
    xtitle = leaf
    xunits = 'xx'
  elif leaf=='J1JetParton' or leaf =='J2JetParton':
@@ -147,12 +147,13 @@ def ranger(leaf):
    xmax = 0.2
    xtitle = leaf
    xunits = 'xx'
- elif leaf=='nJetsPt20':
-   steps = 6
-   xmin = 0.
-   xmax = 6
+ elif leaf=='nJetsPt20' or leaf=='nJetsPt30' or leaf=='nJetsPt40':
+   steps = 8
+   xmin = 2.
+   xmax = 10.
    xtitle = leaf
    xunits = 'xx'
+   setLogY = True
  else :
    print("\n\n")
    print "YOU ARE A NINNY! The leaf's name isn't valid"
