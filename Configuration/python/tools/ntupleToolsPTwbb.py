@@ -1276,12 +1276,12 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                               coreCollections = cms.VInputTag(
                                    cms.InputTag(src)
                               ),
-#                              PVs = cms.PSet(
-#                                    pluginType = cms.string("VertexSizeFiller"),
-#                                    src = cms.InputTag("primaryVertexFilter"),
-#                                    tag = cms.string("vertices")
-#                              ),
-                              forDataAndMC(),
+# PVs = cms.PSet(
+# pluginType = cms.string("VertexSizeFiller"),
+# src = cms.InputTag("primaryVertexFilter"),
+# tag = cms.string("vertices")
+# ),
+#                              forDataAndMC(),
                               pu = cms.PSet(
                                   pluginType = cms.string("PUFiller"),
                                   src = cms.InputTag("addPileupInfo"),
@@ -1295,7 +1295,7 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                               muNuLHEProduct = cms.PSet(
                                   pluginType = cms.string("LHEProductFiller"),
                                   #src = cms.InputTag("externalLHEProducer"), #use this for running over new patuples
-                                  src = cms.InputTag("source"),  #use this for the old patuples
+                                  src = cms.InputTag("source"), #use this for the old patuples
                                   tag = cms.string("LHEProduct"),
                               ),
                               simBHadronsSIZE = cms.PSet(
@@ -2745,6 +2745,3 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))
    setattr(process, name+'Path', p)
-
-
-

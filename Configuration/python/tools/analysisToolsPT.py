@@ -42,17 +42,15 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
 
   ##jetMCMatching(process,"NewSelectedPatJets")
   jetOverloading(process,"NewSelectedPatJets")
-  #rochesterCorrections(process)
-  #SVReconstruction(process,"patOverloadedJets","recorrMuons")  
-  SVReconstruction(process,"patOverloadedJets","cleanPatMuons")  
+  rochesterCorrections(process)
+  SVReconstruction(process,"patOverloadedJets","recorrMuons")  
 
-  #applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
-  applyDefaultSelectionsPT(process,"patBRecoJets","cleanPatMuons")
+  applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
   #mvaMet(process) #Build MVA MET
   genHadrons(process)  
-
+  IVF(process)
 
 def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_Mu9','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v2','HLT_Mu15_v1','HLT_Mu15_v2']):
   process.load("UWAnalysis.Configuration.startUpSequence_cff")
@@ -87,16 +85,15 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #mvaMet(process)
 
 
-
 def jetMCMatching(process,jets):
   process.patJetMCMatched = cms.EDProducer('MCBHadronJetProducer',
                                         src = cms.InputTag(jets)
 
   )
   process.jetMCMatching = cms.Sequence(process.patJetMCMatched)
-  #process.patDefaultSequence*=process.jetOverloading
   process.createJetMCMatching=cms.Path(process.jetMCMatching)
   return process.createJetMCMatching
+
 
 def SVReconstructionData(process,jets,muons):
 
@@ -165,31 +162,19 @@ def BpmReconstruction(process,jets):
 
 
 def rochesterCorrections(process):
-#  process.looseMu = cms.EDProducer("PATMuonCleanerBySegments",
-#          src = cms.InputTag("cleanPatMuons"),
-#          preselection = cms.string("track.isNonnull"),
-#          passthrough = cms.string("isGlobalMuon && numberOfMatches >= 2"),
-#          fractionOfSharedSegments = cms.double(0.499)
-#  )
-
   process.corrMuons = cms.EDProducer("PATMuonCalibrationChooser",
    src = cms.InputTag("cleanPatMuons"),
-   #src = cms.InputTag("looseMu"),
    rochcorType = cms.string("RochCor2012") # Rochester Correction types: RochCor2011A, RochCor2011B, RochCor2012
-  #rochcorType = cms.string(rochCor) # Rochester Correction types: RochCor2011A, RochCor2011B, RochCor2012
   )
   process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
    src = cms.InputTag("corrMuons"),
-   #src = cms.InputTag("looseMu"),
-   #isMC = cms.bool(isMC),
    isMC = cms.bool(True),
    isSync = cms.bool(True), #use fake smearing for synchronization purposes
-   #isSync = cms.bool(isSync), #use fake smearing for synchronization purposes
   )
   process.rochesterCorrectionSeq = cms.Sequence(process.corrMuons * process.recorrMuons)
-  #process.rochesterCorrectionSeq = cms.Sequence(process.looseMu * process.corrMuons * process.recorrMuons)
   process.rochesterCorrectionPath = cms.Path(process.rochesterCorrectionSeq)
   return process.rochesterCorrectionPath
+
 
 def jetOverloading(process,jets):
   process.patOverloadedJets = cms.EDProducer('PATJetOverloader',
@@ -198,7 +183,6 @@ def jetOverloading(process,jets):
                                         vertices=cms.InputTag("offlinePrimaryVertices")
   )
   process.jetOverloadingSeq = cms.Sequence(process.patOverloadedJets)
-  #process.patDefaultSequence*=process.jetOverloading
   process.jetOverloadingPath=cms.Path(process.jetOverloadingSeq)
 
 
@@ -292,7 +276,6 @@ def applyDefaultSelectionsPT(process,jets,muons):
                                         checkOverlaps = cms.PSet( 
                                             muons = cms.PSet(
                                              src = cms.InputTag(muons),
-                                             #src = cms.InputTag("cleanPatMuons"),
                                              algorithm = cms.string("byDeltaR"),
                                              preselection = cms.string("pt>10&&isGlobalMuon&&isTrackerMuon&&(chargedHadronIso()+max(photonIso+neutralHadronIso(),0.0))/pt()<0.3"),
                                              deltaR = cms.double(0.5),
@@ -314,6 +297,7 @@ def applyDefaultSelectionsPT(process,jets,muons):
                                         )	
   process.selectedObjectsForSyst = cms.Sequence(process.selectedPatTaus+process.selectedPatElectrons+process.selectedPatMuons+process.cleanPatJets)
   process.analysisSequence = cms.Sequence(process.analysisSequence*process.selectedObjectsForSyst)
+
 
 def ReRunJetsMC(process):
 
@@ -370,12 +354,21 @@ def ReRunJetsMC(process):
   process.patJets.embedGenJetMatch = False
   process.patJets.addAssociatedTracks = False
   process.patJets.embedGenPartonMatch = False
-  process.patJets.tagInfoSources = cms.VInputTag(cms.InputTag("impactParameterTagInfos"), cms.InputTag("secondaryVertexTagInfos"), cms.InputTag("secondaryVertexNegativeTagInfos"))
-  process.patJets.discriminatorSources = cms.VInputTag(
-               cms.InputTag("jetBProbabilityBJetTags"), cms.InputTag("jetProbabilityBJetTags"), cms.InputTag("trackCountingHighPurBJetTags"), cms.InputTag("trackCountingHighEffBJetTags"),
-               cms.InputTag("simpleSecondaryVertexHighEffBJetTags"), cms.InputTag("simpleSecondaryVertexHighPurBJetTags"), cms.InputTag("combinedSecondaryVertexBJetTags"), cms.InputTag("combinedSecondaryVertexMVABJetTags"),
-                cms.InputTag("simpleInclusiveSecondaryVertexHighEffBJetTags"), cms.InputTag("simpleInclusiveSecondaryVertexHighPurBJetTags")
-        )
+  process.patJets.tagInfoSources = cms.VInputTag(cms.InputTag("impactParameterTagInfos"), 
+                                                 cms.InputTag("secondaryVertexTagInfos"), 
+                                                 cms.InputTag("secondaryVertexNegativeTagInfos")
+                                                )
+  process.patJets.discriminatorSources = cms.VInputTag(cms.InputTag("jetBProbabilityBJetTags"), 
+                                                       cms.InputTag("jetProbabilityBJetTags"),
+                                                       cms.InputTag("trackCountingHighPurBJetTags"),
+                                                       cms.InputTag("trackCountingHighEffBJetTags"),
+                                                       cms.InputTag("simpleSecondaryVertexHighEffBJetTags"),
+                                                       cms.InputTag("simpleSecondaryVertexHighPurBJetTags"), 
+                                                       cms.InputTag("combinedSecondaryVertexBJetTags"),
+                                                       cms.InputTag("combinedSecondaryVertexMVABJetTags"),
+                                                       cms.InputTag("simpleInclusiveSecondaryVertexHighEffBJetTags"), 
+                                                       cms.InputTag("simpleInclusiveSecondaryVertexHighPurBJetTags")
+                                                      )
   process.patJets.trackAssociationSource = cms.InputTag("ak5JetTracksAssociatorAtVertex")
   process.patJets.addBTagInfo = cms.bool(True)
   process.patJets.addDiscriminators = cms.bool(True)
@@ -419,26 +412,22 @@ def ReRunJetsMC(process):
       )
   ))
 
-  #process.analysisSequence = cms.Sequence(
   process.reRunJetSeq = cms.Sequence(
                                  process.inclusiveVertexing *
                                  process.inclusiveMergedVerticesFiltered *
                                  process.bToCharmDecayVertexMerged*
-                                        #process.analysisSequence*
-                                        process.ak5PFJets*
-                                        process.ak5JetTracksAssociatorAtVertex*
-                                        process.btagging*
+                                 process.ak5PFJets*
+                                 process.ak5JetTracksAssociatorAtVertex*
+                                 process.btagging*
                                  process.inclusiveSecondaryVertexFinderTagInfosFiltered*
                                  process.simpleInclusiveSecondaryVertexHighEffBJetTags *
                                  process.simpleInclusiveSecondaryVertexHighPurBJetTags *
-                                        process.pileupJetIdProducer*
-                                        process.makePatJets*
-                                        process.patJetsPUID*
-                                        process.patJetId*
-                                        process.NewSelectedPatJets#*
-                                        )#process.NewCleanedPatJets   #put cleaning in path
-                                        #*process.patOverloadedJets
-                                        #)
+                                 process.pileupJetIdProducer*
+                                 process.makePatJets*
+                                 process.patJetsPUID*
+                                 process.patJetId*
+                                 process.NewSelectedPatJets
+                                 )
   process.reRunJetPath = cms.Path(process.reRunJetSeq)
 
 
@@ -517,10 +506,10 @@ def BTAGGING(process):
     addEfficiencies = cms.bool(False),
     trackAssociationSource = cms.InputTag("ak5JetTracksAssociatorAtVertex"),
     tagInfoSources = cms.VInputTag(
-#      cms.InputTag("impactParameterTagInfos"), 
+      #cms.InputTag("impactParameterTagInfos"), 
       cms.InputTag("secondaryVertexTagInfos"), 
       cms.InputTag("secondaryVertexNegativeTagInfos"),
-      # cms.InputTag("softMuonTagInfos")
+      #cms.InputTag("softMuonTagInfos")
     ),
     discriminatorSources = cms.VInputTag(
       cms.InputTag("jetBProbabilityBJetTags"), 
@@ -583,7 +572,6 @@ def muonTriggerMatchPT(process,triggerProcess):
    )  
    process.triggeredPatMuonSeq = cms.Sequence(process.triggeredPatMuons)
    process.triggeredPatMuonPath=cms.Path(process.triggeredPatMuonSeq)
-   #process.analysisSequence*= process.triggeredPatMuons
 
 
 def electronTriggerMatchPT(process,triggerProcess):
@@ -614,7 +602,6 @@ def electronTriggerMatchPT(process,triggerProcess):
    )   
    process.triggeredPatElectronsSeq = cms.Sequence(process.triggeredPatElectronsL*process.triggeredPatElectrons)
    process.triggeredPatElectronsPath=cms.Path(process.triggeredPatElectronsSeq)
-   #process.analysisSequence=cms.Sequence(process.analysisSequence*process.triggeredPatElectronsL*process.triggeredPatElectrons)
 
 
 def tauTriggerMatchPT(process,triggerProcess):
@@ -661,7 +648,6 @@ def tauTriggerMatchPT(process,triggerProcess):
    )                                            
    process.triggeredPatTausSeq = cms.Sequence(process.preTriggeredPatTaus*process.triggeredPatTaus)
    process.triggeredPatTausPath=cms.Path(process.triggeredPatTausSeq)
-   #process.analysisSequence=cms.Sequence(process.analysisSequence*process.preTriggeredPatTaus*process.triggeredPatTaus)
   
 
 def getAllEventCounters(process,path,onSkim = False):
@@ -677,7 +663,7 @@ def getAllEventCounters(process,path,onSkim = False):
                     stringList.append(mod.name.value())
         print 'List Of Filters'
         print stringList
-        
+
         return cms.untracked.vstring(stringList)
 
 
@@ -689,15 +675,14 @@ def addEventSummary(process,onSkim = False,name = 'summary',path = 'eventSelecti
    setattr(process,name,summary)
    if onSkim:
         process.EDMtoMEConverter = cms.EDAnalyzer("EDMtoMEConverter",
-                                               Name = cms.untracked.string('EDMtoMEConverter'),
-                                               Verbosity = cms.untracked.int32(1), # 0 provides no output
-                                               # 1 provides basic output
-                                               Frequency = cms.untracked.int32(50),
-                                               convertOnEndLumi = cms.untracked.bool(True),
-                                               convertOnEndRun = cms.untracked.bool(True),
-					       runInputTag = cms.InputTag('MEtoEDMConverter', 'MEtoEDMConverterRun'),
-					       lumiInputTag = cms.InputTag('MEtoEDMConverter', 'MEtoEDMConverterLumi')
-                                               )
+           Name = cms.untracked.string('EDMtoMEConverter'),
+           Verbosity = cms.untracked.int32(1), # 0 provides no output # 1 provides basic output
+           Frequency = cms.untracked.int32(50),
+           convertOnEndLumi = cms.untracked.bool(True),
+           convertOnEndRun = cms.untracked.bool(True),
+	   runInputTag = cms.InputTag('MEtoEDMConverter', 'MEtoEDMConverterRun'),
+	   lumiInputTag = cms.InputTag('MEtoEDMConverter', 'MEtoEDMConverterLumi')
+        )
         eventSummaryPath=cms.EndPath(process.EDMtoMEConverter+getattr(process,name))
         setattr(process,name+"Path",eventSummaryPath)
    else:
@@ -740,7 +725,6 @@ def goodVertexFilter(process):
   )
   process.goodVertexFilterSeq = cms.Sequence(process.primaryVertexFilter)
   process.goodVertexFilterPath=cms.Path(process.goodVertexFilterSeq)
-  #process.analysisSequence*= process.primaryVertexFilter
 
 
 def cloneAndReplaceInputTag(process,sequence,oldValue,newValue,postfix):
@@ -817,3 +801,42 @@ def addTagAndProbePlotter(process,type,name,src,ref,selections,methods,triggers,
   p = cms.EndPath(getattr(process,'tagAndProbe'+name))
   setattr(process,'tagAndProbePath'+name,p)
 
+
+def IVF(process):
+  process.load("RecoBTag.SecondaryVertex.secondaryVertex_cff")
+  process.load("RecoVertex.AdaptiveVertexFinder.inclusiveVertexing_cff")
+  process.load("RecoBTag.SecondaryVertex.bToCharmDecayVertexMerger_cfi")
+
+  process.IVF = process.inclusiveVertexFinder.clone();
+  process.IVF.clusterScale = cms.double(1.)
+  process.IVF.clusterMinAngleCosine = cms.double(0.5)
+  process.IVF.primaryVertices = cms.InputTag("offlinePrimaryVertices")
+  process.IVF.seedMin3DIPSignificance = cms.double(1.2)
+  process.IVF.vertexMinAngleCosine = cms.double(0.95)
+
+  process.IMV1 = process.vertexMerger.clone()
+  process.IMV1.secondaryVertices = cms.InputTag("IVF")
+
+  process.TVA=process.trackVertexArbitrator.clone()
+  process.TVA.secondaryVertices = cms.InputTag("IMV1")
+  process.TVA.primaryVertices = cms.InputTag("offlinePrimaryVertices")
+
+  process.IMV2 = process.vertexMerger.clone()
+  process.IMV2.secondaryVertices = cms.InputTag("TVA")
+  process.IMV2.maxFraction = 0.2
+  process.IMV2.minSignificance = cms.double(10.)
+
+  process.IMVF = process.bVertexFilter.clone()
+  process.IMVF.vertexFilter.multiplicityMin = 2
+  process.IMVF.secondaryVertices = cms.InputTag("IMV2")
+
+  process.bCandidates=process.bToCharmDecayVertexMerged.clone()
+  process.bCandidates.secondaryVertices = cms.InputTag("IMVF")
+
+  process.LCProducer=cms.EDProducer("BCProducer")
+  process.LCProducer.src= cms.InputTag("bCandidates")
+  process.LCProducer.primaryVertices= cms.InputTag("offlinePrimaryVertices")
+  process.LCProducer.jetSource= cms.InputTag("ak5PFJets")
+
+  process.dump = cms.EDAnalyzer("EventContentAnalyzer")
+  process.createBCandidateCollection=cms.Path(process.IVF*process.IMV1*process.TVA*process.IMV2*process.IMVF*process.bCandidates*process.LCProducer)

@@ -1,6 +1,7 @@
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "UWAnalysis/NtupleTools/plugins/StringBasedNtupleFiller.h"
 
+DEFINE_EDM_PLUGIN(NtupleFillerFactory, bCandidatesFiller, "bCandidatesFiller"); 
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, SimBHadronsFiller, "SimBHadronsFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuTauPairFiller, "PATMuTauPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATGenParticleFiller, "PATGenParticleFiller");
