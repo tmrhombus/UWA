@@ -12,14 +12,15 @@ import cmsPrelim as cpr
 import parameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
-sf_qcd = 2.04437  
+sf_qcd = 2.01679 
 
-sf_drell = 1.# 3503.71 / 3.02386400000000000e+07
-sf_st    = 1.# 22.2    / 9.91118000000000000e+05
-sf_ttbar = 249.5/234.# 225.    / 6.88773100000000000e+06
-sf_wjets = 1.# 37509.  / 5.31329400000000000e+07
+sf_drell = 1.
+sf_st    = 1.
+sf_ttbar = 1.
+sf_wjets = 1.
 sf_vv    = 1.
  
+ratioRange = 0.2
 #canvas attributes
 canx = 800 # for one plot on page
 #canx = 550 # for two plots on page with text
@@ -31,17 +32,31 @@ cany = 900
 
 #color scheme
 d = 1
-q = ROOT.EColor.kRed+1
-z = ROOT.EColor.kOrange-3
-d = ROOT.EColor.kYellow-3
-tt = ROOT.EColor.kGreen+1
-ts = ROOT.EColor.kGreen-5
+
+q =   ROOT.EColor.kRed+1
+z =   ROOT.EColor.kOrange-3
+d =   ROOT.EColor.kYellow-3
+tt =  ROOT.EColor.kGreen+1
+ts =  ROOT.EColor.kGreen-5
 ttw = ROOT.EColor.kGreen+3 
 ttb = ROOT.EColor.kGreen-9
-wl = ROOT.EColor.kAzure+10
-wc = ROOT.EColor.kBlue+1
+wl =  ROOT.EColor.kAzure+10
+wc =  ROOT.EColor.kBlue+1
 wcc = ROOT.EColor.kAzure+2
 wbb = 51#ROOT.EColor.kCyan
+
+#7 TeV color scheme
+#q =   ROOT.EColor.kGreen-3   
+#z =   ROOT.EColor.kRed+2     
+#d =   ROOT.EColor.kRed+3     
+#tt =  ROOT.EColor.kOrange+7  
+#ts =  ROOT.EColor.kOrange+6  
+#ttw = ROOT.EColor.kOrange+5  
+#ttb = ROOT.EColor.kOrange-2  
+#wl =  ROOT.EColor.kAzure+1   
+#wc =  ROOT.EColor.kMagenta-4 
+#wcc = ROOT.EColor.kViolet-6  
+#wbb = ROOT.EColor.kBlue-10   
 
 tex = ROOT.TLatex()
 tex.SetTextSize(0.07)
@@ -50,7 +65,7 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region,legacy,noMT = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal = p.arams() 
 
 for leaf in leafs:
 
@@ -73,6 +88,8 @@ for leaf in leafs:
   log.write('On Plotting SF TTbar: '+str(sf_ttbar)+'\n')
   log.write('On Plotting SF W: '+str(sf_wjets)+'\n')
   log.write('On Plotting SF Diboson: '+str(sf_vv)+'\n')
+  log.write('----------------------------------------\n')
+  log.write('----------------------------------------\n')
   log.close()
 
   c = TCanvas('c','Canvas Named c',canx,cany)
@@ -86,7 +103,6 @@ for leaf in leafs:
   if drawData:
    dataih = theFile.Get('dataih')
    dataih.Rebin(rebin)
-   dataih.Sumw2()
    dataih.SetMarkerStyle(22)
    dataih.SetMarkerSize(1.2)
    dmax = dataih.GetMaximum()
@@ -350,7 +366,7 @@ for leaf in leafs:
   hs.Draw()
   hs.GetXaxis().SetTitle(xlabel)
   hs.GetXaxis().SetRangeUser(xmin,xmax)
-  if leaf=="Mt" and not legacy:
+  if leaf=="Mt" and not Legacy:
    hs.GetXaxis().SetRangeUser(50,140)
   hs.GetYaxis().SetTitleOffset(1.5)
   hs.GetYaxis().SetTitle(ylabel)
@@ -383,7 +399,7 @@ for leaf in leafs:
   p1.cd()
   hs.Draw()
   if drawData:
-   dataih.Draw('sames')
+   dataih.Draw('sames,E1')
   leg.Draw('sames')
   cpr.prelim_alt(lumi)
   tex.SetTextAlign(11)#left, bottom
@@ -427,14 +443,14 @@ for leaf in leafs:
   else:
    datar = hh.Clone()
   datar.SetName('datar')
-  if leaf =="Mt" and not legacy:
+  if leaf =="Mt" and not Legacy:
    datar.GetXaxis().SetRangeUser(50,140)
-  datar.GetYaxis().SetRangeUser(0.8,1.2) 
+  datar.GetYaxis().SetRangeUser(1.-ratioRange,1.+ratioRange) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
   
-  if leaf=="Mt" and not legacy:
+  if leaf=="Mt" and not Legacy:
    l = TLine(50,1,140,1)
    l.SetLineStyle(3)
    l.Draw()
