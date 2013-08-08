@@ -4,7 +4,7 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,wSplitting='had',Control=True,Z_Region=False,legacy=False,noMT=False):
+def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False):
 
  trigger = '(HLT_IsoMu24_eta2p1_v_fired)'
  muon_selection = '(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
@@ -13,7 +13,9 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  vertex = '(abs(dz)<0.5&&abs(l1DXY)<0.02)'
  vertexNoDZ = '(abs(l1DXY)<0.02)'
  mt = '(Mt>45)'
+ met = '(MET>30)'
  noFJ = '(nJets24Pt25==0)'
+ oneFJ = '(nJets24Pt25==1)'
  muPlus = '(muonCharge > 0)'
  muMinus = '(muonCharge < 0)'
 
@@ -29,28 +31,39 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
   threeJets = '('+thJ+' && nJetsPt'+njetPt+'==3)'
   fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
 
- Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
- SkimNoMT='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
- #Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
+ if Control or Legacy or Signal:
+  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
+ elif noMT:
+  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
+ elif TT_me:
+  Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
+ elif TT_m:
+  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+')' #for TTbar
+ elif Z_Region:
+  Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')'
+ elif ST:
+  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+oneFJ+')'
+
+ theCut = Skim
+
+ #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+met+')'#for Tomislav
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertexNoDZ+'&&'+noFJ+')'
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muPlus+')'
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muMinus+')'
 
  Iso='(lPFIsoDB<'+str(isolationValue)+')'
  NonIso ='(lPFIsoDB>='+str(antiIsoValue)+')'
- Z='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')'
 
  weightEff = '(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig)'
  weight = '('+' weightFactor*' +str(lumi)+'*'+str(weightEff)+')'
- weightW = '('+'weightFactorW*'+str(lumi)+'*'+str(weightEff)+')'
+ weightW = '('+'weightFactor*'+str(lumi)+'*'+str(weightEff)+')'
 
- if legacy:
+ if Legacy:
   Iso='(lPFIsoDB<0.12)'
   NonIso ='(lPFIsoDB>=0.2)'
   theCut = '(nMuons==1 && abs(muonEta)<2.1 && muonPt>25 && highestJetPt > 25 && secondJetPt > 25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4 && nJetsPt25==2 && (J1CSVbtag>0.898) && (J2CSVbtag>0.898) && J1SVMassb>0 && J2SVMassb>0 && DiMuonMass<=60 && nElectrons==0 && nJets24Pt25==0 && Mt > 45 && (abs(dz)<0.5&&abs(l1DXY)<0.02) )'
   weight = '(weightFactor*'+str(lumi)+'*'+str(weightEff)+'*EffWEIGHTCSVT)'
-  weightW = '(weightFactorW*'+str(lumi)+'*'+str(weightEff)+'*EffWEIGHTCSVT)'
-
+  weightW = '(weightFactor*'+str(lumi)+'*'+str(weightEff)+'*EffWEIGHTCSVT)'
 
  if btype == 'tight' or btype == 't':
   bcut = 0.898
@@ -59,29 +72,26 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  if btype == 'loose' or btype == 'l':
   bcut = 0.244
   
- OneBtag='((J1CSVbtag>'+str(bcut)+'&&J1SVMassb>0)||(J2CSVbtag>'+str(bcut)+'&&J2SVMassb>0))'
- TwoBtag='((J1CSVbtag>'+str(bcut)+'&&J1SVMassb>0)&&(J2CSVbtag>'+str(bcut)+'&&J2SVMassb>0))'
+ FirstBtag='(J1CSVbtag>'+str(bcut)+'&&J1SVMassb>0)'
+ SecondBtag='(J2CSVbtag>'+str(bcut)+'&&J2SVMassb>0)'
+ OneBtag='('+FirstBtag+'||'+SecondBtag+')'
+ TwoBtag='('+FirstBtag+'&&'+SecondBtag+')'
 
- if Control:
-  theCut = Skim
- elif Z_Region:
-  theCut = Z
- elif noMT:
-  theCut = SkimNoMT
- else:
-  print("\n\n In parameters.py, choose Control or Z_Region True\n\n")
+ newCSVT1first = '((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))'
+ newCSVT1second = '((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))'
+ newCSVT2 = '('+newCSVT1first+'*'+newCSVT1second+')'
 
- newCSVT2 = '(0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt))*(0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt))'
  oldCSVT2 = '(0.901615*(1+0.552628*highestJetPt)/(1+(0.547195*highestJetPt)))*(0.901615*(1+0.552628*secondJetPt)/(1+(0.547195*secondJetPt)))'
 
  if bnr == 1:
   if btype == 'tight' or btype == 't':
-   beffWeight = 'EffWEIGHTCSVT'
+   beffWeight = '1.'
+   #beffWeight = 'EffWEIGHTCSVT'
   if btype == 'medium' or btype == 'med' or btype == 'm':
    beffWeight = 'EffWEIGHTCSVM'
   if btype == 'loose' or btype == 'l':
    beffWeight = 'EffWEIGHTCSVL'
-  theCut = '('+theCut+'&&'+OneBtag+')'
+  theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')||('+SecondBtag+'*'+newCSVT1second+')))'
   weight = '('+weight+'*'+beffWeight+')'
 
  if bnr == 2:
@@ -102,28 +112,16 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  if jnr == 4:
   theCut = '('+theCut+'&&'+fourJets+')'
 
- if wSplitting == 'had':
-  # for splitting up the W sample :: hadron splitting
-  genB = '(nbHadrons>0)' #to do this correctly, must match to jets
-  genC = '((ncCands+ncbarCands)>0)'
-  evenC = '(((ncCands+ncbarCands)%2)==0)'
-  
-  Wl = '((!'+genB+'&&!'+genC+'))'
-  Wc = '((!'+genB+'&&'+genC+'&&!'+evenC+'))'
-  Wcc = '((!'+genB+'&&'+genC+'&&'+evenC+'))'
-  Wbb = '('+genB+')'
-
- if wSplitting == 'par':
-  # alternative way to split W  :: parton splitting
-  twoBs = '(abs(J1JetParton)==5 && abs(J2JetParton)==5)'
-  twoCs = '(abs(J1JetParton)==4 && abs(J2JetParton)==4)'
-  oneC = '(abs(J1JetParton)==4 || abs(J2JetParton)==4)'
-  
-  Wl = '((!'+twoBs+'&&!'+oneC+'))'
-  Wc = '((!'+twoBs+'&&'+oneC+'&&!'+twoCs+'))'
-  Wcc = '((!'+twoBs+'&&'+oneC+'&&'+twoCs+'))'
-  Wbb = '('+twoBs+')'
+ # for splitting up the W sample 
+ genB = '(nbHadrons>0)' #to do this correctly, must match to jets
+ genC = '((ncCands+ncbarCands)>0)'
+ evenC = '(((ncCands+ncbarCands)%2)==0)'
  
+ Wl = '((!'+genB+'&&!'+genC+'))'
+ Wc = '((!'+genB+'&&'+genC+'&&!'+evenC+'))'
+ Wcc = '((!'+genB+'&&'+genC+'&&'+evenC+'))'
+ Wbb = '('+genB+')'
+
  cutDataNonIso   = '('+NonIso+'&&'+theCut+')' #Data Non Iso
  cutDataIso      = '('+Iso+'&&'+theCut+')'    #Data Iso
  cutMcNonIso     = '('+weight+ '*('+NonIso+'&&'+theCut+'))' #MC Non Iso
