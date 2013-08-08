@@ -9,7 +9,7 @@ from ROOT import TLatex
 from ROOT import gROOT,gStyle
 from ROOT import *
 
-import aHistob as h #function to make histograms
+import aHisto as h #function to make histograms
 import cuts as ct  #function which makes cut strings
 import histoRange as hr #manages range, lables for plots
 import parameters as p
@@ -29,29 +29,29 @@ sf_wjets = 1. # 37509.  / 5.31329400000000000e+07
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,wSplitting,jetVeto,Control,Z_Region,legacy,noMT = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal = p.arams() 
 
 CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
- iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,wSplitting,Control,Z_Region,legacy,noMT
+ iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
 )
 
 data_filename  = '../data/v5/wMuNuData.root'
-t_t_filename   = '../data/v5/T_t.root'
-t_s_filename   = '../data/v5/T_s.root'
-t_tw_filename  = '../data/v5/T_tW.root'
-tb_t_filename  = '../data/v5/Tbar_t.root'
-tb_s_filename  = '../data/v5/Tbar_s.root'
-tb_tw_filename = '../data/v5/Tbar_tW.root'
-ttb_filename   = '../data/v5/TTbar.root'
-ww_filename    = '../data/v5/WW.root'
-wz_filename    = '../data/v5/WZ.root'
-zz_filename    = '../data/v5/ZZ.root'
-wn_filename    = '../data/v5/WJets.root'
-w1_filename    = '../data/v5/W1Jet.root'
-w2_filename    = '../data/v5/W2Jet.root'
-w3_filename    = '../data/v5/W3Jet.root'
-w4_filename    = '../data/v5/W4Jet.root'
-z_filename     = '../data/v5/Drell.root'
+t_t_filename   = '../data/v5/T_t_old.root'
+t_s_filename   = '../data/v0/T_s.root'
+t_tw_filename  = '../data/v0/T_tW.root'
+tb_t_filename  = '../data/v0/Tbar_t.root'
+tb_s_filename  = '../data/v0/Tbar_s.root'
+tb_tw_filename = '../data/v0/Tbar_tW.root'
+ttb_filename   = '../data/v0/TTbar.root'
+ww_filename    = '../data/v0/WW.root'
+wz_filename    = '../data/v0/WZ.root'
+zz_filename    = '../data/v0/ZZ.root'
+wn_filename    = '../data/v0/WJets.root'
+w1_filename    = '../data/v0/W1Jet.root'
+w2_filename    = '../data/v0/W2Jet.root'
+w3_filename    = '../data/v0/W3Jet.root'
+w4_filename    = '../data/v0/W4Jet.root'
+z_filename     = '../data/v0/Drell.root'
 
 data_file  = TFile( data_filename )
 t_t_file   = TFile( t_t_filename  )
@@ -495,19 +495,19 @@ for leaf in leafs:
  print('')
  
  log.write('------------------------------------------------\n')
+ log.write('Non Isolated\n')
+ log.write('---------------------------\n')
+ log.write(' Cuts MC:  '+str(CutsMCn)+'\n\n')
+ log.write(' Cuts Data: '+str(CutsDatan)+'\n\n')
+ log.write('Isolated\n')
+ log.write('---------------------------\n')
+ log.write(' Cuts MC:  '+str(CutsMCi)+'\n\n')
+ log.write(' Cuts Data: '+str(CutsDatai)+'\n\n')
+ log.write(' Cuts Wbb: '+str(CutsMCiwbb)+'\n\n')
+ log.write(' Cuts Wcc: '+str(CutsMCiwcc)+'\n\n')
+ log.write(' Cuts Wc: '+str(CutsMCiwc)+'\n\n')
+ log.write(' Cuts Wl: '+str(CutsMCiwl)+'\n\n')
  if drawQCD:
-  log.write('Non Isolated\n')
-  log.write('---------------------------\n')
-  log.write(' Cuts MC:  '+str(CutsMCn)+'\n\n')
-  log.write(' Cuts Data: '+str(CutsDatan)+'\n\n')
-  log.write('Isolated\n')
-  log.write('---------------------------\n')
-  log.write(' Cuts MC:  '+str(CutsMCi)+'\n\n')
-  log.write(' Cuts Data: '+str(CutsDatai)+'\n\n')
-  log.write(' Cuts Wbb: '+str(CutsMCiwbb)+'\n\n')
-  log.write(' Cuts Wcc: '+str(CutsMCiwcc)+'\n\n')
-  log.write(' Cuts Wc: '+str(CutsMCiwc)+'\n\n')
-  log.write(' Cuts Wl: '+str(CutsMCiwl)+'\n\n')
   log.write('Anti-Isolated Sizes\n')
   log.write('---------------------------\n')
   log.write(' Wn Size:--------'+str(wnnhSize)+'\n')
