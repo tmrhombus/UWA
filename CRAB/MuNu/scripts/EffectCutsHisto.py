@@ -635,7 +635,7 @@ for i in range(nrplots):
  wcih.Add(wc2ih)
  wcih.Add(wc3ih)
  wcih.Add(wc4ih)
- wcih.SetFillColor(wlColor)
+ wcih.SetFillColor(wcColor)
  wcih.Draw()
  ###
  wccih = wccnih.Clone()
