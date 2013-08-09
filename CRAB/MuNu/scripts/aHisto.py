@@ -12,6 +12,7 @@ def gram(tree,leaf,xmin=0,xmax=200,steps=20,cuts='(2>1)',I=-1,F=-1):
  tree.Draw(leaf+'>>histo',cuts,'')
 
  histo.SetTitle('') 
+ histo.Sumw2()
  gStyle.SetOptStat('')
  gROOT.SetStyle('Plain')
 

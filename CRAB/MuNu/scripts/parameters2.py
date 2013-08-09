@@ -61,7 +61,7 @@ def arams():
  #naming where output goes
  path = '../plots/'
  fitrange = '_'+str(I)+'_'+str(F)
- extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_oldT'
+ extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_newT'
 
  jet1_2dr2 = '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))'
 
@@ -93,8 +93,8 @@ def arams():
  #leafs = ['MET','vertices']
  #leafs = ['vertices']
 
- #leafs = ['secondJetEta','secondJetPhi','J1DR','J2DR','muonPt','muonEta','muonPhi','Mt','WPt','ptJJ','ht','MET','vertices']
- #leafs = ['highestJetPt','highestJetEta','highestJetPhi','secondJetPt','secondJetEta','secondJetPhi','J1DR','J2DR','muonPt','muonEta','muonPhi','Mt','WPt','ptJJ','ht','MET','vertices']
+ #leafs = ['secondJetPt','secondJetEta','secondJetPhi','J1DR','J2DR','muonPt','muonEta','muonPhi','Mt']#,'WPt','ptJJ','ht','MET','vertices']
+ #leafs = ['highestJetPt','highestJetEta','highestJetPhi','secondJetPt','secondJetEta','secondJetPhi','J1DR','J2DR','muonPt','muonEta','muonPhi','Mt']#,'WPt','ptJJ','ht','MET','vertices']
  #leafs = ['J1DR','J2DR','muonPt','muonEta','muonPhi','Mt','WPt','ptJJ','ht','MET','vertices',jet1_2dr2,'nJetsPt30','nJetsPt20']
 
  return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal

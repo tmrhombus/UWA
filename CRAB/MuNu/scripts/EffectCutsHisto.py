@@ -1,42 +1,53 @@
 #!/usr/bin/env python
 '''
-Makes a root file containing histograms for later plotting
+Plots a leaf with progressing cuts and a graph to show the cuts effects.
 Author: T.M.Perry UW
 '''
 import ROOT
-from ROOT import TGraph,THStack,TLegend,TCanvas,TFile,TH1F, TPad
+from ROOT import TGraph,THStack,TLegend,TCanvas,TFile,TH1F, TPad, TLine
 from ROOT import TLatex
 from ROOT import gROOT,gStyle
-from ROOT import *
 
 import aHisto as h #function to make histograms
-import cuts as ct  #function which makes cut strings
-import histoRange as hr #manages range, lables for plots
-import parameters as p
+import EffectCutsCuts as c #function to make vector of cut strings
+import histoRange as hr
+import cmsPrelim as cpr
 
-#import scaleqcd as qs
+leaf = 'muonCharge'
+I=-1
+F=-1
+cuts,Wl,Wc,Wcc,Wbb,Iso,NonIso,weight = c.utList()
+drawQCD = True
+drawData = True
+saveAsk = False
 
-qcdRescale = False
-tRescale = False
-ttRescale = False
-vRescale = False
-dRescale = False
-sf_qcd = 1.
-sf_drell = 1. # 3503.71 / 3.02386400000000000e+07
-sf_st = 1. # 22.2    / 9.91118000000000000e+05
-sf_ttbar = 1. # 225.    / 6.88773100000000000e+06
-sf_wjets = 1. # 37509.  / 5.31329400000000000e+07
-sf_vv = 1.
+path='../plots/EffectCuts'
+extraName = '_newT'
+#nr < = 8
+nrplots =4
+steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
+canx = 800
+cany = 900
+xlabel = xtitle+' ['+xunits+']'
+ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps))
+title = xtitle #+' Data v MC'
 
-#get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal = p.arams() 
+cut1 = 'SkimControl'
+cut2 = 'noFJ'
+cut3 = 'twoJetsE'
+cut4 = 'twoTB'
+cut5 = ''
+cut6 = ''
+cut7 = ''
 
-CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
- iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
-)
+CutList = []
+CutList.append(cut1)
+CutList.append(cut2)
+CutList.append(cut3)
+CutList.append(cut4)
 
 data_filename  = '../data/v5/wMuNuData.root'
-t_t_filename   = '../data/v5/T_t_old.root'
+t_t_filename   = '../data/v1/T_t.root'
 t_s_filename   = '../data/v0/T_s.root'
 t_tw_filename  = '../data/v0/T_tW.root'
 tb_t_filename  = '../data/v0/Tbar_t.root'
@@ -91,22 +102,93 @@ w3_tree    =  w3_file.Get(eventTreeLocation)
 w4_tree    =  w4_file.Get(eventTreeLocation)
 z_tree     =  z_file.Get(eventTreeLocation)
 
-#Start the Plotting Program
-for leaf in leafs:
+qcdRescale = False
+tRescale = False
+ttRescale = False
+vRescale = False
+dRescale = False
+sf_qcd = 1.
+sf_drell = 1. # 3503.71 / 3.02386400000000000e+07
+sf_st = 1. # 22.2    / 9.91118000000000000e+05
+sf_ttbar = 1. # 225.    / 6.88773100000000000e+06
+sf_wjets = 1. # 37509.  / 5.31329400000000000e+07
+sf_vv = 1.
 
- steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
- 
- outFile=gROOT.FindObject(path+extraName+'_'+leaf+'.root')
- if outFile : outFile.Close()
- outFile = TFile(path+extraName+'_'+leaf+'.root','RECREATE','Demo ROOT file')
- 
- log = open(path+extraName+'_'+leaf+'.log','w')
- 
- print('----------------------------')
- print('      --'+leaf+'--')
- print(extraName)
- print('----------------------------')
- 
+qColor =   ROOT.EColor.kRed+1
+zColor =   ROOT.EColor.kOrange-3
+dColor =   ROOT.EColor.kYellow-3
+ttColor =  ROOT.EColor.kGreen+1
+tsColor =  ROOT.EColor.kGreen-5
+ttwColor = ROOT.EColor.kGreen+3 
+ttbColor = ROOT.EColor.kGreen-9
+wlColor =  ROOT.EColor.kAzure+10
+wcColor =  ROOT.EColor.kBlue+1
+wccColor = ROOT.EColor.kAzure+2
+wbbColor = 51#ROOT.EColor.kCyan
+
+#7 TeV color scheme
+#qColor =   ROOT.EColor.kGreen-3   
+#zColor =   ROOT.EColor.kRed+2     
+#dColor =   ROOT.EColor.kRed+3     
+#ttColor =  ROOT.EColor.kOrange+7  
+#tsColor =  ROOT.EColor.kOrange+6  
+#ttwColor = ROOT.EColor.kOrange+5  
+#ttbColor = ROOT.EColor.kOrange-2  
+#wlColor =  ROOT.EColor.kAzure+1   
+#wcColor =  ROOT.EColor.kMagenta-4 
+#wccColor = ROOT.EColor.kViolet-6  
+#wbbColor = ROOT.EColor.kBlue-10   
+
+tex = ROOT.TLatex()
+tex.SetTextSize(0.07)
+tex.SetTextAlign(13)
+tex.SetNDC(True)
+gStyle.SetOptStat('')
+
+outFile=gROOT.FindObject(path+extraName+'_'+leaf+'.root')
+if outFile : outFile.Close()
+outFile = TFile(path+extraName+'_'+leaf+'.root','RECREATE','Demo ROOT file')
+
+log = open(path+extraName+'_'+leaf+'.log','w')
+
+datac = TH1F('datac','datac',nrplots,0,nrplots)
+qc = TH1F('qc','qc',nrplots,0,nrplots)
+t_tc = TH1F('t_tc','t_tc',nrplots,0,nrplots) 
+tb_tc = TH1F('tb_tc','tb_tc',nrplots,0,nrplots) 
+t_sc = TH1F('t_sc','t_sc',nrplots,0,nrplots) 
+tb_sc = TH1F('tb_sc','tb_sc',nrplots,0,nrplots) 
+t_twc = TH1F('t_twc','t_twc',nrplots,0,nrplots) 
+tb_twc = TH1F('tb_twc','tb_twc',nrplots,0,nrplots) 
+ttbc = TH1F('ttbc','ttbc',nrplots,0,nrplots) 
+wwc = TH1F('wwc','wwc',nrplots,0,nrplots) 
+wzc = TH1F('wzc','wzc',nrplots,0,nrplots) 
+zzc = TH1F('zzc','zzc',nrplots,0,nrplots) 
+wlc = TH1F('wac','wlc',nrplots,0,nrplots) 
+wcc = TH1F('wc','wc',nrplots,0,nrplots) 
+wccc = TH1F('wcc','wcc',nrplots,0,nrplots) 
+wbbc = TH1F('wbc','wbc',nrplots,0,nrplots) 
+zc = TH1F('zc','zc',nrplots,0,nrplots) 
+hc = TH1F('hc','hc',nrplots,0,nrplots)
+
+print('----------------------------')
+print('      --'+leaf+'--')
+print(extraName)
+print('----------------------------')
+
+theCut = ''
+for i in range(nrplots):
+
+ theCut += '&&'+cuts[CutList[i]] 
+
+ CutsMCn = '('+weight+'*('+NonIso+theCut+'))'
+ CutsDatan = '('+NonIso+theCut+')'
+ CutsMCi = '('+weight+'*('+Iso+theCut+'))'
+ CutsDatai = '('+Iso+theCut+')'
+ CutsMCiwl = '('+weight+'*('+Wl+'&&'+Iso+theCut+'))'
+ CutsMCiwbb = '('+weight+'*('+Wbb+'&&'+Iso+theCut+'))'
+ CutsMCiwcc =  '('+weight+'*('+Wcc+'&&'+Iso+theCut+'))'
+ CutsMCiwc =  '('+weight+'*('+Wc+'&&'+Iso+theCut+'))'
+
  if drawQCD:
   ###
   datanh,datanhSize,datanhSizePart,datanhEntries = h.gram(data_tree,leaf,xmin,xmax,steps,CutsDatan,I,F)
@@ -194,35 +276,35 @@ for leaf in leafs:
   print('    '+str(ttbnhSizePart))
  ####  W
   print('  wn nonIso')
-  wnnh,wnnhSize,wnnhSizePart,wnhEntries = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
+  wnnh,wnnhSize,wnnhSizePart,wnhEntries = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
   wnnh.SetName('wnnh')
   wnnh.Scale(sf_wjets)
   print('    '+str(wnnhSize))
   print('    '+str(wnnhSizePart))
   print('  w1 nonIso')
   ###
-  w1nh,w1nhSize,w1nhSizePart,w1nhEntries = h.gram(w1_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
+  w1nh,w1nhSize,w1nhSizePart,w1nhEntries = h.gram(w1_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
   w1nh.SetName('w1nh')
   w1nh.Scale(sf_wjets)
   print('    '+str(w1nhSize))
   print('    '+str(w1nhSizePart))
   print('  w2 nonIso')
   ###
-  w2nh,w2nhSize,w2nhSizePart,w2nhEntries = h.gram(w2_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
+  w2nh,w2nhSize,w2nhSizePart,w2nhEntries = h.gram(w2_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
   w2nh.SetName('w2nh')
   w2nh.Scale(sf_wjets)
   print('    '+str(w2nhSize))
   print('    '+str(w2nhSizePart))
   print('  w3 nonIso')
   ###
-  w3nh,w3nhSize,w3nhSizePart,w3nhEntries = h.gram(w3_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
+  w3nh,w3nhSize,w3nhSizePart,w3nhEntries = h.gram(w3_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
   w3nh.SetName('w3nh')
   w3nh.Scale(sf_wjets)
   print('    '+str(w3nhSize))
   print('    '+str(w3nhSizePart))
   print('  w4 nonIso')
   ###
-  w4nh,w4nhSize,w4nhSizePart,w4nhEntries = h.gram(w4_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
+  w4nh,w4nhSize,w4nhSizePart,w4nhEntries = h.gram(w4_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
   w4nh.SetName('w4nh')
   w4nh.Scale(sf_wjets)
   print('    '+str(w4nhSize))
@@ -247,9 +329,10 @@ for leaf in leafs:
   qh.Add(w2nh,-1)
   qh.Add(w3nh,-1)
   qh.Add(w4nh,-1)
- 
+
   print('qcd')
   qh.SetTitle('')
+  qh.SetFillColor(qColor)
   bminq = qh.GetXaxis().FindBin(xmin)
   bmaxq = qh.GetXaxis().FindBin(xmax)
   bIq = qh.GetXaxis().FindBin(I)
@@ -260,6 +343,9 @@ for leaf in leafs:
   qhEntries = qh.GetEntries()
   print('  '+str(qhSize))
   print('  '+str(qhSizePart))
+  
+  qc.Fill(i,qhSize)
+  qc.SetFillColor(qColor)
  ####################################
  if drawData:
   ### Data
@@ -271,83 +357,118 @@ for leaf in leafs:
   print('  '+str(dataihSize))
   print('  '+str(dataihSizePart))
   dimax = dataih.GetMaximum()
+  datac.Fill(i,dataihSize)
 #### Drell
  print("z Iso")
  zih,zihSize,zihSizePart,zihEntries = h.gram(z_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  zih.SetName('zih')
  zih.Scale(sf_drell)
+ zih.SetFillColor(zColor)
  print('  '+str(zihSize))
  print('  '+str(zihSizePart))
+ zc.Fill(i,zihSize)
+ zc.SetFillColor(zColor)
 #### Diboson
  print("ww Iso")
  wwih,wwihSize,wwihSizePart,wwihEntries = h.gram(ww_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  wwih.SetName('wwih')
  wwih.Scale(sf_vv)
+ wwih.SetFillColor(dColor)
  print('  '+str(wwihSize))
  print('  '+str(wwihSizePart))
+ wwc.Fill(i,wwihSize)
+ wwc.SetFillColor(dColor)
  ###
  print("wz Iso")
  wzih,wzihSize,wzihSizePart,wzihEntries = h.gram(wz_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  wzih.SetName('wzih')
  wzih.Scale(sf_vv)
+ wzih.SetFillColor(dColor)
  print('  '+str(wzihSize))
  print('  '+str(wzihSizePart))
+ wzc.Fill(i,wzihSize)
+ wzc.SetFillColor(dColor)
  ###
  print("zz Iso")
  zzih,zzihSize,zzihSizePart,zzihEntries = h.gram(zz_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  zzih.SetName('zzih')
  zzih.Scale(sf_vv)
+ zzih.SetFillColor(dColor)
  print('  '+str(zzihSize))
  print('  '+str(zzihSizePart))
+ zzc.Fill(i,zzihSize)
+ zzc.SetFillColor(dColor)
 #### Single Top
  print('t t Iso')
  t_tih,t_tihSize,t_tihSizePart,t_tihEntries = h.gram(t_t_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  t_tih.SetName('t_tih')
  t_tih.Scale(sf_st)
+ t_tih.SetFillColor(ttColor)
  print('  '+str(t_tihSize))
  print('  '+str(t_tihSizePart))
+ t_tc.Fill(i,t_tihSize)
+ t_tc.SetFillColor(ttColor)
  ###
  print('tb t Iso')
  tb_tih,tb_tihSize,tb_tihSizePart,tb_tihEntries = h.gram(tb_t_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  tb_tih.SetName('tb_tih')
  tb_tih.Scale(sf_st)
+ tb_tih.SetFillColor(ttColor)
  print('  '+str(tb_tihSize))
  print('  '+str(tb_tihSizePart))
+ tb_tc.Fill(i,tb_tihSize)
+ tb_tc.SetFillColor(ttColor)
  ###
  print('t s Iso')
  t_sih,t_sihSize,t_sihSizePart,t_sihEntries = h.gram(t_s_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  t_sih.SetName('t_sih')
  t_sih.Scale(sf_st)
+ t_sih.SetFillColor(tsColor)
  print('  '+str(t_sihSize))
  print('  '+str(t_sihSizePart))
+ t_sc.Fill(i,t_sihSize)
+ t_sc.SetFillColor(tsColor)
  ###
  print('tb s Iso')
  tb_sih,tb_sihSize,tb_sihSizePart,tb_sihEntries = h.gram(tb_s_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  tb_sih.SetName('tb_sih')
  tb_sih.Scale(sf_st)
+ tb_sih.SetFillColor(tsColor)
  print('  '+str(tb_sihSize))
  print('  '+str(tb_sihSizePart))
+ tb_sc.Fill(i,tb_sihSize)
+ tb_sc.SetFillColor(tsColor)
  ###
  print('t tw Iso')
  t_twih,t_twihSize,t_twihSizePart,t_twihEntries = h.gram(t_tw_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  t_twih.SetName('t_twih')
  t_twih.Scale(sf_st)
+ t_twih.SetFillColor(ttwColor)
  print('  '+str(t_twihSize))
  print('  '+str(t_twihSizePart))
+ t_twc.Fill(i,t_twihSize)
+ t_twc.SetFillColor(ttwColor)
  ###
  print('tb tw Iso')
  tb_twih,tb_twihSize,tb_twihSizePart,tb_twihEntries = h.gram(tb_tw_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  tb_twih.SetName('tb_twih')
  tb_twih.Scale(sf_st)
+ tb_twih.SetFillColor(ttwColor)
  print('  '+str(tb_twihSize))
  print('  '+str(tb_twihSizePart))
+ tb_twc.Fill(i,tb_twihSize)
+ tb_twc.SetFillColor(ttwColor)
 #### TTbar
  print('ttb Iso')
  ttbih,ttbihSize,ttbihSizePart,ttbihEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+ ttbih.Draw("hist")
  ttbih.SetName('ttbih')
  ttbih.Scale(sf_ttbar)
+ ttbih.SetFillColor(ttbColor)
  print('  '+str(ttbihSize))
  print('  '+str(ttbihSizePart))
+ ttbc.Fill(i,ttbihSize)
+ ttbc.SetFillColor(ttbColor)
 #### W + Jets
  print('wl n Iso')
  wlnih,wlnihSize,wlnihSizePart,wlnihEntries = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
@@ -488,12 +609,180 @@ for leaf in leafs:
  wbb4ih.Scale(sf_wjets)
  print('  '+str(wbb4ihSize))
  print('  '+str(wbb4ihSizePart))
+
+ wlc.Fill(i,wlnihSize+wl1ihSize+wl2ihSize+wl3ihSize+wl4ihSize) 
+ wlc.SetFillColor(wlColor)
+ wcc.Fill(i,wcnihSize+wc1ihSize+wc2ihSize+wc3ihSize+wc4ihSize) 
+ wcc.SetFillColor(wcColor)
+ wccc.Fill(i,wccnihSize+wcc1ihSize+wcc2ihSize+wcc3ihSize+wcc4ihSize) 
+ wccc.SetFillColor(wccColor)
+ wbbc.Fill(i,wbbnihSize+wbb1ihSize+wbb2ihSize+wbb3ihSize+wbb4ihSize) 
+ wbbc.SetFillColor(wbbColor)
+
+ ### 
+ wlih = wlnih.Clone()
+ wlih.SetName('wlih')
+ wlih.Add(wl1ih)
+ wlih.Add(wl2ih)
+ wlih.Add(wl3ih)
+ wlih.Add(wl4ih)
+ wlih.SetFillColor(wlColor)
+ wlih.Draw()
+ ###
+ wcih = wcnih.Clone()
+ wcih.SetName('wcih')
+ wcih.Add(wc1ih)
+ wcih.Add(wc2ih)
+ wcih.Add(wc3ih)
+ wcih.Add(wc4ih)
+ wcih.SetFillColor(wlColor)
+ wcih.Draw()
+ ###
+ wccih = wccnih.Clone()
+ wccih.SetName('wccih')
+ wccih.Add(wcc1ih)
+ wccih.Add(wcc2ih)
+ wccih.Add(wcc3ih)
+ wccih.Add(wcc4ih)
+ wccih.SetFillColor(wccColor)
+ wccih.Draw()
+ ###  
+ wbbih = wbbnih.Clone()
+ wbbih.SetName('wbbih')
+ wbbih.Add(wbb1ih)
+ wbbih.Add(wbb2ih)
+ wbbih.Add(wbb3ih)
+ wbbih.Add(wbb4ih)
+ wbbih.SetFillColor(wbbColor)
+ wbbih.Draw()
+ ####
+ dih = wwih.Clone()
+ dih.SetName('dih')
+ dih.Add(wzih)
+ dih.Add(zzih)
+ dih.Draw()
+ #### 
+ stsih = t_sih.Clone()
+ stsih.SetName('stsih')
+ stsih.Add(tb_sih)
+ stsih.Draw()
+ #### 
+ sttih = t_tih.Clone()
+ sttih.SetName('sttih')
+ sttih.Add(tb_tih)
+ sttih.Draw()
+ #### 
+ sttwih = t_twih.Clone()
+ sttwih.SetName('sttwih')
+ sttwih.Add(tb_twih)
+ sttwih.Draw()
+
+ c = TCanvas('c','Canvas Named c',canx,cany)
+ p1 = TPad('p1','p1',0,0.3,1,1)
+ p1.SetBottomMargin(0.08)
+ p1.Draw()
+ p1.cd()
+
+ hs = THStack('hs','')
+ hs.SetTitle('')
+ if drawQCD:
+  hs.Add(qh)
+ hs.Add(zih)
+ hs.Add(dih)
+ hs.Add(sttih)
+ hs.Add(stsih)
+ hs.Add(sttwih)
+ hs.Add(ttbih)
+ hs.Add(wbbih)
+ hs.Add(wccih)
+ hs.Add(wcih)
+ hs.Add(wlih)
+
+ hs.Draw()
+ hs.GetXaxis().SetTitle(xlabel)
+ hs.GetXaxis().SetRangeUser(xmin,xmax)
+ hs.GetYaxis().SetTitleOffset(1.5)
+ hs.GetYaxis().SetTitle(ylabel)
+ hsmax = hs.GetMaximum()
  
- outFile.Write()
- print('')
- print('Your File is here: '+path+extraName+'_'+leaf+'.root')
- print('')
+ leg=TLegend(0.68,0.2,0.9,0.8)
+ if drawData:
+  leg.AddEntry(dataih,'data')
+
+ leg.AddEntry(wlih,'W(#mu#nu)+light','f')
+ leg.AddEntry(wcih,'W(#mu#nu)+c','f')
+ leg.AddEntry(wccih,'W(#mu#nu)+c#bar{c}','f')
+ leg.AddEntry(wbbih,'W(#mu#nu)+b#bar{b}','f')
+ leg.AddEntry(ttbih,'t#bar{t}','f')
+ leg.AddEntry(sttwih,'t_tW','f')
+ leg.AddEntry(stsih,'t_s','f')
+ leg.AddEntry(sttih,'t_t','f')
+ leg.AddEntry(dih,'WW,WZ,ZZ','f')
+ leg.AddEntry(zih,'Drell-Yan','f')
+ if drawQCD:
+  leg.AddEntry(qh,'QCD','f')
+ leg.SetFillColor(0)
+ leg.SetBorderSize(0)
  
+ theMax = hsmax 
+ if drawData:
+  theMax = max(dimax,hsmax) 
+ hs.SetMaximum(1.2*theMax)
+ c.cd()
+ p1.cd()
+ hs.Draw("hist")
+ if drawData:
+  dataih.Draw('sames')
+ leg.Draw('sames')
+ cpr.prelim_alt(19429.)
+ tex.SetTextAlign(11)#left, bottom
+ tex.DrawLatex(0.17,0.9,title)
+
+ c.cd()
+ p2 = TPad('p2','p2',0,0,1,0.3)
+ p2.SetTopMargin(0.1)
+ p2.Draw()
+ p2.cd()
+
+ datar = TH1F('datar','datar',steps,xmin,xmax)
+ hh = TH1F('hh','hh',steps,xmin,xmax)
+ if drawQCD:
+  hh.Add(qh)
+ hh.Add(zih)
+ hh.Add(dih)
+ hh.Add(sttih)
+ hh.Add(stsih)
+ hh.Add(sttwih)
+ hh.Add(ttbih)
+ hh.Add(wbbih)
+ hh.Add(wccih)
+ hh.Add(wcih)
+ hh.Add(wlih)
+#
+ if drawData:
+  datar = dataih.Clone()
+ else:
+  datar = hh.Clone()
+ datar.SetName('datar')
+ datar.GetYaxis().SetRangeUser(0.6,1.4) 
+ datar.GetYaxis().SetLabelSize(0.11)
+ datar.Divide(hh)
+ datar.Draw('ep')
+ 
+ l = TLine(xmin,1,xmax,1)
+ l.SetLineStyle(3)
+ l.Draw()
+ c.Update()
+ print('you just read '+leaf)
+ if saveAsk:
+  save2 = raw_input ('Press Enter to Continue (type save to save)\n')
+  if save2 == 'save':
+   c.Print(path+extraName+'_'+leaf+'_Round'+str(i)+'.png')
+ else:
+   c.Print(path+extraName+'_'+leaf+'_Round'+str(i)+'.png')
+ 
+
+ log.write('Round '+str(i)+'\n')
  log.write('------------------------------------------------\n')
  log.write('Non Isolated\n')
  log.write('---------------------------\n')
@@ -528,74 +817,8 @@ for leaf in leafs:
   log.write(' Drell-Yan Size:-'+str(znhSize)+'\n')
   log.write(' QCD Size:-------'+str(qhSize)+'\n')
   log.write(' Data Size:      '+str(datanhSize)+'\n')
-  log.write('---------------------------\n')
-  log.write('Anti-Isolated Sizes from '+str(I)+' to '+str(F)+'\n')
-  log.write('---------------------------\n')
-  log.write(' Wn Size:--------'+str(wnnhSizePart)+'\n')
-  log.write(' W1 Size:--------'+str(w1nhSizePart)+'\n')
-  log.write(' W2 Size:--------'+str(w2nhSizePart)+'\n')
-  log.write(' W3 Size:--------'+str(w3nhSizePart)+'\n')
-  log.write(' W4 Size:--------'+str(w4nhSizePart)+'\n')
-  log.write(' tt Size:--------'+str(ttbnhSizePart)+'\n')
-  log.write(' t_t Size:-------'+str(t_tnhSizePart)+'\n')
-  log.write(' tb_t Size:------'+str(tb_tnhSizePart)+'\n')
-  log.write(' t_s Size:-------'+str(t_snhSizePart)+'\n')
-  log.write(' tb_s Size:------'+str(tb_snhSizePart)+'\n')
-  log.write(' t_tw Size:------'+str(t_twnhSizePart)+'\n')
-  log.write(' tb_tw Size:-----'+str(tb_twnhSizePart)+'\n')
-  log.write(' WW Size:--------'+str(wwnhSizePart)+'\n')
-  log.write(' WZ Size:--------'+str(wznhSizePart)+'\n')
-  log.write(' ZZ Size:--------'+str(zznhSizePart)+'\n')
-  log.write(' Drell-Yan Size:-'+str(znhSizePart)+'\n')
-  log.write(' QCD Size:-------'+str(qhSizePart)+'\n')
-  log.write(' Data Size:      '+str(datanhSizePart)+'\n')
-  log.write('---------------------------------------------\n')
-  log.write('QCD Scale:   '+str(sf_qcd)+'\n')
-  log.write('Drell Scale: '+str(sf_drell)+'\n')
-  log.write('t Scale:     '+str(sf_st)+'\n')
-  log.write('tt Scale:    '+str(sf_ttbar)+'\n')
-  log.write('W+x Scale:   '+str(sf_wjets)+'\n')
-  log.write('---------------------------------------------\n\n')
  else:
   log.write('no qcd drawn\n\n')
- log.write('Isolated Sizes from '+str(I)+' to '+str(F)+'\n')
- log.write('---------------------------\n')
- log.write('W:\n')
- log.write('  W+light:--------'+str(wlnihSizePart)+'\n')
- log.write('  W+light:--------'+str(wl1ihSizePart)+'\n')
- log.write('  W+light:--------'+str(wl2ihSizePart)+'\n')
- log.write('  W+light:--------'+str(wl3ihSizePart)+'\n')
- log.write('  W+light:--------'+str(wl4ihSizePart)+'\n\n')
- log.write('  W+c:------------'+str(wcnihSizePart)+'\n')
- log.write('  W+c:------------'+str(wc1ihSizePart)+'\n')
- log.write('  W+c:------------'+str(wc2ihSizePart)+'\n')
- log.write('  W+c:------------'+str(wc3ihSizePart)+'\n')
- log.write('  W+c:------------'+str(wc4ihSizePart)+'\n\n')
- log.write('  W+cc:-----------'+str(wccnihSizePart)+'\n')
- log.write('  W+cc:-----------'+str(wcc1ihSizePart)+'\n')
- log.write('  W+cc:-----------'+str(wcc2ihSizePart)+'\n')
- log.write('  W+cc:-----------'+str(wcc3ihSizePart)+'\n')
- log.write('  W+cc:-----------'+str(wcc4ihSizePart)+'\n\n')
- log.write('  W+bb:-----------'+str(wbbnihSizePart)+'\n')
- log.write('  W+bb:-----------'+str(wbb1ihSizePart)+'\n')
- log.write('  W+bb:-----------'+str(wbb2ihSizePart)+'\n')
- log.write('  W+bb:-----------'+str(wbb3ihSizePart)+'\n')
- log.write('  W+bb:-----------'+str(wbb4ihSizePart)+'\n')
- log.write('tt Size:--------'+str(ttbihSizePart)+'\n')
- log.write('t_t Size:-------'+str(t_tihSizePart)+'\n')
- log.write('tb_t Size:------'+str(tb_tihSizePart)+'\n')
- log.write('t_s Size:-------'+str(t_sihSizePart)+'\n')
- log.write('tb_s Size:------'+str(tb_sihSizePart)+'\n')
- log.write('t_tw Size:------'+str(t_twihSizePart)+'\n')
- log.write('tb_tw Size:-----'+str(tb_twihSizePart)+'\n')
- log.write('WW Size:--------'+str(wwihSizePart)+'\n')
- log.write('WZ Size:--------'+str(wzihSizePart)+'\n')
- log.write('ZZ Size:--------'+str(zzihSizePart)+'\n')
- log.write('Drell-Yan Size:-'+str(zihSizePart)+'\n')
- if drawData:
-  log.write('Data Size:          '+str(dataihSizePart)+'\n')
- else:
-  log.write('no Data drawn\n')
  log.write('---------------------------------------------\n')
  log.write('Isolated Sizes\n')
  log.write('---------------------------\n')
@@ -633,7 +856,8 @@ for leaf in leafs:
  log.write('Drell-Yan Size:-'+str(zihSize)+'\n')
  if drawData:
   log.write('Data Size:          '+str(dataihSize)+'\n')
- log.write('---------------------------------------------\n')
+ else:
+  log.write('No Data Drawn :(\n')
  log.write('---------------------------\n')
  log.write('Isolated Number of Entries\n')
  log.write('---------------------------\n')
@@ -671,7 +895,135 @@ for leaf in leafs:
  log.write('Drell-Yan Entries:-'+str(zihEntries)+'\n')
  if drawData:
   log.write('Data Entries:          '+str(dataihEntries)+'\n')
- log.write('---------------------------------------------\n')
- 
- print(".log written")
- log.close()
+ log.write('---------------------------------------------\n\n')
+
+ print('\nFinished '+str(i)+' of '+str(nrplots-1)+'\n')
+
+###########################################################
+
+can = TCanvas('can','Canvas Named can',canx,cany)
+pad1 = TPad('pad1','pad1',0,0.3,1,1)
+pad1.SetBottomMargin(0.08)
+pad1.Draw()
+pad1.cd()
+
+dc = wwc.Clone()
+dc.SetName('dc')
+dc.Add(wzc)
+dc.Add(zzc)
+
+sttc = t_tc.Clone()
+sttc.SetName('sttc')
+sttc.Add(tb_tc)
+
+stsc = t_sc.Clone()
+stsc.SetName('stsc')
+stsc.Add(tb_sc)
+
+sttwc = t_twc.Clone()
+sttwc.SetName('sttwc')
+sttwc.Add(tb_twc)
+
+hc = THStack('hc','')
+hc.SetTitle('')
+if drawQCD:
+ hc.Add(qc)
+hc.Add(zc)
+hc.Add(dc)
+hc.Add(sttc)
+hc.Add(stsc)
+hc.Add(sttwc)
+hc.Add(ttbc)
+hc.Add(wbbc)
+hc.Add(wccc)
+hc.Add(wcc)
+hc.Add(wlc)
+
+hc.Draw('hist')
+hc.GetXaxis().SetTitle(xlabel)
+hc.GetXaxis().SetRangeUser(xmin,xmax)
+hc.GetYaxis().SetTitleOffset(1.5)
+hc.GetYaxis().SetTitle(ylabel)
+hsmax = hc.GetMaximum()
+
+leg=TLegend(0.68,0.2,0.9,0.8)
+if drawData:
+ leg.AddEntry(datac,'data')
+leg.AddEntry(wlc,'W(#mu#nu)+light','f')
+leg.AddEntry(wcc,'W(#mu#nu)+c','f')
+leg.AddEntry(wccc,'W(#mu#nu)+c#bar{c}','f')
+leg.AddEntry(wbbc,'W(#mu#nu)+b#bar{b}','f')
+leg.AddEntry(ttbc,'t#bar{t}','f')
+leg.AddEntry(sttwc,'t_tW','f')
+leg.AddEntry(stsc,'t_s','f')
+leg.AddEntry(sttc,'t_t','f')
+leg.AddEntry(dc,'WW,WZ,ZZ','f')
+leg.AddEntry(zc,'Drell-Yan','f')
+if drawQCD:
+ leg.AddEntry(qc,'QCD','f')
+leg.SetFillColor(0)
+leg.SetBorderSize(0)
+
+theMax = hsmax 
+
+if drawData:
+ theMax = max(1,hsmax) 
+hc.SetMaximum(1.2*theMax)
+c.cd()
+p1.cd()
+hc.Draw("hist")
+if drawData:
+ datac.Draw('sames')
+leg.Draw('sames')
+cpr.prelim_alt(19429.)
+tex.SetTextAlign(11)#left, bottom
+tex.DrawLatex(0.17,0.9,title)
+
+can.cd()
+pad2 = TPad('pad2','pad2',0,0,1,0.3)
+pad2.SetTopMargin(0.1)
+pad2.Draw()
+pad2.cd()
+
+datarc = TH1F('datarc','datarc',nrplots,0,nrplots)
+hhc = TH1F('hhc','hhc',nrplots,0,nrplots)
+if drawQCD:
+ hhc.Add(qc)
+hhc.Add(zc)
+hhc.Add(dc)
+hhc.Add(sttc)
+hhc.Add(stsc)
+hhc.Add(sttwc)
+hhc.Add(ttbc)
+hhc.Add(wbbc)
+hhc.Add(wccc)
+hhc.Add(wcc)
+hhc.Add(wlc)
+
+if drawData:
+ datarc = datac.Clone()
+else:
+ datarc = hhc.Clone()
+datarc.SetName('datarc')
+datarc.GetYaxis().SetRangeUser(0.6,1.4) 
+datarc.GetYaxis().SetLabelSize(0.11)
+datarc.Divide(hhc)
+datarc.Draw('ep')
+
+l = TLine(0,1,nrplots,1)
+l.SetLineStyle(3)
+l.Draw()
+can.Update()
+print('you just read '+leaf)
+if saveAsk:
+ save = raw_input ('Press Enter to Continue (type save to save)\n')
+ if save == 'save':
+  can.Print(path+extraName+'_'+leaf+'_Effects.png')
+else:
+  can.Print(path+extraName+'_'+leaf+'_Effects.png')
+
+outFile.Write()
+print('')
+print('Your File is here: '+path+extraName+'_'+leaf+'.root')
+print('')
+

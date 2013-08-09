@@ -10,9 +10,9 @@ from ROOT import gROOT,gStyle
 from ROOT import *
 
 import aHisto as h #function to make histograms
-import cuts as ct  #function which makes cut strings
+import cuts2 as ct  #function which makes cut strings
 import histoRange as hr #manages range, lables for plots
-import parameters as p
+import parameters2 as p
 
 #import scaleqcd as qs
 
@@ -36,7 +36,7 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
 )
 
 data_filename  = '../data/v5/wMuNuData.root'
-t_t_filename   = '../data/v5/T_t_old.root'
+t_t_filename   = '../data/v5/T_t.root'
 t_s_filename   = '../data/v0/T_s.root'
 t_tw_filename  = '../data/v0/T_tW.root'
 tb_t_filename  = '../data/v0/Tbar_t.root'
