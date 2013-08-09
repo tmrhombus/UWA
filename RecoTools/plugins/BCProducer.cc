@@ -86,7 +86,7 @@ BCFS.BC1PT(-777);
         BCFS.Jet4BC2PHI(-777);
         BCFS.BCDeltaR(-777);
         BCFS.BDeltaPHI(-777);
-std::cout<<"In BCProducer"<<std::endl;
+//std::cout<<"In BCProducer"<<std::endl;
 // std::vector<reco::LeafCandidate> *blc = new std::vector<reco::LeafCandidate>;
 
 std::auto_ptr<BCandFinalStateCollection> BCandFS(new BCandFinalStateCollection);
@@ -106,10 +106,10 @@ iEvent.getByLabel(vertexsrc_, SVC);
 const std::vector<reco::Vertex> svc = *(SVC.product());
 //Define pv from the first PV (ordered by sum of track pt)
 reco::Vertex pv = pvc[0];
-std::cout<<"PV x="<<pv.x()<<" y="<<pv.y()<<" z="<<pv.z()<<std::endl;
+//std::cout<<"PV x="<<pv.x()<<" y="<<pv.y()<<" z="<<pv.z()<<std::endl;
 std::vector<std::set<reco::TrackRef> > bCandtrackSets;
 float charge=0;	
-std::cout<<"Running on SV, size="<<svc.size()<<std::endl;
+//std::cout<<"Running on SV, size="<<svc.size()<<std::endl;
 int nSV=0;
 int nJets=0;
 TLorentzVector TLV_jet[100];
@@ -126,7 +126,7 @@ int index[nJets];
 for(int j=0; j<nJets; j++){index[j]=0;}	
 //Running on BCandidate collection to associate a LeafCandidate to each of them (actually building a new collection, 100% correlated with the BCandidate one).
 for(unsigned int i=0; i<svc.size(); i++){
-std::cout<<"---> SV "<<i<<" x="<<svc[i].x()<<" y="<<svc[i].y()<<" z="<<svc[i].z()<<std::endl;
+//std::cout<<"---> SV "<<i<<" x="<<svc[i].x()<<" y="<<svc[i].y()<<" z="<<svc[i].z()<<std::endl;
 math::XYZTLorentzVectorD bCandmom;
 bCandmom = svc[i].p4(0.13957,0.5);	
 reco::Vertex::Point p(svc[i].x(),svc[i].y(),svc[i].z());
@@ -166,7 +166,7 @@ BCFS.BCEnergySum();
 float dphi=fabs(BCFS.BC1PHI()-BCFS.BC2PHI())<3.14159?fabs(BCFS.BC1PHI()-BCFS.BC2PHI()):6.28318-fabs(BCFS.BC1PHI()-BCFS.BC2PHI());
 BCFS.BDeltaPHI(dphi);
 if(sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))>0.7102 && sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<0.71032){
-std::cout<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<" ************************************DOUBLECOUNTING****************"<<std::endl;
+//std::cout<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<" ************************************DOUBLECOUNTING****************"<<std::endl;
 }
                  BCFS.BCDeltaR(sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2)));
 // Running jets to count the total energy associated to the second b-hadron
@@ -188,7 +188,7 @@ BCFS.BCEnergySum(sumEnergy);
 nSV++;	
 }
 BCandFS->push_back(BCFS);	
-std::cout<<"--->"<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<std::endl;	
+//std::cout<<"--->"<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<std::endl;	
       std::auto_ptr<BCandFinalStateCollection > bfsColl(BCandFS);	
 iEvent.put(bfsColl,"BCandFinalState");	
 }	
