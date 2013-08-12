@@ -114,7 +114,7 @@ class TagAndProbePlotter : public edm::EDAnalyzer {
 	}
 	else
 	  {
-	    printf("PU Info not found\n");
+//	    printf("PU Info not found\n");
 	  }
 	      ///////////////////////////////
 
