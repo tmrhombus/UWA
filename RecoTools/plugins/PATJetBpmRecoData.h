@@ -102,7 +102,7 @@ class PATJetBpmRecoData : public edm::EDProducer {
         //const reco::SecondaryVertexTagInfo* secInfo = jet.tagInfoSecondaryVertex("secondaryVertex");
 	if(secVertInfo.nVertices()>0){
         //if (secInfo && secInfo->vertexTracks().size()>0) {
-std::cout<<"OOOOOOOOOOOOOOOOOOOOOOO"<<std::endl;
+//std::cout<<"OOOOOOOOOOOOOOOOOOOOOOO"<<std::endl;
 	  //float pt = secVertInfo.taggingVariables().size();//
 	  //printf("track IP 2d above Charm: %f\n",pt);
 	  //const reco::Vertex&sv= secInfo->secondaryVertex(0);
@@ -222,7 +222,7 @@ std::cout<<"OOOOOOOOOOOOOOOOOOOOOOO"<<std::endl;
 
 		  if(fabs(mass-5.279)<fabs(massD0-5.279)){ //find the candidate closest to D0 mass
 		    massBpm2 = mass;
-		    printf("BPM mass %f\n",massBpm2);
+//		    printf("BPM mass %f\n",massBpm2);
 		  }
 		}
 	}
