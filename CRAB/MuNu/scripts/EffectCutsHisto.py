@@ -22,7 +22,7 @@ drawData = True
 saveAsk = False
 
 path='../plots/EffectCuts'
-extraName = '_newT'
+extraName = '_tp2'
 #nr < = 8
 nrplots =4
 steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
@@ -47,7 +47,7 @@ CutList.append(cut3)
 CutList.append(cut4)
 
 data_filename  = '../data/v5/wMuNuData.root'
-t_t_filename   = '../data/v1/T_t.root'
+t_t_filename   = '../data/v1/T_t_p2.root'
 t_s_filename   = '../data/v0/T_s.root'
 t_tw_filename  = '../data/v0/T_tW.root'
 tb_t_filename  = '../data/v0/Tbar_t.root'
@@ -163,12 +163,12 @@ ttbc = TH1F('ttbc','ttbc',nrplots,0,nrplots)
 wwc = TH1F('wwc','wwc',nrplots,0,nrplots) 
 wzc = TH1F('wzc','wzc',nrplots,0,nrplots) 
 zzc = TH1F('zzc','zzc',nrplots,0,nrplots) 
-wlc = TH1F('wac','wlc',nrplots,0,nrplots) 
-wcc = TH1F('wc','wc',nrplots,0,nrplots) 
-wccc = TH1F('wcc','wcc',nrplots,0,nrplots) 
-wbbc = TH1F('wbc','wbc',nrplots,0,nrplots) 
+wlc = TH1F('wlc','wlc',nrplots,0,nrplots) 
+wcc = TH1F('wcc','wcc',nrplots,0,nrplots) 
+wccc = TH1F('wccc','wccc',nrplots,0,nrplots) 
+wbbc = TH1F('wbbc','wbbc',nrplots,0,nrplots) 
 zc = TH1F('zc','zc',nrplots,0,nrplots) 
-hc = TH1F('hc','hc',nrplots,0,nrplots)
+#hc = TH1F('hc','hc',nrplots,0,nrplots)
 
 print('----------------------------')
 print('      --'+leaf+'--')
@@ -901,127 +901,127 @@ for i in range(nrplots):
 
 ###########################################################
 
-can = TCanvas('can','Canvas Named can',canx,cany)
-pad1 = TPad('pad1','pad1',0,0.3,1,1)
-pad1.SetBottomMargin(0.08)
-pad1.Draw()
-pad1.cd()
-
-dc = wwc.Clone()
-dc.SetName('dc')
-dc.Add(wzc)
-dc.Add(zzc)
-
-sttc = t_tc.Clone()
-sttc.SetName('sttc')
-sttc.Add(tb_tc)
-
-stsc = t_sc.Clone()
-stsc.SetName('stsc')
-stsc.Add(tb_sc)
-
-sttwc = t_twc.Clone()
-sttwc.SetName('sttwc')
-sttwc.Add(tb_twc)
-
-hc = THStack('hc','')
-hc.SetTitle('')
-if drawQCD:
- hc.Add(qc)
-hc.Add(zc)
-hc.Add(dc)
-hc.Add(sttc)
-hc.Add(stsc)
-hc.Add(sttwc)
-hc.Add(ttbc)
-hc.Add(wbbc)
-hc.Add(wccc)
-hc.Add(wcc)
-hc.Add(wlc)
-
-hc.Draw('hist')
-hc.GetXaxis().SetTitle(xlabel)
-hc.GetXaxis().SetRangeUser(xmin,xmax)
-hc.GetYaxis().SetTitleOffset(1.5)
-hc.GetYaxis().SetTitle(ylabel)
-hsmax = hc.GetMaximum()
-
-leg=TLegend(0.68,0.2,0.9,0.8)
-if drawData:
- leg.AddEntry(datac,'data')
-leg.AddEntry(wlc,'W(#mu#nu)+light','f')
-leg.AddEntry(wcc,'W(#mu#nu)+c','f')
-leg.AddEntry(wccc,'W(#mu#nu)+c#bar{c}','f')
-leg.AddEntry(wbbc,'W(#mu#nu)+b#bar{b}','f')
-leg.AddEntry(ttbc,'t#bar{t}','f')
-leg.AddEntry(sttwc,'t_tW','f')
-leg.AddEntry(stsc,'t_s','f')
-leg.AddEntry(sttc,'t_t','f')
-leg.AddEntry(dc,'WW,WZ,ZZ','f')
-leg.AddEntry(zc,'Drell-Yan','f')
-if drawQCD:
- leg.AddEntry(qc,'QCD','f')
-leg.SetFillColor(0)
-leg.SetBorderSize(0)
-
-theMax = hsmax 
-
-if drawData:
- theMax = max(1,hsmax) 
-hc.SetMaximum(1.2*theMax)
-c.cd()
-p1.cd()
-hc.Draw("hist")
-if drawData:
- datac.Draw('sames')
-leg.Draw('sames')
-cpr.prelim_alt(19429.)
-tex.SetTextAlign(11)#left, bottom
-tex.DrawLatex(0.17,0.9,title)
-
-can.cd()
-pad2 = TPad('pad2','pad2',0,0,1,0.3)
-pad2.SetTopMargin(0.1)
-pad2.Draw()
-pad2.cd()
-
-datarc = TH1F('datarc','datarc',nrplots,0,nrplots)
-hhc = TH1F('hhc','hhc',nrplots,0,nrplots)
-if drawQCD:
- hhc.Add(qc)
-hhc.Add(zc)
-hhc.Add(dc)
-hhc.Add(sttc)
-hhc.Add(stsc)
-hhc.Add(sttwc)
-hhc.Add(ttbc)
-hhc.Add(wbbc)
-hhc.Add(wccc)
-hhc.Add(wcc)
-hhc.Add(wlc)
-
-if drawData:
- datarc = datac.Clone()
-else:
- datarc = hhc.Clone()
-datarc.SetName('datarc')
-datarc.GetYaxis().SetRangeUser(0.6,1.4) 
-datarc.GetYaxis().SetLabelSize(0.11)
-datarc.Divide(hhc)
-datarc.Draw('ep')
-
-l = TLine(0,1,nrplots,1)
-l.SetLineStyle(3)
-l.Draw()
-can.Update()
-print('you just read '+leaf)
-if saveAsk:
- save = raw_input ('Press Enter to Continue (type save to save)\n')
- if save == 'save':
-  can.Print(path+extraName+'_'+leaf+'_Effects.png')
-else:
-  can.Print(path+extraName+'_'+leaf+'_Effects.png')
-
+#can = TCanvas('can','Canvas Named can',canx,cany)
+#pad1 = TPad('pad1','pad1',0,0.3,1,1)
+#pad1.SetBottomMargin(0.08)
+#pad1.Draw()
+#pad1.cd()
+#
+#dc = wwc.Clone()
+#dc.SetName('dc')
+#dc.Add(wzc)
+#dc.Add(zzc)
+#
+#sttc = t_tc.Clone()
+#sttc.SetName('sttc')
+#sttc.Add(tb_tc)
+#
+#stsc = t_sc.Clone()
+#stsc.SetName('stsc')
+#stsc.Add(tb_sc)
+#
+#sttwc = t_twc.Clone()
+#sttwc.SetName('sttwc')
+#sttwc.Add(tb_twc)
+#
+#hc = THStack('hc','')
+#hc.SetTitle('')
+#if drawQCD:
+# hc.Add(qc)
+#hc.Add(zc)
+#hc.Add(dc)
+#hc.Add(sttc)
+#hc.Add(stsc)
+#hc.Add(sttwc)
+#hc.Add(ttbc)
+#hc.Add(wbbc)
+#hc.Add(wccc)
+#hc.Add(wcc)
+#hc.Add(wlc)
+#
+#hc.Draw('hist')
+#hc.GetXaxis().SetTitle(xlabel)
+##hc.GetXaxis().SetRangeUser(xmin,xmax)
+#hc.GetYaxis().SetTitleOffset(1.5)
+#hc.GetYaxis().SetTitle(ylabel)
+#hsmax = hc.GetMaximum()
+#
+#leg=TLegend(0.68,0.2,0.9,0.8)
+#if drawData:
+# leg.AddEntry(datac,'data')
+#leg.AddEntry(wlc,'W(#mu#nu)+light','f')
+#leg.AddEntry(wcc,'W(#mu#nu)+c','f')
+#leg.AddEntry(wccc,'W(#mu#nu)+c#bar{c}','f')
+#leg.AddEntry(wbbc,'W(#mu#nu)+b#bar{b}','f')
+#leg.AddEntry(ttbc,'t#bar{t}','f')
+#leg.AddEntry(sttwc,'t_tW','f')
+#leg.AddEntry(stsc,'t_s','f')
+#leg.AddEntry(sttc,'t_t','f')
+#leg.AddEntry(dc,'WW,WZ,ZZ','f')
+#leg.AddEntry(zc,'Drell-Yan','f')
+#if drawQCD:
+# leg.AddEntry(qc,'QCD','f')
+#leg.SetFillColor(0)
+#leg.SetBorderSize(0)
+#
+#theMax = hsmax 
+#
+#if drawData:
+# theMax = max(1,hsmax) 
+#hc.SetMaximum(1.2*theMax)
+#c.cd()
+#p1.cd()
+#hc.Draw("hist")
+#if drawData:
+# datac.Draw('sames')
+#leg.Draw('sames')
+#cpr.prelim_alt(19429.)
+#tex.SetTextAlign(11)#left, bottom
+#tex.DrawLatex(0.17,0.9,title)
+#
+#can.cd()
+#pad2 = TPad('pad2','pad2',0,0,1,0.3)
+#pad2.SetTopMargin(0.1)
+#pad2.Draw()
+#pad2.cd()
+#
+#datarc = TH1F('datarc','datarc',nrplots,0,nrplots)
+#hhc = TH1F('hhc','hhc',nrplots,0,nrplots)
+#if drawQCD:
+# hhc.Add(qc)
+#hhc.Add(zc)
+#hhc.Add(dc)
+#hhc.Add(sttc)
+#hhc.Add(stsc)
+#hhc.Add(sttwc)
+#hhc.Add(ttbc)
+#hhc.Add(wbbc)
+#hhc.Add(wccc)
+#hhc.Add(wcc)
+#hhc.Add(wlc)
+#
+#if drawData:
+# datarc = datac.Clone()
+#else:
+# datarc = hhc.Clone()
+#datarc.SetName('datarc')
+#datarc.GetYaxis().SetRangeUser(0.6,1.4) 
+#datarc.GetYaxis().SetLabelSize(0.11)
+#datarc.Divide(hhc)
+#datarc.Draw('ep')
+#
+#l = TLine(0,1,nrplots,1)
+#l.SetLineStyle(3)
+#l.Draw()
+#can.Update()
+#print('you just read '+leaf)
+#if saveAsk:
+# save = raw_input ('Press Enter to Continue (type save to save)\n')
+# if save == 'save':
+#  can.Print(path+extraName+'_'+leaf+'_Effects.png')
+#else:
+#  can.Print(path+extraName+'_'+leaf+'_Effects.png')
+#
 outFile.Write()
 print('')
 print('Your File is here: '+path+extraName+'_'+leaf+'.root')
