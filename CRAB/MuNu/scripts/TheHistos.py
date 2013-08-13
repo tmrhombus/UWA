@@ -10,9 +10,9 @@ from ROOT import gROOT,gStyle
 from ROOT import *
 
 import aHisto as h #function to make histograms
-import cuts as ct  #function which makes cut strings
+import TheCuts as ct  #function which makes cut strings
 import histoRange as hr #manages range, lables for plots
-import parameters as p
+import TheParameters as p
 
 #import scaleqcd as qs
 

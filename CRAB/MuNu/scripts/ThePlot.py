@@ -9,7 +9,7 @@ from ROOT import TLegend,TCanvas,TPad,TLatex,TLine
 from ROOT import gROOT,gStyle
 import histoRange as hr
 import cmsPrelim as cpr
-import parameters as p
+import TheParameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
 sf_qcd = 2.01679 
