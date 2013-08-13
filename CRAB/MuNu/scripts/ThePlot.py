@@ -16,6 +16,7 @@ sf_qcd = 2.01679
 
 sf_drell = 1.
 sf_st    = 1.
+sf_st_t  = 1.025431e+06/2.497226e+06
 sf_ttbar = 1.
 sf_wjets = 1.
 sf_vv    = 1.
@@ -167,7 +168,7 @@ for leaf in leafs:
   t_tih = theFile.Get('t_tih')
   t_tih.SetFillColor(tt)
   t_tih.Rebin(rebin)
-  t_tih.Scale(sf_st)
+  t_tih.Scale(sf_st_t)
   t_tih.Draw()
   ###
   tb_tih = theFile.Get('tb_tih')
@@ -397,7 +398,7 @@ for leaf in leafs:
   hs.SetMaximum(1.2*theMax)
   c.cd()
   p1.cd()
-  hs.Draw()
+  hs.Draw('hist')
   if drawData:
    dataih.Draw('sames,E1')
   leg.Draw('sames')
