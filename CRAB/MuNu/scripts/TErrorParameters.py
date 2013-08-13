@@ -35,7 +35,7 @@ def arams():
   jNr = 4
   jetVeto = False
 
- path = '../plots/TTbarError'
+ path = '../plots/TTbarError_new_'
  extraName='_'+str(jNr)+'j_'+str(bNr)+'b'
  name = path+extraName+'_'+leaf
 

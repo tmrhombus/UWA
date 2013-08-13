@@ -21,12 +21,9 @@ canx = 800 # for one plot on page
 cany = 900
 
 #color scheme
-tt = ROOT.EColor.kAzure+1
-wl = 0
-#wl = ROOT.EColor.kAzure+10
-wc = ROOT.EColor.kBlue+1
-wcc = ROOT.EColor.kAzure+2
-wbb = 51#ROOT.EColor.kCyan
+color = 28
+colorUp = ROOT.EColor.kGreen+4
+colorDown = ROOT.EColor.kRed+1
 
 tex = ROOT.TLatex()
 tex.SetTextSize(0.07)
@@ -53,25 +50,25 @@ print("TTbar")
 httbar = theFile.Get('httbar')
 bminA = httbar.GetXaxis().FindBin(xmin)
 bmaxA = httbar.GetXaxis().FindBin(xmax)
-httbar.SetLineWidth(3)
-httbar.SetLineColor(28)
+httbar.SetLineWidth(2)
+httbar.SetLineColor(color)
 httbarSize = httbar.Integral(bminA,bmaxA)
 print(httbarSize)
 ###
 print("TTbar Up")
 httbarUp = theFile.Get('httbarUp')
 httbarUpSize = httbarUp.Integral(bminA,bmaxA)
-httbarUp.SetLineWidth(2)
+httbarUp.SetLineWidth(3)
 httbarUp.SetLineStyle(2)
-httbarUp.SetLineColor(9)
+httbarUp.SetLineColor(colorUp)
 print(httbarUpSize)
 ###
 print("TTbar Down")
 httbarDown = theFile.Get('httbarDown')
 httbarDownSize = httbarDown.Integral(bminA,bmaxA)
-httbarDown.SetLineWidth(2)
+httbarDown.SetLineWidth(3)
 httbarDown.SetLineStyle(2)
-httbarDown.SetLineColor(8)
+httbarDown.SetLineColor(colorDown)
 print(httbarDownSize)
 
 leg = TLegend(0.68,0.2,0.9,0.8)

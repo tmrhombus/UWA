@@ -4,7 +4,7 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(bNr,jNr,jetVeto):
+def cutmaker(bNr,jNr,jetVeto,Signal,Control,TT_m,TT_me,noMT):
 
  jetPt = '25'
  njetPt = '25'
@@ -32,12 +32,6 @@ def cutmaker(bNr,jNr,jetVeto):
   threeJets = '('+thJ+' && nJetsPt'+njetPt+'==3)'
   fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
 
-
- #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')' #control or signal
- #Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
- Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+')' #for TTbar
- #Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')' # Z region
-  
  FirstBtag='(J1CSVbtag>0.898 && J1SVMassb>0)'
  SecondBtag='(J2CSVbtag>0.898 && J2SVMassb>0)'
  OneBtag='('+FirstBtag+'||'+SecondBtag+')'
@@ -47,13 +41,23 @@ def cutmaker(bNr,jNr,jetVeto):
  newCSVT1second = '((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))'
  newCSVT2 = '('+newCSVT1first+'*'+newCSVT1second+')'
 
- #theCut = '('+Skim+'&&'+twoJets+')'        #control
- #theCut = '('+Skim+'&&'+exactlyTwoJets+')' #signal
- theCut = '('+Skim+'&&'+fourJets+')'       #ttbar 4 jets
+ if Control or Signal:
+  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')' #control or signal
+  theCut = '('+Skim+'&&'+twoJets+')' 
+  if Signal:
+   weight = '('+weight+'*'+newCSVT2+')'      # TWO BTAGS
+   theCut = '('+theCut+'&&'+TwoBtag+')'      # TWO BTAGS
 
- weight = '('+weight+'*'+newCSVT2+')'      # TWO BTAGS
- theCut = '('+theCut+'&&'+TwoBtag+')'      # TWO BTAGS
+ if TT_me:
+  Skim='('+trigger+'&&'+oneMUoneELE+'&&'+vertex+'&&'+mt+')' #for TTbar
+  theCut = Skim
 
+ if TT_m:
+  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+')' #for TTbar
+  theCut = '('+Skim+'&&'+fourJets+')'       #ttbar 4 jets
+  weight = '('+weight+'*'+newCSVT2+')'      # TWO BTAGS
+  theCut = '('+theCut+'&&'+TwoBtag+')'      # TWO BTAGS
+  
  cutMc = '('+weight+'*weightTop*('+Iso+'&&'+theCut+'))'
  cutMcUp = '('+weight+'*weightTop*weightTop*('+Iso+'&&'+theCut+'))'
  cutMcDown = '('+weight+'*('+Iso+'&&'+theCut+'))'

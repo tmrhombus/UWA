@@ -16,7 +16,7 @@ import TErrorParameters as p # parameters
 
 leaf,name,bNr,jNr,jetVeto,Signal,Control,TT_m,TT_me,noMT=p.arams()
 
-CutMc,CutMcUp,CutMcDown = ct.cutmaker(bNr,jNr,jetVeto)
+CutMc,CutMcUp,CutMcDown = ct.cutmaker(bNr,jNr,jetVeto,Signal,Control,TT_m,TT_me,noMT)
 print('cuts')
 print(CutMc)
 print(' ')
@@ -25,7 +25,7 @@ print(' ')
 print(CutMcDown)
 print('')
 
-ttbar_filename  = '../data/v0/TTbar_hadd.root'
+ttbar_filename  = '../data/v0/TTbar.root'
 ttbar_file = TFile( ttbar_filename   )
 eventTreeLocation = 'muNuEventTree/eventTree'
 ttbar_tree    =  ttbar_file.Get(eventTreeLocation)
@@ -33,6 +33,7 @@ ttbar_tree    =  ttbar_file.Get(eventTreeLocation)
 #Start the Plotting Program
 
 steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
+xmax = 400.
 
 outFile=gROOT.FindObject(name+'.root')
 if outFile : outFile.Close()
