@@ -12,30 +12,33 @@ from ROOT import *
 import aHisto as h #function to make histograms
 import TErrorCuts as ct  #function which makes cut strings
 import histoRange as hr #manages range, lables for plots
+import TErrorParameters as p # parameters
 
-CutMc,CutMcUp,CutMcDown = ct.cutmaker()
+leaf,name,bNr,jNr,jetVeto,Signal,Control,TT_m,TT_me,noMT=p.arams()
+
+CutMc,CutMcUp,CutMcDown = ct.cutmaker(bNr,jNr,jetVeto)
+print('cuts')
+print(CutMc)
+print(' ')
+print(CutMcUp)
+print(' ')
+print(CutMcDown)
+print('')
 
 ttbar_filename  = '../data/v0/TTbar_hadd.root'
-
 ttbar_file = TFile( ttbar_filename   )
-
 eventTreeLocation = 'muNuEventTree/eventTree'
-
 ttbar_tree    =  ttbar_file.Get(eventTreeLocation)
 
 #Start the Plotting Program
-leaf = 'Mt'
-#leaf = 'MtCal'
 
 steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
 
-path = '../plots/TTbarError'
-extraName=''
-outFile=gROOT.FindObject(path+extraName+'_'+leaf+'.root')
+outFile=gROOT.FindObject(name+'.root')
 if outFile : outFile.Close()
-outFile = TFile(path+extraName+'_'+leaf+'.root','RECREATE','TTbar +- error')
+outFile = TFile(name+'.root','RECREATE','TTbar +- error')
 
-log = open(path+extraName+'_'+leaf+'.log','w')
+log = open(name+'.log','w')
 
 print('----------------------------')
 print('      --'+leaf+'--')
@@ -65,6 +68,13 @@ print('  '+str(httbarDownSizePart))
 
 outFile.Write()
 print('')
-print('Your File is here: '+path+extraName+'_'+leaf+'.root')
+print('Your File is here: '+name+'.root')
 print('')
-
+log.write('Cuts:\n')
+log.write('Cut MC:\n')
+log.write(CutMc)
+log.write('\nCut MC Up:\n')
+log.write(CutMcUp)
+log.write('\nCut MC Down:\n')
+log.write(CutMcDown)
+log.close()

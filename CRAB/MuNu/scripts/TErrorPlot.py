@@ -9,7 +9,7 @@ from ROOT import TLegend,TCanvas,TPad,TLatex,TLine
 from ROOT import gROOT,gStyle
 import histoRange as hr
 import cmsPrelim as cpr
-import parameters as p
+import TErrorParameters as p
  
 #canvas attributes
 canx = 800 # for one plot on page
@@ -35,16 +35,13 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 #Start the Plotting Program
-leaf = 'Mt'
+leaf,name,bNr,jNr,jetVeto,Signal,Control,TT_m,TT_me,noMT=p.arams()
 
 steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
 I = xmin
 F = xmax
 
-path = '../plots/TTbarError'
-extraName=''
-fileName = path+extraName+'_'+leaf
-theFile = TFile(fileName+'.root')
+theFile = TFile(name+'.root')
 
 xlabel = xtitle+' ['+xunits+']'
 ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps))
@@ -80,10 +77,11 @@ print(httbarDownSize)
 leg = TLegend(0.68,0.2,0.9,0.8)
 leg.SetFillColor(0)
 leg.AddEntry(httbar,'t#bar{t}')
-leg.AddEntry(httbarUp,'t#bar{t}+#epsilon')
-leg.AddEntry(httbarDown,'t#bar{t}-#epsilon')
+leg.AddEntry(httbarUp,'t#bar{t}+#sigma')
+leg.AddEntry(httbarDown,'t#bar{t}-#sigma')
+leg.SetBorderSize(0)
 
-httbar.SetMaximum(1.1*httbar.GetMaximum())
+httbar.SetMaximum(1.1*httbarUp.GetMaximum())
 httbar.Draw('hist')
 httbarUp.Draw('sames,hist')
 httbarDown.Draw('sames,hist')
@@ -94,6 +92,6 @@ tex.DrawLatex(0.17,0.9,title)
 c.Update()
 save2 = raw_input ('Press Enter to Continue (type save to save)\n')
 if save2 == 'save':
- c.Print(fileName+'.png')
+ c.Print(name+'.png')
 print('')
 c.Close()
