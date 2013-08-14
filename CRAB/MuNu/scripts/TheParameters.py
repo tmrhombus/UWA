@@ -61,7 +61,7 @@ def arams():
  #naming where output goes
  path = '../plots/'
  fitrange = '_'+str(I)+'_'+str(F)
- extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_oldT'
+ extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_newT'
 
  jet1_2dr2 = '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))'
 
