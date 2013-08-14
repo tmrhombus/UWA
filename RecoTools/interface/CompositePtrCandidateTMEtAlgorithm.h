@@ -87,17 +87,55 @@ class CompositePtrCandidateTMEtAlgorithm
     compositePtrCandidate.setCorPy(visDecayProducts->py() + correctedMET.py());
     //Jets
     JetPtrVector cleanedJets;
+    JetPtrVector cleanedJetsAll;
     JetPtrVector cleanedJets5;
 
-    for(unsigned int i=0;i<pfJets.size();++i)
-      if((reco::deltaR(pfJets.at(i)->p4(),visDecayProducts->p4())>0.5)&&fabs(pfJets.at(i)->userFloat("idLoose"))>0&&fabs(pfJets.at(i)->eta())<2.4){
-	cleanedJets.push_back(pfJets.at(i));
-      }
     int nJets24Pt20 = 0;
     int nJets24Pt25 = 0;
     int nJets24Pt30 = 0;
+//    double etaJ1_allEta = -777;
+//    double etaJ2_allEta = -777;
+//    double etaJ3_allEta = -777;
+//    double etaJ4_allEta = -777;
+//    double phiJ1_allEta = -777;
+//    double phiJ2_allEta = -777;
+//    double phiJ3_allEta = -777;
+//    double phiJ4_allEta = -777;
+//    double ptJ1_allEta = -777;
+//    double ptJ2_allEta = -777;
+//    double ptJ3_allEta = -777;
+//    double ptJ4_allEta = -777;
 
-    for(unsigned int i=0;i<pfJets.size();++i)
+
+    for(unsigned int i=0;i<pfJets.size();++i){
+//      if((reco::deltaR(pfJets.at(i)->p4(),visDecayProducts->p4())>0.5)&&fabs(pfJets.at(i)->userFloat("idLoose"))>0&&fabs(pfJets.at(i)->eta())<4.5){
+//	cleanedJetsAll.push_back(pfJets.at(i));
+//        if (i == 0){
+//         etaJ1_allEta = pfJets.at(i)->eta();
+//         phiJ1_allEta = pfJets.at(i)->phi();
+//         ptJ1_allEta  = pfJets.at(i)->pt() ;
+//        } 
+//        if (i == 1){
+//         etaJ2_allEta = pfJets.at(i)->eta();
+//         phiJ2_allEta = pfJets.at(i)->phi();
+//         ptJ2_allEta  = pfJets.at(i)->pt() ;
+//        } 
+//        if (i == 2){
+//         etaJ3_allEta = pfJets.at(i)->eta();
+//         phiJ3_allEta = pfJets.at(i)->phi();
+//         ptJ3_allEta  = pfJets.at(i)->pt() ;
+//        } 
+//        if (i == 3){
+//         etaJ4_allEta = pfJets.at(i)->eta();
+//         phiJ4_allEta = pfJets.at(i)->phi();
+//         ptJ4_allEta  = pfJets.at(i)->pt() ;
+//        } 
+//
+//      }
+      if((reco::deltaR(pfJets.at(i)->p4(),visDecayProducts->p4())>0.5)&&fabs(pfJets.at(i)->userFloat("idLoose"))>0&&fabs(pfJets.at(i)->eta())<4.5){
+      //if((reco::deltaR(pfJets.at(i)->p4(),visDecayProducts->p4())>0.5)&&fabs(pfJets.at(i)->userFloat("idLoose"))>0&&fabs(pfJets.at(i)->eta())<2.4){
+	cleanedJets.push_back(pfJets.at(i));
+      }
       if((reco::deltaR(pfJets.at(i)->p4(),visDecayProducts->p4())>0.5)&&fabs(pfJets.at(i)->userFloat("idLoose"))>0&&fabs(pfJets.at(i)->eta())>2.4&&fabs(pfJets.at(i)->eta())<4.5&&pfJets.at(i)->pt()>20){
 	cleanedJets5.push_back(pfJets.at(i));
 	nJets24Pt20+=1;
@@ -108,7 +146,7 @@ class CompositePtrCandidateTMEtAlgorithm
 	  }
 	}
       }
-  
+    }
     compositePtrCandidate.setJetValuesNonTracker(nJets24Pt20,nJets24Pt25,nJets24Pt30);
 
     //sort them by Pt
