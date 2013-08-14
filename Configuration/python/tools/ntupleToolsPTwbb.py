@@ -1045,6 +1045,78 @@ def addMuNuEventTreePtDat(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'
                                    method = cms.string('phi()'),
                                    rank = cms.untracked.double(0)
                                ),
+#                               ptJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1pt"),
+#                                  method = cms.string("ptJ1_allEta"),
+#                               ),
+#                               ptJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2pt"),
+#                                  method = cms.string("ptJ2_allEta"),
+#                               ),
+#                               ptJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3pt"),
+#                                  method = cms.string("ptJ3_allEta"),
+#                               ),
+#                               ptJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4pt"),
+#                                  method = cms.string("ptJ4_allEta"),
+#                               ),
+#                               phiJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1phi"),
+#                                  method = cms.string("phiJ1_allEta"),
+#                               ),
+#                               phiJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2phi"),
+#                                  method = cms.string("phiJ2_allEta"),
+#                               ),
+#                               phiJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3phi"),
+#                                  method = cms.string("phiJ3_allEta"),
+#                               ),
+#                               phiJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4phi"),
+#                                  method = cms.string("phiJ4_allEta"),
+#                               ),
+#                               etaJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1eta"),
+#                                  method = cms.string("etaJ1_allEta"),
+#                               ),
+#                               etaJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2eta"),
+#                                  method = cms.string("etaJ2_allEta"),
+#                               ),
+#                               etaJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3eta"),
+#                                  method = cms.string("etaJ3_allEta"),
+#                               ),
+#                               etaJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4eta"),
+#                                  method = cms.string("etaJ4_allEta"),
+#                               ),
                                muNuSecondJetPhi = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                    src = cms.InputTag(src),
@@ -2597,6 +2669,13 @@ def addMuNuEventTreePtNewPat(process,name,src = 'wCandsJets',srcZ = 'diMuonsSort
                                    method = cms.string('pt()'),
                                    rank = cms.untracked.double(2)
                                ),
+                               muNuFourthJetPt = cms.PSet(
+                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                   src = cms.InputTag(src),
+                                   tag = cms.string("fourthJetPt"),
+                                   method = cms.string('pt()'),
+                                   rank = cms.untracked.double(3)
+                               ),
                                muNuFirstJetEta = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                    src = cms.InputTag(src),
@@ -2617,6 +2696,13 @@ def addMuNuEventTreePtNewPat(process,name,src = 'wCandsJets',srcZ = 'diMuonsSort
                                    tag = cms.string("thirdJetEta"),
                                    method = cms.string('eta()'),
                                    rank = cms.untracked.double(2)
+                               ),
+                               muNuFourthJetEta = cms.PSet(
+                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                   src = cms.InputTag(src),
+                                   tag = cms.string("fourthJetEta"),
+                                   method = cms.string('eta()'),
+                                   rank = cms.untracked.double(3)
                                ),
                                muNuFirstJetPhi = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
@@ -2639,6 +2725,85 @@ def addMuNuEventTreePtNewPat(process,name,src = 'wCandsJets',srcZ = 'diMuonsSort
                                    method = cms.string('phi()'),
                                    rank = cms.untracked.double(2)
                                ),
+                               muNuFourthJetPhi = cms.PSet(
+                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                   src = cms.InputTag(src),
+                                   tag = cms.string("fourthJetPhi"),
+                                   method = cms.string('phi()'),
+                                   rank = cms.untracked.double(3)
+                               ),
+#                               ptJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1pt"),
+#                                  method = cms.string("ptJ1_allEta"),
+#                               ),
+#                               ptJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2pt"),
+#                                  method = cms.string("ptJ2_allEta"),
+#                               ),
+#                               ptJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3pt"),
+#                                  method = cms.string("ptJ3_allEta"),
+#                               ),
+#                               ptJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4pt"),
+#                                  method = cms.string("ptJ4_allEta"),
+#                               ),
+#                               phiJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1phi"),
+#                                  method = cms.string("phiJ1_allEta"),
+#                               ),
+#                               phiJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2phi"),
+#                                  method = cms.string("phiJ2_allEta"),
+#                               ),
+#                               phiJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3phi"),
+#                                  method = cms.string("phiJ3_allEta"),
+#                               ),
+#                               phiJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4phi"),
+#                                  method = cms.string("phiJ4_allEta"),
+#                               ),
+#                               etaJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1eta"),
+#                                  method = cms.string("etaJ1_allEta"),
+#                               ),
+#                               etaJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2eta"),
+#                                  method = cms.string("etaJ2_allEta"),
+#                               ),
+#                               etaJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3eta"),
+#                                  method = cms.string("etaJ3_allEta"),
+#                               ),
+#                               etaJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4eta"),
+#                                  method = cms.string("etaJ4_allEta"),
+#                               ),
                                 muNuFirstJetChargedMultiplicity = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                    src = cms.InputTag(src),
@@ -4205,6 +4370,78 @@ def addMuNuEventTreePt(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'):
                                    method = cms.string('phi()'),
                                    rank = cms.untracked.double(3)
                                ),
+#                               ptJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1pt"),
+#                                  method = cms.string("ptJ1_allEta"),
+#                               ),
+#                               ptJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2pt"),
+#                                  method = cms.string("ptJ2_allEta"),
+#                               ),
+#                               ptJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3pt"),
+#                                  method = cms.string("ptJ3_allEta"),
+#                               ),
+#                               ptJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4pt"),
+#                                  method = cms.string("ptJ4_allEta"),
+#                               ),
+#                               phiJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1phi"),
+#                                  method = cms.string("phiJ1_allEta"),
+#                               ),
+#                               phiJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2phi"),
+#                                  method = cms.string("phiJ2_allEta"),
+#                               ),
+#                               phiJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3phi"),
+#                                  method = cms.string("phiJ3_allEta"),
+#                               ),
+#                               phiJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4phi"),
+#                                  method = cms.string("phiJ4_allEta"),
+#                               ),
+#                               etaJ1_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J1eta"),
+#                                  method = cms.string("etaJ1_allEta"),
+#                               ),
+#                               etaJ2_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J2eta"),
+#                                  method = cms.string("etaJ2_allEta"),
+#                               ),
+#                               etaJ3_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J3eta"),
+#                                  method = cms.string("etaJ3_allEta"),
+#                               ),
+#                               etaJ4_allEta = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("allEta_J4eta"),
+#                                  method = cms.string("etaJ4_allEta"),
+#                               ),
                                 muNuFirstJetChargedMultiplicity = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                    src = cms.InputTag(src),
