@@ -16,16 +16,16 @@ import TheParameters as p
 
 #import scaleqcd as qs
 
-sf_qcd = 1.
+sf_qcd = 2.01679
 sf_drell = 1.
 sf_st = 1.   
-sf_st_t = 1.   
+sf_st_t = 1.025431e+06/2.497226e+06
 sf_ttbar = 1.
 sf_wjets = 1.
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,eventTreeLocationNotUsed = p.arams() 
 
 CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT = ct.cutmaker(
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
@@ -83,6 +83,8 @@ eventTreeLocations = ['muNuEventTree/eventTree',
                       'muNuEventTreeMuonDown/eventTree',
                       'muNuEventTreeJetUp/eventTree',
                       'muNuEventTreeJetDown/eventTree'
+                      'muNuEventTreeUCEUp/eventTree',
+                      'muNuEventTreeUCEDown/eventTree'
                      ]
 for eventTreeLocation in eventTreeLocations:
  
@@ -739,6 +741,104 @@ for eventTreeLocation in eventTreeLocations:
   wbbihjDN.Add(wbb2ih)
   wbbihjDN.Add(wbb3ih)
   wbbihjDN.Add(wbb4ih)
+ if eventTreeLocation == 'muNuEventTreeUCEUp/eventTree':
+  qihuUP      = qh.Clone()
+  qihuUP.SetName("qhuUP")
+  zihuUP     = zih.Clone()
+  zihuUP.SetName("zihuUP")
+  wwihuUP    = wwih.Clone()
+  wwihuUP.SetName("wwihuUP")
+  wzihuUP    = wzih.Clone()
+  wzihuUP.SetName("wzihuUP")
+  zzihuUP    = zzih.Clone()
+  zzihuUP.SetName("zzihuUP")
+  t_tihuUP   = t_tih.Clone()
+  t_tihuUP.SetName("t_tihuUP")
+  tb_tihuUP  = tb_tih.Clone()
+  tb_tihuUP.SetName("tb_tihuUP")
+  t_sihuUP   = t_sih.Clone()
+  t_sihuUP.SetName("t_sihuUP")
+  tb_sihuUP  = tb_sih.Clone()
+  tb_sihuUP.SetName("tb_sihuUP")
+  t_twihuUP  = t_twih.Clone()
+  t_twihuUP.SetName("t_twihuUP")
+  tb_twihuUP = tb_twih.Clone()
+  tb_twihuUP.SetName("tb_twihuUP")
+  ttbihuUP   = ttbih.Clone()
+  ttbihuUP.SetName("ttbihuUP")
+  wlihuUP    = wlnih.Clone()
+  wlihuUP.SetName("wlihuUP")
+  wlihuUP.Add(wl1ih)
+  wlihuUP.Add(wl2ih)
+  wlihuUP.Add(wl3ih)
+  wlihuUP.Add(wl4ih)
+  wcihuUP    = wcnih.Clone()
+  wcihuUP.SetName("wcihuUP")
+  wcihuUP.Add(wc1ih)
+  wcihuUP.Add(wc2ih)
+  wcihuUP.Add(wc3ih)
+  wcihuUP.Add(wc4ih)
+  wccihuUP   = wccnih.Clone()
+  wccihuUP.SetName("wccihuUP")
+  wccihuUP.Add(wcc1ih)
+  wccihuUP.Add(wcc2ih)
+  wccihuUP.Add(wcc3ih)
+  wccihuUP.Add(wcc4ih)
+  wbbihuUP   = wbbnih.Clone()
+  wbbihuUP.SetName("wbbihuUP")
+  wbbihuUP.Add(wbb1ih)
+  wbbihuUP.Add(wbb2ih)
+  wbbihuUP.Add(wbb3ih)
+  wbbihuUP.Add(wbb4ih)
+ if eventTreeLocation == 'muNuEventTreeUCEDown/eventTree' :
+  qihuDN      = qh.Clone()
+  qihuDN.SetName("qhuDN")
+  zihuDN     = zih.Clone()
+  zihuDN.SetName("zihuDN")
+  wwihuDN    = wwih.Clone()
+  wwihuDN.SetName("wwihuDN")
+  wzihuDN    = wzih.Clone()
+  wzihuDN.SetName("wzihuDN")
+  zzihuDN    = zzih.Clone()
+  zzihuDN.SetName("zzihuDN")
+  t_tihuDN   = t_tih.Clone()
+  t_tihuDN.SetName("t_tihuDN")
+  tb_tihuDN  = tb_tih.Clone()
+  tb_tihuDN.SetName("tb_tihuDN")
+  t_sihuDN   = t_sih.Clone()
+  t_sihuDN.SetName("t_sihuDN")
+  tb_sihuDN  = tb_sih.Clone()
+  tb_sihuDN.SetName("tb_sihuDN")
+  t_twihuDN  = t_twih.Clone()
+  t_twihuDN.SetName("t_twihuDN")
+  tb_twihuDN = tb_twih.Clone()
+  tb_twihuDN.SetName("tb_twihuDN")
+  ttbihuDN   = ttbih.Clone()
+  ttbihuDN.SetName("ttbihuDN")
+  wlihuDN    = wlnih.Clone()
+  wlihuDN.SetName("wlihuDN")
+  wlihuDN.Add(wl1ih)
+  wlihuDN.Add(wl2ih)
+  wlihuDN.Add(wl3ih)
+  wlihuDN.Add(wl4ih)
+  wcihuDN    = wcnih.Clone()
+  wcihuDN.SetName("wcihuDN")
+  wcihuDN.Add(wc1ih)
+  wcihuDN.Add(wc2ih)
+  wcihuDN.Add(wc3ih)
+  wcihuDN.Add(wc4ih)
+  wccihuDN   = wccnih.Clone()
+  wccihuDN.SetName("wccihuDN")
+  wccihuDN.Add(wcc1ih)
+  wccihuDN.Add(wcc2ih)
+  wccihuDN.Add(wcc3ih)
+  wccihuDN.Add(wcc4ih)
+  wbbihuDN   = wbbnih.Clone()
+  wbbihuDN.SetName("wbbihuDN")
+  wbbihuDN.Add(wbb1ih)
+  wbbihuDN.Add(wbb2ih)
+  wbbihuDN.Add(wbb3ih)
+  wbbihuDN.Add(wbb4ih)
 
  log.write('\n\n\n'+eventTreeLocation+'\n')
  log.write('------------------------------------------------\n')
@@ -971,7 +1071,7 @@ for eventTreeLocation in eventTreeLocations:
  wbb3ih.Delete()
  wbb4ih.Delete()
  
-datahn.Delete()
+datanh.Delete()
 print(".log written")
 log.close()
 
