@@ -62,12 +62,12 @@ createGeneratedParticles(process,
 )
 process.load("UWAnalysis.Configuration.wMuNuAnalysisPT_cff")
 process.eventSelection = cms.Path(process.selectionSequence) ##changing to multiples see below
-process.eventSelectionMuonUp    = createSystematics(process,process.selectionSequence,'MuonUp',1.01,1.0,1.0,0,1.0)
-process.eventSelectionMuonDown  = createSystematics(process,process.selectionSequence,'MuonDown',0.99,1.0,1.0,0,1.0)
-process.eventSelectionJetUp     = createSystematics(process,process.selectionSequence,'JetUp',1.00,1.0,1.0,1,1.0)
-process.eventSelectionJetDown   = createSystematics(process,process.selectionSequence,'JetDown',1.0,1.0,1.0,-1,1.0)
-process.eventSelectionUCEUp     = createSystematics(process,process.selectionSequence,'UCEUp',1.00,1.0,1.0,0,1.1)
-process.eventSelectionUCEDown   = createSystematics(process,process.selectionSequence,'UCEDown',1.0,1.0,1.0,0,0.9)
+process.eventSelectionMuonUp    = createSystematics(process,process.selectionSequence,'MuonUp',  1.01, 1.0, 1.0, 0, 1.0)
+process.eventSelectionMuonDown  = createSystematics(process,process.selectionSequence,'MuonDown',0.99, 1.0, 1.0, 0, 1.0)
+process.eventSelectionJetUp     = createSystematics(process,process.selectionSequence,'JetUp',   1.00, 1.0, 1.0, 1, 1.0)
+process.eventSelectionJetDown   = createSystematics(process,process.selectionSequence,'JetDown', 1.00, 1.0, 1.0,-1, 1.0)
+process.eventSelectionUCEUp     = createSystematics(process,process.selectionSequence,'UCEUp',   1.00, 1.0, 1.0, 0, 1.1)
+process.eventSelectionUCEDown   = createSystematics(process,process.selectionSequence,'UCEDown', 1.00, 1.0, 1.0, 0, 0.9)
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 addMuNuEventTreePtNewPat(process,'muNuEventTree')
@@ -78,8 +78,8 @@ addMuNuEventTreePtNewPat(process,'muNuEventTreeMuonUp','wCandsJetsMuonUp','diMuo
 addMuNuEventTreePtNewPat(process,'muNuEventTreeMuonDown','wCandsJetsMuonDown','diMuonsSortedMuonDown')
 addMuNuEventTreePtNewPat(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSortedJetUp')
 addMuNuEventTreePtNewPat(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown')
-addMuNuEventTreePtNewPat(process,'muNuEventTreeJetUp','wCandsJetsUCEUp','diMuonsSortedUCEUp')
-addMuNuEventTreePtNewPat(process,'muNuEventTreeJetDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
+addMuNuEventTreePtNewPat(process,'muNuEventTreeUCEUp','wCandsJetsUCEUp','diMuonsSortedUCEUp')
+addMuNuEventTreePtNewPat(process,'muNuEventTreeUCEDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
 process.TFileService.fileName = cms.string('analysis_2.root') 
 
 ## makes EDM output of all collections
