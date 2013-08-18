@@ -4,7 +4,7 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False):
+def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False):
 
  trigger = '(HLT_IsoMu24_eta2p1_v_fired)'
  muon_selection = '(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
@@ -20,8 +20,9 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  muMinus = '(muonCharge < 0)'
 
  twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4)'
- thJ = '('+twJ+'&& thirdJetPt >'+jetPt+' && abs(thirdJetEta)<2.4)'
+ thJ = '('+twJ+'&& thirdJetPt  > '+jetPt+' && abs(thirdJetEta) <  2.4)'
  frJ = '('+thJ+'&& mJ3J4 > 0)'
+ #frJ = '('+thJ+'&& fourthJetPt > '+jetPt+' && abs(fourthJetEta) < 2.4)'
  if not jetVeto:
   twoJets   = '('+twJ+' && nJetsPt'+njetPt+'>=2)'
   threeJets = '('+thJ+' && nJetsPt'+njetPt+'>=3)'
@@ -56,7 +57,6 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
 
  weightEff = '(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig)'
  weight = '('+' weightFactor*' +str(lumi)+'*'+str(weightEff)+')'
- weightW = '('+'weightFactor*'+str(lumi)+'*'+str(weightEff)+')'
 
  if Legacy:
   Iso='(lPFIsoDB<0.12)'
@@ -80,8 +80,6 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
  newCSVT1first = '((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))'
  newCSVT1second = '((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))'
  newCSVT2 = '('+newCSVT1first+'*'+newCSVT1second+')'
-
- oldCSVT2 = '(0.901615*(1+0.552628*highestJetPt)/(1+(0.547195*highestJetPt)))*(0.901615*(1+0.552628*secondJetPt)/(1+(0.547195*secondJetPt)))'
 
  if bnr == 1:
   if btype == 'tight' or btype == 't':
@@ -124,16 +122,20 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19109.,bnr=0,btype='t',jn
 
  cutDataNonIso   = '('+NonIso+'&&'+theCut+')' #Data Non Iso
  cutDataIso      = '('+Iso+'&&'+theCut+')'    #Data Iso
- cutMcNonIso     = '('+weight+ '*('+NonIso+'&&'+theCut+'))' #MC Non Iso
- cutMcNonIsoW    = '('+weightW+'*('+NonIso+'&&'+theCut+'))' #MC Non IsoW
- cutMcIso        = '('+weight+ '*('+Iso+   '&&'+theCut+'))' #MC Iso
- cutMcWlNonIso   = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wl+'))'
- cutMcWlIso      = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wl+'))'
- cutMcWcNonIso   = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wc+'))'
- cutMcWcIso      = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wc+'))'
- cutMcWccNonIso  = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wcc+'))'
- cutMcWccIso     = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wcc+'))'
- cutMcWbbNonIso  = '('+weightW+'*('+NonIso+'&&'+theCut+'&&'+Wbb+'))'
- cutMcWbbIso     = '('+weightW+'*('+Iso+   '&&'+theCut+'&&'+Wbb+'))'
- return cutMcNonIso, cutMcNonIsoW, cutMcIso, cutDataNonIso, cutDataIso, cutMcWlNonIso, cutMcWlIso, cutMcWcNonIso, cutMcWcIso, cutMcWccNonIso, cutMcWccIso, cutMcWbbNonIso, cutMcWbbIso
+ cutMcNonIso     = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutMcNonIsoW    = cutMcNonIso #'('+weightW+'*('+NonIso+'&&'+theCut+'))' #MC Non IsoW
+ cutMcNonIsoT    = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutMcIsoT       = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
+ #cutMcNonIsoT    = '('+weight+'*weightTop*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ #cutMcIsoT       = '('+weight+'*weightTop*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcIso        = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcWlNonIso   = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wl+'))'
+ cutMcWlIso      = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wl+'))'
+ cutMcWcNonIso   = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wc+'))'
+ cutMcWcIso      = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wc+'))'
+ cutMcWccNonIso  = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wcc+'))'
+ cutMcWccIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wcc+'))'
+ cutMcWbbNonIso  = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wbb+'))'
+ cutMcWbbIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wbb+'))'
+ return cutMcNonIso, cutMcNonIsoW, cutMcIso, cutDataNonIso, cutDataIso, cutMcWlNonIso, cutMcWlIso, cutMcWcNonIso, cutMcWcIso, cutMcWccNonIso, cutMcWccIso, cutMcWbbNonIso, cutMcWbbIso, cutMcNonIsoT, cutMcIsoT
 

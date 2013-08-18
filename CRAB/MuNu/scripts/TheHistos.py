@@ -22,16 +22,17 @@ ttRescale = False
 vRescale = False
 dRescale = False
 sf_qcd = 1.
-sf_drell = 1. # 3503.71 / 3.02386400000000000e+07
-sf_st = 1. # 22.2    / 9.91118000000000000e+05
-sf_ttbar = 1. # 225.    / 6.88773100000000000e+06
-sf_wjets = 1. # 37509.  / 5.31329400000000000e+07
+sf_drell = 1.
+sf_st = 1.   
+sf_st_t = 1.025431e+06/2.497226e+06   
+sf_ttbar = 1.
+sf_wjets = 1.
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,eventTreeLocation = p.arams() 
 
-CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb = ct.cutmaker(
+CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT = ct.cutmaker(
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
 )
 
@@ -71,9 +72,9 @@ w3_file    = TFile( w3_filename   )
 w4_file    = TFile( w4_filename   )
 z_file     = TFile( z_filename    )
 
-eventTreeLocation = 'muNuEventTree/eventTree'
+eventTreeLocationNoShift = 'muNuEventTree/eventTree'
 
-data_tree  =  data_file.Get(eventTreeLocation) 
+data_tree  =  data_file.Get(eventTreeLocationNoShift) 
 t_t_tree   =  t_t_file.Get(eventTreeLocation)
 t_s_tree   =  t_s_file.Get(eventTreeLocation)
 t_tw_tree  =  t_tw_file.Get(eventTreeLocation)
@@ -147,7 +148,7 @@ for leaf in leafs:
   print('  t t nonIso')
   t_tnh,t_tnhSize,t_tnhSizePart,t_tnhEntries = h.gram(t_t_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
   t_tnh.SetName('t_tnh')
-  t_tnh.Scale(sf_st)
+  t_tnh.Scale(sf_st_t)
   print('    '+str(t_tnhSize))
   print('    '+str(t_tnhSizePart))
   ###
@@ -187,7 +188,7 @@ for leaf in leafs:
   print('    '+str(tb_twnhSizePart))
  ####  TTbar
   print('  ttbar nonIso')
-  ttbnh,ttbnhSize,ttbnhSizePart,ttbnhEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCn,I,F)
+  ttbnh,ttbnhSize,ttbnhSizePart,ttbnhEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCnT,I,F)
   ttbnh.SetName('ttbnh')
   ttbnh.Scale(sf_ttbar)
   print('    '+str(ttbnhSize))
@@ -303,7 +304,7 @@ for leaf in leafs:
  print('t t Iso')
  t_tih,t_tihSize,t_tihSizePart,t_tihEntries = h.gram(t_t_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
  t_tih.SetName('t_tih')
- t_tih.Scale(sf_st)
+ t_tih.Scale(sf_st_t)
  print('  '+str(t_tihSize))
  print('  '+str(t_tihSizePart))
  ###
@@ -343,7 +344,7 @@ for leaf in leafs:
  print('  '+str(tb_twihSizePart))
 #### TTbar
  print('ttb Iso')
- ttbih,ttbihSize,ttbihSizePart,ttbihEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCi,I,F)
+ ttbih,ttbihSize,ttbihSizePart,ttbihEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCiT,I,F)
  ttbih.SetName('ttbih')
  ttbih.Scale(sf_ttbar)
  print('  '+str(ttbihSize))
@@ -495,18 +496,38 @@ for leaf in leafs:
  print('')
  
  log.write('------------------------------------------------\n')
+ if noMT: 
+  log.write('You Probably Want to use this for QCD Scale\n')
+  mcSizePart = \
+   wlnihSizePart+wl1ihSizePart+wl2ihSizePart+wl3ihSizePart+wl4ihSizePart+ \
+   wcnihSizePart+wc1ihSizePart+wc2ihSizePart+wc3ihSizePart+wc4ihSizePart+ \
+   wccnihSizePart+wcc1ihSizePart+wcc2ihSizePart+wcc3ihSizePart+wcc4ihSizePart+ \
+   wbbnihSizePart+wbb1ihSizePart+wbb2ihSizePart+wbb3ihSizePart+wbb4ihSizePart+ \
+   ttbihSizePart+ \
+   t_tihSizePart+tb_tihSizePart+ \
+   t_sihSizePart+tb_sihSizePart+ \
+   t_twihSizePart+tb_twihSizePart+ \
+   wwihSizePart+wzihSizePart+zzihSizePart+ \
+   zihSizePart+ \
+   qhSizePart
+  SF = 1 + (dataihSizePart - mcSizePart)/qhSizePart
+  log.write('1 + (data - mc)/qcd = '+str(SF)+'\n')
+ log.write('---------------------------\n')
+ log.write('---------------------------\n')
  log.write('Non Isolated\n')
  log.write('---------------------------\n')
- log.write(' Cuts MC:  '+str(CutsMCn)+'\n\n')
- log.write(' Cuts Data: '+str(CutsDatan)+'\n\n')
+ log.write(' Cuts MC:      \n'+str(CutsMCn)+'\n\n')
+ log.write(' Cuts MC Top:  \n'+str(CutsMCnT)+'\n\n')
+ log.write(' Cuts Data:    \n'+str(CutsDatan)+'\n\n')
  log.write('Isolated\n')
  log.write('---------------------------\n')
- log.write(' Cuts MC:  '+str(CutsMCi)+'\n\n')
- log.write(' Cuts Data: '+str(CutsDatai)+'\n\n')
- log.write(' Cuts Wbb: '+str(CutsMCiwbb)+'\n\n')
- log.write(' Cuts Wcc: '+str(CutsMCiwcc)+'\n\n')
- log.write(' Cuts Wc: '+str(CutsMCiwc)+'\n\n')
- log.write(' Cuts Wl: '+str(CutsMCiwl)+'\n\n')
+ log.write(' Cuts MC:  \n'+str(CutsMCi)+'\n\n')
+ log.write(' Cuts MC Top:  \n'+str(CutsMCiT)+'\n\n')
+ log.write(' Cuts Data: \n'+str(CutsDatai)+'\n\n')
+ log.write(' Cuts Wbb: \n'+str(CutsMCiwbb)+'\n\n')
+ log.write(' Cuts Wcc: \n'+str(CutsMCiwcc)+'\n\n')
+ log.write(' Cuts Wc: \n'+str(CutsMCiwc)+'\n\n')
+ log.write(' Cuts Wl: \n'+str(CutsMCiwl)+'\n\n')
  if drawQCD:
   log.write('Anti-Isolated Sizes\n')
   log.write('---------------------------\n')
@@ -553,6 +574,7 @@ for leaf in leafs:
   log.write('QCD Scale:   '+str(sf_qcd)+'\n')
   log.write('Drell Scale: '+str(sf_drell)+'\n')
   log.write('t Scale:     '+str(sf_st)+'\n')
+  log.write('t_t Scale:   '+str(sf_st_t)+'\n')
   log.write('tt Scale:    '+str(sf_ttbar)+'\n')
   log.write('W+x Scale:   '+str(sf_wjets)+'\n')
   log.write('---------------------------------------------\n\n')

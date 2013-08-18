@@ -21,7 +21,8 @@ sf_ttbar = 1.
 sf_wjets = 1.
 sf_vv    = 1.
  
-ratioRange = 0.2
+ratioRange = 0.3
+rebin = 1
 #canvas attributes
 canx = 800 # for one plot on page
 #canx = 550 # for two plots on page with text
@@ -72,7 +73,6 @@ for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
- rebin = 1
  xlabel = xtitle+' ['+xunits+']'
  ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps*rebin))
  title = xtitle #+' Data v MC'
@@ -464,5 +464,6 @@ for leaf in leafs:
   save2 = raw_input ('Press Enter to Continue (type save to save)\n')
   if save2 == 'save':
    c.Print(path+i+'.png')
+   #c.Print(path+i+'_unscaled.png')
   print('')
   c.Close()

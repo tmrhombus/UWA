@@ -5,7 +5,7 @@ Author: T.M.Perry
 '''
 
 def arams():
- lumi = 19429.
+ lumi = 19759.
  btype = 't'
  njetcut = '25' #20,25,26,30,40
  jetcut = '25'
@@ -19,13 +19,23 @@ def arams():
 
  Control = False #one muon
  Signal = False
- noMT = False # control but no mT cut
+ noMT = True # control but no mT cut
  TT_m = False #1 mu, 2b's, 4 j
  TT_me = False #no b's, 1mu 1e
- ST = True
+ ST = False
  Z_Region = False # two muons, no mT cut
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
  
+ DataCard = False
+
+ eventTreeLocation = 'muNuEventTree/eventTree'
+ eventTreeLocation = 'muNuEventTreeMuonUp/eventTree'
+ eventTreeLocation = 'muNuEventTreeMuonDown/eventTree'
+ eventTreeLocation = 'muNuEventTreeJetUp/eventTree'
+ eventTreeLocation = 'muNuEventTreeJetDown/eventTree'
+ eventTreeLocation = 'muNuEventTreeUCEUp/eventTree'
+ eventTreeLocation = 'muNuEventTreeUCEDown/eventTree'
+
  bNr = 0
  jNr = 2
  jetVeto = False
@@ -60,15 +70,23 @@ def arams():
 
  #naming where output goes
  path = '../plots/'
- fitrange = '_'+str(I)+'_'+str(F)
- extraName = str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_newT'
+ extraName = ''
+ if not DataCard:
+  if eventTreeLocation =='muNuEventTree/eventTree'        : extraName = 'NoSH_' 
+  if eventTreeLocation =='muNuEventTreeMuonUp/eventTree'  : extraName = 'mUP_'  
+  if eventTreeLocation =='muNuEventTreeMuonDown/eventTree': extraName = 'mDN_'  
+  if eventTreeLocation =='muNuEventTreeJetUp/eventTree'   : extraName = 'jUP_'  
+  if eventTreeLocation =='muNuEventTreeJetDown/eventTree' : extraName = 'jDN_'  
+  if eventTreeLocation == 'muNuEventTreeUCEUp/eventTree'  : extraName = 'uUP_'
+  if eventTreeLocation == 'muNuEventTreeUCEDown/eventTree': extraName = 'uDN_'
+ extraName += str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_newT'
 
  jet1_2dr2 = '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))'
 
  #leafs = ['highestJetPt','highestJetEta','highestJetPhi','secondJetPt','secondJetEta','secondJetPhi','MET']
  #leafs = ['secondJetPt','secondJetEta','secondJetPhi']
  #leafs = ['highestJetPt']
- leafs = ['highestJetPt','highestJetEta','highestJetPhi','muonCharge']
+ #leafs = ['highestJetPt','highestJetEta','highestJetPhi']
  #leafs =['J1DR','J2DR']
  #leafs=['muonPt']
  #leafs=['nJetsPt30']
@@ -86,7 +104,7 @@ def arams():
  #leafs = ['LHEProduct']
 
  #leafs=['MET','WPt','ptJJ','ht']
- #leafs=['Mt']
+ leafs=['Mt']
 
  #leafs = ['mJ3J4','thirdJetEta','thirdJetPhi','thirdJetPt']
 
@@ -97,5 +115,5 @@ def arams():
  #leafs = ['highestJetPt','highestJetEta','highestJetPhi','secondJetPt','secondJetEta','secondJetPhi','J1DR','J2DR','muonPt','muonEta','muonPhi','Mt','WPt','ptJJ','ht','MET','vertices']
  #leafs = ['J1DR','J2DR','muonPt','muonEta','muonPhi','Mt','WPt','ptJJ','ht','MET','vertices',jet1_2dr2,'nJetsPt30','nJetsPt20']
 
- return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
+ return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,eventTreeLocation
 
