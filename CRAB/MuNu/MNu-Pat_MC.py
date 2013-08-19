@@ -16,7 +16,8 @@ process.source = cms.Source("PoolSource",
   # $inputFileNames
   #'root://cmsxrootd.hep.wisc.edu///store/user/tapas/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-E0F748E5-E8E0-E211-842E-1CC1DE046FB0.root'
   #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/W2JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3/1f55d8c665139ad478fb31eac9310214/output_2198_1_wmz.root'
-  'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
+  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
+'root://cmsxrootd.hep.wisc.edu//store/user/swanson/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/W2JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3/1f55d8c665139ad478fb31eac9310214/output_996_1_3I3.root'
  ),
  inputCommands=cms.untracked.vstring(
   'keep *',
@@ -70,8 +71,7 @@ process.eventSelectionJetDown   = createSystematics(process,process.selectionSeq
 process.eventSelectionUCEUp     = createSystematics(process,process.selectionSequence,'UCEUp'   ,1.00, 1.0, 1.0, 0, 1.1)
 process.eventSelectionUCEDown   = createSystematics(process,process.selectionSequence,'UCEDown' ,1.00, 1.0, 1.0, 0, 0.9)
 
-from UWAnalysis.Configuration.tools.ntupleToolsPT import *
-#from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
+from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 addMuNuEventTreePt(process,'muNuEventTree')
 #addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
 addEventSummary(process,True)
