@@ -19,7 +19,7 @@ import TheParameters as p
 sf_qcd = 2.01679
 sf_drell = 1.
 sf_st = 1.   
-sf_st_t = 1.025431e+06/2.497226e+06
+sf_st_t = 1.#1.025431e+06/2.497226e+06
 sf_ttbar = 1.
 sf_wjets = 1.
 sf_vv = 1.
@@ -31,23 +31,23 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
 )
 
-data_filename  = '../data/v5/wMuNuData.root'
-t_t_filename   = '../data/v1/T_t_p2.root'
-t_s_filename   = '../data/v0/T_s.root'
-t_tw_filename  = '../data/v0/T_tW.root'
-tb_t_filename  = '../data/v0/Tbar_t.root'
-tb_s_filename  = '../data/v0/Tbar_s.root'
-tb_tw_filename = '../data/v0/Tbar_tW.root'
-ttb_filename   = '../data/v0/TTbar.root'
-ww_filename    = '../data/v0/WW.root'
-wz_filename    = '../data/v0/WZ.root'
-zz_filename    = '../data/v0/ZZ.root'
-wn_filename    = '../data/v0/WJets.root'
-w1_filename    = '../data/v0/W1Jet.root'
-w2_filename    = '../data/v0/W2Jet.root'
-w3_filename    = '../data/v0/W3Jet.root'
-w4_filename    = '../data/v0/W4Jet.root'
-z_filename     = '../data/v0/Drell.root'
+data_filename  = '../data/v6/Data.root'
+t_t_filename   = '../data/v6/T_t_p2.root'
+t_s_filename   = '../data/v6/T_s.root'
+t_tw_filename  = '../data/v6/T_tW.root'
+tb_t_filename  = '../data/v6/Tbar_t.root'
+tb_s_filename  = '../data/v6/Tbar_s.root'
+tb_tw_filename = '../data/v6/Tbar_tW.root'
+ttb_filename   = '../data/v6/TTbar.root'
+ww_filename    = '../data/v6/WW.root'
+wz_filename    = '../data/v6/WZ.root'
+zz_filename    = '../data/v6/ZZ.root'
+wn_filename    = '../data/v6/WJets.root'
+w1_filename    = '../data/v6/W1Jet.root'
+w2_filename    = '../data/v6/W2Jet.root'
+w3_filename    = '../data/v6/W3Jet.root'
+w4_filename    = '../data/v6/W4Jet.root'
+z_filename     = '../data/v6/Drell.root'
 
 data_file  = TFile( data_filename )
 t_t_file   = TFile( t_t_filename  )
@@ -501,12 +501,10 @@ for eventTreeLocation in eventTreeLocations:
   qihNo.SetName("qhNo")
   zihNo     = zih.Clone()
   zihNo.SetName("zihNo")
-  wwihNo    = wwih.Clone()
-  wwihNo.SetName("wwihNo")
-  wzihNo    = wzih.Clone()
-  wzihNo.SetName("wzihNo")
-  zzihNo    = zzih.Clone()
-  zzihNo.SetName("zzihNo")
+  vvihNo    = wwih.Clone()
+  vvihNo.SetName("vvihNo")
+  vvihNo.Add(wzih)
+  vvihNo.Add(zzih)
   t_tihNo   = t_tih.Clone()
   t_tihNo.SetName("t_tihNo")
   tb_tihNo  = tb_tih.Clone()
@@ -550,12 +548,10 @@ for eventTreeLocation in eventTreeLocations:
   qihmUP.SetName("qhmUP")
   zihmUP     = zih.Clone()
   zihmUP.SetName("zihmUP")
-  wwihmUP    = wwih.Clone()
-  wwihmUP.SetName("wwihmUP")
-  wzihmUP    = wzih.Clone()
-  wzihmUP.SetName("wzihmUP")
-  zzihmUP    = zzih.Clone()
-  zzihmUP.SetName("zzihmUP")
+  vvihmUP    = wwih.Clone()
+  vvihmUP.SetName("vvihmUP")
+  vvihmUP.Add(wzih)
+  vvihmUP.Add(zzih)
   t_tihmUP   = t_tih.Clone()
   t_tihmUP.SetName("t_tihmUP")
   tb_tihmUP  = tb_tih.Clone()
@@ -599,12 +595,10 @@ for eventTreeLocation in eventTreeLocations:
   qihmDN.SetName("qhmDN")
   zihmDN     = zih.Clone()
   zihmDN.SetName("zihmDN")
-  wwihmDN    = wwih.Clone()
-  wwihmDN.SetName("wwihmDN")
-  wzihmDN    = wzih.Clone()
-  wzihmDN.SetName("wzihmDN")
-  zzihmDN    = zzih.Clone()
-  zzihmDN.SetName("zzihmDN")
+  vvihmDN    = wwih.Clone()
+  vvihmDN.SetName("vvihmDN")
+  vvihmDN.Add(wzih)
+  vvihmDN.Add(zzih)
   t_tihmDN   = t_tih.Clone()
   t_tihmDN.SetName("t_tihmDN")
   tb_tihmDN  = tb_tih.Clone()
@@ -648,12 +642,10 @@ for eventTreeLocation in eventTreeLocations:
   qihjUP.SetName("qhjUP")
   zihjUP     = zih.Clone()
   zihjUP.SetName("zihjUP")
-  wwihjUP    = wwih.Clone()
-  wwihjUP.SetName("wwihjUP")
-  wzihjUP    = wzih.Clone()
-  wzihjUP.SetName("wzihjUP")
-  zzihjUP    = zzih.Clone()
-  zzihjUP.SetName("zzihjUP")
+  vvihjUP    = wwih.Clone()
+  vvihjUP.SetName("vvihjUP")
+  vvihjUP.Add(wzih)
+  vvihjUP.Add(zzih)
   t_tihjUP   = t_tih.Clone()
   t_tihjUP.SetName("t_tihjUP")
   tb_tihjUP  = tb_tih.Clone()
@@ -697,12 +689,10 @@ for eventTreeLocation in eventTreeLocations:
   qihjDN.SetName("qhjDN")
   zihjDN     = zih.Clone()
   zihjDN.SetName("zihjDN")
-  wwihjDN    = wwih.Clone()
-  wwihjDN.SetName("wwihjDN")
-  wzihjDN    = wzih.Clone()
-  wzihjDN.SetName("wzihjDN")
-  zzihjDN    = zzih.Clone()
-  zzihjDN.SetName("zzihjDN")
+  vvihjDN    = wwih.Clone()
+  vvihjDN.SetName("vvihjDN")
+  vvihjDN.Add(wzih)
+  vvihjDN.Add(zzih)
   t_tihjDN   = t_tih.Clone()
   t_tihjDN.SetName("t_tihjDN")
   tb_tihjDN  = tb_tih.Clone()
@@ -746,12 +736,10 @@ for eventTreeLocation in eventTreeLocations:
   qihuUP.SetName("qhuUP")
   zihuUP     = zih.Clone()
   zihuUP.SetName("zihuUP")
-  wwihuUP    = wwih.Clone()
-  wwihuUP.SetName("wwihuUP")
-  wzihuUP    = wzih.Clone()
-  wzihuUP.SetName("wzihuUP")
-  zzihuUP    = zzih.Clone()
-  zzihuUP.SetName("zzihuUP")
+  vvihjUP    = wwih.Clone()
+  vvihjUP.SetName("vvihjUP")
+  vvihjUP.Add(wzih)
+  vvihjUP.Add(zzih)
   t_tihuUP   = t_tih.Clone()
   t_tihuUP.SetName("t_tihuUP")
   tb_tihuUP  = tb_tih.Clone()
@@ -795,12 +783,10 @@ for eventTreeLocation in eventTreeLocations:
   qihuDN.SetName("qhuDN")
   zihuDN     = zih.Clone()
   zihuDN.SetName("zihuDN")
-  wwihuDN    = wwih.Clone()
-  wwihuDN.SetName("wwihuDN")
-  wzihuDN    = wzih.Clone()
-  wzihuDN.SetName("wzihuDN")
-  zzihuDN    = zzih.Clone()
-  zzihuDN.SetName("zzihuDN")
+  vvihuDN    = wwih.Clone()
+  vvihuDN.SetName("vvihuDN")
+  vvihuDN.Add(wzih)
+  vvihuDN.Add(zzih)
   t_tihuDN   = t_tih.Clone()
   t_tihuDN.SetName("t_tihuDN")
   tb_tihuDN  = tb_tih.Clone()
