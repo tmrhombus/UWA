@@ -24,7 +24,7 @@ dRescale = False
 sf_qcd = 1.
 sf_drell = 1.
 sf_st = 1.   
-sf_st_t = 1.025431e+06/2.497226e+06   
+sf_st_t = 1.#1.025431/2.497226   
 sf_ttbar = 1.
 sf_wjets = 1.
 sf_vv = 1.
@@ -36,23 +36,23 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
 )
 
-data_filename  = '../data/v5/wMuNuData.root'
-t_t_filename   = '../data/v1/T_t_p2.root'
-t_s_filename   = '../data/v0/T_s.root'
-t_tw_filename  = '../data/v0/T_tW.root'
-tb_t_filename  = '../data/v0/Tbar_t.root'
-tb_s_filename  = '../data/v0/Tbar_s.root'
-tb_tw_filename = '../data/v0/Tbar_tW.root'
-ttb_filename   = '../data/v0/TTbar.root'
-ww_filename    = '../data/v0/WW.root'
-wz_filename    = '../data/v0/WZ.root'
-zz_filename    = '../data/v0/ZZ.root'
-wn_filename    = '../data/v0/WJets.root'
-w1_filename    = '../data/v0/W1Jet.root'
-w2_filename    = '../data/v0/W2Jet.root'
-w3_filename    = '../data/v0/W3Jet.root'
-w4_filename    = '../data/v0/W4Jet.root'
-z_filename     = '../data/v0/Drell.root'
+data_filename  = '../data/v6/Data.root'
+t_t_filename   = '../data/v6/T_t.root'
+t_s_filename   = '../data/v6/T_s.root'
+t_tw_filename  = '../data/v6/T_tW.root'
+tb_t_filename  = '../data/v6/Tbar_t.root'
+tb_s_filename  = '../data/v6/Tbar_s.root'
+tb_tw_filename = '../data/v6/Tbar_tW.root'
+ttb_filename   = '../data/v6/TTbar.root'
+ww_filename    = '../data/v6/WW.root'
+wz_filename    = '../data/v6/WZ.root'
+zz_filename    = '../data/v6/ZZ.root'
+wn_filename    = '../data/v6/WJets.root'
+w1_filename    = '../data/v6/W1Jet.root'
+w2_filename    = '../data/v6/W2Jet.root'
+w3_filename    = '../data/v6/W3Jet.root'
+w4_filename    = '../data/v6/W4Jet.root'
+z_filename     = '../data/v6/Drell.root'
 
 data_file  = TFile( data_filename )
 t_t_file   = TFile( t_t_filename  )

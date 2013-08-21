@@ -79,7 +79,7 @@ def arams():
   if eventTreeLocation =='muNuEventTreeJetDown/eventTree' : extraName = 'jDN_'  
   if eventTreeLocation == 'muNuEventTreeUCEUp/eventTree'  : extraName = 'uUP_'
   if eventTreeLocation == 'muNuEventTreeUCEDown/eventTree': extraName = 'uDN_'
- extraName += str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype+'_newT'
+ extraName += str(jNr)+'j'+njetcut+jetcut+'_'+str(bNr)+'b'+btype
 
  jet1_2dr2 = '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))'
 

@@ -16,7 +16,7 @@ sf_qcd = 2.01679
 
 sf_drell = 1.
 sf_st    = 1.
-sf_st_t  = 1.025431e+06/2.497226e+06
+sf_st_t  = 1.#1.025431e+06/2.497226e+06
 sf_ttbar = 1.
 sf_wjets = 1.
 sf_vv    = 1.
