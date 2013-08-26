@@ -12,7 +12,7 @@ parser.add_option("-c", "--cut", dest="cut",
                   help='cut to define passing events')
 
 parser.add_option("-t", "--tree", dest="tree",
-                  default='eventTree',
+                  default='muNuEventTree/eventTree',
                   help='name of the tree')
 
 (options,args) = parser.parse_args()
@@ -26,5 +26,5 @@ treeName = options.tree
 cut = options.cut
 
 tree = file.Get(treeName)
-tree.SetScanField(0)
-tree.Scan('evt', cut, "colsize=15")
+tree.SetScanField(100)
+tree.Scan('EVENT', cut, "colsize=15")
