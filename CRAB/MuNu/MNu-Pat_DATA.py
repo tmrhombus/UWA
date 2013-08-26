@@ -3,14 +3,17 @@ import sys
 sys.setrecursionlimit(10000)
 process = cms.Process("ANALYSIS")
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = 'GR_P_V40_AN1::All'
+process.GlobalTag.globaltag = 'FT_53_V21_AN6::All'
+#process.GlobalTag.globaltag = 'GR_P_V40_AN1::All'
 
 process.maxEvents = cms.untracked.PSet(
  input = cms.untracked.int32(1000)
 )
 
 process.load("UWAnalysis/Configuration/2012FullJSON")
-process.source.fileNames= cms.untracked.vstring('root://cmsxrootd.hep.wisc.edu//store/user/tapas/2012-10-02-8TeV-53X-PatTuple_ShareFSFix/data_SingleMu_Run2012B_13Jul2012_v1/patTuple_cfg-86EBF438-A8D4-E111-B47C-E0CB4E5536F2.root')
+process.source.fileNames= cms.untracked.vstring(
+'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012B-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-FE73DA29-2472-E211-81BC-00261834B586.root'
+)
 process.source.inputCommands=cms.untracked.vstring(
  'keep *', 'drop *_finalState*_*_*',
  'drop *_patFinalStateEvent*_*_*'
@@ -56,7 +59,7 @@ from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 
 addMuNuEventTreePtDat(process,'muNuEventTree')
 addEventSummary(process,True)
-process.TFileService.fileName = cms.string('data_new.root')
+process.TFileService.fileName = cms.string('data_new_withEtaCut_andNewNtupletools_newGT_rerunJets.root')
 #addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
 
 #process.TFileService.fileName=cms.string("$outputFileName")
