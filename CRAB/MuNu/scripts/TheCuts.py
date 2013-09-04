@@ -4,20 +4,24 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False):
+def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False,Tomislav=False):
 
  trigger = '(HLT_IsoMu24_eta2p1_v_fired)'
  muon_selection = '(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
+ muon_selection30 = '(nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>30)'
  oneMUoneELE = '(DiMuonMass<=60 && nElectrons==1 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
  dimuon_selection = '(nMuons==2&&abs(muonEta)<2.1&&muonPt>25)'
+ z_selection = '(DiMuonMass>70&&DiMuonMass<110)'
  vertex = '(abs(dz)<0.5&&abs(l1DXY)<0.02)'
  vertexNoDZ = '(abs(l1DXY)<0.02)'
  mt = '(Mt>45)'
+ mt50 = '(Mt>50)'
  met = '(MET>30)'
  noFJ = '(nJets24Pt25==0)'
  oneFJ = '(nJets24Pt25==1)'
  muPlus = '(muonCharge > 0)'
  muMinus = '(muonCharge < 0)'
+ jetCap = '(highestJetPt < 30 && secondJetPt < 30)'
 
  twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4)'
  thJ = '('+twJ+'&& thirdJetPt  > '+jetPt+' && abs(thirdJetEta) <  2.4)'
@@ -33,6 +37,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
   fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
 
  if Control or Legacy or Signal:
+  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+jetCap+')'
   Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+')'
  elif noMT:
   Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+noFJ+')' #for QCD
@@ -44,10 +49,13 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
   Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')'
  elif ST:
   Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+oneFJ+')'
-
+ elif Tomislav:
+  #Skim='('+trigger+'&&'+muon_selection30+'&&'+vertex+'&&'+met+')'#for Tomislav qcd
+  Skim='('+trigger+'&&'+muon_selection30+'&&'+vertex+'&&'+mt50+'&&'+met+')'#for Tomislav
+  #Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+'&&'+z_selection+')' # Z
+  
  theCut = Skim
 
- #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+met+')'#for Tomislav
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertexNoDZ+'&&'+noFJ+')'
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muPlus+')'
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muMinus+')'
@@ -124,10 +132,10 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  cutDataIso      = '('+Iso+'&&'+theCut+')'    #Data Iso
  cutMcNonIso     = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
  cutMcNonIsoW    = cutMcNonIso #'('+weightW+'*('+NonIso+'&&'+theCut+'))' #MC Non IsoW
- cutMcNonIsoT    = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
- cutMcIsoT       = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
- #cutMcNonIsoT    = '('+weight+'*weightTop*('+NonIso+'&&'+theCut+'))' #MC Non Iso
- #cutMcIsoT       = '('+weight+'*weightTop*('+Iso+   '&&'+theCut+'))' #MC Iso
+ #cutMcNonIsoT    = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ #cutMcIsoT       = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcNonIsoT    = '('+weight+'*weightTop*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutMcIsoT       = '('+weight+'*weightTop*('+Iso+   '&&'+theCut+'))' #MC Iso
  cutMcIso        = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
  cutMcWlNonIso   = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wl+'))'
  cutMcWlIso      = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wl+'))'

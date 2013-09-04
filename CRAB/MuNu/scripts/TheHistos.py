@@ -30,29 +30,49 @@ sf_wjets = 1.
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,eventTreeLocation = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
 
 CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT = ct.cutmaker(
- iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal
+ iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav
 )
 
-data_filename  = '../data/v6/Data.root'
-t_t_filename   = '../data/v6/T_t.root'
-t_s_filename   = '../data/v6/T_s.root'
-t_tw_filename  = '../data/v6/T_tW.root'
-tb_t_filename  = '../data/v6/Tbar_t.root'
-tb_s_filename  = '../data/v6/Tbar_s.root'
-tb_tw_filename = '../data/v6/Tbar_tW.root'
-ttb_filename   = '../data/v6/TTbar.root'
-ww_filename    = '../data/v6/WW.root'
-wz_filename    = '../data/v6/WZ.root'
-zz_filename    = '../data/v6/ZZ.root'
-wn_filename    = '../data/v6/WJets.root'
-w1_filename    = '../data/v6/W1Jet.root'
-w2_filename    = '../data/v6/W2Jet.root'
-w3_filename    = '../data/v6/W3Jet.root'
-w4_filename    = '../data/v6/W4Jet.root'
-z_filename     = '../data/v6/Drell.root'
+##data_filename  = '../data/partialData/Data_newGTreJet.root'
+## v6 is new new
+#data_filename  = '../data/v6/Data.root' 
+#t_t_filename   = '../data/v6/T_t.root'
+#t_s_filename   = '../data/v6/T_s.root'
+#t_tw_filename  = '../data/v6/T_tW.root'
+#tb_t_filename  = '../data/v6/Tbar_t.root'
+#tb_s_filename  = '../data/v6/Tbar_s.root'
+#tb_tw_filename = '../data/v6/Tbar_tW.root'
+#ttb_filename   = '../data/v6/TTbar.root'
+#ww_filename    = '../data/v6/WW.root'
+#wz_filename    = '../data/v6/WZ.root'
+#zz_filename    = '../data/v6/ZZ.root'
+#wn_filename    = '../data/v6/WJets.root'
+#w1_filename    = '../data/v6/W1Jet.root'
+#w2_filename    = '../data/v6/W2Jet.root'
+#w3_filename    = '../data/v6/W3Jet.root'
+#w4_filename    = '../data/v6/W4Jet.root'
+#z_filename     = '../data/v6/Drell.root'
+
+data_filename = '../data/v5/wMuNuData.root'
+t_t_filename   = '../data/oldGT/T_t.root'
+t_s_filename   = '../data/oldGT/T_s.root'
+t_tw_filename  = '../data/oldGT/T_tW.root'
+tb_t_filename  = '../data/oldGT/Tbar_t.root'
+tb_s_filename  = '../data/oldGT/Tbar_s.root'
+tb_tw_filename = '../data/oldGT/Tbar_tW.root'
+ttb_filename   = '../data/oldGT/TTbar.root'
+ww_filename    = '../data/oldGT/WW.root'
+wz_filename    = '../data/oldGT/WZ.root'
+zz_filename    = '../data/oldGT/ZZ.root'
+wn_filename    = '../data/oldGT/WJets.root'
+w1_filename    = '../data/oldGT/W1Jet.root'
+w2_filename    = '../data/oldGT/W2Jet.root'
+w3_filename    = '../data/oldGT/W3Jet.root'
+w4_filename    = '../data/oldGT/W4Jet.root'
+z_filename     = '../data/oldGT/Drell.root'
 
 data_file  = TFile( data_filename )
 t_t_file   = TFile( t_t_filename  )

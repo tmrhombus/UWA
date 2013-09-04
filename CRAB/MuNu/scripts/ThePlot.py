@@ -12,7 +12,13 @@ import cmsPrelim as cpr
 import TheParameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
-sf_qcd = 2.01679 
+#sf_qcd = 1.27154 # tomislav new
+#sf_qcd = 1.79604052573 # tomislav nwr
+#sf_qcd = 2.09151887878
+#sf_qcd = 2.20602589874 # v6 = newGT
+#sf_qcd = 2.01679 
+#sf_qcd = 1.92361140171
+sf_qcd = 2.03028050776 # oldGT
 
 sf_drell = 1.
 sf_st    = 1.
@@ -67,13 +73,16 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
 
 for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  
- xlabel = xtitle+' ['+xunits+']'
+ if xunits is not None:
+  xlabel = xtitle+' ['+xunits+']'
+ else:
+  xlabel = xtitle
  ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps*rebin))
  title = xtitle #+' Data v MC'
  
@@ -367,8 +376,8 @@ for leaf in leafs:
   hs.Draw()
   hs.GetXaxis().SetTitle(xlabel)
   hs.GetXaxis().SetRangeUser(xmin,xmax)
-  if leaf=="Mt" and not Legacy:
-   hs.GetXaxis().SetRangeUser(50,140)
+#  if leaf=="Mt" and not Legacy:
+#   hs.GetXaxis().SetRangeUser(50,140)
   hs.GetYaxis().SetTitleOffset(1.5)
   hs.GetYaxis().SetTitle(ylabel)
   hsmax = hs.GetMaximum()
@@ -399,6 +408,7 @@ for leaf in leafs:
   c.cd()
   p1.cd()
   hs.Draw('hist')
+  #hs.GetXaxis().SetRangeUser(70,110)
   if drawData:
    dataih.Draw('sames,E1')
   leg.Draw('sames')
@@ -413,7 +423,8 @@ for leaf in leafs:
   ## Draw W Line
   if drawW == True:
    wline = TLine(80.385,0,80.385,1.1*theMax)
-   wline.SetLineStyle(3)
+   wline.SetLineStyle(2)
+   wline.SetLineWidth(2)
    wline.Draw()
   c.Update()
  #####
@@ -444,12 +455,13 @@ for leaf in leafs:
   else:
    datar = hh.Clone()
   datar.SetName('datar')
-  if leaf =="Mt" and not Legacy:
-   datar.GetXaxis().SetRangeUser(50,140)
+#  if leaf =="Mt" and not Legacy:
+#   datar.GetXaxis().SetRangeUser(50,140)
   datar.GetYaxis().SetRangeUser(1.-ratioRange,1.+ratioRange) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
+  #datar.GetXaxis().SetRangeUser(70,110)
   
   if leaf=="Mt" and not Legacy:
    l = TLine(50,1,140,1)
