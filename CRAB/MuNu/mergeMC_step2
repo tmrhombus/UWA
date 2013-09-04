@@ -15,7 +15,8 @@ echo "merging ttbar semi"
 mergeFiles TTbar_semi.root /hdfs/store/user/$USER/merged_${version}_TTbar_semi-mergeFilesJob/*.root
 echo "merging single top"
 mergeFiles T_s.root /hdfs/store/user/$USER/merged_${version}_T_s-mergeFilesJob/*.root
-mergeFiles T_t.root /hdfs/store/user/$USER/merged_${version}_T_t-mergeFilesJob/*.root
+mergeFiles T_t_p1.root /hdfs/store/user/$USER/merged_${version}_T_t_p1-mergeFilesJob/*.root
+mergeFiles T_t_p2.root /hdfs/store/user/$USER/merged_${version}_T_t_p2-mergeFilesJob/*.root
 mergeFiles T_tW.root /hdfs/store/user/$USER/merged_${version}_T_tW-mergeFilesJob/*.root
 mergeFiles Tbar_s.root /hdfs/store/user/$USER/merged_${version}_Tbar_s-mergeFilesJob/*.root 
 mergeFiles Tbar_t.root /hdfs/store/user/$USER/merged_${version}_Tbar_t-mergeFilesJob/*.root 

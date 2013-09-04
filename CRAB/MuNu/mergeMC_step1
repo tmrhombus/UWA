@@ -4,7 +4,7 @@
 
 voms-proxy-init --voms cms --valid 100:00
 
-version="v6"
+version="v0"
 
 farmoutAnalysisJobs \
    --merge \
@@ -37,8 +37,15 @@ farmoutAnalysisJobs \
 farmoutAnalysisJobs \
    --merge \
    --input-files-per-job=777 \
-   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_T_t-MuNuPAT \
-   merged_${version}_T_t \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_T_t_p1-MuNuPAT \
+   merged_${version}_T_t_p1 \
+   $CMSSW_BASE
+
+farmoutAnalysisJobs \
+   --merge \
+   --input-files-per-job=777 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_T_t_p2-MuNuPAT \
+   merged_${version}_T_t_p2 \
    $CMSSW_BASE
 
 farmoutAnalysisJobs \
