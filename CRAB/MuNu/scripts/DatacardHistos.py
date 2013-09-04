@@ -82,7 +82,7 @@ eventTreeLocations = ['muNuEventTree/eventTree',
                       'muNuEventTreeMuonUp/eventTree',
                       'muNuEventTreeMuonDown/eventTree',
                       'muNuEventTreeJetUp/eventTree',
-                      'muNuEventTreeJetDown/eventTree'
+                      'muNuEventTreeJetDown/eventTree',
                       'muNuEventTreeUCEUp/eventTree',
                       'muNuEventTreeUCEDown/eventTree'
                      ]
