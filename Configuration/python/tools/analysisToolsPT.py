@@ -74,8 +74,8 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #Build good vertex collection
   goodVertexFilter(process)
 
-  ReRunJetsData(process)
-  #ReNameJetColl(process)
+  #ReRunJetsData(process)
+  ReNameJetColl(process)
   jetOverloading(process,"NewSelectedPatJets")
   SVReconstructionData(process,"patOverloadedJets","cleanPatMuons")
   rochesterCorrections(process)
@@ -273,6 +273,7 @@ def applyDefaultSelectionsPT(process,jets,muons):
    )
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
                                         src = cms.InputTag(jets),
+                                        #preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0&&pt>10&&userInt("simpleIdLoose")>0'),#&&userFloat("fullDiscriminant")>0
                                         preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0&&pt>10&&userInt("fullIdLoose")>0'),#&&userFloat("fullDiscriminant")>0
                                         checkOverlaps = cms.PSet( 
                                             muons = cms.PSet(
