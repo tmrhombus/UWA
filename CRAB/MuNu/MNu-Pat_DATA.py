@@ -3,8 +3,8 @@ import sys
 sys.setrecursionlimit(10000)
 process = cms.Process("ANALYSIS")
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = 'FT_53_V21_AN6::All'
-#process.GlobalTag.globaltag = 'GR_P_V40_AN1::All'
+process.GlobalTag.globaltag = 'FT_53_V21_AN6::All' #new GT
+#process.GlobalTag.globaltag = 'GR_P_V40_AN1::All' #old GT
 
 process.maxEvents = cms.untracked.PSet(
  input = cms.untracked.int32(1000)
@@ -59,7 +59,7 @@ from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 
 addMuNuEventTreePtDat(process,'muNuEventTree')
 addEventSummary(process,True)
-process.TFileService.fileName = cms.string('data_new_withEtaCut_andNewNtupletools_newGT_rerunJets.root')
+process.TFileService.fileName = cms.string('data.root')
 #addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
 
 #process.TFileService.fileName=cms.string("$outputFileName")

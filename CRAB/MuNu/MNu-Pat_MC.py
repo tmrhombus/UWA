@@ -5,7 +5,8 @@ sys.setrecursionlimit(10000)
 process = cms.Process("ANALYSIS")
 
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = 'START53_V27::All' 
+#process.GlobalTag.globaltag = 'START53_V19PR::All' #for global tag with old data
+process.GlobalTag.globaltag = 'START53_V27::All' # for global tag with re-reco data
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(100)
@@ -82,7 +83,7 @@ addMuNuEventTreePt(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSorted
 addMuNuEventTreePt(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown')
 addMuNuEventTreePt(process,'muNuEventTreeUCEUp','wCandsJetsUCEUp','diMuonsSortedUCEUp')
 addMuNuEventTreePt(process,'muNuEventTreeUCEDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
-process.TFileService.fileName = cms.string('analysis.root') 
+process.TFileService.fileName = cms.string('mc.root') 
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",
