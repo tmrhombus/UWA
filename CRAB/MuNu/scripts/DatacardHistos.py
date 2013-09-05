@@ -996,7 +996,7 @@ for eventTreeLocation in eventTreeLocations:
  log.write('DataCard Numbers\n')
  log.write('---------------------------\n')
  if drawData:
- log.write('Data Size:      '+str(dataihSize)+'\n')
+  log.write('Data Size:      '+str(dataihSize)+'\n')
  log.write('Wbb Size:       '+str(wbbnihSize+wbb1ihSize+wbb2ihSize+wbb3ihSize+wbb4ihSize)+'\n')
  log.write('Wcc Size:       '+str(wccnihSize+wcc1ihSize+wcc2ihSize+wcc3ihSize+wcc4ihSize)+'\n')
  log.write('TTbar Size:     '+str(ttbihSize)+'\n')

@@ -1,0 +1,1533 @@
+
+
+
+muNuEventTree/eventTree
+------------------------------------------------
+Non Isolated
+---------------------------
+ Cuts MC:      
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data:    
+((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+Isolated
+---------------------------
+ Cuts MC:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data: 
+((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+ Cuts Wbb: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((nbHadrons>0))))
+
+ Cuts Wcc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&!(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wl: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&!((ncCands+ncbarCands)>0)))))
+
+Anti-Isolated Sizes
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------3.9712395668
+ W3 Size:--------2.9371585995
+ W4 Size:--------0.372913450003
+ tt Size:--------72.5707895821
+ t_t Size:-------2.31470139325
+ tb_t Size:------2.03753403574
+ t_s Size:-------0.951563373208
+ tb_s Size:------0.438292980194
+ t_tw Size:------0.918883681297
+ tb_tw Size:-----0.674409329891
+ WW Size:--------0.0
+ WZ Size:--------1.43749109283
+ ZZ Size:--------0.113049364649
+ Drell-Yan Size:-2.45644783974
+ QCD Size:-------170.148716822
+ Data Size:      175.0
+---------------------------
+Anti-Isolated Sizes from 0 to 20
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------0.0
+ W3 Size:--------0.0
+ W4 Size:--------0.0
+ tt Size:--------0.0
+ t_t Size:-------0.0
+ tb_t Size:------0.0
+ t_s Size:-------0.0
+ tb_s Size:------0.0
+ t_tw Size:------0.0
+ tb_tw Size:-----0.0
+ WW Size:--------0.0
+ WZ Size:--------0.0
+ ZZ Size:--------0.0
+ Drell-Yan Size:-0.0
+ QCD Size:-------0.0
+ Data Size:      0.0
+---------------------------------------------
+QCD Scale:   2.03028050776
+Drell Scale: 1.0
+t Scale:     1.0
+tt Scale:    1.0
+W+x Scale:   1.0
+---------------------------------------------
+
+Isolated Sizes from 0 to 20
+---------------------------
+W:
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+tt Size:--------0.0
+t_t Size:-------0.0
+tb_t Size:------0.0
+t_s Size:-------0.0
+tb_s Size:------0.0
+t_tw Size:------0.0
+tb_tw Size:-----0.0
+WW Size:--------0.0
+WZ Size:--------0.0
+ZZ Size:--------0.0
+Drell-Yan Size:-0.0
+Data Size:          0.0
+---------------------------------------------
+Isolated Sizes
+---------------------------
+W:
+  Wn+light:--------29.4619814157
+  W1+light:--------0.0
+  W2+light:--------0.916695266962
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.138281628489
+  W1+c:------------1.77219450474
+  W2+c:------------2.76286375523
+  W3+c:------------0.351817954943
+  W4+c:------------0.75405266881
+
+  Wn+cc:-----------20.7137666643
+  W1+cc:-----------0.0
+  W2+cc:-----------29.9167991281
+  W3+cc:-----------7.20429645218
+  W4+cc:-----------0.370171040297
+
+  Wn+bb:-----------105.564832449
+  W1+bb:-----------3.80630612373
+  W2+bb:-----------698.849885046
+  W3+bb:-----------143.694253385
+  W4+bb:-----------26.5419106334
+tt Size:--------2980.7429643
+t_t Size:-------515.249528259
+tb_t Size:------155.139257625
+t_s Size:-------152.700491682
+tb_s Size:------61.1088892668
+t_tw Size:------52.3949846029
+tb_tw Size:-----44.8877091259
+WW Size:--------2.61574134231
+WZ Size:--------110.68130759
+ZZ Size:--------8.39726236975
+Drell-Yan Size:-165.029404186
+Data Size:          5946.0
+---------------------------------------------
+---------------------------
+Isolated Number of Entries
+---------------------------
+W:
+  Wn+light:--------4.0
+  W1+light:--------0.0
+  W2+light:--------2.0
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------1.0
+  W1+c:------------1.0
+  W2+c:------------5.0
+  W3+c:------------2.0
+  W4+c:------------2.0
+
+  Wn+cc:-----------6.0
+  W1+cc:-----------0.0
+  W2+cc:-----------54.0
+  W3+cc:-----------22.0
+  W4+cc:-----------1.0
+
+  Wn+bb:-----------121.0
+  W1+bb:-----------2.0
+  W2+bb:-----------1346.0
+  W3+bb:-----------403.0
+  W4+bb:-----------77.0
+tt Entries:--------9499.0
+t_t Entries:-------625.0
+tb_t Entries:------447.0
+t_s Entries:-------512.0
+tb_s Entries:------158.0
+t_tw Entries:------117.0
+tb_tw Entries:-----108.0
+WW Entries:--------23.0
+WZ Entries:--------1946.0
+ZZ Entries:--------596.0
+Drell-Yan Entries:-87.0
+Data Entries:          5946.0
+---------------------------------------------
+---------------------------------------------
+DataCard Numbers
+---------------------------
+Data Size:      5946.0
+Wbb Size:       978.457187638
+Wcc Size:       58.2050332848
+TTbar Size:     2980.7429643
+T Size:         667.950019941
+Tbar Size:      216.248146892
+T_tW Size:      97.2826937288
+Drell-Yan Size: 165.029404186
+VV Size:        121.694311302
+QCD Size:       170.148716822
+
+
+
+muNuEventTreeMuonUp/eventTree
+------------------------------------------------
+Non Isolated
+---------------------------
+ Cuts MC:      
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data:    
+((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+Isolated
+---------------------------
+ Cuts MC:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data: 
+((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+ Cuts Wbb: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((nbHadrons>0))))
+
+ Cuts Wcc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&!(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wl: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&!((ncCands+ncbarCands)>0)))))
+
+Anti-Isolated Sizes
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------4.36462306976
+ W3 Size:--------2.9371585995
+ W4 Size:--------0.372913450003
+ tt Size:--------70.6241978183
+ t_t Size:-------2.31470139325
+ tb_t Size:------2.03753403574
+ t_s Size:-------0.951563373208
+ tb_s Size:------0.438292980194
+ t_tw Size:------0.918883681297
+ tb_tw Size:-----0.674409329891
+ WW Size:--------0.0
+ WZ Size:--------1.37983736768
+ ZZ Size:--------0.113049364649
+ Drell-Yan Size:-2.45644783974
+ QCD Size:-------173.419221655
+ Data Size:      175.0
+---------------------------
+Anti-Isolated Sizes from 0 to 20
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------0.0
+ W3 Size:--------0.0
+ W4 Size:--------0.0
+ tt Size:--------0.0
+ t_t Size:-------0.0
+ tb_t Size:------0.0
+ t_s Size:-------0.0
+ tb_s Size:------0.0
+ t_tw Size:------0.0
+ tb_tw Size:-----0.0
+ WW Size:--------0.0
+ WZ Size:--------0.0
+ ZZ Size:--------0.0
+ Drell-Yan Size:-0.0
+ QCD Size:-------0.0
+ Data Size:      0.0
+---------------------------------------------
+QCD Scale:   2.03028050776
+Drell Scale: 1.0
+t Scale:     1.0
+tt Scale:    1.0
+W+x Scale:   1.0
+---------------------------------------------
+
+Isolated Sizes from 0 to 20
+---------------------------
+W:
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+tt Size:--------0.0
+t_t Size:-------0.0
+tb_t Size:------0.0
+t_s Size:-------0.0
+tb_s Size:------0.0
+t_tw Size:------0.0
+tb_tw Size:-----0.0
+WW Size:--------0.0
+WZ Size:--------0.0
+ZZ Size:--------0.0
+Drell-Yan Size:-0.0
+Data Size:          0.0
+---------------------------------------------
+Isolated Sizes
+---------------------------
+W:
+  Wn+light:--------29.4619814157
+  W1+light:--------0.0
+  W2+light:--------0.916695266962
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.138281628489
+  W1+c:------------1.77219450474
+  W2+c:------------2.76286375523
+  W3+c:------------0.351817954943
+  W4+c:------------0.75405266881
+
+  Wn+cc:-----------20.7137666643
+  W1+cc:-----------0.0
+  W2+cc:-----------30.1965430379
+  W3+cc:-----------7.20429645218
+  W4+cc:-----------0.370171040297
+
+  Wn+bb:-----------105.564832449
+  W1+bb:-----------3.80630612373
+  W2+bb:-----------703.435952246
+  W3+bb:-----------144.630405843
+  W4+bb:-----------26.5609166473
+tt Size:--------3001.63108674
+t_t Size:-------529.417240471
+tb_t Size:------155.695189193
+t_s Size:-------154.391100183
+tb_s Size:------62.1064080447
+t_tw Size:------52.3949846029
+tb_tw Size:-----45.8063415438
+WW Size:--------2.61574134231
+WZ Size:--------111.789543903
+ZZ Size:--------8.45673546707
+Drell-Yan Size:-162.99692037
+Data Size:          5946.0
+---------------------------------------------
+---------------------------
+Isolated Number of Entries
+---------------------------
+W:
+  Wn+light:--------4.0
+  W1+light:--------0.0
+  W2+light:--------2.0
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------1.0
+  W1+c:------------1.0
+  W2+c:------------5.0
+  W3+c:------------2.0
+  W4+c:------------2.0
+
+  Wn+cc:-----------6.0
+  W1+cc:-----------0.0
+  W2+cc:-----------55.0
+  W3+cc:-----------22.0
+  W4+cc:-----------1.0
+
+  Wn+bb:-----------121.0
+  W1+bb:-----------2.0
+  W2+bb:-----------1355.0
+  W3+bb:-----------407.0
+  W4+bb:-----------78.0
+tt Entries:--------9564.0
+t_t Entries:-------632.0
+tb_t Entries:------449.0
+t_s Entries:-------518.0
+tb_s Entries:------161.0
+t_tw Entries:------117.0
+tb_tw Entries:-----110.0
+WW Entries:--------23.0
+WZ Entries:--------1962.0
+ZZ Entries:--------600.0
+Drell-Yan Entries:-86.0
+Data Entries:          5946.0
+---------------------------------------------
+---------------------------------------------
+DataCard Numbers
+---------------------------
+Data Size:      5946.0
+Wbb Size:       983.998413309
+Wcc Size:       58.4847771946
+TTbar Size:     3001.63108674
+T Size:         683.808340654
+Tbar Size:      217.801597238
+T_tW Size:      98.2013261467
+Drell-Yan Size: 162.99692037
+VV Size:        122.862020712
+QCD Size:       173.419221655
+
+
+
+muNuEventTreeMuonDown/eventTree
+------------------------------------------------
+Non Isolated
+---------------------------
+ Cuts MC:      
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data:    
+((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+Isolated
+---------------------------
+ Cuts MC:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data: 
+((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+ Cuts Wbb: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((nbHadrons>0))))
+
+ Cuts Wcc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&!(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wl: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&!((ncCands+ncbarCands)>0)))))
+
+Anti-Isolated Sizes
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------4.25012585521
+ W3 Size:--------3.30302633345
+ W4 Size:--------0.372913450003
+ tt Size:--------72.3536304832
+ t_t Size:-------2.31470139325
+ tb_t Size:------2.03753403574
+ t_s Size:-------0.951563373208
+ tb_s Size:------0.438292980194
+ t_tw Size:------0.918883681297
+ tb_tw Size:-----0.674409329891
+ WW Size:--------0.0
+ WZ Size:--------1.37858860567
+ ZZ Size:--------0.113049364649
+ Drell-Yan Size:-2.45644783974
+ QCD Size:-------169.400169209
+ Data Size:      175.0
+---------------------------
+Anti-Isolated Sizes from 0 to 20
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------0.0
+ W3 Size:--------0.0
+ W4 Size:--------0.0
+ tt Size:--------0.0
+ t_t Size:-------0.0
+ tb_t Size:------0.0
+ t_s Size:-------0.0
+ tb_s Size:------0.0
+ t_tw Size:------0.0
+ tb_tw Size:-----0.0
+ WW Size:--------0.0
+ WZ Size:--------0.0
+ ZZ Size:--------0.0
+ Drell-Yan Size:-0.0
+ QCD Size:-------0.0
+ Data Size:      0.0
+---------------------------------------------
+QCD Scale:   2.03028050776
+Drell Scale: 1.0
+t Scale:     1.0
+tt Scale:    1.0
+W+x Scale:   1.0
+---------------------------------------------
+
+Isolated Sizes from 0 to 20
+---------------------------
+W:
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+tt Size:--------0.0
+t_t Size:-------0.0
+tb_t Size:------0.0
+t_s Size:-------0.0
+tb_s Size:------0.0
+t_tw Size:------0.0
+tb_tw Size:-----0.0
+WW Size:--------0.0
+WZ Size:--------0.0
+ZZ Size:--------0.0
+Drell-Yan Size:-0.0
+Data Size:          0.0
+---------------------------------------------
+Isolated Sizes
+---------------------------
+W:
+  Wn+light:--------29.4619814157
+  W1+light:--------0.0
+  W2+light:--------0.916695266962
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.138281628489
+  W1+c:------------1.77219450474
+  W2+c:------------2.76286375523
+  W3+c:------------0.351817954943
+  W4+c:------------0.75405266881
+
+  Wn+cc:-----------20.7137666643
+  W1+cc:-----------0.0
+  W2+cc:-----------29.3988004327
+  W3+cc:-----------7.20429645218
+  W4+cc:-----------0.370171040297
+
+  Wn+bb:-----------104.701410532
+  W1+bb:-----------3.80630612373
+  W2+bb:-----------690.197003424
+  W3+bb:-----------142.229164064
+  W4+bb:-----------26.5419106334
+tt Size:--------2961.89622834
+t_t Size:-------513.148070186
+tb_t Size:------152.843662456
+t_s Size:-------152.077719465
+tb_s Size:------60.2661408633
+t_tw Size:------51.2569781244
+tb_tw Size:-----44.8395817727
+WW Size:--------2.61574134231
+WZ Size:--------109.798371351
+ZZ Size:--------8.35473973071
+Drell-Yan Size:-165.029404186
+Data Size:          5946.0
+---------------------------------------------
+---------------------------
+Isolated Number of Entries
+---------------------------
+W:
+  Wn+light:--------4.0
+  W1+light:--------0.0
+  W2+light:--------2.0
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------1.0
+  W1+c:------------1.0
+  W2+c:------------5.0
+  W3+c:------------2.0
+  W4+c:------------2.0
+
+  Wn+cc:-----------6.0
+  W1+cc:-----------0.0
+  W2+cc:-----------53.0
+  W3+cc:-----------22.0
+  W4+cc:-----------1.0
+
+  Wn+bb:-----------119.0
+  W1+bb:-----------2.0
+  W2+bb:-----------1331.0
+  W3+bb:-----------399.0
+  W4+bb:-----------77.0
+tt Entries:--------9440.0
+t_t Entries:-------620.0
+tb_t Entries:------440.0
+t_s Entries:-------509.0
+tb_s Entries:------156.0
+t_tw Entries:------115.0
+tb_tw Entries:-----107.0
+WW Entries:--------23.0
+WZ Entries:--------1931.0
+ZZ Entries:--------592.0
+Drell-Yan Entries:-87.0
+Data Entries:          5946.0
+---------------------------------------------
+---------------------------------------------
+DataCard Numbers
+---------------------------
+Data Size:      5946.0
+Wbb Size:       967.475794777
+Wcc Size:       57.6870345894
+TTbar Size:     2961.89622834
+T Size:         665.225789651
+Tbar Size:      213.109803319
+T_tW Size:      96.0965598971
+Drell-Yan Size: 165.029404186
+VV Size:        120.768852424
+QCD Size:       169.400169209
+
+
+
+muNuEventTreeJetUp/eventTree
+------------------------------------------------
+Non Isolated
+---------------------------
+ Cuts MC:      
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data:    
+((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+Isolated
+---------------------------
+ Cuts MC:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data: 
+((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+ Cuts Wbb: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((nbHadrons>0))))
+
+ Cuts Wcc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&!(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wl: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&!((ncCands+ncbarCands)>0)))))
+
+Anti-Isolated Sizes
+---------------------------
+ Wn Size:--------0.669900000095
+ W1 Size:--------0.0
+ W2 Size:--------4.4798079133
+ W3 Size:--------2.93121576309
+ W4 Size:--------0.372903823853
+ tt Size:--------61.1901199669
+ t_t Size:-------2.3146225661
+ tb_t Size:------1.22924978286
+ t_s Size:-------0.701906144619
+ tb_s Size:------0.438290476799
+ t_tw Size:------0.4464828372
+ tb_tw Size:-----0.674372971058
+ WW Size:--------0.0
+ WZ Size:--------1.44021939486
+ ZZ Size:--------0.113046043552
+ Drell-Yan Size:-0.842494487762
+ QCD Size:-------197.252652019
+ Data Size:      175.0
+---------------------------
+Anti-Isolated Sizes from 0 to 20
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------0.0
+ W3 Size:--------0.0
+ W4 Size:--------0.0
+ tt Size:--------0.0
+ t_t Size:-------0.0
+ tb_t Size:------0.0
+ t_s Size:-------0.0
+ tb_s Size:------0.0
+ t_tw Size:------0.0
+ tb_tw Size:-----0.0
+ WW Size:--------0.0
+ WZ Size:--------0.0
+ ZZ Size:--------0.0
+ Drell-Yan Size:-0.0
+ QCD Size:-------0.0
+ Data Size:      0.0
+---------------------------------------------
+QCD Scale:   2.03028050776
+Drell Scale: 1.0
+t Scale:     1.0
+tt Scale:    1.0
+W+x Scale:   1.0
+---------------------------------------------
+
+Isolated Sizes from 0 to 20
+---------------------------
+W:
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+tt Size:--------0.0
+t_t Size:-------0.0
+tb_t Size:------0.0
+t_s Size:-------0.0
+tb_s Size:------0.0
+t_tw Size:------0.0
+tb_tw Size:-----0.0
+WW Size:--------0.0
+WZ Size:--------0.0
+ZZ Size:--------0.0
+Drell-Yan Size:-0.0
+Data Size:          0.0
+---------------------------------------------
+Isolated Sizes
+---------------------------
+W:
+  Wn+light:--------29.4619044065
+  W1+light:--------1.43087756634
+  W2+light:--------0.312719494104
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.0
+  W1+c:------------1.77220797539
+  W2+c:------------2.76282942295
+  W3+c:------------0.351498782635
+  W4+c:------------0.399426192045
+
+  Wn+cc:-----------11.9334338307
+  W1+cc:-----------0.0
+  W2+cc:-----------29.4501793981
+  W3+cc:-----------6.35946356591
+  W4+cc:-----------0.710860341787
+
+  Wn+bb:-----------111.298604786
+  W1+bb:-----------3.80627632141
+  W2+bb:-----------656.441303648
+  W3+bb:-----------118.379677191
+  W4+bb:-----------21.7634611018
+tt Size:--------2520.65650997
+t_t Size:-------451.70664978
+tb_t Size:------131.228504278
+t_s Size:-------133.222512543
+tb_s Size:------56.642373383
+t_tw Size:------42.8113076538
+tb_tw Size:-----37.8399277329
+WW Size:--------2.42098402977
+WZ Size:--------100.135796698
+ZZ Size:--------7.49761376122
+Drell-Yan Size:-161.238422374
+Data Size:          5946.0
+---------------------------------------------
+---------------------------
+Isolated Number of Entries
+---------------------------
+W:
+  Wn+light:--------4.0
+  W1+light:--------1.0
+  W2+light:--------1.0
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.0
+  W1+c:------------1.0
+  W2+c:------------5.0
+  W3+c:------------1.0
+  W4+c:------------1.0
+
+  Wn+cc:-----------5.0
+  W1+cc:-----------0.0
+  W2+cc:-----------52.0
+  W3+cc:-----------20.0
+  W4+cc:-----------2.0
+
+  Wn+bb:-----------112.0
+  W1+bb:-----------2.0
+  W2+bb:-----------1243.0
+  W3+bb:-----------329.0
+  W4+bb:-----------63.0
+tt Entries:--------7819.0
+t_t Entries:-------511.0
+tb_t Entries:------373.0
+t_s Entries:-------446.0
+tb_s Entries:------145.0
+t_tw Entries:------95.0
+tb_tw Entries:-----90.0
+WW Entries:--------21.0
+WZ Entries:--------1757.0
+ZZ Entries:--------528.0
+Drell-Yan Entries:-83.0
+Data Entries:          5946.0
+---------------------------------------------
+---------------------------------------------
+DataCard Numbers
+---------------------------
+Data Size:      5946.0
+Wbb Size:       911.689323049
+Wcc Size:       48.4539371365
+TTbar Size:     2520.65650997
+T Size:         584.929162323
+Tbar Size:      187.870877661
+T_tW Size:      80.6512353867
+Drell-Yan Size: 161.238422374
+VV Size:        110.054394489
+QCD Size:       197.252652019
+
+
+
+muNuEventTreeJetDown/eventTree
+------------------------------------------------
+Non Isolated
+---------------------------
+ Cuts MC:      
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data:    
+((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+Isolated
+---------------------------
+ Cuts MC:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data: 
+((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+ Cuts Wbb: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((nbHadrons>0))))
+
+ Cuts Wcc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&!(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wl: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&!((ncCands+ncbarCands)>0)))))
+
+Anti-Isolated Sizes
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------3.9713023901
+ W3 Size:--------2.53862461448
+ W4 Size:--------0.372922837734
+ tt Size:--------74.9009646699
+ t_t Size:-------2.79141868651
+ tb_t Size:------1.99314567447
+ t_s Size:-------0.951618745923
+ tb_s Size:------0.438295304775
+ t_tw Size:------0.918916553259
+ tb_tw Size:-----0.674445033073
+ WW Size:--------0.0
+ WZ Size:--------1.4374984242
+ ZZ Size:--------0.113052603789
+ Drell-Yan Size:-0.0
+ QCD Size:-------170.336056091
+ Data Size:      175.0
+---------------------------
+Anti-Isolated Sizes from 0 to 20
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------0.0
+ W3 Size:--------0.0
+ W4 Size:--------0.0
+ tt Size:--------0.0
+ t_t Size:-------0.0
+ tb_t Size:------0.0
+ t_s Size:-------0.0
+ tb_s Size:------0.0
+ t_tw Size:------0.0
+ tb_tw Size:-----0.0
+ WW Size:--------0.0
+ WZ Size:--------0.0
+ ZZ Size:--------0.0
+ Drell-Yan Size:-0.0
+ QCD Size:-------0.0
+ Data Size:      0.0
+---------------------------------------------
+QCD Scale:   2.03028050776
+Drell Scale: 1.0
+t Scale:     1.0
+tt Scale:    1.0
+W+x Scale:   1.0
+---------------------------------------------
+
+Isolated Sizes from 0 to 20
+---------------------------
+W:
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+tt Size:--------0.0
+t_t Size:-------0.0
+tb_t Size:------0.0
+t_s Size:-------0.0
+tb_s Size:------0.0
+t_tw Size:------0.0
+tb_tw Size:-----0.0
+WW Size:--------0.0
+WZ Size:--------0.0
+ZZ Size:--------0.0
+Drell-Yan Size:-0.0
+Data Size:          0.0
+---------------------------------------------
+Isolated Sizes
+---------------------------
+W:
+  Wn+light:--------29.4620320797
+  W1+light:--------0.0
+  W2+light:--------0.916703701019
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.138281688094
+  W1+c:------------1.7721799612
+  W2+c:------------2.18025824428
+  W3+c:------------0.351531505585
+  W4+c:------------0.754079669714
+
+  Wn+cc:-----------20.7137134969
+  W1+cc:-----------0.0
+  W2+cc:-----------27.4863495827
+  W3+cc:-----------7.2706169337
+  W4+cc:-----------0.370174586773
+
+  Wn+bb:-----------104.182996988
+  W1+bb:-----------3.80633401871
+  W2+bb:-----------639.079650886
+  W3+bb:-----------144.028770259
+  W4+bb:-----------29.8784717619
+tt Size:--------3027.4150933
+t_t Size:-------554.866346434
+tb_t Size:------153.219122611
+t_s Size:-------144.266123638
+tb_s Size:------58.051777482
+t_tw Size:------51.4937819839
+tb_tw Size:-----45.2695355564
+WW Size:--------2.74446570128
+WZ Size:--------102.868859474
+ZZ Size:--------7.78861745028
+Drell-Yan Size:-170.697739928
+Data Size:          5946.0
+---------------------------------------------
+---------------------------
+Isolated Number of Entries
+---------------------------
+W:
+  Wn+light:--------4.0
+  W1+light:--------0.0
+  W2+light:--------2.0
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------1.0
+  W1+c:------------1.0
+  W2+c:------------4.0
+  W3+c:------------1.0
+  W4+c:------------2.0
+
+  Wn+cc:-----------6.0
+  W1+cc:-----------0.0
+  W2+cc:-----------49.0
+  W3+cc:-----------22.0
+  W4+cc:-----------1.0
+
+  Wn+bb:-----------119.0
+  W1+bb:-----------2.0
+  W2+bb:-----------1222.0
+  W3+bb:-----------406.0
+  W4+bb:-----------85.0
+tt Entries:--------9777.0
+t_t Entries:-------609.0
+tb_t Entries:------440.0
+t_s Entries:-------487.0
+tb_s Entries:------151.0
+t_tw Entries:------116.0
+tb_tw Entries:-----109.0
+WW Entries:--------24.0
+WZ Entries:--------1807.0
+ZZ Entries:--------553.0
+Drell-Yan Entries:-88.0
+Data Entries:          5946.0
+---------------------------------------------
+---------------------------------------------
+DataCard Numbers
+---------------------------
+Data Size:      5946.0
+Wbb Size:       920.976223914
+Wcc Size:       55.8408546001
+TTbar Size:     3027.4150933
+T Size:         699.132470071
+Tbar Size:      211.270900093
+T_tW Size:      96.7633175403
+Drell-Yan Size: 170.697739928
+VV Size:        113.401942625
+QCD Size:       170.336056091
+
+
+
+muNuEventTreeUCEUp/eventTree
+------------------------------------------------
+Non Isolated
+---------------------------
+ Cuts MC:      
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data:    
+((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+Isolated
+---------------------------
+ Cuts MC:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data: 
+((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+ Cuts Wbb: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((nbHadrons>0))))
+
+ Cuts Wcc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&!(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wl: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&!((ncCands+ncbarCands)>0)))))
+
+Anti-Isolated Sizes
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------3.9712395668
+ W3 Size:--------2.9371585995
+ W4 Size:--------0.372913450003
+ tt Size:--------72.5707895821
+ t_t Size:-------2.31470139325
+ tb_t Size:------2.03753403574
+ t_s Size:-------0.951563373208
+ tb_s Size:------0.438292980194
+ t_tw Size:------0.918883681297
+ tb_tw Size:-----0.674409329891
+ WW Size:--------0.0
+ WZ Size:--------1.43749109283
+ ZZ Size:--------0.113049364649
+ Drell-Yan Size:-2.45644783974
+ QCD Size:-------170.148716822
+ Data Size:      175.0
+---------------------------
+Anti-Isolated Sizes from 0 to 20
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------0.0
+ W3 Size:--------0.0
+ W4 Size:--------0.0
+ tt Size:--------0.0
+ t_t Size:-------0.0
+ tb_t Size:------0.0
+ t_s Size:-------0.0
+ tb_s Size:------0.0
+ t_tw Size:------0.0
+ tb_tw Size:-----0.0
+ WW Size:--------0.0
+ WZ Size:--------0.0
+ ZZ Size:--------0.0
+ Drell-Yan Size:-0.0
+ QCD Size:-------0.0
+ Data Size:      0.0
+---------------------------------------------
+QCD Scale:   2.03028050776
+Drell Scale: 1.0
+t Scale:     1.0
+tt Scale:    1.0
+W+x Scale:   1.0
+---------------------------------------------
+
+Isolated Sizes from 0 to 20
+---------------------------
+W:
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+tt Size:--------0.0
+t_t Size:-------0.0
+tb_t Size:------0.0
+t_s Size:-------0.0
+tb_s Size:------0.0
+t_tw Size:------0.0
+tb_tw Size:-----0.0
+WW Size:--------0.0
+WZ Size:--------0.0
+ZZ Size:--------0.0
+Drell-Yan Size:-0.0
+Data Size:          0.0
+---------------------------------------------
+Isolated Sizes
+---------------------------
+W:
+  Wn+light:--------29.4619814157
+  W1+light:--------0.0
+  W2+light:--------0.916695266962
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.138281628489
+  W1+c:------------1.77219450474
+  W2+c:------------2.76286375523
+  W3+c:------------0.351817954943
+  W4+c:------------0.75405266881
+
+  Wn+cc:-----------20.7137666643
+  W1+cc:-----------0.0
+  W2+cc:-----------29.9167991281
+  W3+cc:-----------7.20429645218
+  W4+cc:-----------0.370171040297
+
+  Wn+bb:-----------105.564832449
+  W1+bb:-----------3.80630612373
+  W2+bb:-----------698.849885046
+  W3+bb:-----------143.694253385
+  W4+bb:-----------26.5419106334
+tt Size:--------2980.7429643
+t_t Size:-------515.249528259
+tb_t Size:------155.139257625
+t_s Size:-------152.700491682
+tb_s Size:------61.1088892668
+t_tw Size:------52.3949846029
+tb_tw Size:-----44.8877091259
+WW Size:--------2.61574134231
+WZ Size:--------110.68130759
+ZZ Size:--------8.39726236975
+Drell-Yan Size:-165.029404186
+Data Size:          5946.0
+---------------------------------------------
+---------------------------
+Isolated Number of Entries
+---------------------------
+W:
+  Wn+light:--------4.0
+  W1+light:--------0.0
+  W2+light:--------2.0
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------1.0
+  W1+c:------------1.0
+  W2+c:------------5.0
+  W3+c:------------2.0
+  W4+c:------------2.0
+
+  Wn+cc:-----------6.0
+  W1+cc:-----------0.0
+  W2+cc:-----------54.0
+  W3+cc:-----------22.0
+  W4+cc:-----------1.0
+
+  Wn+bb:-----------121.0
+  W1+bb:-----------2.0
+  W2+bb:-----------1346.0
+  W3+bb:-----------403.0
+  W4+bb:-----------77.0
+tt Entries:--------9499.0
+t_t Entries:-------625.0
+tb_t Entries:------447.0
+t_s Entries:-------512.0
+tb_s Entries:------158.0
+t_tw Entries:------117.0
+tb_tw Entries:-----108.0
+WW Entries:--------23.0
+WZ Entries:--------1946.0
+ZZ Entries:--------596.0
+Drell-Yan Entries:-87.0
+Data Entries:          5946.0
+---------------------------------------------
+---------------------------------------------
+DataCard Numbers
+---------------------------
+Data Size:      5946.0
+Wbb Size:       978.457187638
+Wcc Size:       58.2050332848
+TTbar Size:     2980.7429643
+T Size:         667.950019941
+Tbar Size:      216.248146892
+T_tW Size:      97.2826937288
+Drell-Yan Size: 165.029404186
+VV Size:        121.694311302
+QCD Size:       170.148716822
+
+
+
+muNuEventTreeUCEDown/eventTree
+------------------------------------------------
+Non Isolated
+---------------------------
+ Cuts MC:      
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data:    
+((lPFIsoDB>=0.2)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+Isolated
+---------------------------
+ Cuts MC:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts MC Top:  
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*weightTop*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))))
+
+ Cuts Data: 
+((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2)))
+
+ Cuts Wbb: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((nbHadrons>0))))
+
+ Cuts Wcc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wc: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&((ncCands+ncbarCands)>0)&&!(((ncCands+ncbarCands)%2)==0)))))
+
+ Cuts Wl: 
+((( weightFactor*19429.0*(weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig))*(((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))*((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))))*((lPFIsoDB<0.12)&&((((HLT_IsoMu24_eta2p1_v_fired)&&(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)&&(abs(dz)<0.5&&abs(l1DXY)<0.02)&&(Mt>45)&&(nJets24Pt25==0))&&((J1CSVbtag>0.898&&J1SVMassb>0)&&(J2CSVbtag>0.898&&J2SVMassb>0)))&&((highestJetPt >25 && secondJetPt>25 && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4) && nJetsPt25==2))&&((!(nbHadrons>0)&&!((ncCands+ncbarCands)>0)))))
+
+Anti-Isolated Sizes
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------3.9712395668
+ W3 Size:--------2.9371585995
+ W4 Size:--------0.372913450003
+ tt Size:--------72.5707895821
+ t_t Size:-------2.31470139325
+ tb_t Size:------2.03753403574
+ t_s Size:-------0.951563373208
+ tb_s Size:------0.438292980194
+ t_tw Size:------0.918883681297
+ tb_tw Size:-----0.674409329891
+ WW Size:--------0.0
+ WZ Size:--------1.43749109283
+ ZZ Size:--------0.113049364649
+ Drell-Yan Size:-2.45644783974
+ QCD Size:-------170.148716822
+ Data Size:      175.0
+---------------------------
+Anti-Isolated Sizes from 0 to 20
+---------------------------
+ Wn Size:--------0.0
+ W1 Size:--------0.0
+ W2 Size:--------0.0
+ W3 Size:--------0.0
+ W4 Size:--------0.0
+ tt Size:--------0.0
+ t_t Size:-------0.0
+ tb_t Size:------0.0
+ t_s Size:-------0.0
+ tb_s Size:------0.0
+ t_tw Size:------0.0
+ tb_tw Size:-----0.0
+ WW Size:--------0.0
+ WZ Size:--------0.0
+ ZZ Size:--------0.0
+ Drell-Yan Size:-0.0
+ QCD Size:-------0.0
+ Data Size:      0.0
+---------------------------------------------
+QCD Scale:   2.03028050776
+Drell Scale: 1.0
+t Scale:     1.0
+tt Scale:    1.0
+W+x Scale:   1.0
+---------------------------------------------
+
+Isolated Sizes from 0 to 20
+---------------------------
+W:
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+  W+light:--------0.0
+
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+  W+c:------------0.0
+
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+  W+cc:-----------0.0
+
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+  W+bb:-----------0.0
+tt Size:--------0.0
+t_t Size:-------0.0
+tb_t Size:------0.0
+t_s Size:-------0.0
+tb_s Size:------0.0
+t_tw Size:------0.0
+tb_tw Size:-----0.0
+WW Size:--------0.0
+WZ Size:--------0.0
+ZZ Size:--------0.0
+Drell-Yan Size:-0.0
+Data Size:          0.0
+---------------------------------------------
+Isolated Sizes
+---------------------------
+W:
+  Wn+light:--------29.4619814157
+  W1+light:--------0.0
+  W2+light:--------0.916695266962
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------0.138281628489
+  W1+c:------------1.77219450474
+  W2+c:------------2.76286375523
+  W3+c:------------0.351817954943
+  W4+c:------------0.75405266881
+
+  Wn+cc:-----------20.7137666643
+  W1+cc:-----------0.0
+  W2+cc:-----------29.9167991281
+  W3+cc:-----------7.20429645218
+  W4+cc:-----------0.370171040297
+
+  Wn+bb:-----------105.564832449
+  W1+bb:-----------3.80630612373
+  W2+bb:-----------698.849885046
+  W3+bb:-----------143.694253385
+  W4+bb:-----------26.5419106334
+tt Size:--------2980.7429643
+t_t Size:-------515.249528259
+tb_t Size:------155.139257625
+t_s Size:-------152.700491682
+tb_s Size:------61.1088892668
+t_tw Size:------52.3949846029
+tb_tw Size:-----44.8877091259
+WW Size:--------2.61574134231
+WZ Size:--------110.68130759
+ZZ Size:--------8.39726236975
+Drell-Yan Size:-165.029404186
+Data Size:          5946.0
+---------------------------------------------
+---------------------------
+Isolated Number of Entries
+---------------------------
+W:
+  Wn+light:--------4.0
+  W1+light:--------0.0
+  W2+light:--------2.0
+  W3+light:--------0.0
+  W4+light:--------0.0
+
+  Wn+c:------------1.0
+  W1+c:------------1.0
+  W2+c:------------5.0
+  W3+c:------------2.0
+  W4+c:------------2.0
+
+  Wn+cc:-----------6.0
+  W1+cc:-----------0.0
+  W2+cc:-----------54.0
+  W3+cc:-----------22.0
+  W4+cc:-----------1.0
+
+  Wn+bb:-----------121.0
+  W1+bb:-----------2.0
+  W2+bb:-----------1346.0
+  W3+bb:-----------403.0
+  W4+bb:-----------77.0
+tt Entries:--------9499.0
+t_t Entries:-------625.0
+tb_t Entries:------447.0
+t_s Entries:-------512.0
+tb_s Entries:------158.0
+t_tw Entries:------117.0
+tb_tw Entries:-----108.0
+WW Entries:--------23.0
+WZ Entries:--------1946.0
+ZZ Entries:--------596.0
+Drell-Yan Entries:-87.0
+Data Entries:          5946.0
+---------------------------------------------
+---------------------------------------------
+DataCard Numbers
+---------------------------
+Data Size:      5946.0
+Wbb Size:       978.457187638
+Wcc Size:       58.2050332848
+TTbar Size:     2980.7429643
+T Size:         667.950019941
+Tbar Size:      216.248146892
+T_tW Size:      97.2826937288
+Drell-Yan Size: 165.029404186
+VV Size:        121.694311302
+QCD Size:       170.148716822
