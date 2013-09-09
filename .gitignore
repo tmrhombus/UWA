@@ -5,9 +5,9 @@
 *.d
 ._*
 *.root
-!UWAnalysis/CRAB/MuNu/plots/Datacards_*root
+!./CRAB/MuNu/plots/Datacards_*root
 *.log
-!UWAnalysis/CRAB/MuNu/plots/Datacards_*log
+!./CRAB/MuNu/plots/Datacards_*log
 
 .todo
 *.png
