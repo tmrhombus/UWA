@@ -3,7 +3,7 @@ import sys
 sys.setrecursionlimit(10000)
 process = cms.Process("ANALYSIS")
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = 'FT_53_V21_AN6::All' #new GT
+process.GlobalTag.globaltag = 'FT_53_V21A_AN6::All' #new GT
 #process.GlobalTag.globaltag = 'GR_P_V40_AN1::All' #old GT
 
 process.maxEvents = cms.untracked.PSet(
