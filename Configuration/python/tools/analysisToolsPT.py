@@ -33,6 +33,7 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
   #Build good vertex collection
   goodVertexFilter(process)       
+  metRename(process)
 
   if itsMC:
    ReRunJets(process,isMC=itsMC,isData=itsData)            
@@ -162,6 +163,14 @@ def goodVertexFilter(process):
   )
   process.goodVertexFilterSeq = cms.Sequence(process.primaryVertexFilter)
   process.goodVertexFilterPath=cms.Path(process.goodVertexFilterSeq)
+
+
+def metRename(process):
+  process.metType1 = cms.EDProducer("PATMETRenamer",
+                                    src = cms.InputTag('systematicsMET')
+  )
+  process.metType1Seq = cms.Sequence(process.metType1)
+  process.metType1Path= cms.Path(process.metType1Seq)
 
 
 def ReRunJets(process,isMC=False,isData=False): 
