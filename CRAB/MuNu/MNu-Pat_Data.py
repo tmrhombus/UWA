@@ -26,15 +26,9 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 100000
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
-#defaultReconstructionPTDataABC(process,'HLT',['HLT_IsoMu24_eta2p1_v'
-#                                      #'HLT_Mu40_eta2p1_v'
-#                                       ])
-
 defaultReconstructionPT(process,'HLT',['HLT_IsoMu24_eta2p1_v'],
                         itsMC=False,itsData=True)
 global metCalibration
-
-#process.metCalibration.applyCalibration = cms.bool(True)
 
 process.metCalibration = cms.PSet(
  applyCalibration = cms.bool(True),
@@ -49,17 +43,19 @@ process.metCalibration = cms.PSet(
  resolutionMCU2 = cms.string("10.5649+0.0225853*x-5.81371e-5*x*x")
 )
 
-#EventSelection
-
 process.load("UWAnalysis.Configuration.wMuNuAnalysisPT_cff")
-process.eventSelection = cms.Path(process.selectionSequence) ##changing to multiples see below
+process.eventSelection = cms.Path(process.selectionSequence) 
 
-#from UWAnalysis.Configuration.tools.ntupleToolsPT import *
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 
 addMuNuEventTreePtDat(process,'muNuEventTree')
 addEventSummary(process,True)
 process.TFileService.fileName = cms.string('data.root')
-#addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
 
-#process.TFileService.fileName=cms.string("$outputFileName")
+## makes EDM output of all collections
+#process.out = cms.OutputModule("PoolOutputModule",
+# fileName = cms.untracked.string('/scratch/tperry/analysis.root'),
+# outputCommands = cms.untracked.vstring(
+#                       'keep *'),
+# )
+#process.e = cms.EndPath(process.out)

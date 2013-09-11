@@ -9,7 +9,7 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V27::All' # for global tag with re-reco data
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(1000)
 )
 
 process.source = cms.Source("PoolSource",
@@ -33,11 +33,6 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 100000
 
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
-
-#defaultReconstructionPTMC(process,
-# 'HLT',
-# ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v']
-#)
 
 defaultReconstructionPT(process,
  'HLT',

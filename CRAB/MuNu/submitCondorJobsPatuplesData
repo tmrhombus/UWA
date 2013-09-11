@@ -1,9 +1,9 @@
 #!/bin/sh
 voms-proxy-init --voms cms --valid 100:00
 
-version="v3"
+version="v1"
 
-cat MNu-Pat_DATA.py  > MuNuPATDat.py
+cat MNu-Pat_Data.py  > MuNuPATDat.py
 cat CONDOR_DATA.py >> MuNuPATDat.py
 
 farmoutAnalysisJobs --input-files-per-job=1 --shared-fs \
