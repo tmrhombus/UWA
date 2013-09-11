@@ -3,24 +3,30 @@ UWAnalysis
 UW Analysis for 53x (8Tev)
 
 
-download this following the recipe below:
+download this using the recipe below:
 
 ```bash
-scram pro CMSSW CMSSW_5_3_7
-cd CMSSW_5_3_7/src/
+scram pro CMSSW CMSSW_5_3_9
+cd CMSSW_5_3_9/src/
 
 cmsenv
+```
+set up cvs - something like this
+```bash
+export CVSROOT=:gserver:<user_name>@cmssw.cvs.cern.ch:/local/reps/CMSSW
+kinit <user_name>@CERN.CH; aklog -cell cern.ch
+```
 
-#set up cvs
-#export CVSROOT=:gserver:<user_name>@cmssw.cvs.cern.ch:/local/reps/CMSSW
-#kinit <user_name>@CERN.CH; aklog -cell cern.ch
-
+Clone From GIT
+```bash
 git clone https://github.com/tmrhombus/UWAnalysis.git
 ./UWAnalysis/recipe
+```
 
-#check before compiling
-#showtags #should give 40 (fewer could mean cvs not up)
+check before compiling ``showtags`` should give 40 (fewer could mean cvs not up)
 
+Compile
+```bash
 scramv1 build -c
 scramv1 build
 ```
