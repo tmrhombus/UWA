@@ -9,18 +9,16 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V27::All' # for global tag with re-reco data
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(100)
 )
 
 process.source = cms.Source("PoolSource",
  fileNames = cms.untracked.vstring(
   # $inputFileNames
-    'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
+  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
   #'root://cmsxrootd.hep.wisc.edu///store/user/tperry/myTestFile.root'
   #'root://cmsxrootd.hep.wisc.edu///store/user/tapas/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-E0F748E5-E8E0-E211-842E-1CC1DE046FB0.root'
-  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
-  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTBar_LL-SUB-MC/SUB-MC-patTuple_cfg-FE19EA66-3398-E211-A88B-003048FFD71A.root'
-  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball_v1_WJets8TeV-9ec8fe3/304ffda35e6a6d2ac3103ac6153835e2/output_1000_2_wBh.root'
+ 'root://cmsxrootd.hep.wisc.edu//store/user/tapas/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-FEF3BE77-7CE4-E211-BB7A-002618FDA262.root'
  ),
  inputCommands=cms.untracked.vstring(
   'keep *',
@@ -36,12 +34,15 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 100000
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
-defaultReconstructionPTMC(process,
+#defaultReconstructionPTMC(process,
+# 'HLT',
+# ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v']
+#)
+
+defaultReconstructionPT(process,
  'HLT',
- ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v']
-)
-
-
+ ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v'],
+ itsMC=True,itsData=False)
 
 createGeneratedParticles(process,
  'genWs',
@@ -71,16 +72,15 @@ process.eventSelectionUCEUp     = createSystematics(process,process.selectionSeq
 process.eventSelectionUCEDown   = createSystematics(process,process.selectionSequence,'UCEDown', 1.00, 1.0, 1.0, 0, 0.9)
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
-addMuNuEventTreePtNewPat(process,'muNuEventTree')
-#addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
+addMuNuEventTreePtMC(process,'muNuEventTree',lhep="externalLHEProducer")
 addEventSummary(process,True)
 
-addMuNuEventTreePtNewPat(process,'muNuEventTreeMuonUp','wCandsJetsMuonUp','diMuonsSortedMuonUp')
-addMuNuEventTreePtNewPat(process,'muNuEventTreeMuonDown','wCandsJetsMuonDown','diMuonsSortedMuonDown')
-addMuNuEventTreePtNewPat(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSortedJetUp')
-addMuNuEventTreePtNewPat(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown')
-addMuNuEventTreePtNewPat(process,'muNuEventTreeUCEUp','wCandsJetsUCEUp','diMuonsSortedUCEUp')
-addMuNuEventTreePtNewPat(process,'muNuEventTreeUCEDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
+addMuNuEventTreePtMC(process,'muNuEventTreeMuonUp','wCandsJetsMuonUp','diMuonsSortedMuonUp',lhep="externalLHEProducer")
+addMuNuEventTreePtMC(process,'muNuEventTreeMuonDown','wCandsJetsMuonDown','diMuonsSortedMuonDown',lhep="externalLHEProducer")
+addMuNuEventTreePtMC(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSortedJetUp',lhep="externalLHEProducer")
+addMuNuEventTreePtMC(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown',lhep="externalLHEProducer")
+addMuNuEventTreePtMC(process,'muNuEventTreeUCEUp','wCandsJetsUCEUp','diMuonsSortedUCEUp',lhep="externalLHEProducer")
+addMuNuEventTreePtMC(process,'muNuEventTreeUCEDown','wCandsJetsUCEDown','diMuonsSortedUCEDown',lhep="externalLHEProducer")
 process.TFileService.fileName = cms.string('mc_newPAT.root') 
 
 ## makes EDM output of all collections

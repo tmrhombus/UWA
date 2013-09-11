@@ -1,9 +1,9 @@
 import FWCore.ParameterSet.Config as cms
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(1000)
 process = cms.Process("ANALYSIS")
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = 'FT_53_V21A_AN6::All' #new GT
+process.GlobalTag.globaltag = 'FT_53_V21_AN6::All' #new GT
 #process.GlobalTag.globaltag = 'GR_P_V40_AN1::All' #old GT
 
 process.maxEvents = cms.untracked.PSet(
@@ -26,9 +26,12 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 100000
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
-defaultReconstructionPT(process,'HLT',['HLT_IsoMu24_eta2p1_v'
-                                      #'HLT_Mu40_eta2p1_v'
-                                       ])
+#defaultReconstructionPTDataABC(process,'HLT',['HLT_IsoMu24_eta2p1_v'
+#                                      #'HLT_Mu40_eta2p1_v'
+#                                       ])
+
+defaultReconstructionPT(process,'HLT',['HLT_IsoMu24_eta2p1_v'],
+                        itsMC=False,itsData=True)
 global metCalibration
 
 #process.metCalibration.applyCalibration = cms.bool(True)
@@ -45,9 +48,6 @@ process.metCalibration = cms.PSet(
  resolutionMCU1 = cms.string("10.6449+0.0436475*x+3.07554e-5*x*x"),
  resolutionMCU2 = cms.string("10.5649+0.0225853*x-5.81371e-5*x*x")
 )
-
-process.metCalibration.applyCalibration = cms.bool(True)
-process.metCalibration.calibrationScheme = cms.string("OneLeg")
 
 #EventSelection
 

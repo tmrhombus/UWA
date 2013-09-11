@@ -34,10 +34,15 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 100000
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
-defaultReconstructionPTMC(process,
+#defaultReconstructionPTMC(process,
+# 'HLT',
+# ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v']
+#)
+
+defaultReconstructionPT(process,
  'HLT',
- ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v']
-)
+ ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v'],
+ itsMC=True,itsData=False)
 
 createGeneratedParticles(process,
  'genWs',
@@ -73,16 +78,15 @@ process.eventSelectionUCEUp     = createSystematics(process,process.selectionSeq
 process.eventSelectionUCEDown   = createSystematics(process,process.selectionSequence,'UCEDown' ,1.00, 1.0, 1.0, 0, 0.9)
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
-addMuNuEventTreePt(process,'muNuEventTree')
-#addMuNuEventTreePtPlot(process,'muNuEventTreePlot')
+addMuNuEventTreePtMC(process,'muNuEventTree',lhep="source")
 addEventSummary(process,True)
 
-addMuNuEventTreePt(process,'muNuEventTreeMuonUp','wCandsJetsMuonUp','diMuonsSortedMuonUp')
-addMuNuEventTreePt(process,'muNuEventTreeMuonDown','wCandsJetsMuonDown','diMuonsSortedMuonDown')
-addMuNuEventTreePt(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSortedJetUp')
-addMuNuEventTreePt(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown')
-addMuNuEventTreePt(process,'muNuEventTreeUCEUp','wCandsJetsUCEUp','diMuonsSortedUCEUp')
-addMuNuEventTreePt(process,'muNuEventTreeUCEDown','wCandsJetsUCEDown','diMuonsSortedUCEDown')
+addMuNuEventTreePtMC(process,'muNuEventTreeMuonUp','wCandsJetsMuonUp','diMuonsSortedMuonUp',lhep="source")
+addMuNuEventTreePtMC(process,'muNuEventTreeMuonDown','wCandsJetsMuonDown','diMuonsSortedMuonDown',lhep="source")
+addMuNuEventTreePtMC(process,'muNuEventTreeJetUp','wCandsJetsJetUp','diMuonsSortedJetUp',lhep="source")
+addMuNuEventTreePtMC(process,'muNuEventTreeJetDown','wCandsJetsJetDown','diMuonsSortedJetDown',lhep="source")
+addMuNuEventTreePtMC(process,'muNuEventTreeUCEUp','wCandsJetsUCEUp','diMuonsSortedUCEUp',lhep="source")
+addMuNuEventTreePtMC(process,'muNuEventTreeUCEDown','wCandsJetsUCEDown','diMuonsSortedUCEDown',lhep="source")
 process.TFileService.fileName = cms.string('mc.root') 
 
 ## makes EDM output of all collections

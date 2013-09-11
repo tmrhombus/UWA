@@ -13,6 +13,50 @@ from RecoBTag.ImpactParameter.impactParameter_cff import *
 from RecoBTag.SecondaryVertex.secondaryVertex_cff import *
 
 
+def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_Mu9','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v2','HLT_Mu15_v1','HLT_Mu15_v2'],itsMC=False,itsData=False):
+  process.load("UWAnalysis.Configuration.startUpSequence_cff")
+  process.load("Configuration.Geometry.GeometryIdeal_cff")
+  process.load("Configuration.StandardSequences.MagneticField_cff")
+  process.load("Configuration.StandardSequences.Services_cff")
+  process.load("TrackingTools.TransientTrack.TransientTrackBuilder_cfi")
+  process.load("SimGeneral.HepPDTESSource.pythiapdt_cfi")
+  process.load("DQMServices.Core.DQM_cfg")
+  process.load("DQMServices.Components.DQMEnvironment_cfi")
+
+  #Make the TriggerPaths Global variable to be accesed by the ntuples
+  global TriggerPaths
+  TriggerPaths= triggerPaths
+  process.analysisSequence = cms.Sequence()
+
+  #Add trigger Matching
+  muonTriggerMatchPT(process,triggerProcess) 
+  electronTriggerMatchPT(process,triggerProcess)  
+  tauTriggerMatchPT(process,triggerProcess)    
+
+  #Build good vertex collection
+  goodVertexFilter(process)       
+
+  if itsMC:
+   # if you want to rerun JEC, use ReRun else use ReName
+   ReRunJetsMC(process)            
+  elif itsData:
+   #ReRunJetsData(process)
+   ReNameJetColl(process)
+
+  #jetMCMatching(process,"NewSelectedPatJets")
+  jetOverloading(process,"NewSelectedPatJets")
+  rochesterCorrections(process,itsMC,itsData)
+  if itsMC:
+   SVReconstruction(process,"patOverloadedJets","recorrMuons")  
+  if itsData:
+   SVReconstructionData(process,"patOverloadedJets","recorrPatMuons")
+  applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
+  process.runAnalysisSequence = cms.Path(process.analysisSequence)
+
+  #mvaMet(process) #Build MVA MET
+  if itsMC:
+   genHadrons(process)  
+   IVF(process)
 
 def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HLT_Mu9','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v2','HLT_Mu15_v1','HLT_Mu15_v2']):
   process.load("UWAnalysis.Configuration.startUpSequence_cff")
@@ -42,7 +86,7 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
 
   ##jetMCMatching(process,"NewSelectedPatJets")
   jetOverloading(process,"NewSelectedPatJets")
-  rochesterCorrections(process)
+  rochesterCorrectionsMC(process)
   SVReconstruction(process,"patOverloadedJets","recorrMuons")  
 
   applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
@@ -52,7 +96,7 @@ def defaultReconstructionPTMC(process,triggerProcess = 'HLT',triggerPaths = ['HL
   genHadrons(process)  
   IVF(process)
 
-def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_Mu9','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v2','HLT_Mu15_v1','HLT_Mu15_v2']):
+def defaultReconstructionPTDataABC(process,triggerProcess = 'HLT',triggerPaths = ['HLT_Mu9','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v1','HLT_Mu11_PFTau15_v2','HLT_Mu15_v1','HLT_Mu15_v2']):
   process.load("UWAnalysis.Configuration.startUpSequence_cff")
   process.load("Configuration.Geometry.GeometryIdeal_cff")
   process.load("Configuration.StandardSequences.MagneticField_cff")
@@ -78,13 +122,12 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   ReNameJetColl(process)
   jetOverloading(process,"NewSelectedPatJets")
   SVReconstructionData(process,"patOverloadedJets","cleanPatMuons")
-  rochesterCorrections(process)
+  rochesterCorrectionsDataABC(process)
   applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
   #Default selections for systematics
   #Build MVA MET
   #mvaMet(process)
-
 
 def jetMCMatching(process,jets):
   process.patJetMCMatched = cms.EDProducer('MCBHadronJetProducer',
@@ -161,21 +204,32 @@ def BpmReconstruction(process,jets):
   process.BpmReconstruction = cms.Sequence(process.patBpmRecoJets)
   process.createBpmRecoJets=cms.Path(process.BpmReconstruction)
 
-
-def rochesterCorrections(process):
+def rochesterCorrections(process,itsMC=False,itsData=False):
   process.corrMuons = cms.EDProducer("PATMuonCalibrationChooser",
    src = cms.InputTag("cleanPatMuons"),
    rochcorType = cms.string("RochCor2012") # Rochester Correction types: RochCor2011A, RochCor2011B, RochCor2012
   )
-  process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
-   src = cms.InputTag("corrMuons"),
-   isMC = cms.bool(True),
-   isSync = cms.bool(True), #use fake smearing for synchronization purposes
-  )
+  if itsMC is True:
+   process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
+    src = cms.InputTag("corrMuons"),
+    isMC = cms.bool(True),
+    isSync = cms.bool(False),
+   )
+  elif itsData is True:
+   process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
+    src = cms.InputTag("corrMuons"),
+    isMC = cms.bool(False),
+    isSync = cms.bool(False),
+   )
+#  # could this work?  try later when i'm actually able to test with working code
+#  process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
+#   src = cms.InputTag("corrMuons"),
+#   isMC = cms.bool(itsMC),
+#   isSync = cms.bool(itsData),
+#  )
   process.rochesterCorrectionSeq = cms.Sequence(process.corrMuons * process.recorrMuons)
   process.rochesterCorrectionPath = cms.Path(process.rochesterCorrectionSeq)
   return process.rochesterCorrectionPath
-
 
 def jetOverloading(process,jets):
   process.patOverloadedJets = cms.EDProducer('PATJetOverloader',
