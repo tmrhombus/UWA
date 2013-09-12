@@ -9,13 +9,8 @@ analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
                                   pyModuleName = __name__,
                                   pyNameSpace = locals())
 
-analysisConfigurator.addSmearing('patOverloadedTaus','recorrMuons','cleanPatElectrons','cleanPatJets','systematicsMET')#cleanPatJets
-#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','systematicsMET')#cleanPatJets
-#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','NewSelectedPatJets','systematicsMET')#cleanPatJets
-#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','NewCleanedPatJets','systematicsMET')#cleanPatJets
-#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','patJetMCMatched','systematicsMET')#cleanPatJets
-#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','patOverloadedJets','systematicsMET')#cleanPatJets
-#analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','patBpmRecoJets','systematicsMET')#cleanPatJets
+analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','systematicsMET')
+
 
 DiMuonPreSel='leg1.isGlobalMuon && leg1.isTrackerMuon && leg2.isGlobalMuon && leg2.isTrackerMuon && leg1.pt()>20 && leg2.pt()>20'
 DiMuonPreSel2='(leg1.isolationR03().sumPt+leg1.isolationR03().emEt+leg1.isolationR03().hadEt)/leg1.pt()<0.15 '
@@ -23,30 +18,14 @@ DiMuonPreSel3='(leg2.isolationR03().sumPt+leg2.isolationR03().emEt+leg2.isolatio
 
 #Make Di Muons to VETO DY
 analysisConfigurator.addDiCandidateModule('diMuons','PATMuPairProducer', 'smearedMuons','smearedMuons','smearedMET','smearedJets',0,9999,text = '',leadingObjectsOnly = True,dR = 0.15,recoMode = "")
-#analysisConfigurator.addDiCandidateModule('diMuons','PATMuPairProducer', 'cleanPatMuons','cleanPatMuons','systematicsMET','cleanPatJets',0,9999,text = '',leadingObjectsOnly = True,dR = 0.15,recoMode = "")
 analysisConfigurator.addSelector('diMuonsSel','PATMuPairSelector',DiMuonPreSel+'&&'+DiMuonPreSel2+'&&'+DiMuonPreSel3,'diMuonSel',0,999)
 analysisConfigurator.addSorter('diMuonsSorted','PATMuPairSorter')
 
 #Make Muons+MET cleanPatJets
-#analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','cleanPatMuons','systematicsMET','cleanPatJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
 analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','smearedMuons','smearedMET','smearedJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
 
-#analysisConfigurator.addCandidateMETModule('eCands','PATElectronNuPairProducer','cleanPatElectronss','systematicsMET','cleanPatJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
-#analysisConfigurator.addCandidateMETModule('wGenCands','PATCandNuPairProducer','genMuons','genNeutrinos','cleanPatJets',0,9999,'')
 
-#analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1','wCandsKIN',1)
 analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1&&nJets>1','wCandsKIN',1)
 analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','lepton.userInt("WWID2011")==1','wCandsSel',1)
-#analysisConfigurator.addSorter('wCandsJets','PATMuonNuPairSorter')
-#analysisConfigurator.addGeneric('wCandsJetFetch','MuonNuPairJetFetcher')
-#analysisConfigurator.addSelector('wCandsJetSel','PATMuonNuPairSelector','pt>20&&abs(eta)<2.4&&nConstituents>1&&neutralHadronEnergyFraction<0.99&&neutralEmEnergyFraction<0.99&&chargedMultiplicity>0&&chargedHadronEnergyFraction>0.0&&chargedEmEnergyFraction<0.99','wCandsJets',1)
-
-#analysisConfigurator.addSelector('wCandsJetsPlot','PATMuonNuPairSelector','nJets>1','wCandsJets',1)
-
-#
-#make Gen Ws
-
-#analysisConfigurator.addSelector('wCandsGoodMuon','PATMuonNuPairSelector','lepton.pt()>20&&abs(lepton.eta())<2.4','OneLeptonInAcceptance',1)
 
 selectionSequence =analysisConfigurator.returnSequence()
-#selectionSequence =analysisConfigurator.returnSequence()

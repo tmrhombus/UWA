@@ -41,11 +41,10 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
    #ReRunJetsData(process,isMC=itsMC,isData=itsData)
    ReNameJetColl(process)
 
-  #jetMCMatching(process,"NewSelectedPatJets")
   jetOverloading(process,"NewSelectedPatJets")
-  rochesterCorrections(process,itsMC,itsData)
-  SVReconstruction(process,"patOverloadedJets","recorrMuons",isMC=itsMC,isData=itsData)  
-  applyDefaultSelectionsPT(process,"patBRecoJets","recorrMuons")
+  rochesterCorrector(process)
+  SVReconstruction(process,"patOverloadedJets","rochCorMuons",isMC=itsMC,isData=itsData)  
+  applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
   #mvaMet(process) #Build MVA MET
@@ -380,6 +379,15 @@ def rochesterCorrections(process,itsMC=False,itsData=False):
   process.rochesterCorrectionSeq = cms.Sequence(process.corrMuons * process.recorrMuons)
   process.rochesterCorrectionPath = cms.Path(process.rochesterCorrectionSeq)
   return process.rochesterCorrectionPath
+
+def rochesterCorrector(process,muons="cleanPatMuons",rochCor="RochCor2012"):
+  process.rochCorMuons = cms.EDProducer("PATMuonRochesterCorrector",
+   src = cms.InputTag( muons ),
+   corr_type = cms.string( "p4_" + rochCor )
+  )
+  process.rochCorMuonsSeq = cms.Sequence(process.rochCorMuons)
+  process.rochCorMuonsPath= cms.Path(process.rochCorMuonsSeq)
+  return process.rochCorMuonsPath
 
 
 def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
