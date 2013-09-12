@@ -1,16 +1,13 @@
 import FWCore.ParameterSet.Config as cms
 
-
 #Import tool that creates the cut sequence
 from UWAnalysis.Configuration.tools.CutSequenceProducer import *
-
 
 analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
                                   pyModuleName = __name__,
                                   pyNameSpace = locals())
 
 analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','systematicsMET')
-
 
 DiMuonPreSel='leg1.isGlobalMuon && leg1.isTrackerMuon && leg2.isGlobalMuon && leg2.isTrackerMuon && leg1.pt()>20 && leg2.pt()>20'
 DiMuonPreSel2='(leg1.isolationR03().sumPt+leg1.isolationR03().emEt+leg1.isolationR03().hadEt)/leg1.pt()<0.15 '
@@ -24,8 +21,7 @@ analysisConfigurator.addSorter('diMuonsSorted','PATMuPairSorter')
 #Make Muons+MET cleanPatJets
 analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','smearedMuons','smearedMET','smearedJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
 
-
-analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1&&nJets>1','wCandsKIN',1)
-analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','lepton.userInt("WWID2011")==1','wCandsSel',1)
+analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1 && lepton.userInt("WWID")==1' ,'wCandsKIN',1)
+analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>1','wCandsSel',1)
 
 selectionSequence =analysisConfigurator.returnSequence()
