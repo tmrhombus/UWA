@@ -35,10 +35,8 @@ pushd $CMSSW_BASE/src/JetMETCorrections/METPUSubtraction/test/
 ./setup.sh
 popd
 pushd $CMSSW_BASE/src
-patch -p0 -N < UWAnalysis/recipe/patches/fixMVAMET_CVSConflicts.patch
+patch -p0 -N < UWAnalysis/patches/fixMVAMET_CVSConflicts.patch
 cvs up -r 1.6 PhysicsTools/PatAlgos/plugins/PATMHTProducer.h
-# This is a bug in setup.sh
-cvs up -r METPU_5_3_X_v3 RecoJets/JetProducers
 
 cvs co -r V01-04-23 RecoTauTag/RecoTau #equivalent to 04-14
 cvs co -r V01-04-10 RecoTauTag/Configuration
@@ -50,5 +48,4 @@ cvs co -r V04-01-03      RecoLuminosity/LumiDB
 
 cvs co PhysicsTools/PythonAnalysis
 cvs co FWCore/PythonUtilities
-# cvs co RecoBTag/ImpactParameter
 popd
