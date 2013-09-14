@@ -82,18 +82,3 @@ cvs co -r V00-01-04s TauAnalysis/CandidateTools
 cvs co -r V00-03-13 CommonTools/ParticleFlow
 
 cvs co -r V04-01-09 RecoLuminosity/LumiDB
-
-# Add and patch to way speed up trigger matching
-# Don't crash if patch already applied.
-set +o errexit
-echo "Applying pat trigger matching speedup"
-patch -N -p0 < UWAnalysis/recipe/patches/V06-04-16_DataFormats_PatCandidates_PassStrByRef.patch
-set -o errexit
-
-# Set the compile time flag which enables PAT modules that have external
-# dependencies.
-cat > $CMSSW_BASE/src/UWAnalysis/PatTools/interface/PATProductionFlag.h << EOF
-#define ENABLE_PAT_PROD
-EOF
-
-
