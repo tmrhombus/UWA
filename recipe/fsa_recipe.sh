@@ -87,12 +87,12 @@ cvs co -r V04-01-09 RecoLuminosity/LumiDB
 # Don't crash if patch already applied.
 set +o errexit
 echo "Applying pat trigger matching speedup"
-patch -N -p0 < FinalStateAnalysis/recipe/patches/V06-04-16_DataFormats_PatCandidates_PassStrByRef.patch
+patch -N -p0 < UWAnalysis/recipe/patches/V06-04-16_DataFormats_PatCandidates_PassStrByRef.patch
 set -o errexit
 
 # Set the compile time flag which enables PAT modules that have external
 # dependencies.
-cat > $CMSSW_BASE/src/FinalStateAnalysis/PatTools/interface/PATProductionFlag.h << EOF
+cat > $CMSSW_BASE/src/UWAnalysis/PatTools/interface/PATProductionFlag.h << EOF
 #define ENABLE_PAT_PROD
 EOF
 
