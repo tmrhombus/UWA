@@ -20,7 +20,7 @@ kinit <user_name>@CERN.CH; aklog -cell cern.ch
 Clone From GIT
 ```bash
 git clone https://github.com/tmrhombus/UWAnalysis.git
-./UWAnalysis/recipe
+./UWAnalysis/recipe/recipe.sh
 ```
 
 check before compiling ``showtags`` should give 40 (fewer could mean cvs not up)
