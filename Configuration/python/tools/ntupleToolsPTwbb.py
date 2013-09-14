@@ -8,6 +8,230 @@ def addMuNuEventTreePtDat(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted'
                               coreCollections = cms.VInputTag(
                                    cms.InputTag(src)
                               ),
+                              J4_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J3_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J2_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J1_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(0)
+                              ),
                               PVs = cms.PSet(
                                     pluginType = cms.string("VertexSizeFiller"),
                                     src = cms.InputTag("primaryVertexFilter"),
@@ -1398,6 +1622,230 @@ def addMuNuEventTreePtMC(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted',
                               coreCollections = cms.VInputTag(
                                    cms.InputTag(src)
                               ),
+                              J4_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J4_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J4_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(3)
+                              ),
+                              J3_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J3_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J3_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(2)
+                              ),
+                              J2_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J2_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J2_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(1)
+                              ),
+                              J1_PUID_beta = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_beta"),
+                                  method = cms.string('userFloat("PUID_beta")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaClassic"),
+                                  method = cms.string('userFloat("PUID_betaClassic")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaStar = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaStar"),
+                                  method = cms.string('userFloat("PUID_betaStar")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaStarClassic = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaStarClassic"),
+                                  method = cms.string('userFloat("PUID_betaStarClassic")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_nTrack = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_nTrack"),
+                                  method = cms.string('userFloat("PUID_nTrack")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_closestDz = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_closestDz"),
+                                  method = cms.string('userFloat("PUID_closestDz")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_closestDxy = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_closestDxy"),
+                                  method = cms.string('userFloat("PUID_closestDxy")'),
+                                  rank = cms.untracked.double(0)
+                              ),
+                              J1_PUID_betaStarClassicMod = cms.PSet(
+                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+                                  src = cms.InputTag(src),
+                                  tag = cms.string("J1_PUID_betaStarClassicMod"),
+                                  method = cms.string('userFloat("PUID_betaStarClassicMod")'),
+                                  rank = cms.untracked.double(0)
+                              ),
                               topweight= cms.PSet(
                                    pluginType = cms.string("TopWeight"),
                                    src = cms.InputTag("genParticles")
@@ -1441,13 +1889,13 @@ def addMuNuEventTreePtMC(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted',
                                   tag = cms.string("DiSVPt"),
                                   method = cms.string('SV1SV2Pt')
                               ),
-                              J1SV_M = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J1SVM"),
-                                  method = cms.string('userFloat("SV_M")'),
-                                  rank = cms.untracked.double(0)
-                              ),
+#                              J1SV_M = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J1SVM"),
+#                                  method = cms.string('userFloat("SV_M")'),
+#                                  rank = cms.untracked.double(0)
+#                              ),
                                J1SV_Pt = cms.PSet(
                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                   src = cms.InputTag(src),
@@ -1469,13 +1917,13 @@ def addMuNuEventTreePtMC(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted',
                                   method = cms.string('userFloat("SV_phi")'),
                                   rank = cms.untracked.double(0)
                               ),
-                               J2SV_M = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2SVM"),
-                                  method = cms.string('userFloat("SV_M")'),
-                                  rank = cms.untracked.double(1)
-                              ),
+#                               J2SV_M = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2SVM"),
+#                                  method = cms.string('userFloat("SV_M")'),
+#                                  rank = cms.untracked.double(1)
+#                              ),
                                J2SV_Pt = cms.PSet(
                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                   src = cms.InputTag(src),
@@ -1497,12 +1945,12 @@ def addMuNuEventTreePtMC(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted',
                                   method = cms.string('userFloat("SV_phi")'),
                                   rank = cms.untracked.double(1)
                               ),
-                               DiJetHadZMass = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("hadMassZ"),
-                                  method = cms.string('massZ')
-                              ),
+#                               DiJetHadZMass = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("hadMassZ"),
+#                                  method = cms.string('massZ')
+#                              ),
                                muNuFirstBpm3charge = cms.PSet(
                                    pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                    src = cms.InputTag(src),
@@ -1636,62 +2084,62 @@ def addMuNuEventTreePtMC(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted',
                                    method = cms.string("phi()"),
                                    leadingOnly=cms.untracked.bool(False)
                                    ),
-                                bCandidates1PT= cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidate1Pt'),
-                                   method     = cms.string("BC1PT()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ),
-                                bCandidates2PT = cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidate2Pt'),
-                                   method     = cms.string("BC2PT()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ),
-                                bCandidates1ETA = cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidate1Eta'),
-                                   method     = cms.string("BC1ETA()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ),
-                                bCandidates2ETA = cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidate2Eta'),
-                                   method     = cms.string("BC2ETA()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ),
-                                bCandidates1PHI = cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidate1Phi'),
-                                   method     = cms.string("BC1PHI()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ),
-                                bCandidates2PHI = cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidate2Phi'),
-                                   method     = cms.string("BC2PHI()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ),
-                                bCandidatesBDeltaR = cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidateBDeltaR'),
-                                   method     = cms.string("BCDeltaR()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ),
-                                bCandidatesBDeltaPhi = cms.PSet(
-                                   pluginType = cms.string("bCandidatesFiller"),
-                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
-                                   tag        = cms.string('bCandidateDeltaPhi'),
-                                   method     = cms.string("BDeltaPHI()"),
-                                   leadingOnly=cms.untracked.bool(False)
-                                   ), 
+#                                bCandidates1PT= cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidate1Pt'),
+#                                   method     = cms.string("BC1PT()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ),
+#                                bCandidates2PT = cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidate2Pt'),
+#                                   method     = cms.string("BC2PT()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ),
+#                                bCandidates1ETA = cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidate1Eta'),
+#                                   method     = cms.string("BC1ETA()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ),
+#                                bCandidates2ETA = cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidate2Eta'),
+#                                   method     = cms.string("BC2ETA()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ),
+#                                bCandidates1PHI = cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidate1Phi'),
+#                                   method     = cms.string("BC1PHI()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ),
+#                                bCandidates2PHI = cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidate2Phi'),
+#                                   method     = cms.string("BC2PHI()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ),
+#                                bCandidatesBDeltaR = cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidateBDeltaR'),
+#                                   method     = cms.string("BCDeltaR()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ),
+#                                bCandidatesBDeltaPhi = cms.PSet(
+#                                   pluginType = cms.string("bCandidatesFiller"),
+#                                   src        = cms.InputTag('LCProducer','BCandFinalState'),
+#                                   tag        = cms.string('bCandidateDeltaPhi'),
+#                                   method     = cms.string("BDeltaPHI()"),
+#                                   leadingOnly=cms.untracked.bool(False)
+#                                   ), 
                               cSIZE2= cms.PSet(
                                   pluginType = cms.string("CollectionSizeFiller"),
                                   src = cms.InputTag("cbarCands"),
@@ -1755,48 +2203,48 @@ def addMuNuEventTreePtMC(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted',
                                   method = cms.string('userFloat("top")'),
                                   rank = cms.untracked.double(0)
                               ),
-                              muNuJ1mu1Mass = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J1Mu1ZMass"),
-                                  method = cms.string('userFloat("muon1ZMass")'),
-                                  rank = cms.untracked.double(0)
-                                  ),
-                              muNuJ2mu1Mass = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2Mu1ZMass"),
-                                  method = cms.string('userFloat("muon1ZMass")'),
-                                  rank = cms.untracked.double(1)
-                                  ),
-                              muNuJ1mu1 = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J1muon1pt"),
-                                  method = cms.string('userFloat("muon1pt")'),
-                                  rank = cms.untracked.double(0)
-                                  ),
-                              muNuJ1mu2 = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J1muon2pt"),
-                                  method = cms.string('userFloat("muon2pt")'),
-                                  rank = cms.untracked.double(0)
-                                  ),
-                              muNuJ2mu1 = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2muon1pt"),
-                                  method = cms.string('userFloat("muon1pt")'),
-                                  rank = cms.untracked.double(1)
-                                  ),
-                              muNuJ2mu2 = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2muon2pt"),
-                                  method = cms.string('userFloat("muon2pt")'),
-                                  rank = cms.untracked.double(1)
-                                  ),
+#                              muNuJ1mu1Mass = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J1Mu1ZMass"),
+#                                  method = cms.string('userFloat("muon1ZMass")'),
+#                                  rank = cms.untracked.double(0)
+#                                  ),
+#                              muNuJ2mu1Mass = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2Mu1ZMass"),
+#                                  method = cms.string('userFloat("muon1ZMass")'),
+#                                  rank = cms.untracked.double(1)
+#                                  ),
+#                              muNuJ1mu1 = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J1muon1pt"),
+#                                  method = cms.string('userFloat("muon1pt")'),
+#                                  rank = cms.untracked.double(0)
+#                                  ),
+#                              muNuJ1mu2 = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J1muon2pt"),
+#                                  method = cms.string('userFloat("muon2pt")'),
+#                                  rank = cms.untracked.double(0)
+#                                  ),
+#                              muNuJ2mu1 = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2muon1pt"),
+#                                  method = cms.string('userFloat("muon1pt")'),
+#                                  rank = cms.untracked.double(1)
+#                                  ),
+#                              muNuJ2mu2 = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2muon2pt"),
+#                                  method = cms.string('userFloat("muon2pt")'),
+#                                  rank = cms.untracked.double(1)
+#                                  ),
                               muNuJ1DR = cms.PSet(
                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
                                   src = cms.InputTag(src),
@@ -2096,104 +2544,104 @@ def addMuNuEventTreePtMC(process,name,src = 'wCandsJets',srcZ = 'diMuonsSorted',
                                    method = cms.string('userFloat("mass_SSV")'),
                                    rank = cms.untracked.double(1)
                                ),
-                               muNuFirstMuonMulti = cms.PSet(
-                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                   src = cms.InputTag(src),
-                                   tag = cms.string("J1MuonMulti"),
-                                   method = cms.string('muonMultiplicity()'),
-                                   rank = cms.untracked.double(0)
-                               ),
-                               muNuSecondMuonMulti = cms.PSet(
-                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                   src = cms.InputTag(src),
-                                   tag = cms.string("J2MuonMulti"),
-                                   method = cms.string('muonMultiplicity()'),
-                                   rank = cms.untracked.double(1)
-                               ),
-                               muNuThirdMuonMulti = cms.PSet(
-                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                   src = cms.InputTag(src),
-                                   tag = cms.string("J3MuonMulti"),
-                                   method = cms.string('muonMultiplicity()'),
-                                   rank = cms.untracked.double(2)
-                               ),
-                               muNuFirstChargeMulti = cms.PSet(
-                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J1ChargeMulti"),
-                                  method = cms.string('chargedMultiplicity()'),
-                                  rank = cms.untracked.double(0)
-                              ),
-                              muNuSecondChargeMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2ChargeMulti"),
-                                  method = cms.string('chargedMultiplicity()'),
-                                  rank = cms.untracked.double(1)
-                              ),
-                              muNuThirdChargeMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J3ChargeMulti"),
-                                  method = cms.string('chargedMultiplicity()'),
-                                  rank = cms.untracked.double(2)
-                              ),
-                              muNuFirstElectronMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J1EleMulti"),
-                                  method = cms.string('electronMultiplicity()'),
-                                  rank = cms.untracked.double(0)
-                              ),
-                              muNuSecondElectronMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2EleMulti"),
-                                  method = cms.string('electronMultiplicity()'),
-                                  rank = cms.untracked.double(1)
-                              ),
-                              muNuThirdElectronMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J3EleMulti"),
-                                  method = cms.string('electronMultiplicity()'),
-                                  rank = cms.untracked.double(2)
-                              ),
-                              muNuFirstPhotonMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J1PhotonMulti"),
-                                  method = cms.string('photonMultiplicity()'),
-                                  rank = cms.untracked.double(0)
-                              ),
-                              muNuSecondPhotonMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2PhotonMulti"),
-                                  method = cms.string('photonMultiplicity()'),
-                                  rank = cms.untracked.double(1)
-                              ),
-                              muNuThirdPhotonMulti = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J3PhotonMulti"),
-                                  method = cms.string('photonMultiplicity()'),
-                                  rank = cms.untracked.double(2)
-                              ),
-                              muNuSecondJetFlavor = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J2JetParton"),
-                                  method = cms.string('partonFlavour()'),
-                                  rank = cms.untracked.double(1)
-                              ),
-                              muNuThirdJetFlavor = cms.PSet(
-                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-                                  src = cms.InputTag(src),
-                                  tag = cms.string("J3JetParton"),
-                                  method = cms.string('partonFlavour()'),
-                                  rank = cms.untracked.double(2)
-                              ),
+#                               muNuFirstMuonMulti = cms.PSet(
+#                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                   src = cms.InputTag(src),
+#                                   tag = cms.string("J1MuonMulti"),
+#                                   method = cms.string('muonMultiplicity()'),
+#                                   rank = cms.untracked.double(0)
+#                               ),
+#                               muNuSecondMuonMulti = cms.PSet(
+#                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                   src = cms.InputTag(src),
+#                                   tag = cms.string("J2MuonMulti"),
+#                                   method = cms.string('muonMultiplicity()'),
+#                                   rank = cms.untracked.double(1)
+#                               ),
+#                               muNuThirdMuonMulti = cms.PSet(
+#                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                   src = cms.InputTag(src),
+#                                   tag = cms.string("J3MuonMulti"),
+#                                   method = cms.string('muonMultiplicity()'),
+#                                   rank = cms.untracked.double(2)
+#                               ),
+#                               muNuFirstChargeMulti = cms.PSet(
+#                                   pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J1ChargeMulti"),
+#                                  method = cms.string('chargedMultiplicity()'),
+#                                  rank = cms.untracked.double(0)
+#                              ),
+#                              muNuSecondChargeMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2ChargeMulti"),
+#                                  method = cms.string('chargedMultiplicity()'),
+#                                  rank = cms.untracked.double(1)
+#                              ),
+#                              muNuThirdChargeMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J3ChargeMulti"),
+#                                  method = cms.string('chargedMultiplicity()'),
+#                                  rank = cms.untracked.double(2)
+#                              ),
+#                              muNuFirstElectronMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J1EleMulti"),
+#                                  method = cms.string('electronMultiplicity()'),
+#                                  rank = cms.untracked.double(0)
+#                              ),
+#                              muNuSecondElectronMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2EleMulti"),
+#                                  method = cms.string('electronMultiplicity()'),
+#                                  rank = cms.untracked.double(1)
+#                              ),
+#                              muNuThirdElectronMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J3EleMulti"),
+#                                  method = cms.string('electronMultiplicity()'),
+#                                  rank = cms.untracked.double(2)
+#                              ),
+#                              muNuFirstPhotonMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J1PhotonMulti"),
+#                                  method = cms.string('photonMultiplicity()'),
+#                                  rank = cms.untracked.double(0)
+#                              ),
+#                              muNuSecondPhotonMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2PhotonMulti"),
+#                                  method = cms.string('photonMultiplicity()'),
+#                                  rank = cms.untracked.double(1)
+#                              ),
+#                              muNuThirdPhotonMulti = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J3PhotonMulti"),
+#                                  method = cms.string('photonMultiplicity()'),
+#                                  rank = cms.untracked.double(2)
+#                              ),
+#                              muNuSecondJetFlavor = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J2JetParton"),
+#                                  method = cms.string('partonFlavour()'),
+#                                  rank = cms.untracked.double(1)
+#                              ),
+#                              muNuThirdJetFlavor = cms.PSet(
+#                                  pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+#                                  src = cms.InputTag(src),
+#                                  tag = cms.string("J3JetParton"),
+#                                  method = cms.string('partonFlavour()'),
+#                                  rank = cms.untracked.double(2)
+#                              ),
                               gent = cms.PSet(
                                   pluginType = cms.string("CollectionSizeFiller"),
                                   src = cms.InputTag("gentCands"),

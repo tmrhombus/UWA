@@ -42,8 +42,9 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
    ReNameJetColl(process)
 
   jetOverloading(process,"NewSelectedPatJets")
+  jetPUEmbedding(process,"patOverloadedJets")
   rochesterCorrector(process)
-  SVReconstruction(process,"patOverloadedJets","rochCorMuons",isMC=itsMC,isData=itsData)  
+  SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)  
   applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
@@ -353,32 +354,14 @@ def jetOverloading(process,jets):
   process.jetOverloadingPath=cms.Path(process.jetOverloadingSeq)
 
 
-def rochesterCorrections(process,itsMC=False,itsData=False):
-  process.corrMuons = cms.EDProducer("PATMuonCalibrationChooser",
-   src = cms.InputTag("cleanPatMuons"),
-   rochcorType = cms.string("RochCor2012") # Rochester Correction types: RochCor2011A, RochCor2011B, RochCor2012
+def jetPUEmbedding(process,jets):
+  process.patPUEmbeddedJets = cms.EDProducer('PATSimplePUID',
+                                        src = cms.InputTag(jets),
+                                        vertices=cms.InputTag("offlinePrimaryVertices")
   )
-  if itsMC is True:
-   process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
-    src = cms.InputTag("corrMuons"),
-    isMC = cms.bool(True),
-    isSync = cms.bool(False),
-   )
-  elif itsData is True:
-   process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
-    src = cms.InputTag("corrMuons"),
-    isMC = cms.bool(False),
-    isSync = cms.bool(False),
-   )
-#  # could this work?  try later when i'm actually able to test with working code
-#  process.recorrMuons = cms.EDProducer("PATMuonRochesterEmbedder",
-#   src = cms.InputTag("corrMuons"),
-#   isMC = cms.bool(itsMC),
-#   isSync = cms.bool(itsData),
-#  )
-  process.rochesterCorrectionSeq = cms.Sequence(process.corrMuons * process.recorrMuons)
-  process.rochesterCorrectionPath = cms.Path(process.rochesterCorrectionSeq)
-  return process.rochesterCorrectionPath
+  process.jetPUEmbeddingSeq = cms.Sequence(process.patPUEmbeddedJets)
+  process.jetPUEmbeddingPath=cms.Path(process.jetPUEmbeddingSeq)
+
 
 def rochesterCorrector(process,muons="cleanPatMuons",rochCor="RochCor2012"):
   process.rochCorMuons = cms.EDProducer("PATMuonRochesterCorrector",
@@ -440,7 +423,8 @@ def applyDefaultSelectionsPT(process,jets,muons):
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
                                         src = cms.InputTag(jets),
                                         #preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0&&pt>10&&userInt("simpleIdLoose")>0'),#&&userFloat("fullDiscriminant")>0
-                                        preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0&&pt>10&&userInt("fullIdLoose")>0'),#&&userFloat("fullDiscriminant")>0
+                                        preselection = cms.string('abs(eta)<5.0&&pt>20'),#&&userFloat("fullDiscriminant")>0
+                                        #preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0&&pt>10&&userInt("fullIdLoose")>0'),#&&userFloat("fullDiscriminant")>0
                                         checkOverlaps = cms.PSet( 
                                             muons = cms.PSet(
                                              src = cms.InputTag(muons),
