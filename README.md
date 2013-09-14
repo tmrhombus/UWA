@@ -6,8 +6,8 @@ UW Analysis for 53x (8Tev)
 download this using the recipe below:
 
 ```bash
-scram pro CMSSW CMSSW_5_3_9
-cd CMSSW_5_3_9/src/
+scram pro -n MyWorkingAreaName CMSSW CMSSW_5_3_9
+cd MyWorkingAreaName/src/
 
 cmsenv
 ```
