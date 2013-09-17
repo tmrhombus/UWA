@@ -1,7 +1,7 @@
 #!/bin/sh
 voms-proxy-init --voms cms --valid 100:00
 
-version="JetID"
+version="looseID"
 
 cat MNu-Pat_Data.py  > MuNuPATDat.py
 cat CONDOR_DATA.py >> MuNuPATDat.py
