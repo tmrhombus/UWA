@@ -403,8 +403,6 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
 
 
 def applyDefaultSelectionsPT(process,jets,muons):
-  #DONT CHANGE THOSE HERE:: THEY ARE NOT USED FOR YOUR SELECTIONS!!!
-  #ONLY FOR SYSTEMATICS . PLEASE CHANGE THEM in YOUR CFG FILE IF REALLY NEEDED
   process.selectedPatTaus = cms.EDFilter("PATTauSelector",
                                            src = cms.InputTag("cleanPatTaus"),
                                            cut = cms.string('pt>15&&tauID("byLooseIsolationMVA")&&tauID("againstElectronLoose")&&tauID("againstMuonLoose")'),
@@ -422,9 +420,7 @@ def applyDefaultSelectionsPT(process,jets,muons):
    )
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
                                         src = cms.InputTag(jets),
-                                        #preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0&&pt>10&&userInt("simpleIdLoose")>0'),#&&userFloat("fullDiscriminant")>0
-                                        preselection = cms.string('abs(eta)<5.0&&pt>20'),#&&userFloat("fullDiscriminant")>0
-                                        #preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0&&pt>10&&userInt("fullIdLoose")>0'),#&&userFloat("fullDiscriminant")>0
+                                        preselection = cms.string('abs(eta)<5.0&&pt>20&&userFloat("idLoose")>0'),
                                         checkOverlaps = cms.PSet( 
                                             muons = cms.PSet(
                                              src = cms.InputTag(muons),

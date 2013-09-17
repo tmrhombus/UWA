@@ -1030,42 +1030,42 @@ def makeCollections(process, source = 'wCandsJets', sourceZ = 'diMuonsSorted'):
          pluginType = cms.string("PATMuonNuPairJetCountFiller"),
          src = cms.InputTag(source),
          tag = cms.string("nJetsPt30"),
-         method = cms.string('userInt("fullIdLoose")>0&&pt()>30&&abs(eta())<2.4'),
+         method = cms.string('pt()>30&&abs(eta())<2.4'),
          leadingOnly=cms.untracked.bool(True)
      ),
      muNuJetsPt25 = cms.PSet(
          pluginType = cms.string("PATMuonNuPairJetCountFiller"),
          src = cms.InputTag(source),
          tag = cms.string("nJetsPt25"),
-         method = cms.string('userInt("fullIdLoose")>0&&userFloat("idLoose")&&pt()>25&&abs(eta())<2.4'),
+         method = cms.string('userFloat("idLoose")&&pt()>25&&abs(eta())<2.4'),
          leadingOnly=cms.untracked.bool(True)
      ),
      muNuJetsPt26 = cms.PSet(
          pluginType = cms.string("PATMuonNuPairJetCountFiller"),
          src = cms.InputTag(source),
          tag = cms.string("nJetsPt26"),
-         method = cms.string('userInt("fullIdLoose")>0&&pt()>26&&abs(eta())<2.4'),
+         method = cms.string('pt()>26&&abs(eta())<2.4'),
          leadingOnly=cms.untracked.bool(True)
      ),
      muNuJetsPt24 = cms.PSet(
          pluginType = cms.string("PATMuonNuPairJetCountFiller"),
          src = cms.InputTag(source),
          tag = cms.string("nJetsPt24"),
-         method = cms.string('userInt("fullIdLoose")>0&&pt()>24&&abs(eta())<2.4'),
+         method = cms.string('pt()>24&&abs(eta())<2.4'),
          leadingOnly=cms.untracked.bool(True)
      ),
      muNuJetsPt40 = cms.PSet(
          pluginType = cms.string("PATMuonNuPairJetCountFiller"),
          src = cms.InputTag(source),
          tag = cms.string("nJetsPt40"),
-         method = cms.string('userInt("fullIdLoose")>0&&pt()>40&&abs(eta())<2.4'),
+         method = cms.string('pt()>40&&abs(eta())<2.4'),
          leadingOnly=cms.untracked.bool(True)
      ),
      muNuJetsPt20 = cms.PSet(
          pluginType = cms.string("PATMuonNuPairJetCountFiller"),
          src = cms.InputTag(source),
          tag = cms.string("nJetsPt20"),
-         method = cms.string('userInt("fullIdLoose")>0&&pt()>20&&abs(eta())<2.4'),
+         method = cms.string('pt()>20&&abs(eta())<2.4'),
          leadingOnly=cms.untracked.bool(True)
      ),
      muNuFirstJetPt = cms.PSet(
