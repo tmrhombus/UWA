@@ -23,7 +23,7 @@ cvs co -r V02-02-00      RecoVertex/AdaptiveVertexFinder
 cvs co -d ZSV/BAnalysis UserCode/ZSV/BAnalysis/
 
 cvs co -r V09-00-01 RecoEgamma/EgammaTools
-cvs co -r V00-00-30-00 -d EGamma/EGammaAnalysisTools UserCode/EGamma/EGammaAnalysisTools
+cvs co -r V00-00-16 -d EGamma/EGammaAnalysisTools UserCode/EGamma/EGammaAnalysisTools
 cvs up -r 1.4 EGamma/EGammaAnalysisTools/interface/ElectronEffectiveArea.h
 cvs co -r Moriond_2013_V01-1 EgammaAnalysis/ElectronTools
 
