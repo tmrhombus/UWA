@@ -18,15 +18,36 @@ import TheParameters as p
 #sf_qcd = 2.20602589874 # v6 = newGT
 #sf_qcd = 2.01679 
 #sf_qcd = 1.92361140171
-sf_qcd = 2.03028050776 # oldGT
+#sf_qcd = 2.03028050776 # oldGT
+sf_qcd = 2.05901169 # no Jet ID
 
-sf_drell = 1.
-sf_st    = 1.
-sf_st_t  = 1.#1.025431e+06/2.497226e+06
-sf_ttbar = 1.
-sf_wjets = 1.
-sf_vv    = 1.
- 
+sf_Signal_Wbb    = 1. 
+sf_Signal_Tbar   = 1. 
+sf_Signal_tW     = 1. 
+sf_Signal_TOP    = 1. 
+sf_Signal_Z_jets = 1. 
+sf_Signal_Wcc    = 1. 
+sf_Signal_T      = 1. 
+sf_Signal_WZ     = 1. 
+
+sf_Signal_Wbb    = 0.843496560417
+sf_Signal_Tbar   = 0.405173037548
+sf_Signal_tW     = 0.554862496196
+sf_Signal_TOP    = 0.616957175393
+sf_Signal_Z_jets = 0.668850597582
+sf_Signal_Wcc    = 1.90571425048
+sf_Signal_T      = 0.0869210837154
+sf_Signal_WZ     = 0.680861988603
+
+sf_Top_Wbb       = 0.843496560417
+sf_Top_Tbar      = 1.14284540334
+sf_Top_tW        = 1.59379127993
+sf_Top_TOP       = 1.74021123474
+sf_Top_T         = 0.245172683698
+
+sf_wl = 1.
+sf_wc = 1.
+
 ratioRange = 0.3
 rebin = 1
 #canvas attributes
@@ -75,6 +96,25 @@ gStyle.SetOptStat('')
 # get parameters to run on
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
 
+if Signal:
+ sf_Wbb    = sf_Signal_Wbb   
+ sf_Tbar   = sf_Signal_Tbar  
+ sf_tW     = sf_Signal_tW    
+ sf_TOP    = sf_Signal_TOP   
+ sf_Z_jets = sf_Signal_Z_jets
+ sf_Wcc    = sf_Signal_Wcc   
+ sf_T      = sf_Signal_T     
+ sf_WZ     = sf_Signal_WZ    
+if TT_m or TT_me:
+ sf_Wbb    = sf_Top_Wbb  
+ sf_Tbar   = sf_Top_Tbar 
+ sf_tW     = sf_Top_tW   
+ sf_TOP    = sf_Top_TOP  
+ sf_Z_jets = 1.
+ sf_Wcc    = 1.
+ sf_T      = sf_Top_T    
+ sf_WZ     = 1.
+
 for leaf in leafs:
 
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
@@ -93,11 +133,14 @@ for leaf in leafs:
 
   log = open(path+i+'.log','a')
   log.write('\n\nOn Plotting SF QCD: '+str(sf_qcd)+'\n') 
-  log.write('On Plotting SF Drell: '+str(sf_drell)+'\n')
-  log.write('On Plotting SF Single Top: '+str(sf_st)+'\n')
-  log.write('On Plotting SF TTbar: '+str(sf_ttbar)+'\n')
-  log.write('On Plotting SF W: '+str(sf_wjets)+'\n')
-  log.write('On Plotting SF Diboson: '+str(sf_vv)+'\n')
+  log.write('On Plotting SF Drell: '+str(sf_Z_jets)+'\n')
+  log.write('On Plotting SF Top: '+str(sf_T)+'\n')
+  log.write('On Plotting SF tBar: '+str(sf_Tbar)+'\n')
+  log.write('On Plotting SF tW: '+str(sf_tW)+'\n')
+  log.write('On Plotting SF TTbar: '+str(sf_TOP)+'\n')
+  log.write('On Plotting SF Wbb: '+str(sf_Wbb)+'\n')
+  log.write('On Plotting SF Wcc: '+str(sf_Wcc)+'\n')
+  log.write('On Plotting SF Diboson: '+str(sf_WZ)+'\n')
   log.write('----------------------------------------\n')
   log.write('----------------------------------------\n')
   log.close()
@@ -128,25 +171,25 @@ for leaf in leafs:
   zih = theFile.Get('zih')
   zih.SetFillColor(z)
   zih.Rebin(rebin)
-  zih.Scale(sf_drell)
+  zih.Scale(sf_Z_jets)
   zih.Draw()
  #### Diboson
   wwih = theFile.Get('wwih')
   wwih.SetFillColor(d)
   wwih.Rebin(rebin)
-  wwih.Scale(sf_vv)
+  wwih.Scale(sf_WZ)
   wwih.Draw()
   ###
   wzih = theFile.Get('wzih')
   wzih.SetFillColor(d)
   wzih.Rebin(rebin)
-  wzih.Scale(sf_vv)
+  wzih.Scale(sf_WZ)
   wzih.Draw()
   ###
   zzih = theFile.Get('zzih')
   zzih.SetFillColor(d)
   zzih.Rebin(rebin)
-  zzih.Scale(sf_vv)
+  zzih.Scale(sf_WZ)
   zzih.Draw()
   ####
   dih = wwih.Clone()
@@ -159,13 +202,13 @@ for leaf in leafs:
   t_sih = theFile.Get('t_sih')
   t_sih.SetFillColor(ts)
   t_sih.Rebin(rebin)
-  t_sih.Scale(sf_st)
+  t_sih.Scale(sf_T)
   t_sih.Draw()
   ###
   tb_sih = theFile.Get('tb_sih')
   tb_sih.SetFillColor(ts)
   tb_sih.Rebin(rebin)
-  tb_sih.Scale(sf_st)
+  tb_sih.Scale(sf_T)
   tb_sih.Draw()
   #### 
   stsih = t_sih.Clone()
@@ -177,13 +220,13 @@ for leaf in leafs:
   t_tih = theFile.Get('t_tih')
   t_tih.SetFillColor(tt)
   t_tih.Rebin(rebin)
-  t_tih.Scale(sf_st_t)
+  t_tih.Scale(sf_T)
   t_tih.Draw()
   ###
   tb_tih = theFile.Get('tb_tih')
   tb_tih.SetFillColor(tt)
   tb_tih.Rebin(rebin)
-  tb_tih.Scale(sf_st)
+  tb_tih.Scale(sf_T)
   tb_tih.Draw()
   #### 
   sttih = t_tih.Clone()
@@ -195,13 +238,13 @@ for leaf in leafs:
   t_twih = theFile.Get('t_twih')
   t_twih.SetFillColor(ttw)
   t_twih.Rebin(rebin)
-  t_twih.Scale(sf_st)
+  t_twih.Scale(sf_tW)
   t_twih.Draw()
   ###
   tb_twih = theFile.Get('tb_twih')
   tb_twih.SetFillColor(ttw)
   tb_twih.Rebin(rebin)
-  tb_twih.Scale(sf_st)
+  tb_twih.Scale(sf_tW)
   tb_twih.Draw()
   #### 
   sttwih = t_twih.Clone()
@@ -209,14 +252,26 @@ for leaf in leafs:
   sttwih.Add(tb_twih)
   sttwih.Draw()
  #### TTbar
-  ttbih = theFile.Get('ttbih')
-  ttbih.SetFillColor(ttb)
-  ttbih.Rebin(rebin)
-  ttbih.Scale(sf_ttbar)
+  tt_semiih = theFile.Get('tt_semiih')
+  tt_semiih.SetFillColor(ttb)
+  tt_semiih.Rebin(rebin)
+  tt_semiih.Scale(sf_TOP)
+  tt_semiih.Draw()
+  ###
+  tt_fullih = theFile.Get('tt_fullih')
+  tt_fullih.SetFillColor(ttb)
+  tt_fullih.Rebin(rebin)
+  tt_fullih.Scale(sf_TOP)
+  tt_fullih.Draw()
+  ###
+  ttbih = tt_semiih.Clone()
+  ttbih.SetName('ttbih')
+  ttbih.Add(tt_fullih)
   ttbih.Draw()
 
   bmin = ttbih.GetXaxis().FindBin(xmin)
   bmax = ttbih.GetXaxis().FindBin(xmax)
+  print(ttbih.Integral(bmin,bmax))
  #### W + Light
   print("W + Light")
   wlnih = theFile.Get('wlnih')
@@ -250,6 +305,7 @@ for leaf in leafs:
   wlih.Add(wl2ih)
   wlih.Add(wl3ih)
   wlih.Add(wl4ih)
+  wlih.Scale(sf_wl)
   wlih.Draw()
   print(wlih.Integral(bmin,bmax))
  #### W + Charm
@@ -285,6 +341,7 @@ for leaf in leafs:
   wcih.Add(wc2ih)
   wcih.Add(wc3ih)
   wcih.Add(wc4ih)
+  wcih.Scale(sf_wc)
   wcih.Draw()
   print(wcih.Integral(bmin,bmax))
  #### W + Charming
@@ -320,6 +377,7 @@ for leaf in leafs:
   wccih.Add(wcc2ih)
   wccih.Add(wcc3ih)
   wccih.Add(wcc4ih)
+  wccih.Scale(sf_Wcc)
   wccih.Draw()
   print(wccih.Integral(bmin,bmax))
  #### W + Beautiful
@@ -355,6 +413,7 @@ for leaf in leafs:
   wbbih.Add(wbb2ih)
   wbbih.Add(wbb3ih)
   wbbih.Add(wbb4ih)
+  wbbih.Scale(sf_Wbb)
   wbbih.Draw()
   print(wbbih.Integral(bmin,bmax))
  
@@ -418,7 +477,8 @@ for leaf in leafs:
   ## Draw Z Line
   if drawZ == True:
    zline = TLine(91.188,0,91.188,1.1*theMax)
-   zline.SetLineStyle(3)
+   zline.SetLineWidth(2)
+   zline.SetLineStyle(2)
    zline.Draw()
   ## Draw W Line
   if drawW == True:
@@ -455,15 +515,15 @@ for leaf in leafs:
   else:
    datar = hh.Clone()
   datar.SetName('datar')
-#  if leaf =="Mt" and not Legacy:
-#   datar.GetXaxis().SetRangeUser(50,140)
+  if leaf =="Mt" and not noMT:
+   datar.GetXaxis().SetRangeUser(50,140)
   datar.GetYaxis().SetRangeUser(1.-ratioRange,1.+ratioRange) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
   #datar.GetXaxis().SetRangeUser(70,110)
   
-  if leaf=="Mt" and not Legacy:
+  if leaf=="Mt" and not noMT:
    l = TLine(50,1,140,1)
    l.SetLineStyle(3)
    l.Draw()
