@@ -16,7 +16,7 @@ import TheParameters as p
 
 #import scaleqcd as qs
 
-sf_qcd = 2.03028050776
+sf_qcd = 2.05901169
 sf_drell = 1.
 sf_st = 1.   
 sf_st_t = 1.
@@ -27,45 +27,47 @@ sf_vv = 1.
 #get parameters (used in cutmaker)
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
 
-CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT = ct.cutmaker(
+CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutMCnTup,CutMCiTup,CutMCnTdn,CutMCiTdn = ct.cutmaker(
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav
 )
 
-data_filename  = '../data/v6/Data.root'
-t_t_filename   = '../data/oldGT/T_t.root'
-t_s_filename   = '../data/oldGT/T_s.root'
-t_tw_filename  = '../data/oldGT/T_tW.root'
-tb_t_filename  = '../data/oldGT/Tbar_t.root'
-tb_s_filename  = '../data/oldGT/Tbar_s.root'
-tb_tw_filename = '../data/oldGT/Tbar_tW.root'
-ttb_filename   = '../data/oldGT/TTbar.root'
-ww_filename    = '../data/oldGT/WW.root'
-wz_filename    = '../data/oldGT/WZ.root'
-zz_filename    = '../data/oldGT/ZZ.root'
-wn_filename    = '../data/oldGT/WJets.root'
-w1_filename    = '../data/oldGT/W1Jet.root'
-w2_filename    = '../data/oldGT/W2Jet.root'
-w3_filename    = '../data/oldGT/W3Jet.root'
-w4_filename    = '../data/oldGT/W4Jet.root'
-z_filename     = '../data/oldGT/Drell.root'
+data_filename     = '../data/JetID/Data.root'
+t_t_filename      = '../data/JetID/T_t.root'
+t_s_filename      = '../data/JetID/T_s.root'
+t_tw_filename     = '../data/JetID/T_tW.root'
+tb_t_filename     = '../data/JetID/Tbar_t.root'
+tb_s_filename     = '../data/JetID/Tbar_s.root'
+tb_tw_filename    = '../data/JetID/Tbar_tW.root'
+tt_semi_filename  = '../data/JetID/TTbar_semi.root'
+tt_full_filename  = '../data/JetID/TTbar_full.root'
+ww_filename       = '../data/JetID/WW.root'
+wz_filename       = '../data/JetID/WZ.root'
+zz_filename       = '../data/JetID/ZZ.root'
+wn_filename       = '../data/JetID/WJets.root'
+w1_filename       = '../data/JetID/W1Jet.root'
+w2_filename       = '../data/JetID/W2Jet.root'
+w3_filename       = '../data/JetID/W3Jet.root'
+w4_filename       = '../data/JetID/W4Jet.root'
+z_filename        = '../data/JetID/Drell.root'
 
-data_file  = TFile( data_filename )
-t_t_file   = TFile( t_t_filename  )
-t_s_file   = TFile( t_s_filename  )
-t_tw_file  = TFile( t_tw_filename )
-tb_t_file  = TFile( tb_t_filename )
-tb_s_file  = TFile( tb_s_filename )
-tb_tw_file = TFile( tb_tw_filename)
-ttb_file   = TFile( ttb_filename  )
-ww_file    = TFile( ww_filename   )
-wz_file    = TFile( wz_filename   )
-zz_file    = TFile( zz_filename   )
-wn_file    = TFile( wn_filename   )
-w1_file    = TFile( w1_filename   )
-w2_file    = TFile( w2_filename   )
-w3_file    = TFile( w3_filename   )
-w4_file    = TFile( w4_filename   )
-z_file     = TFile( z_filename    )
+data_file     = TFile( data_filename )
+t_t_file      = TFile( t_t_filename  )
+t_s_file      = TFile( t_s_filename  )
+t_tw_file     = TFile( t_tw_filename )
+tb_t_file     = TFile( tb_t_filename )
+tb_s_file     = TFile( tb_s_filename )
+tb_tw_file    = TFile( tb_tw_filename)
+tt_semi_file  = TFile( tt_semi_filename  )
+tt_full_file  = TFile( tt_full_filename  )
+ww_file       = TFile( ww_filename   )
+wz_file       = TFile( wz_filename   )
+zz_file       = TFile( zz_filename   )
+wn_file       = TFile( wn_filename   )
+w1_file       = TFile( w1_filename   )
+w2_file       = TFile( w2_filename   )
+w3_file       = TFile( w3_filename   )
+w4_file       = TFile( w4_filename   )
+z_file        = TFile( z_filename    )
 
 #Start the Plotting Program
 leaf = leafs[0] 
@@ -89,23 +91,24 @@ eventTreeLocations = ['muNuEventTree/eventTree',
 for eventTreeLocation in eventTreeLocations:
  
  print('\n\n'+eventTreeLocation)
- data_tree  =  data_file.Get(eventTreeLocation) 
- t_t_tree   =  t_t_file.Get(eventTreeLocation)
- t_s_tree   =  t_s_file.Get(eventTreeLocation)
- t_tw_tree  =  t_tw_file.Get(eventTreeLocation)
- tb_t_tree  =  tb_t_file.Get(eventTreeLocation)
- tb_s_tree  =  tb_s_file.Get(eventTreeLocation)
- tb_tw_tree =  tb_tw_file.Get(eventTreeLocation)
- ttb_tree   =  ttb_file.Get(eventTreeLocation)
- ww_tree    =  ww_file.Get(eventTreeLocation)
- wz_tree    =  wz_file.Get(eventTreeLocation)
- zz_tree    =  zz_file.Get(eventTreeLocation)
- wn_tree    =  wn_file.Get(eventTreeLocation)
- w1_tree    =  w1_file.Get(eventTreeLocation)
- w2_tree    =  w2_file.Get(eventTreeLocation)
- w3_tree    =  w3_file.Get(eventTreeLocation)
- w4_tree    =  w4_file.Get(eventTreeLocation)
- z_tree     =  z_file.Get(eventTreeLocation)
+ data_tree     =  data_file.Get(eventTreeLocation) 
+ t_t_tree      =  t_t_file.Get(eventTreeLocation)
+ t_s_tree      =  t_s_file.Get(eventTreeLocation)
+ t_tw_tree     =  t_tw_file.Get(eventTreeLocation)
+ tb_t_tree     =  tb_t_file.Get(eventTreeLocation)
+ tb_s_tree     =  tb_s_file.Get(eventTreeLocation)
+ tb_tw_tree    =  tb_tw_file.Get(eventTreeLocation)
+ tt_semi_tree  =  tt_semi_file.Get(eventTreeLocation)
+ tt_full_tree  =  tt_full_file.Get(eventTreeLocation)
+ ww_tree       =  ww_file.Get(eventTreeLocation)
+ wz_tree       =  wz_file.Get(eventTreeLocation)
+ zz_tree       =  zz_file.Get(eventTreeLocation)
+ wn_tree       =  wn_file.Get(eventTreeLocation)
+ w1_tree       =  w1_file.Get(eventTreeLocation)
+ w2_tree       =  w2_file.Get(eventTreeLocation)
+ w3_tree       =  w3_file.Get(eventTreeLocation)
+ w4_tree       =  w4_file.Get(eventTreeLocation)
+ z_tree        =  z_file.Get(eventTreeLocation)
  
  
  print('----------------------------')
@@ -193,12 +196,45 @@ for eventTreeLocation in eventTreeLocations:
   print('    '+str(tb_twnhSize))
   print('    '+str(tb_twnhSizePart))
  ####  TTbar
-  print('  ttbar nonIso')
-  ttbnh,ttbnhSize,ttbnhSizePart,ttbnhEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCnT,I,F)
-  ttbnh.SetName('ttbnh')
-  ttbnh.Scale(sf_ttbar)
-  print('    '+str(ttbnhSize))
-  print('    '+str(ttbnhSizePart))
+  print('  ttbar semi nonIso')
+  tt_seminh,tt_seminhSize,tt_seminhSizePart,tt_seminhEntries = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCnT,I,F)
+  tt_seminh.SetName('tt_seminh')
+  tt_seminh.Scale(sf_ttbar)
+  print('    '+str(tt_seminhSize))
+  print('    '+str(tt_seminhSizePart))
+  print('  ttbar full nonIso')
+  tt_fullnh,tt_fullnhSize,tt_fullnhSizePart,tt_fullnhEntries = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCnT,I,F)
+  tt_fullnh.SetName('tt_fullnh')
+  tt_fullnh.Scale(sf_ttbar)
+  print('    '+str(tt_fullnhSize))
+  print('    '+str(tt_fullnhSizePart))
+  if eventTreeLocation ==  'muNuEventTree/eventTree' :
+   print('  ttbar semi nonIso Up')
+   tt_seminhUp,tt_seminhSizeUp,tt_seminhSizePartUp,tt_seminhEntriesUp = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCnTup,I,F)
+   tt_seminhUp.SetName('tt_seminhUp')
+   tt_seminhUp.Scale(sf_ttbar)
+   print('    '+str(tt_seminhSizeUp))
+   print('    '+str(tt_seminhSizePartUp))
+   print('  ttbar full nonIso Up')
+   tt_fullnhUp,tt_fullnhSizeUp,tt_fullnhSizePartUp,tt_fullnhEntriesUp = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCnTup,I,F)
+   tt_fullnhUp.SetName('tt_fullnhUp')
+   tt_fullnhUp.Scale(sf_ttbar)
+   print('    '+str(tt_fullnhSizeUp))
+   print('    '+str(tt_fullnhSizePartUp))
+
+   print('  ttbar semi nonIso Dn')
+   tt_seminhDn,tt_seminhSizeDn,tt_seminhSizePartDn,tt_seminhEntriesDn = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCnTdn,I,F)
+   tt_seminhDn.SetName('tt_seminhDn')
+   tt_seminhDn.Scale(sf_ttbar)
+   print('    '+str(tt_seminhSizeDn))
+   print('    '+str(tt_seminhSizePartDn))
+   print('  ttbar full nonIso Dn')
+   tt_fullnhDn,tt_fullnhSizeDn,tt_fullnhSizePartDn,tt_fullnhEntriesDn = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCnTdn,I,F)
+   tt_fullnhDn.SetName('tt_fullnhDn')
+   tt_fullnhDn.Scale(sf_ttbar)
+   print('    '+str(tt_fullnhSizeDn))
+   print('    '+str(tt_fullnhSizePartDn))
+
  ####  W
   print('  wn nonIso')
   wnnh,wnnhSize,wnnhSizePart,wnhEntries = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
@@ -248,13 +284,55 @@ for eventTreeLocation in eventTreeLocations:
   qh.Add(wwnh,-1)   #Diboson
   qh.Add(wznh,-1)
   qh.Add(zznh,-1)
-  qh.Add(ttbnh,-1)  #TTbar
+  qh.Add(tt_seminh,-1)  #TTbar
+  qh.Add(tt_fullnh,-1)  #TTbar
   qh.Add(wnnh,-1)   #W
   qh.Add(w1nh,-1)
   qh.Add(w2nh,-1)
   qh.Add(w3nh,-1)
   qh.Add(w4nh,-1)
  
+  if eventTreeLocation ==  'muNuEventTree/eventTree' :
+   qhTup = datanh.Clone()
+   qhTup.SetName('qh')
+   qhTup.Add(znh,-1)    #Drell
+   qhTup.Add(t_tnh,-1)  #Single Top
+   qhTup.Add(tb_tnh,-1)
+   qhTup.Add(t_snh,-1)
+   qhTup.Add(tb_snh,-1)
+   qhTup.Add(t_twnh,-1)
+   qhTup.Add(tb_twnh,-1)
+   qhTup.Add(wwnh,-1)   #Diboson
+   qhTup.Add(wznh,-1)
+   qhTup.Add(zznh,-1)
+   qhTup.Add(tt_seminhUp,-1)  #TTbar
+   qhTup.Add(tt_fullnhUp,-1)  #TTbar
+   qhTup.Add(wnnh,-1)   #W
+   qhTup.Add(w1nh,-1)
+   qhTup.Add(w2nh,-1)
+   qhTup.Add(w3nh,-1)
+   qhTup.Add(w4nh,-1)
+
+   qhTdn = datanh.Clone()
+   qhTdn.SetName('qh')
+   qhTdn.Add(znh,-1)    #Drell
+   qhTdn.Add(t_tnh,-1)  #Single Top
+   qhTdn.Add(tb_tnh,-1)
+   qhTdn.Add(t_snh,-1)
+   qhTdn.Add(tb_snh,-1)
+   qhTdn.Add(t_twnh,-1)
+   qhTdn.Add(tb_twnh,-1)
+   qhTdn.Add(wwnh,-1)   #Diboson
+   qhTdn.Add(wznh,-1)
+   qhTdn.Add(zznh,-1)
+   qhTdn.Add(tt_seminhDn,-1)  #TTbar
+   qhTdn.Add(tt_fullnhDn,-1)  #TTbar
+   qhTdn.Add(wnnh,-1)   #W
+   qhTdn.Add(w1nh,-1)
+   qhTdn.Add(w2nh,-1)
+   qhTdn.Add(w3nh,-1)
+   qhTdn.Add(w4nh,-1)
+
   print('qcd')
   qh.SetTitle('')
   bminq = qh.GetXaxis().FindBin(xmin)
@@ -349,12 +427,44 @@ for eventTreeLocation in eventTreeLocations:
  print('  '+str(tb_twihSize))
  print('  '+str(tb_twihSizePart))
 #### TTbar
- print('ttb Iso')
- ttbih,ttbihSize,ttbihSizePart,ttbihEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCiT,I,F)
- ttbih.SetName('ttbih')
- ttbih.Scale(sf_ttbar)
- print('  '+str(ttbihSize))
- print('  '+str(ttbihSizePart))
+ print('ttb semi Iso')
+ tt_semiih,tt_semiihSize,tt_semiihSizePart,tt_semiihEntries = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCiT,I,F)
+ tt_semiih.SetName('tt_semiih')
+ tt_semiih.Scale(sf_ttbar)
+ print('  '+str(tt_semiihSize))
+ print('  '+str(tt_semiihSizePart))
+ print('ttb full Iso')
+ tt_fullih,tt_fullihSize,tt_fullihSizePart,tt_fullihEntries = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCiT,I,F)
+ tt_fullih.SetName('tt_fullih')
+ tt_fullih.Scale(sf_ttbar)
+ print('  '+str(tt_fullihSize))
+ print('  '+str(tt_fullihSizePart))
+ if eventTreeLocation ==  'muNuEventTree/eventTree' :
+  print('ttb semi Iso Up')
+  tt_semiihUp,tt_semiihSizeUp,tt_semiihSizePartUp,tt_semiihEntriesUp = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCiTup,I,F)
+  tt_semiihUp.SetName('tt_semiihUp')
+  tt_semiihUp.Scale(sf_ttbar)
+  print('  '+str(tt_semiihSizeUp))
+  print('  '+str(tt_semiihSizePartUp))
+  print('ttb full Iso Up')
+  tt_fullihUp,tt_fullihSizeUp,tt_fullihSizePartUp,tt_fullihEntriesUp = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCiTup,I,F)
+  tt_fullihUp.SetName('tt_fullihUp')
+  tt_fullihUp.Scale(sf_ttbar)
+  print('  '+str(tt_fullihSizeUp))
+  print('  '+str(tt_fullihSizePartUp))
+  print('ttb semi Iso Dn')
+  tt_semiihDn,tt_semiihSizeDn,tt_semiihSizePartDn,tt_semiihEntriesDn = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCiTdn,I,F)
+  tt_semiihDn.SetName('tt_semiihDn')
+  tt_semiihDn.Scale(sf_ttbar)
+  print('  '+str(tt_semiihSizeDn))
+  print('  '+str(tt_semiihSizePartDn))
+  print('ttb full Iso Dn')
+  tt_fullihDn,tt_fullihSizeDn,tt_fullihSizePartDn,tt_fullihEntriesDn = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCiTdn,I,F)
+  tt_fullihDn.SetName('tt_fullihDn')
+  tt_fullihDn.Scale(sf_ttbar)
+  print('  '+str(tt_fullihSizeDn))
+  print('  '+str(tt_fullihSizePartDn))
+
 #### W + Jets
  print('wl n Iso')
  wlnih,wlnihSize,wlnihSizePart,wlnihEntries = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
@@ -514,8 +624,9 @@ for eventTreeLocation in eventTreeLocations:
   t_twihNo  = t_twih.Clone()
   t_twihNo.SetName("t_twihNo")
   t_twihNo.Add(tb_twih)
-  ttbihNo   = ttbih.Clone()
+  ttbihNo   = tt_semiih.Clone()
   ttbihNo.SetName("ttbihNo")
+  ttbihNo.Add(tt_fullih)
   wlihNo    = wlnih.Clone()
   wlihNo.SetName("wlihNo")
   wlihNo.Add(wl1ih)
@@ -540,6 +651,52 @@ for eventTreeLocation in eventTreeLocations:
   wbbihNo.Add(wbb2ih)
   wbbihNo.Add(wbb3ih)
   wbbihNo.Add(wbb4ih)
+ 
+  # qcd already taken care of
+  zihTup    = zihNo.Clone()
+  zihTup.SetName("zihTup")
+  vvihTup   = vvihNo.Clone()
+  vvihTup.SetName("vvihTup")
+  tihTup    = tihNo.Clone()
+  tihTup.SetName("tihTup")
+  tbihTup   = tbihNo.Clone()
+  tbihTup.SetName("tbihTup")
+  t_tWihTup = t_tWihNo.Clone()
+  t_tWihTup.SetName("t_tWihTup")
+  ttbihTup  = tt_fullihUp.Clone()
+  ttbihTup.SetName("ttbihTup")
+  ttbihTup.Add(tt_semiihUp)
+  wlihTup   = wlihNo.Clone()
+  wlihTup.SetName("wlihTup")
+  wcihTup   = wcihNo.Clone()
+  wcihTup.SetName("wcihTup")
+  wccihTup  = wccihNo.Clone()
+  wccihTup.SetName("wccihTup")
+  wbbihTup  = wbbihNo.Clone()
+  wbbihTup.SetName("wbbihTup")
+
+  # qcd already taken care of
+  zihTdn    = zihNo.Clone()
+  zihTdn.SetName("zihTdn")
+  vvihTdn   = vvihNo.Clone()
+  vvihTdn.SetName("vvihTdn")
+  tihTdn    = tihNo.Clone()
+  tihTdn.SetName("tihTdn")
+  tbihTdn   = tbihNo.Clone()
+  tbihTdn.SetName("tbihTdn")
+  t_tWihTdn = t_tWihNo.Clone()
+  t_tWihTdn.SetName("t_tWihTdn")
+  ttbihTdn  = tt_fullihUp.Clone()
+  ttbihTdn.SetName("ttbihTdn")
+  ttbihTdn.Add(tt_semiihUp)
+  wlihTdn   = wlihNo.Clone()
+  wlihTdn.SetName("wlihTdn")
+  wcihTdn   = wcihNo.Clone()
+  wcihTdn.SetName("wcihTdn")
+  wccihTdn  = wccihNo.Clone()
+  wccihTdn.SetName("wccihTdn")
+  wbbihTdn  = wbbihNo.Clone()
+  wbbihTdn.SetName("wbbihTdn")
 
  if eventTreeLocation == 'muNuEventTreeMuonUp/eventTree' :
   qihUp     = qh.Clone()
@@ -559,8 +716,9 @@ for eventTreeLocation in eventTreeLocations:
   t_twihUp  = t_twih.Clone()
   t_twihUp.SetName("t_twihUp")
   t_twihUp.Add(tb_twih)
-  ttbihUp   = ttbih.Clone()
+  ttbihUp   = tt_semiih.Clone()
   ttbihUp.SetName("ttbihUp")
+  ttbihUp.Add(tt_fullih)
   wlihUp    = wlnih.Clone()
   wlihUp.SetName("wlihUp")
   wlihUp.Add(wl1ih)
@@ -604,8 +762,9 @@ for eventTreeLocation in eventTreeLocations:
   t_twihDn  = t_twih.Clone()
   t_twihDn.SetName("t_twihDn")
   t_twihDn.Add(tb_twih)
-  ttbihDn   = ttbih.Clone()
+  ttbihDn   = tt_semiih.Clone()
   ttbihDn.SetName("ttbihDn")
+  ttbihDn.Add(tt_fullih)
   wlihDn    = wlnih.Clone()
   wlihDn.SetName("wlihDn")
   wlihDn.Add(wl1ih)
@@ -649,8 +808,9 @@ for eventTreeLocation in eventTreeLocations:
   t_twihJUp  = t_twih.Clone()
   t_twihJUp.SetName("t_twihJUp")
   t_twihJUp.Add(tb_twih)
-  ttbihJUp   = ttbih.Clone()
+  ttbihJUp   = tt_semiih.Clone()
   ttbihJUp.SetName("ttbihJUp")
+  ttbihJUp.Add(tt_fullih)
   wlihJUp    = wlnih.Clone()
   wlihJUp.SetName("wlihJUp")
   wlihJUp.Add(wl1ih)
@@ -694,8 +854,9 @@ for eventTreeLocation in eventTreeLocations:
   t_twihJDn  = t_twih.Clone()
   t_twihJDn.SetName("t_twihJDn")
   t_twihJDn.Add(tb_twih)
-  ttbihJDn   = ttbih.Clone()
+  ttbihJDn   = tt_semiih.Clone()
   ttbihJDn.SetName("ttbihJDn")
+  ttbihJDn.Add(tt_fullih)
   wlihJDn    = wlnih.Clone()
   wlihJDn.SetName("wlihJDn")
   wlihJDn.Add(wl1ih)
@@ -739,8 +900,9 @@ for eventTreeLocation in eventTreeLocations:
   t_twihUUp  = t_twih.Clone()
   t_twihUUp.SetName("t_twihUUp")
   t_twihUUp.Add(tb_twih)
-  ttbihUUp   = ttbih.Clone()
+  ttbihUUp   = tt_semiih.Clone()
   ttbihUUp.SetName("ttbihUUp")
+  ttbihUUp.Add(tt_fullih)
   wlihUUp    = wlnih.Clone()
   wlihUUp.SetName("wlihUUp")
   wlihUUp.Add(wl1ih)
@@ -784,8 +946,9 @@ for eventTreeLocation in eventTreeLocations:
   t_twihUDn  = t_twih.Clone()
   t_twihUDn.SetName("t_twihUDn")
   t_twihUDn.Add(tb_twih)
-  ttbihUDn   = ttbih.Clone()
+  ttbihUDn   = tt_semiih.Clone()
   ttbihUDn.SetName("ttbihUDn")
+  ttbihUDn.Add(tt_fullih)
   wlihUDn    = wlnih.Clone()
   wlihUDn.SetName("wlihUDn")
   wlihUDn.Add(wl1ih)
@@ -835,7 +998,7 @@ for eventTreeLocation in eventTreeLocations:
   log.write(' W2 Size:--------'+str(w2nhSize)+'\n')
   log.write(' W3 Size:--------'+str(w3nhSize)+'\n')
   log.write(' W4 Size:--------'+str(w4nhSize)+'\n')
-  log.write(' tt Size:--------'+str(ttbnhSize)+'\n')
+  log.write(' tt Size:--------'+str(tt_seminhSize+tt_fullnhSize)+'\n')
   log.write(' t_t Size:-------'+str(t_tnhSize)+'\n')
   log.write(' tb_t Size:------'+str(tb_tnhSize)+'\n')
   log.write(' t_s Size:-------'+str(t_snhSize)+'\n')
@@ -856,7 +1019,7 @@ for eventTreeLocation in eventTreeLocations:
   log.write(' W2 Size:--------'+str(w2nhSizePart)+'\n')
   log.write(' W3 Size:--------'+str(w3nhSizePart)+'\n')
   log.write(' W4 Size:--------'+str(w4nhSizePart)+'\n')
-  log.write(' tt Size:--------'+str(ttbnhSizePart)+'\n')
+  log.write(' tt Size:--------'+str(tt_seminhSizePart+tt_fullnhSizePart)+'\n')
   log.write(' t_t Size:-------'+str(t_tnhSizePart)+'\n')
   log.write(' tb_t Size:------'+str(tb_tnhSizePart)+'\n')
   log.write(' t_s Size:-------'+str(t_snhSizePart)+'\n')
@@ -901,7 +1064,7 @@ for eventTreeLocation in eventTreeLocations:
  log.write('  W+bb:-----------'+str(wbb2ihSizePart)+'\n')
  log.write('  W+bb:-----------'+str(wbb3ihSizePart)+'\n')
  log.write('  W+bb:-----------'+str(wbb4ihSizePart)+'\n')
- log.write('tt Size:--------'+str(ttbihSizePart)+'\n')
+ log.write('tt Size:--------'+str(tt_semiihSizePart+tt_fullihSizePart)+'\n')
  log.write('t_t Size:-------'+str(t_tihSizePart)+'\n')
  log.write('tb_t Size:------'+str(tb_tihSizePart)+'\n')
  log.write('t_s Size:-------'+str(t_sihSizePart)+'\n')
@@ -940,7 +1103,7 @@ for eventTreeLocation in eventTreeLocations:
  log.write('  W2+bb:-----------'+str(wbb2ihSize)+'\n')
  log.write('  W3+bb:-----------'+str(wbb3ihSize)+'\n')
  log.write('  W4+bb:-----------'+str(wbb4ihSize)+'\n')
- log.write('tt Size:--------'+str(ttbihSize)+'\n')
+ log.write('tt Size:--------'+str(tt_semiihSize+tt_fullihSize)+'\n')
  log.write('t_t Size:-------'+str(t_tihSize)+'\n')
  log.write('tb_t Size:------'+str(tb_tihSize)+'\n')
  log.write('t_s Size:-------'+str(t_sihSize)+'\n')
@@ -978,7 +1141,7 @@ for eventTreeLocation in eventTreeLocations:
  log.write('  W2+bb:-----------'+str(wbb2ihEntries)+'\n')
  log.write('  W3+bb:-----------'+str(wbb3ihEntries)+'\n')
  log.write('  W4+bb:-----------'+str(wbb4ihEntries)+'\n')
- log.write('tt Entries:--------'+str(ttbihEntries)+'\n')
+ log.write('tt Entries:--------'+str(tt_semiihEntries+tt_fullihEntries)+'\n')
  log.write('t_t Entries:-------'+str(t_tihEntries)+'\n')
  log.write('tb_t Entries:------'+str(tb_tihEntries)+'\n')
  log.write('t_s Entries:-------'+str(t_sihEntries)+'\n')
@@ -993,19 +1156,19 @@ for eventTreeLocation in eventTreeLocations:
   log.write('Data Entries:          '+str(dataihEntries)+'\n')
  log.write('---------------------------------------------\n')
  log.write('---------------------------------------------\n')
- log.write('DataCard Numbers\n')
- log.write('---------------------------\n')
- if drawData:
-  log.write('Data Size:      '+str(dataihSize)+'\n')
- log.write('Wbb Size:       '+str(wbbnihSize+wbb1ihSize+wbb2ihSize+wbb3ihSize+wbb4ihSize)+'\n')
- log.write('Wcc Size:       '+str(wccnihSize+wcc1ihSize+wcc2ihSize+wcc3ihSize+wcc4ihSize)+'\n')
- log.write('TTbar Size:     '+str(ttbihSize)+'\n')
- log.write('T Size:         '+str(t_tihSize+t_sihSize)+'\n')
- log.write('Tbar Size:      '+str(tb_tihSize+tb_sihSize)+'\n')
- log.write('T_tW Size:      '+str(t_twihSize+tb_twihSize)+'\n')
- log.write('Drell-Yan Size: '+str(zihSize)+'\n')
- log.write('VV Size:        '+str(wwihSize+wzihSize+zzihSize)+'\n')
- log.write('QCD Size:       '+str(qhSize)+'\n')
+ #log.write('DataCard Numbers\n')
+ #log.write('---------------------------\n')
+ #if drawData:
+ # log.write('Data Size:      '+str(dataihSize)+'\n')
+ #log.write('Wbb Size:       '+str(wbbnihSize+wbb1ihSize+wbb2ihSize+wbb3ihSize+wbb4ihSize)+'\n')
+ #log.write('Wcc Size:       '+str(wccnihSize+wcc1ihSize+wcc2ihSize+wcc3ihSize+wcc4ihSize)+'\n')
+ #log.write('TTbar Size:     '+str(tt_semiihSize+tt_fullihSize)+'\n')
+ #log.write('T Size:         '+str(t_tihSize+t_sihSize)+'\n')
+ #log.write('Tbar Size:      '+str(tb_tihSize+tb_sihSize)+'\n')
+ #log.write('T_tW Size:      '+str(t_twihSize+tb_twihSize)+'\n')
+ #log.write('Drell-Yan Size: '+str(zihSize)+'\n')
+ #log.write('VV Size:        '+str(wwihSize+wzihSize+zzihSize)+'\n')
+ #log.write('QCD Size:       '+str(qhSize)+'\n')
 
  
  znh.Delete()    #Drell
@@ -1018,7 +1181,8 @@ for eventTreeLocation in eventTreeLocations:
  wwnh.Delete()   #Diboson
  wznh.Delete()
  zznh.Delete()
- ttbnh.Delete()  #TTbar
+ tt_seminh.Delete()  #TTbar
+ tt_fullnh.Delete()  #TTbar
  wnnh.Delete()   #W
  w1nh.Delete()
  w2nh.Delete()
@@ -1035,7 +1199,8 @@ for eventTreeLocation in eventTreeLocations:
  tb_sih.Delete()
  t_twih.Delete()
  tb_twih.Delete()
- ttbih.Delete()
+ tt_semiih.Delete()
+ tt_fullih.Delete()
  wlnih.Delete()
  wl1ih.Delete()
  wl2ih.Delete()
