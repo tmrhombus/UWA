@@ -81,12 +81,24 @@ def ranger(leaf):
    xmax = 300.
    xtitle = 'm^{JJ}'
    xunits = 'GeV'
+# elif leaf == 'mJJ':
+#   steps = 200
+#   xmin = 150.
+#   xmax = 550.
+#   xtitle = 'm^{JJ}'
+#   xunits = 'GeV'
  elif leaf == 'mJ3J4':
    steps = 100
    xmin = 1.
    xmax = 300.
    xtitle = 'm^{J_{3}J_{4}}'
    xunits = 'GeV'
+# elif leaf == 'ptJJ':
+#   steps = 200
+#   xmin = 150.
+#   xmax = 550.
+#   xtitle = 'p_{T}^{JJ}'
+#   xunits = 'GeV'
  elif leaf == 'ptJJ':
    steps = 50
    xmin = 0.
@@ -126,10 +138,16 @@ def ranger(leaf):
    xtitle = leaf
    xunits = 'flavor'
  elif leaf=='J1SVMassb' or leaf =='J2SVMassb':
-   steps = 16
+   steps = 32
    xmin = 0.
    xmax = 8.
    xtitle = leaf
+   xunits = 'GeV'
+ elif leaf=='(J1SVMassb+J2SVMassb)':
+   steps = 45
+   xmin = 0.
+   xmax = 15.
+   xtitle = '(J1SV_mass + J1SV_mass)'
    xunits = 'GeV'
  elif leaf=='muonCharge':
    steps = 5
