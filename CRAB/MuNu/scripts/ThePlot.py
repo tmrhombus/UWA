@@ -30,20 +30,20 @@ sf_Signal_Wcc    = 1.
 sf_Signal_T      = 1. 
 sf_Signal_WZ     = 1. 
 
-sf_Signal_Wbb    = 0.843496560417
-sf_Signal_Tbar   = 0.405173037548
-sf_Signal_tW     = 0.554862496196
-sf_Signal_TOP    = 0.616957175393
-sf_Signal_Z_jets = 0.668850597582
-sf_Signal_Wcc    = 1.90571425048
-sf_Signal_T      = 0.0869210837154
-sf_Signal_WZ     = 0.680861988603
+sf_Signal_Wbb    = 1.66149845584
+sf_Signal_Tbar   = 0.917947900053
+sf_Signal_tW     = 0.944239130435
+sf_Signal_TOP    = 0.961875235346
+sf_Signal_T      = 0.865918051797
+sf_Signal_Z_jets = 0.929749478079
+sf_Signal_Wcc    = 0.985777777778
+sf_Signal_WZ     = 0.917359437751
 
-sf_Top_Wbb       = 0.843496560417
-sf_Top_Tbar      = 1.14284540334
-sf_Top_tW        = 1.59379127993
-sf_Top_TOP       = 1.74021123474
-sf_Top_T         = 0.245172683698
+sf_Top_T         = 0.931276309897
+sf_Top_TOP       = 1.04533223802
+sf_Top_tW        = 1.03434405309
+sf_Top_Wbb       = 1.69424487594
+sf_Top_Tbar      = 0.984493670886
 
 sf_wl = 1.
 sf_wc = 1.

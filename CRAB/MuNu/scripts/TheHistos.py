@@ -32,7 +32,7 @@ sf_vv = 1.
 #get parameters (used in cutmaker)
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
 
-CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT = ct.cutmaker(
+CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutMCnTup,CutMCiTup,CutMCnTdn,CutMCiTdn = ct.cutmaker(
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav
 )
 
@@ -56,61 +56,82 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
 #w4_filename    = '../data/v6/W4Jet.root'
 #z_filename     = '../data/v6/Drell.root'
 
-data_filename = '../data/v5/wMuNuData.root'
-t_t_filename   = '../data/oldGT/T_t.root'
-t_s_filename   = '../data/oldGT/T_s.root'
-t_tw_filename  = '../data/oldGT/T_tW.root'
-tb_t_filename  = '../data/oldGT/Tbar_t.root'
-tb_s_filename  = '../data/oldGT/Tbar_s.root'
-tb_tw_filename = '../data/oldGT/Tbar_tW.root'
-ttb_filename   = '../data/oldGT/TTbar.root'
-ww_filename    = '../data/oldGT/WW.root'
-wz_filename    = '../data/oldGT/WZ.root'
-zz_filename    = '../data/oldGT/ZZ.root'
-wn_filename    = '../data/oldGT/WJets.root'
-w1_filename    = '../data/oldGT/W1Jet.root'
-w2_filename    = '../data/oldGT/W2Jet.root'
-w3_filename    = '../data/oldGT/W3Jet.root'
-w4_filename    = '../data/oldGT/W4Jet.root'
-z_filename     = '../data/oldGT/Drell.root'
+#data_filename = '../data/v5/wMuNuData.root'
+#t_t_filename   = '../data/oldGT/T_t.root'
+#t_s_filename   = '../data/oldGT/T_s.root'
+#t_tw_filename  = '../data/oldGT/T_tW.root'
+#tb_t_filename  = '../data/oldGT/Tbar_t.root'
+#tb_s_filename  = '../data/oldGT/Tbar_s.root'
+#tb_tw_filename = '../data/oldGT/Tbar_tW.root'
+#ttb_filename   = '../data/oldGT/TTbar.root'
+#ww_filename    = '../data/oldGT/WW.root'
+#wz_filename    = '../data/oldGT/WZ.root'
+#zz_filename    = '../data/oldGT/ZZ.root'
+#wn_filename    = '../data/oldGT/WJets.root'
+#w1_filename    = '../data/oldGT/W1Jet.root'
+#w2_filename    = '../data/oldGT/W2Jet.root'
+#w3_filename    = '../data/oldGT/W3Jet.root'
+#w4_filename    = '../data/oldGT/W4Jet.root'
+#z_filename     = '../data/oldGT/Drell.root'
 
-data_file  = TFile( data_filename )
-t_t_file   = TFile( t_t_filename  )
-t_s_file   = TFile( t_s_filename  )
-t_tw_file  = TFile( t_tw_filename )
-tb_t_file  = TFile( tb_t_filename )
-tb_s_file  = TFile( tb_s_filename )
-tb_tw_file = TFile( tb_tw_filename)
-ttb_file   = TFile( ttb_filename  )
-ww_file    = TFile( ww_filename   )
-wz_file    = TFile( wz_filename   )
-zz_file    = TFile( zz_filename   )
-wn_file    = TFile( wn_filename   )
-w1_file    = TFile( w1_filename   )
-w2_file    = TFile( w2_filename   )
-w3_file    = TFile( w3_filename   )
-w4_file    = TFile( w4_filename   )
-z_file     = TFile( z_filename    )
+data_filename     = '../data/JetID/Data.root'
+t_t_filename      = '../data/JetID/T_t.root'
+t_s_filename      = '../data/JetID/T_s.root'
+t_tw_filename     = '../data/JetID/T_tW.root'
+tb_t_filename     = '../data/JetID/Tbar_t.root'
+tb_s_filename     = '../data/JetID/Tbar_s.root'
+tb_tw_filename    = '../data/JetID/Tbar_tW.root'
+tt_semi_filename  = '../data/JetID/TTbar_semi.root'
+tt_full_filename  = '../data/JetID/TTbar_full.root'
+ww_filename       = '../data/JetID/WW.root'
+wz_filename       = '../data/JetID/WZ.root'
+zz_filename       = '../data/JetID/ZZ.root'
+wn_filename       = '../data/JetID/WJets.root'
+w1_filename       = '../data/JetID/W1Jet.root'
+w2_filename       = '../data/JetID/W2Jet.root'
+w3_filename       = '../data/JetID/W3Jet.root'
+w4_filename       = '../data/JetID/W4Jet.root'
+z_filename        = '../data/JetID/Drell.root'
+
+data_file      = TFile( data_filename )
+t_t_file       = TFile( t_t_filename  )
+t_s_file       = TFile( t_s_filename  )
+t_tw_file      = TFile( t_tw_filename )
+tb_t_file      = TFile( tb_t_filename )
+tb_s_file      = TFile( tb_s_filename )
+tb_tw_file     = TFile( tb_tw_filename)
+tt_semi_file   = TFile( tt_semi_filename  )
+tt_full_file   = TFile( tt_full_filename  )
+ww_file        = TFile( ww_filename   )
+wz_file        = TFile( wz_filename   )
+zz_file        = TFile( zz_filename   )
+wn_file        = TFile( wn_filename   )
+w1_file        = TFile( w1_filename   )
+w2_file        = TFile( w2_filename   )
+w3_file        = TFile( w3_filename   )
+w4_file        = TFile( w4_filename   )
+z_file         = TFile( z_filename    )
 
 eventTreeLocationNoShift = 'muNuEventTree/eventTree'
 
-data_tree  =  data_file.Get(eventTreeLocationNoShift) 
-t_t_tree   =  t_t_file.Get(eventTreeLocation)
-t_s_tree   =  t_s_file.Get(eventTreeLocation)
-t_tw_tree  =  t_tw_file.Get(eventTreeLocation)
-tb_t_tree  =  tb_t_file.Get(eventTreeLocation)
-tb_s_tree  =  tb_s_file.Get(eventTreeLocation)
-tb_tw_tree =  tb_tw_file.Get(eventTreeLocation)
-ttb_tree   =  ttb_file.Get(eventTreeLocation)
-ww_tree    =  ww_file.Get(eventTreeLocation)
-wz_tree    =  wz_file.Get(eventTreeLocation)
-zz_tree    =  zz_file.Get(eventTreeLocation)
-wn_tree    =  wn_file.Get(eventTreeLocation)
-w1_tree    =  w1_file.Get(eventTreeLocation)
-w2_tree    =  w2_file.Get(eventTreeLocation)
-w3_tree    =  w3_file.Get(eventTreeLocation)
-w4_tree    =  w4_file.Get(eventTreeLocation)
-z_tree     =  z_file.Get(eventTreeLocation)
+data_tree     =  data_file.Get(eventTreeLocationNoShift) 
+t_t_tree      =  t_t_file.Get(eventTreeLocation)
+t_s_tree      =  t_s_file.Get(eventTreeLocation)
+t_tw_tree     =  t_tw_file.Get(eventTreeLocation)
+tb_t_tree     =  tb_t_file.Get(eventTreeLocation)
+tb_s_tree     =  tb_s_file.Get(eventTreeLocation)
+tb_tw_tree    =  tb_tw_file.Get(eventTreeLocation)
+tt_semi_tree  =  tt_semi_file.Get(eventTreeLocation)
+tt_full_tree  =  tt_full_file.Get(eventTreeLocation)
+ww_tree       =  ww_file.Get(eventTreeLocation)
+wz_tree       =  wz_file.Get(eventTreeLocation)
+zz_tree       =  zz_file.Get(eventTreeLocation)
+wn_tree       =  wn_file.Get(eventTreeLocation)
+w1_tree       =  w1_file.Get(eventTreeLocation)
+w2_tree       =  w2_file.Get(eventTreeLocation)
+w3_tree       =  w3_file.Get(eventTreeLocation)
+w4_tree       =  w4_file.Get(eventTreeLocation)
+z_tree        =  z_file.Get(eventTreeLocation)
 
 #Start the Plotting Program
 for leaf in leafs:
@@ -207,12 +228,19 @@ for leaf in leafs:
   print('    '+str(tb_twnhSize))
   print('    '+str(tb_twnhSizePart))
  ####  TTbar
-  print('  ttbar nonIso')
-  ttbnh,ttbnhSize,ttbnhSizePart,ttbnhEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCnT,I,F)
-  ttbnh.SetName('ttbnh')
-  ttbnh.Scale(sf_ttbar)
-  print('    '+str(ttbnhSize))
-  print('    '+str(ttbnhSizePart))
+  print('  ttbar semi nonIso')
+  tt_seminh,tt_seminhSize,tt_seminhSizePart,tt_seminhEntries = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCnT,I,F)
+  tt_seminh.SetName('tt_seminh')
+  tt_seminh.Scale(sf_ttbar)
+  print('    '+str(tt_seminhSize))
+  print('    '+str(tt_seminhSizePart))
+  ###
+  print('  ttbar full nonIso')
+  tt_fullnh,tt_fullnhSize,tt_fullnhSizePart,tt_fullnhEntries = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCnT,I,F)
+  tt_fullnh.SetName('tt_fullnh')
+  tt_fullnh.Scale(sf_ttbar)
+  print('    '+str(tt_fullnhSize))
+  print('    '+str(tt_fullnhSizePart))
  ####  W
   print('  wn nonIso')
   wnnh,wnnhSize,wnnhSizePart,wnhEntries = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCnW,I,F)
@@ -262,7 +290,8 @@ for leaf in leafs:
   qh.Add(wwnh,-1)   #Diboson
   qh.Add(wznh,-1)
   qh.Add(zznh,-1)
-  qh.Add(ttbnh,-1)  #TTbar
+  qh.Add(tt_seminh,-1)  #TTbar
+  qh.Add(tt_fullnh,-1)  #TTbar
   qh.Add(wnnh,-1)   #W
   qh.Add(w1nh,-1)
   qh.Add(w2nh,-1)
@@ -363,12 +392,19 @@ for leaf in leafs:
  print('  '+str(tb_twihSize))
  print('  '+str(tb_twihSizePart))
 #### TTbar
- print('ttb Iso')
- ttbih,ttbihSize,ttbihSizePart,ttbihEntries = h.gram(ttb_tree,leaf,xmin,xmax,steps,CutsMCiT,I,F)
- ttbih.SetName('ttbih')
- ttbih.Scale(sf_ttbar)
- print('  '+str(ttbihSize))
- print('  '+str(ttbihSizePart))
+ print('ttb semi Iso')
+ tt_semiih,tt_semiihSize,tt_semiihSizePart,tt_semiihEntries = h.gram(tt_semi_tree,leaf,xmin,xmax,steps,CutsMCiT,I,F)
+ tt_semiih.SetName('tt_semiih')
+ tt_semiih.Scale(sf_ttbar)
+ print('  '+str(tt_semiihSize))
+ print('  '+str(tt_semiihSizePart))
+ ###
+ print('ttb full Iso')
+ tt_fullih,tt_fullihSize,tt_fullihSizePart,tt_fullihEntries = h.gram(tt_full_tree,leaf,xmin,xmax,steps,CutsMCiT,I,F)
+ tt_fullih.SetName('tt_fullih')
+ tt_fullih.Scale(sf_ttbar)
+ print('  '+str(tt_fullihSize))
+ print('  '+str(tt_fullihSizePart))
 #### W + Jets
  print('wl n Iso')
  wlnih,wlnihSize,wlnihSizePart,wlnihEntries = h.gram(wn_tree,leaf,xmin,xmax,steps,CutsMCiwl,I,F)
@@ -523,7 +559,7 @@ for leaf in leafs:
    wcnihSizePart+wc1ihSizePart+wc2ihSizePart+wc3ihSizePart+wc4ihSizePart+ \
    wccnihSizePart+wcc1ihSizePart+wcc2ihSizePart+wcc3ihSizePart+wcc4ihSizePart+ \
    wbbnihSizePart+wbb1ihSizePart+wbb2ihSizePart+wbb3ihSizePart+wbb4ihSizePart+ \
-   ttbihSizePart+ \
+   tt_semiihSizePart+tt_fullihSizePart+ \
    t_tihSizePart+tb_tihSizePart+ \
    t_sihSizePart+tb_sihSizePart+ \
    t_twihSizePart+tb_twihSizePart+ \
@@ -556,7 +592,8 @@ for leaf in leafs:
   log.write(' W2 Size:--------'+str(w2nhSize)+'\n')
   log.write(' W3 Size:--------'+str(w3nhSize)+'\n')
   log.write(' W4 Size:--------'+str(w4nhSize)+'\n')
-  log.write(' tt Size:--------'+str(ttbnhSize)+'\n')
+  log.write(' tt semi Size:---'+str(tt_seminhSize)+'\n')
+  log.write(' tt full Size:---'+str(tt_fullnhSize)+'\n')
   log.write(' t_t Size:-------'+str(t_tnhSize)+'\n')
   log.write(' tb_t Size:------'+str(tb_tnhSize)+'\n')
   log.write(' t_s Size:-------'+str(t_snhSize)+'\n')
@@ -577,7 +614,8 @@ for leaf in leafs:
   log.write(' W2 Size:--------'+str(w2nhSizePart)+'\n')
   log.write(' W3 Size:--------'+str(w3nhSizePart)+'\n')
   log.write(' W4 Size:--------'+str(w4nhSizePart)+'\n')
-  log.write(' tt Size:--------'+str(ttbnhSizePart)+'\n')
+  log.write(' tt semi Size:---'+str(tt_seminhSizePart)+'\n')
+  log.write(' tt full Size:---'+str(tt_fullnhSizePart)+'\n')
   log.write(' t_t Size:-------'+str(t_tnhSizePart)+'\n')
   log.write(' tb_t Size:------'+str(tb_tnhSizePart)+'\n')
   log.write(' t_s Size:-------'+str(t_snhSizePart)+'\n')
@@ -623,7 +661,8 @@ for leaf in leafs:
  log.write('  W+bb:-----------'+str(wbb2ihSizePart)+'\n')
  log.write('  W+bb:-----------'+str(wbb3ihSizePart)+'\n')
  log.write('  W+bb:-----------'+str(wbb4ihSizePart)+'\n')
- log.write('tt Size:--------'+str(ttbihSizePart)+'\n')
+ log.write('tt semi Size:-----'+str(tt_semiihSizePart)+'\n')
+ log.write('tt full Size:-----'+str(tt_fullihSizePart)+'\n')
  log.write('t_t Size:-------'+str(t_tihSizePart)+'\n')
  log.write('tb_t Size:------'+str(tb_tihSizePart)+'\n')
  log.write('t_s Size:-------'+str(t_sihSizePart)+'\n')
@@ -662,7 +701,8 @@ for leaf in leafs:
  log.write('  W2+bb:-----------'+str(wbb2ihSize)+'\n')
  log.write('  W3+bb:-----------'+str(wbb3ihSize)+'\n')
  log.write('  W4+bb:-----------'+str(wbb4ihSize)+'\n')
- log.write('tt Size:--------'+str(ttbihSize)+'\n')
+ log.write('tt semi Size:------'+str(tt_semiihSize)+'\n')
+ log.write('tt full Size:------'+str(tt_fullihSize)+'\n')
  log.write('t_t Size:-------'+str(t_tihSize)+'\n')
  log.write('tb_t Size:------'+str(tb_tihSize)+'\n')
  log.write('t_s Size:-------'+str(t_sihSize)+'\n')
@@ -700,7 +740,8 @@ for leaf in leafs:
  log.write('  W2+bb:-----------'+str(wbb2ihEntries)+'\n')
  log.write('  W3+bb:-----------'+str(wbb3ihEntries)+'\n')
  log.write('  W4+bb:-----------'+str(wbb4ihEntries)+'\n')
- log.write('tt Entries:--------'+str(ttbihEntries)+'\n')
+ log.write('tt semi Entries:---'+str(tt_semiihEntries)+'\n')
+ log.write('tt full Entries:---'+str(tt_fullihEntries)+'\n')
  log.write('t_t Entries:-------'+str(t_tihEntries)+'\n')
  log.write('tb_t Entries:------'+str(tb_tihEntries)+'\n')
  log.write('t_s Entries:-------'+str(t_sihEntries)+'\n')

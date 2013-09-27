@@ -18,23 +18,31 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  mt50 = '(Mt>50)'
  met = '(MET>30)'
  noFJ = '(nJets24Pt25==0)'
- oneFJ = '(nJets24Pt25==1)'
+ #oneFJ = '(nJets24Pt25==1)'
+ oneFJ = '((abs(highestJetEta)>2.4 && abs(secondJetEta)<2.4)||(abs(highestJetEta)<2.4 && abs(secondJetEta)>2.4))'
  muPlus = '(muonCharge > 0)'
  muMinus = '(muonCharge < 0)'
  jetCap = '(highestJetPt < 30 && secondJetPt < 30)'
 
  twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4)'
+ if ST: twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+')'
  thJ = '('+twJ+'&& thirdJetPt  > '+jetPt+' && abs(thirdJetEta) <  2.4)'
  frJ = '('+thJ+'&& mJ3J4 > 0)'
  #frJ = '('+thJ+'&& fourthJetPt > '+jetPt+' && abs(fourthJetEta) < 2.4)'
  if not jetVeto:
+  #twoJets   = '('+twJ+')'
+  #threeJets = '('+thJ+')'
+  #fourJets  = '('+frJ+')'
   twoJets   = '('+twJ+' && nJetsPt'+njetPt+'>=2)'
   threeJets = '('+thJ+' && nJetsPt'+njetPt+'>=3)'
   fourJets  = '('+frJ+' && nJetsPt'+njetPt+'>=4)'
  if jetVeto:
-  twoJets   = '('+twJ+' && nJetsPt'+njetPt+'==2)'
-  threeJets = '('+thJ+' && nJetsPt'+njetPt+'==3)'
-  fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
+  twoJets   = '('+twJ+'&& thirdJetPt<' +njetPt+')'
+  threeJets = '('+thJ+'&& fourthJetPt<'+njetPt+')'
+  fourJets  = '('+frJ+')'
+  #twoJets   = '('+twJ+' && nJetsPt'+njetPt+'==2)'
+  #threeJets = '('+thJ+' && nJetsPt'+njetPt+'==3)'
+  #fourJets  = '('+frJ+' && nJetsPt'+njetPt+'==4)'
 
  if Control or Legacy or Signal:
   #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+jetCap+')'
@@ -46,7 +54,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  elif TT_m:
   Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+')' #for TTbar
  elif Z_Region:
-  Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+')'
+  Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+'&&'+z_selection+')'
  elif ST:
   Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+oneFJ+')'
  elif Tomislav:
@@ -132,11 +140,13 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  cutDataIso      = '('+Iso+'&&'+theCut+')'    #Data Iso
  cutMcNonIso     = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
  cutMcNonIsoW    = cutMcNonIso #'('+weightW+'*('+NonIso+'&&'+theCut+'))' #MC Non IsoW
- #cutMcNonIsoT    = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
- #cutMcIsoT       = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcIso        = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcNonIsoTup  = '('+weight+'*weightTop*weightTop*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutMcIsoTup     = '('+weight+'*weightTop*weightTop*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcNonIsoTdn  = cutMcNonIso
+ cutMcIsoTdn     = cutMcIso
  cutMcNonIsoT    = '('+weight+'*weightTop*('+NonIso+'&&'+theCut+'))' #MC Non Iso
  cutMcIsoT       = '('+weight+'*weightTop*('+Iso+   '&&'+theCut+'))' #MC Iso
- cutMcIso        = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
  cutMcWlNonIso   = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wl+'))'
  cutMcWlIso      = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wl+'))'
  cutMcWcNonIso   = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wc+'))'
@@ -145,5 +155,5 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  cutMcWccIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wcc+'))'
  cutMcWbbNonIso  = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wbb+'))'
  cutMcWbbIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wbb+'))'
- return cutMcNonIso, cutMcNonIsoW, cutMcIso, cutDataNonIso, cutDataIso, cutMcWlNonIso, cutMcWlIso, cutMcWcNonIso, cutMcWcIso, cutMcWccNonIso, cutMcWccIso, cutMcWbbNonIso, cutMcWbbIso, cutMcNonIsoT, cutMcIsoT
+ return cutMcNonIso, cutMcNonIsoW, cutMcIso, cutDataNonIso, cutDataIso, cutMcWlNonIso, cutMcWlIso, cutMcWcNonIso, cutMcWcIso, cutMcWccNonIso, cutMcWccIso, cutMcWbbNonIso, cutMcWbbIso, cutMcNonIsoT, cutMcIsoT, cutMcNonIsoTup, cutMcIsoTup, cutMcNonIsoTdn, cutMcIsoTdn
 
