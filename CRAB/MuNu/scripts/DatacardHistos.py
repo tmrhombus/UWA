@@ -27,28 +27,28 @@ sf_vv = 1.
 #get parameters (used in cutmaker)
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
 
-CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutMCnTup,CutMCiTup,CutMCnTdn,CutMCiTdn = ct.cutmaker(
+CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutsMCnTup,CutsMCiTup,CutsMCnTdn,CutsMCiTdn = ct.cutmaker(
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav
 )
 
-data_filename     = '../data/JetID/Data.root'
-t_t_filename      = '../data/JetID/T_t.root'
-t_s_filename      = '../data/JetID/T_s.root'
-t_tw_filename     = '../data/JetID/T_tW.root'
-tb_t_filename     = '../data/JetID/Tbar_t.root'
-tb_s_filename     = '../data/JetID/Tbar_s.root'
-tb_tw_filename    = '../data/JetID/Tbar_tW.root'
-tt_semi_filename  = '../data/JetID/TTbar_semi.root'
-tt_full_filename  = '../data/JetID/TTbar_full.root'
-ww_filename       = '../data/JetID/WW.root'
-wz_filename       = '../data/JetID/WZ.root'
-zz_filename       = '../data/JetID/ZZ.root'
-wn_filename       = '../data/JetID/WJets.root'
-w1_filename       = '../data/JetID/W1Jet.root'
-w2_filename       = '../data/JetID/W2Jet.root'
-w3_filename       = '../data/JetID/W3Jet.root'
-w4_filename       = '../data/JetID/W4Jet.root'
-z_filename        = '../data/JetID/Drell.root'
+data_filename     = '../data/looseID/Data.root'
+t_t_filename      = '../data/looseID/T_t.root'
+t_s_filename      = '../data/looseID/T_s.root'
+t_tw_filename     = '../data/looseID/T_tW.root'
+tb_t_filename     = '../data/looseID/Tbar_t.root'
+tb_s_filename     = '../data/looseID/Tbar_s.root'
+tb_tw_filename    = '../data/looseID/Tbar_tW.root'
+tt_semi_filename  = '../data/looseID/TTbar_semi.root'
+tt_full_filename  = '../data/looseID/TTbar_full.root'
+ww_filename       = '../data/looseID/WW.root'
+wz_filename       = '../data/looseID/WZ.root'
+zz_filename       = '../data/looseID/ZZ.root'
+wn_filename       = '../data/looseID/WJets.root'
+w1_filename       = '../data/looseID/W1Jet.root'
+w2_filename       = '../data/looseID/W2Jet.root'
+w3_filename       = '../data/looseID/W3Jet.root'
+w4_filename       = '../data/looseID/W4Jet.root'
+z_filename        = '../data/looseID/Drell.root'
 
 data_file     = TFile( data_filename )
 t_t_file      = TFile( t_t_filename  )
@@ -684,8 +684,8 @@ for eventTreeLocation in eventTreeLocations:
   tihTdn.SetName("tihTdn")
   tbihTdn   = tbihNo.Clone()
   tbihTdn.SetName("tbihTdn")
-  t_tWihTdn = t_tWihNo.Clone()
-  t_tWihTdn.SetName("t_tWihTdn")
+  t_twihTdn = t_twihNo.Clone()
+  t_twihTdn.SetName("t_twihTdn")
   ttbihTdn  = tt_fullihUp.Clone()
   ttbihTdn.SetName("ttbihTdn")
   ttbihTdn.Add(tt_semiihUp)

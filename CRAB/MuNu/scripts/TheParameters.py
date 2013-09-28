@@ -5,13 +5,10 @@ Author: T.M.Perry
 '''
 
 def arams():
- #lumi = 8512.
- #lumi = 19759. 
- #lumi = 19429.
- lumi = 17346.
+ lumi = 18589. # for looseID
  btype = 't'
  njetcut = '25' #20,25,26,30,40
- jetcut = '25'
+ jetcut = '35'
  I = 0
  F = 20
  iso_value = 0.12
@@ -19,8 +16,7 @@ def arams():
 
  #naming where output goes
  path = '../plots/'
- extraName = ''
- #extraName = 'JetID_WithNjetCut'
+ extraName = 'idTight'
 
  drawQCD = True
  drawData = True
@@ -35,7 +31,7 @@ def arams():
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
  Tomislav = False
 
- DataCard = True
+ DataCard = False
 
  eventTreeLocation = 'muNuEventTree/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonUp/eventTree'
@@ -84,7 +80,6 @@ def arams():
  drawZ = False # line at Z when plotting
 
  if not DataCard:
-  if eventTreeLocation == 'muNuEventTree/eventTree'        : extraName += 'NoSH_' 
   if eventTreeLocation == 'muNuEventTreeMuonUp/eventTree'  : extraName += 'mUP_'  
   if eventTreeLocation == 'muNuEventTreeMuonDown/eventTree': extraName += 'mDN_'  
   if eventTreeLocation == 'muNuEventTreeJetUp/eventTree'   : extraName += 'jUP_'  
