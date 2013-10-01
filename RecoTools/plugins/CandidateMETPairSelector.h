@@ -21,6 +21,9 @@ typedef SingleObjectSelector<
             StringCutObjectSelector<PATMuonNuPair>
         > PATMuonNuPairSelector;
 
-
+typedef SingleObjectSelector<
+            std::vector<PATElectronNuPair>,
+            StringCutObjectSelector<PATElectronNuPair>
+        > PATElectronNuPairSelector;
 
 #endif
