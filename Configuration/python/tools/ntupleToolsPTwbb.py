@@ -4,6 +4,55 @@ from UWAnalysis.Configuration.tools.analysisToolsPT import TriggerPaths
 
 def makeCollections(process, source = 'wCandsJets', sourceZ = 'diMuonsSorted'):
  commonCollections = cms.PSet(         
+    J4_PUID_idTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J4_PUID_idTight"),
+        method = cms.string('userFloat("idTight")'),
+        rank = cms.untracked.double(3)
+    ),
+    J4_PUID_fullIdTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J4_PUID_fullIdTight"),
+        method = cms.string('userInt("fullIdTight")'),
+        rank = cms.untracked.double(3)
+    ),
+    J4_PUID_idLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J4_PUID_idLoose"),
+        method = cms.string('userFloat("idLoose")'),
+        rank = cms.untracked.double(3)
+    ),
+    J4_PUID_fullIdLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J4_PUID_fullIdLoose"),
+        method = cms.string('userInt("fullIdLoose")'),
+        rank = cms.untracked.double(3)
+    ),
+    J4_PUID_fullDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J4_PUID_fullDiscriminant"),
+        method = cms.string('userFloat("fullDiscriminant")'),
+        rank = cms.untracked.double(3)
+    ),
+    J4_PUID_philv1Discriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J4_PUID_philv1Discriminant"),
+        method = cms.string('userFloat("philv1Discriminant")'),
+        rank = cms.untracked.double(3)
+    ),
+    J4_PUID_simpleDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J4_PUID_simpleDiscriminant"),
+        method = cms.string('userFloat("simpleDiscriminant")'),
+        rank = cms.untracked.double(3)
+    ),
     J4_PUID_beta = cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
         src = cms.InputTag(source),
@@ -59,6 +108,55 @@ def makeCollections(process, source = 'wCandsJets', sourceZ = 'diMuonsSorted'):
         tag = cms.string("J4_PUID_betaStarClassicMod"),
         method = cms.string('userFloat("PUID_betaStarClassicMod")'),
         rank = cms.untracked.double(3)
+    ),
+    J3_PUID_idTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J3_PUID_idTight"),
+        method = cms.string('userFloat("idTight")'),
+        rank = cms.untracked.double(2)
+    ),
+    J3_PUID_fullIdTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J3_PUID_fullIdTight"),
+        method = cms.string('userInt("fullIdTight")'),
+        rank = cms.untracked.double(2)
+    ),
+    J3_PUID_idLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J3_PUID_idLoose"),
+        method = cms.string('userFloat("idLoose")'),
+        rank = cms.untracked.double(2)
+    ),
+    J3_PUID_fullIdLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J3_PUID_fullIdLoose"),
+        method = cms.string('userInt("fullIdLoose")'),
+        rank = cms.untracked.double(2)
+    ),
+    J3_PUID_fullDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J3_PUID_fullDiscriminant"),
+        method = cms.string('userFloat("fullDiscriminant")'),
+        rank = cms.untracked.double(2)
+    ),
+    J3_PUID_philv1Discriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J3_PUID_philv1Discriminant"),
+        method = cms.string('userFloat("philv1Discriminant")'),
+        rank = cms.untracked.double(2)
+    ),
+    J3_PUID_simpleDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J3_PUID_simpleDiscriminant"),
+        method = cms.string('userFloat("simpleDiscriminant")'),
+        rank = cms.untracked.double(2)
     ),
     J3_PUID_beta = cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
@@ -116,6 +214,55 @@ def makeCollections(process, source = 'wCandsJets', sourceZ = 'diMuonsSorted'):
         method = cms.string('userFloat("PUID_betaStarClassicMod")'),
         rank = cms.untracked.double(2)
     ),
+    J2_PUID_idTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J2_PUID_idTight"),
+        method = cms.string('userFloat("idTight")'),
+        rank = cms.untracked.double(1)
+    ),
+    J2_PUID_fullIdTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J2_PUID_fullIdTight"),
+        method = cms.string('userInt("fullIdTight")'),
+        rank = cms.untracked.double(1)
+    ),
+    J2_PUID_idLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J2_PUID_idLoose"),
+        method = cms.string('userFloat("idLoose")'),
+        rank = cms.untracked.double(1)
+    ),
+    J2_PUID_fullIdLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J2_PUID_fullIdLoose"),
+        method = cms.string('userInt("fullIdLoose")'),
+        rank = cms.untracked.double(1)
+    ),
+    J2_PUID_fullDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J2_PUID_fullDiscriminant"),
+        method = cms.string('userFloat("fullDiscriminant")'),
+        rank = cms.untracked.double(1)
+    ),
+    J2_PUID_philv1Discriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J2_PUID_philv1Discriminant"),
+        method = cms.string('userFloat("philv1Discriminant")'),
+        rank = cms.untracked.double(1)
+    ),
+    J2_PUID_simpleDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J2_PUID_simpleDiscriminant"),
+        method = cms.string('userFloat("simpleDiscriminant")'),
+        rank = cms.untracked.double(1)
+    ),
     J2_PUID_beta = cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
         src = cms.InputTag(source),
@@ -171,6 +318,55 @@ def makeCollections(process, source = 'wCandsJets', sourceZ = 'diMuonsSorted'):
         tag = cms.string("J2_PUID_betaStarClassicMod"),
         method = cms.string('userFloat("PUID_betaStarClassicMod")'),
         rank = cms.untracked.double(1)
+    ),
+    J1_PUID_idTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J1_PUID_idTight"),
+        method = cms.string('userFloat("idTight")'),
+        rank = cms.untracked.double(0)
+    ),
+    J1_PUID_fullIdTight = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J1_PUID_fullIdTight"),
+        method = cms.string('userInt("fullIdTight")'),
+        rank = cms.untracked.double(0)
+    ),
+    J1_PUID_idLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J1_PUID_idLoose"),
+        method = cms.string('userFloat("idLoose")'),
+        rank = cms.untracked.double(0)
+    ),
+    J1_PUID_fullIdLoose = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J1_PUID_fullIdLoose"),
+        method = cms.string('userInt("fullIdLoose")'),
+        rank = cms.untracked.double(0)
+    ),
+    J1_PUID_fullDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J1_PUID_fullDiscriminant"),
+        method = cms.string('userFloat("fullDiscriminant")'),
+        rank = cms.untracked.double(0)
+    ),
+    J1_PUID_philv1Discriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J1_PUID_philv1Discriminant"),
+        method = cms.string('userFloat("philv1Discriminant")'),
+        rank = cms.untracked.double(0)
+    ),
+    J1_PUID_simpleDiscriminant = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("J1_PUID_simpleDiscriminant"),
+        method = cms.string('userFloat("simpleDiscriminant")'),
+        rank = cms.untracked.double(0)
     ),
     J1_PUID_beta = cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),

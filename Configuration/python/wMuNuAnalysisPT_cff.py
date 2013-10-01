@@ -18,10 +18,16 @@ analysisConfigurator.addDiCandidateModule('diMuons','PATMuPairProducer', 'smeare
 analysisConfigurator.addSelector('diMuonsSel','PATMuPairSelector',DiMuonPreSel+'&&'+DiMuonPreSel2+'&&'+DiMuonPreSel3,'diMuonSel',0,999)
 analysisConfigurator.addSorter('diMuonsSorted','PATMuPairSorter')
 
+##Make Electrons+MET cleanPatJets
+#analysisConfigurator.addCandidateMETModule('weCands','PATElectronNuPairProducer','smearedElectrons','smearedMET','smearedJets',0,9999,'weCandidate',genParticles='genDaughters')
+#analysisConfigurator.addSelector('weCandsKin','PATElectronNuPairSelector','','weCandsKin',0,999)
+##analysisConfigurator.addSelector('weCandsKin','PATElectronNuPairSelector','lepton.pt()>27 && abs(lepton.eta()) < 1.5','weCandsKin',0,999)
+#analysisConfigurator.addSelector('weCandsJets','PATElectronNuPairSelector','','weCandsSel',0,999)
+
 #Make Muons+MET cleanPatJets
 analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','smearedMuons','smearedMET','smearedJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
 
 analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1 && lepton.userInt("tightID")==1' ,'wCandsKIN',1)
 analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>1','wCandsSel',1)
 
-selectionSequence =analysisConfigurator.returnSequence()
+selectionSequence = analysisConfigurator.returnSequence()
