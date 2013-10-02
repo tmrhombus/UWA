@@ -27,8 +27,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+' && abs(highestJetEta)<2.4 && abs(secondJetEta)<2.4)'
  if ST: twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+')'
  thJ = '('+twJ+'&& thirdJetPt  > '+jetPt+' && abs(thirdJetEta) <  2.4)'
- frJ = '('+thJ+'&& mJ3J4 > 0)'
- #frJ = '('+thJ+'&& fourthJetPt > '+jetPt+' && abs(fourthJetEta) < 2.4)'
+ frJ = '('+thJ+'&& fourthJetPt > '+jetPt+' && abs(fourthJetEta) < 2.4)'
  if not jetVeto:
   #twoJets   = '('+twJ+')'
   #threeJets = '('+thJ+')'
@@ -135,25 +134,33 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  Wc = '((!'+genB+'&&'+genC+'&&!'+evenC+'))'
  Wcc = '((!'+genB+'&&'+genC+'&&'+evenC+'))'
  Wbb = '('+genB+')'
+ 
+# J1_PUID = 'J1_PUID_fullIdTight'
+# J2_PUID = 'J2_PUID_fullIdTight'
+ J1_PUID = 'J1_PUID_idTight'
+ J2_PUID = 'J2_PUID_idTight'
+# J1_PUID = 'J1_PUID_idLoose'
+# J2_PUID = 'J2_PUID_idLoose'
+ PUID = '('+J1_PUID+'&&'+J2_PUID+')'
 
- cutDataNonIso   = '('+NonIso+'&&'+theCut+')' #Data Non Iso
- cutDataIso      = '('+Iso+'&&'+theCut+')'    #Data Iso
- cutMcNonIso     = '('+weight+'*('+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutDataNonIso   = '('+PUID+'&&'+NonIso+'&&'+theCut+')' #Data Non Iso
+ cutDataIso      = '('+PUID+'&&'+Iso+'&&'+theCut+')'    #Data Iso
+ cutMcNonIso     = '('+weight+'*('+PUID+'&&'+NonIso+'&&'+theCut+'))' #MC Non Iso
  cutMcNonIsoW    = cutMcNonIso #'('+weightW+'*('+NonIso+'&&'+theCut+'))' #MC Non IsoW
- cutMcIso        = '('+weight+'*('+Iso+   '&&'+theCut+'))' #MC Iso
- cutMcNonIsoTup  = '('+weight+'*weightTop*weightTop*('+NonIso+'&&'+theCut+'))' #MC Non Iso
- cutMcIsoTup     = '('+weight+'*weightTop*weightTop*('+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcIso        = '('+weight+'*('+PUID+'&&'+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcNonIsoTup  = '('+weight+'*weightTop*weightTop*('+PUID+'&&'+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutMcIsoTup     = '('+weight+'*weightTop*weightTop*('+PUID+'&&'+Iso+'&&'+theCut+'))' #MC Iso
  cutMcNonIsoTdn  = cutMcNonIso
  cutMcIsoTdn     = cutMcIso
- cutMcNonIsoT    = '('+weight+'*weightTop*('+NonIso+'&&'+theCut+'))' #MC Non Iso
- cutMcIsoT       = '('+weight+'*weightTop*('+Iso+   '&&'+theCut+'))' #MC Iso
- cutMcWlNonIso   = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wl+'))'
- cutMcWlIso      = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wl+'))'
- cutMcWcNonIso   = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wc+'))'
- cutMcWcIso      = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wc+'))'
- cutMcWccNonIso  = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wcc+'))'
- cutMcWccIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wcc+'))'
- cutMcWbbNonIso  = '('+weight+'*('+NonIso+'&&'+theCut+'&&'+Wbb+'))'
- cutMcWbbIso     = '('+weight+'*('+Iso+   '&&'+theCut+'&&'+Wbb+'))'
+ cutMcNonIsoT    = '('+weight+'*weightTop*('+PUID+'&&'+NonIso+'&&'+theCut+'))' #MC Non Iso
+ cutMcIsoT       = '('+weight+'*weightTop*('+PUID+'&&'+Iso+   '&&'+theCut+'))' #MC Iso
+ cutMcWlNonIso   = '('+weight+'*('+PUID+'&&'+NonIso+'&&'+theCut+'&&'+Wl+'))'
+ cutMcWlIso      = '('+weight+'*('+PUID+'&&'+Iso+   '&&'+theCut+'&&'+Wl+'))'
+ cutMcWcNonIso   = '('+weight+'*('+PUID+'&&'+NonIso+'&&'+theCut+'&&'+Wc+'))'
+ cutMcWcIso      = '('+weight+'*('+PUID+'&&'+Iso+   '&&'+theCut+'&&'+Wc+'))'
+ cutMcWccNonIso  = '('+weight+'*('+PUID+'&&'+NonIso+'&&'+theCut+'&&'+Wcc+'))'
+ cutMcWccIso     = '('+weight+'*('+PUID+'&&'+Iso+   '&&'+theCut+'&&'+Wcc+'))'
+ cutMcWbbNonIso  = '('+weight+'*('+PUID+'&&'+NonIso+'&&'+theCut+'&&'+Wbb+'))'
+ cutMcWbbIso     = '('+weight+'*('+PUID+'&&'+Iso+   '&&'+theCut+'&&'+Wbb+'))'
  return cutMcNonIso, cutMcNonIsoW, cutMcIso, cutDataNonIso, cutDataIso, cutMcWlNonIso, cutMcWlIso, cutMcWcNonIso, cutMcWcIso, cutMcWccNonIso, cutMcWccIso, cutMcWbbNonIso, cutMcWbbIso, cutMcNonIsoT, cutMcIsoT, cutMcNonIsoTup, cutMcIsoTup, cutMcNonIsoTdn, cutMcIsoTdn
 

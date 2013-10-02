@@ -12,14 +12,10 @@ import cmsPrelim as cpr
 import TheParameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
-#sf_qcd = 1.27154 # tomislav new
-#sf_qcd = 1.79604052573 # tomislav nwr
-#sf_qcd = 2.09151887878
-#sf_qcd = 2.20602589874 # v6 = newGT
-#sf_qcd = 2.01679 
-#sf_qcd = 1.92361140171
-#sf_qcd = 2.03028050776 # oldGT
-sf_qcd = 2.05901169 # no Jet ID
+#sf_qcd = 1.9191895562 # PU_fullIdTight
+sf_qcd = 2.19849549176 # PU_idTight
+#sf_qcd = 2.20315337368 # PU_idLoose
+#sf_qcd = 2.47131295199 # no PUID
 
 sf_Signal_Wbb    = 1. 
 sf_Signal_Tbar   = 1. 
@@ -30,26 +26,24 @@ sf_Signal_Wcc    = 1.
 sf_Signal_T      = 1. 
 sf_Signal_WZ     = 1. 
 
-sf_Signal_Wbb    = 1.66149845584
-sf_Signal_Tbar   = 0.917947900053
-sf_Signal_tW     = 0.944239130435
-sf_Signal_TOP    = 0.961875235346
-sf_Signal_T      = 0.865918051797
-sf_Signal_Z_jets = 0.929749478079
-sf_Signal_Wcc    = 0.985777777778
-sf_Signal_WZ     = 0.917359437751
-
-sf_Top_T         = 0.931276309897
-sf_Top_TOP       = 1.04533223802
-sf_Top_tW        = 1.03434405309
-sf_Top_Wbb       = 1.69424487594
-sf_Top_Tbar      = 0.984493670886
-
-sf_wl = 1.
-sf_wc = 1.
+#sf_Signal_Wbb    = 1.66149845584
+#sf_Signal_Tbar   = 0.917947900053
+#sf_Signal_tW     = 0.944239130435
+#sf_Signal_TOP    = 0.961875235346
+#sf_Signal_T      = 0.865918051797
+#sf_Signal_Z_jets = 0.929749478079
+#sf_Signal_Wcc    = 0.985777777778
+#sf_Signal_WZ     = 0.917359437751
+#
+#sf_Top_T         = 0.931276309897
+#sf_Top_TOP       = 1.04533223802
+#sf_Top_tW        = 1.03434405309
+#sf_Top_Wbb       = 1.69424487594
+#sf_Top_Tbar      = 0.984493670886
 
 ratioRange = 0.3
 rebin = 1
+errorBand = False
 #canvas attributes
 canx = 800 # for one plot on page
 #canx = 550 # for two plots on page with text
@@ -96,6 +90,16 @@ gStyle.SetOptStat('')
 # get parameters to run on
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
 
+sf_Wbb    = 1. 
+sf_Tbar   = 1. 
+sf_tW     = 1. 
+sf_TOP    = 1. 
+sf_Z_jets = 1. 
+sf_Wcc    = 1. 
+sf_T      = 1. 
+sf_WZ     = 1. 
+sf_wl     = 1.
+sf_wc     = 1.
 if Signal:
  sf_Wbb    = sf_Signal_Wbb   
  sf_Tbar   = sf_Signal_Tbar  
@@ -110,10 +114,7 @@ if TT_m or TT_me:
  sf_Tbar   = sf_Top_Tbar 
  sf_tW     = sf_Top_tW   
  sf_TOP    = sf_Top_TOP  
- sf_Z_jets = 1.
- sf_Wcc    = 1.
  sf_T      = sf_Top_T    
- sf_WZ     = 1.
 
 for leaf in leafs:
 
@@ -123,7 +124,7 @@ for leaf in leafs:
   xlabel = xtitle+' ['+xunits+']'
  else:
   xlabel = xtitle
- ylabel = 'Events/ %.0001f' %(float((xmax-xmin))/(steps*rebin))
+ ylabel = 'Events/ %.0001f' %(float((xmax-xmin)*rebin)/(steps))
  title = xtitle #+' Data v MC'
  
  name = []
@@ -431,6 +432,25 @@ for leaf in leafs:
   hs.Add(wccih)
   hs.Add(wcih)
   hs.Add(wlih)
+
+  hh = TH1F('hh','hh',steps,xmin,xmax)
+  if drawQCD:
+   hh.Add(qh)
+  hh.Add(zih)
+  hh.Add(dih)
+  hh.Add(sttih)
+  hh.Add(stsih)
+  hh.Add(sttwih)
+  hh.Add(ttbih)
+  hh.Add(wbbih)
+  hh.Add(wccih)
+  hh.Add(wcih)
+  hh.Add(wlih)
+  if errorBand:
+   hherr = hh.Clone()
+   hherr.SetName('hherr')
+   hherr.SetFillColor(ROOT.EColor.kBlue-6)
+   hherr.SetFillStyle(3001)
  
   hs.Draw()
   hs.GetXaxis().SetTitle(xlabel)
@@ -467,6 +487,8 @@ for leaf in leafs:
   c.cd()
   p1.cd()
   hs.Draw('hist')
+  if errorBand:
+   hherr.Draw('sames,E2')
   #hs.GetXaxis().SetRangeUser(70,110)
   if drawData:
    dataih.Draw('sames,E1')
@@ -495,32 +517,27 @@ for leaf in leafs:
   p2.cd()
  
   datar = TH1F('datar','datar',steps,xmin,xmax)
-  hh = TH1F('hh','hh',steps,xmin,xmax)
-  hh.Rebin(rebin)
-  if drawQCD:
-   hh.Add(qh)
-  hh.Add(zih)
-  hh.Add(dih)
-  hh.Add(sttih)
-  hh.Add(stsih)
-  hh.Add(sttwih)
-  hh.Add(ttbih)
-  hh.Add(wbbih)
-  hh.Add(wccih)
-  hh.Add(wcih)
-  hh.Add(wlih)
- #
   if drawData:
    datar = dataih.Clone()
   else:
    datar = hh.Clone()
   datar.SetName('datar')
+  if errorBand:
+   hNOerr = TH1F('hNOerr','hNOerr',steps,xmin,xmax)
+   for j in range(steps+1):
+    hNOerr.SetBinContent(j,hherr.GetBinContent(j))
+    hNOerr.SetBinError(j,0)
+   hrerr = hherr.Clone()
+   hrerr.SetName("hrerr")
+   hrerr.Divide(hNOerr)
+
   if leaf =="Mt" and not noMT:
    datar.GetXaxis().SetRangeUser(50,140)
   datar.GetYaxis().SetRangeUser(1.-ratioRange,1.+ratioRange) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
   datar.Draw('ep')
+  if errorBand: hrerr.Draw('sames,E2')
   #datar.GetXaxis().SetRangeUser(70,110)
   
   if leaf=="Mt" and not noMT:
