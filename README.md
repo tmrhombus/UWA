@@ -20,6 +20,19 @@ kinit <user_name>@CERN.CH; aklog -cell cern.ch
 Clone From GIT
 ```bash
 git clone https://github.com/tmrhombus/UWAnalysis.git
+```
+Then you need to do a stupid hack: open JetMETCorrections/METPUSubtraction/src/PFMETAlgorithmMVA.cc and there are two sets of likes like
+
+```
+<<<<<<
+abcd
+=======
+defg
+>>>>>>>
+```
+do some deleting to make this just ``defg``.  Then run the recipe
+
+```
 ./UWAnalysis/recipe/recipe.sh
 ```
 
