@@ -8,7 +8,6 @@ download this using the recipe below:
 ```bash
 scram pro -n MyWorkingAreaName CMSSW CMSSW_5_3_9
 cd MyWorkingAreaName/src/
-
 cmsenv
 ```
 set up cvs - something like this
@@ -21,7 +20,7 @@ Clone From GIT
 ```bash
 git clone https://github.com/tmrhombus/UWAnalysis.git
 ```
-Then you need to do a stupid hack: open JetMETCorrections/METPUSubtraction/src/PFMETAlgorithmMVA.cc and there are two sets of likes like
+Then you need to do a stupid hack, open ``JetMETCorrections/METPUSubtraction/src/PFMETAlgorithmMVA.cc`` and there are two sets of likes like
 
 ```
 <<<<<<
@@ -30,13 +29,13 @@ abcd
 defg
 >>>>>>>
 ```
-do some deleting to make this just ``defg``.  Then run the recipe
+do some deleting to make this just ``defg``.  Then run
 
 ```
 ./UWAnalysis/recipe/recipe.sh
 ```
 
-check before compiling ``showtags`` should give 40 (fewer could mean cvs not up)
+A check before compiling ``showtags`` should give 40 (fewer could mean cvs not up)
 
 Compile
 ```bash
