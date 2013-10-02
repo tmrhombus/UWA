@@ -56,24 +56,24 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
 def muonTriggerMatchPT(process,triggerProcess):
    process.triggeredPatMuons = cms.EDProducer("MuonTriggerMatcher",
-                                            src = cms.InputTag("cleanPatMuons"),
-                                            trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
-                                            filters = cms.VInputTag(
-                                                cms.InputTag('hltSingleMuIsoL3IsoFiltered12','',triggerProcess),
-                                                cms.InputTag('hltSingleMuIsoL3IsoFiltered15','',triggerProcess),
-                                                cms.InputTag('hltSingleMuIsoL3IsoFiltered24','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau15','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu12IsoPFTau10','',triggerProcess),
-                                                cms.InputTag('hltSingleMuIsoL3IsoFiltered17','',triggerProcess),
-                                                cms.InputTag('hltSingleMuIsoL1s14L3IsoFiltered15eta2p1',"",triggerProcess),
-                                                cms.InputTag('hltL3IsoL1sMu14Eta2p1L1f0L2f14QL2IsoL3f24L3IsoFiltered','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltL3crIsoL1sMu16Eta2p1L1f0L2f16QL3f18QL3crIsoFiltered10','',triggerProcess),
-                                                cms.InputTag('hltL3crIsoL1sMu16Eta2p1L1f0L2f16QL3f24QL3crIsoFiltered10','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu18LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu17LooseIsoPFTau20','',triggerProcess)
-                                            ),
-                                            pdgId = cms.int32(13)
+    src = cms.InputTag("cleanPatMuons"),
+    trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
+    filters = cms.VInputTag(
+     cms.InputTag('hltSingleMuIsoL3IsoFiltered12','',triggerProcess),
+     cms.InputTag('hltSingleMuIsoL3IsoFiltered15','',triggerProcess),
+     cms.InputTag('hltSingleMuIsoL3IsoFiltered24','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau15','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu12IsoPFTau10','',triggerProcess),
+     cms.InputTag('hltSingleMuIsoL3IsoFiltered17','',triggerProcess),
+     cms.InputTag('hltSingleMuIsoL1s14L3IsoFiltered15eta2p1',"",triggerProcess),
+     cms.InputTag('hltL3IsoL1sMu14Eta2p1L1f0L2f14QL2IsoL3f24L3IsoFiltered','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau20','',triggerProcess),
+     cms.InputTag('hltL3crIsoL1sMu16Eta2p1L1f0L2f16QL3f18QL3crIsoFiltered10','',triggerProcess),
+     cms.InputTag('hltL3crIsoL1sMu16Eta2p1L1f0L2f16QL3f24QL3crIsoFiltered10','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu18LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu17LooseIsoPFTau20','',triggerProcess)
+    ),
+    pdgId = cms.int32(13)
    )  
    process.triggeredPatMuonSeq = cms.Sequence(process.triggeredPatMuons)
    process.triggeredPatMuonPath=cms.Path(process.triggeredPatMuonSeq)
@@ -81,29 +81,29 @@ def muonTriggerMatchPT(process,triggerProcess):
 
 def electronTriggerMatchPT(process,triggerProcess):
    process.triggeredPatElectronsL = cms.EDProducer("ElectronTriggerMatcher",
-                                            src = cms.InputTag("cleanPatElectrons"),
-                                            trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
-                                            filters = cms.VInputTag(
-                                                cms.InputTag('hltEle17CaloIdLCaloIsoVLPixelMatchFilterDoubleEG125','',triggerProcess),
-                                            ),
-                                            pdgId = cms.int32(0)
+    src = cms.InputTag("cleanPatElectrons"),
+    trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
+    filters = cms.VInputTag(
+     cms.InputTag('hltEle17CaloIdLCaloIsoVLPixelMatchFilterDoubleEG125','',triggerProcess),
+    ),
+    pdgId = cms.int32(0)
    )
    process.triggeredPatElectrons = cms.EDProducer("ElectronTriggerMatcher",
-                                            src = cms.InputTag("triggeredPatElectronsL"),
-                                            trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
-                                            filters = cms.VInputTag(
-                                                cms.InputTag('hltOverlapFilterIsoEle15IsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle15TightIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle18MediumIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle18TightIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle18IsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20MediumIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20WP90LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltEle17CaloIdVTCaloIsoVTTrkIdTTrkIsoVTEle8PMMassFilter','',triggerProcess),
-                                                cms.InputTag('hltEle20CaloIdVTCaloIsoTTrkIdTTrkIsoTTrackIsoFilterL1IsoEG18OrEG20','',triggerProcess)
-                                            ),
-                                            pdgId = cms.int32(11)
+    src = cms.InputTag("triggeredPatElectronsL"),
+    trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
+    filters = cms.VInputTag(
+     cms.InputTag('hltOverlapFilterIsoEle15IsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle15TightIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle18MediumIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle18TightIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle18IsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20MediumIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20WP90LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltEle17CaloIdVTCaloIsoVTTrkIdTTrkIsoVTEle8PMMassFilter','',triggerProcess),
+     cms.InputTag('hltEle20CaloIdVTCaloIsoTTrkIdTTrkIsoTTrackIsoFilterL1IsoEG18OrEG20','',triggerProcess)
+    ),
+    pdgId = cms.int32(11)
    )   
    process.triggeredPatElectronsSeq = cms.Sequence(process.triggeredPatElectronsL*process.triggeredPatElectrons)
    process.triggeredPatElectronsPath=cms.Path(process.triggeredPatElectronsSeq)
@@ -118,38 +118,38 @@ def tauTriggerMatchPT(process,triggerProcess):
       strTrig+='|| path(\"'+i+'\")'
    #Match With The triggers
    process.preTriggeredPatTaus = cms.EDProducer("TauTriggerMatcher",
-                                            src = cms.InputTag("cleanPatTaus"),
-                                            trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
-                                            filters = cms.VInputTag(
-                                                cms.InputTag('hltFilterDoubleIsoPFTau20Trk5LeadTrack5IsolationL1HLTMatched','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu18LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20WP90LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu17LooseIsoPFTau20','',triggerProcess)
-                                            ),
-                                            pdgId = cms.int32(0)
+    src = cms.InputTag("cleanPatTaus"),
+    trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
+    filters = cms.VInputTag(
+     cms.InputTag('hltFilterDoubleIsoPFTau20Trk5LeadTrack5IsolationL1HLTMatched','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu18LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20WP90LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu17LooseIsoPFTau20','',triggerProcess)
+    ),
+    pdgId = cms.int32(0)
    )
    process.triggeredPatTaus = cms.EDProducer("TauTriggerMatcher",
-                                            src = cms.InputTag("preTriggeredPatTaus"),
-                                            trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
-                                            filters = cms.VInputTag(
-                                                cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau15','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu15MediumIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu15TightIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterMu15IsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu12IsoPFTau10','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle15IsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle15TightIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle18MediumIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20MediumIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu18LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoEle20WP90LooseIsoPFTau20','',triggerProcess),
-                                                cms.InputTag('hltOverlapFilterIsoMu17LooseIsoPFTau20','',triggerProcess)
-                                            ),
-                                            pdgId = cms.int32(15)
+    src = cms.InputTag("preTriggeredPatTaus"),
+    trigEvent = cms.InputTag("hltTriggerSummaryAOD"),
+    filters = cms.VInputTag(
+     cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau15','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu15MediumIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu15TightIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterMu15IsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu12IsoPFTau10','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu15IsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle15IsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle15TightIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle18MediumIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20MediumIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu18LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoEle20WP90LooseIsoPFTau20','',triggerProcess),
+     cms.InputTag('hltOverlapFilterIsoMu17LooseIsoPFTau20','',triggerProcess)
+    ),
+    pdgId = cms.int32(15)
    )                                            
    process.triggeredPatTausSeq = cms.Sequence(process.preTriggeredPatTaus*process.triggeredPatTaus)
    process.triggeredPatTausPath=cms.Path(process.triggeredPatTausSeq)
@@ -157,9 +157,9 @@ def tauTriggerMatchPT(process,triggerProcess):
 
 def goodVertexFilter(process):
   process.primaryVertexFilter = cms.EDFilter("VertexSelector",
-                                        src = cms.InputTag('offlinePrimaryVertices'),
-                                        cut = cms.string('ndof()>4&&position().rho()<2&&abs(z())<24'),
-                                        filter = cms.bool(False)
+   src = cms.InputTag('offlinePrimaryVertices'),
+   cut = cms.string('ndof()>4&&position().rho()<2&&abs(z())<24'),
+   filter = cms.bool(False)
   )
   process.goodVertexFilterSeq = cms.Sequence(process.primaryVertexFilter)
   process.goodVertexFilterPath=cms.Path(process.goodVertexFilterSeq)
@@ -167,7 +167,7 @@ def goodVertexFilter(process):
 
 def metRename(process):
   process.metType1 = cms.EDProducer("PATMETRenamer",
-                                    src = cms.InputTag('systematicsMET')
+   src = cms.InputTag('systematicsMET')
   )
   process.metType1Seq = cms.Sequence(process.metType1)
   process.metType1Path= cms.Path(process.metType1Seq)
@@ -227,21 +227,23 @@ def ReRunJets(process,isMC=False,isData=False):
   process.patJets.embedGenJetMatch = False
   process.patJets.addAssociatedTracks = False
   process.patJets.embedGenPartonMatch = False
-  process.patJets.tagInfoSources = cms.VInputTag(cms.InputTag("impactParameterTagInfos"),
-                                                 cms.InputTag("secondaryVertexTagInfos"),
-                                                 cms.InputTag("secondaryVertexNegativeTagInfos")
-                                                )
-  process.patJets.discriminatorSources = cms.VInputTag(cms.InputTag("jetBProbabilityBJetTags"),
-                                                       cms.InputTag("jetProbabilityBJetTags"),
-                                                       cms.InputTag("trackCountingHighPurBJetTags"),
-                                                       cms.InputTag("trackCountingHighEffBJetTags"),
-                                                       cms.InputTag("simpleSecondaryVertexHighEffBJetTags"),
-                                                       cms.InputTag("simpleSecondaryVertexHighPurBJetTags"),
-                                                       cms.InputTag("combinedSecondaryVertexBJetTags"),
-                                                       cms.InputTag("combinedSecondaryVertexMVABJetTags"),
-                                                       cms.InputTag("simpleInclusiveSecondaryVertexHighEffBJetTags"),
-                                                       cms.InputTag("simpleInclusiveSecondaryVertexHighPurBJetTags")
-                                                      )
+  process.patJets.tagInfoSources = cms.VInputTag(
+   cms.InputTag("impactParameterTagInfos"),
+   cms.InputTag("secondaryVertexTagInfos"),
+   cms.InputTag("secondaryVertexNegativeTagInfos")
+  ) 
+  process.patJets.discriminatorSources = cms.VInputTag(
+   cms.InputTag("jetBProbabilityBJetTags"),
+   cms.InputTag("jetProbabilityBJetTags"),
+   cms.InputTag("trackCountingHighPurBJetTags"),
+   cms.InputTag("trackCountingHighEffBJetTags"),
+   cms.InputTag("simpleSecondaryVertexHighEffBJetTags"),
+   cms.InputTag("simpleSecondaryVertexHighPurBJetTags"),
+   cms.InputTag("combinedSecondaryVertexBJetTags"),
+   cms.InputTag("combinedSecondaryVertexMVABJetTags"),
+   cms.InputTag("simpleInclusiveSecondaryVertexHighEffBJetTags"),
+   cms.InputTag("simpleInclusiveSecondaryVertexHighPurBJetTags")
+  )
   process.patJets.trackAssociationSource = cms.InputTag("ak5JetTracksAssociatorAtVertex")
   process.patJets.addBTagInfo = cms.bool(True)
   process.patJets.addDiscriminators = cms.bool(True)
@@ -285,43 +287,44 @@ def ReRunJets(process,isMC=False,isData=False):
    )
   )
 
-  process.makePatJetsData = cms.Sequence(process.patJetCorrFactors+
-                                        process.patJetCharge+
-                                        process.patJets)
+  process.makePatJetsData = cms.Sequence(
+   process.patJetCorrFactors+
+   process.patJetCharge+
+   process.patJets)
   if isMC:
    process.reRunJetSeq = cms.Sequence(
-                                 process.inclusiveVertexing *
-                                 process.inclusiveMergedVerticesFiltered *
-                                 process.bToCharmDecayVertexMerged*
-                                 process.ak5PFJets*
-                                 process.ak5JetTracksAssociatorAtVertex*
-                                 process.btagging*
-                                 process.inclusiveSecondaryVertexFinderTagInfosFiltered*
-                                 process.simpleInclusiveSecondaryVertexHighEffBJetTags *
-                                 process.simpleInclusiveSecondaryVertexHighPurBJetTags *
-                                 process.pileupJetIdProducer*
-                                 process.makePatJets*
-                                 process.patJetsPUID*
-                                 process.patJetId*
-                                 process.NewSelectedPatJets
-                                 )
+    process.inclusiveVertexing *
+    process.inclusiveMergedVerticesFiltered *
+    process.bToCharmDecayVertexMerged*
+    process.ak5PFJets*
+    process.ak5JetTracksAssociatorAtVertex*
+    process.btagging*
+    process.inclusiveSecondaryVertexFinderTagInfosFiltered*
+    process.simpleInclusiveSecondaryVertexHighEffBJetTags *
+    process.simpleInclusiveSecondaryVertexHighPurBJetTags *
+    process.pileupJetIdProducer*
+    process.makePatJets*
+    process.patJetsPUID*
+    process.patJetId*
+    process.NewSelectedPatJets
+   )
   elif isData:
    process.reRunJetSeq = cms.Sequence(
-                                 process.inclusiveVertexing *
-                                 process.inclusiveMergedVerticesFiltered *
-                                 process.bToCharmDecayVertexMerged*
-                                 process.ak5PFJets*
-                                 process.ak5JetTracksAssociatorAtVertex*
-                                 process.btagging*
-                                 process.inclusiveSecondaryVertexFinderTagInfosFiltered*
-                                 process.simpleInclusiveSecondaryVertexHighEffBJetTags *
-                                 process.simpleInclusiveSecondaryVertexHighPurBJetTags *
-                                 process.pileupJetIdProducer*
-                                 process.makePatJetsData*
-                                 process.patJetsPUID*
-                                 process.patJetId*
-                                 process.NewSelectedPatJets
-                                 )
+    process.inclusiveVertexing *
+    process.inclusiveMergedVerticesFiltered *
+    process.bToCharmDecayVertexMerged*
+    process.ak5PFJets*
+    process.ak5JetTracksAssociatorAtVertex*
+    process.btagging*
+    process.inclusiveSecondaryVertexFinderTagInfosFiltered*
+    process.simpleInclusiveSecondaryVertexHighEffBJetTags *
+    process.simpleInclusiveSecondaryVertexHighPurBJetTags *
+    process.pileupJetIdProducer*
+    process.makePatJetsData*
+    process.patJetsPUID*
+    process.patJetId*
+    process.NewSelectedPatJets
+   )
 
   process.reRunJetPath = cms.Path(process.reRunJetSeq)
 
@@ -336,8 +339,7 @@ def ReNameJetColl(process):
 
 def jetMCMatching(process,jets):
   process.patJetMCMatched = cms.EDProducer('MCBHadronJetProducer',
-                                        src = cms.InputTag(jets)
-
+   src = cms.InputTag(jets)
   )
   process.jetMCMatching = cms.Sequence(process.patJetMCMatched)
   process.createJetMCMatching=cms.Path(process.jetMCMatching)
@@ -346,9 +348,9 @@ def jetMCMatching(process,jets):
 
 def jetOverloading(process,jets):
   process.patOverloadedJets = cms.EDProducer('PATJetOverloader',
-                                        src = cms.InputTag(jets),
-                                        leptons = cms.InputTag("cleanPatMuons"),
-                                        vertices=cms.InputTag("offlinePrimaryVertices")
+   src = cms.InputTag(jets),
+   leptons = cms.InputTag("cleanPatMuons"),
+   vertices=cms.InputTag("offlinePrimaryVertices")
   )
   process.jetOverloadingSeq = cms.Sequence(process.patOverloadedJets)
   process.jetOverloadingPath=cms.Path(process.jetOverloadingSeq)
@@ -356,8 +358,8 @@ def jetOverloading(process,jets):
 
 def jetPUEmbedding(process,jets):
   process.patPUEmbeddedJets = cms.EDProducer('PATSimplePUID',
-                                        src = cms.InputTag(jets),
-                                        vertices=cms.InputTag("offlinePrimaryVertices")
+   src = cms.InputTag(jets),
+   vertices=cms.InputTag("offlinePrimaryVertices")
   )
   process.jetPUEmbeddingSeq = cms.Sequence(process.patPUEmbeddedJets)
   process.jetPUEmbeddingPath=cms.Path(process.jetPUEmbeddingSeq)
@@ -376,23 +378,23 @@ def rochesterCorrector(process,muons="cleanPatMuons",rochCor="RochCor2012"):
 def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
   if isMC:
    process.patSSVJets=cms.EDProducer("PATSSVJetEmbedder", 
-                                     src = cms.InputTag(jets) 
+    src = cms.InputTag(jets) 
    ) 
    process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco', 
-                                        src = cms.InputTag("patSSVJets"), 
-                                        leptons = cms.InputTag(muons), 
-                                        vertices=cms.InputTag("offlinePrimaryVertices") 
+    src = cms.InputTag("patSSVJets"), 
+    leptons = cms.InputTag(muons), 
+    vertices=cms.InputTag("offlinePrimaryVertices") 
    ) 
   if isData:
    process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData', 
-                                        src = cms.InputTag(jets), 
-                                        leptons = cms.InputTag(muons), 
-                                        vertices=cms.InputTag("offlinePrimaryVertices")
+    src = cms.InputTag(jets), 
+    leptons = cms.InputTag(muons), 
+    vertices=cms.InputTag("offlinePrimaryVertices")
    ) 
   process.patBRecoJets = cms.EDProducer('PATJetBReco', 
-                                        src = cms.InputTag("patBpmRecoJets"), 
-                                        leptons = cms.InputTag(muons), 
-                                        vertices=cms.InputTag("offlinePrimaryVertices") 
+   src = cms.InputTag("patBpmRecoJets"), 
+   leptons = cms.InputTag(muons), 
+   vertices=cms.InputTag("offlinePrimaryVertices") 
   ) 
   if isMC:
    process.BReconstruction = cms.Sequence(process.patSSVJets*process.patBpmRecoJets*process.patBRecoJets) 
@@ -404,45 +406,45 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
 
 def applyDefaultSelectionsPT(process,jets,muons):
   process.selectedPatTaus = cms.EDFilter("PATTauSelector",
-                                           src = cms.InputTag("cleanPatTaus"),
-                                           cut = cms.string('pt>15&&tauID("byLooseIsolationMVA")&&tauID("againstElectronLoose")&&tauID("againstMuonLoose")'),
-                                           filter = cms.bool(False)
+   src = cms.InputTag("cleanPatTaus"),
+   cut = cms.string('pt>15&&tauID("byLooseIsolationMVA")&&tauID("againstElectronLoose")&&tauID("againstMuonLoose")'),
+   filter = cms.bool(False)
    )
   process.selectedPatElectrons = cms.EDFilter("PATElectronSelector",
-                                           src = cms.InputTag("cleanPatElectrons"),
-                                           cut = cms.string('pt>20&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.3'),
-                                           filter = cms.bool(False)
+   src = cms.InputTag("cleanPatElectrons"),
+   cut = cms.string('pt>5&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.3'),
+   filter = cms.bool(False)
    )
   process.selectedPatMuons = cms.EDFilter("PATMuonSelector",
-                                           src = cms.InputTag("cleanPatMuons"),
-                                           cut = cms.string('pt>20&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.3'),
-                                           filter = cms.bool(False)
+   src = cms.InputTag("cleanPatMuons"),
+   cut = cms.string('pt>20&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.3'),
+   filter = cms.bool(False)
    )
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
-                                        src = cms.InputTag(jets),
-                                        preselection = cms.string('abs(eta)<5.0&&pt>20&&userFloat("idLoose")>0'),
-                                        checkOverlaps = cms.PSet( 
-                                            muons = cms.PSet(
-                                             src = cms.InputTag(muons),
-                                             algorithm = cms.string("byDeltaR"),
-                                             preselection = cms.string("pt>10&&isGlobalMuon&&isTrackerMuon&&(chargedHadronIso()+max(photonIso+neutralHadronIso(),0.0))/pt()<0.3"),
-                                             deltaR = cms.double(0.5),
-                                             checkRecoComponents = cms.bool(False),
-                                             pairCut = cms.string(""),
-                                             requireNoOverlaps = cms.bool(True),
-                                            ),
-                                            electrons = cms.PSet(
-                                             src = cms.InputTag("cleanPatElectrons"),
-                                             algorithm = cms.string("byDeltaR"),
-                                             preselection = cms.string("pt>10&&(chargedHadronIso()+max(photonIso()+neutralHadronIso(),0.0))/pt()<0.3"),
-                                             deltaR = cms.double(0.5),
-                                             checkRecoComponents = cms.bool(False),
-                                             pairCut = cms.string(""),
-                                             requireNoOverlaps = cms.bool(True),
-                                            ),
-                                        ),
-                                        finalCut = cms.string('')
-                                        )	
+   src = cms.InputTag(jets),
+   preselection = cms.string('abs(eta)<5.0&&pt>20&&userFloat("idLoose")>0'),
+   checkOverlaps = cms.PSet( 
+       muons = cms.PSet(
+        src = cms.InputTag(muons),
+        algorithm = cms.string("byDeltaR"),
+        preselection = cms.string("pt>10&&isGlobalMuon&&isTrackerMuon&&(chargedHadronIso()+max(photonIso+neutralHadronIso(),0.0))/pt()<0.3"),
+        deltaR = cms.double(0.5),
+        checkRecoComponents = cms.bool(False),
+        pairCut = cms.string(""),
+        requireNoOverlaps = cms.bool(True),
+       ),
+       electrons = cms.PSet(
+        src = cms.InputTag("cleanPatElectrons"),
+        algorithm = cms.string("byDeltaR"),
+        preselection = cms.string("pt>10&&(chargedHadronIso()+max(photonIso()+neutralHadronIso(),0.0))/pt()<0.3"),
+        deltaR = cms.double(0.5),
+        checkRecoComponents = cms.bool(False),
+        pairCut = cms.string(""),
+        requireNoOverlaps = cms.bool(True),
+       ),
+   ),
+   finalCut = cms.string('')
+   )	
   process.selectedObjectsForSyst = cms.Sequence(process.selectedPatTaus+process.selectedPatElectrons+process.selectedPatMuons+process.cleanPatJets)
   process.analysisSequence = cms.Sequence(process.analysisSequence*process.selectedObjectsForSyst)
 

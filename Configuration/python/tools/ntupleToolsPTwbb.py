@@ -1,433 +1,134 @@
 import FWCore.ParameterSet.Config as cms
 
 from UWAnalysis.Configuration.tools.analysisToolsPT import TriggerPaths
+jetRanks = [0,1,2,4]
+jetNames = ['J1_','J2_','J3_','J4_']
 
-def makeCollections(process, source = 'wCandsJets', sourceZ = 'diMuonsSorted'):
+def makeJetUserFloat(floatName,xn='',source = 'wCandsJets'):
+ PSet_List = []
+ for rank,name in zip(jetRanks,jetNames):
+  nameTag = name+floatName+xn
+  PSet_List.append(cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string(nameTag),
+        method = cms.string('userFloat("'+floatName+'")'),
+        rank = cms.untracked.double(rank)
+  ))
+ return PSet_List
+
+def makeJetStringPar(strName,xn='',source='wCandsJets'):
+ PSet_List = []
+ for rank,name in zip(jetRanks,jetNames):
+  nameTag = name+strName+xn
+  PSet_List.append(cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string(nameTag),
+        method = cms.string(strName+'()'),
+        rank = cms.untracked.double(rank)
+  ))
+ return PSet_List
+
+def makeJetString(strName,xn='',source='wCandsJets'):
+ PSet_List = []
+ for rank,name in zip(jetRanks,jetNames):
+  nameTag = name+strName+xn
+  PSet_List.append(cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string(nameTag),
+        method = cms.string(strName),
+        rank = cms.untracked.double(rank)
+  ))
+ return PSet_List
+
+def makeJetBTag(tagName,strName,source='wCandsJets'):
+ PSet_List = []
+ for rank,name in zip(jetRanks,jetNames):
+  nameTag = name+tagName
+  PSet_List.append(cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string(nameTag),
+        method = cms.string('bDiscriminator("'+strName+'")'),
+        rank = cms.untracked.double(rank)
+  ))
+ return PSet_List
+
+def makeNJets(pt,source='wCandsJets'):
+  PSet = cms.PSet(
+        pluginType = cms.string("PATMuonNuPairJetCountFiller"),
+        src = cms.InputTag(source),
+        tag = cms.string("nJetsPt"+str(pt)),
+        method = cms.string('pt()>'+str(pt)+'&&abs(eta())<2.4'),
+        leadingOnly=cms.untracked.bool(True)
+  )
+  return PSet
+
+def makeCollSize(srcName,tagName):
+  PSet = cms.PSet(
+        pluginType = cms.string("CollectionSizeFiller"),
+        src = cms.InputTag(srcName),
+        tag = cms.string(tagName)
+  )
+  return PSet
+
+def makeZColl(tagName,methodName,sourceZ='diMuonsSorted'):
+  PSet = cms.PSet(
+        pluginType = cms.string("PATMuPairFiller"),
+        src = cms.InputTag(sourceZ),
+        tag = cms.string(tagName),
+        method = cms.string(methodName),
+        leadingOnly=cms.untracked.bool(True)
+  )
+  return PSet
+
+def makeMuNu(tagName,methodName,source='wCandsJets',lo=False):
+  if lo:
+   PSet = cms.PSet(
+         pluginType = cms.string("PATMuonNuPairFiller"),
+         src = cms.InputTag(source),
+         tag = cms.string(tagName),
+         method = cms.string(methodName),
+         leadingOnly=cms.untracked.bool(True)
+   )
+  else:
+   PSet = cms.PSet(
+         pluginType = cms.string("PATMuonNuPairFiller"),
+         src = cms.InputTag(source),
+         tag = cms.string(tagName),
+         method = cms.string(methodName),
+   )
+  return PSet
+
+def makeSimBHad(srcName,tagName,methodName):
+  PSet = cms.PSet(
+        pluginType = cms.string("SimBHadronsFiller"),
+        src = cms.InputTag(srcName),
+        tag = cms.string(tagName),
+        method = cms.string(methodName+"()"),
+        leadingOnly=cms.untracked.bool(False)
+  )
+  return PSet
+
+def makeIVFBs(tagName,methodName):
+  PSet = cms.PSet(
+        pluginType = cms.string("bCandidatesFiller"),
+        src        = cms.InputTag('LCProducer','BCandFinalState'),
+        tag        = cms.string(tagName),
+        method     = cms.string(methodName+"()"),
+        leadingOnly=cms.untracked.bool(False)
+  )
+  return PSet
+
+def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = 'weCandsJets'):
  commonCollections = cms.PSet(         
-    J4_PUID_idTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_idTight"),
-        method = cms.string('userFloat("idTight")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_fullIdTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_fullIdTight"),
-        method = cms.string('userInt("fullIdTight")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_idLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_idLoose"),
-        method = cms.string('userFloat("idLoose")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_fullIdLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_fullIdLoose"),
-        method = cms.string('userInt("fullIdLoose")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_fullDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_fullDiscriminant"),
-        method = cms.string('userFloat("fullDiscriminant")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_philv1Discriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_philv1Discriminant"),
-        method = cms.string('userFloat("philv1Discriminant")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_simpleDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_simpleDiscriminant"),
-        method = cms.string('userFloat("simpleDiscriminant")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_beta = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_beta"),
-        method = cms.string('userFloat("PUID_beta")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_betaClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_betaClassic"),
-        method = cms.string('userFloat("PUID_betaClassic")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_betaStar = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_betaStar"),
-        method = cms.string('userFloat("PUID_betaStar")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_betaStarClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_betaStarClassic"),
-        method = cms.string('userFloat("PUID_betaStarClassic")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_nTrack = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_nTrack"),
-        method = cms.string('userFloat("PUID_nTrack")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_closestDz = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_closestDz"),
-        method = cms.string('userFloat("PUID_closestDz")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_closestDxy = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_closestDxy"),
-        method = cms.string('userFloat("PUID_closestDxy")'),
-        rank = cms.untracked.double(3)
-    ),
-    J4_PUID_betaStarClassicMod = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J4_PUID_betaStarClassicMod"),
-        method = cms.string('userFloat("PUID_betaStarClassicMod")'),
-        rank = cms.untracked.double(3)
-    ),
-    J3_PUID_idTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_idTight"),
-        method = cms.string('userFloat("idTight")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_fullIdTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_fullIdTight"),
-        method = cms.string('userInt("fullIdTight")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_idLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_idLoose"),
-        method = cms.string('userFloat("idLoose")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_fullIdLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_fullIdLoose"),
-        method = cms.string('userInt("fullIdLoose")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_fullDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_fullDiscriminant"),
-        method = cms.string('userFloat("fullDiscriminant")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_philv1Discriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_philv1Discriminant"),
-        method = cms.string('userFloat("philv1Discriminant")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_simpleDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_simpleDiscriminant"),
-        method = cms.string('userFloat("simpleDiscriminant")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_beta = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_beta"),
-        method = cms.string('userFloat("PUID_beta")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_betaClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_betaClassic"),
-        method = cms.string('userFloat("PUID_betaClassic")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_betaStar = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_betaStar"),
-        method = cms.string('userFloat("PUID_betaStar")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_betaStarClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_betaStarClassic"),
-        method = cms.string('userFloat("PUID_betaStarClassic")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_nTrack = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_nTrack"),
-        method = cms.string('userFloat("PUID_nTrack")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_closestDz = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_closestDz"),
-        method = cms.string('userFloat("PUID_closestDz")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_closestDxy = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_closestDxy"),
-        method = cms.string('userFloat("PUID_closestDxy")'),
-        rank = cms.untracked.double(2)
-    ),
-    J3_PUID_betaStarClassicMod = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3_PUID_betaStarClassicMod"),
-        method = cms.string('userFloat("PUID_betaStarClassicMod")'),
-        rank = cms.untracked.double(2)
-    ),
-    J2_PUID_idTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_idTight"),
-        method = cms.string('userFloat("idTight")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_fullIdTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_fullIdTight"),
-        method = cms.string('userInt("fullIdTight")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_idLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_idLoose"),
-        method = cms.string('userFloat("idLoose")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_fullIdLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_fullIdLoose"),
-        method = cms.string('userInt("fullIdLoose")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_fullDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_fullDiscriminant"),
-        method = cms.string('userFloat("fullDiscriminant")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_philv1Discriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_philv1Discriminant"),
-        method = cms.string('userFloat("philv1Discriminant")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_simpleDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_simpleDiscriminant"),
-        method = cms.string('userFloat("simpleDiscriminant")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_beta = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_beta"),
-        method = cms.string('userFloat("PUID_beta")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_betaClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_betaClassic"),
-        method = cms.string('userFloat("PUID_betaClassic")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_betaStar = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_betaStar"),
-        method = cms.string('userFloat("PUID_betaStar")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_betaStarClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_betaStarClassic"),
-        method = cms.string('userFloat("PUID_betaStarClassic")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_nTrack = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_nTrack"),
-        method = cms.string('userFloat("PUID_nTrack")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_closestDz = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_closestDz"),
-        method = cms.string('userFloat("PUID_closestDz")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_closestDxy = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_closestDxy"),
-        method = cms.string('userFloat("PUID_closestDxy")'),
-        rank = cms.untracked.double(1)
-    ),
-    J2_PUID_betaStarClassicMod = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2_PUID_betaStarClassicMod"),
-        method = cms.string('userFloat("PUID_betaStarClassicMod")'),
-        rank = cms.untracked.double(1)
-    ),
-    J1_PUID_idTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_idTight"),
-        method = cms.string('userFloat("idTight")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_fullIdTight = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_fullIdTight"),
-        method = cms.string('userInt("fullIdTight")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_idLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_idLoose"),
-        method = cms.string('userFloat("idLoose")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_fullIdLoose = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_fullIdLoose"),
-        method = cms.string('userInt("fullIdLoose")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_fullDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_fullDiscriminant"),
-        method = cms.string('userFloat("fullDiscriminant")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_philv1Discriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_philv1Discriminant"),
-        method = cms.string('userFloat("philv1Discriminant")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_simpleDiscriminant = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_simpleDiscriminant"),
-        method = cms.string('userFloat("simpleDiscriminant")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_beta = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_beta"),
-        method = cms.string('userFloat("PUID_beta")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_betaClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_betaClassic"),
-        method = cms.string('userFloat("PUID_betaClassic")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_betaStar = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_betaStar"),
-        method = cms.string('userFloat("PUID_betaStar")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_betaStarClassic = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_betaStarClassic"),
-        method = cms.string('userFloat("PUID_betaStarClassic")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_nTrack = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_nTrack"),
-        method = cms.string('userFloat("PUID_nTrack")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_closestDz = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_closestDz"),
-        method = cms.string('userFloat("PUID_closestDz")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_closestDxy = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_closestDxy"),
-        method = cms.string('userFloat("PUID_closestDxy")'),
-        rank = cms.untracked.double(0)
-    ),
-    J1_PUID_betaStarClassicMod = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1_PUID_betaStarClassicMod"),
-        method = cms.string('userFloat("PUID_betaStarClassicMod")'),
-        rank = cms.untracked.double(0)
-    ),
+    electronPt = makeMuNu("electronPt","lepton.pt()",sourceE),
     PVs = cms.PSet(
-          pluginType = cms.string("VertexSizeFiller"),
-          src = cms.InputTag("primaryVertexFilter"),
-          tag = cms.string("vertixces")
+        pluginType = cms.string("VertexSizeFiller"),
+        src = cms.InputTag("primaryVertexFilter"),
+        tag = cms.string("vertices")
     ), 
     pu = cms.PSet(
         pluginType = cms.string("PUFiller"),
@@ -439,1240 +140,257 @@ def makeCollections(process, source = 'wCandsJets', sourceZ = 'diMuonsSorted'):
         src = cms.InputTag("patTrigger"),
         paths = cms.vstring(TriggerPaths)
     ),
-    DiJetSVSVMass = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("DiSVMass"),
-        method = cms.string('SV1SV2M')
-    ),
-    DiJetSVSVPt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("DiSVPt"),
-        method = cms.string('SV1SV2Pt')
-    ),
-    J1SV_M = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1SVM"),
-        method = cms.string('userFloat("SV_M")'),
-        rank = cms.untracked.double(0)
-    ),
-     J1SV_Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1SVpt"),
-        method = cms.string('userFloat("SV_pt")'),
-        rank = cms.untracked.double(0)
-    ),
-     J1SV_Eta = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1SVeta"),
-        method = cms.string('userFloat("SV_eta")'),
-        rank = cms.untracked.double(0)
-    ),
-     J1SV_Phi = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1SVphi"),
-        method = cms.string('userFloat("SV_phi")'),
-        rank = cms.untracked.double(0)
-    ),
-     J2SV_M = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2SVM"),
-        method = cms.string('userFloat("SV_M")'),
-        rank = cms.untracked.double(1)
-    ),
-     J2SV_Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2SVpt"),
-        method = cms.string('userFloat("SV_pt")'),
-        rank = cms.untracked.double(1)
-    ),
-     J2SV_Eta = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2SVeta"),
-        method = cms.string('userFloat("SV_eta")'),
-        rank = cms.untracked.double(1)
-    ),
-     J2SV_Phi = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2SVphi"),
-        method = cms.string('userFloat("SV_phi")'),
-        rank = cms.untracked.double(1)
-    ),
-     J1Mu1boost = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1Mu1Boost"),
-        method = cms.string('userFloat("Mu1Boost")'),
-        rank = cms.untracked.double(0)
-    ),
-     muNuFirstBpmElecstrue = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massBpmE"),
-         method = cms.string('userFloat("massBpmElecs")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondBpmElecstrue = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massBpmE"),
-         method = cms.string('userFloat("massBpmElecs")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstBpm3 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massBpm3"),
-         method = cms.string('userFloat("sec_massBpm")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondBpm3 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massBpm3"),
-         method = cms.string('userFloat("sec_massBpm")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstBpm3charge = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massBpm3_charge"),
-         method = cms.string('userFloat("sec_massBpm_charge")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondBpm3charge = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massBpm3_charge"),
-         method = cms.string('userFloat("sec_massBpm_charge")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstD03 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massD03"),
-         method = cms.string('userFloat("sec_massD0")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondD03 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massD03"),
-         method = cms.string('userFloat("sec_massD0")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstBpmtrue2 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massBpm2"),
-         method = cms.string('userFloat("massBpm2")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondBpmtrue2 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massBpm2"),
-         method = cms.string('userFloat("massBpm2")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstDpmtrue = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massDpm"),
-         method = cms.string('userFloat("massDpm")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondDpmtrue = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massDpm"),
-         method = cms.string('userFloat("massDpm")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstBpmtrue = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massBpm"),
-         method = cms.string('userFloat("massBpm")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondBpmtrue = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massBpm"),
-         method = cms.string('userFloat("massBpm")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstD0true = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1massD0"),
-         method = cms.string('userFloat("massD0")'),
-         rank = cms.untracked.double(0)
-    ),
-     muNuSecondD0true = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2massD0"),
-         method = cms.string('userFloat("massD0")'),
-         rank = cms.untracked.double(1)
-     ),
-    cSIZE2= cms.PSet(
-        pluginType = cms.string("CollectionSizeFiller"),
-        src = cms.InputTag("cbarCands"),
-        tag = cms.string("ncbarCands"),
-        ),
-    cSIZE = cms.PSet(
-        pluginType = cms.string("CollectionSizeFiller"),
-        src = cms.InputTag("cCands"),
-        tag = cms.string("ncCands"),
-        ),
-    muNuSize = cms.PSet(
-        pluginType = cms.string("CollectionSizeFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("NWCands")
-        ),
-    muSize = cms.PSet(
-        pluginType = cms.string("CollectionSizeFiller"),
-        src = cms.InputTag("selectedPatMuons"),
-        tag = cms.string("nMuons")
-        ),
-    eleSize = cms.PSet(
-        pluginType = cms.string("CollectionSizeFiller"),
-        src = cms.InputTag("selectedPatElectrons"),
-        tag = cms.string("nElectrons")
-        ),
-     nJets24to5 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJets24to5"),
-         method = cms.string("nJets24to5")
-     ),
-     nJets24to5pt20 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJets24Pt20"),
-         method = cms.string("nJets24Pt20")
-     ),
-     nJets24to5pt25 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJets24Pt25"),
-         method = cms.string("nJets24Pt25")
-     ),
-     nJets24to5pt30 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJets24Pt30"),
-         method = cms.string("nJets24Pt30")
-     ),
-     muNuFirstFD = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1FlightDist"),
-         method = cms.string('userFloat("flightDistance")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondFD = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2FlightDist"),
-         method = cms.string('userFloat("flightDistance")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstFDer = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1errorFlightDist"),
-         method = cms.string('userFloat("errorFlightDistance")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondFDer = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2errorFlightDist"),
-         method = cms.string('userFloat("errorFlightDistance")'),
-         rank = cms.untracked.double(1)
-     ),
-     J1ntracks = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1nTracks"),
-        method = cms.string('userFloat("nTracks")'),
-        rank = cms.untracked.double(0)
-    ),
-    J2ntracks = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2nTracks"),
-        method = cms.string('userFloat("nTracks")'),
-        rank = cms.untracked.double(1)
-   ),
-     J1track1Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1Track1Pt"),
-        method = cms.string('(userFloat("SSV_track1_px")^2+userFloat("SSV_track1_py")^2+userFloat("SSV_track1_pz")^2)^(1/2)'),
-        rank = cms.untracked.double(0)
-    ),
-     J1track2Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1Track2Pt"),
-        method = cms.string('(userFloat("SSV_track2_px")^2+userFloat("SSV_track2_py")^2+userFloat("SSV_track2_pz")^2)^(1/2)'),
-        rank = cms.untracked.double(0)
-    ),
-     J1track3Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1Track3Pt"),
-        method = cms.string('(userFloat("SSV_track3_px")^2+userFloat("SSV_track3_py")^2+userFloat("SSV_track3_pz")^2)^(1/2)'),
-        rank = cms.untracked.double(0)
-    ),
-     J2track1Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2Track1Pt"),
-        method = cms.string('(userFloat("SSV_track1_px")^2+userFloat("SSV_track1_py")^2+userFloat("SSV_track1_pz")^2)^(1/2)'),
-        rank = cms.untracked.double(1)
-    ),
-     J2track2Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2Track2Pt"),
-        method = cms.string('(userFloat("SSV_track2_px")^2+userFloat("SSV_track2_py")^2+userFloat("SSV_track2_pz")^2)^(1/2)'),
-        rank = cms.untracked.double(1)
-    ),
-     J2track3Pt = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2Track3Pt"),
-        method = cms.string('(userFloat("SSV_track3_px")^2+userFloat("SSV_track3_py")^2+userFloat("SSV_track3_pz")^2)^(1/2)'),
-        rank = cms.untracked.double(1)
-    ),
-     muNuDZ = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("dz"),
-        method = cms.string('abs(lepton.userFloat("dz"))'),
-        Leadingonly=cms.untracked.bool(True)
-     ),
-    muNuJ1DR = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1DR"),
-        method = cms.string('userFloat("DR")'),
-        rank = cms.untracked.double(0)
-        ),
-    muNuJ2DR = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2DR"),
-        method = cms.string('userFloat("DR")'),
-        rank = cms.untracked.double(1)
-        ),
-    muNuJ1Shape = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1JetShape"),
-        method = cms.string('userFloat("ptRMS")'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuJ2Shape = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2JetShape"),
-        method = cms.string('userFloat("ptRMS")'),
-        rank = cms.untracked.double(1)
-    ),
-     J1TRKdxy = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1TRKdxy"),
-        method = cms.string('userFloat("dxy")'),
-        rank = cms.untracked.double(0)
-    ),
-    J2TRKdxy = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2TRKdxy"),
-        method = cms.string('userFloat("dxy")'),
-        rank = cms.untracked.double(1)
-   ),
-     J1TRKdz = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1TRKdz"),
-        method = cms.string('userFloat("dz")'),
-        rank = cms.untracked.double(0)
-    ),
-    J2TRKdz = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2TRKdz"),
-        method = cms.string('userFloat("dz")'),
-        rank = cms.untracked.double(1)
-   ),
-    muNuHT = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("ht"),
-        method = cms.string("ht"),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-     muNuFirstJetFlavor = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1JetParton"),
-         method = cms.string('partonFlavour()'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuFirstNTrackSSV = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1nTracksSSV"),
-         method = cms.string('userFloat("nTracksSSV")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondNTrackSSV = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2nTracksSSV"),
-         method = cms.string('userFloat("nTracksSSV")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstJetSVMass = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1SVMass"),
-         method = cms.string('userFloat("massSSV")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondJetSVMass = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2SVMass"),
-         method = cms.string('userFloat("massSSV")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstJetSVMassb = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1SVMassb"),
-         method = cms.string('userFloat("mass_SSV")'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondJetSVMassb = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2SVMassb"),
-         method = cms.string('userFloat("mass_SSV")'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuFirstMuonMulti = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1MuonMulti"),
-         method = cms.string('muonMultiplicity()'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondMuonMulti = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2MuonMulti"),
-         method = cms.string('muonMultiplicity()'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuThirdMuonMulti = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J3MuonMulti"),
-         method = cms.string('muonMultiplicity()'),
-         rank = cms.untracked.double(2)
-     ),
-     muNuFirstChargeMulti = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1ChargeMulti"),
-        method = cms.string('chargedMultiplicity()'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuSecondChargeMulti = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2ChargeMulti"),
-        method = cms.string('chargedMultiplicity()'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuFirstElectronMulti = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1EleMulti"),
-        method = cms.string('electronMultiplicity()'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuSecondElectronMulti = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2EleMulti"),
-        method = cms.string('electronMultiplicity()'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuFirstPhotonMulti = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1PhotonMulti"),
-        method = cms.string('photonMultiplicity()'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuSecondPhotonMulti = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2PhotonMulti"),
-        method = cms.string('photonMultiplicity()'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuSecondJetFlavor = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2JetParton"),
-        method = cms.string('partonFlavour()'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuThirdJetFlavor = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J3JetParton"),
-        method = cms.string('partonFlavour()'),
-        rank = cms.untracked.double(2)
-    ),
-    muNuJJ = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("mJJ"),
-        method = cms.string("mJJ"),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-    muNuJJ2 = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("mJ3J4"),
-        method = cms.string("mJJ2"),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuJJPt = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("ptJJ"),
-         method = cms.string("ptJJ"),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muonPt = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muonPt"),
-         method = cms.string("lepton().pt")
-     ),
-     muonEta = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muonEta"),
-         method = cms.string("lepton.eta")
-     ),
-     muonPhi = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muonPhi"),
-         method = cms.string("lepton.phi")
-     ),
-     muonCharge = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muonCharge"),
-         method = cms.string("lepton.charge()")
-     ),
-     WPt = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("WPt"),
-         method = cms.string("corPt()")
-     ),
-     muNuCalMET = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("met"),
-         method = cms.string("calibratedMET.pt()"),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuMET = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("MET"),
-           method = cms.string("met().pt")
-     ),
-     muNuCorMET = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("corMET"),
-           method = cms.string("trueMet")
-     ),
-     muNuMT = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("Mt"),
-         method = cms.string("mt")
-     ),
-     muNuCorMT = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("MtCal"),
-         method = cms.string("corMt()")
-     ),
-     muMuMass = cms.PSet(
-         pluginType = cms.string("PATMuPairFiller"),
-         src = cms.InputTag(sourceZ),
-         tag = cms.string("DiMuonMass"),
-         method = cms.string("mass")
-     ),
-    muMuleg1pt = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l1pt"),
-        method = cms.string('leg1.pt()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuleg1eta = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l1eta"),
-        method = cms.string('leg1.eta()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuleg1phi = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l1phi"),
-        method = cms.string('leg1.phi()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuleg2pt = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l2pt"),
-        method = cms.string('leg2.pt()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuleg2eta = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l2eta"),
-        method = cms.string('leg2.eta()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuleg2phi = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l2phi"),
-        method = cms.string('leg2.phi()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuRelStdIsoLeg1 = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l1StdRelIso"),
-        method = cms.string('(leg1.isolationR03.sumPt+leg1.isolationR03.emEt+leg1.isolationR03.hadEt)/leg1.pt()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuRelPFIsoDBLeg1 = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l1PFIsoDB"),
-        method = cms.string('(leg1.userIso(0)+max(leg1.photonIso()+leg1.neutralHadronIso()-0.5*leg1.puChargedHadronIso,0.0))/leg1.pt()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuRelStdIsoLeg2 = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l2StdRelIso"),
-        method = cms.string('(leg2.isolationR03.sumPt+leg2.isolationR03.emEt+leg2.isolationR03.hadEt)/leg2.pt()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muMuRelPFIsoDBLeg2 = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("l2PFIsoDB"),
-        method = cms.string('(leg2.userIso(0)+max(leg2.photonIso()+leg2.neutralHadronIso()-0.5*leg2.puChargedHadronIso,0.0))/leg2.pt()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-     muMuHMass = cms.PSet(
-         pluginType = cms.string("PATMuPairFiller"),
-         src = cms.InputTag(sourceZ),
-         tag = cms.string("HMass1"),
-         method = cms.string("p4Higgs.M()")
-     ),
-     muMuHMassSV = cms.PSet(
-         pluginType = cms.string("PATMuPairFiller"),
-         src = cms.InputTag(sourceZ),
-         tag = cms.string("HMass2"),
-         method = cms.string("p4HiggsSV.M()")
-     ),
-     muNumetjj = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("metjj"),
-         method = cms.string("metjj")
-     ),
-     muNuleptonjj = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("leptonjj"),
-         method = cms.string("leptonjj")
-     ),
-     muNuDPhi = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muNuDPhi"),
-         method = cms.string("dPhi")
-     ),
-     muNuRecoil = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muNuRecoil"),
-         method = cms.string("recoil().pt()")
-     ),
-     muNuMuRelPFIso = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muNuRelPFIso"),
-         method = cms.string('(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()')
-     ),
-     muNuMuRelPFIsoVeto = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("PFIsoVeto"),
-         method = cms.string('lepton.userIso(0)')
-     ),
-     muNuMuRelPFIsoRho = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("PFIsoRho"),
-         method = cms.string('lepton.userFloat("rho")')
-     ),
-     muNuRelStdIso03 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("muNuRelStdIso03"),
-         method = cms.string('(lepton.isolationR03.sumPt+lepton.isolationR03.emEt+lepton.isolationR03.hadEt)/lepton.pt()')
-     ),
-    muNuRelPFIsoDB = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("lPFIsoDB"),
-        method = cms.string('(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()'),
-        leadingOnly=cms.untracked.bool(True)
-    ),
-    muNuJ1mu1Mass = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1Mu1ZMass"),
-        method = cms.string('userFloat("muon1ZMass")'),
-        rank = cms.untracked.double(0)
-        ),
-    muNuJ2mu1Mass = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2Mu1ZMass"),
-        method = cms.string('userFloat("muon1ZMass")'),
-        rank = cms.untracked.double(1)
-        ),
-    muNuJ1mu1 = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1muon1pt"),
-        method = cms.string('userFloat("muon1pt")'),
-        rank = cms.untracked.double(0)
-        ),
-    muNuJ1mu2 = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1muon2pt"),
-        method = cms.string('userFloat("muon2pt")'),
-        rank = cms.untracked.double(0)
-        ),
-    muNuJ2mu1 = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2muon1pt"),
-        method = cms.string('userFloat("muon1pt")'),
-        rank = cms.untracked.double(1)
-        ),
-    muNuJ2mu2 = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2muon2pt"),
-        method = cms.string('userFloat("muon2pt")'),
-        rank = cms.untracked.double(1)
-        ),
-     muNuJetsPt30 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairJetCountFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJetsPt30"),
-         method = cms.string('pt()>30&&abs(eta())<2.4'),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuJetsPt25 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairJetCountFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJetsPt25"),
-         method = cms.string('userFloat("idLoose")&&pt()>25&&abs(eta())<2.4'),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuJetsPt26 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairJetCountFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJetsPt26"),
-         method = cms.string('pt()>26&&abs(eta())<2.4'),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuJetsPt24 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairJetCountFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJetsPt24"),
-         method = cms.string('pt()>24&&abs(eta())<2.4'),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuJetsPt40 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairJetCountFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJetsPt40"),
-         method = cms.string('pt()>40&&abs(eta())<2.4'),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuJetsPt20 = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairJetCountFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("nJetsPt20"),
-         method = cms.string('pt()>20&&abs(eta())<2.4'),
-         leadingOnly=cms.untracked.bool(True)
-     ),
-     muNuFirstJetPt = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("highestJetPt"),
-         method = cms.string('pt()'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondJetPt = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("secondJetPt"),
-         method = cms.string('pt()'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuThirdJetPt = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("thirdJetPt"),
-         method = cms.string('pt()'),
-         rank = cms.untracked.double(2)
-     ),
-     muNuFourthJetPt = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("fourthJetPt"),
-         method = cms.string('pt()'),
-         rank = cms.untracked.double(3)
-     ),
-     muNuFirstJetEta = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("highestJetEta"),
-         method = cms.string('eta()'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondJetEta = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("secondJetEta"),
-         method = cms.string('eta()'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuThirdJetEta = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("thirdJetEta"),
-         method = cms.string('eta()'),
-         rank = cms.untracked.double(2)
-     ),
-     muNuFourthJetEta = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("fourthJetEta"),
-         method = cms.string('eta()'),
-         rank = cms.untracked.double(3)
-     ),
-     muNuFirstJetPhi = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("highestJetPhi"),
-         method = cms.string('phi()'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuSecondJetPhi = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("secondJetPhi"),
-         method = cms.string('phi()'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuThirdJetPhi = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("thirdJetPhi"),
-         method = cms.string('phi()'),
-         rank = cms.untracked.double(2)
-     ),
-     muNuFourthJetPhi = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("fourthJetPhi"),
-         method = cms.string('phi()'),
-         rank = cms.untracked.double(3)
-     ),
-      muNuFirstJetChargedMultiplicity = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1nCharges"),
-         method = cms.string('chargedHadronMultiplicity()'),
-         rank = cms.untracked.double(0)
-     ),
-    muNuFirstJetTCHEbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1TCHEbtag"),
-        method = cms.string('bDiscriminator("trackCountingHighEffBJetTags")'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuFirstJetTCHPbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1TCHPbtag"),
-        method = cms.string('bDiscriminator("trackCountingHighPurBJetTags")'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuFirstJetSSVHEbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1SSVHEbtag"),
-        method = cms.string('bDiscriminator("simpleSecondaryVertexHighEffBJetTags")'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuFirstJetCSVbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1CSVbtag"),
-        method = cms.string('bDiscriminator("combinedSecondaryVertexBJetTags")'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuFirstJetCSVMVAbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1CSVMVAbtag"),
-        method = cms.string('bDiscriminator("combinedSecondaryVertexMVABJetTags")'),
-        rank = cms.untracked.double(0)
-    ),
-    muNuFirstJetCharge = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J1Charge"),
-        method = cms.string('jetCharge'),
-        rank = cms.untracked.double(0)
-    ),
-     muNuFirstJetMass = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1Mass"),
-         method = cms.string('mass'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuFirstPhotonEnergy = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1PhotonEnergy"),
-         method = cms.string('photonEnergy'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuFirstPhotonEnergyFrac = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1PhotonEnergyFrac"),
-         method = cms.string('photonEnergyFraction'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuFirstElectronEnergy = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1ElectronEnergy"),
-         method = cms.string('electronEnergy'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuFirstElectronEnergyFrac = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J1ElectronEnergyFrac"),
-         method = cms.string('chargedEmEnergyFraction'),
-         rank = cms.untracked.double(0)
-     ),
-     muNuFirstMuEnergy = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J1MuonEnergy"),
-          method = cms.string('chargedMuEnergy'),
-          rank = cms.untracked.double(0)
-      ),
-      muNuFirstMuEnergyFrac = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J1MuEnergyFrac"),
-          method = cms.string('muonEnergyFraction'),
-          rank = cms.untracked.double(0)
-      ),
-    muNuSecondJetChargedMultiplicity = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2nCharges"),
-        method = cms.string('chargedHadronMultiplicity()'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuSecondJetTCHEbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2TCHEbtag"),
-        method = cms.string('bDiscriminator("trackCountingHighEffBJetTags")'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuSecondJetTCHPbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2TCHPbtag"),
-        method = cms.string('bDiscriminator("trackCountingHighPurBJetTags")'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuSecondJetSSVHEbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2SSVHEbtag"),
-        method = cms.string('bDiscriminator("simpleSecondaryVertexHighEffBJetTags")'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuSecondJetCSVbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2CSVbtag"),
-        method = cms.string('bDiscriminator("combinedSecondaryVertexBJetTags")'),
-        rank = cms.untracked.double(1)
-    ),
-    muNuSecondJetCSVMVAbtag = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2CSVMVAbtag"),
-        method = cms.string('bDiscriminator("combinedSecondaryVertexMVABJetTags")'),
-        rank = cms.untracked.double(1)
-    ),#####
-    muNuSecondJetCharge = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("J2Charge"),
-        method = cms.string('jetCharge'),
-        rank = cms.untracked.double(1)
-    ),
-     muNuSecondJetMass = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2Mass"),
-         method = cms.string('mass'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuSecondPhotonEnergy = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2PhotonEnergy"),
-         method = cms.string('photonEnergy'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuSecondPhotonEnergyFrac = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2PhotonEnergyFrac"),
-         method = cms.string('photonEnergyFraction'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuSecondElectronEnergy = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2ElectronEnergy"),
-         method = cms.string('electronEnergy'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuSecondElectronEnergyFrac = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("J2ElectronEnergyFrac"),
-         method = cms.string('chargedEmEnergyFraction'),
-         rank = cms.untracked.double(1)
-     ),
-     muNuSecondMuEnergy = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2MuonEnergy"),
-          method = cms.string('chargedMuEnergy'),
-          rank = cms.untracked.double(1)
-      ),
-      muNuSecondMuEnergyFrac = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2MuEnergyFrac"),
-          method = cms.string('muonEnergyFraction'),
-          rank = cms.untracked.double(1)
-      ),
-     mu1DXY = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string("l1DXY"),
-         method = cms.string('lepton.userFloat("ipDXY")'),
-         leadingOnly=cms.untracked.bool(True)
-         ),###################FOR BTAGGING CORRECTIONS ##CSVbtag value
+
+    J1_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[0], 
+    J2_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[1], 
+    J3_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[2], 
+    J4_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[3], 
+    J1_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[0], 
+    J2_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[1], 
+    J3_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[2], 
+    J4_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[3], 
+    J1_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[0], 
+    J2_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[1], 
+    J3_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[2], 
+    J4_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[3], 
+    J1_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[0], 
+    J2_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[1], 
+    J3_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[2], 
+    J4_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[3], 
+    J1_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[0], 
+    J2_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[1], 
+    J3_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[2], 
+    J4_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[3], 
+    J1_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[0], 
+    J2_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[1], 
+    J3_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[2], 
+    J4_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[3], 
+    J1_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[0], 
+    J2_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[1], 
+    J3_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[2], 
+    J4_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[3], 
+    J1_PUID_beta = makeJetUserFloat('PUID_beta','',source)[0],
+    J2_PUID_beta = makeJetUserFloat('PUID_beta','',source)[1],
+    J3_PUID_beta = makeJetUserFloat('PUID_beta','',source)[2],
+    J4_PUID_beta = makeJetUserFloat('PUID_beta','',source)[3],
+    J1_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[0],
+    J2_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[1],
+    J3_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[2],
+    J4_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[3],
+    J1_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[0],
+    J2_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[1],
+    J3_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[2],
+    J4_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[3],
+    J1_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[0],
+    J2_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[1],
+    J3_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[2],
+    J4_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[3],
+    J1_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[0],
+    J2_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[1],
+    J3_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[2],
+    J4_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[3],
+    J1_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[0],
+    J2_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[1],
+    J3_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[2],
+    J4_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[3],
+    J1_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[0],
+    J2_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[1],
+    J3_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[2],
+    J4_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[3],
+    J1_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[0],
+    J2_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[1],
+    J3_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[2],
+    J4_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[3],
+
+#    J1_SV_M = makeJetUserFloat('SV_M','',source)[0],
+#    J2_SV_M = makeJetUserFloat('SV_M','',source)[1],
+#    J3_SV_M = makeJetUserFloat('SV_M','',source)[2],
+#    J4_SV_M = makeJetUserFloat('SV_M','',source)[3],
+#    J1_SV_pt = makeJetUserFloat('SV_pt','',source)[0],
+#    J2_SV_pt = makeJetUserFloat('SV_pt','',source)[1],
+#    J3_SV_pt = makeJetUserFloat('SV_pt','',source)[2],
+#    J4_SV_pt = makeJetUserFloat('SV_pt','',source)[3],
+#    J1_SV_eta = makeJetUserFloat('SV_eta','',source)[0],
+#    J2_SV_eta = makeJetUserFloat('SV_eta','',source)[1],
+#    J3_SV_eta = makeJetUserFloat('SV_eta','',source)[2],
+#    J4_SV_eta = makeJetUserFloat('SV_eta','',source)[3],
+#    J1_SV_phi = makeJetUserFloat('SV_phi','',source)[0],
+#    J2_SV_phi = makeJetUserFloat('SV_phi','',source)[1],
+#    J3_SV_phi = makeJetUserFloat('SV_phi','',source)[2],
+#    J4_SV_phi = makeJetUserFloat('SV_phi','',source)[3],
+#    J1_Mu1Boost = makeJetUserFloat('Mu1Boost','',source)[0],
+#    J2_Mu1Boost = makeJetUserFloat('Mu1Boost','',source)[1],
+    J1_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[0],
+    J2_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[1],
+    J1_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[0],
+    J2_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[1],
+    J1_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[0],
+    J2_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[1],
+    J1_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[0],
+    J2_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[1],
+    J1_massD0 = makeJetUserFloat('massD0','',source)[0],
+    J2_massD0 = makeJetUserFloat('massD0','',source)[1],
+    J1_massBpm = makeJetUserFloat('massBpm','',source)[0],
+    J2_massBpm = makeJetUserFloat('massBpm','',source)[1],
+    J1_massBpm2 = makeJetUserFloat('massBpm2','',source)[0],
+    J2_massBpm2 = makeJetUserFloat('massBpm2','',source)[1],
+    J1_massDpm = makeJetUserFloat('massDpm','',source)[0],
+    J2_massDpm = makeJetUserFloat('massDpm','',source)[1],
+    J1_flightDistance = makeJetUserFloat('flightDistance','',source)[0],
+    J2_flightDistance = makeJetUserFloat('flightDistance','',source)[1],
+    J1_errorFlightDistance = makeJetUserFloat('errorFlightDistance','',source)[0],
+    J2_errorFlightDistance = makeJetUserFloat('errorFlightDistance','',source)[1],
+    J1_DR = makeJetUserFloat('DR','',source)[0],
+    J2_DR = makeJetUserFloat('DR','',source)[1],
+    J1_ptRMS = makeJetUserFloat('ptRMS','',source)[0],
+    J2_ptRMS = makeJetUserFloat('ptRMS','',source)[1],
+    J1_dxy = makeJetUserFloat('dxy','_track',source)[0],
+    J2_dxy = makeJetUserFloat('dxy','_track',source)[1],
+    J1_dz = makeJetUserFloat('dz','_track',source)[0],
+    J2_dz = makeJetUserFloat('dz','_track',source)[1],
+    J1_nTracksSSV = makeJetUserFloat('nTracksSSV','',source)[0],
+    J2_nTracksSSV = makeJetUserFloat('nTracksSSV','',source)[1],
+    J1_mass_SSV = makeJetUserFloat('mass_SSV','',source)[0], # formerly J1SVMassb
+    J2_mass_SSV = makeJetUserFloat('mass_SSV','',source)[1],
+    J3_mass_SSV = makeJetUserFloat('mass_SSV','',source)[2],
+    J4_mass_SSV = makeJetUserFloat('mass_SSV','',source)[3],
+    J1_partonFlavour = makeJetStringPar('partonFlavour','',source)[0],
+    J2_partonFlavour = makeJetStringPar('partonFlavour','',source)[1],
+    J1_muonMultiplicity = makeJetStringPar('muonMultiplicity','',source)[0],
+    J2_muonMultiplicity = makeJetStringPar('muonMultiplicity','',source)[1],
+    J1_chargedMultiplicity = makeJetStringPar('chargedMultiplicity','',source)[0],
+    J2_chargedMultiplicity = makeJetStringPar('chargedMultiplicity','',source)[1],
+    J1_electronMultiplicity = makeJetStringPar('electronMultiplicity','',source)[0],
+    J2_electronMultiplicity = makeJetStringPar('electronMultiplicity','',source)[1],
+    J1_photonMultiplicity = makeJetStringPar('photonMultiplicity','',source)[0],
+    J2_photonMultiplicity = makeJetStringPar('photonMultiplicity','',source)[1],
+    J1_jetCharge = makeJetString('jetCharge','',source)[0],
+    J2_jetCharge = makeJetString('jetCharge','',source)[1],
+    J1_mass = makeJetString('mass','',source)[0],
+    J2_mass = makeJetString('mass','',source)[1],
+    J1_photonEnergy = makeJetString('photonEnergy','',source)[0],
+    J2_photonEnergy = makeJetString('photonEnergy','',source)[1],
+    J1_photonEnergyFraction = makeJetString('photonEnergyFraction','',source)[0],
+    J2_photonEnergyFraction = makeJetString('photonEnergyFraction','',source)[1],
+    J1_electronEnergy = makeJetString('electronEnergy','',source)[0],
+    J2_electronEnergy = makeJetString('electronEnergy','',source)[1],
+    J1_chargedEmEnergyFraction = makeJetString('chargedEmEnergyFraction','',source)[0],
+    J2_chargedEmEnergyFraction = makeJetString('chargedEmEnergyFraction','',source)[1],
+    J1_chargedMuEnergy = makeJetString('chargedMuEnergy','',source)[0],
+    J2_chargedMuEnergy = makeJetString('chargedMuEnergy','',source)[1],
+    J1_muonEnergyFraction = makeJetString('muonEnergyFraction','',source)[0],
+    J2_muonEnergyFraction = makeJetString('muonEnergyFraction','',source)[1],
+    J1_chargedHadronMultiplicity = makeJetStringPar('chargedHadronMultiplicity','',source)[0],
+    J2_chargedHadronMultiplicity = makeJetStringPar('chargedHadronMultiplicity','',source)[1],
+
+    J1_pt = makeJetStringPar('pt','',source)[0], # formerly highestJetPt
+    J2_pt = makeJetStringPar('pt','',source)[1],
+    J3_pt = makeJetStringPar('pt','',source)[2],
+    J4_pt = makeJetStringPar('pt','',source)[3],
+    J1_phi = makeJetStringPar('phi','',source)[0],
+    J2_phi = makeJetStringPar('phi','',source)[1],
+    J3_phi = makeJetStringPar('phi','',source)[2],
+    J4_phi = makeJetStringPar('phi','',source)[3],
+    J1_eta = makeJetStringPar('eta','',source)[0],
+    J2_eta = makeJetStringPar('eta','',source)[1],
+    J3_eta = makeJetStringPar('eta','',source)[2],
+    J4_eta = makeJetStringPar('eta','',source)[3],
+
+    J1_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[0],
+    J2_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[1],
+    J3_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[2],
+    J4_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[3],
+    J1_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[0],
+    J2_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[1],
+    J3_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[2],
+    J4_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[3],
+#    J1_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[0],
+#    J2_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[1],
+#    J3_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[2],
+#    J4_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[3],
+    J1_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[0],
+    J2_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[1],
+    J3_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[2],
+    J4_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[3],
+    J1_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[0],
+    J2_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[1],
+    J3_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[2],
+    J4_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[3],
+
+    nJetsPt20 = makeNJets(20,source),
+    nJetsPt25 = makeNJets(25,source),
+    nJetsPt30 = makeNJets(30,source),
+    nJetsPt35 = makeNJets(35,source),
+    nJetsPt40 = makeNJets(40,source),
+
+    nJets24to5 = makeMuNu("nJets24to5","nJets24to5",source),
+    nJets24Pt20 = makeMuNu("nJets24Pt20","nJets24Pt20",source),
+    nJets24Pt25 = makeMuNu("nJets24Pt25","nJets24Pt25",source),
+    nJets24Pt30 = makeMuNu("nJets24Pt30","nJets24Pt30",source),
+
+    nrCbar = makeCollSize('cbarCands','nrCbar'), 
+    nrC = makeCollSize('cCands','nrC'), 
+    nrW = makeCollSize(source,'nrW'), 
+    nrMu = makeCollSize('selectedPatMuons','nrMu'),
+    nrEle = makeCollSize('selectedPatElectrons','nrEle'),
+
+    DiMuonMass = makeZColl("DiMuonMass","mass",sourceZ),
+    mu1_pt = makeZColl("mu1_pt","leg1.pt()",sourceZ),
+    mu2_pt = makeZColl("mu2_pt","leg2.pt()",sourceZ),
+    mu1_phi = makeZColl("mu1_phi","leg1.phi()",sourceZ),
+    mu2_phi = makeZColl("mu2_phi","leg2.phi()",sourceZ),
+    mu1_eta = makeZColl("mu1_pt","leg1.eta()",sourceZ),
+    mu2_eta = makeZColl("mu2_pt","leg2.eta()",sourceZ),
+    l1StdRelIso = makeZColl("l1StdRelIso",
+     "(leg1.isolationR03.sumPt+leg1.isolationR03.emEt+leg1.isolationR03.hadEt)/leg1.pt()",sourceZ),
+    l1PfIsoDB = makeZColl("l1StdRelIso",
+     "(leg1.userIso(0)+max(leg1.photonIso()+leg1.neutralHadronIso()-0.5*leg1.puChargedHadronIso,0.0))/leg1.pt()",sourceZ),
+    l2StdRelIso = makeZColl("l2StdRelIso",
+     "(leg2.isolationR03.sumPt+leg2.isolationR03.emEt+leg2.isolationR03.hadEt)/leg2.pt()",sourceZ),
+    l2PfIsoDB = makeZColl("l2StdRelIso",
+     "(leg2.userIso(0)+max(leg2.photonIso()+leg2.neutralHadronIso()-0.5*leg2.puChargedHadronIso,0.0))/leg2.pt()",sourceZ),
+
+    mJJ = makeMuNu("mJJ","mJJ",source,True),
+    mJ3J4 = makeMuNu("mJ3J4","mJJ2",source,True),
+    ptJJ = makeMuNu("ptJJ","ptJJ",source,True),
+    muonPt = makeMuNu("muonPt","lepton().pt",source),
+    muonEta = makeMuNu("muonEta","lepton.eta",source),
+    muonPhi = makeMuNu("muonPhi","lepton.phi",source),
+    muonCharge = makeMuNu("muonCharge","lepton.charge()",source),
+    WPt = makeMuNu("WPt","corPt()",source),
+
+    #calMET = makeMuNu("calMET","calibratedMET.pt()",source,True),
+    MET = makeMuNu("MET","met().pt",source,True),
+    #calMt = makeMuNu("calMt","corMt()",source),
+    Mt = makeMuNu("Mt","mt",source),
+    
+    metJJ = makeMuNu("metjj","metjj",source),
+    leptonjj = makeMuNu("leptonjj","leptonjj",source),
+    muNuDPhi = makeMuNu("muNuDPhi","dPhi",source),
+    muNuRecoil = makeMuNu("muNuRecoil","recoil().pt()",source),
+    muNuRelPFIso = makeMuNu("muNuRelPFIso",
+     "(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()",source),
+    PFIsoVeto = makeMuNu("PFIsoVeto","lepton.userIso(0)",source),
+    PFIsoRho = makeMuNu("PFIsoRho","lepton.userFloat('rho')",source),
+    muNuRelStdIso03 = makeMuNu("muNuRelStdIso03",
+     "(lepton.isolationR03.sumPt+lepton.isolationR03.emEt+lepton.isolationR03.hadEt)/lepton.pt()",source),
+    muNuRelPFIsoDB = makeMuNu("muNuRelPFIsoDB",
+     "(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()",
+     source,True),
+    ipDXY = makeMuNu("ipDXY","lepton.userFloat('ipDXY')",source,True),
+#    DiSVMass = makeMuNu("DiSVMass","SV1SV2M",source),
+#    DiSVPt = makeMuNu("DISVPt","SV1SV2Pt",source),
+
+    dz = makeMuNu("dz",'abs(lepton.userFloat("dz"))',source,True),
+    ht = makeMuNu("ht","ht",source,True),
  )
  return commonCollections
 
 def addMuNuEventTreePtDat(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted'):
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
-      makeCollections(process,source,sourceZ),
-      coreCollections = cms.VInputTag(
-          cms.InputTag(source)
-      ),
-      J2Mu1boost = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2Mu1Boost"),
-          method = cms.string('userFloat("Mu1Boost")'),
-          rank = cms.untracked.double(1)
-      ),
-       muNuThirdJetChargedMultiplicity = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3nCharges"),
-          method = cms.string('chargedHadronMultiplicity()'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdJetTCHEbtag = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3TCHEbtag"),
-          method = cms.string('bDiscriminator("trackCountingHighEffBJetTags")'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdJetCharge = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3Charge"),
-          method = cms.string('jetCharge'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdJetMass = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3Mass"),
-          method = cms.string('mass'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdPhotonEnergy = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3PhotonEnergy"),
-          method = cms.string('photonEnergy'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdPhotonEnergyFrac = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3PhotonEnergyFrac"),
-          method = cms.string('photonEnergyFraction'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdElectronEnergy = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3ElectronEnergy"),
-          method = cms.string('electronEnergy'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdElectronEnergyFrac = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3ElectronEnergyFrac"),
-          method = cms.string('chargedEmEnergyFraction'),
-          rank = cms.untracked.double(2)
-       ),
-       muNuThirdMuEnergy = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J3MuonEnergy"),
-           method = cms.string('chargedMuEnergy'),
-           rank = cms.untracked.double(2)
-       ),
-       muNuThirdMuEnergyFrac = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J3MuEnergyFrac"),
-           method = cms.string('muonEnergyFraction'),
-           rank = cms.untracked.double(2)
-       ),
-       muNu3rdJetCSVbtag = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J3CSVbtag"),
-           method = cms.string('bDiscriminator("combinedSecondaryVertexBJetTags")'),
-           rank = cms.untracked.double(2)
-       ),
-       muNu4thJetCSVbtag = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J4CSVbtag"),
-           method = cms.string('bDiscriminator("combinedSecondaryVertexBJetTags")'),
-           rank = cms.untracked.double(3)
-       ),
-       muNu4thJetFlavor = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J4JetParton"),
-           method = cms.string('partonFlavour()'),
-           rank = cms.untracked.double(3)
-       ),
-       muNu4thJetPt = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J4Pt"),
-           method = cms.string('pt()'),
-           rank = cms.untracked.double(3)
-       ),
-       muNu4thJetEta = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J4Eta"),
-           method = cms.string('eta()'),
-           rank = cms.untracked.double(3)
-       )
+      makeCollections(source,sourceZ),
+      coreCollections = cms.VInputTag( cms.InputTag(source) )
    )
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))
@@ -1681,7 +399,7 @@ def addMuNuEventTreePtDat(process,name,source = 'wCandsJets',sourceZ = 'diMuonsS
 def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted',lhep="externalLHEProducer"):
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
-      makeCollections(process,source,sourceZ),
+      makeCollections(source,sourceZ),
       coreCollections = cms.VInputTag(
            cms.InputTag(source)
       ),
@@ -1694,339 +412,40 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
           src = cms.InputTag(lhep), 
           tag = cms.string("LHEProduct"),
       ),
-      simBHadronsSIZE = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("bhadrons"),
-          tag = cms.string("nbHadrons"),
-      ),
-       DiJetHadZMass = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("hadMassZ"),
-          method = cms.string('massZ')
-      ),
-       simBHadronsPT1 = cms.PSet(
-           pluginType = cms.string("SimBHadronsFiller"),
-           src = cms.InputTag('bhadrons'),
-           tag = cms.string('bHadronsPt'),
-           method = cms.string("pt()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-       simBHadronsEta1 = cms.PSet(
-           pluginType = cms.string("SimBHadronsFiller"),
-           src = cms.InputTag('bhadrons'),
-           tag = cms.string('bHadronsEta'),
-           method = cms.string("eta()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-       simBHadronsPhi1 = cms.PSet(
-           pluginType = cms.string("SimBHadronsFiller"),
-           src = cms.InputTag('bhadrons'),
-           tag = cms.string('bHadronsPhi'),
-           method = cms.string("phi()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidates1PT= cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidate1Pt'),
-           method     = cms.string("BC1PT()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidates2PT = cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidate2Pt'),
-           method     = cms.string("BC2PT()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidates1ETA = cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidate1Eta'),
-           method     = cms.string("BC1ETA()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidates2ETA = cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidate2Eta'),
-           method     = cms.string("BC2ETA()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidates1PHI = cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidate1Phi'),
-           method     = cms.string("BC1PHI()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidates2PHI = cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidate2Phi'),
-           method     = cms.string("BC2PHI()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidatesBDeltaR = cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidateBDeltaR'),
-           method     = cms.string("BCDeltaR()"),
-           leadingOnly=cms.untracked.bool(False)
-           ),
-        bCandidatesBDeltaPhi = cms.PSet(
-           pluginType = cms.string("bCandidatesFiller"),
-           src        = cms.InputTag('LCProducer','BCandFinalState'),
-           tag        = cms.string('bCandidateDeltaPhi'),
-           method     = cms.string("BDeltaPHI()"),
-           leadingOnly=cms.untracked.bool(False)
-           ), 
-      muNuTop = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J1top"),
-          method = cms.string('userFloat("top")'),
-          rank = cms.untracked.double(0)
-      ),
-       J1MuTRKdxy = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J1Mu1dxy"),
-          method = cms.string('userFloat("dxyMu1")'),
-          rank = cms.untracked.double(0)
-      ),
-      J2MuTRKdxy = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2Mu1dxy"),
-          method = cms.string('userFloat("dxyMu1")'),
-          rank = cms.untracked.double(1)
-     ),
-       J1DR = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J1DR"),
-          method = cms.string('userFloat("DR")'),
-          rank = cms.untracked.double(0)
-      ),
-      J2DR = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2DR"),
-          method = cms.string('userFloat("DR")'),
-          rank = cms.untracked.double(1)
-     ),
-      J2Mu1boost = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2Mu2Boost"),
-          method = cms.string('userFloat("Mu2Boost")'),
-          rank = cms.untracked.double(1)
-     ),####
-       J1D0 = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J1D0mass"),
-          method = cms.string('userFloat("massD0_SSV")'),
-          rank = cms.untracked.double(0)
-      ),
-      J2D0 = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2D0mass"),
-          method = cms.string('userFloat("massD0_SSV")'),
-          rank = cms.untracked.double(1)
-     ),
-       J1D = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J1Dmass"),
-          method = cms.string('userFloat("massD_SSV")'),
-          rank = cms.untracked.double(0)
-      ),
-      J2D = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J2Dmass"),
-          method = cms.string('userFloat("massD_SSV")'),
-          rank = cms.untracked.double(1)
-     ),
-       muNuFirstNTrackSSVneg = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J1nTracksSSVneg"),
-           method = cms.string('userFloat("nTracksNEGSSV")'),
-           rank = cms.untracked.double(0)
-       ),
-       muNuSecondNTrackSSVneg = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J2nTracksSSVneg"),
-           method = cms.string('userFloat("nTracksNEGSSV")'),
-           rank = cms.untracked.double(1)
-       ),
-       muNuFirstJetSVMassNegb = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J1SVMassNegb"),
-           method = cms.string('userFloat("mass_SSVNEG")'),
-           rank = cms.untracked.double(0)
-       ),
-       muNuSecondJetSVMassNegb = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J2SVMassNegb"),
-           method = cms.string('userFloat("mass_SSVNEG")'),
-           rank = cms.untracked.double(1)
-       ),
-      muNuThirdChargeMulti = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3ChargeMulti"),
-          method = cms.string('chargedMultiplicity()'),
-          rank = cms.untracked.double(2)
-      ),
+      bHadronsPt = makeSimBHad("bhadrons","bHadronsPt","pt"),
+      bHadronsEta = makeSimBHad("bhadrons","bHadronsEta","eta"),
+      bHadronsPhi = makeSimBHad("bhadrons","bHadronsPhi","phi"),
+  
+      bCandidate1Pt = makeIVFBs("bCandidate1Pt","BC1PT"),
+      bCandidate2Pt = makeIVFBs("bCandidate2Pt","BC2PT"),
+      bCandidate1Eta = makeIVFBs("bCandidate1Eta","BC1ETA"),
+      bCandidate2Eta = makeIVFBs("bCandidate2Eta","BC2ETA"),
+      bCandidate1Phi = makeIVFBs("bCandidate1Phi","BC1PHI"),
+      bCandidate2Phi = makeIVFBs("bCandidate2Phi","BC2PHI"),
+      bCandidateDeltaR = makeIVFBs("bCandidateDeltaR","BCDeltaR"),
+      bCandidateDeltaPhi = makeIVFBs("bCandidateDeltaPhi","BDeltaPHI"),
 
-      muNuThirdElectronMulti = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3EleMulti"),
-          method = cms.string('electronMultiplicity()'),
-          rank = cms.untracked.double(2)
-      ),
-
-      muNuThirdPhotonMulti = cms.PSet(
-          pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-          src = cms.InputTag(source),
-          tag = cms.string("J3PhotonMulti"),
-          method = cms.string('photonMultiplicity()'),
-          rank = cms.untracked.double(2)
-      ),
-      gent = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("gentCands"),
-          tag = cms.string("genTs"),
-      ),
-      gentbar = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("gentbarCands"),
-          tag = cms.string("genTbars"),
-      ),
-      genbb = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("genbbCands"),
-          tag = cms.string("genBs"),
-      ),
-      gencc = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("genccCands"),
-          tag = cms.string("genCs"),
-      ),
-      gendd = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("genddCands"),
-          tag = cms.string("genDs"),
-      ),
-      genuu = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("genuuCands"),
-          tag = cms.string("genUs"),
-      ),
-      genss = cms.PSet(
-          pluginType = cms.string("CollectionSizeFiller"),
-          src = cms.InputTag("genSSCands"),
-          tag = cms.string("genSs"),
-      ),
-       genWs = cms.PSet(
-             pluginType = cms.string("CollectionSizeFiller"),
-             src = cms.InputTag("genWs"),
-             tag = cms.string("genWs"),
-       ),
-       muNuCSVL1 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTCSVL"),
-           method = cms.string("SFCSVL1"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuCSVL2 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTCSVL2"),
-           method = cms.string("SFCSVL2"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuCSVM1 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTCSVM"),
-           method = cms.string("SFCSVM1"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuCSVM2 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTCSVM2"),
-           method = cms.string("SFCSVM2"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuCSVT1 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTCSVT"),
-           method = cms.string("SFCSVT1"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuCSVT2 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTCSVT2"),
-           method = cms.string("SFCSVT2"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuSSVHE1 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTSSVHEM"),
-           method = cms.string("SFSSVHE1"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuSSVHE2 = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("EffWEIGHTSSVHEM2"),
-           method = cms.string("SFSSVHE2"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuEffTrig_IS = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("weightEtaMuonIso"),
-           method = cms.string("EffWEIGHTeta_IS"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuEffTrig_ID = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("weightEtaMuonID"),
-           method = cms.string("EffWEIGHTeta_ID"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNuEffTrig_TR = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("weightEtaMuonTrig"),
-           method = cms.string("EffWEIGHTeta_TR"),
-           leadingOnly=cms.untracked.bool(True)
-       ),
-       muNu3rdJetCSVbtag = cms.PSet(
-           pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-           src = cms.InputTag(source),
-           tag = cms.string("J3CSVbtag"),
-           method = cms.string('bDiscriminator("combinedSecondaryVertexBJetTags")'),
-           rank = cms.untracked.double(2)
-       )
+      nbHadrons = makeCollSize("bhadrons","nbHadrons"),
+      genTs = makeCollSize("gentCands","genTs"),
+      genTbars = makeCollSize("gentbarCands","genTbars"),
+      genBs = makeCollSize("genbbCands","genBs"),
+      genCs = makeCollSize("genccCands","genCs"),
+      genDs = makeCollSize("genddCands","genDs"),
+      genUs = makeCollSize("genuuCands","genUs"),
+      genSs = makeCollSize("genSSCands","genSs"),
+      genWs = makeCollSize("genWs","genWs"),
+ 
+      EffWEIGHTCSVL = makeMuNu("EffWEIGHTCSVL","SFCSVL1",source,True),
+      EffWEIGHTCSVL2 = makeMuNu("EffWEIGHTCSVL2","SFCSVL2",source,True),
+      EffWEIGHTCSVM = makeMuNu("EffWEIGHTCSVM","SFCSVM1",source,True),
+      EffWEIGHTCSVM2 = makeMuNu("EffWEIGHTCSVM2","SFCSVM2",source,True),
+      EffWEIGHTCSVT = makeMuNu("EffWEIGHTCSVT","SFCSVT1",source,True),
+      EffWEIGHTCSVT2 = makeMuNu("EffWEIGHTCSVT2","SFCSVT2",source,True),
+      EffWEIGHTSSVHEM = makeMuNu("EffWEIGHTSSVHEM","SFSSVHE1",source,True),
+      EffWEIGHTSSVHEM2 = makeMuNu("EffWEIGHTSSVHEM2","SFSSVHE2",source,True),
+      weightEtaMuonIso = makeMuNu("weightEtaMuonIso","EffWEIGHTeta_IS",source,True),
+      weightEtaMuonID = makeMuNu("weightEtaMuonID","EffWEIGHTeta_ID",source,True),
+      weightEtaMuonTrig = makeMuNu("weightEtaMuonTrig","EffWEIGHTeta_TR",source,True),
    )
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))
