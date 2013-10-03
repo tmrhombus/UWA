@@ -10,10 +10,23 @@ def makeJetUserFloat(floatName,xn='',source = 'wCandsJets'):
   nameTag = name+floatName+xn
   PSet_List.append(cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string(nameTag),
-        method = cms.string('userFloat("'+floatName+'")'),
-        rank = cms.untracked.double(rank)
+        src        = cms.InputTag(source),
+        tag        = cms.string(nameTag),
+        method     = cms.string('userFloat("'+floatName+'")'),
+        rank       = cms.untracked.double(rank)
+  ))
+ return PSet_List
+
+def makeJetUserInt(intName,xn='',source = 'wCandsJets'):
+ PSet_List = []
+ for rank,name in zip(jetRanks,jetNames):
+  nameTag = name+intName+xn
+  PSet_List.append(cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src        = cms.InputTag(source),
+        tag        = cms.string(nameTag),
+        method     = cms.string('userInt("'+intName+'")'),
+        rank       = cms.untracked.double(rank)
   ))
  return PSet_List
 
@@ -23,10 +36,10 @@ def makeJetStringPar(strName,xn='',source='wCandsJets'):
   nameTag = name+strName+xn
   PSet_List.append(cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string(nameTag),
-        method = cms.string(strName+'()'),
-        rank = cms.untracked.double(rank)
+        src        = cms.InputTag(source),
+        tag        = cms.string(nameTag),
+        method     = cms.string(strName+'()'),
+        rank       = cms.untracked.double(rank)
   ))
  return PSet_List
 
@@ -36,10 +49,10 @@ def makeJetString(strName,xn='',source='wCandsJets'):
   nameTag = name+strName+xn
   PSet_List.append(cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string(nameTag),
-        method = cms.string(strName),
-        rank = cms.untracked.double(rank)
+        src        = cms.InputTag(source),
+        tag        = cms.string(nameTag),
+        method     = cms.string(strName),
+        rank       = cms.untracked.double(rank)
   ))
  return PSet_List
 
@@ -49,76 +62,76 @@ def makeJetBTag(tagName,strName,source='wCandsJets'):
   nameTag = name+tagName
   PSet_List.append(cms.PSet(
         pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string(nameTag),
-        method = cms.string('bDiscriminator("'+strName+'")'),
-        rank = cms.untracked.double(rank)
+        src        = cms.InputTag(source),
+        tag        = cms.string(nameTag),
+        method     = cms.string('bDiscriminator("'+strName+'")'),
+        rank       = cms.untracked.double(rank)
   ))
  return PSet_List
 
 def makeNJets(pt,source='wCandsJets'):
   PSet = cms.PSet(
-        pluginType = cms.string("PATMuonNuPairJetCountFiller"),
-        src = cms.InputTag(source),
-        tag = cms.string("nJetsPt"+str(pt)),
-        method = cms.string('pt()>'+str(pt)+'&&abs(eta())<2.4'),
-        leadingOnly=cms.untracked.bool(True)
+        pluginType  = cms.string("PATMuonNuPairJetCountFiller"),
+        src         = cms.InputTag(source),
+        tag         = cms.string("nJetsPt"+str(pt)),
+        method      = cms.string('pt()>'+str(pt)+'&&abs(eta())<2.4'),
+        leadingOnly = cms.untracked.bool(True)
   )
   return PSet
 
 def makeCollSize(srcName,tagName):
   PSet = cms.PSet(
         pluginType = cms.string("CollectionSizeFiller"),
-        src = cms.InputTag(srcName),
-        tag = cms.string(tagName)
+        src        = cms.InputTag(srcName),
+        tag        = cms.string(tagName)
   )
   return PSet
 
 def makeZColl(tagName,methodName,sourceZ='diMuonsSorted'):
   PSet = cms.PSet(
-        pluginType = cms.string("PATMuPairFiller"),
-        src = cms.InputTag(sourceZ),
-        tag = cms.string(tagName),
-        method = cms.string(methodName),
-        leadingOnly=cms.untracked.bool(True)
+        pluginType  = cms.string("PATMuPairFiller"),
+        src         = cms.InputTag(sourceZ),
+        tag         = cms.string(tagName),
+        method      = cms.string(methodName),
+        leadingOnly = cms.untracked.bool(True)
   )
   return PSet
 
 def makeMuNu(tagName,methodName,source='wCandsJets',lo=False):
   if lo:
    PSet = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string(tagName),
-         method = cms.string(methodName),
-         leadingOnly=cms.untracked.bool(True)
+         pluginType  = cms.string("PATMuonNuPairFiller"),
+         src         = cms.InputTag(source),
+         tag         = cms.string(tagName),
+         method      = cms.string(methodName),
+         leadingOnly = cms.untracked.bool(True)
    )
   else:
    PSet = cms.PSet(
          pluginType = cms.string("PATMuonNuPairFiller"),
-         src = cms.InputTag(source),
-         tag = cms.string(tagName),
-         method = cms.string(methodName),
+         src        = cms.InputTag(source),
+         tag        = cms.string(tagName),
+         method     = cms.string(methodName),
    )
   return PSet
 
 def makeSimBHad(srcName,tagName,methodName):
   PSet = cms.PSet(
-        pluginType = cms.string("SimBHadronsFiller"),
-        src = cms.InputTag(srcName),
-        tag = cms.string(tagName),
-        method = cms.string(methodName+"()"),
-        leadingOnly=cms.untracked.bool(False)
+        pluginType  = cms.string("SimBHadronsFiller"),
+        src         = cms.InputTag(srcName),
+        tag         = cms.string(tagName),
+        method      = cms.string(methodName+"()"),
+        leadingOnly = cms.untracked.bool(False)
   )
   return PSet
 
 def makeIVFBs(tagName,methodName):
   PSet = cms.PSet(
-        pluginType = cms.string("bCandidatesFiller"),
-        src        = cms.InputTag('LCProducer','BCandFinalState'),
-        tag        = cms.string(tagName),
-        method     = cms.string(methodName+"()"),
-        leadingOnly=cms.untracked.bool(False)
+        pluginType  = cms.string("bCandidatesFiller"),
+        src         = cms.InputTag('LCProducer','BCandFinalState'),
+        tag         = cms.string(tagName),
+        method      = cms.string(methodName+"()"),
+        leadingOnly = cms.untracked.bool(False)
   )
   return PSet
 
@@ -140,86 +153,69 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
         src = cms.InputTag("patTrigger"),
         paths = cms.vstring(TriggerPaths)
     ),
+# Jet ID and Pu ID
+    J1_idTightJet = makeJetUserFloat('idTight','Jet',source)[0], 
+    J2_idTightJet = makeJetUserFloat('idTight','Jet',source)[1], 
+    J3_idTightJet = makeJetUserFloat('idTight','Jet',source)[2], 
+    J4_idTightJet = makeJetUserFloat('idTight','Jet',source)[3], 
+    J1_idLooseJet = makeJetUserFloat('idLoose','Jet',source)[0], 
+    J2_idLooseJet = makeJetUserFloat('idLoose','Jet',source)[1], 
+    J3_idLooseJet = makeJetUserFloat('idLoose','Jet',source)[2], 
+    J4_idLooseJet = makeJetUserFloat('idLoose','Jet',source)[3], 
+    J1_fullIdTightPu = makeJetUserInt('fullIdTight','Pu',source)[0], 
+    J2_fullIdTightPu = makeJetUserInt('fullIdTight','Pu',source)[1], 
+    J3_fullIdTightPu = makeJetUserInt('fullIdTight','Pu',source)[2], 
+    J4_fullIdTightPu = makeJetUserInt('fullIdTight','Pu',source)[3], 
+    J1_fullIdLoosePu = makeJetUserInt('fullIdLoose','Pu',source)[0], 
+    J2_fullIdLoosePu = makeJetUserInt('fullIdLoose','Pu',source)[1], 
+    J3_fullIdLoosePu = makeJetUserInt('fullIdLoose','Pu',source)[2], 
+    J4_fullIdLoosePu = makeJetUserInt('fullIdLoose','Pu',source)[3], 
+    J1_fullDiscriminantPu = makeJetUserFloat('fullDiscriminant','Pu',source)[0], 
+    J2_fullDiscriminantPu = makeJetUserFloat('fullDiscriminant','Pu',source)[1], 
+    J3_fullDiscriminantPu = makeJetUserFloat('fullDiscriminant','Pu',source)[2], 
+    J4_fullDiscriminantPu = makeJetUserFloat('fullDiscriminant','Pu',source)[3], 
+    J1_philv1DiscriminantPu = makeJetUserFloat('philv1Discriminant','Pu',source)[0], 
+    J2_philv1DiscriminantPu = makeJetUserFloat('philv1Discriminant','Pu',source)[1], 
+    J3_philv1DiscriminantPu = makeJetUserFloat('philv1Discriminant','Pu',source)[2], 
+    J4_philv1DiscriminantPu = makeJetUserFloat('philv1Discriminant','Pu',source)[3], 
+    J1_simpleDiscriminantPu = makeJetUserFloat('simpleDiscriminant','Pu',source)[0], 
+    J2_simpleDiscriminantPu = makeJetUserFloat('simpleDiscriminant','Pu',source)[1], 
+    J3_simpleDiscriminantPu = makeJetUserFloat('simpleDiscriminant','Pu',source)[2], 
+    J4_simpleDiscriminantPu = makeJetUserFloat('simpleDiscriminant','Pu',source)[3], 
+    J1_idBetaPu = makeJetUserFloat('idBeta','Pu',source)[0],
+    J2_idBetaPu = makeJetUserFloat('idBeta','Pu',source)[1],
+    J3_idBetaPu = makeJetUserFloat('idBeta','Pu',source)[2],
+    J4_idBetaPu = makeJetUserFloat('idBeta','Pu',source)[3],
+    J1_idBetaClassicPu = makeJetUserFloat('idBetaClassic','Pu',source)[0],
+    J2_idBetaClassicPu = makeJetUserFloat('idBetaClassic','Pu',source)[1],
+    J3_idBetaClassicPu = makeJetUserFloat('idBetaClassic','Pu',source)[2],
+    J4_idBetaClassicPu = makeJetUserFloat('idBetaClassic','Pu',source)[3],
+    J1_idBetaStarPu = makeJetUserFloat('idBetaStar','Pu',source)[0],
+    J2_idBetaStarPu = makeJetUserFloat('idBetaStar','Pu',source)[1],
+    J3_idBetaStarPu = makeJetUserFloat('idBetaStar','Pu',source)[2],
+    J4_idBetaStarPu = makeJetUserFloat('idBetaStar','Pu',source)[3],
+    J1_idBetaStarClassicPu = makeJetUserFloat('idBetaStarClassic','Pu',source)[0],
+    J2_idBetaStarClassicPu = makeJetUserFloat('idBetaStarClassic','Pu',source)[1],
+    J3_idBetaStarClassicPu = makeJetUserFloat('idBetaStarClassic','Pu',source)[2],
+    J4_idBetaStarClassicPu = makeJetUserFloat('idBetaStarClassic','Pu',source)[3],
+    J1_idBetaStarClassicModPu = makeJetUserFloat('idBetaStarClassicMod','Pu',source)[0],
+    J2_idBetaStarClassicModPu = makeJetUserFloat('idBetaStarClassicMod','Pu',source)[1],
+    J3_idBetaStarClassicModPu = makeJetUserFloat('idBetaStarClassicMod','Pu',source)[2],
+    J4_idBetaStarClassicModPu = makeJetUserFloat('idBetaStarClassicMod','Pu',source)[3],
+    J1_id_nTrackPu = makeJetUserFloat('id_nTrack','Pu',source)[0],
+    J2_id_nTrackPu = makeJetUserFloat('id_nTrack','Pu',source)[1],
+    J3_id_nTrackPu = makeJetUserFloat('id_nTrack','Pu',source)[2],
+    J4_id_nTrackPu = makeJetUserFloat('id_nTrack','Pu',source)[3],
+    J1_idClosestDzPu = makeJetUserFloat('idClosestDz','Pu',source)[0],
+    J2_idClosestDzPu = makeJetUserFloat('idClosestDz','Pu',source)[1],
+    J3_idClosestDzPu = makeJetUserFloat('idClosestDz','Pu',source)[2],
+    J4_idClosestDzPu = makeJetUserFloat('idClosestDz','Pu',source)[3],
+    J1_idClosestDxyPu = makeJetUserFloat('idClosestDxy','Pu',source)[0],
+    J2_idClosestDxyPu = makeJetUserFloat('idClosestDxy','Pu',source)[1],
+    J3_idClosestDxyPu = makeJetUserFloat('idClosestDxy','Pu',source)[2],
+    J4_idClosestDxyPu = makeJetUserFloat('idClosestDxy','Pu',source)[3],
 
-    J1_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[0], 
-    J2_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[1], 
-    J3_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[2], 
-    J4_PUID_idTight = makeJetUserFloat('PUID_idTight','',source)[3], 
-    J1_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[0], 
-    J2_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[1], 
-    J3_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[2], 
-    J4_PUID_fullIdTight = makeJetUserFloat('PUID_fullIdTight','',source)[3], 
-    J1_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[0], 
-    J2_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[1], 
-    J3_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[2], 
-    J4_PUID_idLoose = makeJetUserFloat('PUID_idLoose','',source)[3], 
-    J1_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[0], 
-    J2_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[1], 
-    J3_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[2], 
-    J4_PUID_fullIdLoose = makeJetUserFloat('PUID_fullIdLoose','',source)[3], 
-    J1_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[0], 
-    J2_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[1], 
-    J3_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[2], 
-    J4_PUID_fullDiscriminant = makeJetUserFloat('PUID_fullDiscriminant','',source)[3], 
-    J1_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[0], 
-    J2_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[1], 
-    J3_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[2], 
-    J4_PUID_philv1Discriminant = makeJetUserFloat('PUID_philv1Discriminant','',source)[3], 
-    J1_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[0], 
-    J2_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[1], 
-    J3_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[2], 
-    J4_PUID_simpleDiscriminant = makeJetUserFloat('PUID_simpleDiscriminant','',source)[3], 
-    J1_PUID_beta = makeJetUserFloat('PUID_beta','',source)[0],
-    J2_PUID_beta = makeJetUserFloat('PUID_beta','',source)[1],
-    J3_PUID_beta = makeJetUserFloat('PUID_beta','',source)[2],
-    J4_PUID_beta = makeJetUserFloat('PUID_beta','',source)[3],
-    J1_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[0],
-    J2_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[1],
-    J3_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[2],
-    J4_PUID_betaClassic = makeJetUserFloat('PUID_betaClassic','',source)[3],
-    J1_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[0],
-    J2_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[1],
-    J3_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[2],
-    J4_PUID_betaStar = makeJetUserFloat('PUID_betaStar','',source)[3],
-    J1_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[0],
-    J2_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[1],
-    J3_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[2],
-    J4_PUID_betaStarClassic = makeJetUserFloat('PUID_betaStarClassic','',source)[3],
-    J1_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[0],
-    J2_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[1],
-    J3_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[2],
-    J4_PUID_betaStarClassicMod = makeJetUserFloat('PUID_betaStarClassicMod','',source)[3],
-    J1_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[0],
-    J2_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[1],
-    J3_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[2],
-    J4_PUID_nTrack = makeJetUserFloat('PUID_nTrack','',source)[3],
-    J1_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[0],
-    J2_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[1],
-    J3_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[2],
-    J4_PUID_closestDz = makeJetUserFloat('PUID_closestDz','',source)[3],
-    J1_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[0],
-    J2_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[1],
-    J3_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[2],
-    J4_PUID_closestDxy = makeJetUserFloat('PUID_closestDxy','',source)[3],
-
-#    J1_SV_M = makeJetUserFloat('SV_M','',source)[0],
-#    J2_SV_M = makeJetUserFloat('SV_M','',source)[1],
-#    J3_SV_M = makeJetUserFloat('SV_M','',source)[2],
-#    J4_SV_M = makeJetUserFloat('SV_M','',source)[3],
-#    J1_SV_pt = makeJetUserFloat('SV_pt','',source)[0],
-#    J2_SV_pt = makeJetUserFloat('SV_pt','',source)[1],
-#    J3_SV_pt = makeJetUserFloat('SV_pt','',source)[2],
-#    J4_SV_pt = makeJetUserFloat('SV_pt','',source)[3],
-#    J1_SV_eta = makeJetUserFloat('SV_eta','',source)[0],
-#    J2_SV_eta = makeJetUserFloat('SV_eta','',source)[1],
-#    J3_SV_eta = makeJetUserFloat('SV_eta','',source)[2],
-#    J4_SV_eta = makeJetUserFloat('SV_eta','',source)[3],
-#    J1_SV_phi = makeJetUserFloat('SV_phi','',source)[0],
-#    J2_SV_phi = makeJetUserFloat('SV_phi','',source)[1],
-#    J3_SV_phi = makeJetUserFloat('SV_phi','',source)[2],
-#    J4_SV_phi = makeJetUserFloat('SV_phi','',source)[3],
-#    J1_Mu1Boost = makeJetUserFloat('Mu1Boost','',source)[0],
-#    J2_Mu1Boost = makeJetUserFloat('Mu1Boost','',source)[1],
+# SV and Jet Components
     J1_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[0],
     J2_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[1],
     J1_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[0],
@@ -282,7 +278,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     J2_muonEnergyFraction = makeJetString('muonEnergyFraction','',source)[1],
     J1_chargedHadronMultiplicity = makeJetStringPar('chargedHadronMultiplicity','',source)[0],
     J2_chargedHadronMultiplicity = makeJetStringPar('chargedHadronMultiplicity','',source)[1],
-
+# Jet Kinematic Variables
     J1_pt = makeJetStringPar('pt','',source)[0], # formerly highestJetPt
     J2_pt = makeJetStringPar('pt','',source)[1],
     J3_pt = makeJetStringPar('pt','',source)[2],
@@ -295,7 +291,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     J2_eta = makeJetStringPar('eta','',source)[1],
     J3_eta = makeJetStringPar('eta','',source)[2],
     J4_eta = makeJetStringPar('eta','',source)[3],
-
+# Jet b Tagging
     J1_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[0],
     J2_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[1],
     J3_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[2],
@@ -304,10 +300,6 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     J2_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[1],
     J3_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[2],
     J4_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[3],
-#    J1_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[0],
-#    J2_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[1],
-#    J3_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[2],
-#    J4_SSVHEbtag = makeJetBTag('SSVHEbtag','simpleSecondaryVertexHighEffBJetTags',source)[3],
     J1_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[0],
     J2_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[1],
     J3_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[2],
@@ -333,7 +325,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     nrW = makeCollSize(source,'nrW'), 
     nrMu = makeCollSize('selectedPatMuons','nrMu'),
     nrEle = makeCollSize('selectedPatElectrons','nrEle'),
-
+# Z Variables
     DiMuonMass = makeZColl("DiMuonMass","mass",sourceZ),
     mu1_pt = makeZColl("mu1_pt","leg1.pt()",sourceZ),
     mu2_pt = makeZColl("mu2_pt","leg2.pt()",sourceZ),
@@ -353,15 +345,13 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     mJJ = makeMuNu("mJJ","mJJ",source,True),
     mJ3J4 = makeMuNu("mJ3J4","mJJ2",source,True),
     ptJJ = makeMuNu("ptJJ","ptJJ",source,True),
-    muonPt = makeMuNu("muonPt","lepton().pt",source),
-    muonEta = makeMuNu("muonEta","lepton.eta",source),
-    muonPhi = makeMuNu("muonPhi","lepton.phi",source),
+    muon_pt = makeMuNu("muon_pt","lepton().pt",source),
+    muon_eta = makeMuNu("muon_eta","lepton.eta",source),
+    muon_phi = makeMuNu("muon_phi","lepton.phi",source),
     muonCharge = makeMuNu("muonCharge","lepton.charge()",source),
     WPt = makeMuNu("WPt","corPt()",source),
 
-    #calMET = makeMuNu("calMET","calibratedMET.pt()",source,True),
     MET = makeMuNu("MET","met().pt",source,True),
-    #calMt = makeMuNu("calMt","corMt()",source),
     Mt = makeMuNu("Mt","mt",source),
     
     metJJ = makeMuNu("metjj","metjj",source),
@@ -378,8 +368,6 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
      "(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()",
      source,True),
     ipDXY = makeMuNu("ipDXY","lepton.userFloat('ipDXY')",source,True),
-#    DiSVMass = makeMuNu("DiSVMass","SV1SV2M",source),
-#    DiSVPt = makeMuNu("DISVPt","SV1SV2Pt",source),
 
     dz = makeMuNu("dz",'abs(lepton.userFloat("dz"))',source,True),
     ht = makeMuNu("ht","ht",source,True),

@@ -158,18 +158,18 @@ class PATSimplePUID : public edm::EDProducer {
 
        double betaStarClassicModified = betaStarClassic/log(vertices->size()-0.64);
 
-	jet.addUserFloat("PUID_PtRMS",ptRMS);
-        jet.addUserFloat("PUID_PtTKRMS",ptTKRMS);
-        jet.addUserFloat("PUID_dRMean",dRMean);
-        jet.addUserFloat("PUID_dR2Mean",dR2Mean);
-        jet.addUserFloat("PUID_beta",beta);
-        jet.addUserFloat("PUID_betaClassic",betaClassic);
-        jet.addUserFloat("PUID_betaStar",betaStar);
-        jet.addUserFloat("PUID_betaStarClassic",betaStarClassic);
-        jet.addUserFloat("PUID_betaStarClassicMod",betaStarClassicModified);
-        jet.addUserFloat("PUID_closestDxy",closestDxy);
-        jet.addUserFloat("PUID_closestDz",closestDz);
-        jet.addUserFloat("PUID_nTrack",nTrack);
+	jet.addUserFloat("idPtRMS",ptRMS);
+        jet.addUserFloat("idPtTKRMS",ptTKRMS);
+        jet.addUserFloat("id_dRMean",dRMean);
+        jet.addUserFloat("id_dR2Mean",dR2Mean);
+        jet.addUserFloat("idBeta",beta);
+        jet.addUserFloat("idBetaClassic",betaClassic);
+        jet.addUserFloat("idBetaStar",betaStar);
+        jet.addUserFloat("idBetaStarClassic",betaStarClassic);
+        jet.addUserFloat("idBetaStarClassicMod",betaStarClassicModified);
+        jet.addUserFloat("idClosestDxy",closestDxy);
+        jet.addUserFloat("idClosestDz",closestDz);
+        jet.addUserFloat("id_nTrack",nTrack);
 
 
 	jets->push_back(jet);
