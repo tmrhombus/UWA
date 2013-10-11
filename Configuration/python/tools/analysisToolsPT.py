@@ -33,15 +33,21 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
   #Build good vertex collection
   goodVertexFilter(process)       
-  metRename(process)
-
+  
+  # reRun Jets (MC only)
   if itsMC:
-   ReRunJets(process,isMC=itsMC,isData=itsData)            
+   reRunJets(process,isMC=itsMC,isData=itsData)
+   resolutionSmearJets(process,jets='NewSelectedPatJets')
+  # onlyL1Jets(process,isMC=itsMC,isData=itsData)
   elif itsData:
-   #ReRunJetsData(process,isMC=itsMC,isData=itsData)
    ReNameJetColl(process)
 
-  jetOverloading(process,"NewSelectedPatJets")
+  # type 1 met correction (NOT IN YET)
+  #metCorrector(process)
+  metRename(process) #just pulls met type 1 from old jets
+
+  jetOverloading(process,"resolutionSmearedJets")
+#  jetOverloading(process,"NewSelectedPatJets")
   jetPUEmbedding(process,"patOverloadedJets")
   rochesterCorrector(process)
   SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)  
@@ -165,15 +171,79 @@ def goodVertexFilter(process):
   process.goodVertexFilterPath=cms.Path(process.goodVertexFilterSeq)
 
 
-def metRename(process):
-  process.metType1 = cms.EDProducer("PATMETRenamer",
-   src = cms.InputTag('systematicsMET')
+def onlyL1Jets(process,isMC=False,isData=False): 
+  process.load("RecoJets.Configuration.RecoPFJets_cff")
+  import PhysicsTools.PatAlgos.tools.jetTools as jettools
+  process.load("PhysicsTools.PatAlgos.patSequences_cff")
+  process.load("UWAnalysis.Configuration.tools.patJetPUId_cfi")
+  process.pileupJetIdProducer.applyJec = cms.bool(True)
+
+  jec = ['L1FastJet'] 
+
+  jettools.switchJetCollection(
+        process,
+        cms.InputTag('ak5PFJets'),
+        doJTA=False,
+        jetCorrLabel=('AK5PF', jec),
+        doType1MET=False,
+        doJetID=True,
+        genJetCollection=cms.InputTag("ak5GenJets"),
+        outputModules=[],
+        **btag_options
   )
-  process.metType1Seq = cms.Sequence(process.metType1)
-  process.metType1Path= cms.Path(process.metType1Seq)
+  process.patJets.embedPFCandidates = False
+  process.patJets.embedCaloTowers = False
+  process.patJets.embedGenJetMatch = False
+  process.patJets.addAssociatedTracks = False
+  process.patJets.embedGenPartonMatch = False
+  process.patJets.tagInfoSources = cms.VInputTag(
+   cms.InputTag("impactParameterTagInfos"),
+   cms.InputTag("secondaryVertexTagInfos"),
+   cms.InputTag("secondaryVertexNegativeTagInfos")
+  ) 
+  process.patJets.trackAssociationSource = cms.InputTag("ak5JetTracksAssociatorAtVertex")
+
+  process.ak5JetTracksAssociatorAtVertex = cms.EDProducer("JetTracksAssociatorAtVertex",
+              tracks       = cms.InputTag("generalTracks"),
+              jets         = cms.InputTag("ak5PFJets"),
+              coneSize     = cms.double(0.5)
+  )
+
+  process.patJetCharge.src = cms.InputTag("ak5JetTracksAssociatorAtVertex")
+  process.load("PhysicsTools.PatAlgos.patSequences_cff")
+  process.onlyL1PatJets = process.selectedPatJets.clone(src = cms.InputTag("patJetId"))
+  print('')
+
+  process.makePatJetsData = cms.Sequence(
+   process.patJetCorrFactors+
+   process.patJetCharge+
+   process.patJets)
+  if isMC:
+   process.onlyL1JetSeq = cms.Sequence(
+    process.ak5PFJets*
+    process.ak5JetTracksAssociatorAtVertex*
+    process.pileupJetIdProducer*
+    process.makePatJets*
+    process.patJetsPUID*
+    process.patJetId*
+    process.onlyL1PatJets
+   )
+  elif isData:
+   process.onlyL1JetSeq = cms.Sequence(
+    process.ak5PFJets*
+    process.ak5JetTracksAssociatorAtVertex*
+    process.pileupJetIdProducer*
+    process.makePatJetsData*
+    process.patJetsPUID*
+    process.patJetId*
+    process.onlyL1PatJets
+   )
+
+  process.onlyL1JetPath = cms.Path(process.onlyL1JetSeq)
+  return process.onlyL1JetPath
 
 
-def ReRunJets(process,isMC=False,isData=False): 
+def reRunJets(process,isMC=False,isData=False): 
   process.load("RecoJets.Configuration.RecoPFJets_cff")
   import PhysicsTools.PatAlgos.tools.jetTools as jettools
   process.load("PhysicsTools.PatAlgos.patSequences_cff")
@@ -215,7 +285,7 @@ def ReRunJets(process,isMC=False,isData=False):
         process,
         cms.InputTag('ak5PFJets'),
         doJTA=False,
-        jetCorrLabel=('AK5PF', jec), #= None,
+        jetCorrLabel=('AK5PF', jec), 
         doType1MET=False,
         doJetID=True,
         genJetCollection=cms.InputTag("ak5GenJets"),
@@ -224,7 +294,7 @@ def ReRunJets(process,isMC=False,isData=False):
   )
   process.patJets.embedPFCandidates = False
   process.patJets.embedCaloTowers = False
-  process.patJets.embedGenJetMatch = False
+  process.patJets.embedGenJetMatch = True
   process.patJets.addAssociatedTracks = False
   process.patJets.embedGenPartonMatch = False
   process.patJets.tagInfoSources = cms.VInputTag(
@@ -327,23 +397,53 @@ def ReRunJets(process,isMC=False,isData=False):
    )
 
   process.reRunJetPath = cms.Path(process.reRunJetSeq)
+  return process.reRunJetPath
+
+
+def resolutionSmearJets(process,jets='NewSelectedPatJets',genJets='ak5GenJets'):
+  process.resolutionSmearedJets = cms.EDProducer("PATJetSmearer",
+   src = cms.InputTag(jets),
+   genJet = cms.InputTag(genJets)
+  )
+  process.resolutionSmearedJetsSeq = cms.Sequence(process.resolutionSmearedJets)
+  process.resolutionSmearedJetsPath = cms.Path(process.resolutionSmearedJetsSeq)
+  return process.resolutionSmearedJetsPath
 
 
 def ReNameJetColl(process):
   process.load("PhysicsTools.PatAlgos.patSequences_cff")
+  # need to rename to resolutionSmearedJets
   process.NewSelectedPatJets = process.selectedPatJets.clone(src = cms.InputTag("selectedPatJets"))
   process.reNameJetSeq = cms.Sequence(process.NewSelectedPatJets)
   process.reNameJetPath = cms.Path(process.reNameJetSeq)
   return process.reNameJetPath
 
 
+def metRename(process):  # OBSOLETE ONCE WE RERUN JETS
+  process.metType1got = cms.EDProducer("PATMETRenamer",
+   src = cms.InputTag('systematicsMET')
+  )
+  process.metType1gotSeq = cms.Sequence(process.metType1got)
+  process.metType1gotPath= cms.Path(process.metType1gotSeq)
+  return process.metType1gotPath
+
+
+def metCorrector(process,met='systematicsMET'):
+  process.metType1 = cms.EDProducer("NOT MADE YET",
+   src = cms.InputTag(met)
+  )
+  process.metType1Seq = cms.Sequence(process.metType1)
+  process.metType1Path= cms.Path(process.metType1Seq)
+  return process.metType1Path
+
+
 def jetMCMatching(process,jets):
   process.patJetMCMatched = cms.EDProducer('MCBHadronJetProducer',
    src = cms.InputTag(jets)
   )
-  process.jetMCMatching = cms.Sequence(process.patJetMCMatched)
-  process.createJetMCMatching=cms.Path(process.jetMCMatching)
-  return process.createJetMCMatching
+  process.jetMCMatchedSeq = cms.Sequence(process.patJetMCMatched)
+  process.jetMCMatchedPath=cms.Path(process.jetMCMatchedSeq)
+  return process.jetMCMatchedPath
 
 
 def jetOverloading(process,jets):
@@ -354,6 +454,7 @@ def jetOverloading(process,jets):
   )
   process.jetOverloadingSeq = cms.Sequence(process.patOverloadedJets)
   process.jetOverloadingPath=cms.Path(process.jetOverloadingSeq)
+  return process.jetOverloadingPath
 
 
 def jetPUEmbedding(process,jets):
@@ -363,6 +464,7 @@ def jetPUEmbedding(process,jets):
   )
   process.jetPUEmbeddingSeq = cms.Sequence(process.patPUEmbeddedJets)
   process.jetPUEmbeddingPath=cms.Path(process.jetPUEmbeddingSeq)
+  return process.jetPUEmbeddingPath
 
 
 def rochesterCorrector(process,muons="cleanPatMuons",rochCor="RochCor2012"):
