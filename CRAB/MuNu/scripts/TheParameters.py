@@ -7,23 +7,27 @@ Author: T.M.Perry
 def arams():
  lumi = 18589. # for looseID
  btype = 't'
- njetcut = '25' #20,25,26,30,40
- jetcut = '35'
+ njetcut = '40' #20,25,26,30,40
+ jetcut = '70'
  I = 0
  F = 20
  iso_value = 0.12
  antiIso_value = 0.2
+ extraCut = '(J1SVMassb > 0 && J2SVMassb > 0)'
+ #extraCut = '(vertixces > 25)'
+ #extraCut = '(vertixces < 15)'
 
  #naming where output goes
  path = '../plots/'
- extraName = 'idTight'
+ extraName = 'looseID_withSV_'
+ #extraName = 'JetID_NoSH_'
 
  drawQCD = True
  drawData = True
 
  noMT = False # control but no mT cut
- Control = False # 1 mu, 0b, 2+ jets
- Signal = True # 1 mu, 2bs, 2 jets
+ Control = True # 1 mu, 0b, 2+ jets
+ Signal = False # 1 mu, 2bs, 2 jets
  TT_m = False #1 mu, 2b, 4 j
  TT_me = False #no b, 1mu, 1e
  ST = False
@@ -68,7 +72,7 @@ def arams():
  elif ST:
   bNr = 1
   jNr = 2
-  jetVeto = False
+  jetVeto = True
  elif Tomislav:
   bNr = 0
   jNr = 2
@@ -90,6 +94,7 @@ def arams():
  if Tomislav: extraName += '_tomi'
  if Z_Region: extraName += '_2mu'
  if noMT: extraName += '_noMT'
+ if DataCard: extraName = 'Datacard_'+extraName
 
  jet1_2dr2 = '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))'
 
@@ -99,9 +104,16 @@ def arams():
 #'J1_PUID_betaStar',
 #'J1_PUID_betaStarClassic',
 #'J1_PUID_betaStarClassicMod',
+#'J1_PUID_fullDiscriminant',
+#'J1_PUID_philv1Discriminant',
 #'Mt',
+#'DiSVMass',
 #'(J1SVMassb+J2SVMassb)',
-'highestJetPt',
+#'J1SVMassb',
+#'J2SVMassb',
+'J1_PUID_nTrack',
+'J2_PUID_nTrack',
+#'highestJetPt',
 #'highestJetPhi',
 #'highestJetEta',
 #'muonPt',
@@ -113,14 +125,12 @@ def arams():
 #'secondJetPhi',
 #'J1DR',
 #'J2DR',
-#'vertices',
+'vertixces',
 #'ht',
 #'MET',
 #'DiMuonMass',
 #'nJetsPt25',
 #'nJetsPt30',
-#'J1SVMassb',
-#'J2SVMassb',
 #'J1CSVbtag',
 #'J2CSVbtag',
 #jet1_2dr2,
@@ -131,5 +141,5 @@ def arams():
 #'mJ3J4',
 ]
 
- return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation
+ return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut
 

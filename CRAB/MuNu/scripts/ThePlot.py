@@ -26,6 +26,12 @@ sf_Signal_Wcc    = 1.
 sf_Signal_T      = 1. 
 sf_Signal_WZ     = 1. 
 
+sf_Top_T         = 1. 
+sf_Top_TOP       = 1. 
+sf_Top_tW        = 1. 
+sf_Top_Wbb       = 1. 
+sf_Top_Tbar      = 1. 
+
 #sf_Signal_Wbb    = 1.66149845584
 #sf_Signal_Tbar   = 0.917947900053
 #sf_Signal_tW     = 0.944239130435
@@ -88,7 +94,7 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut = p.arams() 
 
 sf_Wbb    = 1. 
 sf_Tbar   = 1. 
@@ -434,6 +440,7 @@ for leaf in leafs:
   hs.Add(wlih)
 
   hh = TH1F('hh','hh',steps,xmin,xmax)
+  hh.Rebin(rebin)
   if drawQCD:
    hh.Add(qh)
   hh.Add(zih)
@@ -516,7 +523,7 @@ for leaf in leafs:
   p2.Draw()
   p2.cd()
  
-  datar = TH1F('datar','datar',steps,xmin,xmax)
+  #datar = TH1F('datar','datar',steps,xmin,xmax)
   if drawData:
    datar = dataih.Clone()
   else:
