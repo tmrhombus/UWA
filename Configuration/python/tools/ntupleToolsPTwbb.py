@@ -153,6 +153,10 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
         src = cms.InputTag("patTrigger"),
         paths = cms.vstring(TriggerPaths)
     ),
+# Jet pT Reco + Gen
+    J1_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[0], 
+    J1_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[0], 
+    J1_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[0], 
 # Jet ID and Pu ID
     J1_idTightJet = makeJetUserFloat('idTight','Jet',source)[0], 
     J2_idTightJet = makeJetUserFloat('idTight','Jet',source)[1], 
@@ -331,8 +335,8 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     mu2_pt = makeZColl("mu2_pt","leg2.pt()",sourceZ),
     mu1_phi = makeZColl("mu1_phi","leg1.phi()",sourceZ),
     mu2_phi = makeZColl("mu2_phi","leg2.phi()",sourceZ),
-    mu1_eta = makeZColl("mu1_pt","leg1.eta()",sourceZ),
-    mu2_eta = makeZColl("mu2_pt","leg2.eta()",sourceZ),
+    mu1_eta = makeZColl("mu1_eta","leg1.eta()",sourceZ),
+    mu2_eta = makeZColl("mu2_eta","leg2.eta()",sourceZ),
     l1StdRelIso = makeZColl("l1StdRelIso",
      "(leg1.isolationR03.sumPt+leg1.isolationR03.emEt+leg1.isolationR03.hadEt)/leg1.pt()",sourceZ),
     l1PfIsoDB = makeZColl("l1StdRelIso",
@@ -349,10 +353,10 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     muon_eta = makeMuNu("muon_eta","lepton.eta",source),
     muon_phi = makeMuNu("muon_phi","lepton.phi",source),
     muonCharge = makeMuNu("muonCharge","lepton.charge()",source),
-    WPt = makeMuNu("WPt","corPt()",source),
+    Wpt = makeMuNu("Wpt","corPt()",source),
 
-    MET = makeMuNu("MET","met().pt",source,True),
-    Mt = makeMuNu("Mt","mt",source),
+    met = makeMuNu("met","met().pt",source,True),
+    mt = makeMuNu("mt","mt",source),
     
     metJJ = makeMuNu("metjj","metjj",source),
     leptonjj = makeMuNu("leptonjj","leptonjj",source),
