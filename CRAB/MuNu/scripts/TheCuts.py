@@ -4,7 +4,7 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False,Tomislav=False):
+def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False,Tomislav=False,extraCut='(2>1)'):
 
  trigger = '(HLT_IsoMu24_eta2p1_v_fired)'
  muon_selection = '(DiMuonMass<=60 && nElectrons==0 && nMuons==1 && abs(muonEta)<2.1 && muonPt>25)'
@@ -19,7 +19,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  met = '(MET>30)'
  noFJ = '(nJets24Pt25==0)'
  #oneFJ = '(nJets24Pt25==1)'
- oneFJ = '((abs(highestJetEta)>2.4 && abs(secondJetEta)<2.4)||(abs(highestJetEta)<2.4 && abs(secondJetEta)>2.4))'
+ oneFJ = '( abs(highestJetEta)<2.4 && abs(secondJetEta)>2.4 )'
+ #oneFJ = '((abs(highestJetEta)>2.4 && abs(secondJetEta)<2.4)||(abs(highestJetEta)<2.4 && abs(secondJetEta)>2.4))'
  muPlus = '(muonCharge > 0)'
  muMinus = '(muonCharge < 0)'
  jetCap = '(highestJetPt < 30 && secondJetPt < 30)'
@@ -28,13 +29,14 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  if ST: twJ = '(highestJetPt >'+jetPt+' && secondJetPt>'+jetPt+')'
  thJ = '('+twJ+'&& thirdJetPt  > '+jetPt+' && abs(thirdJetEta) <  2.4)'
  frJ = '('+thJ+'&& fourthJetPt > '+jetPt+' && abs(fourthJetEta) < 2.4)'
+
  if not jetVeto:
-  #twoJets   = '('+twJ+')'
-  #threeJets = '('+thJ+')'
-  #fourJets  = '('+frJ+')'
-  twoJets   = '('+twJ+' && nJetsPt'+njetPt+'>=2)'
-  threeJets = '('+thJ+' && nJetsPt'+njetPt+'>=3)'
-  fourJets  = '('+frJ+' && nJetsPt'+njetPt+'>=4)'
+  twoJets   = '('+twJ+')'
+  threeJets = '('+thJ+')'
+  fourJets  = '('+frJ+')'
+  #twoJets   = '('+twJ+' && nJetsPt'+njetPt+'>=2)'
+  #threeJets = '('+thJ+' && nJetsPt'+njetPt+'>=3)'
+  #fourJets  = '('+frJ+' && nJetsPt'+njetPt+'>=4)'
  if jetVeto:
   twoJets   = '('+twJ+'&& thirdJetPt<' +njetPt+')'
   threeJets = '('+thJ+'&& fourthJetPt<'+njetPt+')'
@@ -61,7 +63,7 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
   Skim='('+trigger+'&&'+muon_selection30+'&&'+vertex+'&&'+mt50+'&&'+met+')'#for Tomislav
   #Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+'&&'+z_selection+')' # Z
   
- theCut = Skim
+ theCut = '('+Skim+'&&'+extraCut+')'
 
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertexNoDZ+'&&'+noFJ+')'
  #Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+'&&'+noFJ+'&&'+muPlus+')'
@@ -89,11 +91,15 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
   
  FirstBtag='(J1CSVbtag>'+str(bcut)+'&&J1SVMassb>0)'
  SecondBtag='(J2CSVbtag>'+str(bcut)+'&&J2SVMassb>0)'
+ #FirstBtag= '(J1SSVHEbtag>'+str(bcut)+'&&J1SVMassb>0)'
+ #SecondBtag='(J2SSVHEbtag>'+str(bcut)+'&&J2SVMassb>0)'
  OneBtag='('+FirstBtag+'||'+SecondBtag+')'
  TwoBtag='('+FirstBtag+'&&'+SecondBtag+')'
 
  newCSVT1first = '((0.927563+(1.55479e-05*highestJetPt))+(-1.90666e-07*(highestJetPt*highestJetPt)))'
  newCSVT1second = '((0.927563+(1.55479e-05*secondJetPt))+(-1.90666e-07*(secondJetPt*secondJetPt)))'
+ #newCSVT1first =  '1.'
+ #newCSVT1second = '1.'
  newCSVT2 = '('+newCSVT1first+'*'+newCSVT1second+')'
 
  if bnr == 1:
@@ -104,7 +110,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
    beffWeight = 'EffWEIGHTCSVM'
   if btype == 'loose' or btype == 'l':
    beffWeight = 'EffWEIGHTCSVL'
-  theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')||('+SecondBtag+'*'+newCSVT1second+')))'
+  theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')))'
+  #theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')||('+SecondBtag+'*'+newCSVT1second+')))'
   weight = '('+weight+'*'+beffWeight+')'
 
  if bnr == 2:
@@ -118,12 +125,32 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
   theCut = '('+theCut+'&&'+TwoBtag+')'
   weight = '('+weight+'*'+beffWeight+')'
 
+ jidType = 'idLoose'
+ #jidType = 'idTight'
+ #puidType = 'fullIdTight'
+ #puidType = 'fullIdLoose'
+ #J1_PUID = '(J1_PUID_'+jidType+'&& J1_PUID_'+puidType+')' 
+ #J2_PUID = '(J2_PUID_'+jidType+'&& J2_PUID_'+puidType+')' 
+ #J3_PUID = '(J3_PUID_'+jidType+'&& J3_PUID_'+puidType+')' 
+ #J4_PUID = '(J4_PUID_'+jidType+'&& J4_PUID_'+puidType+')' 
+ J1_PUID = '(J1_PUID_'+jidType+')' 
+ J2_PUID = '(J2_PUID_'+jidType+')' 
+ J3_PUID = '(J3_PUID_'+jidType+')' 
+ J4_PUID = '(J4_PUID_'+jidType+')' 
+
+ PUID2 = '('+J1_PUID+'&&'+J2_PUID+')'
+ PUID3 = '('+PUID2+'&&'+J3_PUID+')'
+ PUID4 = '('+PUID3+'&&'+J4_PUID+')'
+
  if jnr == 2:
   theCut = '('+theCut+'&&'+twoJets+')'
+  PUID = PUID2
  if jnr == 3:
   theCut = '('+theCut+'&&'+threeJets+')'
+  PUID = PUID3
  if jnr == 4:
   theCut = '('+theCut+'&&'+fourJets+')'
+  PUID = PUID4
 
  # for splitting up the W sample 
  genB = '(nbHadrons>0)' #to do this correctly, must match to jets
@@ -134,14 +161,6 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  Wc = '((!'+genB+'&&'+genC+'&&!'+evenC+'))'
  Wcc = '((!'+genB+'&&'+genC+'&&'+evenC+'))'
  Wbb = '('+genB+')'
- 
-# J1_PUID = 'J1_PUID_fullIdTight'
-# J2_PUID = 'J2_PUID_fullIdTight'
- J1_PUID = 'J1_PUID_idTight'
- J2_PUID = 'J2_PUID_idTight'
-# J1_PUID = 'J1_PUID_idLoose'
-# J2_PUID = 'J2_PUID_idLoose'
- PUID = '('+J1_PUID+'&&'+J2_PUID+')'
 
  cutDataNonIso   = '('+PUID+'&&'+NonIso+'&&'+theCut+')' #Data Non Iso
  cutDataIso      = '('+PUID+'&&'+Iso+'&&'+theCut+')'    #Data Iso

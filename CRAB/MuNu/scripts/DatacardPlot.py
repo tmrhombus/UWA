@@ -10,50 +10,22 @@ from ROOT import gROOT,gStyle
 import histoRange as hr
 import cmsPrelim as cpr
 import TheParameters as p
+import scaleFactors as sf
  
-# scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
+# qcd scale factor is applied in DatacardHisto.py
 #sf_qcd = 1.9191895562 # PU_fullIdTight
-sf_qcd = 2.19849549176 # PU_idTight
+sf_qcd = 2.19849549176/2.05901169 # PU_idTight
 #sf_qcd = 2.20315337368 # PU_idLoose
-#sf_qcd = 2.47131295199 # no PUID
 
-sf_Signal_Wbb    = 1. 
-sf_Signal_Tbar   = 1. 
-sf_Signal_tW     = 1. 
-sf_Signal_TOP    = 1. 
-sf_Signal_Z_jets = 1. 
-sf_Signal_Wcc    = 1. 
-sf_Signal_T      = 1. 
-sf_Signal_WZ     = 1. 
-
-sf_Top_T         = 1. 
-sf_Top_TOP       = 1. 
-sf_Top_tW        = 1. 
-sf_Top_Wbb       = 1. 
-sf_Top_Tbar      = 1. 
-
-#sf_Signal_Wbb    = 1.66149845584
-#sf_Signal_Tbar   = 0.917947900053
-#sf_Signal_tW     = 0.944239130435
-#sf_Signal_TOP    = 0.961875235346
-#sf_Signal_T      = 0.865918051797
-#sf_Signal_Z_jets = 0.929749478079
-#sf_Signal_Wcc    = 0.985777777778
-#sf_Signal_WZ     = 0.917359437751
-#
-#sf_Top_T         = 0.931276309897
-#sf_Top_TOP       = 1.04533223802
-#sf_Top_tW        = 1.03434405309
-#sf_Top_Wbb       = 1.69424487594
-#sf_Top_Tbar      = 0.984493670886
+sf_Signal_Wbb,sf_Signal_Wcc,sf_Signal_TTbar,sf_Signal_Tbar,sf_Signal_T,sf_Signal_tW,sf_Signal_Drell,sf_Signal_VV,sf_TTbar_Wbb,sf_TTbar_Tbar,sf_TTbar_tW,sf_TTbar_TTbar,sf_TTbar_T = sf.actor()
 
 ratioRange = 0.3
 rebin = 1
 errorBand = False
 #canvas attributes
-canx = 800 # for one plot on page
+#canx = 800 # for one plot on page
 #canx = 550 # for two plots on page with text
-#canx = 600 # for two plots on page just title
+canx = 800 # for two plots on page just title
 #canx = 500 # for three plots on page with text
 #canx = 400 # for three plots on page with just title
 
@@ -99,28 +71,30 @@ lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,lea
 sf_Wbb    = 1. 
 sf_Tbar   = 1. 
 sf_tW     = 1. 
-sf_TOP    = 1. 
-sf_Z_jets = 1. 
+sf_TTbar  = 1. 
+sf_Drell  = 1. 
 sf_Wcc    = 1. 
 sf_T      = 1. 
-sf_WZ     = 1. 
-sf_wl     = 1.
-sf_wc     = 1.
+sf_VV     = 1. 
+sf_Wl     = 1.
+sf_Wc     = 1.
 if Signal:
+ print("youre at line 82")
  sf_Wbb    = sf_Signal_Wbb   
  sf_Tbar   = sf_Signal_Tbar  
  sf_tW     = sf_Signal_tW    
- sf_TOP    = sf_Signal_TOP   
- sf_Z_jets = sf_Signal_Z_jets
+ sf_TTbar  = sf_Signal_TTbar   
+ sf_Drell  = sf_Signal_Drell
  sf_Wcc    = sf_Signal_Wcc   
  sf_T      = sf_Signal_T     
- sf_WZ     = sf_Signal_WZ    
+ sf_VV     = sf_Signal_VV    
 if TT_m or TT_me:
- sf_Wbb    = sf_Top_Wbb  
- sf_Tbar   = sf_Top_Tbar 
- sf_tW     = sf_Top_tW   
- sf_TOP    = sf_Top_TOP  
- sf_T      = sf_Top_T    
+ print("youre at line 92")
+ sf_Wbb    = sf_TTbar_Wbb  
+ sf_Tbar   = sf_TTbar_Tbar 
+ sf_tW     = sf_TTbar_tW   
+ sf_TTbar  = sf_TTbar_TTbar  
+ sf_T      = sf_TTbar_T    
 
 for leaf in leafs:
 
@@ -140,20 +114,30 @@ for leaf in leafs:
 
   log = open(path+i+'.log','a')
   log.write('\n\nOn Plotting SF QCD: '+str(sf_qcd)+'\n') 
-  log.write('On Plotting SF Drell: '+str(sf_Z_jets)+'\n')
+  log.write('On Plotting SF Drell: '+str(sf_Drell)+'\n')
   log.write('On Plotting SF Top: '+str(sf_T)+'\n')
   log.write('On Plotting SF tBar: '+str(sf_Tbar)+'\n')
   log.write('On Plotting SF tW: '+str(sf_tW)+'\n')
-  log.write('On Plotting SF TTbar: '+str(sf_TOP)+'\n')
+  log.write('On Plotting SF TTbar: '+str(sf_TTbar)+'\n')
   log.write('On Plotting SF Wbb: '+str(sf_Wbb)+'\n')
   log.write('On Plotting SF Wcc: '+str(sf_Wcc)+'\n')
-  log.write('On Plotting SF Diboson: '+str(sf_WZ)+'\n')
+  log.write('On Plotting SF Diboson: '+str(sf_VV)+'\n')
+  log.write('Canvas X: '+str(canx)+'\n')
+  log.write('Canvas Y: '+str(cany)+'\n')
   log.write('----------------------------------------\n')
   log.write('----------------------------------------\n')
   log.close()
 
+  if eventTreeLocation == 'muNuEventTree/eventTree'        : xn = 'No'  
+  if eventTreeLocation == 'muNuEventTreeMuonUp/eventTree'  : xn = 'Up'  
+  if eventTreeLocation == 'muNuEventTreeMuonDown/eventTree': xn = 'Dn'  
+  if eventTreeLocation == 'muNuEventTreeJetUp/eventTree'   : xn = 'JUp'  
+  if eventTreeLocation == 'muNuEventTreeJetDown/eventTree' : xn = 'JDn'  
+  if eventTreeLocation == 'muNuEventTreeUCEUp/eventTree'   : xn = 'UUp'
+  if eventTreeLocation == 'muNuEventTreeUCEDown/eventTree' : xn = 'UDn'
+
   c = TCanvas('c','Canvas Named c',canx,cany)
-  p1 = TPad('p1','p1',0,0.3,1,1)
+  p1 = TPad('p1','p1',0,0.2,1,1)
   p1.SetBottomMargin(0.08)
   p1.Draw()
   p1.cd()
@@ -169,111 +153,47 @@ for leaf in leafs:
   
   if drawQCD:
   #### QCD
-   qh = theFile.Get('qh')
+   qh = theFile.Get('qh'+xn)
    qh.SetFillColor(q)
    qh.Rebin(rebin)
    qh.Scale(sf_qcd)
    qh.Draw()
  #### Drell
-  zih = theFile.Get('zih')
+  zih = theFile.Get('zih'+xn)
   zih.SetFillColor(z)
   zih.Rebin(rebin)
-  zih.Scale(sf_Z_jets)
+  zih.Scale(sf_Drell)
   zih.Draw()
  #### Diboson
-  wwih = theFile.Get('wwih')
-  wwih.SetFillColor(d)
-  wwih.Rebin(rebin)
-  wwih.Scale(sf_WZ)
-  wwih.Draw()
-  ###
-  wzih = theFile.Get('wzih')
-  wzih.SetFillColor(d)
-  wzih.Rebin(rebin)
-  wzih.Scale(sf_WZ)
-  wzih.Draw()
-  ###
-  zzih = theFile.Get('zzih')
-  zzih.SetFillColor(d)
-  zzih.Rebin(rebin)
-  zzih.Scale(sf_WZ)
-  zzih.Draw()
-  ####
-  dih = wwih.Clone()
-  dih.SetName('dih')
-  dih.Add(wzih)
-  dih.Add(zzih)
-  dih.Draw()
+  vvih = theFile.Get('vvih'+xn)
+  vvih.SetFillColor(d)
+  vvih.Rebin(rebin)
+  vvih.Scale(sf_VV)
+  vvih.Draw()
  #### Single Top
-  # s
-  t_sih = theFile.Get('t_sih')
-  t_sih.SetFillColor(ts)
-  t_sih.Rebin(rebin)
-  t_sih.Scale(sf_T)
-  t_sih.Draw()
-  ###
-  tb_sih = theFile.Get('tb_sih')
-  tb_sih.SetFillColor(ts)
-  tb_sih.Rebin(rebin)
-  tb_sih.Scale(sf_T)
-  tb_sih.Draw()
-  #### 
-  stsih = t_sih.Clone()
-  stsih.SetName('stsih')
-  stsih.Add(tb_sih)
-  stsih.Draw()
-  ###
   # t
-  t_tih = theFile.Get('t_tih')
-  t_tih.SetFillColor(tt)
-  t_tih.Rebin(rebin)
-  t_tih.Scale(sf_T)
-  t_tih.Draw()
-  ###
-  tb_tih = theFile.Get('tb_tih')
-  tb_tih.SetFillColor(tt)
-  tb_tih.Rebin(rebin)
-  tb_tih.Scale(sf_T)
-  tb_tih.Draw()
-  #### 
-  sttih = t_tih.Clone()
-  sttih.SetName('sttih')
-  sttih.Add(tb_tih)
-  sttih.Draw()
-  ###
-  # tw
-  t_twih = theFile.Get('t_twih')
+  tih = theFile.Get('tih'+xn)
+  tih.SetFillColor(ts)
+  tih.Rebin(rebin)
+  tih.Scale(sf_T)
+  tih.Draw()
+  # tbar
+  tbih = theFile.Get('tbih'+xn)
+  tbih.SetFillColor(tt)
+  tbih.Rebin(rebin)
+  tbih.Scale(sf_Tbar)
+  tbih.Draw()
+  # t tW
+  t_twih = theFile.Get('t_twih'+xn)
   t_twih.SetFillColor(ttw)
   t_twih.Rebin(rebin)
   t_twih.Scale(sf_tW)
   t_twih.Draw()
-  ###
-  tb_twih = theFile.Get('tb_twih')
-  tb_twih.SetFillColor(ttw)
-  tb_twih.Rebin(rebin)
-  tb_twih.Scale(sf_tW)
-  tb_twih.Draw()
-  #### 
-  sttwih = t_twih.Clone()
-  sttwih.SetName('sttwih')
-  sttwih.Add(tb_twih)
-  sttwih.Draw()
  #### TTbar
-  tt_semiih = theFile.Get('tt_semiih')
-  tt_semiih.SetFillColor(ttb)
-  tt_semiih.Rebin(rebin)
-  tt_semiih.Scale(sf_TOP)
-  tt_semiih.Draw()
-  ###
-  tt_fullih = theFile.Get('tt_fullih')
-  tt_fullih.SetFillColor(ttb)
-  tt_fullih.Rebin(rebin)
-  tt_fullih.Scale(sf_TOP)
-  tt_fullih.Draw()
-  ###
-  ttbih = tt_semiih.Clone()
-  ttbih.SetName('ttbih')
-  ttbih.Add(tt_fullih)
+  ttbih = theFile.Get('ttbih'+xn)
+  ttbih.SetFillColor(ttb)
+  ttbih.Rebin(rebin)
+  ttbih.Scale(sf_TTbar)
   ttbih.Draw()
 
   bmin = ttbih.GetXaxis().FindBin(xmin)
@@ -281,147 +201,31 @@ for leaf in leafs:
   print(ttbih.Integral(bmin,bmax))
  #### W + Light
   print("W + Light")
-  wlnih = theFile.Get('wlnih')
-  wlnih.SetFillColor(wl)
-  wlnih.Rebin(rebin)
-  print(wlnih.Integral(bmin,bmax))
-  ###
-  wl1ih = theFile.Get('wl1ih')
-  wl1ih.SetFillColor(wl)
-  wl1ih.Rebin(rebin)
-  print(wl1ih.Integral(bmin,bmax))
-  ###
-  wl2ih = theFile.Get('wl2ih')
-  wl2ih.SetFillColor(wl)
-  wl2ih.Rebin(rebin)
-  print(wl2ih.Integral(bmin,bmax))
-  ###
-  wl3ih = theFile.Get('wl3ih')
-  wl3ih.SetFillColor(wl)
-  wl3ih.Rebin(rebin)
-  print(wl3ih.Integral(bmin,bmax))
-  ###
-  wl4ih = theFile.Get('wl4ih')
-  wl4ih.SetFillColor(wl)
-  wl4ih.Rebin(rebin)
-  print(wl4ih.Integral(bmin,bmax))
-  ### 
-  wlih = wlnih.Clone()
-  wlih.SetName('wlih')
-  wlih.Add(wl1ih)
-  wlih.Add(wl2ih)
-  wlih.Add(wl3ih)
-  wlih.Add(wl4ih)
-  wlih.Scale(sf_wl)
-  wlih.Draw()
+  wlih = theFile.Get('wlih'+xn)
+  wlih.SetFillColor(wl)
+  wlih.Rebin(rebin)
+  wlih.Scale(sf_Wl)
   print(wlih.Integral(bmin,bmax))
  #### W + Charm
   print("W + Charm")
-  wcnih = theFile.Get('wcnih')
-  wcnih.SetFillColor(wc)
-  wcnih.Rebin(rebin)
-  print(wcnih.Integral(bmin,bmax))
-  ###
-  wc1ih = theFile.Get('wc1ih')
-  wc1ih.SetFillColor(wc)
-  wc1ih.Rebin(rebin)
-  print(wc1ih.Integral(bmin,bmax))
-  ###
-  wc2ih = theFile.Get('wc2ih')
-  wc2ih.SetFillColor(wc)
-  wc2ih.Rebin(rebin)
-  print(wc2ih.Integral(bmin,bmax))
-  ###
-  wc3ih = theFile.Get('wc3ih')
-  wc3ih.SetFillColor(wc)
-  wc3ih.Rebin(rebin)
-  print(wc3ih.Integral(bmin,bmax))
-  ###
-  wc4ih = theFile.Get('wc4ih')
-  wc4ih.SetFillColor(wc)
-  wc4ih.Rebin(rebin)
-  print(wc4ih.Integral(bmin,bmax))
-  ###
-  wcih = wcnih.Clone()
-  wcih.SetName('wcih')
-  wcih.Add(wc1ih)
-  wcih.Add(wc2ih)
-  wcih.Add(wc3ih)
-  wcih.Add(wc4ih)
-  wcih.Scale(sf_wc)
-  wcih.Draw()
+  wcih = theFile.Get('wcih'+xn)
+  wcih.SetFillColor(wc)
+  wcih.Rebin(rebin)
+  wcih.Scale(sf_Wc)
   print(wcih.Integral(bmin,bmax))
  #### W + Charming
   print("W + Charming")
-  wccnih = theFile.Get('wccnih')
-  wccnih.SetFillColor(wcc)
-  wccnih.Rebin(rebin)
-  print(wccnih.Integral(bmin,bmax))
-  ###
-  wcc1ih = theFile.Get('wcc1ih')
-  wcc1ih.SetFillColor(wcc)
-  wcc1ih.Rebin(rebin)
-  print(wcc1ih.Integral(bmin,bmax))
-  ###
-  wcc2ih = theFile.Get('wcc2ih')
-  wcc2ih.SetFillColor(wcc)
-  wcc2ih.Rebin(rebin)
-  print(wcc2ih.Integral(bmin,bmax))
-  ###
-  wcc3ih = theFile.Get('wcc3ih')
-  wcc3ih.SetFillColor(wcc)
-  wcc3ih.Rebin(rebin)
-  print(wcc3ih.Integral(bmin,bmax))
-  ###
-  wcc4ih = theFile.Get('wcc4ih')
-  wcc4ih.SetFillColor(wcc)
-  wcc4ih.Rebin(rebin)
-  print(wcc4ih.Integral(bmin,bmax))
-  ###
-  wccih = wccnih.Clone()
-  wccih.SetName('wccih')
-  wccih.Add(wcc1ih)
-  wccih.Add(wcc2ih)
-  wccih.Add(wcc3ih)
-  wccih.Add(wcc4ih)
+  wccih = theFile.Get('wccih'+xn)
+  wccih.SetFillColor(wcc)
+  wccih.Rebin(rebin)
   wccih.Scale(sf_Wcc)
-  wccih.Draw()
   print(wccih.Integral(bmin,bmax))
  #### W + Beautiful
   print("W + Beautiful")
-  wbbnih = theFile.Get('wbbnih')
-  wbbnih.SetFillColor(wbb)
-  wbbnih.Rebin(rebin)
-  print(wbbnih.Integral(bmin,bmax))
-  ###
-  wbb1ih = theFile.Get('wbb1ih')
-  wbb1ih.SetFillColor(wbb)
-  wbb1ih.Rebin(rebin)
-  print(wbb1ih.Integral(bmin,bmax))
-  ###
-  wbb2ih = theFile.Get('wbb2ih')
-  wbb2ih.SetFillColor(wbb)
-  wbb2ih.Rebin(rebin)
-  print(wbb2ih.Integral(bmin,bmax))
-  ###
-  wbb3ih = theFile.Get('wbb3ih')
-  wbb3ih.SetFillColor(wbb)
-  wbb3ih.Rebin(rebin)
-  print(wbb3ih.Integral(bmin,bmax))
-  ###
-  wbb4ih = theFile.Get('wbb4ih')
-  wbb4ih.SetFillColor(wbb)
-  wbb4ih.Rebin(rebin)
-  print(wbb4ih.Integral(bmin,bmax))
-  ###  
-  wbbih = wbbnih.Clone()
-  wbbih.SetName('wbbih')
-  wbbih.Add(wbb1ih)
-  wbbih.Add(wbb2ih)
-  wbbih.Add(wbb3ih)
-  wbbih.Add(wbb4ih)
+  wbbih = theFile.Get('wbbih'+xn)
+  wbbih.SetFillColor(wbb)
+  wbbih.Rebin(rebin)
   wbbih.Scale(sf_Wbb)
-  wbbih.Draw()
   print(wbbih.Integral(bmin,bmax))
  
   hs = THStack('hs','')
@@ -429,10 +233,10 @@ for leaf in leafs:
   if drawQCD:
    hs.Add(qh)
   hs.Add(zih)
-  hs.Add(dih)
-  hs.Add(sttih)
-  hs.Add(stsih)
-  hs.Add(sttwih)
+  hs.Add(vvih)
+  hs.Add(tih)
+  hs.Add(tbih)
+  hs.Add(t_twih)
   hs.Add(ttbih)
   hs.Add(wbbih)
   hs.Add(wccih)
@@ -440,14 +244,13 @@ for leaf in leafs:
   hs.Add(wlih)
 
   hh = TH1F('hh','hh',steps,xmin,xmax)
-  hh.Rebin(rebin)
   if drawQCD:
    hh.Add(qh)
   hh.Add(zih)
-  hh.Add(dih)
-  hh.Add(sttih)
-  hh.Add(stsih)
-  hh.Add(sttwih)
+  hh.Add(vvih)
+  hh.Add(tih)
+  hh.Add(tbih)
+  hh.Add(t_twih)
   hh.Add(ttbih)
   hh.Add(wbbih)
   hh.Add(wccih)
@@ -477,10 +280,10 @@ for leaf in leafs:
   leg.AddEntry(wccih,'W(#mu#nu)+c#bar{c}','f')
   leg.AddEntry(wbbih,'W(#mu#nu)+b#bar{b}','f')
   leg.AddEntry(ttbih,'t#bar{t}','f')
-  leg.AddEntry(sttwih,'t_tW','f')
-  leg.AddEntry(stsih,'t_s','f')
-  leg.AddEntry(sttih,'t_t','f')
-  leg.AddEntry(dih,'WW,WZ,ZZ','f')
+  leg.AddEntry(t_twih,'t_tW','f')
+  leg.AddEntry(tbih,'#bar{t}','f')
+  leg.AddEntry(tih,'t','f')
+  leg.AddEntry(vvih,'WW,WZ,ZZ','f')
   leg.AddEntry(zih,'Drell-Yan','f')
   if drawQCD:
    leg.AddEntry(qh,'QCD','f')
@@ -518,12 +321,12 @@ for leaf in leafs:
   c.Update()
  #####
   c.cd()
-  p2 = TPad('p2','p2',0,0,1,0.3)
+  p2 = TPad('p2','p2',0,0,1,0.2)
   p2.SetTopMargin(0.1)
   p2.Draw()
   p2.cd()
  
-  #datar = TH1F('datar','datar',steps,xmin,xmax)
+  datar = TH1F('datar','datar',steps,xmin,xmax)
   if drawData:
    datar = dataih.Clone()
   else:
