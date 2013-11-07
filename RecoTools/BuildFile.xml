@@ -12,6 +12,7 @@
 <use   name="TrackingTools/TrajectoryState"/>
 <use   name="TrackingTools/DetLayers"/>
 <use   name="PhysicsTools/JetMCUtils"/>
+<use   name="DataFormats/METReco"/>
 <use   name="DataFormats/JetReco"/>
 <use   name="rootminuit"/>
 <use   name="rootminuit2"/>

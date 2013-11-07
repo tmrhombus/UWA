@@ -1,4 +1,5 @@
 <export>
+  <use   name="DataFormats/METReco"/>
 </export>
 <library   name="UWAnalysisRecoTools_plugins" file="*.cc">
   <use   name="FWCore/Framework"/>
@@ -9,6 +10,7 @@
   <use   name="DataFormats/Candidate"/>
   <use   name="DataFormats/Common"/>
   <use   name="DataFormats/MuonReco"/>
+  <use   name="DataFormats/METReco"/>
   <use   name="DataFormats/PatCandidates"/>
   <use   name="DataFormats/EgammaCandidates"/>
   <use   name="RecoEgamma/EgammaTools"/>

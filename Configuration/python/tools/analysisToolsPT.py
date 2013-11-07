@@ -174,137 +174,6 @@ def goodVertexFilter(process):
   process.goodVertexFilterPath=cms.Path(process.goodVertexFilterSeq)
 
 
-def makeL1OnlyJets(process,isMC=False,isData=False,L1Only=False): 
-  process.load("RecoJets.Configuration.RecoPFJets_cff")
-  import PhysicsTools.PatAlgos.tools.jetTools as jettools
-  process.load("PhysicsTools.PatAlgos.patSequences_cff")
-  process.load("UWAnalysis.Configuration.tools.patJetPUId_cfi")
-  process.pileupJetIdProducer.applyJec = cms.bool(True)
-
-  process.simpleSecondaryVertex = cms.ESProducer("SimpleSecondaryVertexESProducer",
-      use3d = cms.bool(True),
-      unBoost = cms.bool(False),
-      useSignificance = cms.bool(True),
-      minTracks = cms.uint32(2)
-  )
-
-  # define the b-tag squences for offline reconstruction
-  process.load("RecoBTag.SecondaryVertex.secondaryVertex_cff")
-  process.load("RecoBTau.JetTagComputer.combinedMVA_cff")
-  process.load('RecoVertex/AdaptiveVertexFinder/inclusiveVertexing_cff')
-  process.load('RecoBTag/SecondaryVertex/bToCharmDecayVertexMerger_cfi')
-
-  btag_options = {'doBTagging': True}
-  btag_options['btagInfo'] = [
-     'impactParameterTagInfos',
-     'secondaryVertexTagInfos',
-     'softMuonTagInfos'
-  ]
-  btag_options['btagdiscriminators'] = [
-     'trackCountingHighEffBJetTags',
-     'simpleSecondaryVertexHighEffBJetTags',
-     'combinedSecondaryVertexMVABJetTags',
-     'combinedSecondaryVertexBJetTags',
-  ]
-
-  jec = ['L1FastJet']
-
-  jettools.switchJetCollection(
-        process,
-        cms.InputTag('ak5PFJets'),
-        doJTA=False,
-        jetCorrLabel=('AK5PF', jec), 
-        doType1MET=False,
-        doJetID=True,
-        genJetCollection=cms.InputTag("ak5GenJets"),
-        outputModules=[],
-        **btag_options
-  )
-  process.patJets.embedPFCandidates = False
-  process.patJets.embedCaloTowers = False
-  process.patJets.embedGenJetMatch = True
-  process.patJets.addAssociatedTracks = False
-  process.patJets.embedGenPartonMatch = False
-  process.patJets.tagInfoSources = cms.VInputTag(
-   cms.InputTag("impactParameterTagInfos"),
-   cms.InputTag("secondaryVertexTagInfos"),
-   cms.InputTag("secondaryVertexNegativeTagInfos")
-  ) 
-  process.patJets.discriminatorSources = cms.VInputTag(
-   cms.InputTag("jetBProbabilityBJetTags"),
-   cms.InputTag("jetProbabilityBJetTags"),
-   cms.InputTag("trackCountingHighPurBJetTags"),
-   cms.InputTag("trackCountingHighEffBJetTags"),
-   cms.InputTag("simpleSecondaryVertexHighEffBJetTags"),
-   cms.InputTag("simpleSecondaryVertexHighPurBJetTags"),
-   cms.InputTag("combinedSecondaryVertexBJetTags"),
-   cms.InputTag("combinedSecondaryVertexMVABJetTags"),
-   cms.InputTag("simpleInclusiveSecondaryVertexHighEffBJetTags"),
-   cms.InputTag("simpleInclusiveSecondaryVertexHighPurBJetTags")
-  )
-  process.patJets.trackAssociationSource = cms.InputTag("ak5JetTracksAssociatorAtVertexA")
-  process.patJets.addBTagInfo = cms.bool(True)
-  process.patJets.addDiscriminators = cms.bool(True)
-  process.patJets.addTagInfos = cms.bool(True)
-
-  process.ak5JetTracksAssociatorAtVertexA = cms.EDProducer("JetTracksAssociatorAtVertex",
-              tracks       = cms.InputTag("generalTracks"),
-              jets         = cms.InputTag("ak5PFJets"),
-              coneSize     = cms.double(0.5)
-  )
-
-  process.patJetCharge.src = cms.InputTag("ak5JetTracksAssociatorAtVertexA")
-  process.load("PhysicsTools.PatAlgos.patSequences_cff")
-  process.L1OnlyJets = process.selectedPatJets.clone(src = cms.InputTag("patJetId"))
-  print('')
-
-#  process.load('UWAnalysis.Configuration.tools.RecoBTag_cff')
-#  All the btagging bits should go to a btag.cff 
-
-  process.btagging = cms.Sequence(
-   (
-    # impact parameters and IP-only algorithms
-    impactParameterTagInfos *
-    (trackCountingHighEffBJetTags +
-     trackCountingHighPurBJetTags +
-     jetProbabilityBJetTags +
-     jetBProbabilityBJetTags +
-
-     # SV tag infos depending on IP tag infos, and SV (+IP) based algos
-     secondaryVertexTagInfos *
-     (simpleSecondaryVertexHighEffBJetTags +
-      simpleSecondaryVertexHighPurBJetTags +
-      combinedSecondaryVertexBJetTags +
-      combinedSecondaryVertexMVABJetTags
-     )+
-     secondaryVertexNegativeTagInfos*simpleSecondaryVertexNegativeHighEffBJetTags
-     +
-     ghostTrackVertexTagInfos *
-     ghostTrackBJetTags
-    )
-   )
-  )
-
-  process.l1OnlyJetSeq = cms.Sequence(
-    process.inclusiveVertexing *
-    process.inclusiveMergedVerticesFiltered *
-    process.bToCharmDecayVertexMerged*
-    process.ak5PFJets*
-    process.ak5JetTracksAssociatorAtVertexA*
-    process.btagging*
-    process.inclusiveSecondaryVertexFinderTagInfosFiltered*
-    process.simpleInclusiveSecondaryVertexHighEffBJetTags *
-    process.simpleInclusiveSecondaryVertexHighPurBJetTags *
-    process.pileupJetIdProducer*
-    process.makePatJets*
-    process.patJetsPUID*
-    process.patJetId*
-    process.L1OnlyJets
-   )
-  process.l1OnlyJetPath = cms.Path(process.l1OnlyJetSeq)
-  return process.l1OnlyJetPath
-
-
 def reRunJets(process,isMC=False,isData=False,L1Only=False): 
   process.load("RecoJets.Configuration.RecoPFJets_cff")
   import PhysicsTools.PatAlgos.tools.jetTools as jettools
@@ -342,8 +211,6 @@ def reRunJets(process,isMC=False,isData=False,L1Only=False):
    jec = ['L1FastJet', 'L2Relative', 'L3Absolute'] 
   elif isData:
    jec = ['L1FastJet', 'L2Relative', 'L3Absolute', 'L2L3Residual']
-  if L1Only:
-   jec = ['L1FastJet']
 
   jettools.switchJetCollection(
         process,
@@ -427,27 +294,7 @@ def reRunJets(process,isMC=False,isData=False,L1Only=False):
    process.patJetCharge+
    process.patJets)
 
-  if L1Only:
-   #process.reRunJetSeq = cms.Sequence(
-   process.l1OnlySeq = cms.Sequence(
-    #process.inclusiveVertexing *
-    #process.inclusiveMergedVerticesFiltered *
-    #process.bToCharmDecayVertexMerged*
-    process.ak5PFJets*
-    #process.ak5JetTracksAssociatorAtVertex*
-    #process.btagging*
-    #process.inclusiveSecondaryVertexFinderTagInfosFiltered*
-    #process.simpleInclusiveSecondaryVertexHighEffBJetTags *
-    #process.simpleInclusiveSecondaryVertexHighPurBJetTags *
-    #process.pileupJetIdProducer*
-    process.makePatJets*
-    process.patJetsPUID*
-    process.patJetId*
-    process.L1OnlyJets
-   )
-   process.l1OnlyPath = cms.Path(process.l1OnlySeq)
-   return process.l1OnlyPath
-  elif isMC:
+  if isMC:
    process.reRunJetSeq = cms.Sequence(
     process.inclusiveVertexing *
     process.inclusiveMergedVerticesFiltered *
@@ -497,9 +344,7 @@ def resolutionSmearJets(process,jets='NewSelectedPatJets',genJets='ak5GenJets'):
 
 def ReNameJetColl(process):
   process.load("PhysicsTools.PatAlgos.patSequences_cff")
-  # need to rename to resolutionSmearedJets
   process.resolutionSmearedJets = process.selectedPatJets.clone(src = cms.InputTag("selectedPatJets"))
-  #process.NewSelectedPatJets = process.selectedPatJets.clone(src = cms.InputTag("selectedPatJets"))
   process.reNameJetSeq = cms.Sequence(process.resolutionSmearedJets)
   process.reNameJetPath = cms.Path(process.reNameJetSeq)
   return process.reNameJetPath
@@ -514,42 +359,6 @@ def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets'):
   process.metTypeOnePath= cms.Path(process.metTypeOneSeq)
   return process.metTypeOnePath
 
-
-#def metRename(process):  # OBSOLETE ONCE WE RERUN JETS
-#  process.metType1got = cms.EDProducer("PATMETRenamer",
-#   src = cms.InputTag('systematicsMET')
-#  )
-#  process.metType1gotSeq = cms.Sequence(process.metType1got)
-#  process.metType1gotPath= cms.Path(process.metType1gotSeq)
-#  return process.metType1gotPath
-#
-#
-#def metType1(process,jets='NewSelectedPatJets',mets='systematicsMET'):
-#  process.patPFJetMETtype1p2Corr = cms.EDProducer("PATPFJetMETcorrInputProducer",
-#   src = cms.InputTag(jets),
-#   #src = cms.InputTag('selectedPatJetsForMETtype1p2Corr'),
-#   offsetCorrLabel = cms.string("L1FastJet"),
-#   jetCorrLabel = cms.string("L3Absolute"), # NOTE: use "L3Absolute" for MC / "L2L3Residual" for Data
-#   type1JetPtThreshold = cms.double(10.0),
-#   skipEM = cms.bool(True),
-#   skipEMfractionThreshold = cms.double(0.90),
-#   skipMuons = cms.bool(True),
-#   skipMuonSelection = cms.string("isGlobalMuon | isStandAloneMuon")
-#  )
-#
-#  process.patType1CorrectedPFMet = cms.EDProducer("CorrectedPATMETProducer",
-#      src = cms.InputTag(mets),
-#      #src = cms.InputTag('patPFMet'),
-#      applyType1Corrections = cms.bool(True),
-#      srcType1Corrections = cms.VInputTag(
-#          cms.InputTag('patPFJetMETtype1p2Corr', 'type1'),
-#          ##cms.InputTag('patPFMETtype0Corr')                    
-#      ),
-#      applyType2Corrections = cms.bool(False)
-#  ) 
-#  process.patPFJetMETtype1p2CorrSeq = cms.Sequence(process.patPFJetMETtype1p2Corr*process.patType1CorrectedPFMet)
-#  process.patPFJetMETtype1p2CorrPath=cms.Path(process.patPFJetMETtype1p2CorrSeq)
-#  return process.patPFJetMETtype1p2CorrPath 
 
 def jetMCMatching(process,jets):
   process.patJetMCMatched = cms.EDProducer('MCBHadronJetProducer',
@@ -602,6 +411,10 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
     vertices=cms.InputTag("offlinePrimaryVertices") 
    ) 
   if isData:
+   process.patSSVJetsData=cms.EDProducer("PATSSVJetEmbedder", 
+   #process.patSSVJetsData=cms.EDProducer("PATSSVJetEmbedder_data", 
+    src = cms.InputTag(jets) 
+   ) 
    process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData', 
     src = cms.InputTag(jets), 
     leptons = cms.InputTag(muons), 
@@ -615,7 +428,8 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
   if isMC:
    process.BReconstruction = cms.Sequence(process.patSSVJets*process.patBpmRecoJets*process.patBRecoJets) 
   if isData:
-   process.BReconstruction = cms.Sequence(process.patBpmRecoJets*process.patBRecoJets)
+   process.BReconstruction = cms.Sequence(process.patSSVJetsData*process.patBpmRecoJets*process.patBRecoJets) 
+   #process.BReconstruction = cms.Sequence(process.patBpmRecoJets*process.patBRecoJets)
   process.createBRecoJets=cms.Path(process.BReconstruction) 
   return process.createBRecoJets 
 

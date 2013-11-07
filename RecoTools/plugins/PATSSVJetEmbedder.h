@@ -33,6 +33,7 @@ class PATSSVJetEmbedder : public edm::EDProducer {
     {
       using namespace edm;
       using namespace reco;
+      //std::cout<<"PATSSVJetEmbedder.h is running"<<std::endl;
 
       std::auto_ptr<pat::JetCollection > out(new pat::JetCollection);
       Handle<pat::JetCollection > cands;
@@ -47,6 +48,10 @@ class PATSSVJetEmbedder : public edm::EDProducer {
           double btagSSVHPNEG[5]={-777,-777,-777,-777,-777};
           double mass_SSV=-777;
           double mass_SSVNEG=-777;
+          double mass_SSV_alt[5]={-777,-777,-777,-777,-777};
+          double pt_SSV[5]={-777,-777,-777,-777,-777};
+          double eta_SSV[5]={-777,-777,-777,-777,-777};
+          double phi_SSV[5]={-777,-777,-777,-777,-777};
 
           double massD_SSV=-777;
           double massD_SSVNEG=-777;
@@ -75,7 +80,6 @@ class PATSSVJetEmbedder : public edm::EDProducer {
 
           int track1_charge=-777, track2_charge=-777, track3_charge=-777;
           int trackNeg1_charge=-777, trackNeg2_charge=-777, trackNeg3_charge=-777;
-
 
           const reco::SecondaryVertexTagInfo* secInfo = jet.tagInfoSecondaryVertex("secondaryVertex");
           if (secInfo && secInfo->vertexTracks().size()>0) {
@@ -220,6 +224,12 @@ class PATSSVJetEmbedder : public edm::EDProducer {
 
 
           for (unsigned int isv=0; isv<nSSVPOS; ++isv) {
+            mass_SSV_alt[isv] = jet.tagInfoSecondaryVertex()->secondaryVertex(isv).p4().M();
+            pt_SSV[isv] = jet.tagInfoSecondaryVertex()->secondaryVertex(isv).p4().Pt();
+            eta_SSV[isv] = jet.tagInfoSecondaryVertex()->secondaryVertex(isv).p4().Eta();
+            phi_SSV[isv] = jet.tagInfoSecondaryVertex()->secondaryVertex(isv).p4().Phi();
+            //p4_alt[isv] = jet.tagInfoSecondaryVertex()->secondaryVertex(isv).p4();
+            //mass_SSV_alt[isv] = p4_alt.M();
             if (nTracks_SSVPOS[isv]<2) continue;
             if (errorFlightDistancePOS[isv]<=0.) continue;
             if (flightDistancePOS[isv]<0.) continue;
@@ -252,6 +262,14 @@ class PATSSVJetEmbedder : public edm::EDProducer {
           jet.addUserFloat("nNegativeSSV",nSSVNEG);
           jet.addUserFloat("mass_SSV",mass_SSV);
           jet.addUserFloat("mass_SSVNEG",mass_SSVNEG);
+          jet.addUserFloat("mass_SSV_alt",mass_SSV_alt[0]);
+          jet.addUserFloat("mass_SSV_alt2",mass_SSV_alt[1]);
+          jet.addUserFloat("mass_SSV_alt3",mass_SSV_alt[2]);
+          jet.addUserFloat("mass_SSV_alt4",mass_SSV_alt[3]);
+          jet.addUserFloat("mass_SSV_alt5",mass_SSV_alt[4]);
+          jet.addUserFloat("pt_SSV",pt_SSV[0]);
+          jet.addUserFloat("eta_SSV",eta_SSV[0]);
+          jet.addUserFloat("phi_SSV",phi_SSV[0]);
           jet.addUserFloat("massD_SSV",massD_SSV);
           jet.addUserFloat("massD_SSVNEG",massD_SSVNEG);
 
@@ -296,9 +314,12 @@ class PATSSVJetEmbedder : public edm::EDProducer {
           jet.addUserFloat("nTracksSSV",nTracks_SSVPOS[0]);
           jet.addUserFloat("errorFlightDistance",errorFlightDistancePOS[0]);
           jet.addUserFloat("flightDistance",flightDistancePOS[0]);
+
           jet.addUserFloat("btagSSVHE2",btagSSVHEPOS[1]);
           jet.addUserFloat("btagSSVHP2",btagSSVHPPOS[1]);
           jet.addUserFloat("nTracksSSV2",nTracks_SSVPOS[1]);
+          jet.addUserFloat("nTracksSSV3",nTracks_SSVPOS[2]);
+          jet.addUserFloat("nTracksSSV4",nTracks_SSVPOS[3]);
           jet.addUserFloat("errorFlightDistance2",errorFlightDistancePOS[1]);
           jet.addUserFloat("flightDistance2",flightDistancePOS[1]);
 

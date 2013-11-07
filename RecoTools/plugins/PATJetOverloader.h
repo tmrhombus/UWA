@@ -79,6 +79,7 @@ class PATJetOverloader : public edm::EDProducer {
     bool verticesExist = iEvent.getByLabel(vertex_,vertices);
     //reco::btau::trackSip2dSigAboveCharm;
 
+    //std::cout<<"Running PATJetOverloader, vertexes T/F: "<<verticesExist<<std::endl;
     //printf("Gets Here1\n");
     if(verticesExist)
       verticesExist*=(vertices->size()>0)&&(vertices->at(0).isValid());
@@ -398,7 +399,15 @@ class PATJetOverloader : public edm::EDProducer {
 		  jet.addUserFloat("dzMu2",dz);
 	     }
 	  }
-
+        double mass_PV = -777; 
+        double pt_PV = -777; 
+        double eta_PV = -777; 
+        double phi_PV = -777; 
+        mass_PV = vertices->at(0).p4().M();
+        pt_PV = vertices->at(0).p4().Pt();
+        eta_PV = vertices->at(0).p4().Eta();
+        phi_PV = vertices->at(0).p4().Phi();
+        //std::cout<<"PV "<<mass_PV<<" "<<pt_PV<<" "<<eta_PV<<" "<<phi_PV<<std::endl;
 	jet.addUserFloat("muon1ZMass",Mu1ZMass);
 	jet.addUserFloat("muon2ZMass",Mu2ZMass);
 	jet.addUserFloat("muon1pt",muonpt1);
@@ -406,6 +415,10 @@ class PATJetOverloader : public edm::EDProducer {
 	jet.addUserFloat("nTracks",nTrack);
 	jet.addUserFloat("DR",maxPFdist);
 	jet.addUserFloat("ptRMS",sqrt(sumPt2/(sumPt*sumPt)));
+        jet.addUserFloat("mass_PV",mass_PV); 
+        jet.addUserFloat("pt_PV",pt_PV); 
+        jet.addUserFloat("eta_PV",eta_PV); 
+        jet.addUserFloat("phi_PV",phi_PV); 
 	jets->push_back(jet);
       }
     iEvent.put(jets);
