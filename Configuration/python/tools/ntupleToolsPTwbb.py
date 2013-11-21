@@ -135,29 +135,9 @@ def makeIVFBs(tagName,methodName):
   )
   return PSet
 
-def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = 'weCandsJets'):
- commonCollections = cms.PSet(         
-    electronPt = makeMuNu("electronPt","lepton.pt()",sourceE),
-    PVs = cms.PSet(
-        pluginType = cms.string("VertexSizeFiller"),
-        src = cms.InputTag("primaryVertexFilter"),
-        tag = cms.string("vertices")
-    ), 
-    pu = cms.PSet(
-        pluginType = cms.string("PUFiller"),
-        src = cms.InputTag("addPileupInfo"),
-        tag = cms.string("pu"),
-        ),
-    trigger = cms.PSet(
-        pluginType = cms.string("TriggerFiller"),
-        src = cms.InputTag("patTrigger"),
-        paths = cms.vstring(TriggerPaths)
-    ),
-# Jet pT Reco + Gen
-    J1_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[0], 
-    J1_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[0], 
-    J1_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[0], 
-# Jet ID and Pu ID
+def makeJetIDInfo(source = 'wCandsJets'):
+   jetIDInfo = cms.PSet( 
+    # Jet ID and Pu ID
     J1_idTightJet = makeJetUserFloat('idTight','Jet',source)[0], 
     J2_idTightJet = makeJetUserFloat('idTight','Jet',source)[1], 
     J3_idTightJet = makeJetUserFloat('idTight','Jet',source)[2], 
@@ -218,6 +198,74 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     J2_idClosestDxyPu = makeJetUserFloat('idClosestDxy','Pu',source)[1],
     J3_idClosestDxyPu = makeJetUserFloat('idClosestDxy','Pu',source)[2],
     J4_idClosestDxyPu = makeJetUserFloat('idClosestDxy','Pu',source)[3],
+   )
+   return jetIDInfo
+
+def makeJetCorrectionInfo():
+    # Jets at Various Levels of Correction from RecoTools/plugins/PATJetOverloader.h
+   jetCorrectionInfo = cms.PSet(
+    J1_pt_L1 = makeJetUserFloat('pt_L1')[0],
+    J1_eta_L1 = makeJetUserFloat('eta_L1')[0],
+    J1_phi_L1 = makeJetUserFloat('phi_L1')[0],
+    J1_pt_L2 = makeJetUserFloat('pt_L2')[0],
+    J1_eta_L2 = makeJetUserFloat('eta_L2')[0],
+    J1_phi_L2 = makeJetUserFloat('phi_L2')[0],
+    J1_pt_L3 = makeJetUserFloat('pt_L3')[0],
+    J1_eta_L3 = makeJetUserFloat('eta_L3')[0],
+    J1_phi_L3 = makeJetUserFloat('phi_L3')[0],
+    J1_pt_L23 = makeJetUserFloat('pt_L23')[0],
+    J2_pt_L1 = makeJetUserFloat('pt_L1')[1],
+    J2_eta_L1 = makeJetUserFloat('eta_L1')[1],
+    J2_phi_L1 = makeJetUserFloat('phi_L1')[1],
+    J2_pt_L2 = makeJetUserFloat('pt_L2')[1],
+    J2_eta_L2 = makeJetUserFloat('eta_L2')[1],
+    J2_phi_L2 = makeJetUserFloat('phi_L2')[1],
+    J2_pt_L3 = makeJetUserFloat('pt_L3')[1],
+    J2_eta_L3 = makeJetUserFloat('eta_L3')[1],
+    J2_phi_L3 = makeJetUserFloat('phi_L3')[1],
+    J2_pt_L23 = makeJetUserFloat('pt_L23')[1],
+    J3_pt_L1 = makeJetUserFloat('pt_L1')[2],
+    J3_eta_L1 = makeJetUserFloat('eta_L1')[2],
+    J3_phi_L1 = makeJetUserFloat('phi_L1')[2],
+    J3_pt_L2 = makeJetUserFloat('pt_L2')[2],
+    J3_eta_L2 = makeJetUserFloat('eta_L2')[2],
+    J3_phi_L2 = makeJetUserFloat('phi_L2')[2],
+    J3_pt_L3 = makeJetUserFloat('pt_L3')[2],
+    J3_eta_L3 = makeJetUserFloat('eta_L3')[2],
+    J3_phi_L3 = makeJetUserFloat('phi_L3')[2],
+    J3_pt_L23 = makeJetUserFloat('pt_L23')[2],
+    J4_pt_L1 = makeJetUserFloat('pt_L1')[3],
+    J4_eta_L1 = makeJetUserFloat('eta_L1')[3],
+    J4_phi_L1 = makeJetUserFloat('phi_L1')[3],
+    J4_pt_L2 = makeJetUserFloat('pt_L2')[3],
+    J4_eta_L2 = makeJetUserFloat('eta_L2')[3],
+    J4_phi_L2 = makeJetUserFloat('phi_L2')[3],
+    J4_pt_L3 = makeJetUserFloat('pt_L3')[3],
+    J4_eta_L3 = makeJetUserFloat('eta_L3')[3],
+    J4_phi_L3 = makeJetUserFloat('phi_L3')[3],
+    J4_pt_L23 = makeJetUserFloat('pt_L23')[3],
+   )
+   return jetCorrectionInfo
+
+
+def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = 'weCandsJets'):
+ commonCollections = cms.PSet(         
+    electronPt = makeMuNu("electronPt","lepton.pt()",sourceE),
+    PVs = cms.PSet(
+        pluginType = cms.string("VertexSizeFiller"),
+        src = cms.InputTag("primaryVertexFilter"),
+        tag = cms.string("vertices")
+    ), 
+    pu = cms.PSet(
+        pluginType = cms.string("PUFiller"),
+        src = cms.InputTag("addPileupInfo"),
+        tag = cms.string("pu"),
+        ),
+    trigger = cms.PSet(
+        pluginType = cms.string("TriggerFiller"),
+        src = cms.InputTag("patTrigger"),
+        paths = cms.vstring(TriggerPaths)
+    ),
 
 # SV and Jet Components
     J1_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[0],
@@ -416,7 +464,17 @@ def addMuNuEventTreePtDat(process,name,source = 'wCandsJets',sourceZ = 'diMuonsS
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
       makeCollections(source,sourceZ),
-      coreCollections = cms.VInputTag( cms.InputTag(source) )
+      makeJetIDInfo(source = 'wCandsJets'),
+      makeJetCorrectionInfo(),
+      coreCollections = cms.VInputTag( cms.InputTag(source) ),
+      J1_eta_L23 = makeJetUserFloat('eta_L23')[0],
+      J1_phi_L23 = makeJetUserFloat('phi_L23')[0],
+      J2_eta_L23 = makeJetUserFloat('eta_L23')[1],
+      J2_phi_L23 = makeJetUserFloat('phi_L23')[1],
+      J3_eta_L23 = makeJetUserFloat('eta_L23')[2],
+      J3_phi_L23 = makeJetUserFloat('phi_L23')[2],
+      J4_eta_L23 = makeJetUserFloat('eta_L23')[3],
+      J4_phi_L23 = makeJetUserFloat('phi_L23')[3]
    )
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))
@@ -426,6 +484,8 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
       makeCollections(source,sourceZ),
+      makeJetIDInfo(source = 'wCandsJets'),
+      makeJetCorrectionInfo(),
       coreCollections = cms.VInputTag(
            cms.InputTag(source)
       ),
@@ -442,6 +502,28 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
       bHadronsEta = makeSimBHad("bhadrons","bHadronsEta","eta"),
       bHadronsPhi = makeSimBHad("bhadrons","bHadronsPhi","phi"),
   
+      # Jet pT Reco + Gen from RecoTools/plugins/PATJetSmearer.h
+      J1_pt_gen = makeJetUserFloat('pt_gen')[0],
+      J1_pt_gen_two = makeJetUserFloat('pt_gen_two')[0],
+      J1_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[0], 
+      J1_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[0], 
+      J1_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[0], 
+      J2_pt_gen = makeJetUserFloat('pt_gen')[1],
+      J2_pt_gen_two = makeJetUserFloat('pt_gen_two')[1],
+      J2_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[1], 
+      J2_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[1], 
+      J2_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[1], 
+      J3_pt_gen = makeJetUserFloat('pt_gen')[2],
+      J3_pt_gen_two = makeJetUserFloat('pt_gen_two')[2],
+      J3_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[2], 
+      J3_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[2], 
+      J3_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[2], 
+      J4_pt_gen = makeJetUserFloat('pt_gen')[3],
+      J4_pt_gen_two = makeJetUserFloat('pt_gen_two')[3],
+      J4_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[3], 
+      J4_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[3], 
+      J4_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[3], 
+
       bCandidate1Pt = makeIVFBs("bCandidate1Pt","BC1PT"),
       bCandidate2Pt = makeIVFBs("bCandidate2Pt","BC2PT"),
       bCandidate1Eta = makeIVFBs("bCandidate1Eta","BC1ETA"),
