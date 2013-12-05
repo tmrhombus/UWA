@@ -42,7 +42,8 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
    #makeL1OnlyJets(process,isMC=itsMC,isData=itsData)
    #reRunJets(process,isMC=itsMC,isData=itsData,L1Only=True) #kills NewSelectedPatJets
   elif itsData:
-   ReNameJetColl(process)
+   reRunJets(process,isMC=itsMC,isData=itsData)
+   ReNameJetColl(process,inputJets='NewSelectedPatJets')
 
   # type 1 met correction (NOT IN YET)
   #metType1(process,jets='NewSelectedPatJets',mets='systematicsMET')
@@ -225,9 +226,15 @@ def reRunJets(process,isMC=False,isData=False,L1Only=False):
   )
   process.patJets.embedPFCandidates = False
   process.patJets.embedCaloTowers = False
-  process.patJets.embedGenJetMatch = True
+  if isMC:
+    process.patJets.embedGenJetMatch = True
+  elif isData:
+    process.patJets.embedGenJetMatch = False
   process.patJets.addAssociatedTracks = False
-  process.patJets.embedGenPartonMatch = False
+  if isMC:
+    process.patJets.embedGenPartonMatch = True
+  elif isData:
+    process.patJets.embedGenPartonMatch = False
   process.patJets.tagInfoSources = cms.VInputTag(
    cms.InputTag("impactParameterTagInfos"),
    cms.InputTag("secondaryVertexTagInfos"),
@@ -342,9 +349,9 @@ def resolutionSmearJets(process,jets='NewSelectedPatJets',genJets='ak5GenJets'):
   return process.resolutionSmearedJetsPath
 
 
-def ReNameJetColl(process):
+def ReNameJetColl(process, inputJets="selectedPatJets"):
   process.load("PhysicsTools.PatAlgos.patSequences_cff")
-  process.resolutionSmearedJets = process.selectedPatJets.clone(src = cms.InputTag("selectedPatJets"))
+  process.resolutionSmearedJets = process.selectedPatJets.clone(src = cms.InputTag(inputJets))
   process.reNameJetSeq = cms.Sequence(process.resolutionSmearedJets)
   process.reNameJetPath = cms.Path(process.reNameJetSeq)
   return process.reNameJetPath
