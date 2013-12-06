@@ -7,7 +7,7 @@ process.GlobalTag.globaltag = 'FT_53_V21_AN6::All' #new GT
 #process.GlobalTag.globaltag = 'GR_P_V40_AN1::All' #old GT
 
 process.maxEvents = cms.untracked.PSet(
- input = cms.untracked.int32(2000)
+ input = cms.untracked.int32(100)
 )
 
 process.load("UWAnalysis/Configuration/2012FullJSON")
@@ -62,10 +62,10 @@ addMuNuEventTreePtDat(process,'muNuEventTree')
 addEventSummary(process,True)
 process.TFileService.fileName = cms.string('data.root')
 
-## makes EDM output of all collections
-#process.out = cms.OutputModule("PoolOutputModule",
-# fileName = cms.untracked.string('/scratch/tperry/analysis.root'),
-# outputCommands = cms.untracked.vstring(
-#                       'keep *'),
-# )
-#process.e = cms.EndPath(process.out)
+# makes EDM output of all collections
+process.out = cms.OutputModule("PoolOutputModule",
+ fileName = cms.untracked.string('/scratch/tperry/data.root'),
+ outputCommands = cms.untracked.vstring(
+                       'keep *'),
+ )
+process.e = cms.EndPath(process.out)

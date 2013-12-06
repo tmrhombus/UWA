@@ -35,20 +35,15 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #Build good vertex collection
   goodVertexFilter(process)       
   
-  # reRun Jets (MC only)
+  # reRun Jets 
+  reRunJets(process,isMC=itsMC,isData=itsData)
   if itsMC:
-   reRunJets(process,isMC=itsMC,isData=itsData)
    resolutionSmearJets(process,jets='NewSelectedPatJets')
-   #makeL1OnlyJets(process,isMC=itsMC,isData=itsData)
-   #reRunJets(process,isMC=itsMC,isData=itsData,L1Only=True) #kills NewSelectedPatJets
   elif itsData:
-   reRunJets(process,isMC=itsMC,isData=itsData)
    ReNameJetColl(process,inputJets='NewSelectedPatJets')
 
-  # type 1 met correction (NOT IN YET)
-  #metType1(process,jets='NewSelectedPatJets',mets='systematicsMET')
+  # type 1 met correction 
   metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets')
-  #metRename(process) #just pulls met type 1 from old jets
 
   jetOverloading(process,"resolutionSmearedJets")
 #  jetOverloading(process,"NewSelectedPatJets")
