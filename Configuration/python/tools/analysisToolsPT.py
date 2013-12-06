@@ -423,7 +423,8 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
     src = cms.InputTag(jets) 
    ) 
    process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData', 
-    src = cms.InputTag(jets), 
+#    src = cms.InputTag(jets), 
+    src = cms.InputTag("patSSVJets"),
     leptons = cms.InputTag(muons), 
     vertices=cms.InputTag("offlinePrimaryVertices")
    ) 
