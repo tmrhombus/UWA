@@ -109,13 +109,21 @@ class PATJetSmearer : public edm::EDProducer{
       }
      }
 
-     ptSmeared     = std::max(0., gen_pt + sf     * (reco_pt - gen_pt) );
-     ptSmearedUp   = std::max(0., gen_pt + sfUp   * (reco_pt - gen_pt) );
-     ptSmearedDown = std::max(0., gen_pt + sfDown * (reco_pt - gen_pt) );
- 
+     if(gen_pt!=-10){
+      ptSmeared     = std::max(0., gen_pt + sf     * (reco_pt - gen_pt) );
+      ptSmearedUp   = std::max(0., gen_pt + sfUp   * (reco_pt - gen_pt) );
+      ptSmearedDown = std::max(0., gen_pt + sfDown * (reco_pt - gen_pt) );
+     } 
+     else{
+      ptSmeared     = std::max(0., reco_pt );
+      ptSmearedUp   = std::max(0., reco_pt );
+      ptSmearedDown = std::max(0., reco_pt );
+     } 
+
      math::PtEtaPhiMLorentzVector p4(ptSmeared,jet.eta(),jet.phi(),jet.mass());
      jet.setP4(p4);
      jet.addUserFloat("pt_gen",gen_pt);
+     jet.addUserFloat("pt_gen_two",gen_pt_two);
      jet.addUserFloat("pt_uncorr",reco_pt);
      jet.addUserFloat("pt_smearedUp",ptSmearedUp);
      jet.addUserFloat("pt_smearedDown",ptSmearedDown);

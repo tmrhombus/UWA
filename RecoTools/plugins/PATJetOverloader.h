@@ -90,6 +90,48 @@ class PATJetOverloader : public edm::EDProducer {
 
 	//printf("Gets Here1.0\n");
 	pat::Jet jet = cands->at(l);
+
+        // Jet Energy Corrections
+        math::PtEtaPhiMLorentzVector p4_levelOne;
+        math::PtEtaPhiMLorentzVector p4_levelTwo;
+        math::PtEtaPhiMLorentzVector p4_levelThree;
+        math::PtEtaPhiMLorentzVector p4_levelTwoThree;
+        p4_levelOne      = jet.correctedP4("L1FastJet");
+        p4_levelTwo      = jet.correctedP4("L2Relative");
+        p4_levelThree    = jet.correctedP4("L3Absolute");
+        //p4_levelTwoThree = jet.correctedP4("L2L3Residual");
+
+        float pt_L1  = p4_levelOne.pt();
+        float eta_L1 = p4_levelOne.eta();
+        float phi_L1 = p4_levelOne.phi();
+        float pt_L2  = p4_levelTwo.pt();
+        float eta_L2 = p4_levelTwo.eta();
+        float phi_L2 = p4_levelTwo.phi();
+        float pt_L3  = p4_levelThree.pt();
+        float eta_L3 = p4_levelThree.eta();
+        float phi_L3 = p4_levelThree.phi();
+        //float pt_L23  = p4_levelTwoThree.pt();
+        //float eta_L23 = p4_levelTwoThree.eta();
+        //float phi_L23 = p4_levelTwoThree.phi();
+
+        //std::cout<<"L1 Jet Pt: "<<pt_L1<<" Eta: "<<eta_L1<<" Phi: "<<phi_L1<<std::endl;
+        //std::cout<<"L2 Jet Pt: "<<pt_L2<<" Eta: "<<eta_L2<<" Phi: "<<phi_L2<<std::endl;
+        //std::cout<<"L3 Jet Pt: "<<pt_L3<<" Eta: "<<eta_L3<<" Phi: "<<phi_L3<<std::endl;
+        //std::cout<<"L23 Jet Pt: "<<pt_L23<<" Eta: "<<eta_L23<<" Phi: "<<phi_L23<<std::endl;
+
+        jet.addUserFloat("pt_L1",pt_L1);
+        jet.addUserFloat("eta_L1",eta_L1);
+        jet.addUserFloat("phi_L1",phi_L1);
+        jet.addUserFloat("pt_L2",pt_L2);
+        jet.addUserFloat("eta_L2",eta_L2);
+        jet.addUserFloat("phi_L2",phi_L2);
+        jet.addUserFloat("pt_L3",pt_L3);
+        jet.addUserFloat("eta_L3",eta_L3);
+        jet.addUserFloat("phi_L3",phi_L3);
+        //jet.addUserFloat("pt_L23",pt_L23);
+        //jet.addUserFloat("eta_L23",eta_L23);
+        //jet.addUserFloat("phi_L23",phi_L23);
+
 	//float trackSIP =jet.get(trackSip2dValAboveCharm);
 	//bool taginfosize = jet.hasTagInfo("vertexMass");
 	//bool taginfosize = jet.tagInfo().hasTracks();
@@ -116,7 +158,7 @@ class PATJetOverloader : public edm::EDProducer {
 	//enum TaggingVariableName trackSim2dValAboveCharm;
 	//float stuf = get(stuff);
 	//printf("Gets to PatJetOverloader\n");
-	if(jet.hasTagInfo("trackIP"))printf("has Track IP TagInfo\n");
+	//if(jet.hasTagInfo("trackIP"))printf("has Track IP TagInfo\n");
 
 	//if(jet.hasTagInfo("secondaryVertex"))printf("has SV TagInfo\n");
 	/*
