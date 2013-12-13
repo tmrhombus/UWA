@@ -36,24 +36,24 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut
 )
 
-data_filename     = '../data/looseID/Data.root'
-t_t_filename      = '../data/looseID/T_t.root'
-t_s_filename      = '../data/looseID/T_s.root'
-t_tw_filename     = '../data/looseID/T_tW.root'
-tb_t_filename     = '../data/looseID/Tbar_t.root'
-tb_s_filename     = '../data/looseID/Tbar_s.root'
-tb_tw_filename    = '../data/looseID/Tbar_tW.root'
-tt_semi_filename  = '../data/looseID/TTbar_semi.root'
-tt_full_filename  = '../data/looseID/TTbar_full.root'
-ww_filename       = '../data/looseID/WW.root'
-wz_filename       = '../data/looseID/WZ.root'
-zz_filename       = '../data/looseID/ZZ.root'
-wn_filename       = '../data/looseID/WJets.root'
-w1_filename       = '../data/looseID/W1Jet.root'
-w2_filename       = '../data/looseID/W2Jet.root'
-w3_filename       = '../data/looseID/W3Jet.root'
-w4_filename       = '../data/looseID/W4Jet.root'
-z_filename        = '../data/looseID/Drell.root'
+data_filename     = '../data/moreSV_two/Data.root'
+t_t_filename      = '../data/moreSV_two/T_t.root'
+t_s_filename      = '../data/moreSV_two/T_s.root'
+t_tw_filename     = '../data/moreSV_two/T_tW.root'
+tb_t_filename     = '../data/moreSV_two/Tbar_t.root'
+tb_s_filename     = '../data/moreSV_two/Tbar_s.root'
+tb_tw_filename    = '../data/moreSV_two/Tbar_tW.root'
+tt_semi_filename  = '../data/moreSV_two/TTbar_semi.root'
+tt_full_filename  = '../data/moreSV_two/TTbar_full.root'
+ww_filename       = '../data/moreSV_two/WW.root'
+wz_filename       = '../data/moreSV_two/WZ.root'
+zz_filename       = '../data/moreSV_two/ZZ.root'
+wn_filename       = '../data/moreSV_two/WJets.root'
+w1_filename       = '../data/moreSV_two/W1Jet.root'
+w2_filename       = '../data/moreSV_two/W2Jet.root'
+w3_filename       = '../data/moreSV_two/W3Jet.root'
+w4_filename       = '../data/moreSV_two/W4Jet.root'
+z_filename        = '../data/moreSV_two/Drell.root'
 
 data_file      = TFile( data_filename )
 t_t_file       = TFile( t_t_filename  )
@@ -105,6 +105,25 @@ for leaf in leafs:
  outFile = TFile(path+extraName+'_'+leaf+'.root','RECREATE','Demo ROOT file')
  
  log = open(path+extraName+'_'+leaf+'.log','w')
+
+ log.write("Data    "+data_filename   +"\n") 
+ log.write("t_t     "+t_t_filename    +"\n") 
+ log.write("t_s     "+t_s_filename    +"\n") 
+ log.write("t_tw    "+t_tw_filename   +"\n") 
+ log.write("tb_t    "+tb_t_filename   +"\n") 
+ log.write("tb_s    "+tb_s_filename   +"\n") 
+ log.write("tb_tw   "+tb_tw_filename  +"\n") 
+ log.write("tt_semi "+tt_semi_filename+"\n")
+ log.write("tt_full "+tt_full_filename+"\n")
+ log.write("ww      "+ww_filename     +"\n") 
+ log.write("wz      "+wz_filename     +"\n") 
+ log.write("zz      "+zz_filename     +"\n") 
+ log.write("wn      "+wn_filename     +"\n") 
+ log.write("w1      "+w1_filename     +"\n") 
+ log.write("w2      "+w2_filename     +"\n") 
+ log.write("w3      "+w3_filename     +"\n") 
+ log.write("w4      "+w4_filename     +"\n") 
+ log.write("z       "+z_filename      +"\n") 
  
  print('----------------------------')
  print('      --'+leaf+'--')
@@ -514,7 +533,7 @@ for leaf in leafs:
  print('')
  
  log.write('------------------------------------------------\n')
- if noMT and leaf=='Mt':
+ if noMT and leaf=='mt':
   log.write('You Probably Want to use this for QCD Scale\n')
   mcSizePart = \
    wlnihSizePart+wl1ihSizePart+wl2ihSizePart+wl3ihSizePart+wl4ihSizePart+ \

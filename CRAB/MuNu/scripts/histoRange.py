@@ -8,13 +8,13 @@ def ranger(leaf):
  xmin = None
  xmax = None
  setLogY = False
- if leaf=='muonPt':
+ if leaf=='muon_pt':
    steps = 50
    xmin = 0.
    xmax = 200.
    xtitle = 'p_{T}^{#mu}'
    xunits = 'GeV'
- elif leaf=='Mt' or leaf == 'MtCal':
+ elif leaf=='mt' or leaf == 'MtCal':
    steps =50 
    xmin = 0.
    xmax = 200.
@@ -38,13 +38,13 @@ def ranger(leaf):
    xmax = 200.
    xtitle = 'm^{#mu#mu}'
    xunits = 'GeV'
- elif leaf == 'muonEta':
+ elif leaf == 'muon_eta':
    steps = 20
    xmin = -3.
    xmax = 5.
    xtitle = '#eta^{#mu}'
    xunits = None
- elif leaf == 'muonPhi':
+ elif leaf == 'muon_phi':
    steps = 31
    xmin = -3.45
    xmax = 5.85
@@ -56,19 +56,19 @@ def ranger(leaf):
    xmax = 400.
    xtitle = 'h_{T}'
    xunits = 'GeV'
- elif leaf == 'highestJetEta' or leaf=='secondJetEta' or leaf == 'thirdJetEta':
+ elif leaf == 'J1_eta' or leaf=='J2_eta' or leaf == 'J3_eta':
    steps = 20
    xmin = -3.
    xmax = 5.
    xtitle = leaf
    xunits = None
- elif leaf == 'highestJetPhi' or leaf=='secondJetPhi' or leaf=='thirdJetPhi':
+ elif leaf == 'J1_phi' or leaf=='J2_phi' or leaf=='J3_phi':
    steps = 31
    xmin = -3.45
    xmax = 5.85
    xtitle = leaf
    xunits = None
- elif leaf == 'highestJetPt' or leaf=='secondJetPt' or leaf=='thirdJetPt' or leaf=='fourthJetPt':
+ elif leaf=='Wpt' or leaf == 'J1_pt' or leaf=='J2_pt' or leaf=='J3_pt' or leaf=='J4_pt':
    steps = 50
    xmin = 0.
    xmax = 350.
@@ -105,7 +105,7 @@ def ranger(leaf):
    xmax = 300.
    xtitle = 'p_{T}^{JJ}'
    xunits = 'GeV'
- elif leaf == 'WPt':
+ elif leaf == 'Wpt':
    steps = 50
    xmin = 0.
    xmax = 300.
@@ -117,7 +117,10 @@ def ranger(leaf):
    xmax = 11.
    xtitle = leaf
    xunits = None
- elif leaf=='J1CSVbtag'or leaf=='J1CSVMVAbtag'or leaf=='J2CSVbtag'or leaf=='J2CSVMVAbtag':
+ elif leaf=='J1CSVbtag'or leaf=='J1CSVMVAbtag'\
+  or leaf=='J2CSVbtag'or leaf=='J2CSVMVAbtag'\
+  or leaf=='J1_idBetaPu' or leaf=='J2_idBetaPu'\
+  or leaf=='J1_idBetaStarPu' or leaf=='J2_idBetaStarPu':
    steps = 20
    xmin = 0.
    xmax = 1.
@@ -137,7 +140,7 @@ def ranger(leaf):
    xmax = 7.
    xtitle = leaf
    xunits = 'flavor'
- elif leaf=='J1SVMassb' or leaf =='J2SVMassb':
+ elif leaf=='J1_mass_SSV' or leaf =='J2_mass_SSV':
    steps = 32
    xmin = 0.
    xmax = 8.
@@ -155,7 +158,7 @@ def ranger(leaf):
    xmax = 2.
    xtitle = leaf
    xunits = 'e'
- elif leaf == '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))':
+ elif leaf == '(((J1_eta-J2_eta)*(J1_eta-J2_eta))+((J1_phi-J2_phi)*(J1_phi-J2_phi)))':
    steps = 20
    xmin = 0.
    xmax = 5.
@@ -174,6 +177,12 @@ def ranger(leaf):
    xtitle = leaf
    xunits = None
    setLogY = True
+ elif leaf=='J1_nTracksSSV' or leaf=='J2_nTracksSSV':
+   steps = 30
+   xmin = 0.
+   xmax = 30
+   xtitle = leaf
+   xunits = None
  else :
    print("\n\n")
    print "YOU ARE A NINNY! The leaf's name isn't valid"
