@@ -32,9 +32,12 @@ sf_vv = 1.
 #get parameters (used in cutmaker)
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut = p.arams() 
 leafs = [
- ['(J1SVMassb+J2SVMassb)','(J1_PUID_nTrack+J2_PUID_nTrack)'],
- ['J1SVMassb','J1_PUID_nTrack'],
- ['J2SVMassb','J2_PUID_nTrack']
+ ['(J1_mass_SSV+J2_mass_SSV)','(J1_nTracksSSV+J2_nTracksSSV)'],
+ ['J1_mass_SSV','J1_nTracksSSV'],
+ ['J2_mass_SSV','J2_nTracksSSV']
+ ['(J1_mass_SSV_alt+J2_mass_SSV_alt)','(J1_nTracksSSV+J2_nTracksSSV)'],
+ ['J1_mass_SSV_alt','J1_nTracksSSV'],
+ ['J2_mass_SSV_alt','J2_nTracksSSV']
 ]
 extraName+='2D'
 
@@ -42,24 +45,24 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut
 )
 
-data_filename     = '../data/looseID/Data.root'
-t_t_filename      = '../data/looseID/T_t.root'
-t_s_filename      = '../data/looseID/T_s.root'
-t_tw_filename     = '../data/looseID/T_tW.root'
-tb_t_filename     = '../data/looseID/Tbar_t.root'
-tb_s_filename     = '../data/looseID/Tbar_s.root'
-tb_tw_filename    = '../data/looseID/Tbar_tW.root'
-tt_semi_filename  = '../data/looseID/TTbar_semi.root'
-tt_full_filename  = '../data/looseID/TTbar_full.root'
-ww_filename       = '../data/looseID/WW.root'
-wz_filename       = '../data/looseID/WZ.root'
-zz_filename       = '../data/looseID/ZZ.root'
-wn_filename       = '../data/looseID/WJets.root'
-w1_filename       = '../data/looseID/W1Jet.root'
-w2_filename       = '../data/looseID/W2Jet.root'
-w3_filename       = '../data/looseID/W3Jet.root'
-w4_filename       = '../data/looseID/W4Jet.root'
-z_filename        = '../data/looseID/Drell.root'
+data_filename     = '../data/moreSV_two/Data.root'
+t_t_filename      = '../data/moreSV_two/T_t.root'
+t_s_filename      = '../data/moreSV_two/T_s.root'
+t_tw_filename     = '../data/moreSV_two/T_tW.root'
+tb_t_filename     = '../data/moreSV_two/Tbar_t.root'
+tb_s_filename     = '../data/moreSV_two/Tbar_s.root'
+tb_tw_filename    = '../data/moreSV_two/Tbar_tW.root'
+tt_semi_filename  = '../data/moreSV_two/TTbar_semi.root'
+tt_full_filename  = '../data/moreSV_two/TTbar_full.root'
+ww_filename       = '../data/moreSV_two/WW.root'
+wz_filename       = '../data/moreSV_two/WZ.root'
+zz_filename       = '../data/moreSV_two/ZZ.root'
+wn_filename       = '../data/moreSV_two/WJets.root'
+w1_filename       = '../data/moreSV_two/W1Jet.root'
+w2_filename       = '../data/moreSV_two/W2Jet.root'
+w3_filename       = '../data/moreSV_two/W3Jet.root'
+w4_filename       = '../data/moreSV_two/W4Jet.root'
+z_filename        = '../data/moreSV_two/Drell.root'
 
 data_file      = TFile( data_filename )
 t_t_file       = TFile( t_t_filename  )

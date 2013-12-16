@@ -15,8 +15,9 @@ import TheParameters as p
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
 #sf_qcd = 1.9191895562 # PU_fullIdTight
 #sf_qcd = 2.19849549176 # PU_idTight 
-sf_qcd = 2.20315337368 # PU_idLoose
+#sf_qcd = 2.20315337368 # PU_idLoose
 #sf_qcd = 2.09269599272 # Jet idLoose + PUID_fullIdLoose
+sf_qcd = 2.14867279181 # temp for 18pb moreSV_two
 
 sf_Signal_Wbb    = 1. 
 sf_Signal_Wcc    = 1. 

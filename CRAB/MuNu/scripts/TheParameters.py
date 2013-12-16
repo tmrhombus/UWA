@@ -29,10 +29,10 @@ def arams():
 
  noMT = False # control but no mT cut
  Control = False # 1 mu, 0b, 2+ jets
- Signal = True # 1 mu, 2bs, 2 jets
+ Signal = False # 1 mu, 2bs, 2 jets
  TT_m = False #1 mu, 2b, 4 j
  TT_me = False #no b, 1mu, 1e
- ST = False
+ ST = True
  Z_Region = False # two muons, no mT cut
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
  Tomislav = False
@@ -68,7 +68,7 @@ def arams():
   jNr = 4
   jetVeto = False
  elif Z_Region:
-  bNr = 0
+  bNr = 1
   jNr = 2
   jetVeto = False
  elif ST:
@@ -101,20 +101,33 @@ def arams():
  jet1_2dr2 = '(((J1_eta-J2_eta)*(J1_eta-J2_eta))+((J1_phi-J2_phi)*(J1_phi-J2_phi)))'
 
  leafs = [
-#'J1_idBetaPu',
+'J1_idBetaPu',
 #'J1_idBetaClassicPu',
-#'J1_idBetaStarPu',
+'J1_idBetaStarPu',
 #'J1_idBetaStarClassicPu',
 #'J1_idBetaStarClassicModPu',
 #'J1_PUID_fullDiscriminant',
 #'J1_PUID_philv1Discriminant',
+#'J1_fullIdLoosePu',
+#'J2_fullIdLoosePu',
 #'mt',
 #'DiSVMass',
-#'(J1SVMassb+J2SVMassb)',
+'vertices',
+'(J1_mass_SSV+J2_mass_SSV)',
+'(J1_mass_SSV_alt+J2_mass_SSV_alt)',
 'J1_mass_SSV',
 'J2_mass_SSV',
-#'J1_nTracksSSV',
-#'J2_nTracksSSV',
+'J1_nTracksSSV',
+'J2_nTracksSSV',
+'J1_mass_SSV_alt',
+'J1_mass_SSV',
+'J1_pt_SSV',
+#'J1_phi_SSV',
+#'J1_eta_SSV',
+'J1_pt_PV',
+#'J1_phi_PV',
+#'J1_eta_PV',
+'J1_mass_PV',
 #'J1_pt',
 #'J1_phi',
 #'J1_eta',
@@ -122,12 +135,26 @@ def arams():
 #'muon_eta',
 #'muon_phi',
 #'muonCharge',
-#'J2_pt',
+'J2_pt',
 #'J2_eta',
 #'J2_phi',
+'J2_mass_SSV_alt',
+'J2_mass_SSV',
+'J2_pt_SSV',
+#'J2_phi_SSV',
+#'J2_eta_SSV',
+'J2_pt_PV',
+#'J2_phi_PV',
+#'J2_eta_PV',
+'J2_mass_PV',
+#'J3_pt',
+#'J3_eta',
+#'J3_phi',
+#'J4_pt',
+#'J4_eta',
+#'J4_phi',
 #'J1DR',
 #'J2DR',
-#'vertices',
 #'ht',
 #'met',
 #'DiMuonMass',
@@ -137,7 +164,7 @@ def arams():
 #'J2CSVbtag',
 #jet1_2dr2,
 #'dz',
-'Wpt',
+#'Wpt',
 #'ptJJ',
 #'mJJ',
 #'mJ3J4',

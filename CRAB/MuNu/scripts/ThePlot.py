@@ -438,10 +438,10 @@ for leaf in leafs:
   hs.Add(stsih)
   hs.Add(sttwih)
   hs.Add(ttbih)
-  hs.Add(wbbih)
-  hs.Add(wccih)
-  hs.Add(wcih)
   hs.Add(wlih)
+  hs.Add(wcih)
+  hs.Add(wccih)
+  hs.Add(wbbih)
 
   hh = TH1F('hh','hh',steps,xmin,xmax)
   hh.Rebin(rebin)
@@ -476,10 +476,10 @@ for leaf in leafs:
   if drawData:
    leg.AddEntry(dataih,'data')
  
-  leg.AddEntry(wlih,'W(#mu#nu)+light','f')
-  leg.AddEntry(wcih,'W(#mu#nu)+c','f')
-  leg.AddEntry(wccih,'W(#mu#nu)+c#bar{c}','f')
   leg.AddEntry(wbbih,'W(#mu#nu)+b#bar{b}','f')
+  leg.AddEntry(wccih,'W(#mu#nu)+c#bar{c}','f')
+  leg.AddEntry(wcih,'W(#mu#nu)+c','f')
+  leg.AddEntry(wlih,'W(#mu#nu)+light','f')
   leg.AddEntry(ttbih,'t#bar{t}','f')
   leg.AddEntry(sttwih,'t_tW','f')
   leg.AddEntry(stsih,'t_s','f')
