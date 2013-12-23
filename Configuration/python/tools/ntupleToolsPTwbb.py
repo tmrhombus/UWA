@@ -284,6 +284,22 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     J2_massBpm2 = makeJetUserFloat('massBpm2','',source)[1],
     J1_massDpm = makeJetUserFloat('massDpm','',source)[0],
     J2_massDpm = makeJetUserFloat('massDpm','',source)[1],
+
+    J1_SVMassUnweighted = makeJetUserFloat('SVMassUnweighted','',source)[0],
+    J2_SVMassUnweighted = makeJetUserFloat('SVMassUnweighted','',source)[1],
+    J1_SVMassWeighted = makeJetUserFloat('SVMassWeighted','',source)[0],
+    J2_SVMassWeighted = makeJetUserFloat('SVMassWeighted','',source)[1],
+    J1_SVPtUnweighted = makeJetUserFloat('SVPtUnweighted','',source)[0],
+    J2_SVPtUnweighted = makeJetUserFloat('SVPtUnweighted','',source)[1],
+    J1_SVPtWeighted = makeJetUserFloat('SVPtWeighted','',source)[0],
+    J2_SVPtWeighted = makeJetUserFloat('SVPtWeighted','',source)[1],
+    J1_SVquality = makeJetUserFloat('SVquality','',source)[0],
+    J2_SVquality = makeJetUserFloat('SVquality','',source)[1],
+    J1_SVSumOfWeights = makeJetUserFloat('SVSumOfWeights','',source)[0],
+    J2_SVSumOfWeights = makeJetUserFloat('SVSumOfWeights','',source)[1],
+    J1_SVNTracks = makeJetUserFloat('SVNTracks','',source)[0],
+    J2_SVNTracks = makeJetUserFloat('SVNTracks','',source)[1],
+
     J1_flightDistance = makeJetUserFloat('flightDistance','',source)[0],
     J2_flightDistance = makeJetUserFloat('flightDistance','',source)[1],
     J1_errorFlightDistance = makeJetUserFloat('errorFlightDistance','',source)[0],
@@ -460,7 +476,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
  )
  return commonCollections
 
-def addMuNuEventTreePtDat(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted'):
+def addMuNuEventTreePtData(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted'):
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
       makeCollections(source,sourceZ),
