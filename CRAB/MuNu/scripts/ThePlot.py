@@ -11,11 +11,15 @@ import histoRange as hr
 import cmsPrelim as cpr
 import TheParameters as p
  
-# scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<Mt<20
+# scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<mt<20
 #sf_qcd = 1.9191895562 # PU_fullIdTight
-sf_qcd = 2.19849549176 # PU_idTight
+#sf_qcd = 2.19849549176 # PU_idTight
 #sf_qcd = 2.20315337368 # PU_idLoose
 #sf_qcd = 2.47131295199 # no PUID
+#sf_qcd = 2.49339202669 # prelim sf
+#sf_qcd = 2.26610972133 # temp with jresMet data / moreSV_two mc
+sf_qcd = 2.14867279181 # temp with 18pb moreSV_toe data
+#sf_qcd = 1.
 
 sf_Signal_Wbb    = 1. 
 sf_Signal_Tbar   = 1. 
@@ -462,7 +466,7 @@ for leaf in leafs:
   hs.Draw()
   hs.GetXaxis().SetTitle(xlabel)
   hs.GetXaxis().SetRangeUser(xmin,xmax)
-#  if leaf=="Mt" and not Legacy:
+#  if leaf=="mt" and not Legacy:
 #   hs.GetXaxis().SetRangeUser(50,140)
   hs.GetYaxis().SetTitleOffset(1.5)
   hs.GetYaxis().SetTitle(ylabel)
@@ -538,7 +542,7 @@ for leaf in leafs:
    hrerr.SetName("hrerr")
    hrerr.Divide(hNOerr)
 
-  if leaf =="Mt" and not noMT:
+  if leaf =="mt" and not noMT:
    datar.GetXaxis().SetRangeUser(50,140)
   datar.GetYaxis().SetRangeUser(1.-ratioRange,1.+ratioRange) 
   datar.GetYaxis().SetLabelSize(0.11)
@@ -547,7 +551,7 @@ for leaf in leafs:
   if errorBand: hrerr.Draw('sames,E2')
   #datar.GetXaxis().SetRangeUser(70,110)
   
-  if leaf=="Mt" and not noMT:
+  if leaf=="mt" and not noMT:
    l = TLine(50,1,140,1)
    l.SetLineStyle(3)
    l.Draw()

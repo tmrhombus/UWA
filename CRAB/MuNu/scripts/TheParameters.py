@@ -5,29 +5,31 @@ Author: T.M.Perry
 '''
 
 def arams():
- lumi = 18589. # for looseID
+ #lumi = 19488. #  for jresMet
+ lumi = 18027. # for moreSV_toe
+ #lumi = 18589. # for looseID  19488.
  btype = 't'
- njetcut = '40' #20,25,26,30,40
- jetcut = '70'
+ njetcut = '25' #20,25,26,30,40
+ jetcut = '25'
  I = 0
  F = 20
  iso_value = 0.12
  antiIso_value = 0.2
- extraCut = '(J1SVMassb > 0 && J2SVMassb > 0)'
+ extraCut = '(2>1)'
+ #extraCut = '(J1SVMassb > 0 && J2SVMassb > 0)'
  #extraCut = '(vertixces > 25)'
  #extraCut = '(vertixces < 15)'
 
  #naming where output goes
  path = '../plots/'
- extraName = 'looseID_withSV_'
- #extraName = 'JetID_NoSH_'
+ extraName = ''
 
  drawQCD = True
  drawData = True
 
  noMT = False # control but no mT cut
- Control = True # 1 mu, 0b, 2+ jets
- Signal = False # 1 mu, 2bs, 2 jets
+ Control = False # 1 mu, 0b, 2+ jets
+ Signal = True # 1 mu, 2bs, 2 jets
  TT_m = False #1 mu, 2b, 4 j
  TT_me = False #no b, 1mu, 1e
  ST = False
@@ -96,38 +98,38 @@ def arams():
  if noMT: extraName += '_noMT'
  if DataCard: extraName = 'Datacard_'+extraName
 
- jet1_2dr2 = '(((highestJetEta-secondJetEta)*(highestJetEta-secondJetEta))+((highestJetPhi-secondJetPhi)*(highestJetPhi-secondJetPhi)))'
+ jet1_2dr2 = '(((J1_eta-J2_eta)*(J1_eta-J2_eta))+((J1_phi-J2_phi)*(J1_phi-J2_phi)))'
 
  leafs = [
-#'J1_PUID_beta',
-#'J1_PUID_betaClassic',
-#'J1_PUID_betaStar',
-#'J1_PUID_betaStarClassic',
-#'J1_PUID_betaStarClassicMod',
+#'J1_idBetaPu',
+#'J1_idBetaClassicPu',
+#'J1_idBetaStarPu',
+#'J1_idBetaStarClassicPu',
+#'J1_idBetaStarClassicModPu',
 #'J1_PUID_fullDiscriminant',
 #'J1_PUID_philv1Discriminant',
-#'Mt',
+#'mt',
 #'DiSVMass',
 #'(J1SVMassb+J2SVMassb)',
-#'J1SVMassb',
-#'J2SVMassb',
-'J1_PUID_nTrack',
-'J2_PUID_nTrack',
-#'highestJetPt',
-#'highestJetPhi',
-#'highestJetEta',
-#'muonPt',
-#'muonEta',
-#'muonPhi',
+'J1_mass_SSV',
+'J2_mass_SSV',
+#'J1_nTracksSSV',
+#'J2_nTracksSSV',
+#'J1_pt',
+#'J1_phi',
+#'J1_eta',
+#'muon_pt',
+#'muon_eta',
+#'muon_phi',
 #'muonCharge',
-#'secondJetPt',
-#'secondJetEta',
-#'secondJetPhi',
+#'J2_pt',
+#'J2_eta',
+#'J2_phi',
 #'J1DR',
 #'J2DR',
-'vertixces',
+#'vertices',
 #'ht',
-#'MET',
+#'met',
 #'DiMuonMass',
 #'nJetsPt25',
 #'nJetsPt30',
@@ -135,11 +137,10 @@ def arams():
 #'J2CSVbtag',
 #jet1_2dr2,
 #'dz',
-#'WPt',
+'Wpt',
 #'ptJJ',
 #'mJJ',
 #'mJ3J4',
 ]
 
  return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut
-
