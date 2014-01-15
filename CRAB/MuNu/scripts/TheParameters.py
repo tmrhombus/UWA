@@ -9,8 +9,8 @@ def arams():
  lumi = 18027. # for moreSV_toe
  #lumi = 18589. # for looseID  19488.
  btype = 't'
- njetcut = '25' #20,25,26,30,40
- jetcut = '25'
+ njetcut = '50' #20,25,26,30,40
+ jetcut = '70'
  I = 0
  F = 20
  iso_value = 0.12
@@ -30,9 +30,9 @@ def arams():
  noMT = False # control but no mT cut
  Control = False # 1 mu, 0b, 2+ jets
  Signal = False # 1 mu, 2bs, 2 jets
- TT_m = False #1 mu, 2b, 4 j
+ TT_m = True #1 mu, 2b, 4 j
  TT_me = False #no b, 1mu, 1e
- ST = True
+ ST = False
  Z_Region = False # two muons, no mT cut
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
  Tomislav = False
@@ -122,13 +122,16 @@ def arams():
 'J1_mass_SSV_alt',
 'J1_mass_SSV',
 'J1_pt_SSV',
+'J1_flightDistance',
+'J1_flightDistanceError',
+'J1_normChi2_SV',
 #'J1_phi_SSV',
 #'J1_eta_SSV',
-'J1_pt_PV',
+#'J1_pt_PV',
 #'J1_phi_PV',
 #'J1_eta_PV',
-'J1_mass_PV',
-#'J1_pt',
+#'J1_mass_PV',
+'J1_pt',
 #'J1_phi',
 #'J1_eta',
 #'muon_pt',
@@ -143,10 +146,10 @@ def arams():
 'J2_pt_SSV',
 #'J2_phi_SSV',
 #'J2_eta_SSV',
-'J2_pt_PV',
+#'J2_pt_PV',
 #'J2_phi_PV',
 #'J2_eta_PV',
-'J2_mass_PV',
+#'J2_mass_PV',
 #'J3_pt',
 #'J3_eta',
 #'J3_phi',

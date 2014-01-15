@@ -174,7 +174,7 @@ def ranger(leaf):
    xtitle = leaf
    xunits = None
 
- elif fnm.fnmatch(leaf,'J*_nTracksSSV'):
+ elif fnm.fnmatch(leaf,'J*_nTracksSSV') or fnm.fnmatch(leaf,'(J*_nTracksSSV)'):
    steps = 30
    xmin = 0.
    xmax = 30

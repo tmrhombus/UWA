@@ -12,9 +12,6 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
  iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut
 )
 
-print("Data Cuts: \n %s\n"%(CutsDatai))
-print("MC Cuts: \n %s\n"%(CutsMCi))
-
 for leaf in leafs:
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
  print(leaf)
@@ -22,3 +19,6 @@ for leaf in leafs:
  print('%s(%s,%s)'%(steps,xmin,xmax))
  print('Log Scale: %s'%setLogY)
  print('')
+
+print("Data Cuts: \n %s\n"%(CutsDatai))
+print("MC Cuts: \n %s\n"%(CutsMCi))
