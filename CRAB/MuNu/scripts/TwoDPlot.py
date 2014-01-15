@@ -98,9 +98,12 @@ gStyle.SetOptStat('')
 # get parameters to run on
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut = p.arams() 
 leafs = [
- ['J1SVMassb','J1_PUID_nTrack'],
- ['J2SVMassb','J2_PUID_nTrack'],
- ['(J1SVMassb+J2SVMassb)','(J1_PUID_nTrack+J2_PUID_nTrack)']
+ ['(J1_mass_SSV+J2_mass_SSV)','(J1_nTracksSSV+J2_nTracksSSV)'],
+ ['J1_mass_SSV','J1_nTracksSSV'],
+ ['J2_mass_SSV','J2_nTracksSSV'],
+ ['(J1_mass_SSV_alt+J2_mass_SSV_alt)','(J1_nTracksSSV+J2_nTracksSSV)'],
+ ['J1_mass_SSV_alt','J1_nTracksSSV'],
+ ['J2_mass_SSV_alt','J2_nTracksSSV']
 ]
 extraName+='2D'
 
@@ -169,13 +172,14 @@ for leafPair in leafs:
   log.write('----------------------------------------\n')
   log.close()
 
-  c = TCanvas('c','Canvas Named c',canx,cany)
+  canMC = TCanvas('canMC','Canvas Named c',canx,cany)
+  canData = TCanvas('canData','Canvas Named d',canx,cany)
   #p1 = TPad('p1','p1',0,0.3,1,1)
-  p1 = TPad('p1','p1',0,0.2,1,1)
-  p1.SetBottomMargin(0.08)
-  p1.Draw()
-  p1.cd()
-  p1.SetLogy(setLogYA)
+  #p1 = TPad('p1','p1',0,0.2,1,1)
+  #p1.SetBottomMargin(0.08)
+  #p1.Draw()
+  #p1.cd()
+  #p1.SetLogy(setLogYA)
   theFile = TFile(path+i+'.root')
   
   if drawData:
@@ -456,85 +460,36 @@ for leafPair in leafs:
   hh.Add(wcih)
   hh.Add(wlih)
  
-  #leg=TLegend(0.68,0.2,0.9,0.8)
-  #if drawData:
-  # leg.AddEntry(dataih,'data')
- 
-  #leg.AddEntry(wlih,'W(#mu#nu)+light','f')
-  #leg.AddEntry(wcih,'W(#mu#nu)+c','f')
-  #leg.AddEntry(wccih,'W(#mu#nu)+c#bar{c}','f')
-  #leg.AddEntry(wbbih,'W(#mu#nu)+b#bar{b}','f')
-  #leg.AddEntry(ttbih,'t#bar{t}','f')
-  #leg.AddEntry(sttwih,'t_tW','f')
-  #leg.AddEntry(stsih,'t_s','f')
-  #leg.AddEntry(sttih,'t_t','f')
-  #leg.AddEntry(dih,'WW,WZ,ZZ','f')
-  #leg.AddEntry(zih,'Drell-Yan','f')
-  #if drawQCD:
-  # leg.AddEntry(qh,'QCD','f')
-  #leg.SetFillColor(0)
-  #leg.SetBorderSize(0)
-  
-  c.cd()
+  canData.cd()
   dataih.Draw('colz')
   dataih.SetTitle('')
   dataih.GetXaxis().SetTitle(labelA)
   dataih.GetYaxis().SetTitle(labelB)
-  #hh.Draw('colz')
-  #hh.SetTitle('')
-  #hh.GetXaxis().SetTitle(labelA)
-  #hh.GetYaxis().SetTitle(labelB)
   cpr.prelim_alt(lumi)
   tex.SetTextAlign(11)#left, bottom
   tex.SetTextSize(0.03)
   tex.DrawLatex(0.1,0.9,titleA+ ' vs '+titleB)
-  c.Update()
+  canData.Update()
 
- #####
-#  c.cd()
-#  #p2 = TPad('p2','p2',0,0,1,0.3)
-#  p2 = TPad('p2','p2',0,0,1,0.2)
-#  p2.SetTopMargin(0.1)
-#  p2.Draw()
-#  p2.cd()
-# 
-#  datar = TH1F('datar','datar',steps,xmin,xmax)
-#  if drawData:
-#   datar = dataih.Clone()
-#  else:
-#   datar = hh.Clone()
-#  datar.SetName('datar')
-#  if errorBand:
-#   hNOerr = TH1F('hNOerr','hNOerr',steps,xmin,xmax)
-#   for j in range(steps+1):
-#    hNOerr.SetBinContent(j,hherr.GetBinContent(j))
-#    hNOerr.SetBinError(j,0)
-#   hrerr = hherr.Clone()
-#   hrerr.SetName("hrerr")
-#   hrerr.Divide(hNOerr)
-#
-#  if leaf =="Mt" and not noMT:
-#   datar.GetXaxis().SetRangeUser(50,140)
-#  datar.GetYaxis().SetRangeUser(1.-ratioRange,1.+ratioRange) 
-#  datar.GetYaxis().SetLabelSize(0.11)
-#  datar.Divide(hh)
-#  datar.Draw('ep')
-#  if errorBand: hrerr.Draw('sames,E2')
-#  #datar.GetXaxis().SetRangeUser(70,110)
-#  
-#  if leaf=="Mt" and not noMT:
-#   l = TLine(50,1,140,1)
-#   l.SetLineStyle(3)
-#   l.Draw()
-#  else:
-#   l = TLine(xmin,1,xmax,1)
-#   l.SetLineStyle(3)
-#   l.Draw()
-#  c.Update()
-#  print('you just read '+leaf)
-  save2 = raw_input ('Press Enter to Continue (type save to save)\n')
+  save2 = raw_input ('Data: Press Enter to Continue (type save to save)\n')
   if save2 == 'save':
-   c.Print(path+i+'.png')
-#   #c.Print(path+i+'_unscaled.png')
-#  print('')
-  c.Close()
+   canData.Print(path+i+'_MC.png')
+  print('')
+  canData.Close()
+
+  canMC.cd()
+  hh.Draw('colz')
+  hh.SetTitle('')
+  hh.GetXaxis().SetTitle(labelA)
+  hh.GetYaxis().SetTitle(labelB)
+  cpr.prelim_alt(lumi)
+  tex.SetTextAlign(11)#left, bottom
+  tex.SetTextSize(0.03)
+  tex.DrawLatex(0.1,0.9,titleA+ ' vs '+titleB)
+  canMC.Update()
+
+  save3 = raw_input ('MC: Press Enter to Continue (type save to save)\n')
+  if save3 == 'save':
+   canMC.Print(path+i+'_Data.png')
+  print('')
+  canMC.Close()
