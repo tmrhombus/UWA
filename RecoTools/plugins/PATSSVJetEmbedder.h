@@ -273,10 +273,16 @@ class PATSSVJetEmbedder : public edm::EDProducer {
           jet.addUserFloat("massD_SSV",massD_SSV);
           jet.addUserFloat("massD_SSVNEG",massD_SSVNEG);
 
-          jet.addUserFloat("chargeSSV",chargeSSV);
+          jet.addUserFloat("btag_SSVHE",btagSSVHEPOS[0]);
+          jet.addUserFloat("btag_SSVHP",btagSSVHPPOS[0]);
+          jet.addUserFloat("nTracks_SSV",nTracks_SSVPOS[0]);
+          jet.addUserFloat("flightDistanceError_SV",errorFlightDistancePOS[0]);
+          jet.addUserFloat("flightDistance_SV",flightDistancePOS[0]);
+
+          jet.addUserFloat("charge_SSV",chargeSSV);
           jet.addUserFloat("chargeSSVNEG",chargeSSVNEG);
 
-          jet.addUserFloat("massD0_SSV",massD0_SSV);
+          jet.addUserFloat("mass_D0_SSV",massD0_SSV);
           jet.addUserFloat("massD0_SSVNEG",massD0_SSVNEG);
 
           jet.addUserFloat("SSVNeg_track1_px",trackNeg1_px);
@@ -284,50 +290,44 @@ class PATSSVJetEmbedder : public edm::EDProducer {
           jet.addUserFloat("SSVNeg_track1_pz",trackNeg1_pz);
           jet.addUserFloat("SSVNeg_track1_charge",trackNeg1_charge);
 
-          jet.addUserFloat("SSV_track1_px",track1_px);
-          jet.addUserFloat("SSV_track1_py",track1_py);
-          jet.addUserFloat("SSV_track1_pz",track1_pz);
-          jet.addUserFloat("SSV_track1_charge",track1_charge);
+          jet.addUserFloat("px_SSV_track1",track1_px);
+          jet.addUserFloat("py_SSV_track1",track1_py);
+          jet.addUserFloat("pz_SSV_track1",track1_pz);
+          jet.addUserFloat("chrage_SSV_track1",track1_charge);
 
-          jet.addUserFloat("SSVNeg_track2_px",trackNeg2_px);
-          jet.addUserFloat("SSVNeg_track2_py",trackNeg2_py);
-          jet.addUserFloat("SSVNeg_track2_pz",trackNeg2_pz);
-          jet.addUserFloat("SSVNeg_track2_charge",trackNeg2_charge);
+          jet.addUserFloat("px_SSVNeg_track2",trackNeg2_px);
+          jet.addUserFloat("py_SSVNeg_track2",trackNeg2_py);
+          jet.addUserFloat("pz_SSVNeg_track2",trackNeg2_pz);
+          jet.addUserFloat("charge_SSVNeg_track2",trackNeg2_charge);
 
-          jet.addUserFloat("SSV_track2_px",track2_px);
-          jet.addUserFloat("SSV_track2_py",track2_py);
-          jet.addUserFloat("SSV_track2_pz",track2_pz);
-          jet.addUserFloat("SSV_track2_charge",track2_charge);
+          jet.addUserFloat("px_SSV_track2",track2_px);
+          jet.addUserFloat("py_SSV_track2",track2_py);
+          jet.addUserFloat("pz_SSV_track2",track2_pz);
+          jet.addUserFloat("charge_SSV_track2",track2_charge);
 
-          jet.addUserFloat("SSVNeg_track3_px",trackNeg3_px);
-          jet.addUserFloat("SSVNeg_track3_py",trackNeg3_py);
-          jet.addUserFloat("SSVNeg_track3_pz",trackNeg3_pz);
-          jet.addUserFloat("SSVNeg_track3_charge",trackNeg3_charge);
+          jet.addUserFloat("px_SSVNeg_track3",trackNeg3_px);
+          jet.addUserFloat("py_SSVNeg_track3",trackNeg3_py);
+          jet.addUserFloat("pz_SSVNeg_track3",trackNeg3_pz);
+          jet.addUserFloat("charge_SSVNeg_track3",trackNeg3_charge);
 
-          jet.addUserFloat("SSV_track3_px",track3_px);
-          jet.addUserFloat("SSV_track3_py",track3_py);
-          jet.addUserFloat("SSV_track3_pz",track3_pz);
-          jet.addUserFloat("SSV_track3_charge",track3_charge);
-
-          jet.addUserFloat("btagSSVHE",btagSSVHEPOS[0]);
-          jet.addUserFloat("btagSSVHP",btagSSVHPPOS[0]);
-          jet.addUserFloat("nTracksSSV",nTracks_SSVPOS[0]);
-          jet.addUserFloat("errorFlightDistance",errorFlightDistancePOS[0]);
-          jet.addUserFloat("flightDistance",flightDistancePOS[0]);
+          jet.addUserFloat("px_SSV_track3",track3_px);
+          jet.addUserFloat("py_SSV_track3",track3_py);
+          jet.addUserFloat("pz_SSV_track3",track3_pz);
+          jet.addUserFloat("charge_SSV_track3",track3_charge);
 
           jet.addUserFloat("btagSSVHE2",btagSSVHEPOS[1]);
           jet.addUserFloat("btagSSVHP2",btagSSVHPPOS[1]);
           jet.addUserFloat("nTracksSSV2",nTracks_SSVPOS[1]);
           jet.addUserFloat("nTracksSSV3",nTracks_SSVPOS[2]);
           jet.addUserFloat("nTracksSSV4",nTracks_SSVPOS[3]);
-          jet.addUserFloat("errorFlightDistance2",errorFlightDistancePOS[1]);
-          jet.addUserFloat("flightDistance2",flightDistancePOS[1]);
+          jet.addUserFloat("flightDistanceError2_SV",errorFlightDistancePOS[1]);
+          jet.addUserFloat("flightDistance2_SV",flightDistancePOS[1]);
 
           jet.addUserFloat("btagNEGSSVHE",btagSSVHENEG[0]);
           jet.addUserFloat("btagNEGSSVHP",btagSSVHPNEG[0]);
           jet.addUserFloat("nTracksNEGSSV",nTracks_SSVNEG[0]);
-          jet.addUserFloat("errorFlightDistanceNEG",errorFlightDistanceNEG[0]);
-          jet.addUserFloat("flightDistanceNEG",flightDistanceNEG[0]);
+          jet.addUserFloat("flightDistanceErrorNEG_SV",errorFlightDistanceNEG[0]);
+          jet.addUserFloat("flightDistanceNEG_SV",flightDistanceNEG[0]);
 
           out->push_back(jet);
 
