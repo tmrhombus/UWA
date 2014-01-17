@@ -11,7 +11,7 @@
      <Notes on implementation>
 */
 //
-// Original Author:  Isobel Ojalvo
+// Original Author:  M. Bachtis, Edited by I.Ojalvo, M.Cepeda, T.M.Perry
 //         Created:  Sun Jan 31 15:04:57 CST 2010
 // $Id: PATJetOverloader.h,v 1.1 2011/06/18 00:41:29 bachtis Exp $
 //
@@ -55,8 +55,6 @@
 class PATJetOverloader : public edm::EDProducer {
    public:
   
-  
-
   explicit PATJetOverloader(const edm::ParameterSet& iConfig):
     src_(iConfig.getParameter<edm::InputTag>("src")),
     leptons_(iConfig.getParameter<edm::InputTag>("leptons")),
@@ -77,10 +75,8 @@ class PATJetOverloader : public edm::EDProducer {
     Handle<pat::MuonCollection > leptons; ///adding muons! :D
     Handle<reco::VertexCollection> vertices;
     bool verticesExist = iEvent.getByLabel(vertex_,vertices);
-    //reco::btau::trackSip2dSigAboveCharm;
 
     //std::cout<<"Running PATJetOverloader, vertexes T/F: "<<verticesExist<<std::endl;
-    //printf("Gets Here1\n");
     if(verticesExist)
       verticesExist*=(vertices->size()>0)&&(vertices->at(0).isValid());
 
@@ -88,8 +84,26 @@ class PATJetOverloader : public edm::EDProducer {
     if(iEvent.getByLabel(src_,cands)) 
       for(unsigned int  l=0;l!=cands->size();++l){
 
-	//printf("Gets Here1.0\n");
 	pat::Jet jet = cands->at(l);
+
+//        // pT-Dependant bTag Scale Factors
+//        std::vector<float> CSVT_errors = {0.0515703, 0.0264008, 0.0272757, 0.0275565, 0.0248745, 0.0218456, 0.0253845, 0.0239588, 0.0271791, 0.0273912, 0.0379822, 0.0411624, 0.0786307, 0.0866832, 0.0942053, 0.102403 };
+//        std::vector<int> ptmax = {30, 40, 50, 60, 70, 80, 100, 120, 160, 210, 260, 320, 400, 500, 600, 800};
+//        float CSVT_errorUp;
+//        float CSVT_errorDn;
+//        float jet_pt = jet.pt();
+//        for(unsigned int i=0; i<ptmax.size(); ++i){
+//         std::cout<<"jet_pt: "<<jet_pt<<"  ptmax[i]: "<<ptmax[i]<<"  CSVT_errors[i]: "<<CSVT_errors[i]<<std::endl;
+//         if(jet_pt < ptmax[i]){
+//          CSVT_errorUp = 1. + CSVT_errors[i];
+//          CSVT_errorDn = 1. - CSVT_errors[i];
+//          break;
+//         }
+//        }
+//        std::cout<<CSVT_errorUp<<std::endl;
+//        std::cout<<CSVT_errorDn<<std::endl;
+//        jet.addUserFloat("CSVT_errorUp",CSVT_errorUp);
+//        jet.addUserFloat("CSVT_errorDn",CSVT_errorDn);
 
         // Jet Energy Corrections
         math::PtEtaPhiMLorentzVector p4_levelOne;
@@ -132,43 +146,6 @@ class PATJetOverloader : public edm::EDProducer {
         //jet.addUserFloat("eta_L23",eta_L23);
         //jet.addUserFloat("phi_L23",phi_L23);
 
-	//float trackSIP =jet.get(trackSip2dValAboveCharm);
-	//bool taginfosize = jet.hasTagInfo("vertexMass");
-	//bool taginfosize = jet.tagInfo().hasTracks();
-	//if(taginfosize)
-	//{printf("Has Tracks!!\n");}
-	//printf("tag info size %i \n",taginfosize);
-	//const reco::SecondaryVertexTagInfo* secInfo = jet.tagInfoSecondaryVertex("secondaryVertex");
-	//if(jet.bDiscriminator("combinedSecondaryVertexBJetTags").isNonnull())
-	//printf("CSV : %f\n",jet.bDiscriminator("combinedSecondaryVertexBJetTags"));
-	/*
-
-
-
-
-	*/
-	//reco::TaggingVariable(reco::btau::vertexMass,31);
-
-	//if(vertexmass!=31)
-
-	//const reco::BaseTagInfo* stuff = jet.tagInfo(trackSip2dValAboveCharm);
-	//float n = stuff->TaggingVariableName{trackSip2dValAboveCharm};
-	//using namespace reco::btag;
-	//float size = jet.tagInfo(stuff);
-	//enum TaggingVariableName trackSim2dValAboveCharm;
-	//float stuf = get(stuff);
-	//printf("Gets to PatJetOverloader\n");
-	//if(jet.hasTagInfo("trackIP"))printf("has Track IP TagInfo\n");
-
-	//if(jet.hasTagInfo("secondaryVertex"))printf("has SV TagInfo\n");
-	/*
-	if(jet.hasTagInfo("secondaryVertex")){
-	  // printf("HasTagInfo\n");
-	  float vertexmass = jet.tagInfoSecondaryVertex("secondaryVertex")->taggingVariables().get(reco::btau::vertexMass);
-	  //float vertexmass = jet.tagInfoTrackIP("trackIP")->taggingVariables().get(reco::btau::vertexMass);
-	  printf("vertexMass:%f-------------------------------------------------------\n",vertexmass);
-	}
-	*/
 	float pt=0.0;
 	float sumPt=0.0;
 	float sumPt2=0.0;
@@ -220,16 +197,6 @@ class PATJetOverloader : public edm::EDProducer {
 	  
 	}
 	
-	/*
-	if(abs(pfcand->pdgId())==13){
-	  muons.push_back(pfcand);
-	}
-
-	if(abs(pfcand->pdgId())==11&&pfcand->pt()>1){
-	  elecs.push_back(pfcand);
-	}
-	*/
-
 	if(pfcand->trackRef().isNonnull())
 	  nTrack +=1;
 	  
@@ -252,115 +219,6 @@ class PATJetOverloader : public edm::EDProducer {
 	    }
 	  }
 	}
-	/*
-	////adding D meson Code Here--> Take Vector of particles and loop
-	double massD0 = 0;
-	math::PtEtaPhiMLorentzVector D0;
-	if(jet.pt()>20&&chargedParticles.size()>1)
-	  for(unsigned int k = 0; k<chargedParticles.size()-1;k++)
-	    for(unsigned int j = k+1; j<chargedParticles.size();j++)
-	      if(chargedParticles.at(k)->charge()+chargedParticles.at(j)->charge()==0){
-		//printf("chargedparticles size %i\n",(int)chargedParticles.size());
-		math::PtEtaPhiMLorentzVector kaon(chargedParticles.at(k)->pt(),
-						  chargedParticles.at(k)->eta(),
-						  chargedParticles.at(k)->phi(),
-						  0.494);
-		math::PtEtaPhiMLorentzVector pion(chargedParticles.at(j)->pt(),
-						  chargedParticles.at(j)->eta(),
-						  chargedParticles.at(j)->phi(),
-						  0.140);
-		
-		if(chargedParticles.at(k)->charge()>0){
-		  pion =math::PtEtaPhiMLorentzVector(chargedParticles.at(k)->pt(),
-						     chargedParticles.at(k)->eta(),
-						     chargedParticles.at(k)->phi(),
-						     0.140);
-		  kaon =math::PtEtaPhiMLorentzVector(chargedParticles.at(j)->pt(),
-						     chargedParticles.at(j)->eta(),
-						     chargedParticles.at(j)->phi(),
-						     0.494);
-		}
-		D0 = pion+kaon;
-		double mass = (pion+kaon).M();
-
-		if(fabs(mass-1.864)<fabs(massD0-1.864)){
-		  massD0 = mass;
-		}
-	      }
-	jet.addUserFloat("massD0",massD0);
-	*/
-	//////////////costructing Dpm
-	/*
-	double massDp = 0;
-	math::PtEtaPhiMLorentzVector Dp;
-	if(jet.pt()>20&&chargedParticles.size()>1)
-	  for(unsigned int k = 0; k<chargedParticles.size()-1;k++)
-	    for(unsigned int j = k+1; j<chargedParticles.size();j++)
-	      if(chargedParticles.at(k)->charge()+chargedParticles.at(j)->charge()==0){
-		//printf("chargedparticles size %i\n",(int)chargedParticles.size());
-		math::PtEtaPhiMLorentzVector kaon(chargedParticles.at(k)->pt(),
-						  chargedParticles.at(k)->eta(),
-						  chargedParticles.at(k)->phi(),
-						  0.494);
-		math::PtEtaPhiMLorentzVector pion(chargedParticles.at(j)->pt(),
-						  chargedParticles.at(j)->eta(),
-						  chargedParticles.at(j)->phi(),
-						  0.140);
-		
-		if(chargedParticles.at(k)->charge()>0){
-		  pion =math::PtEtaPhiMLorentzVector(chargedParticles.at(k)->pt(),
-						     chargedParticles.at(k)->eta(),
-						     chargedParticles.at(k)->phi(),
-						     0.140);
-		  kaon =math::PtEtaPhiMLorentzVector(chargedParticles.at(j)->pt(),
-						     chargedParticles.at(j)->eta(),
-						     chargedParticles.at(j)->phi(),
-						     0.494);
-		}
-		D0 = pion+kaon;
-		double mass = (pion+kaon).M();
-
-		if(fabs(mass-1.864)<fabs(massD0-1.864)){
-		  massD0 = mass;
-		}
-	      }
-	printf("Gets Here5\n");	
-	jet.addUserFloat("massD0",massD0);
-	*/
-	///////////finish constructing Dpm
-	/*
-	double massBpm = 0;
-	if(jet.pt()>20&&chargedParticles.size()>1&&muons.size()>0)
-	  for(unsigned int k = 0; k<muons.size();k++){
-
-	    math::PtEtaPhiMLorentzVector muon(chargedParticles.at(k)->pt(),
-					      chargedParticles.at(k)->eta(),
-					      chargedParticles.at(k)->phi(),
-					      0.105);
-	    double mass = (D0+muon).M();
-
-	    if(fabs(mass-5.279)<fabs(massBpm-5.279))
-	      massBpm = mass;
-	  }
-
-	jet.addUserFloat("massBpm",massBpm);
-
-	double massBpmElecs = 0;
-	if(jet.pt()>20&&chargedParticles.size()>1&&elecs.size()>0)
-	  for(unsigned int k = 0; k<elecs.size();k++){
-
-	    math::PtEtaPhiMLorentzVector elec(chargedParticles.at(k)->pt(),
-					       chargedParticles.at(k)->eta(),
-					       chargedParticles.at(k)->phi(),
-					       0.000511);
-	    double mass = (D0+elec).M();
-
-	    if(fabs(mass-5.279)<fabs(massBpmElecs-5.279))
-	      massBpmElecs = mass;
-	  }
-
-	jet.addUserFloat("massBpmElecs",massBpmElecs);
-	*/
 	if(iEvent.getByLabel(leptons_,leptons)){
 	  for(unsigned int k =0; k!=leptons->size();k++){
 
@@ -379,16 +237,12 @@ class PATJetOverloader : public edm::EDProducer {
 	}
 
 	if(pfcandMuon1.isNonnull()){
-	  //printf("Gets to boost\n");
 	  TLorentzVector muVec(pfcandMuon1->p4().px(),pfcandMuon1->p4().py(),pfcandMuon1->p4().pz(),pfcandMuon1->energy());
-	  //printf("muVecPt %f\n",muVec.Pt());
 	  TLorentzVector jet2(jet.px(),jet.py(),jet.pz());
 	  double jetpx=-jet.px();
 	  double jetpy=-jet.py();
 	  double jetpz=-jet.pz();
-	  //printf("jetpx: %f jetpy: %f jetpz: %f\n",jetpx,jetpy,jetpz);
 	  muVec.Boost(-jet2.BoostVector());
-	  //printf("after muVecPt %f\n",muVec.Px());
 	  jet.addUserFloat("Mu1Boost",muVec.Pt());
 	}
 
@@ -398,30 +252,18 @@ class PATJetOverloader : public edm::EDProducer {
 	  jet.addUserFloat("Mu2Boost",muVec.P());
 	}
 
-	/*	
-	if(pfcandMuon1->trackRef().isNonnull()&&pfcandMuon2->trackRef().isNonnull()){
-	  if(pfcandMuon1->trackRef()->pt()<pfcandMuon2->trackRef()->pt()){
-	    reco::PFCandidatePtr pfcandMuon1dupe = pfcandMuon1;
-	    pfcandMuon1 = pfcandMuon2;
-	    pfcandMuon2 = pfcandMuon1dupe;
-	  }
-	}
-	*/
-	//printf("Gets Here3\n");	
 	  if(verticesExist&&maxpt>0&&charged) {
 	    if(highptpfcand->trackRef().isNonnull()){
 	      dxy = highptpfcand->trackRef()->dxy(vertices->at(0).position());
-	      jet.addUserFloat("dxy",dxy);
 	      dz = highptpfcand->trackRef()->dz(vertices->at(0).position());
-	      jet.addUserFloat("dz",dz);
+	      jet.addUserFloat("dxy_track",dxy);
+	      jet.addUserFloat("dz_track",dz);
 	    }
 	    dxy = 0;
 	    dz = 0;
-	    //printf("Gets Here41\n");
 	    if(pfcandMuon1.isNonnull())
 	      if(pfcandMuon1->trackRef().isNonnull()&&verticesExist&&muon1found)
 		if(pfcandMuon1->charge()!=0){
-		  //printf("Gets Here43\n");
 		  dxy = pfcandMuon1->trackRef()->dxy(vertices->at(0).position());
 
 		  jet.addUserFloat("dxyMu1",dxy);
@@ -455,8 +297,8 @@ class PATJetOverloader : public edm::EDProducer {
 	jet.addUserFloat("muon1pt",muonpt1);
 	jet.addUserFloat("muon2pt",muonpt2);
 	jet.addUserFloat("nTracks",nTrack);
-	jet.addUserFloat("DR",maxPFdist);
-	jet.addUserFloat("ptRMS",sqrt(sumPt2/(sumPt*sumPt)));
+	jet.addUserFloat("DR_PV_jet",maxPFdist);
+	jet.addUserFloat("ptRMS_PV",sqrt(sumPt2/(sumPt*sumPt)));
         jet.addUserFloat("mass_PV",mass_PV); 
         jet.addUserFloat("pt_PV",pt_PV); 
         jet.addUserFloat("eta_PV",eta_PV); 
