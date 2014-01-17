@@ -67,13 +67,13 @@ void PATCSVVertex::produce(edm::Event& evt, const edm::EventSetup& es) {
                 quality=vertex.normalizedChi2();
 
          }
-        jet.addUserFloat("SVMassUnweighted",sumVertexMass);
-        jet.addUserFloat("SVMassWeighted",sumWeightedVertexMass);
-        jet.addUserFloat("SVPtUnweighted",sumVertexPt);
-        jet.addUserFloat("SVPtWeighted",sumWeightedVertexPt);
-        jet.addUserFloat("SVquality",quality);
-        jet.addUserFloat("SVSumOfWeights",sumWeights);
-        jet.addUserFloat("SVNTracks",numberTracks);
+        jet.addUserFloat("mass_SV_unweighted",sumVertexMass);
+        jet.addUserFloat("mass_SV_weighted",sumWeightedVertexMass);
+        jet.addUserFloat("pt_SV_unweighted",sumVertexPt);
+        jet.addUserFloat("pt_SV_weighted",sumWeightedVertexPt);
+        jet.addUserFloat("normChi2_SV",quality);
+        jet.addUserFloat("sumOfWeights_SV",sumWeights);
+        jet.addUserFloat("nTracks_SV",numberTracks);
 
         out->push_back(jet);
 
