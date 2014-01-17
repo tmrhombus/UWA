@@ -263,9 +263,6 @@ def makeJetCorrectionInfo():
 def makeSVInfo(source='wCandsJets'):
   SVInfo = cms.PSet(
 
-    # From Maria somewhere
-
-# SV and Jet Components
 #    J1_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[0],
 #    J2_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[1],
 #    J1_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[0],
@@ -283,33 +280,9 @@ def makeSVInfo(source='wCandsJets'):
 #    J1_massDpm = makeJetUserFloat('massDpm','',source)[0],
 #    J2_massDpm = makeJetUserFloat('massDpm','',source)[1],
 
-#    J1_SVMassUnweighted = makeJetUserFloat('SVMassUnweighted','',source)[0],
-#    J2_SVMassUnweighted = makeJetUserFloat('SVMassUnweighted','',source)[1],
-    J1_SVMassWeighted = makeJetUserFloat('SVMassWeighted','',source)[0],
-    J2_SVMassWeighted = makeJetUserFloat('SVMassWeighted','',source)[1],
-#    J1_SVPtUnweighted = makeJetUserFloat('SVPtUnweighted','',source)[0],
-#    J2_SVPtUnweighted = makeJetUserFloat('SVPtUnweighted','',source)[1],
-    J1_SVMassCorrected = makeJetUserFloat('SVMassCorrected','',source)[0],
-    J2_SVMassCorrected = makeJetUserFloat('SVMassCorrected','',source)[1],
-    J1_SVPtWeighted = makeJetUserFloat('SVPtWeighted','',source)[0],
-    J2_SVPtWeighted = makeJetUserFloat('SVPtWeighted','',source)[1],
-    J1_SVquality = makeJetUserFloat('SVquality','',source)[0],
-    J2_SVquality = makeJetUserFloat('SVquality','',source)[1],
-    J1_SVSumOfWeights = makeJetUserFloat('SVSumOfWeights','',source)[0],
-    J2_SVSumOfWeights = makeJetUserFloat('SVSumOfWeights','',source)[1],
-    J1_SVNTracks = makeJetUserFloat('SVNTracks','',source)[0],
-    J2_SVNTracks = makeJetUserFloat('SVNTracks','',source)[1],
-
-    J1_DR = makeJetUserFloat('DR','',source)[0],
-    J2_DR = makeJetUserFloat('DR','',source)[1],
-    J1_ptRMS = makeJetUserFloat('ptRMS','',source)[0],
-    J2_ptRMS = makeJetUserFloat('ptRMS','',source)[1],
-    J1_dxy = makeJetUserFloat('dxy','_track',source)[0],
-    J2_dxy = makeJetUserFloat('dxy','_track',source)[1],
-    J1_dz = makeJetUserFloat('dz','_track',source)[0],
-    J2_dz = makeJetUserFloat('dz','_track',source)[1],
-
     # From RecoTools/plugins/PATCSVVertex.cc
+    J1_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[0],
+    J2_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[1],
     J1_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[0],
     J2_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[1],
     J1_mass_SV_weighted   = makeJetUserFloat('mass_SV_weighted','',source)[0],

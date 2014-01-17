@@ -81,8 +81,8 @@ void PATCSVVertex::produce(edm::Event& evt, const edm::EventSetup& es) {
         jet.addUserFloat("normChi2_SV",quality);
         jet.addUserFloat("sumOfWeights_SV",sumWeights);
         jet.addUserFloat("nTracks_SV",numberTracks);
-        jet.addUserFloat("mass_SV_Corrected",correctedVertexMass);
-        jet.addUserFloat("mass_SV_Correctin",vertexPt2);
+        jet.addUserFloat("mass_SV_corrected",correctedVertexMass);
+        jet.addUserFloat("mass_SV_correctin",vertexPt2);
 
         out->push_back(jet);
 
