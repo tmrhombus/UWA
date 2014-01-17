@@ -10,7 +10,7 @@ analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
 analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','NewSelectedPatJets','metTypeOne')
 #analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','systematicsMET')
 
-DiMuonPreSel='leg1.isGlobalMuon && leg1.isTrackerMuon && leg2.isGlobalMuon && leg2.isTrackerMuon && leg1.pt()>20 && leg2.pt()>20'
+DiMuonPreSel='leg1.isGlobalMuon && leg1.isTrackerMuon && leg2.isGlobalMuon && leg2.isTrackerMuon && leg1.pt()>20 && leg2.pt()>20 && leg1.charge * leg2.charge<0'
 DiMuonPreSel2='(leg1.isolationR03().sumPt+leg1.isolationR03().emEt+leg1.isolationR03().hadEt)/leg1.pt()<0.15 '
 DiMuonPreSel3='(leg2.isolationR03().sumPt+leg2.isolationR03().emEt+leg2.isolationR03().hadEt)/leg2.pt()<0.15 '
 
@@ -29,6 +29,6 @@ analysisConfigurator.addSorter('diMuonsSorted','PATMuPairSorter')
 analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','smearedMuons','smearedMET','smearedJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
 
 analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1 && lepton.userInt("tightID")==1' ,'wCandsKIN',1)
-analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>1','wCandsSel',1)
+analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>0','wCandsSel',1)
 
 selectionSequence = analysisConfigurator.returnSequence()

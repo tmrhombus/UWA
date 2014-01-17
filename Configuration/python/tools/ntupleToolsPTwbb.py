@@ -97,6 +97,18 @@ def makeZColl(tagName,methodName,sourceZ='diMuonsSorted'):
   )
   return PSet
 
+def makeBasicEle(tagName,methodName,sourceEle='selectedPatElectrons'):
+  PSet = cms.PSet(
+        pluginType  = cms.string("PATElectronFiller"),
+        src         = cms.InputTag(sourceEle),
+        tag         = cms.string(tagName),
+        method      = cms.string(methodName),
+        leadingOnly = cms.untracked.bool(True)
+  )
+  return PSet
+
+
+
 def makeMuNu(tagName,methodName,source='wCandsJets',lo=False):
   if lo:
    PSet = cms.PSet(
@@ -250,6 +262,53 @@ def makeJetCorrectionInfo():
 
 def makeSVInfo(source='wCandsJets'):
   SVInfo = cms.PSet(
+
+    # From Maria somewhere
+
+# SV and Jet Components
+#    J1_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[0],
+#    J2_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[1],
+#    J1_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[0],
+#    J2_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[1],
+#    J1_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[0],
+#    J2_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[1],
+#    J1_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[0],
+#    J2_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[1],
+#    J1_massD0 = makeJetUserFloat('massD0','',source)[0],
+#    J2_massD0 = makeJetUserFloat('massD0','',source)[1],
+#    J1_massBpm = makeJetUserFloat('massBpm','',source)[0],
+#    J2_massBpm = makeJetUserFloat('massBpm','',source)[1],
+#    J1_massBpm2 = makeJetUserFloat('massBpm2','',source)[0],
+#    J2_massBpm2 = makeJetUserFloat('massBpm2','',source)[1],
+#    J1_massDpm = makeJetUserFloat('massDpm','',source)[0],
+#    J2_massDpm = makeJetUserFloat('massDpm','',source)[1],
+
+#    J1_SVMassUnweighted = makeJetUserFloat('SVMassUnweighted','',source)[0],
+#    J2_SVMassUnweighted = makeJetUserFloat('SVMassUnweighted','',source)[1],
+    J1_SVMassWeighted = makeJetUserFloat('SVMassWeighted','',source)[0],
+    J2_SVMassWeighted = makeJetUserFloat('SVMassWeighted','',source)[1],
+#    J1_SVPtUnweighted = makeJetUserFloat('SVPtUnweighted','',source)[0],
+#    J2_SVPtUnweighted = makeJetUserFloat('SVPtUnweighted','',source)[1],
+    J1_SVMassCorrected = makeJetUserFloat('SVMassCorrected','',source)[0],
+    J2_SVMassCorrected = makeJetUserFloat('SVMassCorrected','',source)[1],
+    J1_SVPtWeighted = makeJetUserFloat('SVPtWeighted','',source)[0],
+    J2_SVPtWeighted = makeJetUserFloat('SVPtWeighted','',source)[1],
+    J1_SVquality = makeJetUserFloat('SVquality','',source)[0],
+    J2_SVquality = makeJetUserFloat('SVquality','',source)[1],
+    J1_SVSumOfWeights = makeJetUserFloat('SVSumOfWeights','',source)[0],
+    J2_SVSumOfWeights = makeJetUserFloat('SVSumOfWeights','',source)[1],
+    J1_SVNTracks = makeJetUserFloat('SVNTracks','',source)[0],
+    J2_SVNTracks = makeJetUserFloat('SVNTracks','',source)[1],
+
+    J1_DR = makeJetUserFloat('DR','',source)[0],
+    J2_DR = makeJetUserFloat('DR','',source)[1],
+    J1_ptRMS = makeJetUserFloat('ptRMS','',source)[0],
+    J2_ptRMS = makeJetUserFloat('ptRMS','',source)[1],
+    J1_dxy = makeJetUserFloat('dxy','_track',source)[0],
+    J2_dxy = makeJetUserFloat('dxy','_track',source)[1],
+    J1_dz = makeJetUserFloat('dz','_track',source)[0],
+    J2_dz = makeJetUserFloat('dz','_track',source)[1],
+
     # From RecoTools/plugins/PATCSVVertex.cc
     J1_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[0],
     J2_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[1],
@@ -385,9 +444,9 @@ def makePVInfo(source='wCandsJets'):
   return PVInfo
 
 
-def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = 'weCandsJets'):
+def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = 'weCandsJets', sourceEle="selectedPatElectrons"):
  commonCollections = cms.PSet(         
-    electronPt = makeMuNu("electronPt","lepton.pt()",sourceE),
+    #electronPt = makeMuNu("electronPt","lepton.pt()",sourceE),
     PVs = cms.PSet(
         pluginType = cms.string("VertexSizeFiller"),
         src = cms.InputTag("primaryVertexFilter"),
@@ -404,23 +463,6 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
         paths = cms.vstring(TriggerPaths)
     ),
 
-# SV and Jet Components
-    J1_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[0],
-    J2_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[1],
-    J1_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[0],
-    J2_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[1],
-    J1_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[0],
-    J2_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[1],
-    J1_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[0],
-    J2_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[1],
-    J1_massD0 = makeJetUserFloat('massD0','',source)[0],
-    J2_massD0 = makeJetUserFloat('massD0','',source)[1],
-    J1_massBpm = makeJetUserFloat('massBpm','',source)[0],
-    J2_massBpm = makeJetUserFloat('massBpm','',source)[1],
-    J1_massBpm2 = makeJetUserFloat('massBpm2','',source)[0],
-    J2_massBpm2 = makeJetUserFloat('massBpm2','',source)[1],
-    J1_massDpm = makeJetUserFloat('massDpm','',source)[0],
-    J2_massDpm = makeJetUserFloat('massDpm','',source)[1],
 
     J1_partonFlavour = makeJetStringPar('partonFlavour','',source)[0],
     J2_partonFlavour = makeJetStringPar('partonFlavour','',source)[1],
@@ -497,8 +539,21 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     nrW = makeCollSize(source,'nrW'), 
     nrMu = makeCollSize('selectedPatMuons','nrMu'),
     nrEle = makeCollSize('selectedPatElectrons','nrEle'),
+    nrMuLoose = makeCollSize('preselectedPatMuons','nrMuLoose'),
+    nrEleLoose = makeCollSize('preselectedPatElectrons','nrEleLoose'),
+
+# Few Electron Variables for MuEle control region
+# BIG WARNING: This ID is super outdated. We need to go over the new EGamma ID and actualize it. WP80 is similar to the new "medium" one
+    ptEle = makeBasicEle("ptEle","pt",sourceEle),
+    phiEle = makeBasicEle("phiEle","phi",sourceEle),
+    etaEle = makeBasicEle("etaEle","eta",sourceEle),
+    wp80Ele = makeBasicEle("wp80Ele","userFloat('wp80')",sourceEle),
+    chargeEle = makeBasicEle("chargeEle","charge",sourceEle),
+    isoEleDB = makeBasicEle("isoEleDB","(userIso(0)+max(userIso(1)+neutralHadronIso()-0.5*userIso(2),0.0))/pt",sourceEle),
+
 # Z Variables
     DiMuonMass = makeZColl("DiMuonMass","mass",sourceZ),
+    DiMuonPt = makeZColl("DiMuonPt","mass",sourceZ),
     mu1_pt = makeZColl("mu1_pt","leg1.pt()",sourceZ),
     mu2_pt = makeZColl("mu2_pt","leg2.pt()",sourceZ),
     mu1_phi = makeZColl("mu1_phi","leg1.phi()",sourceZ),
@@ -507,11 +562,11 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     mu2_eta = makeZColl("mu2_eta","leg2.eta()",sourceZ),
     l1StdRelIso = makeZColl("l1StdRelIso",
      "(leg1.isolationR03.sumPt+leg1.isolationR03.emEt+leg1.isolationR03.hadEt)/leg1.pt()",sourceZ),
-    l1PfIsoDB = makeZColl("l1StdRelIso",
+    l1PfIsoDB = makeZColl("l1PfIsoDB",
      "(leg1.userIso(0)+max(leg1.photonIso()+leg1.neutralHadronIso()-0.5*leg1.puChargedHadronIso,0.0))/leg1.pt()",sourceZ),
     l2StdRelIso = makeZColl("l2StdRelIso",
      "(leg2.isolationR03.sumPt+leg2.isolationR03.emEt+leg2.isolationR03.hadEt)/leg2.pt()",sourceZ),
-    l2PfIsoDB = makeZColl("l2StdRelIso",
+    l2PfIsoDB = makeZColl("l2PfIsoDB",
      "(leg2.userIso(0)+max(leg2.photonIso()+leg2.neutralHadronIso()-0.5*leg2.puChargedHadronIso,0.0))/leg2.pt()",sourceZ),
 
     mJJ = makeMuNu("mJJ","mJJ",source,True),

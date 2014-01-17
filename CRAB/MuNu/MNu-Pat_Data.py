@@ -53,8 +53,52 @@ process.metCalibration = cms.PSet(
  resolutionMCU2 = cms.string("10.5649+0.0225853*x-5.81371e-5*x*x")
 )
 
+process.findMuons = cms.EDFilter("PATMuonSelector",
+                                           src = cms.InputTag("cleanPatMuons"),
+                                           cut = cms.string('pt>25&&abs(eta)<2.1'),
+                                           filter = cms.bool(False)
+)
+
+process.jetsFilter = cms.EDFilter("CandViewCountFilter",
+                                src = cms.InputTag("jetsETARED"),
+                                minNumber = cms.uint32(1)
+                             )
+
+process.muonsFilter = cms.EDFilter("CandViewCountFilter",
+                                src = cms.InputTag("findMuons"),
+                                minNumber = cms.uint32(1)
+                             )
+
+process.jetsETARED = cms.EDProducer("PATJetCleaner",
+   src = cms.InputTag("selectedPatJets"),
+   preselection = cms.string('abs(eta)<3.&&pt>20&&userFloat("idLoose")>0'),
+   checkOverlaps = cms.PSet(
+       muons = cms.PSet(
+        src = cms.InputTag("findMuons"),
+        algorithm = cms.string("byDeltaR"),
+        preselection = cms.string("pt>10&&isGlobalMuon&&isTrackerMuon&&(chargedHadronIso()+max(photonIso+neutralHadronIso(),0.0))/pt()<0.3"),
+        deltaR = cms.double(0.5),
+        checkRecoComponents = cms.bool(False),
+        pairCut = cms.string(""),
+        requireNoOverlaps = cms.bool(True),
+       ),
+       electrons = cms.PSet(
+        src = cms.InputTag("cleanPatElectrons"),
+        algorithm = cms.string("byDeltaR"),
+        preselection = cms.string("pt>10&&(chargedHadronIso()+max(photonIso()+neutralHadronIso(),0.0))/pt()<0.3"),
+        deltaR = cms.double(0.5),
+        checkRecoComponents = cms.bool(False),
+        pairCut = cms.string(""),
+        requireNoOverlaps = cms.bool(True),
+       ),
+   ),
+   finalCut = cms.string('')
+)
+
+process.preCleaning=cms.Sequence(process.findMuons*process.jetsETARED*process.jetsFilter*process.muonsFilter)
+
 process.load("UWAnalysis.Configuration.wMuNuAnalysisPT_cff")
-process.eventSelection = cms.Path(process.selectionSequence) 
+process.eventSelection = cms.Path(process.preCleaning*process.selectionSequence) 
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 
