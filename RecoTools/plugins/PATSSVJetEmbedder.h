@@ -256,7 +256,7 @@ class PATSSVJetEmbedder : public edm::EDProducer {
             if (flightDistanceNEG[isv]>0.) continue;
             btagSSVHPNEG[isv]=-log(1.-flightDistanceNEG[isv]/errorFlightDistanceNEG[isv]);
           }
-          std::cout<<mass_SSV<<" "<<mass_SSV_alt[0]<<std::endl;
+         // std::cout<<mass_SSV<<" "<<mass_SSV_alt[0]<<std::endl;
           jet.addUserFloat("nSSV",nSSVPOS);
           jet.addUserFloat("nNegativeSSV",nSSVNEG);
           jet.addUserFloat("mass_SSV",mass_SSV);
@@ -266,7 +266,7 @@ class PATSSVJetEmbedder : public edm::EDProducer {
           jet.addUserFloat("mass_SSV_alt3",mass_SSV_alt[2]);
           jet.addUserFloat("mass_SSV_alt4",mass_SSV_alt[3]);
           jet.addUserFloat("mass_SSV_alt5",mass_SSV_alt[4]);
-          std::cout<<pt_SSV[0]<<std::endl;
+        //  std::cout<<pt_SSV[0]<<std::endl;
           jet.addUserFloat("pt_SSV",pt_SSV[0]);
           jet.addUserFloat("eta_SSV",eta_SSV[0]);
           jet.addUserFloat("phi_SSV",phi_SSV[0]);

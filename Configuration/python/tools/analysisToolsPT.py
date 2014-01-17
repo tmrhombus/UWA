@@ -454,14 +454,24 @@ def applyDefaultSelectionsPT(process,jets,muons):
    cut = cms.string('pt>15&&tauID("byLooseIsolationMVA")&&tauID("againstElectronLoose")&&tauID("againstMuonLoose")'),
    filter = cms.bool(False)
    )
+  process.preselectedPatElectrons = cms.EDFilter("PATElectronSelector",
+   src = cms.InputTag("cleanPatElectrons"),
+   cut = cms.string('pt>10&&userFloat("wp95")>0'),
+   filter = cms.bool(False)
+   )
+  process.preselectedPatMuons = cms.EDFilter("PATMuonSelector",
+   src = cms.InputTag("cleanPatMuons"),
+   cut = cms.string('pt>10&&userInt("tightID")'),
+   filter = cms.bool(False)
+   )
   process.selectedPatElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag("cleanPatElectrons"),
-   cut = cms.string('pt>5&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.3'),
+   cut = cms.string('pt>10&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
    filter = cms.bool(False)
    )
   process.selectedPatMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag("cleanPatMuons"),
-   cut = cms.string('pt>20&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.3'),
+   cut = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
    filter = cms.bool(False)
    )
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
@@ -471,7 +481,7 @@ def applyDefaultSelectionsPT(process,jets,muons):
        muons = cms.PSet(
         src = cms.InputTag(muons),
         algorithm = cms.string("byDeltaR"),
-        preselection = cms.string("pt>10&&isGlobalMuon&&isTrackerMuon&&(chargedHadronIso()+max(photonIso+neutralHadronIso(),0.0))/pt()<0.3"),
+        preselection = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
@@ -480,7 +490,7 @@ def applyDefaultSelectionsPT(process,jets,muons):
        electrons = cms.PSet(
         src = cms.InputTag("cleanPatElectrons"),
         algorithm = cms.string("byDeltaR"),
-        preselection = cms.string("pt>10&&(chargedHadronIso()+max(photonIso()+neutralHadronIso(),0.0))/pt()<0.3"),
+        preselection = cms.string('pt>10&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
@@ -489,7 +499,7 @@ def applyDefaultSelectionsPT(process,jets,muons):
    ),
    finalCut = cms.string('')
    )	
-  process.selectedObjectsForSyst = cms.Sequence(process.selectedPatTaus+process.selectedPatElectrons+process.selectedPatMuons+process.cleanPatJets)
+  process.selectedObjectsForSyst = cms.Sequence(process.selectedPatTaus+process.preselectedPatMuons+process.preselectedPatElectrons+process.selectedPatElectrons+process.selectedPatMuons+process.cleanPatJets)
   process.analysisSequence = cms.Sequence(process.analysisSequence*process.selectedObjectsForSyst)
 
 
@@ -808,7 +818,7 @@ def createSystematics(process,sequence,postfix,muScale,eScale,tauScale,jetScale,
           mod.energyScaleDB = cms.double(jetScale) ##changed from int32 to double
       if mod.label().find('smearedMET') !=-1 :
           mod.unclusteredScale= cms.double(unclusteredScale)
-  return cms.Path(p)
+  return cms.Sequence(p)
 
 
 def addEventSummary(process,onSkim = False,name = 'summary',path = 'eventSelection'):

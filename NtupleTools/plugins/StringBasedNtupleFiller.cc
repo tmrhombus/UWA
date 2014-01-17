@@ -17,6 +17,7 @@ DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuPairFiller, "PATMuPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATElePairFiller, "PATElePairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATJetPairFiller, "PATJetPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuonFiller, "PATMuonFiller");
+DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATElectronFiller, "PATElectronFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATPFMETFiller, "PATPFMETFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMETFiller, "PATMETFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATGenMETFiller, "PATGenMETFiller");

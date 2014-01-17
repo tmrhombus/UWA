@@ -46,17 +46,22 @@ void PATCSVVertex::produce(edm::Event& evt, const edm::EventSetup& es) {
         const reco::SecondaryVertexTagInfo* secInfo = jet.tagInfoSecondaryVertex("secondaryVertex");
         double sumVertexMass=0, sumWeightedVertexMass=0;
         double sumVertexPt=0, sumWeightedVertexPt=0;
-        double quality=0;
+        double quality=-1;
         double sumWeights=0;
         double numberTracks=0;
+        double vertexPt2=0;
+        double correctedVertexMass=0;
 
         if (secInfo && secInfo->nVertices() > 0) {
+
+
                 const reco::Vertex &vertex = secInfo->secondaryVertex(0);
+                GlobalVector dir = secInfo->flightDirection(0);
                 reco::TrackKinematics vertexKinematics(vertex);
+
                 math::XYZTLorentzVector weightedVertexSum = vertexKinematics.weightedVectorSum();
                 sumWeightedVertexMass = weightedVertexSum.M();
                 sumWeightedVertexPt = weightedVertexSum.Pt();
-
                 sumWeights=vertexKinematics.sumOfWeights();
                 numberTracks=vertexKinematics.numberOfTracks();
 
@@ -66,6 +71,8 @@ void PATCSVVertex::produce(edm::Event& evt, const edm::EventSetup& es) {
         
                 quality=vertex.normalizedChi2();
 
+                vertexPt2 =math::XYZVector(dir.x(), dir.y(), dir.z()).Cross(weightedVertexSum).Mag2() / dir.mag2();
+                correctedVertexMass=std::sqrt(sumWeightedVertexMass*sumWeightedVertexMass+vertexPt2) + std::sqrt(vertexPt2);
          }
         jet.addUserFloat("SVMassUnweighted",sumVertexMass);
         jet.addUserFloat("SVMassWeighted",sumWeightedVertexMass);
@@ -74,6 +81,9 @@ void PATCSVVertex::produce(edm::Event& evt, const edm::EventSetup& es) {
         jet.addUserFloat("SVquality",quality);
         jet.addUserFloat("SVSumOfWeights",sumWeights);
         jet.addUserFloat("SVNTracks",numberTracks);
+        jet.addUserFloat("SVMassCorrected",correctedVertexMass);
+        jet.addUserFloat("SVMassCorrectin",vertexPt2);
+
 
         out->push_back(jet);
 
