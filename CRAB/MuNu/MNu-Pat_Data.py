@@ -58,14 +58,14 @@ process.eventSelection = cms.Path(process.selectionSequence)
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 
-addMuNuEventTreePtDat(process,'muNuEventTree')
+addMuNuEventTreePtData(process,'muNuEventTree')
 addEventSummary(process,True)
 process.TFileService.fileName = cms.string('data.root')
 
-# makes EDM output of all collections
-process.out = cms.OutputModule("PoolOutputModule",
- fileName = cms.untracked.string('/scratch/tperry/data.root'),
- outputCommands = cms.untracked.vstring(
-                       'keep *'),
- )
-process.e = cms.EndPath(process.out)
+## makes EDM output of all collections
+#process.out = cms.OutputModule("PoolOutputModule",
+# fileName = cms.untracked.string('/scratch/tperry/data.root'),
+# outputCommands = cms.untracked.vstring(
+#                       'keep *'),
+# )
+#process.e = cms.EndPath(process.out)
