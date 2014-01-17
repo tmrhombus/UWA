@@ -403,28 +403,19 @@ def rochesterCorrector(process,muons="cleanPatMuons",rochCor="RochCor2012"):
 
 
 def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
+  process.patSSVJets=cms.EDProducer("PATSSVJetEmbedder", 
+   src = cms.InputTag(jets) 
+  ) 
+  process.patSSVJets2=cms.EDProducer("PATCSVVertex",
+   src = cms.InputTag("patSSVJets")
+  )
   if isMC:
-   process.patSSVJets=cms.EDProducer("PATSSVJetEmbedder", 
-    src = cms.InputTag(jets) 
-   ) 
-
-   process.patSSVJets2=cms.EDProducer("PATCSVVertex",
-    src = cms.InputTag("patSSVJets")
-   )
-
    process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco', 
     src = cms.InputTag("patSSVJets2"), 
     leptons = cms.InputTag(muons), 
     vertices=cms.InputTag("offlinePrimaryVertices") 
    )
   if isData:
-   process.patSSVJetsData=cms.EDProducer("PATSSVJetEmbedder", 
-   #process.patSSVJetsData=cms.EDProducer("PATSSVJetEmbedder_data", 
-    src = cms.InputTag(jets) 
-   ) 
-   process.patSSVJets2=cms.EDProducer("PATCSVVertex",
-    src = cms.InputTag("patSSVJetsData")
-   )
    process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData', 
     src = cms.InputTag("patSSVJets2"),
     leptons = cms.InputTag(muons), 
@@ -435,11 +426,7 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
    leptons = cms.InputTag(muons), 
    vertices=cms.InputTag("offlinePrimaryVertices") 
   ) 
-  if isMC:
-   process.BReconstruction = cms.Sequence(process.patSSVJets*process.patSSVJets2*process.patBpmRecoJets*process.patBRecoJets) 
-  if isData:
-   process.BReconstruction = cms.Sequence(process.patSSVJetsData*process.patSSVJets2*process.patBpmRecoJets*process.patBRecoJets) 
-   #process.BReconstruction = cms.Sequence(process.patBpmRecoJets*process.patBRecoJets)
+  process.BReconstruction = cms.Sequence(process.patSSVJets*process.patSSVJets2*process.patBpmRecoJets*process.patBRecoJets) 
   process.createBRecoJets=cms.Path(process.BReconstruction) 
   return process.createBRecoJets 
 
