@@ -7,8 +7,7 @@ analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
                                   pyModuleName = __name__,
                                   pyNameSpace = locals())
 
-analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','NewSelectedPatJets','metTypeOne')
-#analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','systematicsMET')
+analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','metTypeOne')
 
 DiMuonPreSel='leg1.isGlobalMuon && leg1.isTrackerMuon && leg2.isGlobalMuon && leg2.isTrackerMuon && leg1.pt()>20 && leg2.pt()>20 && leg1.charge * leg2.charge<0'
 DiMuonPreSel2='(leg1.isolationR03().sumPt+leg1.isolationR03().emEt+leg1.isolationR03().hadEt)/leg1.pt()<0.15 '

@@ -95,6 +95,7 @@ class PATJetSmearer : public edm::EDProducer{
 //       std::cout<<matchedGenJet<<" match -->  "<<gen_pt
 //       << " gen pT, "<<reco_pt<<" reco pT"<<std::endl;
 //       std::cout<<"Other Gen pT "<<gen_pt_two<<std::endl<<std::endl;
+//       std::cout<<"reco pT: "<<reco_pt<<std::endl;
 //     }
 
      double ptSmeared = reco_pt;
@@ -120,6 +121,7 @@ class PATJetSmearer : public edm::EDProducer{
       ptSmearedDown = std::max(0., reco_pt );
      } 
 
+    // std::cout<<"reco pT: "<<reco_pt<<" smeared pT: "<<ptSmeared<<" pt_gen: "<<gen_pt<<std::endl;
      math::PtEtaPhiMLorentzVector p4(ptSmeared,jet.eta(),jet.phi(),jet.mass());
      jet.setP4(p4);
      jet.addUserFloat("pt_gen",gen_pt);

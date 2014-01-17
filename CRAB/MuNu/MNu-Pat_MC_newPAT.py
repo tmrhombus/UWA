@@ -15,10 +15,10 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("PoolSource",
  fileNames = cms.untracked.vstring(
   # $inputFileNames
+  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
+  #'root://cmsxrootd.hep.wisc.edu///store/user/tperry/myTestFile.root'
   #'root://cmsxrootd.hep.wisc.edu///store/user/tapas/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-E0F748E5-E8E0-E211-842E-1CC1DE046FB0.root'
-  #'root://cmsxrootd.hep.wisc.edu//store/user/swanson/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/W2JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3/1f55d8c665139ad478fb31eac9310214/output_2198_1_wmz.root'
-  'root://cmsxrootd.hep.wisc.edu//store/user/swanson/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/TTBAR/patTuple_cfg-A25A5BAE-E598-E211-ACC8-0025905964BE.root'
-#'root://cmsxrootd.hep.wisc.edu//store/user/swanson/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/W2JetsToLNu_TuneZ2Star_8TeV-madgraph_WJets8TeV-9ec8fe3/1f55d8c665139ad478fb31eac9310214/output_996_1_3I3.root'
+ 'root://cmsxrootd.hep.wisc.edu//store/user/tapas/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-FEF3BE77-7CE4-E211-BB7A-002618FDA262.root'
  ),
  inputCommands=cms.untracked.vstring(
   'keep *',
