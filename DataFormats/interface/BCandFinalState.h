@@ -51,7 +51,8 @@ public:
   void Jet4BC2PHI(float val)        {Jet1BC2PHI_=val;}
   void BCDeltaR(float val)          {BCDeltaR_=val;}
   void BDeltaPHI(float val)         {BDeltaPHI_=val;}
-
+  void BC1MASS(float val)          {BC1MASS_=val;}
+  void BC2MASS(float val)         {BC2MASS_=val;}
 
 
   //get info
@@ -93,7 +94,8 @@ public:
    float Jet4BC2PHI()        const {return Jet4BC2PHI_;}
    float BCDeltaR()          const {return BCDeltaR_;}
    float BDeltaPHI()         const {return BDeltaPHI_;}
-
+   float BC1MASS()         const {return BC1MASS_;}
+   float BC2MASS()         const {return BC2MASS_;}
 
 private:
    float BC1PT_;
@@ -133,6 +135,8 @@ private:
    float Jet4BC2PHI_;
    float BCDeltaR_;
    float BDeltaPHI_;
+   float BC1MASS_;
+   float BC2MASS_;
 
 
 };
