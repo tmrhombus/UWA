@@ -7,21 +7,11 @@
 <use   name="roostats"/>
 <use   name="roottmva"/>
 
-<bin name="BTagScaleFactorsLightAntiTag" file = "BTagScaleFactorsLightAntiTag.cc"> 
-</bin>
-
 <bin name="BTagScaleFactorsHighJet" file = "BTagScaleFactorsHighJet.cc"> 
-</bin>
-
-<bin name="BTagScaleFactors" file = "BTagScaleFactors.cc"> 
-</bin>
-
-<bin   name="EventWeightsEffNew" file="EventWeightsEffNew.cc">
 </bin>
 
 <bin   name="EventWeightsEff" file="EventWeightsEff.cc">
 </bin>
-
 <bin   name="GetErrors" file="GetErrors.cc">
 </bin>
 <bin   name="MVATrainer" file="MVATrainer.cc">
@@ -57,12 +47,8 @@
 <bin   name="EventWeightsForEfficiencyFast" file="EventWeightsForEfficiencyFast.cc">
 </bin>
 
-<bin   name="EventWeightsEmbeddedUnfolding" file="EventWeightsEmbeddedUnfolding.cc">
-</bin>
-
 <bin   name="EventWeightsForEfficiencyHisto" file="EventWeightsForEfficiencyHisto.cc">
 </bin>
-
 
 <bin   name="OSLSMTMethodLikelihood" file="OSLSMTMethodLikelihood.cc">
 </bin>

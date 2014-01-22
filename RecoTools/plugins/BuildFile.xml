@@ -36,7 +36,6 @@
   <use   name="JetMETCorrections/Objects"/> 
   <use   name="RecoEcal/EgammaCoreTools"/>
   <use   name="TrackingTools/IPTools"/>
-  <use   name="FinalStateAnalysis/DataFormats"/>
   <use   name="root"/>
   <use   name="roottmva"/>
   <use   name="lhapdf"/>

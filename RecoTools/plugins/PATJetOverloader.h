@@ -1,20 +1,6 @@
-// -*- C++ -*-
 //
-// Package:    PATMuonTrackVetoSelector
-// Class:      PATMuonTrackVetoSelector
-// 
-/**\class PATMuonTrackVetoSelector PATMuonTrackVetoSelector.cc UWAnalysis/PATMuonTrackVetoSelector/src/PATMuonTrackVetoSelector.cc
-
- Description: <one line class summary>
-
- Implementation:
-     <Notes on implementation>
-*/
-//
-// Original Author:  M. Bachtis, Edited by I.Ojalvo, M.Cepeda, T.M.Perry
-//         Created:  Sun Jan 31 15:04:57 CST 2010
-// $Id: PATJetOverloader.h,v 1.1 2011/06/18 00:41:29 bachtis Exp $
-//
+// Adds a variety of userFloats to jets
+// Authors: M.Cepeda, I.Ojalvo, T.M.Perry, M.Bachtis
 //
 #include "PhysicsTools/JetMCUtils/interface/JetMCTag.h"
 
@@ -76,7 +62,6 @@ class PATJetOverloader : public edm::EDProducer {
     Handle<reco::VertexCollection> vertices;
     bool verticesExist = iEvent.getByLabel(vertex_,vertices);
 
-    //std::cout<<"Running PATJetOverloader, vertexes T/F: "<<verticesExist<<std::endl;
     if(verticesExist)
       verticesExist*=(vertices->size()>0)&&(vertices->at(0).isValid());
 
@@ -86,24 +71,38 @@ class PATJetOverloader : public edm::EDProducer {
 
 	pat::Jet jet = cands->at(l);
 
-//        // pT-Dependant bTag Scale Factors
-//        std::vector<float> CSVT_errors = {0.0515703, 0.0264008, 0.0272757, 0.0275565, 0.0248745, 0.0218456, 0.0253845, 0.0239588, 0.0271791, 0.0273912, 0.0379822, 0.0411624, 0.0786307, 0.0866832, 0.0942053, 0.102403 };
-//        std::vector<int> ptmax = {30, 40, 50, 60, 70, 80, 100, 120, 160, 210, 260, 320, 400, 500, 600, 800};
-//        float CSVT_errorUp;
-//        float CSVT_errorDn;
-//        float jet_pt = jet.pt();
-//        for(unsigned int i=0; i<ptmax.size(); ++i){
-//         std::cout<<"jet_pt: "<<jet_pt<<"  ptmax[i]: "<<ptmax[i]<<"  CSVT_errors[i]: "<<CSVT_errors[i]<<std::endl;
-//         if(jet_pt < ptmax[i]){
-//          CSVT_errorUp = 1. + CSVT_errors[i];
-//          CSVT_errorDn = 1. - CSVT_errors[i];
-//          break;
-//         }
-//        }
-//        std::cout<<CSVT_errorUp<<std::endl;
-//        std::cout<<CSVT_errorDn<<std::endl;
-//        jet.addUserFloat("CSVT_errorUp",CSVT_errorUp);
-//        jet.addUserFloat("CSVT_errorDn",CSVT_errorDn);
+        float jet_pt = jet.pt();
+        float CSVT_SF, CSVM_SF, CSVL_SF;
+        float CSVT_error, CSVM_error, CSVL_error;
+        std::vector<int> ptmax;
+        std::vector<float> CSVT_errors, CSVM_errors, CSVL_errors;
+
+        // pT-Dependant bTag Scale Factors
+        ptmax = {30, 40, 50, 60, 70, 80, 100, 120, 160, 210, 260, 320, 400, 500, 600, 800};
+        CSVT_errors = {0.0515703, 0.0264008, 0.0272757, 0.0275565, 0.0248745, 0.0218456, 0.0253845, 0.0239588, 0.0271791, 0.0273912, 0.0379822, 0.0411624, 0.0786307, 0.0866832, 0.0942053, 0.102403 };
+        CSVM_errors = {0.0415707, 0.0204209, 0.0223227, 0.0206655, 0.0199325, 0.0174121, 0.0202332, 0.0182446, 0.0159777, 0.0218531, 0.0204688, 0.0265191, 0.0313175, 0.0415417, 0.0740446, 0.0596716 };
+        CSVL_errors = {0.033299, 0.0146768, 0.013803, 0.0170145, 0.0166976, 0.0137879, 0.0149072, 0.0153068, 0.0133077, 0.0123737, 0.0157152, 0.0175161, 0.0209241, 0.0278605, 0.0346928, 0.0350099 };
+
+         // calculate SF error
+        for(unsigned int i=0; i<ptmax.size(); ++i){
+         if(jet_pt < ptmax[i]){
+          CSVT_error = CSVT_errors[i];
+          CSVM_error = CSVM_errors[i];
+          CSVL_error = CSVL_errors[i];
+          break;
+         }
+        }
+        jet.addUserFloat("CSVT_error",CSVT_error);
+        jet.addUserFloat("CSVM_error",CSVM_error);
+        jet.addUserFloat("CSVL_error",CSVL_error);
+
+         // calculate SF
+        CSVT_SF = (0.927563+(1.55479e-05*jet_pt))+(-1.90666e-07*(jet_pt*jet_pt));
+        CSVM_SF = (0.938887+(0.00017124*jet_pt))+(-2.76366e-07*(jet_pt*jet_pt));
+        CSVL_SF = 0.997942*((1.+(0.00923753*jet_pt))/(1.+(0.0096119*jet_pt)));
+        jet.addUserFloat("CSVT_SF",CSVT_SF);
+        jet.addUserFloat("CSVM_SF",CSVM_SF);
+        jet.addUserFloat("CSVL_SF",CSVL_SF);
 
         // Jet Energy Corrections
         math::PtEtaPhiMLorentzVector p4_levelOne;
@@ -165,7 +164,7 @@ class PATJetOverloader : public edm::EDProducer {
 	float Mu1ZMass =0;
 	float Mu2ZMasstemp=0;
 	float Mu2ZMass =0;
-	int pdgid = 0;
+	//int pdgid = 0;
 	float dxy =0;
 	float dz = 0;
 
@@ -175,7 +174,7 @@ class PATJetOverloader : public edm::EDProducer {
 	int t = 0; ///number of charged particles
 	for(unsigned int j=0;j<jet.getPFConstituents().size();++j) {
 	  pt = jet.getPFConstituents().at(j)->pt();
-	  pdgid = jet.getPFConstituents().at(j)->pdgId();
+	  //pdgid = jet.getPFConstituents().at(j)->pdgId();
 
 	  if(ROOT::Math::VectorUtil::DeltaR(jet.p4(),jet.getPFConstituents().at(j)->p4())>maxPFdist){
 	    maxPFdist = ROOT::Math::VectorUtil::DeltaR(jet.p4(),jet.getPFConstituents().at(j)->p4());
@@ -239,9 +238,9 @@ class PATJetOverloader : public edm::EDProducer {
 	if(pfcandMuon1.isNonnull()){
 	  TLorentzVector muVec(pfcandMuon1->p4().px(),pfcandMuon1->p4().py(),pfcandMuon1->p4().pz(),pfcandMuon1->energy());
 	  TLorentzVector jet2(jet.px(),jet.py(),jet.pz());
-	  double jetpx=-jet.px();
-	  double jetpy=-jet.py();
-	  double jetpz=-jet.pz();
+	  //double jetpx=-jet.px();
+	  //double jetpy=-jet.py();
+	  //double jetpz=-jet.pz();
 	  muVec.Boost(-jet2.BoostVector());
 	  jet.addUserFloat("Mu1Boost",muVec.Pt());
 	}
