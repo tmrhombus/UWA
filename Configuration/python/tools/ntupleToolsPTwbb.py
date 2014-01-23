@@ -259,6 +259,39 @@ def makeJetCorrectionInfo():
    )
    return jetCorrectionInfo
 
+def makeBTagSFInfo(source='wCandsJets'):
+  BTagSFInfo = cms.PSet(
+    # from RecoTools/plugins/SVFinder.h
+    # be careful since these are computed for all jets
+    # not just those which are bTagged
+    J1_CSVT_error = makeJetUserFloat('CSVT_error','',source)[0],
+    J2_CSVT_error = makeJetUserFloat('CSVT_error','',source)[1],
+    J1_CSVM_error = makeJetUserFloat('CSVM_error','',source)[0],
+    J2_CSVM_error = makeJetUserFloat('CSVM_error','',source)[1],
+    J1_CSVL_error = makeJetUserFloat('CSVL_error','',source)[0],
+    J2_CSVL_error = makeJetUserFloat('CSVL_error','',source)[1],
+    J1_CSVT_SF = makeJetUserFloat('CSVT_SF','',source)[0],
+    J2_CSVT_SF = makeJetUserFloat('CSVT_SF','',source)[1],
+    J1_CSVM_SF = makeJetUserFloat('CSVM_SF','',source)[0],
+    J2_CSVM_SF = makeJetUserFloat('CSVM_SF','',source)[1],
+    J1_CSVL_SF = makeJetUserFloat('CSVL_SF','',source)[0],
+    J2_CSVL_SF = makeJetUserFloat('CSVL_SF','',source)[1],
+ 
+ 
+    # from RecoTools/interface/CompositePtrCandidateTMEtAlgorithm.h
+#    EffWEIGHTCSVL = makeMuNu("EffWEIGHTCSVL","SFCSVL1",source,True),
+#    EffWEIGHTCSVL2 = makeMuNu("EffWEIGHTCSVL2","SFCSVL2",source,True),
+#    EffWEIGHTCSVM = makeMuNu("EffWEIGHTCSVM","SFCSVM1",source,True),
+#    EffWEIGHTCSVM2 = makeMuNu("EffWEIGHTCSVM2","SFCSVM2",source,True),
+#    EffWEIGHTCSVT = makeMuNu("EffWEIGHTCSVT","SFCSVT1",source,True),
+#    EffWEIGHTCSVT2 = makeMuNu("EffWEIGHTCSVT2","SFCSVT2",source,True),
+    EffWEIGHTSSVHEM = makeMuNu("EffWEIGHTSSVHEM","SFSSVHE1",source,True),
+    EffWEIGHTSSVHEM2 = makeMuNu("EffWEIGHTSSVHEM2","SFSSVHE2",source,True),
+    weightEtaMuonIso = makeMuNu("weightEtaMuonIso","EffWEIGHTeta_IS",source,True),
+    weightEtaMuonID = makeMuNu("weightEtaMuonID","EffWEIGHTeta_ID",source,True),
+    weightEtaMuonTrig = makeMuNu("weightEtaMuonTrig","EffWEIGHTeta_TR",source,True),
+  )
+  return BTagSFInfo
 
 def makeSVInfo(source='wCandsJets'):
   SVInfo = cms.PSet(
@@ -303,10 +336,6 @@ def makeSVInfo(source='wCandsJets'):
     J2_flightDistance = makeJetUserFloat('flightDistance','',source)[1],
     J1_flightDistanceError = makeJetUserFloat('flightDistanceError','',source)[0],
     J2_flightDistanceError = makeJetUserFloat('flightDistanceError','',source)[1],
-    J1_nTracksSSV   = makeJetUserFloat('nTracksSSV','',source)[0],
-    J2_nTracksSSV   = makeJetUserFloat('nTracksSSV','',source)[1],
-    J3_nTracksSSV   = makeJetUserFloat('nTracksSSV','',source)[0],
-    J4_nTracksSSV   = makeJetUserFloat('nTracksSSV','',source)[1],
     J1_pt_SSV       = makeJetUserFloat('pt_SSV','',source)[0],  
     J2_pt_SSV       = makeJetUserFloat('pt_SSV','',source)[1],
     J3_pt_SSV       = makeJetUserFloat('pt_SSV','',source)[2],
@@ -548,7 +577,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     muon_pt = makeMuNu("muon_pt","lepton().pt",source),
     muon_eta = makeMuNu("muon_eta","lepton.eta",source),
     muon_phi = makeMuNu("muon_phi","lepton.phi",source),
-    muonCharge = makeMuNu("muonCharge","lepton.charge()",source),
+    muon_charge = makeMuNu("muon_charge","lepton.charge()",source),
     Wpt = makeMuNu("Wpt","corPt()",source),
 
     met = makeMuNu("met","met().pt",source,True),
@@ -574,65 +603,11 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
  )
  return commonCollections
 
-def addMuNuEventTreePtData(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted'):
-   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
-   eventTree = cms.EDAnalyzer('EventTreeMaker',
-      makeCollections(source,sourceZ),
-      makeJetIDInfo(source = 'wCandsJets'),
-      makeJetCorrectionInfo(),
-      makeSVInfo(),
-      makePVInfo(),
-      coreCollections = cms.VInputTag( cms.InputTag(source) ),
-   )
-   setattr(process, name, eventTree)
-   p = cms.Path(getattr(process,name))
-   setattr(process, name+'Path', p)
-
-def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted',lhep="externalLHEProducer"):
-   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
-   eventTree = cms.EDAnalyzer('EventTreeMaker',
-      makeCollections(source,sourceZ),
-      makeJetIDInfo(source = 'wCandsJets'),
-      makeJetCorrectionInfo(),
-      makeSVInfo(),
-      makePVInfo(),
-      coreCollections = cms.VInputTag(
-           cms.InputTag(source)
-      ),
-      topweight= cms.PSet(
-           pluginType = cms.string("TopWeight"),
-           src = cms.InputTag("genParticles")
-      ),
-      muNuLHEProduct = cms.PSet(
-          pluginType = cms.string("LHEProductFiller"),
-          src = cms.InputTag(lhep), 
-          tag = cms.string("LHEProduct"),
-      ),
+def makeBCands():
+  BCands = cms.PSet(
       bHadronsPt = makeSimBHad("bhadrons","bHadronsPt","pt"),
       bHadronsEta = makeSimBHad("bhadrons","bHadronsEta","eta"),
       bHadronsPhi = makeSimBHad("bhadrons","bHadronsPhi","phi"),
-  
-      # Jet pT Reco + Gen from RecoTools/plugins/PATJetSmearer.h
-      J1_pt_gen = makeJetUserFloat('pt_gen')[0],
-      J1_pt_gen_two = makeJetUserFloat('pt_gen_two')[0],
-      J1_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[0], 
-      J1_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[0], 
-      J1_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[0], 
-      J2_pt_gen = makeJetUserFloat('pt_gen')[1],
-      J2_pt_gen_two = makeJetUserFloat('pt_gen_two')[1],
-      J2_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[1], 
-      J2_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[1], 
-      J2_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[1], 
-      J3_pt_gen = makeJetUserFloat('pt_gen')[2],
-      J3_pt_gen_two = makeJetUserFloat('pt_gen_two')[2],
-      J3_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[2], 
-      J3_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[2], 
-      J3_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[2], 
-      J4_pt_gen = makeJetUserFloat('pt_gen')[3],
-      J4_pt_gen_two = makeJetUserFloat('pt_gen_two')[3],
-      J4_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[3], 
-      J4_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[3], 
-      J4_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[3], 
 
       bCandidate1Pt = makeIVFBs("bCandidate1Pt","BC1PT"),
       bCandidate2Pt = makeIVFBs("bCandidate2Pt","BC2PT"),
@@ -677,6 +652,74 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
       bCandidateBC2MASS = makeIVFBs("bCandidateBC2MASS","BC2MASS"),
 
       nbHadrons = makeCollSize("bhadrons","nbHadrons"),
+  ) 
+  return BCands
+  
+
+def makeSmearedJet(source='wCandsJets'): 
+  smearedJet = cms.PSet(
+      # Jet pT Reco + Gen from RecoTools/plugins/PATJetSmearer.h
+      J1_pt_gen = makeJetUserFloat('pt_gen')[0],
+      J1_pt_gen_two = makeJetUserFloat('pt_gen_two')[0],
+      J1_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[0], 
+      J1_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[0], 
+      J1_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[0], 
+      J2_pt_gen = makeJetUserFloat('pt_gen')[1],
+      J2_pt_gen_two = makeJetUserFloat('pt_gen_two')[1],
+      J2_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[1], 
+      J2_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[1], 
+      J2_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[1], 
+      J3_pt_gen = makeJetUserFloat('pt_gen')[2],
+      J3_pt_gen_two = makeJetUserFloat('pt_gen_two')[2],
+      J3_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[2], 
+      J3_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[2], 
+      J3_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[2], 
+      J4_pt_gen = makeJetUserFloat('pt_gen')[3],
+      J4_pt_gen_two = makeJetUserFloat('pt_gen_two')[3],
+      J4_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[3], 
+      J4_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[3], 
+      J4_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[3], 
+  )
+  return smearedJet
+
+def addMuNuEventTreePtData(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted'):
+   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
+   eventTree = cms.EDAnalyzer('EventTreeMaker',
+      makeCollections(source,sourceZ),
+      makeJetIDInfo(source = 'wCandsJets'),
+      makeJetCorrectionInfo(),
+      makeSVInfo(),
+      makePVInfo(),
+      coreCollections = cms.VInputTag( cms.InputTag(source) ),
+   )
+   setattr(process, name, eventTree)
+   p = cms.Path(getattr(process,name))
+   setattr(process, name+'Path', p)
+
+def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted',lhep="externalLHEProducer"):
+   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
+   eventTree = cms.EDAnalyzer('EventTreeMaker',
+      makeCollections(source,sourceZ),
+      makeJetIDInfo(source = 'wCandsJets'),
+      makeJetCorrectionInfo(),
+      makeSVInfo(),
+      makePVInfo(),
+      makeBTagSFInfo(),
+      makeBCands(),
+      makeSmearedJet(),
+      coreCollections = cms.VInputTag(
+           cms.InputTag(source)
+      ),
+      topweight= cms.PSet(
+           pluginType = cms.string("TopWeight"),
+           src = cms.InputTag("genParticles")
+      ),
+      muNuLHEProduct = cms.PSet(
+          pluginType = cms.string("LHEProductFiller"),
+          src = cms.InputTag(lhep), 
+          tag = cms.string("LHEProduct"),
+      ),
+
       genTs = makeCollSize("gentCands","genTs"),
       genTbars = makeCollSize("gentbarCands","genTbars"),
       genBs = makeCollSize("genbbCands","genBs"),
@@ -685,18 +728,6 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
       genUs = makeCollSize("genuuCands","genUs"),
       genSs = makeCollSize("genSSCands","genSs"),
       genWs = makeCollSize("genWs","genWs"),
- 
-      EffWEIGHTCSVL = makeMuNu("EffWEIGHTCSVL","SFCSVL1",source,True),
-      EffWEIGHTCSVL2 = makeMuNu("EffWEIGHTCSVL2","SFCSVL2",source,True),
-      EffWEIGHTCSVM = makeMuNu("EffWEIGHTCSVM","SFCSVM1",source,True),
-      EffWEIGHTCSVM2 = makeMuNu("EffWEIGHTCSVM2","SFCSVM2",source,True),
-      EffWEIGHTCSVT = makeMuNu("EffWEIGHTCSVT","SFCSVT1",source,True),
-      EffWEIGHTCSVT2 = makeMuNu("EffWEIGHTCSVT2","SFCSVT2",source,True),
-      EffWEIGHTSSVHEM = makeMuNu("EffWEIGHTSSVHEM","SFSSVHE1",source,True),
-      EffWEIGHTSSVHEM2 = makeMuNu("EffWEIGHTSSVHEM2","SFSSVHE2",source,True),
-      weightEtaMuonIso = makeMuNu("weightEtaMuonIso","EffWEIGHTeta_IS",source,True),
-      weightEtaMuonID = makeMuNu("weightEtaMuonID","EffWEIGHTeta_ID",source,True),
-      weightEtaMuonTrig = makeMuNu("weightEtaMuonTrig","EffWEIGHTeta_TR",source,True),
    )
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))

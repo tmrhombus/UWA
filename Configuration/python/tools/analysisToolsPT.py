@@ -201,6 +201,8 @@ def reRunJets(process,isMC=False,isData=False,L1Only=False):
      'simpleSecondaryVertexHighEffBJetTags',
      'combinedSecondaryVertexMVABJetTags',
      'combinedSecondaryVertexBJetTags',
+     'jetBProbabilityBJetTags', 
+     'jetProbabilityBJetTags',
   ]
 
   if isMC:
@@ -403,8 +405,13 @@ def rochesterCorrector(process,muons="cleanPatMuons",rochCor="RochCor2012"):
 
 
 def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
+  process.SVFoundJets=cms.EDProducer("SVFinder",
+    src = cms.InputTag(jets),
+    leptons = cms.InputTag(muons),
+    vertices=cms.InputTag("offlinePrimaryVertices") 
+  )
   process.patSSVJets=cms.EDProducer("PATSSVJetEmbedder", 
-   src = cms.InputTag(jets) 
+   src = cms.InputTag("SVFoundJets") 
   ) 
   process.patSSVJets2=cms.EDProducer("PATCSVVertex",
    src = cms.InputTag("patSSVJets")
@@ -426,7 +433,13 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
    leptons = cms.InputTag(muons), 
    vertices=cms.InputTag("offlinePrimaryVertices") 
   ) 
-  process.BReconstruction = cms.Sequence(process.patSSVJets*process.patSSVJets2*process.patBpmRecoJets*process.patBRecoJets) 
+  process.BReconstruction = cms.Sequence(
+   process.SVFoundJets*
+   process.patSSVJets*
+   process.patSSVJets2*
+   process.patBpmRecoJets*
+   process.patBRecoJets
+  ) 
   process.createBRecoJets=cms.Path(process.BReconstruction) 
   return process.createBRecoJets 
 
