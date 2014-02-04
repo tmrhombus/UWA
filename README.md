@@ -20,6 +20,11 @@ Clone From GIT
 ```bash
 git clone https://github.com/tmrhombus/UWAnalysis.git
 ```
+Then run
+
+```
+./UWAnalysis/recipe/recipe.sh
+```
 Then you need to do a stupid hack, open ``JetMETCorrections/METPUSubtraction/src/PFMETAlgorithmMVA.cc`` and there are two sets of likes like
 
 ```
@@ -29,11 +34,7 @@ abcd
 defg
 >>>>>>>
 ```
-do some deleting to make this just ``defg``.  Then run
-
-```
-./UWAnalysis/recipe/recipe.sh
-```
+do some deleting to make this just ``defg``.  
 
 A check before compiling ``showtags`` should give 40 (fewer could mean cvs not up)
 
