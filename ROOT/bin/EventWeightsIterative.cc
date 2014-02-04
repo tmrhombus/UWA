@@ -22,6 +22,7 @@ int main (int argc, char* argv[]){
  parser.addOption("weight",optutl::CommandLineParser::kDouble,"Weight to apply",1.0);
  parser.addOption("branch",optutl::CommandLineParser::kString,"Branch","__WEIGHT__");
  parser.addOption("doOneD",optutl::CommandLineParser::kInteger,"Do OneD",0);
+ parser.addOption("tHack",optutl::CommandLineParser::kInteger,"tHack",0);
  
  parser.parseArguments (argc, argv);
 
@@ -112,6 +113,9 @@ int main (int argc, char* argv[]){
  // get total number of generated events
  TH1F* evC  = (TH1F*)f->Get(parser.stringValue("histoName").c_str());
  float ev = evC->GetBinContent(1);
+ if(parser.integerValue("tHack")){
+  ev = 2.497226e+06;
+ }
 
  printf("Found  %f Events Counted\n",ev);
  readdir(f,parser,ev,doPU,doRho,puWeight,rhoWeight); //actually do the weighting
