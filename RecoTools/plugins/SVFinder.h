@@ -93,9 +93,9 @@ class SVFinder : public edm::EDProducer {
           break;
          }
         }
-        jet.addUserFloat("CSVT_error",CSVT_error);
-        jet.addUserFloat("CSVM_error",CSVM_error);
-        jet.addUserFloat("CSVL_error",CSVL_error);
+        //jet.addUserFloat("CSVT_error",CSVT_error);
+        //jet.addUserFloat("CSVM_error",CSVM_error);
+        //jet.addUserFloat("CSVL_error",CSVL_error);
 
         CSVT_SF = (0.927563+(1.55479e-05*jet_pt))+(-1.90666e-07*(jet_pt*jet_pt));
         CSVM_SF = (0.938887+(0.00017124*jet_pt))+(-2.76366e-07*(jet_pt*jet_pt));

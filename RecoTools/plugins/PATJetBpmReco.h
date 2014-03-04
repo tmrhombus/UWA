@@ -141,94 +141,94 @@ class PATJetBpmReco : public edm::EDProducer {
 	}
 
 
-	int finalpion;
-	int finalkaon;
-	double massD0 = 0;
-	math::PtEtaPhiMLorentzVector D0;
-	if(jet.pt()>20&&secVertexBpm.size()>1)
-	  for(unsigned int k = 0; k<secVertexBpm.size()-1;k++)
-	    for(unsigned int j = k+1; j<secVertexBpm.size();j++)
-	      if(secVertexBpm.at(k)->charge()+secVertexBpm.at(j)->charge()==0){
-		//printf("chargedparticles size %i\n",(int)secVertexBpm.size());
-		math::PtEtaPhiMLorentzVector kaon(secVertexBpm.at(k)->pt(),
-						  secVertexBpm.at(k)->eta(),
-						  secVertexBpm.at(k)->phi(),
-						  0.494);
-		math::PtEtaPhiMLorentzVector pion(secVertexBpm.at(j)->pt(),
-						  secVertexBpm.at(j)->eta(),
-						  secVertexBpm.at(j)->phi(),
-						  0.140);
-		
-		if(secVertexBpm.at(k)->charge()>0){
-		  pion =math::PtEtaPhiMLorentzVector(secVertexBpm.at(k)->pt(),
-						     secVertexBpm.at(k)->eta(),
-						     secVertexBpm.at(k)->phi(),
-						     0.140);
-		  kaon =math::PtEtaPhiMLorentzVector(secVertexBpm.at(j)->pt(),
-						     secVertexBpm.at(j)->eta(),
-						     secVertexBpm.at(j)->phi(),
-						     0.494);
-		}
-		D0 = pion+kaon;
-		double mass = (pion+kaon).M();
-
-		if(fabs(mass-1.864)<fabs(massD0-1.864)){ //find the candidate closest to D0 mass
-		  massD0 = mass;
-		  finalpion = k;
-		  finalkaon = j;
-		  //printf("k= %i th particle pt %f, j= %i th particle pt %f \n",k,secVertexBpm.at(k)->pt(),j,secVertexBpm.at(j)->pt());
-		}
-	      }
-
-	jet.addUserFloat("sec_massD0",massD0);
-	////try d0 pi pi pi decay mode
-	int charge = 0;
-	double massBpm2 = 0;
-	math::PtEtaPhiMLorentzVector Bpm2;
-	if(jet.pt()>20&&secVertexBpm.size()>4&&massD0>0){
-	  secVertexBpmNoD0 = secVertexBpm;
-	  secVertexBpmNoD0.erase(secVertexBpmNoD0.begin()+finalpion);
-	  
-	  if(finalpion>finalkaon)
-	    secVertexBpmNoD0.erase(secVertexBpmNoD0.begin()+finalkaon);
-	  else
-	    secVertexBpmNoD0.erase(secVertexBpmNoD0.begin()+(finalkaon-1));
-	  
-	  for(unsigned int k = 0; k<secVertexBpmNoD0.size()-1;k++)
-	    for(unsigned int j = k+1; j<secVertexBpmNoD0.size();j++)
-	      for(unsigned int n = j+1; n<secVertexBpmNoD0.size();n++)
-		if(abs(secVertexBpmNoD0.at(k)->charge()
-		       +secVertexBpmNoD0.at(j)->charge()
-		       +secVertexBpmNoD0.at(n)->charge())==1){
-		  //printf("chargedparticles size %i\n",(int)secVertexBpm.size());
-		  math::PtEtaPhiMLorentzVector pion1(secVertexBpmNoD0.at(k)->pt(),
-						    secVertexBpmNoD0.at(k)->eta(),
-						    secVertexBpmNoD0.at(k)->phi(),
-						    0.140);
-		  math::PtEtaPhiMLorentzVector pion2(secVertexBpmNoD0.at(j)->pt(),
-						    secVertexBpmNoD0.at(j)->eta(),
-						    secVertexBpmNoD0.at(j)->phi(),
-						    0.140);
-		  math::PtEtaPhiMLorentzVector pion3(secVertexBpmNoD0.at(j)->pt(),
-						    secVertexBpmNoD0.at(j)->eta(),
-						    secVertexBpmNoD0.at(j)->phi(),
-						    0.140);		
-
-		  Bpm2 = pion1+pion2+pion3;
-		  double mass = (pion1+pion2+pion3+D0).M();
-		  charge = secVertexBpmNoD0.at(k)->charge()
-		          +secVertexBpmNoD0.at(j)->charge()
-		          +secVertexBpmNoD0.at(n)->charge();
-
-		  if(fabs(mass-5.279)<fabs(massD0-5.279)){ //find the candidate closest to D0 mass
-		    massBpm2 = mass;
-//		    printf("BPM mass %f\n",massBpm2);
-		  }
-		}
-	}
-	jet.addUserFloat("sec_massBpm_charge",charge);
-	jet.addUserFloat("sec_massBpm",massBpm2);
-	/////////////
+//	int finalpion;
+//	int finalkaon;
+//	double massD0 = 0;
+//	math::PtEtaPhiMLorentzVector D0;
+//	if(jet.pt()>20&&secVertexBpm.size()>1)
+//	  for(unsigned int k = 0; k<secVertexBpm.size()-1;k++)
+//	    for(unsigned int j = k+1; j<secVertexBpm.size();j++)
+//	      if(secVertexBpm.at(k)->charge()+secVertexBpm.at(j)->charge()==0){
+//		//printf("chargedparticles size %i\n",(int)secVertexBpm.size());
+//		math::PtEtaPhiMLorentzVector kaon(secVertexBpm.at(k)->pt(),
+//						  secVertexBpm.at(k)->eta(),
+//						  secVertexBpm.at(k)->phi(),
+//						  0.494);
+//		math::PtEtaPhiMLorentzVector pion(secVertexBpm.at(j)->pt(),
+//						  secVertexBpm.at(j)->eta(),
+//						  secVertexBpm.at(j)->phi(),
+//						  0.140);
+//		
+//		if(secVertexBpm.at(k)->charge()>0){
+//		  pion =math::PtEtaPhiMLorentzVector(secVertexBpm.at(k)->pt(),
+//						     secVertexBpm.at(k)->eta(),
+//						     secVertexBpm.at(k)->phi(),
+//						     0.140);
+//		  kaon =math::PtEtaPhiMLorentzVector(secVertexBpm.at(j)->pt(),
+//						     secVertexBpm.at(j)->eta(),
+//						     secVertexBpm.at(j)->phi(),
+//						     0.494);
+//		}
+//		D0 = pion+kaon;
+//		double mass = (pion+kaon).M();
+//
+//		if(fabs(mass-1.864)<fabs(massD0-1.864)){ //find the candidate closest to D0 mass
+//		  massD0 = mass;
+//		  finalpion = k;
+//		  finalkaon = j;
+//		  //printf("k= %i th particle pt %f, j= %i th particle pt %f \n",k,secVertexBpm.at(k)->pt(),j,secVertexBpm.at(j)->pt());
+//		}
+//	      }
+//
+//	jet.addUserFloat("sec_massD0",massD0);
+//	////try d0 pi pi pi decay mode
+//	int charge = 0;
+//	double massBpm2 = 0;
+//	math::PtEtaPhiMLorentzVector Bpm2;
+//	if(jet.pt()>20&&secVertexBpm.size()>4&&massD0>0){
+//	  secVertexBpmNoD0 = secVertexBpm;
+//	  secVertexBpmNoD0.erase(secVertexBpmNoD0.begin()+finalpion);
+//	  
+//	  if(finalpion>finalkaon)
+//	    secVertexBpmNoD0.erase(secVertexBpmNoD0.begin()+finalkaon);
+//	  else
+//	    secVertexBpmNoD0.erase(secVertexBpmNoD0.begin()+(finalkaon-1));
+//	  
+//	  for(unsigned int k = 0; k<secVertexBpmNoD0.size()-1;k++)
+//	    for(unsigned int j = k+1; j<secVertexBpmNoD0.size();j++)
+//	      for(unsigned int n = j+1; n<secVertexBpmNoD0.size();n++)
+//		if(abs(secVertexBpmNoD0.at(k)->charge()
+//		       +secVertexBpmNoD0.at(j)->charge()
+//		       +secVertexBpmNoD0.at(n)->charge())==1){
+//		  //printf("chargedparticles size %i\n",(int)secVertexBpm.size());
+//		  math::PtEtaPhiMLorentzVector pion1(secVertexBpmNoD0.at(k)->pt(),
+//						    secVertexBpmNoD0.at(k)->eta(),
+//						    secVertexBpmNoD0.at(k)->phi(),
+//						    0.140);
+//		  math::PtEtaPhiMLorentzVector pion2(secVertexBpmNoD0.at(j)->pt(),
+//						    secVertexBpmNoD0.at(j)->eta(),
+//						    secVertexBpmNoD0.at(j)->phi(),
+//						    0.140);
+//		  math::PtEtaPhiMLorentzVector pion3(secVertexBpmNoD0.at(j)->pt(),
+//						    secVertexBpmNoD0.at(j)->eta(),
+//						    secVertexBpmNoD0.at(j)->phi(),
+//						    0.140);		
+//
+//		  Bpm2 = pion1+pion2+pion3;
+//		  double mass = (pion1+pion2+pion3+D0).M();
+//		  charge = secVertexBpmNoD0.at(k)->charge()
+//		          +secVertexBpmNoD0.at(j)->charge()
+//		          +secVertexBpmNoD0.at(n)->charge();
+//
+//		  if(fabs(mass-5.279)<fabs(massD0-5.279)){ //find the candidate closest to D0 mass
+//		    massBpm2 = mass;
+////		    printf("BPM mass %f\n",massBpm2);
+//		  }
+//		}
+//	}
+//	jet.addUserFloat("sec_massBpm_charge",charge);
+//	jet.addUserFloat("sec_massBpm",massBpm2);
+//	/////////////
 
 	jets->push_back(jet);
 
