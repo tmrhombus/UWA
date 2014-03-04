@@ -18,8 +18,8 @@ echo 'Drell'
 
 EventWeightsIterative doOneD=1 outputFile='T_t_p2.root'     weight=56.4    histoName='summary/results' branch="weightFactor" tHack='1'
 echo 'T_t_p2'
-EventWeightsIterative doOneD=1 outputFile='T_t_p1.root'     weight=56.4     histoName='summary/results' branch="weightFactor2"
-echo 'T_t_p1'
+##EventWeightsIterative doOneD=1 outputFile='T_t_p1.root'     weight=56.4     histoName='summary/results' branch="weightFactor"
+##echo 'T_t_p1'
 EventWeightsIterative doOneD=1 outputFile='T_s.root'        weight=3.79     histoName='summary/results' branch="weightFactor"
 echo 'T_s'
 EventWeightsIterative doOneD=1 outputFile='Tbar_t.root'     weight=30.7     histoName='summary/results' branch="weightFactor"
@@ -37,5 +37,3 @@ EventWeightsIterative doOneD=1 outputFile='WW.root'         weight=56.7532  hist
 echo 'WW'
 EventWeightsIterative doOneD=1 outputFile='ZZ.root'         weight=8.258    histoName='summary/results' branch="weightFactor"
 echo 'ZZ'
-
-mergeFiles T_t.root T_t_p1.root T_t_p2.root
