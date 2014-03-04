@@ -17,7 +17,7 @@ counter = 0
 
 
 #define the file
-dir="/hdfs/store/user/mcepeda/DATA2012DEC/1Jet/"
+dir="/afs/hep.wisc.edu/cms/tperry/CMSSW_5_3_9/src/UWAnalysis/CRAB/MuNu/data/SV_3/"
 fname = "list.txt"
 numfiles = file_len(fname)
 with open(fname) as f:
@@ -27,14 +27,14 @@ with open(fname) as f:
                         print "Processed " + str(counter) + " out of " + str(numfiles) + " files"
                 #get file of current ntuples from input directory
                 x = x.rstrip()
-                new_fname = "Filtered_WJETS_1TAG_"+"_"+x
+                new_fname = "Filtered_1tag_"+x
                 print "Writing "+new_fname
                 ntuple_file = ROOT.TFile(dir+x)
                 ntuple_file_spot = 'muNuEventTree/eventTree'
                 tree = ntuple_file.Get(ntuple_file_spot)
                 tree.SetName("tree")
                 print tree.GetEntries()
-                cut_str="muon_pt>=30&&abs(muon_eta)<2.1&&HLT_IsoMu24_eta2p1_v_fired&&(J1_SVMassWeighted>0||J2_SVMassWeighted>0||J1_CSVbtag>0.6||J2_CSVbtag>0.6)"
+                cut_str="muon_pt>=25&&abs(muon_eta)<2.1&&HLT_IsoMu24_eta2p1_v_fired&&(J1_mass_SV_weighted>0||J2_mass_SV_weighted>0||J1_CSVbtag>0.6||J2_CSVbtag>0.6)"
                 #cut_str  ="HLT_IsoMu24_eta2p1_v_fired&&(nrMu>1||nrEle>0)"
                 #cut_str = "nJetsPt25>=4&&muon_pt>=30&&abs(muon_eta)<2.1&&HLT_IsoMu24_eta2p1_v_fired" 
                 #cut_str ="HLT_IsoMu24_eta2p1_v_fired&&mt>50&&muon_pt>=30&&abs(muon_eta)<2.1&&muNuRelPFIsoDB<0.12&&nJetsPt25>=2"
