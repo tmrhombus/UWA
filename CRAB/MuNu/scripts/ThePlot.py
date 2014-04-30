@@ -18,7 +18,14 @@ import TheParameters as p
 #sf_qcd = 2.47131295199 # no PUID
 #sf_qcd = 2.49339202669 # prelim sf
 #sf_qcd = 2.26610972133 # temp with jresMet data / moreSV_two mc
-sf_qcd = 2.14867279181 # temp with 18pb moreSV_toe data
+#sf_qcd = 2.14867279181 # temp with 18pb moreSV_toe data
+#sf_qcd = 2.22926637138 # SV_3 at 19742.
+#sf_qcd = 3.13331821456 # SV_3 with noPU jets
+#sf_qcd = 0.999199436189 # NewPat Signal
+#sf_qcd = 0.17076846467 # NewPat TT_1mu1e 2j 0b
+sf_qcd = 1. # NewPat TT_1mu1e 2j2b also 2j1b (actually was -1.asdf) 
+#sf_qcd = 3.74768567252 # NewPat TT_m
+#sf_qcd = 0.466720042977 # NewPat ST
 #sf_qcd = 1.
 
 sf_Signal_Wbb    = 1. 
@@ -30,7 +37,7 @@ sf_Signal_Wcc    = 1.
 sf_Signal_T      = 1. 
 sf_Signal_WZ     = 1. 
 
-sf_Top_T         = 1. 
+sf_Top_T         = 1.#  (2.26033000000000000e+05)/2497226 
 sf_Top_TOP       = 1. 
 sf_Top_tW        = 1. 
 sf_Top_Wbb       = 1. 
@@ -98,7 +105,7 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea = p.arams() 
 
 sf_Wbb    = 1. 
 sf_Tbar   = 1. 
@@ -110,21 +117,21 @@ sf_T      = 1.
 sf_WZ     = 1. 
 sf_wl     = 1.
 sf_wc     = 1.
-if Signal:
- sf_Wbb    = sf_Signal_Wbb   
- sf_Tbar   = sf_Signal_Tbar  
- sf_tW     = sf_Signal_tW    
- sf_TOP    = sf_Signal_TOP   
- sf_Z_jets = sf_Signal_Z_jets
- sf_Wcc    = sf_Signal_Wcc   
- sf_T      = sf_Signal_T     
- sf_WZ     = sf_Signal_WZ    
-if TT_m or TT_me:
- sf_Wbb    = sf_Top_Wbb  
- sf_Tbar   = sf_Top_Tbar 
- sf_tW     = sf_Top_tW   
- sf_TOP    = sf_Top_TOP  
- sf_T      = sf_Top_T    
+#if Signal:
+# sf_Wbb    = sf_Signal_Wbb   
+# sf_Tbar   = sf_Signal_Tbar  
+# sf_tW     = sf_Signal_tW    
+# sf_TOP    = sf_Signal_TOP   
+# sf_Z_jets = sf_Signal_Z_jets
+# sf_Wcc    = sf_Signal_Wcc   
+# sf_T      = sf_Signal_T     
+# sf_WZ     = sf_Signal_WZ    
+#if TT_m or TT_me:
+# sf_Wbb    = sf_Top_Wbb  
+# sf_Tbar   = sf_Top_Tbar 
+# sf_tW     = sf_Top_tW   
+# sf_TOP    = sf_Top_TOP  
+# sf_T      = sf_Top_T    
 
 for leaf in leafs:
 
@@ -542,8 +549,8 @@ for leaf in leafs:
    hrerr.SetName("hrerr")
    hrerr.Divide(hNOerr)
 
-  if leaf =="mt" and not noMT:
-   datar.GetXaxis().SetRangeUser(50,140)
+  #if leaf =="mt" and not noMT:
+  # datar.GetXaxis().SetRangeUser(50,140)
   datar.GetYaxis().SetRangeUser(1.-ratioRange,1.+ratioRange) 
   datar.GetYaxis().SetLabelSize(0.11)
   datar.Divide(hh)
@@ -551,14 +558,14 @@ for leaf in leafs:
   if errorBand: hrerr.Draw('sames,E2')
   #datar.GetXaxis().SetRangeUser(70,110)
   
-  if leaf=="mt" and not noMT:
-   l = TLine(50,1,140,1)
-   l.SetLineStyle(3)
-   l.Draw()
-  else:
-   l = TLine(xmin,1,xmax,1)
-   l.SetLineStyle(3)
-   l.Draw()
+  #if leaf=="mt" and not noMT:
+  # l = TLine(50,1,140,1)
+  # l.SetLineStyle(3)
+  # l.Draw()
+  #else:
+  l = TLine(xmin,1,xmax,1)
+  l.SetLineStyle(3)
+  l.Draw()
   c.Update()
   print('you just read '+leaf)
   save2 = raw_input ('Press Enter to Continue (type save to save)\n')

@@ -4,23 +4,24 @@ for Wbb analysis, input a few values and function outputs cut strings
 Author: T.M.Perry UW-Madison
 '''
 
-def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False,Tomislav=False,extraCut='(2>1)'):
+def cutmaker(leaf='J1_pt',isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jnr=2,njetPt='20',jetPt='20',jetVeto=False,Control=True,Z_Region=False,Legacy=False,noMT=False,TT_m=False,TT_me=False,ST=False,Signal=False,Tomislav=False,extraCut='(2>1)',Ctl_Andrea=False):
 
  trigger = '(HLT_IsoMu24_eta2p1_v_fired)'
- muon_selection = '(DiMuonMass<=60 && nrEle==0 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>25)'
+ muon_selection = '(DiMuonMass<=60 && nrEle==0 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)'
  muon_selection30 = '(nrEle==0 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)'
  oneMUoneELE = '(DiMuonMass<=60 && nrEle==1 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>25)'
  dimuon_selection = '(nrMu==2&&abs(muon_eta)<2.1&&muon_pt>25)'
  z_selection = '(DiMuonMass>70&&DiMuonMass<110)'
  vertex = '(abs(dz)<0.5&&abs(ipDXY)<0.02)'
  vertexNoDZ = '(abs(ipDXY)<0.02)'
- mt = '(mt>45)'
+ if leaf=="mt": mt='(2>1)'
+ else: mt = '(mt>50)'
  mt50 = '(mt>50)'
  met = '(MET>30)'
  noFJ = '(nJets24Pt25==0)'
  #oneFJ = '(nJets24Pt25==1)'
- #oneFJ = '( abs(J1_eta)<2.4 && abs(J2_eta)>2.4 )'
- oneFJ = '((abs(J1_eta)>2.4 && abs(J2_eta)<2.4)||(abs(J1_eta)<2.4 && abs(J2_eta)>2.4))'
+ oneFJ = '( abs(J1_eta)<2.4 && abs(J2_eta)>2.4 )'
+ #oneFJ = '((abs(J1_eta)>2.4 && abs(J2_eta)<2.4)||(abs(J1_eta)<2.4 && abs(J2_eta)>2.4))'
  muPlus = '(muonCharge > 0)'
  muMinus = '(muonCharge < 0)'
  jetCap = '(J1_pt < 30 && J2_pt < 30)'
@@ -62,6 +63,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
   #Skim='('+trigger+'&&'+muon_selection30+'&&'+vertex+'&&'+met+')'#for Tomislav qcd
   Skim='('+trigger+'&&'+muon_selection30+'&&'+vertex+'&&'+mt50+'&&'+met+')'#for Tomislav
   #Skim='('+trigger+'&&'+dimuon_selection+'&&'+vertex+'&&'+z_selection+')' # Z
+ elif Ctl_Andrea:
+  Skim='('+trigger+'&&'+muon_selection+'&&'+vertex+'&&'+mt+')'
   
  theCut = '('+Skim+'&&'+extraCut+')'
 
@@ -89,15 +92,25 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
  if btype == 'loose' or btype == 'l':
   bcut = 0.244
   
- FirstBtag='(J1_CSVbtag>'+str(bcut)+'&&J1_mass_SSV>0)'
- SecondBtag='(J2_CSVbtag>'+str(bcut)+'&&J2_mass_SSV>0)'
+ FirstBtag  = '(J1_CSVbtag>'+str(bcut)+ ')'
+ SecondBtag = '(J2_CSVbtag>'+str(bcut)+')'
+ #FirstBtag='(J1_mass_SV_weighted>0)'
+ #SecondBtag='(J2_mass_SV_weighted>0)'
+ #FirstBtag='(J1_CSVbtag>'+str(bcut)+'&&J1_mass_SV_weighted>0)'
+ #SecondBtag='(J2_CSVbtag>'+str(bcut)+'&&J2_mass_SV_weighted>0)'
  OneBtag='('+FirstBtag+'||'+SecondBtag+')'
  TwoBtag='('+FirstBtag+'&&'+SecondBtag+')'
 
- newCSVT1first = '((0.927563+(1.55479e-05*J1_pt))+(-1.90666e-07*(J1_pt*J1_pt)))'
- newCSVT1second = '((0.927563+(1.55479e-05*J2_pt))+(-1.90666e-07*(J2_pt*J2_pt)))'
  #newCSVT1first =  '1.'
  #newCSVT1second = '1.'
+ SFBJ1 = '((0.927563+(1.55479e-05*J1_pt))+(-1.90666e-07*(J1_pt*J1_pt)))'
+ SFBJ2 = '((0.927563+(1.55479e-05*J2_pt))+(-1.90666e-07*(J2_pt*J2_pt)))'
+ SFLJ1="(((1.00462+(0.00325971*J1_pt))+(-7.79184e-06*(J1_pt*J1_pt)))+(5.22506e-09*(J1_pt*(J1_pt*J1_pt))))"
+ SFLJ2="(((1.00462+(0.00325971*J2_pt))+(-7.79184e-06*(J2_pt*J2_pt)))+(5.22506e-09*(J2_pt*(J2_pt*J2_pt))))"
+ real1 = "(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4)"
+ real2 = "(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4)"
+ newCSVT1first  = "(("+real1+"*"+SFBJ1+")+(!"+real1+"*"+SFLJ1+"))"
+ newCSVT1second = "(("+real2+"*"+SFBJ2+")+(!"+real2+"*"+SFLJ2+"))"
  newCSVT2 = '('+newCSVT1first+'*'+newCSVT1second+')'
 
  if bnr == 1:
@@ -108,8 +121,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
    beffWeight = 'EffWEIGHTCSVM'
   if btype == 'loose' or btype == 'l':
    beffWeight = 'EffWEIGHTCSVL'
-  #theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')))'
-  theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')||('+SecondBtag+'*'+newCSVT1second+')))'
+  theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')))'
+  #theCut = '('+theCut+'&&(('+FirstBtag+'*'+newCSVT1first+')||('+SecondBtag+'*'+newCSVT1second+')))'
   weight = '('+weight+'*'+beffWeight+')'
 
  if bnr == 2:
@@ -151,7 +164,8 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
   PUID = PUID4
 
  # for splitting up the W sample 
- genB = '(nbHadrons>0)' #to do this correctly, must match to jets
+ #to do this correctly, we should probably match to jets
+ genB = '(nbHadrons>0)' 
  genC = '((nrC+nrCbar)>0)'
  evenC = '(((nrC+nrCbar)%2)==0)'
  
@@ -162,6 +176,11 @@ def cutmaker(isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0,btype='t',jn
 
  cutDataNonIso   = '('+PUID+'&&'+NonIso+'&&'+theCut+')' #Data Non Iso
  cutDataIso      = '('+PUID+'&&'+Iso+'&&'+theCut+')'    #Data Iso
+ 
+# matchJ1 = '(J1_pt_gen > 0)'
+# matchJ2 = '(J2_pt_gen > 0)'
+# theCut = '('+theCut+'&&'+matchJ1+'&&'+matchJ2+')'
+ 
  cutMcNonIso     = '('+weight+'*('+PUID+'&&'+NonIso+'&&'+theCut+'))' #MC Non Iso
  cutMcNonIsoW    = cutMcNonIso #'('+weightW+'*('+NonIso+'&&'+theCut+'))' #MC Non IsoW
  cutMcIso        = '('+weight+'*('+PUID+'&&'+Iso+   '&&'+theCut+'))' #MC Iso

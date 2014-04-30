@@ -16,7 +16,7 @@ import TheParameters as p
 
 #import scaleqcd as qs
 
-sf_qcd = 2.05901169
+sf_qcd = 0.999199436189 #newPat signal
 sf_drell = 1.
 sf_st = 1.   
 sf_st_t = 1.
@@ -25,30 +25,30 @@ sf_wjets = 1.
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea = p.arams()
 
 CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutsMCnTup,CutsMCiTup,CutsMCnTdn,CutsMCiTdn = ct.cutmaker(
- iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav
+ leafs[0],iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut,Ctl_Andrea
 )
 
-data_filename     = '../data/looseID/Data.root'
-t_t_filename      = '../data/looseID/T_t.root'
-t_s_filename      = '../data/looseID/T_s.root'
-t_tw_filename     = '../data/looseID/T_tW.root'
-tb_t_filename     = '../data/looseID/Tbar_t.root'
-tb_s_filename     = '../data/looseID/Tbar_s.root'
-tb_tw_filename    = '../data/looseID/Tbar_tW.root'
-tt_semi_filename  = '../data/looseID/TTbar_semi.root'
-tt_full_filename  = '../data/looseID/TTbar_full.root'
-ww_filename       = '../data/looseID/WW.root'
-wz_filename       = '../data/looseID/WZ.root'
-zz_filename       = '../data/looseID/ZZ.root'
-wn_filename       = '../data/looseID/WJets.root'
-w1_filename       = '../data/looseID/W1Jet.root'
-w2_filename       = '../data/looseID/W2Jet.root'
-w3_filename       = '../data/looseID/W3Jet.root'
-w4_filename       = '../data/looseID/W4Jet.root'
-z_filename        = '../data/looseID/Drell.root'
+data_filename     = '../data/newPat/Data.root'
+t_t_filename      = '../data/newPat/T_t.root'
+t_s_filename      = '../data/newPat/T_s.root'
+t_tw_filename     = '../data/newPat/T_tW.root'
+tb_t_filename     = '../data/newPat/Tbar_t.root'
+tb_s_filename     = '../data/newPat/Tbar_s.root'
+tb_tw_filename    = '../data/newPat/Tbar_tW.root'
+tt_semi_filename  = '../data/newPat/TTbar_semi.root'
+tt_full_filename  = '../data/newPat/TTbar_full.root'
+ww_filename       = '../data/newPat/WW.root'
+wz_filename       = '../data/newPat/WZ.root'
+zz_filename       = '../data/newPat/ZZ.root'
+wn_filename       = '../data/newPat/WJets.root'
+w1_filename       = '../data/newPat/W1Jet.root'
+w2_filename       = '../data/newPat/W2Jet.root'
+w3_filename       = '../data/newPat/W3Jet.root'
+w4_filename       = '../data/newPat/W4Jet.root'
+z_filename        = '../data/newPat/Drell.root'
 
 data_file     = TFile( data_filename )
 t_t_file      = TFile( t_t_filename  )

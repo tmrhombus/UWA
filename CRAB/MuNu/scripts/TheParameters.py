@@ -5,12 +5,15 @@ Author: T.M.Perry
 '''
 
 def arams():
+ #lumi = 20090. # delivered for SV_3
+ #lumi = 19742. # recorded for SV_3
  #lumi = 19488. #  for jresMet
- lumi = 18027. # for moreSV_toe
+ #lumi = 18027. # for moreSV_toe
  #lumi = 18589. # for looseID  19488.
+ lumi = 17469. # NewPat
  btype = 't'
- njetcut = '50' #20,25,26,30,40
- jetcut = '70'
+ njetcut = '30' #20,25,26,30,40
+ jetcut = '30'
  I = 0
  F = 20
  iso_value = 0.12
@@ -22,16 +25,17 @@ def arams():
 
  #naming where output goes
  path = '../plots/'
- extraName = ''
+ extraName = 'NewPat_'
 
  drawQCD = True
  drawData = True
 
  noMT = False # control but no mT cut
  Control = False # 1 mu, 0b, 2+ jets
+ Ctl_Andrea = False # 1 mu, 1+ b, 2+ jets 
  Signal = False # 1 mu, 2bs, 2 jets
- TT_m = True #1 mu, 2b, 4 j
- TT_me = False #no b, 1mu, 1e
+ TT_m = False #1 mu, 2b, 4 j
+ TT_me = True # 1mu, 1e
  ST = False
  Z_Region = False # two muons, no mT cut
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
@@ -39,7 +43,8 @@ def arams():
 
  DataCard = False
 
- eventTreeLocation = 'muNuEventTree/eventTree'
+ eventTreeLocation = 'New_Tree'
+ #eventTreeLocation = 'muNuEventTree/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonUp/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonDown/eventTree'
  #eventTreeLocation = 'muNuEventTreeJetUp/eventTree'
@@ -59,13 +64,17 @@ def arams():
   bNr = 0 
   jNr = 2
   jetVeto = False
+ elif Ctl_Andrea:
+  bNr = 1 
+  jNr = 2
+  jetVeto = False
  elif TT_m:
   bNr = 2
   jNr = 4
   jetVeto = True
  elif TT_me:
-  bNr = 0 
-  jNr = 4
+  bNr = 1 
+  jNr = 2
   jetVeto = False
  elif Z_Region:
   bNr = 1
@@ -97,53 +106,60 @@ def arams():
  if Z_Region: extraName += '_2mu'
  if noMT: extraName += '_noMT'
  if DataCard: extraName = 'Datacard_'+extraName
+ if TT_me: extraName += '_1m1e'
 
  jet1_2dr2 = '(((J1_eta-J2_eta)*(J1_eta-J2_eta))+((J1_phi-J2_phi)*(J1_phi-J2_phi)))'
 
  leafs = [
-'J1_idBetaPu',
+#'J1_idBetaPu',
 #'J1_idBetaClassicPu',
-'J1_idBetaStarPu',
+#'J1_idBetaStarPu',
 #'J1_idBetaStarClassicPu',
 #'J1_idBetaStarClassicModPu',
 #'J1_PUID_fullDiscriminant',
 #'J1_PUID_philv1Discriminant',
 #'J1_fullIdLoosePu',
 #'J2_fullIdLoosePu',
-#'mt',
+'mt',
 #'DiSVMass',
-'vertices',
-'(J1_mass_SSV+J2_mass_SSV)',
-'(J1_mass_SSV_alt+J2_mass_SSV_alt)',
-'J1_mass_SSV',
-'J2_mass_SSV',
-'J1_nTracksSSV',
-'J2_nTracksSSV',
-'J1_mass_SSV_alt',
-'J1_mass_SSV',
-'J1_pt_SSV',
-'J1_flightDistance',
-'J1_flightDistanceError',
-'J1_normChi2_SV',
+#'vertices',
+#'(J1_mass_SSV+J2_mass_SSV)',
+#'J1_mass_SSV',
+#'J2_mass_SSV',
+#'J1_nTracks_SV',
+#'J2_nTracks_SV',
+#'J1_mass_SSV_alt',
+#'J1_mass_SSV',
+#'J1_mass_SV_unweighted',
+#'J1_mass_SV_weighted',
+#'J2_mass_SV_unweighted',
+#'J2_mass_SV_weighted',
+#'J1_normChi2_SV',
+#'J2_normChi2_SV',
+#'J1_flightDistance',
+#'J1_flightDistanceError',
+#'J1_normChi2_SV',
+#'J1_pt_SSV',
 #'J1_phi_SSV',
 #'J1_eta_SSV',
 #'J1_pt_PV',
 #'J1_phi_PV',
 #'J1_eta_PV',
 #'J1_mass_PV',
-'J1_pt',
-#'J1_phi',
+#'J1_pt',
+#'(J1_mass_SV_weighted+J2_mass_SV_weighted)',
 #'J1_eta',
+#'J1_phi',
 #'muon_pt',
 #'muon_eta',
 #'muon_phi',
 #'muonCharge',
-'J2_pt',
+#'J2_pt',
 #'J2_eta',
 #'J2_phi',
-'J2_mass_SSV_alt',
-'J2_mass_SSV',
-'J2_pt_SSV',
+#'J2_mass_SSV_alt',
+#'J2_mass_SSV',
+#'J2_pt_SSV',
 #'J2_phi_SSV',
 #'J2_eta_SSV',
 #'J2_pt_PV',
@@ -173,4 +189,4 @@ def arams():
 #'mJ3J4',
 ]
 
- return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut
+ return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea

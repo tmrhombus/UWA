@@ -24,36 +24,55 @@ dRescale = False
 sf_qcd = 1.
 sf_drell = 1.
 sf_st = 1.   
-sf_st_t = 1.#1.025431/2.497226   
+sf_st_t = 1. #(2.26033000000000000e+05)/2497226#1.#1.025431/2.497226   
 sf_ttbar = 1.
 sf_wjets = 1.
 sf_vv = 1.
 
 #get parameters (used in cutmaker)
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea = p.arams() 
 
 CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutsMCnTup,CutsMCiTup,CutsMCnTdn,CutsMCiTdn = ct.cutmaker(
- iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut
+ leafs[0],iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut,Ctl_Andrea
 )
 
-data_filename     = '../data/moreSV_two/Data.root'
-t_t_filename      = '../data/moreSV_two/T_t.root'
-t_s_filename      = '../data/moreSV_two/T_s.root'
-t_tw_filename     = '../data/moreSV_two/T_tW.root'
-tb_t_filename     = '../data/moreSV_two/Tbar_t.root'
-tb_s_filename     = '../data/moreSV_two/Tbar_s.root'
-tb_tw_filename    = '../data/moreSV_two/Tbar_tW.root'
-tt_semi_filename  = '../data/moreSV_two/TTbar_semi.root'
-tt_full_filename  = '../data/moreSV_two/TTbar_full.root'
-ww_filename       = '../data/moreSV_two/WW.root'
-wz_filename       = '../data/moreSV_two/WZ.root'
-zz_filename       = '../data/moreSV_two/ZZ.root'
-wn_filename       = '../data/moreSV_two/WJets.root'
-w1_filename       = '../data/moreSV_two/W1Jet.root'
-w2_filename       = '../data/moreSV_two/W2Jet.root'
-w3_filename       = '../data/moreSV_two/W3Jet.root'
-w4_filename       = '../data/moreSV_two/W4Jet.root'
-z_filename        = '../data/moreSV_two/Drell.root'
+data_filename     = '../filterTuples/Filtered_Data.root'
+t_t_filename      = '../filterTuples/Filtered_T_t.root'
+t_s_filename      = '../filterTuples/Filtered_T_s.root'
+t_tw_filename     = '../filterTuples/Filtered_T_tW.root'
+tb_t_filename     = '../filterTuples/Filtered_Tbar_t.root'
+tb_s_filename     = '../filterTuples/Filtered_Tbar_s.root'
+tb_tw_filename    = '../filterTuples/Filtered_Tbar_tW.root'
+tt_semi_filename  = '../filterTuples/Filtered_TTbar_semi.root'
+tt_full_filename  = '../filterTuples/Filtered_TTbar_full.root'
+ww_filename       = '../filterTuples/Filtered_WW.root'
+wz_filename       = '../filterTuples/Filtered_WZ.root'
+zz_filename       = '../filterTuples/Filtered_ZZ.root'
+wn_filename       = '../filterTuples/Filtered_WJets.root'
+w1_filename       = '../filterTuples/Filtered_W1Jet.root'
+w2_filename       = '../filterTuples/Filtered_W2Jet.root'
+w3_filename       = '../filterTuples/Filtered_W3Jet.root'
+w4_filename       = '../filterTuples/Filtered_W4Jet.root'
+z_filename        = '../filterTuples/Filtered_Drell.root'
+
+#data_filename     = '../data/newPat/Data.root'
+#t_t_filename      = '../data/newPat/T_t.root'
+#t_s_filename      = '../data/newPat/T_s.root'
+#t_tw_filename     = '../data/newPat/T_tW.root'
+#tb_t_filename     = '../data/newPat/Tbar_t.root'
+#tb_s_filename     = '../data/newPat/Tbar_s.root'
+#tb_tw_filename    = '../data/newPat/Tbar_tW.root'
+#tt_semi_filename  = '../data/newPat/TTbar_semi.root'
+#tt_full_filename  = '../data/newPat/TTbar_full.root'
+#ww_filename       = '../data/newPat/WW.root'
+#wz_filename       = '../data/newPat/WZ.root'
+#zz_filename       = '../data/newPat/ZZ.root'
+#wn_filename       = '../data/newPat/WJets.root'
+#w1_filename       = '../data/newPat/W1Jet.root'
+#w2_filename       = '../data/newPat/W2Jet.root'
+#w3_filename       = '../data/newPat/W3Jet.root'
+#w4_filename       = '../data/newPat/W4Jet.root'
+#z_filename        = '../data/newPat/Drell.root'
 
 data_file      = TFile( data_filename )
 t_t_file       = TFile( t_t_filename  )
@@ -76,7 +95,8 @@ z_file         = TFile( z_filename    )
 
 eventTreeLocationNoShift = 'muNuEventTree/eventTree'
 
-data_tree     =  data_file.Get(eventTreeLocationNoShift) 
+data_tree     =  data_file.Get(eventTreeLocation) 
+#data_tree     =  data_file.Get(eventTreeLocationNoShift) 
 t_t_tree      =  t_t_file.Get(eventTreeLocation)
 t_s_tree      =  t_s_file.Get(eventTreeLocation)
 t_tw_tree     =  t_tw_file.Get(eventTreeLocation)
@@ -533,7 +553,7 @@ for leaf in leafs:
  print('')
  
  log.write('------------------------------------------------\n')
- if noMT and leaf=='mt':
+ if leaf=='mt':
   log.write('You Probably Want to use this for QCD Scale\n')
   mcSizePart = \
    wlnihSizePart+wl1ihSizePart+wl2ihSizePart+wl3ihSizePart+wl4ihSizePart+ \
