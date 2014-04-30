@@ -27,7 +27,8 @@ analysisConfigurator.addSorter('diMuonsSorted','PATMuPairSorter')
 #Make Muons+MET cleanPatJets
 analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','smearedMuons','smearedMET','smearedJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
 
-analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1 && lepton.userInt("tightID")==1' ,'wCandsKIN',1)
-analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>0','wCandsSel',1)
+analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1' ,'wCandsKIN',1)
+#analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1 && lepton.userInt("tightID")==1' ,'wCandsKIN',1)
+analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>=0','wCandsSel',1)
 
 selectionSequence = analysisConfigurator.returnSequence()

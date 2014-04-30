@@ -711,7 +711,7 @@ class CutSequenceProducer(cms._ParameterTypeBase):
           if pyModule is None:
               raise ValueError("'pyModuleName' Parameter invalid")
           setattr(pyModule,'smearedTaus'+mpost,smearedTaus)
-          self.sequence*=smearedTaus
+          #self.sequence*=smearedTaus
 
 
           #add a post MET tau
@@ -733,7 +733,7 @@ class CutSequenceProducer(cms._ParameterTypeBase):
           if pyModule is None:
               raise ValueError("'pyModuleName' Parameter invalid")
           setattr(pyModule,'smearedTausID'+mpost,smearedTausID)
-          self.sequence*=smearedTausID
+          #self.sequence*=smearedTausID
 
 
 
@@ -830,12 +830,12 @@ class CutSequenceProducer(cms._ParameterTypeBase):
                                       met = cms.InputTag(mets),
                                       originalObjects = cms.VInputTag(cms.InputTag('selectedPatMuons'),
                                                                       cms.InputTag('selectedPatElectrons'),
-                                                                      cms.InputTag('selectedPatTaus'),
+                                                                      #cms.InputTag('selectedPatTaus'),
                                                                       cms.InputTag('cleanPatJets')
                                                                       ),
                                       smearedObjects = cms.VInputTag(cms.InputTag("smearedMuonsID"+mpost),
                                                                      cms.InputTag("smearedElectronsID"+mpost),
-                                                                     cms.InputTag("smearedTausID"+mpost),
+                                                                     #cms.InputTag("smearedTausID"+mpost),
                                                                      cms.InputTag("smearedJets"+mpost)
                                                                  ),
                                       unclusteredScale = cms.double(1.0),

@@ -34,23 +34,35 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
   #Build good vertex collection
   goodVertexFilter(process)       
+
+#  process.simpleSecondaryVertex = cms.ESProducer("SimpleSecondaryVertexESProducer",
+#      use3d = cms.bool(True),
+#      unBoost = cms.bool(False),
+#      useSignificance = cms.bool(True),
+#      minTracks = cms.uint32(2)
+#  )
   
   # reRun Jets 
-  reRunJets(process,isMC=itsMC,isData=itsData)
+#  reRunJets(process,isMC=itsMC,isData=itsData)
   if itsMC:
-   resolutionSmearJets(process,jets='NewSelectedPatJets')
+   resolutionSmearJets(process,jets='selectedPatJetsAK5chsPF')
   elif itsData:
-   ReNameJetColl(process,inputJets='NewSelectedPatJets')
+   ReNameJetColl(process,inputJets='selectedPatJetsAK5chsPF')
 
   # type 1 met correction 
   metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets')
 
   jetOverloading(process,"resolutionSmearedJets")
 #  jetOverloading(process,"NewSelectedPatJets")
+
   jetPUEmbedding(process,"patOverloadedJets")
   rochesterCorrector(process)
+  #muonIDer(process,"rochCorMuons")
   SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)  
   applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
+  #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","IDedMuons")
+  #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","rochCorMuons")
+
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
   #mvaMet(process) #Build MVA MET
@@ -157,7 +169,7 @@ def tauTriggerMatchPT(process,triggerProcess):
     pdgId = cms.int32(15)
    )                                            
    process.triggeredPatTausSeq = cms.Sequence(process.preTriggeredPatTaus*process.triggeredPatTaus)
-   process.triggeredPatTausPath=cms.Path(process.triggeredPatTausSeq)
+#   process.triggeredPatTausPath=cms.Path(process.triggeredPatTausSeq)
 
 
 def goodVertexFilter(process):
@@ -404,8 +416,17 @@ def rochesterCorrector(process,muons="cleanPatMuons",rochCor="RochCor2012"):
   return process.rochCorMuonsPath
 
 
+def muonIDer(process,muons="cleanPatMuons"):
+  process.IDedMuons = cms.EDProducer("PATMuonIDer",
+   src = cms.InputTag( muons ),
+  )
+  process.IDedMuonSeq = cms.Sequence(process.IDedMuons)
+  process.IDedMuonPath= cms.Path(process.IDedMuonSeq)
+  return process.IDedMuonPath
+
+
 def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
-  process.SVFoundJets=cms.EDProducer("SVFinder",
+  process.SVFoundJets=cms.EDProducer("bTagSFer",
     src = cms.InputTag(jets),
     leptons = cms.InputTag(muons),
     vertices=cms.InputTag("offlinePrimaryVertices") 
@@ -423,12 +444,14 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
     vertices=cms.InputTag("offlinePrimaryVertices") 
    )
   if isData:
-   process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData', 
+   process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco', 
+   #process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData', 
     src = cms.InputTag("patSSVJets2"),
     leptons = cms.InputTag(muons), 
     vertices=cms.InputTag("offlinePrimaryVertices")
    ) 
   process.patBRecoJets = cms.EDProducer('PATJetBReco', 
+   #src = cms.InputTag("patSSVJets2"), 
    src = cms.InputTag("patBpmRecoJets"), 
    leptons = cms.InputTag(muons), 
    vertices=cms.InputTag("offlinePrimaryVertices") 
@@ -467,11 +490,12 @@ def applyDefaultSelectionsPT(process,jets,muons):
    )
   process.selectedPatMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag("cleanPatMuons"),
-   cut = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
+   cut = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<1'),
    filter = cms.bool(False)
    )
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
    src = cms.InputTag(jets),
+   #preselection = cms.string(''),
    preselection = cms.string('abs(eta)<5.0&&pt>20&&userFloat("idLoose")>0'),
    checkOverlaps = cms.PSet( 
        muons = cms.PSet(
@@ -495,7 +519,8 @@ def applyDefaultSelectionsPT(process,jets,muons):
    ),
    finalCut = cms.string('')
    )	
-  process.selectedObjectsForSyst = cms.Sequence(process.selectedPatTaus+process.preselectedPatMuons+process.preselectedPatElectrons+process.selectedPatElectrons+process.selectedPatMuons+process.cleanPatJets)
+  process.selectedObjectsForSyst = cms.Sequence(process.preselectedPatMuons+process.preselectedPatElectrons+process.selectedPatElectrons+process.selectedPatMuons+process.cleanPatJets)
+  #process.selectedObjectsForSyst = cms.Sequence(process.selectedPatTaus+process.preselectedPatMuons+process.preselectedPatElectrons+process.selectedPatElectrons+process.selectedPatMuons+process.cleanPatJets)
   process.analysisSequence = cms.Sequence(process.analysisSequence*process.selectedObjectsForSyst)
 
 
