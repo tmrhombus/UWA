@@ -17,24 +17,32 @@ counter = 0
 
 
 #define the file
-dir="/afs/hep.wisc.edu/cms/tperry/CMSSW_5_3_9/src/UWAnalysis/CRAB/MuNu/data/SV_3/"
-fname = "list.txt"
+#dir="/afs/hep.wisc.edu/cms/tperry/CMSSW_5_3_9/src/UWAnalysis/CRAB/MuNu/data/SV_3/"
+#dir='/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/data/newPat/'
+#fname = "list.txt"
+dir='/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/filterTuples/'
+fname = "data_list.txt"
 numfiles = file_len(fname)
 with open(fname) as f:
         for x in f:
                 print "Reading " +dir+x
-                if counter % 10 == 0:
+                if counter % 5 == 0:
                         print "Processed " + str(counter) + " out of " + str(numfiles) + " files"
                 #get file of current ntuples from input directory
                 x = x.rstrip()
-                new_fname = "Filtered_1tag_"+x
+                new_fname = "synch_"+x
+                #new_fname = "Filtered_TEST_"+x
                 print "Writing "+new_fname
                 ntuple_file = ROOT.TFile(dir+x)
                 ntuple_file_spot = 'muNuEventTree/eventTree'
                 tree = ntuple_file.Get(ntuple_file_spot)
                 tree.SetName("tree")
                 print tree.GetEntries()
-                cut_str="muon_pt>=25&&abs(muon_eta)<2.1&&HLT_IsoMu24_eta2p1_v_fired&&(J1_mass_SV_weighted>0||J2_mass_SV_weighted>0||J1_CSVbtag>0.6||J2_CSVbtag>0.6)"
+                #cut_str=""
+                #cut_str="muon_pt>=30&&J1_pt>25&&J2_pt>25&&abs(muon_eta)<2.1&&HLT_IsoMu24_eta2p1_v_fired&&(J1_CSVbtag>0.898&&J2_CSVbtag>0.898)"
+                cut_str="muon1_pt>=30 && muNuRelPFIsoDBAndrea<0.12 && J1_pt>25 && J2_pt>25 && abs(muon1_eta)<2.1 && (J1_CSVbtag>0.898||J2_CSVbtag>0.898||J3_CSVbtag>0.898||J4_CSVbtag>0.898) && HLT_IsoMu24_eta2p1_v_fired && J1_idLooseJet && J2_idLooseJet"
+                #cut_str="muon_pt>=30 && muNuRelPFIsoDBAndrea<0.12 && J1_pt>25 && J2_pt>25 && abs(muon_eta)<2.1 && (J1_CSVbtag>0.898||J2_CSVbtag>0.898||J3_CSVbtag>0.898||J4_CSVbtag>0.898) && HLT_IsoMu24_eta2p1_v_fired && J1_idLooseJet && J2_idLooseJet"
+                #cut_str="muon_pt>=30 && muNuRelPFIsoDB<0.12 && J1_pt>25 && J2_pt>25 && abs(muon_eta)<2.1 && (J1_CSVbtag>0.898||J2_CSVbtag>0.898||J3_CSVbtag>0.898||J4_CSVbtag>0.898) && HLT_IsoMu24_eta2p1_v_fired && J1_idLooseJet && J2_idLooseJet"
                 #cut_str  ="HLT_IsoMu24_eta2p1_v_fired&&(nrMu>1||nrEle>0)"
                 #cut_str = "nJetsPt25>=4&&muon_pt>=30&&abs(muon_eta)<2.1&&HLT_IsoMu24_eta2p1_v_fired" 
                 #cut_str ="HLT_IsoMu24_eta2p1_v_fired&&mt>50&&muon_pt>=30&&abs(muon_eta)<2.1&&muNuRelPFIsoDB<0.12&&nJetsPt25>=2"
