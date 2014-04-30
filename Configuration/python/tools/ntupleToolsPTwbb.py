@@ -56,6 +56,20 @@ def makeJetString(strName,xn='',source='wCandsJets'):
   ))
  return PSet_List
 
+def makeJetStringName(strName,mthName,xn='',source='wCandsJets'):
+ PSet_List = []
+ for rank,name in zip(jetRanks,jetNames):
+  nameTag = name+strName+xn
+  PSet_List.append(cms.PSet(
+        pluginType = cms.string("PATMuonNuPairPtJetVarFiller"),
+        src        = cms.InputTag(source),
+        tag        = cms.string(nameTag),
+        method     = cms.string(mthName),
+        rank       = cms.untracked.double(rank)
+  ))
+ return PSet_List
+
+
 def makeJetBTag(tagName,strName,source='wCandsJets'):
  PSet_List = []
  for rank,name in zip(jetRanks,jetNames):
@@ -107,8 +121,6 @@ def makeBasicEle(tagName,methodName,sourceEle='selectedPatElectrons'):
   )
   return PSet
 
-
-
 def makeMuNu(tagName,methodName,source='wCandsJets',lo=False):
   if lo:
    PSet = cms.PSet(
@@ -147,8 +159,160 @@ def makeIVFBs(tagName,methodName):
   )
   return PSet
 
+def makeJetSVInfo(source = 'wCandsJets'):
+    jetSVInfo = cms.PSet(
+ # Jet b Tagging
+    J1_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[0],
+    J2_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[1],
+    J3_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[2],
+    J4_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[3],
+    J1_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[0],
+    J2_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[1],
+    J3_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[2],
+    J4_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[3],
+    J1_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[0],
+    J2_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[1],
+    J3_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[2],
+    J4_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[3],
+    J1_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[0],
+    J2_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[1],
+    J3_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[2],
+    J4_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[3],
+ # from RecoTools/plugins/bTagSFer.h 
+   J1_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[0],
+   J2_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[1],
+   J3_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[2],
+   J4_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[3],
+   J1_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[0],
+   J2_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[1],
+   J3_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[2],
+   J4_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[3],
+   J1_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[0],
+   J2_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[1],
+   J3_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[2],
+   J4_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[3],
+   J1_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[0],
+   J2_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[1],
+   J3_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[2],
+   J4_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[3],
+   J1_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[0],
+   J2_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[1],
+   J3_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[2],
+   J4_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[3],
+
+   J1_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[0],
+   J2_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[1],
+   J3_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[2],
+   J4_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[3],
+   J1_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[0],
+   J2_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[1],
+   J3_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[2],
+   J4_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[3],
+   J1_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[0],
+   J2_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[1],
+   J3_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[2],
+   J4_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[3],
+   J1_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[0],
+   J2_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[1],
+   J3_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[2],
+   J4_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[3],
+   J1_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[0],
+   J2_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[1],
+   J3_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[2],
+   J4_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[3],
+
+# from RecoTools/plugins/PATSSVJetEmbedder.h 
+    J1_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[0],
+    J2_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[1],
+    J3_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[2],
+    J4_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[3],
+    J1_pt_SSV = makeJetUserFloat('pt_SSV','',source)[0],  
+    J2_pt_SSV = makeJetUserFloat('pt_SSV','',source)[1],
+    J3_pt_SSV = makeJetUserFloat('pt_SSV','',source)[2],
+    J4_pt_SSV = makeJetUserFloat('pt_SSV','',source)[3],
+    J1_eta_SSV = makeJetUserFloat('eta_SSV','',source)[0],  
+    J2_eta_SSV = makeJetUserFloat('eta_SSV','',source)[1],
+    J3_eta_SSV = makeJetUserFloat('eta_SSV','',source)[2],
+    J4_eta_SSV = makeJetUserFloat('eta_SSV','',source)[3],
+    J1_phi_SSV = makeJetUserFloat('phi_SSV','',source)[0],  
+    J2_phi_SSV = makeJetUserFloat('phi_SSV','',source)[1],
+    J3_phi_SSV = makeJetUserFloat('phi_SSV','',source)[2],
+    J4_phi_SSV = makeJetUserFloat('phi_SSV','',source)[3],
+    J1_mass_SSV = makeJetUserFloat('mass_SSV','',source)[0], # formerly J1SVMassb
+    J2_mass_SSV = makeJetUserFloat('mass_SSV','',source)[1],
+    J3_mass_SSV = makeJetUserFloat('mass_SSV','',source)[2],
+    J4_mass_SSV = makeJetUserFloat('mass_SSV','',source)[3],
+    J1_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[0],  
+    J2_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[1],
+    J3_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[2],
+    J4_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[3],
+
+# from RecoTools/plugins/PATCSVVertex.cc
+    J1_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[0],
+    J2_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[1],
+    J3_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[2],
+    J4_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[3],
+    J1_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[0],
+    J2_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[1],
+    J3_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[2],
+    J4_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[3],
+    J1_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[0],
+    J2_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[1],
+    J3_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[2],
+    J4_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[3],
+    J1_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[0],
+    J2_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[1],
+    J3_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[2],
+    J4_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[3],
+    J1_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[0],
+    J2_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[1],
+    J3_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[2],
+    J4_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[3],
+    J1_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[0],
+    J2_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[1],
+    J3_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[2],
+    J4_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[3],
+    J1_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[0],
+    J2_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[1],
+    J3_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[2],
+    J4_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[3],
+    )
+    return jetSVInfo
+
+
 def makeJetIDInfo(source = 'wCandsJets'):
    jetIDInfo = cms.PSet( 
+    
+     # variables going in to Jet ID  https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetID#Documentation
+    #J1_jetID_neutHadEnFr = makeJetStringName("jetID_neutHadEnFr","neutralHadronEnergyFraction()",xn='',source='wCandsJets')[0],
+    #J1_jetID_neutEmEnFr  = makeJetStringName("jetID_neutEmEnFr","neutralEmEnergyFraction()",xn='',source='wCandsJets')[0],
+    #J1_jetID_nrPFConstit = makeJetStringName("jetID_nrPFConstit","getPFConstituents().size()",xn='',source='wCandsJets')[0],
+    #J1_jetID_chHadEnFr   = makeJetStringName("jetID_chHadEnFr","chargedHadronEnergyFraction()",xn='',source='wCandsJets')[0],
+    #J1_jetID_chHadMult   = makeJetStringName("jetID_chHadMult","chargedHadronMultiplicity()",xn='',source='wCandsJets')[0],
+    #J1_jetID_chMult      = makeJetStringName("jetID_chMult","chargedMultiplicity()",xn='',source='wCandsJets')[0],
+    #J1_jetID_chEmEnFr    = makeJetStringName("jetID_chEmEnFr","chargedEmEnergyFraction()",xn='',source='wCandsJets')[0],
+    #J2_jetID_neutHadEnFr = makeJetStringName("jetID_neutHadEnFr","neutralHadronEnergyFraction()",xn='',source='wCandsJets')[1],
+    #J2_jetID_neutEmEnFr  = makeJetStringName("jetID_neutEmEnFr","neutralEmEnergyFraction()",xn='',source='wCandsJets')[1],
+    #J2_jetID_nrPFConstit = makeJetStringName("jetID_nrPFConstit","getPFConstituents().size()",xn='',source='wCandsJets')[1],
+    #J2_jetID_chHadEnFr   = makeJetStringName("jetID_chHadEnFr","chargedHadronEnergyFraction()",xn='',source='wCandsJets')[1],
+    #J2_jetID_chHadMult   = makeJetStringName("jetID_chHadMult","chargedHadronMultiplicity()",xn='',source='wCandsJets')[1],
+    #J2_jetID_chMult      = makeJetStringName("jetID_chMult","chargedMultiplicity()",xn='',source='wCandsJets')[1],
+    #J2_jetID_chEmEnFr    = makeJetStringName("jetID_chEmEnFr","chargedEmEnergyFraction()",xn='',source='wCandsJets')[1],
+    #J3_jetID_neutHadEnFr = makeJetStringName("jetID_neutHadEnFr","neutralHadronEnergyFraction()",xn='',source='wCandsJets')[2],
+    #J3_jetID_neutEmEnFr  = makeJetStringName("jetID_neutEmEnFr","neutralEmEnergyFraction()",xn='',source='wCandsJets')[2],
+    #J3_jetID_nrPFConstit = makeJetStringName("jetID_nrPFConstit","getPFConstituents().size()",xn='',source='wCandsJets')[2],
+    #J3_jetID_chHadEnFr   = makeJetStringName("jetID_chHadEnFr","chargedHadronEnergyFraction()",xn='',source='wCandsJets')[2],
+    #J3_jetID_chHadMult   = makeJetStringName("jetID_chHadMult","chargedHadronMultiplicity()",xn='',source='wCandsJets')[2],
+    #J3_jetID_chMult      = makeJetStringName("jetID_chMult","chargedMultiplicity()",xn='',source='wCandsJets')[2],
+    #J3_jetID_chEmEnFr    = makeJetStringName("jetID_chEmEnFr","chargedEmEnergyFraction()",xn='',source='wCandsJets')[2],
+    #J4_jetID_neutHadEnFr = makeJetStringName("jetID_neutHadEnFr","neutralHadronEnergyFraction()",xn='',source='wCandsJets')[3],
+    #J4_jetID_neutEmEnFr  = makeJetStringName("jetID_neutEmEnFr","neutralEmEnergyFraction()",xn='',source='wCandsJets')[3],
+    #J4_jetID_nrPFConstit = makeJetStringName("jetID_nrPFConstit","getPFConstituents().size()",xn='',source='wCandsJets')[3],
+    #J4_jetID_chHadEnFr   = makeJetStringName("jetID_chHadEnFr","chargedHadronEnergyFraction()",xn='',source='wCandsJets')[3],
+    #J4_jetID_chHadMult   = makeJetStringName("jetID_chHadMult","chargedHadronMultiplicity()",xn='',source='wCandsJets')[3],
+    #J4_jetID_chMult      = makeJetStringName("jetID_chMult","chargedMultiplicity()",xn='',source='wCandsJets')[3],
+    #J4_jetID_chEmEnFr    = makeJetStringName("jetID_chEmEnFr","chargedEmEnergyFraction()",xn='',source='wCandsJets')[3],
+
     # Jet ID and Pu ID
     J1_idTightJet = makeJetUserFloat('idTight','Jet',source)[0], 
     J2_idTightJet = makeJetUserFloat('idTight','Jet',source)[1], 
@@ -216,234 +380,48 @@ def makeJetIDInfo(source = 'wCandsJets'):
 def makeJetCorrectionInfo():
     # Jets at Various Levels of Correction from RecoTools/plugins/PATJetOverloader.h
    jetCorrectionInfo = cms.PSet(
-    J1_pt_L1  = makeJetUserFloat('pt_L1')[0],
+    J1_pt_L1 = makeJetUserFloat('pt_L1')[0],
     J1_eta_L1 = makeJetUserFloat('eta_L1')[0],
     J1_phi_L1 = makeJetUserFloat('phi_L1')[0],
-    J1_pt_L2  = makeJetUserFloat('pt_L2')[0],
+    J1_pt_L2 = makeJetUserFloat('pt_L2')[0],
     J1_eta_L2 = makeJetUserFloat('eta_L2')[0],
     J1_phi_L2 = makeJetUserFloat('phi_L2')[0],
-    J1_pt_L3  = makeJetUserFloat('pt_L3')[0],
+    J1_pt_L3 = makeJetUserFloat('pt_L3')[0],
     J1_eta_L3 = makeJetUserFloat('eta_L3')[0],
     J1_phi_L3 = makeJetUserFloat('phi_L3')[0],
     J1_pt_L23 = makeJetUserFloat('pt_L23')[0],
-    J2_pt_L1  = makeJetUserFloat('pt_L1')[1],
+    J2_pt_L1 = makeJetUserFloat('pt_L1')[1],
     J2_eta_L1 = makeJetUserFloat('eta_L1')[1],
     J2_phi_L1 = makeJetUserFloat('phi_L1')[1],
-    J2_pt_L2  = makeJetUserFloat('pt_L2')[1],
+    J2_pt_L2 = makeJetUserFloat('pt_L2')[1],
     J2_eta_L2 = makeJetUserFloat('eta_L2')[1],
     J2_phi_L2 = makeJetUserFloat('phi_L2')[1],
-    J2_pt_L3  = makeJetUserFloat('pt_L3')[1],
+    J2_pt_L3 = makeJetUserFloat('pt_L3')[1],
     J2_eta_L3 = makeJetUserFloat('eta_L3')[1],
     J2_phi_L3 = makeJetUserFloat('phi_L3')[1],
     J2_pt_L23 = makeJetUserFloat('pt_L23')[1],
-    J3_pt_L1  = makeJetUserFloat('pt_L1')[2],
+    J3_pt_L1 = makeJetUserFloat('pt_L1')[2],
     J3_eta_L1 = makeJetUserFloat('eta_L1')[2],
     J3_phi_L1 = makeJetUserFloat('phi_L1')[2],
-    J3_pt_L2  = makeJetUserFloat('pt_L2')[2],
+    J3_pt_L2 = makeJetUserFloat('pt_L2')[2],
     J3_eta_L2 = makeJetUserFloat('eta_L2')[2],
     J3_phi_L2 = makeJetUserFloat('phi_L2')[2],
-    J3_pt_L3  = makeJetUserFloat('pt_L3')[2],
+    J3_pt_L3 = makeJetUserFloat('pt_L3')[2],
     J3_eta_L3 = makeJetUserFloat('eta_L3')[2],
     J3_phi_L3 = makeJetUserFloat('phi_L3')[2],
     J3_pt_L23 = makeJetUserFloat('pt_L23')[2],
-    J4_pt_L1  = makeJetUserFloat('pt_L1')[3],
+    J4_pt_L1 = makeJetUserFloat('pt_L1')[3],
     J4_eta_L1 = makeJetUserFloat('eta_L1')[3],
     J4_phi_L1 = makeJetUserFloat('phi_L1')[3],
-    J4_pt_L2  = makeJetUserFloat('pt_L2')[3],
+    J4_pt_L2 = makeJetUserFloat('pt_L2')[3],
     J4_eta_L2 = makeJetUserFloat('eta_L2')[3],
     J4_phi_L2 = makeJetUserFloat('phi_L2')[3],
-    J4_pt_L3  = makeJetUserFloat('pt_L3')[3],
+    J4_pt_L3 = makeJetUserFloat('pt_L3')[3],
     J4_eta_L3 = makeJetUserFloat('eta_L3')[3],
     J4_phi_L3 = makeJetUserFloat('phi_L3')[3],
     J4_pt_L23 = makeJetUserFloat('pt_L23')[3],
    )
    return jetCorrectionInfo
-
-def makeBTagSFInfo(source='wCandsJets'):
-  BTagSFInfo = cms.PSet(
-    # from RecoTools/plugins/SVFinder.h
-    # be careful since these are computed for all jets
-    # not just those which are bTagged
-    J1_CSVT_error = makeJetUserFloat('CSVT_error','',source)[0],
-    J2_CSVT_error = makeJetUserFloat('CSVT_error','',source)[1],
-    J1_CSVM_error = makeJetUserFloat('CSVM_error','',source)[0],
-    J2_CSVM_error = makeJetUserFloat('CSVM_error','',source)[1],
-    J1_CSVL_error = makeJetUserFloat('CSVL_error','',source)[0],
-    J2_CSVL_error = makeJetUserFloat('CSVL_error','',source)[1],
-    J1_CSVT_SF = makeJetUserFloat('CSVT_SF','',source)[0],
-    J2_CSVT_SF = makeJetUserFloat('CSVT_SF','',source)[1],
-    J1_CSVM_SF = makeJetUserFloat('CSVM_SF','',source)[0],
-    J2_CSVM_SF = makeJetUserFloat('CSVM_SF','',source)[1],
-    J1_CSVL_SF = makeJetUserFloat('CSVL_SF','',source)[0],
-    J2_CSVL_SF = makeJetUserFloat('CSVL_SF','',source)[1],
- 
- 
-    # from RecoTools/interface/CompositePtrCandidateTMEtAlgorithm.h
-#    EffWEIGHTCSVL = makeMuNu("EffWEIGHTCSVL","SFCSVL1",source,True),
-#    EffWEIGHTCSVL2 = makeMuNu("EffWEIGHTCSVL2","SFCSVL2",source,True),
-#    EffWEIGHTCSVM = makeMuNu("EffWEIGHTCSVM","SFCSVM1",source,True),
-#    EffWEIGHTCSVM2 = makeMuNu("EffWEIGHTCSVM2","SFCSVM2",source,True),
-#    EffWEIGHTCSVT = makeMuNu("EffWEIGHTCSVT","SFCSVT1",source,True),
-#    EffWEIGHTCSVT2 = makeMuNu("EffWEIGHTCSVT2","SFCSVT2",source,True),
-    EffWEIGHTSSVHEM = makeMuNu("EffWEIGHTSSVHEM","SFSSVHE1",source,True),
-    EffWEIGHTSSVHEM2 = makeMuNu("EffWEIGHTSSVHEM2","SFSSVHE2",source,True),
-    weightEtaMuonIso = makeMuNu("weightEtaMuonIso","EffWEIGHTeta_IS",source,True),
-    weightEtaMuonID = makeMuNu("weightEtaMuonID","EffWEIGHTeta_ID",source,True),
-    weightEtaMuonTrig = makeMuNu("weightEtaMuonTrig","EffWEIGHTeta_TR",source,True),
-  )
-  return BTagSFInfo
-
-def makeSVInfo(source='wCandsJets'):
-  SVInfo = cms.PSet(
-
-#    J1_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[0],
-#    J2_massBpmElecs = makeJetUserFloat('massBpmElecs','',source)[1],
-#    J1_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[0],
-#    J2_sec_massBpm = makeJetUserFloat('sec_massBpm','',source)[1],
-#    J1_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[0],
-#    J2_sec_massBpm_charge = makeJetUserFloat('sec_massBpm_charge','',source)[1],
-#    J1_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[0],
-#    J2_sec_massD0 = makeJetUserFloat('sec_massD0','',source)[1],
-#    J1_massD0 = makeJetUserFloat('massD0','',source)[0],
-#    J2_massD0 = makeJetUserFloat('massD0','',source)[1],
-#    J1_massBpm = makeJetUserFloat('massBpm','',source)[0],
-#    J2_massBpm = makeJetUserFloat('massBpm','',source)[1],
-#    J1_massBpm2 = makeJetUserFloat('massBpm2','',source)[0],
-#    J2_massBpm2 = makeJetUserFloat('massBpm2','',source)[1],
-#    J1_massDpm = makeJetUserFloat('massDpm','',source)[0],
-#    J2_massDpm = makeJetUserFloat('massDpm','',source)[1],
-
-    # From RecoTools/plugins/PATCSVVertex.cc
-    J1_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[0],
-    J2_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[1],
-    J1_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[0],
-    J2_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[1],
-    J1_mass_SV_weighted   = makeJetUserFloat('mass_SV_weighted','',source)[0],
-    J2_mass_SV_weighted   = makeJetUserFloat('mass_SV_weighted','',source)[1],
-    J1_pt_SV_unweighted   = makeJetUserFloat('pt_SV_unweighted','',source)[0],
-    J2_pt_SV_unweighted   = makeJetUserFloat('pt_SV_unweighted','',source)[1],
-    J1_pt_SV_weighted     = makeJetUserFloat('pt_SV_weighted','',source)[0],
-    J2_pt_SV_weighted     = makeJetUserFloat('pt_SV_weighted','',source)[1],
-    J1_normChi2_SV        = makeJetUserFloat('normChi2_SV','',source)[0],
-    J2_normChi2_SV        = makeJetUserFloat('normChi2_SV','',source)[1],
-    J1_sumOfWeights_SV    = makeJetUserFloat('sumOfWeights_SV','',source)[0],
-    J2_sumOfWeights_SV    = makeJetUserFloat('sumOfWeights_SV','',source)[1],
-    J1_nTracks_SV         = makeJetUserFloat('nTracks_SV','',source)[0],
-    J2_nTracks_SV         = makeJetUserFloat('nTracks_SV','',source)[1],
-
-    # from RecoTools/plugins/PATSSVJetEmbedder.h
-    J1_flightDistance = makeJetUserFloat('flightDistance','',source)[0],
-    J2_flightDistance = makeJetUserFloat('flightDistance','',source)[1],
-    J1_flightDistanceError = makeJetUserFloat('flightDistanceError','',source)[0],
-    J2_flightDistanceError = makeJetUserFloat('flightDistanceError','',source)[1],
-    J1_pt_SSV       = makeJetUserFloat('pt_SSV','',source)[0],  
-    J2_pt_SSV       = makeJetUserFloat('pt_SSV','',source)[1],
-    J3_pt_SSV       = makeJetUserFloat('pt_SSV','',source)[2],
-    J4_pt_SSV       = makeJetUserFloat('pt_SSV','',source)[3],
-    J1_eta_SSV      = makeJetUserFloat('eta_SSV','',source)[0],  
-    J2_eta_SSV      = makeJetUserFloat('eta_SSV','',source)[1],
-    J3_eta_SSV      = makeJetUserFloat('eta_SSV','',source)[2],
-    J4_eta_SSV      = makeJetUserFloat('eta_SSV','',source)[3],
-    J1_phi_SSV      = makeJetUserFloat('phi_SSV','',source)[0],  
-    J2_phi_SSV      = makeJetUserFloat('phi_SSV','',source)[1],
-    J3_phi_SSV      = makeJetUserFloat('phi_SSV','',source)[2],
-    J4_phi_SSV      = makeJetUserFloat('phi_SSV','',source)[3],
-    J1_mass_SSV     = makeJetUserFloat('mass_SSV','',source)[0], # formerly J1SVMassb
-    J2_mass_SSV     = makeJetUserFloat('mass_SSV','',source)[1],
-    J3_mass_SSV     = makeJetUserFloat('mass_SSV','',source)[2],
-    J4_mass_SSV     = makeJetUserFloat('mass_SSV','',source)[3],
-    J1_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[0],  
-    J2_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[1],
-    J3_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[2],
-    J4_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[3],
-    # track 1
-    J1_px_SSV_track1     = makeJetUserFloat('px_SSV_track1','',source)[0],
-    J2_px_SSV_track1     = makeJetUserFloat('px_SSV_track1','',source)[1],
-    J3_px_SSV_track1     = makeJetUserFloat('px_SSV_track1','',source)[2],
-    J4_px_SSV_track1     = makeJetUserFloat('px_SSV_track1','',source)[3],
-    J1_py_SSV_track1     = makeJetUserFloat('py_SSV_track1','',source)[0],
-    J2_py_SSV_track1     = makeJetUserFloat('py_SSV_track1','',source)[1],
-    J3_py_SSV_track1     = makeJetUserFloat('py_SSV_track1','',source)[2],
-    J4_py_SSV_track1     = makeJetUserFloat('py_SSV_track1','',source)[3],
-    J1_pz_SSV_track1     = makeJetUserFloat('pz_SSV_track1','',source)[0],
-    J2_pz_SSV_track1     = makeJetUserFloat('pz_SSV_track1','',source)[1],
-    J3_pz_SSV_track1     = makeJetUserFloat('pz_SSV_track1','',source)[2],
-    J4_pz_SSV_track1     = makeJetUserFloat('pz_SSV_track1','',source)[3],
-    J1_charge_SSV_track1 = makeJetUserFloat('charge_SSV_track1','',source)[0],
-    J2_charge_SSV_track1 = makeJetUserFloat('charge_SSV_track1','',source)[1],
-    J3_charge_SSV_track1 = makeJetUserFloat('charge_SSV_track1','',source)[2],
-    J4_charge_SSV_track1 = makeJetUserFloat('charge_SSV_track1','',source)[3],
-    # track 2
-    J1_px_SSV_track2     = makeJetUserFloat('px_SSV_track2','',source)[0],
-    J2_px_SSV_track2     = makeJetUserFloat('px_SSV_track2','',source)[1],
-    J3_px_SSV_track2     = makeJetUserFloat('px_SSV_track2','',source)[2],
-    J4_px_SSV_track2     = makeJetUserFloat('px_SSV_track2','',source)[3],
-    J1_py_SSV_track2     = makeJetUserFloat('py_SSV_track2','',source)[0],
-    J2_py_SSV_track2     = makeJetUserFloat('py_SSV_track2','',source)[1],
-    J3_py_SSV_track2     = makeJetUserFloat('py_SSV_track2','',source)[2],
-    J4_py_SSV_track2     = makeJetUserFloat('py_SSV_track2','',source)[3],
-    J1_pz_SSV_track2     = makeJetUserFloat('pz_SSV_track2','',source)[0],
-    J2_pz_SSV_track2     = makeJetUserFloat('pz_SSV_track2','',source)[1],
-    J3_pz_SSV_track2     = makeJetUserFloat('pz_SSV_track2','',source)[2],
-    J4_pz_SSV_track2     = makeJetUserFloat('pz_SSV_track2','',source)[3],
-    J1_charge_SSV_track2 = makeJetUserFloat('charge_SSV_track2','',source)[0],
-    J2_charge_SSV_track2 = makeJetUserFloat('charge_SSV_track2','',source)[1],
-    J3_charge_SSV_track2 = makeJetUserFloat('charge_SSV_track2','',source)[2],
-    J4_charge_SSV_track2 = makeJetUserFloat('charge_SSV_track2','',source)[3],
-    # track 3
-    J1_px_SSV_track3     = makeJetUserFloat('px_SSV_track3','',source)[0],
-    J2_px_SSV_track3     = makeJetUserFloat('px_SSV_track3','',source)[1],
-    J3_px_SSV_track3     = makeJetUserFloat('px_SSV_track3','',source)[2],
-    J4_px_SSV_track3     = makeJetUserFloat('px_SSV_track3','',source)[3],
-    J1_py_SSV_track3     = makeJetUserFloat('py_SSV_track3','',source)[0],
-    J2_py_SSV_track3     = makeJetUserFloat('py_SSV_track3','',source)[1],
-    J3_py_SSV_track3     = makeJetUserFloat('py_SSV_track3','',source)[2],
-    J4_py_SSV_track3     = makeJetUserFloat('py_SSV_track3','',source)[3],
-    J1_pz_SSV_track3     = makeJetUserFloat('pz_SSV_track3','',source)[0],
-    J2_pz_SSV_track3     = makeJetUserFloat('pz_SSV_track3','',source)[1],
-    J3_pz_SSV_track3     = makeJetUserFloat('pz_SSV_track3','',source)[2],
-    J4_pz_SSV_track3     = makeJetUserFloat('pz_SSV_track3','',source)[3],
-    J1_charge_SSV_track3 = makeJetUserFloat('charge_SSV_track3','',source)[0],
-    J2_charge_SSV_track3 = makeJetUserFloat('charge_SSV_track3','',source)[1],
-    J3_charge_SSV_track3 = makeJetUserFloat('charge_SSV_track3','',source)[2],
-    J4_charge_SSV_track3 = makeJetUserFloat('charge_SSV_track3','',source)[3],
-  )
-  return SVInfo
-
-
-def makePVInfo(source='wCandsJets'):
-  PVInfo = cms.PSet(
-    # PV info from RecoTools/plugins/PATJetOverloader.h
-    J1_pt_PV    = makeJetUserFloat('pt_PV','',source)[0],  
-    J2_pt_PV    = makeJetUserFloat('pt_PV','',source)[1],
-    J3_pt_PV    = makeJetUserFloat('pt_PV','',source)[2],
-    J4_pt_PV    = makeJetUserFloat('pt_PV','',source)[3],
-    J1_eta_PV   = makeJetUserFloat('eta_PV','',source)[0],  
-    J2_eta_PV   = makeJetUserFloat('eta_PV','',source)[1],
-    J3_eta_PV   = makeJetUserFloat('eta_PV','',source)[2],
-    J4_eta_PV   = makeJetUserFloat('eta_PV','',source)[3],
-    J1_phi_PV   = makeJetUserFloat('phi_PV','',source)[0],  
-    J2_phi_PV   = makeJetUserFloat('phi_PV','',source)[1],
-    J3_phi_PV   = makeJetUserFloat('phi_PV','',source)[2],
-    J4_phi_PV   = makeJetUserFloat('phi_PV','',source)[3],
-    J1_mass_PV  = makeJetUserFloat('mass_PV','',source)[0], 
-    J2_mass_PV  = makeJetUserFloat('mass_PV','',source)[1],
-    J3_mass_PV  = makeJetUserFloat('mass_PV','',source)[2],
-    J4_mass_PV  = makeJetUserFloat('mass_PV','',source)[3],
-    J1_ptRMS_PV = makeJetUserFloat('ptRMS_PV','',source)[0],
-    J2_ptRMS_PV = makeJetUserFloat('ptRMS_PV','',source)[1],
-    J3_ptRMS_PV = makeJetUserFloat('ptRMS_PV','',source)[2],
-    J4_ptRMS_PV = makeJetUserFloat('ptRMS_PV','',source)[3],
-    J1_DR_PV_jet = makeJetUserFloat('DR_PV_jet','',source)[0],
-    J2_DR_PV_jet = makeJetUserFloat('DR_PV_jet','',source)[1],
-    J3_DR_PV_jet = makeJetUserFloat('DR_PV_jet','',source)[2],
-    J4_DR_PV_jet = makeJetUserFloat('DR_PV_jet','',source)[3],
-    J1_dxy_track = makeJetUserFloat('dxy_track','',source)[0],
-    J2_dxy_track = makeJetUserFloat('dxy_track','',source)[1],
-    J1_dz_track = makeJetUserFloat('dz_track','',source)[0],
-    J2_dz_track = makeJetUserFloat('dz_track','',source)[1],
-  )
-  return PVInfo
 
 
 def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = 'weCandsJets', sourceEle="selectedPatElectrons"):
@@ -466,6 +444,34 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     ),
 
 
+    J1_flightDistance = makeJetUserFloat('flightDistance','',source)[0],
+    J2_flightDistance = makeJetUserFloat('flightDistance','',source)[1],
+    J1_errorFlightDistance = makeJetUserFloat('errorFlightDistance','',source)[0],
+    J2_errorFlightDistance = makeJetUserFloat('errorFlightDistance','',source)[1],
+    J1_DR = makeJetUserFloat('DR','',source)[0],
+    J2_DR = makeJetUserFloat('DR','',source)[1],
+    J1_ptRMS = makeJetUserFloat('ptRMS','',source)[0],
+    J2_ptRMS = makeJetUserFloat('ptRMS','',source)[1],
+    J1_dxy = makeJetUserFloat('dxy','_track',source)[0],
+    J2_dxy = makeJetUserFloat('dxy','_track',source)[1],
+    J1_dz = makeJetUserFloat('dz','_track',source)[0],
+    J2_dz = makeJetUserFloat('dz','_track',source)[1],
+    J1_pt_PV = makeJetUserFloat('pt_PV','',source)[0],  
+    J2_pt_PV = makeJetUserFloat('pt_PV','',source)[1],
+    J3_pt_PV = makeJetUserFloat('pt_PV','',source)[2],
+    J4_pt_PV = makeJetUserFloat('pt_PV','',source)[3],
+    J1_eta_PV = makeJetUserFloat('eta_PV','',source)[0],  
+    J2_eta_PV = makeJetUserFloat('eta_PV','',source)[1],
+    J3_eta_PV = makeJetUserFloat('eta_PV','',source)[2],
+    J4_eta_PV = makeJetUserFloat('eta_PV','',source)[3],
+    J1_phi_PV = makeJetUserFloat('phi_PV','',source)[0],  
+    J2_phi_PV = makeJetUserFloat('phi_PV','',source)[1],
+    J3_phi_PV = makeJetUserFloat('phi_PV','',source)[2],
+    J4_phi_PV = makeJetUserFloat('phi_PV','',source)[3],
+    J1_mass_PV = makeJetUserFloat('mass_PV','',source)[0], 
+    J2_mass_PV = makeJetUserFloat('mass_PV','',source)[1],
+    J3_mass_PV = makeJetUserFloat('mass_PV','',source)[2],
+    J4_mass_PV = makeJetUserFloat('mass_PV','',source)[3],
     J1_partonFlavour = makeJetStringPar('partonFlavour','',source)[0],
     J2_partonFlavour = makeJetStringPar('partonFlavour','',source)[1],
     J1_muonMultiplicity = makeJetStringPar('muonMultiplicity','',source)[0],
@@ -507,23 +513,6 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     J2_eta = makeJetStringPar('eta','',source)[1],
     J3_eta = makeJetStringPar('eta','',source)[2],
     J4_eta = makeJetStringPar('eta','',source)[3],
-# Jet b Tagging
-    J1_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[0],
-    J2_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[1],
-    J3_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[2],
-    J4_TCHEbtag = makeJetBTag('TCHEbtag','trackCountingHighEffBJetTags',source)[3],
-    J1_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[0],
-    J2_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[1],
-    J3_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[2],
-    J4_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[3],
-    J1_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[0],
-    J2_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[1],
-    J3_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[2],
-    J4_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[3],
-    J1_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[0],
-    J2_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[1],
-    J3_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[2],
-    J4_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[3],
 
     nJetsPt20 = makeNJets(20,source),
     nJetsPt25 = makeNJets(25,source),
@@ -574,13 +563,26 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     mJJ = makeMuNu("mJJ","mJJ",source,True),
     mJ3J4 = makeMuNu("mJ3J4","mJJ2",source,True),
     ptJJ = makeMuNu("ptJJ","ptJJ",source,True),
-    muon_pt = makeMuNu("muon_pt","lepton().pt",source),
-    muon_eta = makeMuNu("muon_eta","lepton.eta",source),
-    muon_phi = makeMuNu("muon_phi","lepton.phi",source),
-    muon_charge = makeMuNu("muon_charge","lepton.charge()",source),
+
+    muon1_pt = makeMuNu("muon1_pt","lepton().pt",source),
+    muon1_eta = makeMuNu("muon1_eta","lepton.eta",source),
+    muon1_phi = makeMuNu("muon1_phi","lepton.phi",source),
+    muon1_charge = makeMuNu("muon1_charge","lepton.charge()",source),
     Wpt = makeMuNu("Wpt","corPt()",source),
 
-    met = makeMuNu("met","met().pt",source,True),
+    muon_globalMuon = makeMuNu("gloablMuon","isGlobalMuon()",source="wCandsJets"),
+    #muon_PFMuon = makeMuNu("PFMuon","isPFMuon()",source="wCandsJets"),
+    #muon_nChi2 = makeMuNu("nChi2","globalTrack()->normalizedChi2()",source="wCandsJets"),
+    #muon_nValidHits = makeMuNu("nValidHits","globalTrack()->hitPattern().numberOfValidMuonHits()",source="wCandsJets"),
+    #muon_nMatchedStations = makeMuNu("nMatchedStations","numberOfMatchedStations()",source="wCandsJets"),
+    #muon_dxy = makeMuNu("dxy","muonBestTrack()->dxy(vertex->position())",source="wCandsJets"),
+    #muon_dz = makeMuNu("dz","muonBestTrack()->dz(vertex->position())",source="wCandsJets"),
+    #muon_nPixelHits = makeMuNu("nPixelHits","innerTrack()->hitPattern().numberOfValidPixelHits()",source="wCandsJets"),
+    #muon_trackLayers = makeMuNu("trackLayers","track()->hitPattern().trackerLayersWithMeasurement()",source="wCandsJets"),
+
+    met_pt = makeMuNu("met_pt","met().pt",source,True),
+    met_eta = makeMuNu("met_eta","met().eta",source,True),
+    met_phi = makeMuNu("met_phi","met().phi",source,True),
     mt = makeMuNu("mt","mt",source),
     
     metJJ = makeMuNu("metjj","metjj",source),
@@ -589,7 +591,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     muNuRecoil = makeMuNu("muNuRecoil","recoil().pt()",source),
     muNuRelPFIso = makeMuNu("muNuRelPFIso",
      "(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()",source),
-    PFIsoVeto = makeMuNu("PFIsoVeto","lepton.userIso(0)",source),
+#    PFIsoVeto = makeMuNu("PFIsoVeto","lepton.userIso(0)",source),
     PFIsoRho = makeMuNu("PFIsoRho","lepton.userFloat('rho')",source),
     muNuRelStdIso03 = makeMuNu("muNuRelStdIso03",
      "(lepton.isolationR03.sumPt+lepton.isolationR03.emEt+lepton.isolationR03.hadEt)/lepton.pt()",source),
@@ -597,67 +599,71 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
      "(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()",
      source,True),
     ipDXY = makeMuNu("ipDXY","lepton.userFloat('ipDXY')",source,True),
+     #"(lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt - 0.5*lepton.pfIsolationR04().sumPUPt,0.0))/lepton.pt()<0.12" ,
+    muNuRelPFIsoDBAndrea = makeMuNu("muNuRelPFIsoDBAndrea",
+      "((lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt- 0.5*lepton.pfIsolationR04().sumPUPt,0))/lepton.pt)",
+      source,True),
+    muNuRelPFIsoDBAndrea_A= makeMuNu("muNuRelPFIsoDBAndrea_A",
+      "lepton.pfIsolationR04().sumChargedHadronPt",source,True),
+    muNuRelPFIsoDB_A = makeMuNu("muNuRelPFIsoDB_A","lepton.userIso(0)",source, True),
+    muNuRelPFIsoDBAndrea_B= makeMuNu("muNuRelPFIsoDBAndrea_B",
+      "lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt",
+      source,True),
+    muNuRelPFIsoDB_B = makeMuNu("muNuRelPFIsoDB_B",
+      "lepton.photonIso()+lepton.neutralHadronIso()",source,True),
+    muNuRelPFIsoDBAndrea_C= makeMuNu("muNuRelPFIsoDBAndrea_C",
+      "lepton.pfIsolationR04().sumPUPt",source,True),
+    muNuRelPFIsoDB_C = makeMuNu("muNuRelPFIsoDB_C","lepton.puChargedHadronIso",source,True),
 
     dz = makeMuNu("dz",'abs(lepton.userFloat("dz"))',source,True),
     ht = makeMuNu("ht","ht",source,True),
  )
  return commonCollections
 
-def makeBCands():
-  BCands = cms.PSet(
+def addMuNuEventTreePtData(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted'):
+   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
+   eventTree = cms.EDAnalyzer('EventTreeMaker',
+      makeCollections(source,sourceZ),
+      makeJetIDInfo(source = 'wCandsJets'),
+      makeJetCorrectionInfo(),
+      makeJetSVInfo(source='wCandsJets'),
+      coreCollections = cms.VInputTag( cms.InputTag(source) ),
+      J1_eta_L23 = makeJetUserFloat('eta_L23')[0],
+      J1_phi_L23 = makeJetUserFloat('phi_L23')[0],
+      J2_eta_L23 = makeJetUserFloat('eta_L23')[1],
+      J2_phi_L23 = makeJetUserFloat('phi_L23')[1],
+      J3_eta_L23 = makeJetUserFloat('eta_L23')[2],
+      J3_phi_L23 = makeJetUserFloat('phi_L23')[2],
+      J4_eta_L23 = makeJetUserFloat('eta_L23')[3],
+      J4_phi_L23 = makeJetUserFloat('phi_L23')[3]
+   )
+   setattr(process, name, eventTree)
+   p = cms.Path(getattr(process,name))
+   setattr(process, name+'Path', p)
+
+def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted',lhep="externalLHEProducer"):
+   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
+   eventTree = cms.EDAnalyzer('EventTreeMaker',
+      makeCollections(source,sourceZ),
+      makeJetIDInfo(source = 'wCandsJets'),
+      makeJetCorrectionInfo(),
+      makeJetSVInfo(source='wCandsJets'),
+      coreCollections = cms.VInputTag(
+           cms.InputTag(source)
+      ),
+      topweight= cms.PSet(
+           pluginType = cms.string("TopWeight"),
+           src = cms.InputTag("genParticles")
+      ),
+      muNuLHEProduct = cms.PSet(
+          pluginType = cms.string("LHEProductFiller"),
+          src = cms.InputTag(lhep), 
+          tag = cms.string("LHEProduct"),
+      ),
       bHadronsPt = makeSimBHad("bhadrons","bHadronsPt","pt"),
       bHadronsEta = makeSimBHad("bhadrons","bHadronsEta","eta"),
       bHadronsPhi = makeSimBHad("bhadrons","bHadronsPhi","phi"),
-
-      bCandidate1Pt = makeIVFBs("bCandidate1Pt","BC1PT"),
-      bCandidate2Pt = makeIVFBs("bCandidate2Pt","BC2PT"),
-      bCandidate1Eta = makeIVFBs("bCandidate1Eta","BC1ETA"),
-      bCandidate2Eta = makeIVFBs("bCandidate2Eta","BC2ETA"),
-      bCandidate1Phi = makeIVFBs("bCandidate1Phi","BC1PHI"),
-      bCandidate2Phi = makeIVFBs("bCandidate2Phi","BC2PHI"),
-      bCandidateDeltaR = makeIVFBs("bCandidateDeltaR","BCDeltaR"),
-      bCandidateDeltaPhi = makeIVFBs("bCandidateDeltaPhi","BDeltaPHI"),
-      bCandidateBC1nTracks = makeIVFBs("bCandidateBC1nTracks","BC1nTracks"),
-      bCandidateBC2nTracks = makeIVFBs("bCandidateBC2nTracks","BC2nTracks"),
-      bCandidateBCEnergySum = makeIVFBs("bCandidateBCEnergySum","BCEnergySum"),
-      bCandidatenJetAssociatedToBC1 = makeIVFBs("bCandidatenJetAssociatedToBC1","nJetAssociatedToBC1"),
-      bCandidatenJetAssociatedToBC2 = makeIVFBs("bCandidatenJetAssociatedToBC2","nJetAssociatedToBC2"),
-      bCandidateJet1BC1PT = makeIVFBs("bCandidateJet1BC1PT","Jet1BC1PT"),
-      bCandidateJet2BC1PT = makeIVFBs("bCandidateJet2BC1PT","Jet2BC1PT"),
-      bCandidateJet3BC1PT = makeIVFBs("bCandidateJet3BC1PT)","Jet3BC1PT"),
-      bCandidateJet4BC1PT = makeIVFBs("bCandidateJet4BC1PT","Jet4BC1PT"),
-      bCandidateJet1BC1ETA = makeIVFBs("bCandidateJet1BC1ETA","Jet1BC1ETA"),
-      bCandidateJet2BC1ETA = makeIVFBs("bCandidateJet2BC1ETA","Jet2BC1ETA"),
-      bCandidateJet3BC1ETA = makeIVFBs("bCandidateJet3BC1ETA","Jet3BC1ETA"),
-      bCandidateJet4BC1ETA = makeIVFBs("bCandidateJet4BC1ETA","Jet4BC1ETA"),
-      bCandidateJet1BC1PHI = makeIVFBs("bCandidateJet1BC1PHI","Jet1BC1PHI"),
-      bCandidateJet2BC1PHI = makeIVFBs("bCandidateJet2BC1PHI","Jet2BC1PHI"),
-      bCandidateJet3BC1PHI = makeIVFBs("bCandidateJet3BC1PHI","Jet3BC1PHI"),
-      bCandidateJet4BC1PHI = makeIVFBs("bCandidateJet4BC1PHI","Jet4BC1PHI"),
-      bCandidateJet1BC2PT = makeIVFBs("bCandidateJet1BC2PT","Jet1BC2PT"),
-      bCandidateJet2BC2PT = makeIVFBs("bCandidateJet2BC2PT","Jet2BC2PT"),
-      bCandidateJet3BC2PT = makeIVFBs("bCandidateJet3BC2PT","Jet3BC2PT"),
-      bCandidateJet4BC2PT = makeIVFBs("bCandidateJet4BC2PT","Jet4BC2PT"),
-      bCandidateJet1BC2ETA = makeIVFBs("bCandidateJet1BC2ETA","Jet1BC2ETA"),
-      bCandidateJet2BC2ETA = makeIVFBs("bCandidateJet2BC2ETA","Jet2BC2ETA"),
-      bCandidateJet3BC2ETA = makeIVFBs("bCandidateJet3BC2ETA","Jet3BC2ETA"),
-      bCandidateJet4BC2ETA = makeIVFBs("bCandidateJet4BC2ETA","Jet4BC2ETA"),
-      bCandidateJet1BC2PHI = makeIVFBs("bCandidateJet1BC2PHI","Jet1BC2PHI"),
-      bCandidateJet2BC2PHI = makeIVFBs("bCandidateJet2BC2PHI","Jet2BC2PHI"),
-      bCandidateJet3BC2PHI = makeIVFBs("bCandidateJet3BC2PHI","Jet3BC2PHI"),
-      bCandidateJet4BC2PHI = makeIVFBs("bCandidateJet4BC2PHI","Jet4BC2PHI"),
-      bCandidateBCDeltaR = makeIVFBs("bCandidateBCDeltaR","BCDeltaR"),
-      bCandidateBDeltaPHI = makeIVFBs("bCandidateBDeltaPHI","BDeltaPHI"),
-      bCandidateBC1MASS = makeIVFBs("bCandidateBC1MASS","BC1MASS"),
-      bCandidateBC2MASS = makeIVFBs("bCandidateBC2MASS","BC2MASS"),
-
-      nbHadrons = makeCollSize("bhadrons","nbHadrons"),
-  ) 
-  return BCands
   
-
-def makeSmearedJet(source='wCandsJets'): 
-  smearedJet = cms.PSet(
       # Jet pT Reco + Gen from RecoTools/plugins/PATJetSmearer.h
       J1_pt_gen = makeJetUserFloat('pt_gen')[0],
       J1_pt_gen_two = makeJetUserFloat('pt_gen_two')[0],
@@ -679,47 +685,17 @@ def makeSmearedJet(source='wCandsJets'):
       J4_pt_uncorr = makeJetUserFloat('pt_uncorr','',source)[3], 
       J4_pt_smearedUp = makeJetUserFloat('pt_smearedUp','',source)[3], 
       J4_pt_smearedDown = makeJetUserFloat('pt_smearedDown','',source)[3], 
-  )
-  return smearedJet
 
-def addMuNuEventTreePtData(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted'):
-   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
-   eventTree = cms.EDAnalyzer('EventTreeMaker',
-      makeCollections(source,sourceZ),
-      makeJetIDInfo(source = 'wCandsJets'),
-      makeJetCorrectionInfo(),
-      makeSVInfo(),
-      makePVInfo(),
-      coreCollections = cms.VInputTag( cms.InputTag(source) ),
-   )
-   setattr(process, name, eventTree)
-   p = cms.Path(getattr(process,name))
-   setattr(process, name+'Path', p)
+      bCandidate1Pt = makeIVFBs("bCandidate1Pt","BC1PT"),
+      bCandidate2Pt = makeIVFBs("bCandidate2Pt","BC2PT"),
+      bCandidate1Eta = makeIVFBs("bCandidate1Eta","BC1ETA"),
+      bCandidate2Eta = makeIVFBs("bCandidate2Eta","BC2ETA"),
+      bCandidate1Phi = makeIVFBs("bCandidate1Phi","BC1PHI"),
+      bCandidate2Phi = makeIVFBs("bCandidate2Phi","BC2PHI"),
+      bCandidateDeltaR = makeIVFBs("bCandidateDeltaR","BCDeltaR"),
+      bCandidateDeltaPhi = makeIVFBs("bCandidateDeltaPhi","BDeltaPHI"),
 
-def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSorted',lhep="externalLHEProducer"):
-   process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
-   eventTree = cms.EDAnalyzer('EventTreeMaker',
-      makeCollections(source,sourceZ),
-      makeJetIDInfo(source = 'wCandsJets'),
-      makeJetCorrectionInfo(),
-      makeSVInfo(),
-      makePVInfo(),
-      makeBTagSFInfo(),
-      makeBCands(),
-      makeSmearedJet(),
-      coreCollections = cms.VInputTag(
-           cms.InputTag(source)
-      ),
-      topweight= cms.PSet(
-           pluginType = cms.string("TopWeight"),
-           src = cms.InputTag("genParticles")
-      ),
-      muNuLHEProduct = cms.PSet(
-          pluginType = cms.string("LHEProductFiller"),
-          src = cms.InputTag(lhep), 
-          tag = cms.string("LHEProduct"),
-      ),
-
+      nbHadrons = makeCollSize("bhadrons","nbHadrons"),
       genTs = makeCollSize("gentCands","genTs"),
       genTbars = makeCollSize("gentbarCands","genTbars"),
       genBs = makeCollSize("genbbCands","genBs"),
@@ -728,6 +704,18 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
       genUs = makeCollSize("genuuCands","genUs"),
       genSs = makeCollSize("genSSCands","genSs"),
       genWs = makeCollSize("genWs","genWs"),
+ 
+      EffWEIGHTCSVL = makeMuNu("EffWEIGHTCSVL","SFCSVL1",source,True),
+      EffWEIGHTCSVL2 = makeMuNu("EffWEIGHTCSVL2","SFCSVL2",source,True),
+      EffWEIGHTCSVM = makeMuNu("EffWEIGHTCSVM","SFCSVM1",source,True),
+      EffWEIGHTCSVM2 = makeMuNu("EffWEIGHTCSVM2","SFCSVM2",source,True),
+      EffWEIGHTCSVT = makeMuNu("EffWEIGHTCSVT","SFCSVT1",source,True),
+      EffWEIGHTCSVT2 = makeMuNu("EffWEIGHTCSVT2","SFCSVT2",source,True),
+      EffWEIGHTSSVHEM = makeMuNu("EffWEIGHTSSVHEM","SFSSVHE1",source,True),
+      EffWEIGHTSSVHEM2 = makeMuNu("EffWEIGHTSSVHEM2","SFSSVHE2",source,True),
+      weightEtaMuonIso = makeMuNu("weightEtaMuonIso","EffWEIGHTeta_IS",source,True),
+      weightEtaMuonID = makeMuNu("weightEtaMuonID","EffWEIGHTeta_ID",source,True),
+      weightEtaMuonTrig = makeMuNu("weightEtaMuonTrig","EffWEIGHTeta_TR",source,True),
    )
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))
