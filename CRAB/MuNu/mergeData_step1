@@ -4,46 +4,33 @@
 
 voms-proxy-init --voms cms --valid 100:00
 
-version="v0"
+version="post_synch_v0"
 
 farmoutAnalysisJobs \
    --merge \
-   --input-files-per-job=500 \
-   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DATA1_8TeV-MuNuPATDat \
-   merged_${version}_DATA1 \
+   --input-files-per-job=100 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DataA_8TeV-MuNuPATDat \
+   merged_${version}_DataA \
    $CMSSW_BASE
 
 farmoutAnalysisJobs \
    --merge \
-   --input-files-per-job=200 \
-   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DATA2_8TeV-MuNuPATDat \
-   merged_${version}_DATA2 \
+   --input-files-per-job=100 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DataB_8TeV-MuNuPATDat \
+   merged_${version}_DataB \
    $CMSSW_BASE
 
 farmoutAnalysisJobs \
    --merge \
-   --input-files-per-job=500 \
-   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DATA3_8TeV-MuNuPATDat \
-   merged_${version}_DATA3 \
+   --input-files-per-job=100 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DataC_8TeV-MuNuPATDat \
+   merged_${version}_DataC \
    $CMSSW_BASE
 
 farmoutAnalysisJobs \
    --merge \
-   --input-files-per-job=500 \
-   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DATA4_8TeV-MuNuPATDat \
-   merged_${version}_DATA4 \
+   --input-files-per-job=100 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DataD_8TeV-MuNuPATDat \
+   merged_${version}_DataD \
    $CMSSW_BASE
 
-farmoutAnalysisJobs \
-   --merge \
-   --input-files-per-job=500 \
-   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DATA5_8TeV-MuNuPATDat \
-   merged_${version}_DATA5 \
-   $CMSSW_BASE
-
-farmoutAnalysisJobs \
-   --merge \
-   --input-files-per-job=500 \
-   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/${version}_DATA6_8TeV-MuNuPATDat \
-   merged_${version}_DATA6 \
-   $CMSSW_BASE

@@ -1,8 +1,8 @@
 import FWCore.ParameterSet.Config as cms
 
 from UWAnalysis.Configuration.tools.analysisToolsPT import TriggerPaths
-jetRanks = [0,1,2,3]
-jetNames = ['J1_','J2_','J3_','J4_']
+jetRanks = [0,1,2,3,4,5,6,7]
+jetNames = ['J1_','J2_','J3_','J4_','J5_','J6_','J7_','J8_']
 
 def makeJetUserFloat(floatName,xn='',source = 'wCandsJets'):
  PSet_List = []
@@ -69,7 +69,6 @@ def makeJetStringName(strName,mthName,xn='',source='wCandsJets'):
   ))
  return PSet_List
 
-
 def makeJetBTag(tagName,strName,source='wCandsJets'):
  PSet_List = []
  for rank,name in zip(jetRanks,jetNames):
@@ -121,22 +120,23 @@ def makeBasicEle(tagName,methodName,sourceEle='selectedPatElectrons'):
   )
   return PSet
 
-def makeMuNu(tagName,methodName,source='wCandsJets',lo=False):
-  if lo:
+def makeMuon(tagName,methodName,source='wCandsJets',rank=1):
    PSet = cms.PSet(
          pluginType  = cms.string("PATMuonNuPairFiller"),
          src         = cms.InputTag(source),
          tag         = cms.string(tagName),
          method      = cms.string(methodName),
-         leadingOnly = cms.untracked.bool(True)
+         rank        = cms.untracked.double(rank) 
    )
-  else:
-   PSet = cms.PSet(
-         pluginType = cms.string("PATMuonNuPairFiller"),
-         src        = cms.InputTag(source),
-         tag        = cms.string(tagName),
-         method     = cms.string(methodName),
-   )
+
+def makeMuNu(tagName,methodName,source='wCandsJets',lo=True):
+  PSet = cms.PSet(
+        pluginType  = cms.string("PATMuonNuPairFiller"),
+        src         = cms.InputTag(source),
+        tag         = cms.string(tagName),
+        method      = cms.string(methodName),
+        leadingOnly = cms.untracked.bool(lo)
+  )
   return PSet
 
 def makeSimBHad(srcName,tagName,methodName):
@@ -505,14 +505,26 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     J2_pt = makeJetStringPar('pt','',source)[1],
     J3_pt = makeJetStringPar('pt','',source)[2],
     J4_pt = makeJetStringPar('pt','',source)[3],
+    J5_pt = makeJetStringPar('pt','',source)[4], # formerly highestJetPt
+    J6_pt = makeJetStringPar('pt','',source)[5],
+    J7_pt = makeJetStringPar('pt','',source)[6],
+    J8_pt = makeJetStringPar('pt','',source)[7],
     J1_phi = makeJetStringPar('phi','',source)[0],
     J2_phi = makeJetStringPar('phi','',source)[1],
     J3_phi = makeJetStringPar('phi','',source)[2],
     J4_phi = makeJetStringPar('phi','',source)[3],
+    J5_phi = makeJetStringPar('phi','',source)[4],
+    J6_phi = makeJetStringPar('phi','',source)[5],
+    J7_phi = makeJetStringPar('phi','',source)[6],
+    J8_phi = makeJetStringPar('phi','',source)[7],
     J1_eta = makeJetStringPar('eta','',source)[0],
     J2_eta = makeJetStringPar('eta','',source)[1],
     J3_eta = makeJetStringPar('eta','',source)[2],
     J4_eta = makeJetStringPar('eta','',source)[3],
+    J5_eta = makeJetStringPar('eta','',source)[4],
+    J6_eta = makeJetStringPar('eta','',source)[5],
+    J7_eta = makeJetStringPar('eta','',source)[6],
+    J8_eta = makeJetStringPar('eta','',source)[7],
 
     nJetsPt20 = makeNJets(20,source),
     nJetsPt25 = makeNJets(25,source),
@@ -535,11 +547,11 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
 
 # Few Electron Variables for MuEle control region
 # BIG WARNING: This ID is super outdated. We need to go over the new EGamma ID and actualize it. WP80 is similar to the new "medium" one
-    ptEle = makeBasicEle("ptEle","pt",sourceEle),
-    phiEle = makeBasicEle("phiEle","phi",sourceEle),
-    etaEle = makeBasicEle("etaEle","eta",sourceEle),
-    wp80Ele = makeBasicEle("wp80Ele","userFloat('wp80')",sourceEle),
-    chargeEle = makeBasicEle("chargeEle","charge",sourceEle),
+    ptEle = makeBasicEle("ele_pt","pt",sourceEle),
+    phiEle = makeBasicEle("ele_phi","phi",sourceEle),
+    etaEle = makeBasicEle("ele_eta","eta",sourceEle),
+    wp80Ele = makeBasicEle("ele_wp80","userFloat('wp80')",sourceEle),
+    chargeEle = makeBasicEle("ele_charge","charge",sourceEle),
     isoEleDB = makeBasicEle("isoEleDB","(userIso(0)+max(userIso(1)+neutralHadronIso()-0.5*userIso(2),0.0))/pt",sourceEle),
 
 # Z Variables
@@ -564,13 +576,25 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     mJ3J4 = makeMuNu("mJ3J4","mJJ2",source,True),
     ptJJ = makeMuNu("ptJJ","ptJJ",source,True),
 
-    muon1_pt = makeMuNu("muon1_pt","lepton().pt",source),
-    muon1_eta = makeMuNu("muon1_eta","lepton.eta",source),
-    muon1_phi = makeMuNu("muon1_phi","lepton.phi",source),
-    muon1_charge = makeMuNu("muon1_charge","lepton.charge()",source),
+    muon_loose_pt = makeMuNu("muon_loose_pt","lepton().pt()",source='preselectedPatMuons'),
+    muon_loose_eta = makeMuNu("muon_loose_eta","lepton.eta",source='preselectedPatMuons'),
+    muon_loose_phi = makeMuNu("muon_loose_phi","lepton.phi",source='preselectedPatMuons'),
+    muon_loose_charge = makeMuNu("muon_loose_charge","lepton.charge()",source='preselectedPatMuons'),
+    muon_loose_pt_vec = makeMuNu("muon_loose_pt_vec","lepton().pt",source='preselectedPatMuons',lo=False),
+    muon_loose_eta_vec  = makeMuNu("muon_loose_eta_vec","lepton.eta",source='preselectedPatMuons',lo=False),
+    muon_loose_phi_vec  = makeMuNu("muon_loose_phi_vec","lepton.phi",source='preselectedPatMuons',lo=False),
+    muon_loose_charge_vec  = makeMuNu("muon_loose_charge_vec","lepton.charge()",source='preselectedPatMuons',lo=False),
+
+    muon_pt = makeMuNu("muon_pt","lepton().pt",source),
+    muon_eta = makeMuNu("muon_eta","lepton.eta",source),
+    muon_phi = makeMuNu("muon_phi","lepton.phi",source),
+    muon_charge = makeMuNu("muon_charge","lepton.charge()",source),
+    muon_pt_vec = makeMuNu("muon_pt_vec","lepton().pt",source,lo=False),
+    muon_eta_vec  = makeMuNu("muon_eta_vec","lepton.eta",source,lo=False),
+    muon_phi_vec  = makeMuNu("muon_phi_vec","lepton.phi",source,lo=False),
+    muon_charge_vec  = makeMuNu("muon_charge_vec","lepton.charge()",source,lo=False),
     Wpt = makeMuNu("Wpt","corPt()",source),
 
-    muon_globalMuon = makeMuNu("gloablMuon","isGlobalMuon()",source="wCandsJets"),
     #muon_PFMuon = makeMuNu("PFMuon","isPFMuon()",source="wCandsJets"),
     #muon_nChi2 = makeMuNu("nChi2","globalTrack()->normalizedChi2()",source="wCandsJets"),
     #muon_nValidHits = makeMuNu("nValidHits","globalTrack()->hitPattern().numberOfValidMuonHits()",source="wCandsJets"),
@@ -581,6 +605,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     #muon_trackLayers = makeMuNu("trackLayers","track()->hitPattern().trackerLayersWithMeasurement()",source="wCandsJets"),
 
     met_pt = makeMuNu("met_pt","met().pt",source,True),
+    #met_et = makeMuNu("met_et","met().et",source,True),
     met_eta = makeMuNu("met_eta","met().eta",source,True),
     met_phi = makeMuNu("met_phi","met().phi",source,True),
     mt = makeMuNu("mt","mt",source),
@@ -589,31 +614,34 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     leptonjj = makeMuNu("leptonjj","leptonjj",source),
     muNuDPhi = makeMuNu("muNuDPhi","dPhi",source),
     muNuRecoil = makeMuNu("muNuRecoil","recoil().pt()",source),
-    muNuRelPFIso = makeMuNu("muNuRelPFIso",
-     "(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()",source),
+
+    #muNuRelPFIso = makeMuNu("muNuRelPFIso",
+    # "(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()",source,lo=True),
+    #muNuRelPFIso_vec = makeMuNu("muNuRelPFIso",
+    # "(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()",source,lo=False),
+
+    muNuRelPFIsoDB_A = makeMuNu("muNuRelPFIsoDB_A",
+      "((lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt- 0.5*lepton.pfIsolationR04().sumPUPt,0))/lepton.pt)",
+      source,lo=True),
+    muNuRelPFIsoDB_A_vec = makeMuNu("muNuRelPFIsoDB_A_vec",
+      "((lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt- 0.5*lepton.pfIsolationR04().sumPUPt,0))/lepton.pt)",
+      source,lo=False),
+
+    muNuRelPFIsoDB_B = makeMuNu("muNuRelPFIsoDB_B",
+     "(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()",
+     source,lo=True),
+    muNuRelPFIsoDB_B_vec = makeMuNu("muNuRelPFIsoDB_B_vec",
+     "(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()",
+     source,lo=False),
+
+
+
 #    PFIsoVeto = makeMuNu("PFIsoVeto","lepton.userIso(0)",source),
     PFIsoRho = makeMuNu("PFIsoRho","lepton.userFloat('rho')",source),
     muNuRelStdIso03 = makeMuNu("muNuRelStdIso03",
      "(lepton.isolationR03.sumPt+lepton.isolationR03.emEt+lepton.isolationR03.hadEt)/lepton.pt()",source),
-    muNuRelPFIsoDB = makeMuNu("muNuRelPFIsoDB",
-     "(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()",
-     source,True),
     ipDXY = makeMuNu("ipDXY","lepton.userFloat('ipDXY')",source,True),
      #"(lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt - 0.5*lepton.pfIsolationR04().sumPUPt,0.0))/lepton.pt()<0.12" ,
-    muNuRelPFIsoDBAndrea = makeMuNu("muNuRelPFIsoDBAndrea",
-      "((lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt- 0.5*lepton.pfIsolationR04().sumPUPt,0))/lepton.pt)",
-      source,True),
-    muNuRelPFIsoDBAndrea_A= makeMuNu("muNuRelPFIsoDBAndrea_A",
-      "lepton.pfIsolationR04().sumChargedHadronPt",source,True),
-    muNuRelPFIsoDB_A = makeMuNu("muNuRelPFIsoDB_A","lepton.userIso(0)",source, True),
-    muNuRelPFIsoDBAndrea_B= makeMuNu("muNuRelPFIsoDBAndrea_B",
-      "lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt",
-      source,True),
-    muNuRelPFIsoDB_B = makeMuNu("muNuRelPFIsoDB_B",
-      "lepton.photonIso()+lepton.neutralHadronIso()",source,True),
-    muNuRelPFIsoDBAndrea_C= makeMuNu("muNuRelPFIsoDBAndrea_C",
-      "lepton.pfIsolationR04().sumPUPt",source,True),
-    muNuRelPFIsoDB_C = makeMuNu("muNuRelPFIsoDB_C","lepton.puChargedHadronIso",source,True),
 
     dz = makeMuNu("dz",'abs(lepton.userFloat("dz"))',source,True),
     ht = makeMuNu("ht","ht",source,True),
@@ -625,7 +653,7 @@ def addMuNuEventTreePtData(process,name,source = 'wCandsJets',sourceZ = 'diMuons
    eventTree = cms.EDAnalyzer('EventTreeMaker',
       makeCollections(source,sourceZ),
       makeJetIDInfo(source = 'wCandsJets'),
-      makeJetCorrectionInfo(),
+      #makeJetCorrectionInfo(),
       makeJetSVInfo(source='wCandsJets'),
       coreCollections = cms.VInputTag( cms.InputTag(source) ),
       J1_eta_L23 = makeJetUserFloat('eta_L23')[0],
@@ -646,7 +674,7 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
    eventTree = cms.EDAnalyzer('EventTreeMaker',
       makeCollections(source,sourceZ),
       makeJetIDInfo(source = 'wCandsJets'),
-      makeJetCorrectionInfo(),
+      #makeJetCorrectionInfo(),
       makeJetSVInfo(source='wCandsJets'),
       coreCollections = cms.VInputTag(
            cms.InputTag(source)

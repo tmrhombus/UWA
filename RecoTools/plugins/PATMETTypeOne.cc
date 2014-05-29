@@ -117,13 +117,17 @@ math::PtEtaPhiMLorentzVector PATMETTypeOne::findCorrection(edm::Handle<pat::JetC
  math::PtEtaPhiMLorentzVector corr;
  for(unsigned int i=0;i!=l123Jets->size();++i){
   pat::Jet jet123 = l123Jets->at(i);
-  corr += jet123.correctedP4("L1FastJet") - jet123.p4();
+  if (jet123.pt() > 10.)
+  {
+   corr += jet123.correctedP4("L1FastJet") - jet123.correctedP4("L3Absolute");
+   //corr += jet123.correctedP4("L1FastJet") - jet123.p4();
 //  std::cout<<"L1   px "<<jet123.correctedP4("L1FastJet").px()
 //               <<" py "<<jet123.correctedP4("L1FastJet").px()
 //               <<" pz "<<jet123.correctedP4("L1FastJet").px()<<std::endl;
 //  std::cout<<"L123 px "<<jet123.p4().px()
 //               <<" py "<<jet123.p4().px()
 //               <<" pz "<<jet123.p4().px()<<std::endl<<std::endl;
+  }
  }
  return corr;
 }

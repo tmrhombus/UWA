@@ -43,7 +43,7 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 #  )
   
   # reRun Jets 
-#  reRunJets(process,isMC=itsMC,isData=itsData)
+  #reRunJets(process,isMC=itsMC,isData=itsData)
   if itsMC:
    resolutionSmearJets(process,jets='selectedPatJetsAK5chsPF')
   elif itsData:
@@ -51,15 +51,22 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
   # type 1 met correction 
   metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets')
+  #metRenamer(process,met='systematicsMET')
+  #officialMetCorrector(process,met='systematicsMET',jets='resolutionSmearedJets',isMC=False)
 
   jetOverloading(process,"resolutionSmearedJets")
 #  jetOverloading(process,"NewSelectedPatJets")
 
   jetPUEmbedding(process,"patOverloadedJets")
-  rochesterCorrector(process)
+  rochesterCorrector(process,muons="cleanPatMuons")
   #muonIDer(process,"rochCorMuons")
-  SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)  
+
+  #SVReconstruction(process,"patPUEmbeddedJets","cleanPatMuons",isMC=itsMC,isData=itsData)
+  #applyDefaultSelectionsPT(process,"patBRecoJets","cleanPatMuons")
+
+  SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)
   applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
+
   #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","IDedMuons")
   #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","rochCorMuons")
 
@@ -366,6 +373,15 @@ def ReNameJetColl(process, inputJets="selectedPatJets"):
   return process.reNameJetPath
 
 
+def metRenamer(process,met='systematicsMET'):
+  process.metTypeOne = cms.EDProducer("PATMETRenamer",
+   src = cms.InputTag(met),
+  )
+  process.metTypeOneSeq = cms.Sequence(process.metTypeOne)
+  process.metTypeOnePath= cms.Path(process.metTypeOneSeq)
+  return process.metTypeOnePath
+
+
 def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets'):
   process.metTypeOne = cms.EDProducer("PATMETTypeOne",
    srcMET = cms.InputTag(met),
@@ -374,6 +390,30 @@ def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets'):
   process.metTypeOneSeq = cms.Sequence(process.metTypeOne)
   process.metTypeOnePath= cms.Path(process.metTypeOneSeq)
   return process.metTypeOnePath
+
+
+def officialMetCorrector(process,met='systematicsMET',jets='NewSelectedPatJets',isMC=False):
+  process.load("PhysicsTools.PatUtils.patPFMETCorrections_cff")
+  #process.patPFMet.metSource = cms.InputTag(met)
+  process.selectedPatJetsForMETtype1p2Corr.src = cms.InputTag(jets)
+  process.selectedPatJetsForMETtype2Corr.src = cms.InputTag(jets)
+  if isMC: process.patPFJetMETtype1p2Corr.jetCorrLabel = cms.string("L3Absolute")
+  else: process.patPFJetMETtype1p2Corr.jetCorrLabel = cms.string("L2L3Residual")
+  process.patType1CorrectedPFMet.src = cms.InputTag(met)
+  process.patType1p2CorrectedPFMet.src = cms.InputTag(met)
+  process.metCorrSeq = cms.Sequence(
+  #  process.patPFMet
+  # * process.pfCandsNotInJet
+    process.selectedPatJetsForMETtype1p2Corr
+   * process.selectedPatJetsForMETtype2Corr
+   * process.patPFJetMETtype1p2Corr
+   * process.patPFJetMETtype2Corr
+   #* process.pfCandMETcorr
+   * process.patType1CorrectedPFMet
+   #* process.patType1p2CorrectedPFMet
+  )
+  process.metCorrPath= cms.Path(process.metCorrSeq)
+  return process.metCorrPath
 
 
 def jetMCMatching(process,jets):
@@ -480,7 +520,8 @@ def applyDefaultSelectionsPT(process,jets,muons):
    )
   process.preselectedPatMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag("cleanPatMuons"),
-   cut = cms.string('pt>10&&userInt("tightID")'),
+   cut = cms.string('pt>10&&userInt("looseID")'),
+   #cut = cms.string('pt>10&&userInt("tightID")'),
    filter = cms.bool(False)
    )
   process.selectedPatElectrons = cms.EDFilter("PATElectronSelector",
@@ -490,7 +531,9 @@ def applyDefaultSelectionsPT(process,jets,muons):
    )
   process.selectedPatMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag("cleanPatMuons"),
-   cut = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<1'),
+   cut = cms.string('pt>10 && (pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0)/pt<0.2)'),
+   #cut = cms.string('pt>10 && (pfIsolationR04().sumChargedHadronPt + max(pfIsolationR04().sumNeutralHadronEt +pfIsolationR04().sumPhotonEt- 0.5*pfIsolationR04().sumPUPt,0))/pt) <0.2'),
+   #cut = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<1'),
    filter = cms.bool(False)
    )
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
@@ -501,7 +544,8 @@ def applyDefaultSelectionsPT(process,jets,muons):
        muons = cms.PSet(
         src = cms.InputTag(muons),
         algorithm = cms.string("byDeltaR"),
-        preselection = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
+        preselection = cms.string('pt>10&&userInt("tightID")&&(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0)/pt<0.2)'),
+        #preselection = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),

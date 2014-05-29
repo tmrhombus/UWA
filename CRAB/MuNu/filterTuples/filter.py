@@ -21,7 +21,7 @@ counter = 0
 #dir='/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/data/newPat/'
 #fname = "list.txt"
 dir='/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/filterTuples/'
-fname = "data_list.txt"
+fname = "list_synch.txt"
 numfiles = file_len(fname)
 with open(fname) as f:
         for x in f:
@@ -30,7 +30,7 @@ with open(fname) as f:
                         print "Processed " + str(counter) + " out of " + str(numfiles) + " files"
                 #get file of current ntuples from input directory
                 x = x.rstrip()
-                new_fname = "synch_"+x
+                new_fname = "synch_wbb_"+x
                 #new_fname = "Filtered_TEST_"+x
                 print "Writing "+new_fname
                 ntuple_file = ROOT.TFile(dir+x)
@@ -38,9 +38,10 @@ with open(fname) as f:
                 tree = ntuple_file.Get(ntuple_file_spot)
                 tree.SetName("tree")
                 print tree.GetEntries()
+                cut_str="(((J1_idLooseJet)&&(J2_idLooseJet))&&(muNuRelPFIsoDB_A<0.12)&&(((((HLT_IsoMu24_eta2p1_v_fired)&&(nrEle==0 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)&&(nJets24Pt25==0))&&(2>1))&&((J1_CSVbtag>0.898)&&(J2_CSVbtag>0.898)))&&((J1_pt >25 && J2_pt>25 && abs(J1_eta)<2.4 && abs(J2_eta)<2.4)&& J3_pt<25)) && mt>45)"
                 #cut_str=""
                 #cut_str="muon_pt>=30&&J1_pt>25&&J2_pt>25&&abs(muon_eta)<2.1&&HLT_IsoMu24_eta2p1_v_fired&&(J1_CSVbtag>0.898&&J2_CSVbtag>0.898)"
-                cut_str="muon1_pt>=30 && muNuRelPFIsoDBAndrea<0.12 && J1_pt>25 && J2_pt>25 && abs(muon1_eta)<2.1 && (J1_CSVbtag>0.898||J2_CSVbtag>0.898||J3_CSVbtag>0.898||J4_CSVbtag>0.898) && HLT_IsoMu24_eta2p1_v_fired && J1_idLooseJet && J2_idLooseJet"
+                #cut_str="(muon_pt>=30 && muNuRelPFIsoDBAndrea<0.12 && abs(muon_eta)<2.1) && J1_pt>25 && J2_pt>25 && (J1_CSVbtag>0.898||J2_CSVbtag>0.898||J3_CSVbtag>0.898||J4_CSVbtag>0.898) && HLT_IsoMu24_eta2p1_v_fired && J1_idLooseJet && J2_idLooseJet"
                 #cut_str="muon_pt>=30 && muNuRelPFIsoDBAndrea<0.12 && J1_pt>25 && J2_pt>25 && abs(muon_eta)<2.1 && (J1_CSVbtag>0.898||J2_CSVbtag>0.898||J3_CSVbtag>0.898||J4_CSVbtag>0.898) && HLT_IsoMu24_eta2p1_v_fired && J1_idLooseJet && J2_idLooseJet"
                 #cut_str="muon_pt>=30 && muNuRelPFIsoDB<0.12 && J1_pt>25 && J2_pt>25 && abs(muon_eta)<2.1 && (J1_CSVbtag>0.898||J2_CSVbtag>0.898||J3_CSVbtag>0.898||J4_CSVbtag>0.898) && HLT_IsoMu24_eta2p1_v_fired && J1_idLooseJet && J2_idLooseJet"
                 #cut_str  ="HLT_IsoMu24_eta2p1_v_fired&&(nrMu>1||nrEle>0)"
