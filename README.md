@@ -6,51 +6,60 @@ UW Analysis for 53x (8Tev)
 download this using the recipe below:
 
 ```bash
-scram pro -n MyWorkingAreaName CMSSW CMSSW_5_3_9
-cd MyWorkingAreaName/src/
+
+scram pro -n Wbb_slc6_472_CMSSW_5_3_14_patch1 CMSSW CMSSW_5_3_14_patch1
+cd Wbb_slc6_472_CMSSW_5_3_14_patch1/src
 cmsenv
-```
-set up cvs - something like this
-```bash
-export CVSROOT=:gserver:<user_name>@cmssw.cvs.cern.ch:/local/reps/CMSSW
-kinit <user_name>@CERN.CH; aklog -cell cern.ch
-```
 
-Clone From GIT
-```bash
+eval `ssh-agent -s`
+ssh-add
+
+git cms-addpkg DataFormats/PatCandidates     
+git cms-addpkg HiggsAnalysis/CombinedLimit
+
+git cms-addpkg PhysicsTools/PatAlgos
+git cms-addpkg DataFormats/StdDictionaries
+git cms-addpkg PhysicsTools/PatUtils 
+git cms-addpkg CommonTools/ParticleFlow
+git cms-addpkg FWCore/GuiBrowsers
+git cms-addpkg RecoParticleFlow/PFProducer
+git cms-addpkg CommonTools/RecoUtils
+git cms-addpkg DataFormats/HLTReco
+git cms-addpkg JetMETCorrections/Type1MET
+
+git cms-addpkg RecoJets/JetProducers
+git cms-cvs-history import METPU_5_3_X_v4 RecoJets/JetProducers 
+
+git cms-addpkg PhysicsTools/Utilities
+git cms-addpkg RecoBTag/SecondaryVertex
+git cms-addpkg RecoVertex/AdaptiveVertexFinder
+git cms-addpkg RecoEgamma/EgammaTools
+
+git cms-addpkg EgammaAnalysis/ElectronTools
+
+git cms-addpkg DataFormats/METReco  
+git cms-addpkg RecoTauTag/RecoTau
+git cms-addpkg RecoTauTag/Configuration
+git cms-addpkg CondFormats/EgammaObjects
+
+git clone https://github.com/cms-analysis/AnalysisDataFormats-TauAnalysis.git AnalysisDataFormats/TauAnalysis
+pushd $CMSSW_BASE/src/AnalysisDataFormats/TauAnalysis
+git checkout AnalysisDataFormats-TauAnalysis-bMinimalSVfit-08-03-11
+popd
+
+git clone https://github.com/cms-analysis/TauAnalysis-CandidateTools.git TauAnalysis/CandidateTools
+pushd $CMSSW_BASE/src/TauAnalysis/CandidateTools
+git checkout TauAnalysis-CandidateTools-bMinimalSVfit_2012May13
+popd
+
+git cms-addpkg RecoLuminosity/LumiDB
+git cms-addpkg PhysicsTools/PythonAnalysis
+git cms-addpkg FWCore/PythonUtilities
+git-cms-cvs-history import V05-00-16 DataFormats/JetReco
+ 
+git cms-addpkg DataFormats/MuonReco
+
+git clone https://github.com/sdevissc/ZSV
 git clone https://github.com/tmrhombus/UWAnalysis.git
-```
-Then run
 
-```
-./UWAnalysis/recipe/recipe.sh
-```
-Then you need to do a stupid hack, open ``JetMETCorrections/METPUSubtraction/src/PFMETAlgorithmMVA.cc`` and there are two sets of likes like
-
-```
-<<<<<<
-abcd
-=======
-defg
->>>>>>>
-```
-do some deleting to make this just ``defg``.  
-
-A check before compiling ``showtags`` should give 40 (fewer could mean cvs not up)
-
-Compile
-```bash
-scramv1 build -c
-scramv1 build
-```
-
-For future compiling, only run ``scramv1 build``
-
-Some useful histograms are
-```bash
-cd $CMSSW_BASE/src/UWAnalysis/Configuration/data
-scp /afs/cern.ch/user/a/agilbert/public/HTT_Pileup/12-06-13/MC_Summer12_PU_S10-600bins.root .
-scp /afs/cern.ch/user/a/agilbert/public/HTT_Pileup/12-06-13/Data_Pileup_2012_ReReco-600bins.root .
-cd $CMSSW_BASE/src/UWAnalysis/Crab/MuNu/weights
-scp /afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions12/8TeV/Reprocessing/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.txt .
 ```
