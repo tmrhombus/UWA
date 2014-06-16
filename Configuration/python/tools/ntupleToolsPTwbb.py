@@ -120,14 +120,15 @@ def makeBasicEle(tagName,methodName,sourceEle='selectedPatElectrons'):
   )
   return PSet
 
-def makeMuon(tagName,methodName,source='wCandsJets',rank=1):
+def makeMuon(tagName,methodName,sourceMuon='selectedPatMuons',lo=True):
    PSet = cms.PSet(
-         pluginType  = cms.string("PATMuonNuPairFiller"),
-         src         = cms.InputTag(source),
+         pluginType  = cms.string("PATMuonFiller"),
+         src         = cms.InputTag(sourceMuon),
          tag         = cms.string(tagName),
          method      = cms.string(methodName),
-         rank        = cms.untracked.double(rank) 
+         leadingOnly = cms.untracked.bool(lo)
    )
+   return PSet
 
 def makeMuNu(tagName,methodName,source='wCandsJets',lo=True):
   PSet = cms.PSet(
@@ -443,7 +444,6 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
         paths = cms.vstring(TriggerPaths)
     ),
 
-
     J1_flightDistance = makeJetUserFloat('flightDistance','',source)[0],
     J2_flightDistance = makeJetUserFloat('flightDistance','',source)[1],
     J1_errorFlightDistance = makeJetUserFloat('errorFlightDistance','',source)[0],
@@ -540,10 +540,6 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     nrCbar = makeCollSize('cbarCands','nrCbar'), 
     nrC = makeCollSize('cCands','nrC'), 
     nrW = makeCollSize(source,'nrW'), 
-    nrMu = makeCollSize('selectedPatMuons','nrMu'),
-    nrEle = makeCollSize('selectedPatElectrons','nrEle'),
-    nrMuLoose = makeCollSize('preselectedPatMuons','nrMuLoose'),
-    nrEleLoose = makeCollSize('preselectedPatElectrons','nrEleLoose'),
 
 # Few Electron Variables for MuEle control region
 # BIG WARNING: This ID is super outdated. We need to go over the new EGamma ID and actualize it. WP80 is similar to the new "medium" one
@@ -576,14 +572,44 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     mJ3J4 = makeMuNu("mJ3J4","mJJ2",source,True),
     ptJJ = makeMuNu("ptJJ","ptJJ",source,True),
 
-    muon_loose_pt = makeMuNu("muon_loose_pt","lepton().pt()",source='preselectedPatMuons'),
-    muon_loose_eta = makeMuNu("muon_loose_eta","lepton.eta",source='preselectedPatMuons'),
-    muon_loose_phi = makeMuNu("muon_loose_phi","lepton.phi",source='preselectedPatMuons'),
-    muon_loose_charge = makeMuNu("muon_loose_charge","lepton.charge()",source='preselectedPatMuons'),
-    muon_loose_pt_vec = makeMuNu("muon_loose_pt_vec","lepton().pt",source='preselectedPatMuons',lo=False),
-    muon_loose_eta_vec  = makeMuNu("muon_loose_eta_vec","lepton.eta",source='preselectedPatMuons',lo=False),
-    muon_loose_phi_vec  = makeMuNu("muon_loose_phi_vec","lepton.phi",source='preselectedPatMuons',lo=False),
-    muon_loose_charge_vec  = makeMuNu("muon_loose_charge_vec","lepton.charge()",source='preselectedPatMuons',lo=False),
+    muon_sel_pt          = makeMuon("muon_sel_pt","pt",sourceMuon='selectedPatMuons'),
+    muon_sel_eta         = makeMuon("muon_sel_eta","eta",sourceMuon='selectedPatMuons'),
+    muon_sel_phi         = makeMuon("muon_sel_phi","phi",sourceMuon='selectedPatMuons'),
+    muon_sel_charge      = makeMuon("muon_sel_charge","charge",sourceMuon='selectedPatMuons'),
+    muon_sel_iso         = makeMuon("muon_sel_iso","(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt",sourceMuon='selectedPatMuons'),
+    muon_sel_pt_vec      = makeMuon("muon_sel_pt_vec","pt",sourceMuon='selectedPatMuons',lo=False),
+    muon_sel_eta_vec     = makeMuon("muon_sel_eta_vec","eta",sourceMuon='selectedPatMuons',lo=False),
+    muon_sel_phi_vec     = makeMuon("muon_sel_phi_vec","phi",sourceMuon='selectedPatMuons',lo=False),
+    muon_sel_charge_vec  = makeMuon("muon_sel_charge_vec","charge",sourceMuon='selectedPatMuons',lo=False),
+    muon_sel_iso_vec     = makeMuon("muon_sel_iso_vec","(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt",sourceMuon='selectedPatMuons',lo=False),
+
+    muon_loose_pt          = makeMuon("muon_loose_pt","pt",sourceMuon='QCDvetoPatMuons'),
+    muon_loose_eta         = makeMuon("muon_loose_eta","eta",sourceMuon='QCDvetoPatMuons'),
+    muon_loose_phi         = makeMuon("muon_loose_phi","phi",sourceMuon='QCDvetoPatMuons'),
+    muon_loose_charge      = makeMuon("muon_loose_charge","charge",sourceMuon='QCDvetoPatMuons'),
+    muon_loose_iso         = makeMuon("muon_loose_iso","(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt",sourceMuon='QCDvetoPatMuons'),
+    muon_loose_pt_vec      = makeMuon("muon_loose_pt_vec","pt",sourceMuon='QCDvetoPatMuons',lo=False),
+    muon_loose_eta_vec     = makeMuon("muon_loose_eta_vec","eta",sourceMuon='QCDvetoPatMuons',lo=False),
+    muon_loose_phi_vec     = makeMuon("muon_loose_phi_vec","phi",sourceMuon='QCDvetoPatMuons',lo=False),
+    muon_loose_charge_vec  = makeMuon("muon_loose_charge_vec","charge",sourceMuon='QCDvetoPatMuons',lo=False),
+    muon_loose_iso_vec     = makeMuon("muon_loose_iso_vec","(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt",sourceMuon='QCDvetoPatMuons',lo=False),
+
+    muon_loose_withIso_pt          = makeMuon("muon_loose_withIso_pt","pt",sourceMuon='preselectedPatMuons'),
+    muon_loose_withIso_eta         = makeMuon("muon_loose_withIso_eta","eta",sourceMuon='preselectedPatMuons'),
+    muon_loose_withIso_phi         = makeMuon("muon_loose_withIso_phi","phi",sourceMuon='preselectedPatMuons'),
+    muon_loose_withIso_charge      = makeMuon("muon_loose_withIso_charge","charge",sourceMuon='preselectedPatMuons'),
+    muon_loose_withIso_iso         = makeMuon("muon_loose_withIso_iso","(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt",sourceMuon='preselectedPatMuons'),
+    muon_loose_withIso_pt_vec      = makeMuon("muon_loose_withIso_pt_vec","pt",sourceMuon='preselectedPatMuons',lo=False),
+    muon_loose_withIso_eta_vec     = makeMuon("muon_loose_withIso_eta_vec","eta",sourceMuon='preselectedPatMuons',lo=False),
+    muon_loose_withIso_phi_vec     = makeMuon("muon_loose_withIso_phi_vec","phi",sourceMuon='preselectedPatMuons',lo=False),
+    muon_loose_withIso_charge_vec  = makeMuon("muon_loose_withIso_charge_vec","charge",sourceMuon='preselectedPatMuons',lo=False),
+    muon_loose_withIso_iso_vec     = makeMuon("muon_loose_withIso_iso_vec","(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt",sourceMuon='preselectedPatMuons',lo=False),
+
+    nrMu = makeCollSize('selectedPatMuons','nrMu'),
+    nrEle = makeCollSize('selectedPatElectrons','nrEle'),
+    nrMuLoose = makeCollSize('preselectedPatMuons','nrMuLoose'),
+    nrEleLoose = makeCollSize('preselectedPatElectrons','nrEleLoose'),
+    nrMuQCD = makeCollSize('QCDvetoPatMuons','nrMuQCD'),
 
     muon_pt = makeMuNu("muon_pt","lepton().pt",source),
     muon_eta = makeMuNu("muon_eta","lepton.eta",source),
@@ -595,36 +621,16 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     muon_charge_vec  = makeMuNu("muon_charge_vec","lepton.charge()",source,lo=False),
     Wpt = makeMuNu("Wpt","corPt()",source),
 
-    #muon_PFMuon = makeMuNu("PFMuon","isPFMuon()",source="wCandsJets"),
-    #muon_nChi2 = makeMuNu("nChi2","globalTrack()->normalizedChi2()",source="wCandsJets"),
-    #muon_nValidHits = makeMuNu("nValidHits","globalTrack()->hitPattern().numberOfValidMuonHits()",source="wCandsJets"),
-    #muon_nMatchedStations = makeMuNu("nMatchedStations","numberOfMatchedStations()",source="wCandsJets"),
-    #muon_dxy = makeMuNu("dxy","muonBestTrack()->dxy(vertex->position())",source="wCandsJets"),
-    #muon_dz = makeMuNu("dz","muonBestTrack()->dz(vertex->position())",source="wCandsJets"),
-    #muon_nPixelHits = makeMuNu("nPixelHits","innerTrack()->hitPattern().numberOfValidPixelHits()",source="wCandsJets"),
-    #muon_trackLayers = makeMuNu("trackLayers","track()->hitPattern().trackerLayersWithMeasurement()",source="wCandsJets"),
-
-    met_pt = makeMuNu("met_pt","met().pt",source,True),
-    #met_et = makeMuNu("met_et","met().et",source,True),
-    met_eta = makeMuNu("met_eta","met().eta",source,True),
-    met_phi = makeMuNu("met_phi","met().phi",source,True),
-    mt = makeMuNu("mt","mt",source),
-    
-    metJJ = makeMuNu("metjj","metjj",source),
-    leptonjj = makeMuNu("leptonjj","leptonjj",source),
-    muNuDPhi = makeMuNu("muNuDPhi","dPhi",source),
-    muNuRecoil = makeMuNu("muNuRecoil","recoil().pt()",source),
-
     #muNuRelPFIso = makeMuNu("muNuRelPFIso",
     # "(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()",source,lo=True),
     #muNuRelPFIso_vec = makeMuNu("muNuRelPFIso",
     # "(lepton.chargedHadronIso()+lepton.photonIso()+lepton.neutralHadronIso())/lepton.pt()",source,lo=False),
 
     muNuRelPFIsoDB_A = makeMuNu("muNuRelPFIsoDB_A",
-      "((lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt- 0.5*lepton.pfIsolationR04().sumPUPt,0))/lepton.pt)",
+      "(lepton.pfIsolationR04().sumChargedHadronPt + max((lepton.pfIsolationR04().sumNeutralHadronEt + lepton.pfIsolationR04().sumPhotonEt - 0.5*lepton.pfIsolationR04().sumPUPt),0.0))/lepton.pt",
       source,lo=True),
     muNuRelPFIsoDB_A_vec = makeMuNu("muNuRelPFIsoDB_A_vec",
-      "((lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt- 0.5*lepton.pfIsolationR04().sumPUPt,0))/lepton.pt)",
+      "(lepton.pfIsolationR04().sumChargedHadronPt + max((lepton.pfIsolationR04().sumNeutralHadronEt + lepton.pfIsolationR04().sumPhotonEt - 0.5*lepton.pfIsolationR04().sumPUPt),0.0))/lepton.pt",
       source,lo=False),
 
     muNuRelPFIsoDB_B = makeMuNu("muNuRelPFIsoDB_B",
@@ -633,15 +639,21 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     muNuRelPFIsoDB_B_vec = makeMuNu("muNuRelPFIsoDB_B_vec",
      "(lepton.userIso(0)+max(lepton.photonIso()+lepton.neutralHadronIso()-0.5*lepton.puChargedHadronIso,0.0))/lepton.pt()",
      source,lo=False),
-
-
-
-#    PFIsoVeto = makeMuNu("PFIsoVeto","lepton.userIso(0)",source),
     PFIsoRho = makeMuNu("PFIsoRho","lepton.userFloat('rho')",source),
     muNuRelStdIso03 = makeMuNu("muNuRelStdIso03",
      "(lepton.isolationR03.sumPt+lepton.isolationR03.emEt+lepton.isolationR03.hadEt)/lepton.pt()",source),
+
+
     ipDXY = makeMuNu("ipDXY","lepton.userFloat('ipDXY')",source,True),
-     #"(lepton.pfIsolationR04().sumChargedHadronPt + max(lepton.pfIsolationR04().sumNeutralHadronEt +lepton.pfIsolationR04().sumPhotonEt - 0.5*lepton.pfIsolationR04().sumPUPt,0.0))/lepton.pt()<0.12" ,
+    met_pt = makeMuNu("met_pt","met().pt",source,True),
+    met_eta = makeMuNu("met_eta","met().eta",source,True),
+    met_phi = makeMuNu("met_phi","met().phi",source,True),
+    mt = makeMuNu("mt","mt",source),
+    
+    metJJ = makeMuNu("metjj","metjj",source),
+    leptonjj = makeMuNu("leptonjj","leptonjj",source),
+    muNuDPhi = makeMuNu("muNuDPhi","dPhi",source),
+    muNuRecoil = makeMuNu("muNuRecoil","recoil().pt()",source),
 
     dz = makeMuNu("dz",'abs(lepton.userFloat("dz"))',source,True),
     ht = makeMuNu("ht","ht",source,True),

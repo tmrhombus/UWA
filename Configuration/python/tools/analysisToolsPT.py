@@ -65,7 +65,9 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #applyDefaultSelectionsPT(process,"patBRecoJets","cleanPatMuons")
 
   SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)
-  applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
+  muonIDer(process,muons="rochCorMuons")
+  applyDefaultSelectionsPT(process,"patBRecoJets","IDedMuons")
+  #applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
 
   #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","IDedMuons")
   #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","rochCorMuons")
@@ -518,10 +520,14 @@ def applyDefaultSelectionsPT(process,jets,muons):
    cut = cms.string('pt>10&&userFloat("wp95")>0'),
    filter = cms.bool(False)
    )
+  process.QCDvetoPatMuons = cms.EDFilter("PATMuonSelector",
+   src = cms.InputTag(muons),
+   cut = cms.string('pt>10 && userFloat("looseID")>0'), # LooseID, No Iso for Muon Veto
+   filter = cms.bool(False)
+   )
   process.preselectedPatMuons = cms.EDFilter("PATMuonSelector",
-   src = cms.InputTag("cleanPatMuons"),
-   cut = cms.string('pt>10&&userInt("looseID")'),
-   #cut = cms.string('pt>10&&userInt("tightID")'),
+   src = cms.InputTag(muons),
+   cut = cms.string('pt>10 && userFloat("looseID")>0 && (pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt<0.2'), # LooseID, Loose Iso for Muon Veto
    filter = cms.bool(False)
    )
   process.selectedPatElectrons = cms.EDFilter("PATElectronSelector",
@@ -530,22 +536,18 @@ def applyDefaultSelectionsPT(process,jets,muons):
    filter = cms.bool(False)
    )
   process.selectedPatMuons = cms.EDFilter("PATMuonSelector",
-   src = cms.InputTag("cleanPatMuons"),
-   cut = cms.string('pt>10 && (pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0)/pt<0.2)'),
-   #cut = cms.string('pt>10 && (pfIsolationR04().sumChargedHadronPt + max(pfIsolationR04().sumNeutralHadronEt +pfIsolationR04().sumPhotonEt- 0.5*pfIsolationR04().sumPUPt,0))/pt) <0.2'),
-   #cut = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<1'),
+   src = cms.InputTag(muons),
+   cut = cms.string('pt>10 && userInt("tightID")==1'), # Tight ID, No Iso for GOOD, QCD
    filter = cms.bool(False)
    )
   process.cleanPatJets = cms.EDProducer("PATJetCleaner",
    src = cms.InputTag(jets),
-   #preselection = cms.string(''),
    preselection = cms.string('abs(eta)<5.0&&pt>20&&userFloat("idLoose")>0'),
    checkOverlaps = cms.PSet( 
        muons = cms.PSet(
         src = cms.InputTag(muons),
         algorithm = cms.string("byDeltaR"),
-        preselection = cms.string('pt>10&&userInt("tightID")&&(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0)/pt<0.2)'),
-        #preselection = cms.string('pt>10&&userInt("tightID")&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
+        preselection = cms.string('pt>10 && userInt("tightID") && (pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt<0.2'), #TightID, Loose Iso
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),

@@ -42,7 +42,7 @@ PATMuonIDer::PATMuonIDer( const edm::ParameterSet& pset)
 
 
 /**
-* Create a new collection of pat::Muons with the Rochester-corrected p4 and
+* Create a new collection of pat::Muons with looseID and
 * push the collection to the event.
 */
 void PATMuonIDer::produce( edm::Event& evt, const edm::EventSetup& es )
@@ -54,8 +54,18 @@ void PATMuonIDer::produce( edm::Event& evt, const edm::EventSetup& es )
 
     for ( size_t i = 0; i < muons->size(); ++i )
     {
+        double looseID = 0.;
         pat::Muon muon = muons->at(i);
-        
+//        std::cout<<"isPF: "<<muon.isPFMuon()<<std::endl;
+//        std::cout<<"isGlobal: "<<muon.isGlobalMuon()<<std::endl;
+//        std::cout<<"isTracker: "<<muon.isTrackerMuon()<<std::endl;
+        if(muon.isPFMuon()){
+         if(muon.isGlobalMuon() || muon.isTrackerMuon()){
+           looseID = 1.;
+         }
+        }
+        muon.addUserFloat("looseID",looseID);
+        out->push_back(muon);
     }
 
     evt.put( out );

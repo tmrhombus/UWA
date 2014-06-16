@@ -256,78 +256,78 @@ class PATSSVJetEmbedder : public edm::EDProducer {
             if (flightDistanceNEG[isv]>0.) continue;
             btagSSVHPNEG[isv]=-log(1.-flightDistanceNEG[isv]/errorFlightDistanceNEG[isv]);
           }
-         // std::cout<<mass_SSV<<" "<<mass_SSV_alt[0]<<std::endl;
-          jet.addUserFloat("nSSV",nSSVPOS);
-          jet.addUserFloat("nNegativeSSV",nSSVNEG);
-          jet.addUserFloat("mass_SSV",mass_SSV);
-          jet.addUserFloat("mass_SSVNEG",mass_SSVNEG);
-          jet.addUserFloat("mass_SSV_alt",mass_SSV_alt[0]);
-          jet.addUserFloat("mass_SSV_alt2",mass_SSV_alt[1]);
-          jet.addUserFloat("mass_SSV_alt3",mass_SSV_alt[2]);
-          jet.addUserFloat("mass_SSV_alt4",mass_SSV_alt[3]);
-          jet.addUserFloat("mass_SSV_alt5",mass_SSV_alt[4]);
-        //  std::cout<<pt_SSV[0]<<std::endl;
-          jet.addUserFloat("pt_SSV",pt_SSV[0]);
-          jet.addUserFloat("eta_SSV",eta_SSV[0]);
-          jet.addUserFloat("phi_SSV",phi_SSV[0]);
-          jet.addUserFloat("massD_SSV",massD_SSV);
-          jet.addUserFloat("massD_SSVNEG",massD_SSVNEG);
-
-          jet.addUserFloat("btag_SSVHE",btagSSVHEPOS[0]);
-          jet.addUserFloat("btag_SSVHP",btagSSVHPPOS[0]);
-          jet.addUserFloat("nTracks_SSV",nTracks_SSVPOS[0]);
-          jet.addUserFloat("flightDistanceError_SV",errorFlightDistancePOS[0]);
-          jet.addUserFloat("flightDistance_SV",flightDistancePOS[0]);
-
-          jet.addUserFloat("charge_SSV",chargeSSV);
-          jet.addUserFloat("chargeSSVNEG",chargeSSVNEG);
-
-          jet.addUserFloat("mass_D0_SSV",massD0_SSV);
-          jet.addUserFloat("massD0_SSVNEG",massD0_SSVNEG);
-
-          jet.addUserFloat("SSVNeg_track1_px",trackNeg1_px);
-          jet.addUserFloat("SSVNeg_track1_py",trackNeg1_py);
-          jet.addUserFloat("SSVNeg_track1_pz",trackNeg1_pz);
-          jet.addUserFloat("SSVNeg_track1_charge",trackNeg1_charge);
-
-          jet.addUserFloat("px_SSV_track1",track1_px);
-          jet.addUserFloat("py_SSV_track1",track1_py);
-          jet.addUserFloat("pz_SSV_track1",track1_pz);
-          jet.addUserFloat("chrage_SSV_track1",track1_charge);
-
-          jet.addUserFloat("px_SSVNeg_track2",trackNeg2_px);
-          jet.addUserFloat("py_SSVNeg_track2",trackNeg2_py);
-          jet.addUserFloat("pz_SSVNeg_track2",trackNeg2_pz);
-          jet.addUserFloat("charge_SSVNeg_track2",trackNeg2_charge);
-
-          jet.addUserFloat("px_SSV_track2",track2_px);
-          jet.addUserFloat("py_SSV_track2",track2_py);
-          jet.addUserFloat("pz_SSV_track2",track2_pz);
-          jet.addUserFloat("charge_SSV_track2",track2_charge);
-
-          jet.addUserFloat("px_SSVNeg_track3",trackNeg3_px);
-          jet.addUserFloat("py_SSVNeg_track3",trackNeg3_py);
-          jet.addUserFloat("pz_SSVNeg_track3",trackNeg3_pz);
-          jet.addUserFloat("charge_SSVNeg_track3",trackNeg3_charge);
-
-          jet.addUserFloat("px_SSV_track3",track3_px);
-          jet.addUserFloat("py_SSV_track3",track3_py);
-          jet.addUserFloat("pz_SSV_track3",track3_pz);
-          jet.addUserFloat("charge_SSV_track3",track3_charge);
-
-          jet.addUserFloat("btagSSVHE2",btagSSVHEPOS[1]);
-          jet.addUserFloat("btagSSVHP2",btagSSVHPPOS[1]);
-          jet.addUserFloat("nTracksSSV2",nTracks_SSVPOS[1]);
-          jet.addUserFloat("nTracksSSV3",nTracks_SSVPOS[2]);
-          jet.addUserFloat("nTracksSSV4",nTracks_SSVPOS[3]);
-          jet.addUserFloat("flightDistanceError2_SV",errorFlightDistancePOS[1]);
-          jet.addUserFloat("flightDistance2_SV",flightDistancePOS[1]);
-
-          jet.addUserFloat("btagNEGSSVHE",btagSSVHENEG[0]);
-          jet.addUserFloat("btagNEGSSVHP",btagSSVHPNEG[0]);
-          jet.addUserFloat("nTracksNEGSSV",nTracks_SSVNEG[0]);
-          jet.addUserFloat("flightDistanceErrorNEG_SV",errorFlightDistanceNEG[0]);
-          jet.addUserFloat("flightDistanceNEG_SV",flightDistanceNEG[0]);
+//         // std::cout<<mass_SSV<<" "<<mass_SSV_alt[0]<<std::endl;
+//          jet.addUserFloat("nSSV",nSSVPOS);
+//          jet.addUserFloat("nNegativeSSV",nSSVNEG);
+//          jet.addUserFloat("mass_SSV",mass_SSV);
+//          jet.addUserFloat("mass_SSVNEG",mass_SSVNEG);
+//          jet.addUserFloat("mass_SSV_alt",mass_SSV_alt[0]);
+//          jet.addUserFloat("mass_SSV_alt2",mass_SSV_alt[1]);
+//          jet.addUserFloat("mass_SSV_alt3",mass_SSV_alt[2]);
+//          jet.addUserFloat("mass_SSV_alt4",mass_SSV_alt[3]);
+//          jet.addUserFloat("mass_SSV_alt5",mass_SSV_alt[4]);
+//        //  std::cout<<pt_SSV[0]<<std::endl;
+//          jet.addUserFloat("pt_SSV",pt_SSV[0]);
+//          jet.addUserFloat("eta_SSV",eta_SSV[0]);
+//          jet.addUserFloat("phi_SSV",phi_SSV[0]);
+//          jet.addUserFloat("massD_SSV",massD_SSV);
+//          jet.addUserFloat("massD_SSVNEG",massD_SSVNEG);
+//
+//          jet.addUserFloat("btag_SSVHE",btagSSVHEPOS[0]);
+//          jet.addUserFloat("btag_SSVHP",btagSSVHPPOS[0]);
+//          jet.addUserFloat("nTracks_SSV",nTracks_SSVPOS[0]);
+//          jet.addUserFloat("flightDistanceError_SV",errorFlightDistancePOS[0]);
+//          jet.addUserFloat("flightDistance_SV",flightDistancePOS[0]);
+//
+//          jet.addUserFloat("charge_SSV",chargeSSV);
+//          jet.addUserFloat("chargeSSVNEG",chargeSSVNEG);
+//
+//          jet.addUserFloat("mass_D0_SSV",massD0_SSV);
+//          jet.addUserFloat("massD0_SSVNEG",massD0_SSVNEG);
+//
+//          jet.addUserFloat("SSVNeg_track1_px",trackNeg1_px);
+//          jet.addUserFloat("SSVNeg_track1_py",trackNeg1_py);
+//          jet.addUserFloat("SSVNeg_track1_pz",trackNeg1_pz);
+//          jet.addUserFloat("SSVNeg_track1_charge",trackNeg1_charge);
+//
+//          jet.addUserFloat("px_SSV_track1",track1_px);
+//          jet.addUserFloat("py_SSV_track1",track1_py);
+//          jet.addUserFloat("pz_SSV_track1",track1_pz);
+//          jet.addUserFloat("chrage_SSV_track1",track1_charge);
+//
+//          jet.addUserFloat("px_SSVNeg_track2",trackNeg2_px);
+//          jet.addUserFloat("py_SSVNeg_track2",trackNeg2_py);
+//          jet.addUserFloat("pz_SSVNeg_track2",trackNeg2_pz);
+//          jet.addUserFloat("charge_SSVNeg_track2",trackNeg2_charge);
+//
+//          jet.addUserFloat("px_SSV_track2",track2_px);
+//          jet.addUserFloat("py_SSV_track2",track2_py);
+//          jet.addUserFloat("pz_SSV_track2",track2_pz);
+//          jet.addUserFloat("charge_SSV_track2",track2_charge);
+//
+//          jet.addUserFloat("px_SSVNeg_track3",trackNeg3_px);
+//          jet.addUserFloat("py_SSVNeg_track3",trackNeg3_py);
+//          jet.addUserFloat("pz_SSVNeg_track3",trackNeg3_pz);
+//          jet.addUserFloat("charge_SSVNeg_track3",trackNeg3_charge);
+//
+//          jet.addUserFloat("px_SSV_track3",track3_px);
+//          jet.addUserFloat("py_SSV_track3",track3_py);
+//          jet.addUserFloat("pz_SSV_track3",track3_pz);
+//          jet.addUserFloat("charge_SSV_track3",track3_charge);
+//
+//          jet.addUserFloat("btagSSVHE2",btagSSVHEPOS[1]);
+//          jet.addUserFloat("btagSSVHP2",btagSSVHPPOS[1]);
+//          jet.addUserFloat("nTracksSSV2",nTracks_SSVPOS[1]);
+//          jet.addUserFloat("nTracksSSV3",nTracks_SSVPOS[2]);
+//          jet.addUserFloat("nTracksSSV4",nTracks_SSVPOS[3]);
+//          jet.addUserFloat("flightDistanceError2_SV",errorFlightDistancePOS[1]);
+//          jet.addUserFloat("flightDistance2_SV",flightDistancePOS[1]);
+//
+//          jet.addUserFloat("btagNEGSSVHE",btagSSVHENEG[0]);
+//          jet.addUserFloat("btagNEGSSVHP",btagSSVHPNEG[0]);
+//          jet.addUserFloat("nTracksNEGSSV",nTracks_SSVNEG[0]);
+//          jet.addUserFloat("flightDistanceErrorNEG_SV",errorFlightDistanceNEG[0]);
+//          jet.addUserFloat("flightDistanceNEG_SV",flightDistanceNEG[0]);
 
           out->push_back(jet);
 

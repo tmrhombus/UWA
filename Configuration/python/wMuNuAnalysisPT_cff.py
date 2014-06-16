@@ -9,7 +9,8 @@ analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
 
 #analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','patType1CorrectedPFMet')
 #analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','metTypeOne')
-analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','metTypeOne')
+#analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','metTypeOne')
+analysisConfigurator.addSmearing('patOverloadedTaus','selectedPatMuons','selectedPatElectrons','cleanPatJets','metTypeOne')
 
 DiMuonPreSel='leg1.isGlobalMuon && leg1.isTrackerMuon && leg2.isGlobalMuon && leg2.isTrackerMuon && leg1.pt()>20 && leg2.pt()>20 && leg1.charge * leg2.charge<0'
 DiMuonPreSel2='(leg1.isolationR03().sumPt+leg1.isolationR03().emEt+leg1.isolationR03().hadEt)/leg1.pt()<0.15 '
@@ -27,10 +28,10 @@ analysisConfigurator.addSorter('diMuonsSorted','PATMuPairSorter')
 #analysisConfigurator.addSelector('weCandsJets','PATElectronNuPairSelector','','weCandsSel',0,999)
 
 #Make Muons+MET cleanPatJets
-analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','smearedMuons','smearedMET','smearedJets',1,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
+analysisConfigurator.addCandidateMETModule('wCands','PATMuonNuPairProducer','smearedMuons','smearedMET','smearedJets',0,9999,'AtLeastOneWCandidate',genParticles="genDaughters")
 
-analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1' ,'wCandsKIN',1)
+analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1' ,'wCandsKIN',0)
 #analysisConfigurator.addSelector('wCandsKIN','PATMuonNuPairSelector','lepton.pt()>25 && abs(lepton.eta())<2.1 && lepton.userInt("tightID")==1' ,'wCandsKIN',1)
-analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>=0','wCandsSel',1)
+analysisConfigurator.addSelector('wCandsJets','PATMuonNuPairSelector','nJets>=0','wCandsSel',0)
 
 selectionSequence = analysisConfigurator.returnSequence()
