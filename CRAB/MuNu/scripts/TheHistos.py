@@ -36,24 +36,24 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
  leafs[0],iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut,Ctl_Andrea
 )
 
-data_filename     = '../filterTuples/Filtered_Data.root'
-t_t_filename      = '../filterTuples/Filtered_T_t.root'
-t_s_filename      = '../filterTuples/Filtered_T_s.root'
-t_tw_filename     = '../filterTuples/Filtered_T_tW.root'
-tb_t_filename     = '../filterTuples/Filtered_Tbar_t.root'
-tb_s_filename     = '../filterTuples/Filtered_Tbar_s.root'
-tb_tw_filename    = '../filterTuples/Filtered_Tbar_tW.root'
-tt_semi_filename  = '../filterTuples/Filtered_TTbar_semi.root'
-tt_full_filename  = '../filterTuples/Filtered_TTbar_full.root'
-ww_filename       = '../filterTuples/Filtered_WW.root'
-wz_filename       = '../filterTuples/Filtered_WZ.root'
-zz_filename       = '../filterTuples/Filtered_ZZ.root'
-wn_filename       = '../filterTuples/Filtered_WJets.root'
-w1_filename       = '../filterTuples/Filtered_W1Jet.root'
-w2_filename       = '../filterTuples/Filtered_W2Jet.root'
-w3_filename       = '../filterTuples/Filtered_W3Jet.root'
-w4_filename       = '../filterTuples/Filtered_W4Jet.root'
-z_filename        = '../filterTuples/Filtered_Drell.root'
+data_filename     = '../data/post_synch_v0/Filtered_Data.root'
+t_t_filename      = '../data/post_synch_v0/Filtered_T_t.root'
+t_s_filename      = '../data/post_synch_v0/Filtered_T_s.root'
+t_tw_filename     = '../data/post_synch_v0/Filtered_T_tW.root'
+tb_t_filename     = '../data/post_synch_v0/Filtered_Tbar_t.root'
+tb_s_filename     = '../data/post_synch_v0/Filtered_Tbar_s.root'
+tb_tw_filename    = '../data/post_synch_v0/Filtered_Tbar_tW.root'
+tt_semi_filename  = '../data/post_synch_v0/Filtered_TTbar_semi.root'
+tt_full_filename  = '../data/post_synch_v0/Filtered_TTbar_full.root'
+ww_filename       = '../data/post_synch_v0/Filtered_WW.root'
+wz_filename       = '../data/post_synch_v0/Filtered_WZ.root'
+zz_filename       = '../data/post_synch_v0/Filtered_ZZ.root'
+wn_filename       = '../data/post_synch_v0/Filtered_WJets.root'
+w1_filename       = '../data/post_synch_v0/Filtered_W1Jet.root'
+w2_filename       = '../data/post_synch_v0/Filtered_W2Jet.root'
+w3_filename       = '../data/post_synch_v0/Filtered_W3Jet.root'
+w4_filename       = '../data/post_synch_v0/Filtered_W4Jet.root'
+z_filename        = '../data/post_synch_v0/Filtered_Drell.root'
 
 #data_filename     = '../data/newPat/Data.root'
 #t_t_filename      = '../data/newPat/T_t.root'
@@ -552,21 +552,35 @@ for leaf in leafs:
  print('Your File is here: '+path+extraName+'_'+leaf+'.root')
  print('')
  
+ mcSize = \
+  wlnihSize+wl1ihSize+wl2ihSize+wl3ihSize+wl4ihSize \
+  +wcnihSize+wc1ihSize+wc2ihSize+wc3ihSize+wc4ihSize \
+  +wccnihSize+wcc1ihSize+wcc2ihSize+wcc3ihSize+wcc4ihSize \
+  +wbbnihSize+wbb1ihSize+wbb2ihSize+wbb3ihSize+wbb4ihSize \
+  +tt_semiihSize+tt_fullihSize \
+  +t_tihSize+tb_tihSize \
+  +t_sihSize+tb_sihSize \
+  +t_twihSize+tb_twihSize \
+  +wwihSize+wzihSize+zzihSize \
+  +zihSize \
+  +qhSize
+
+ mcSizePart = \
+  wlnihSizePart+wl1ihSizePart+wl2ihSizePart+wl3ihSizePart+wl4ihSizePart+ \
+  wcnihSizePart+wc1ihSizePart+wc2ihSizePart+wc3ihSizePart+wc4ihSizePart+ \
+  wccnihSizePart+wcc1ihSizePart+wcc2ihSizePart+wcc3ihSizePart+wcc4ihSizePart+ \
+  wbbnihSizePart+wbb1ihSizePart+wbb2ihSizePart+wbb3ihSizePart+wbb4ihSizePart+ \
+  tt_semiihSizePart+tt_fullihSizePart+ \
+  t_tihSizePart+tb_tihSizePart+ \
+  t_sihSizePart+tb_sihSizePart+ \
+  t_twihSizePart+tb_twihSizePart+ \
+  wwihSizePart+wzihSizePart+zzihSizePart+ \
+  zihSizePart+ \
+  qhSizePart
+
  log.write('------------------------------------------------\n')
  if leaf=='mt':
   log.write('You Probably Want to use this for QCD Scale\n')
-  mcSizePart = \
-   wlnihSizePart+wl1ihSizePart+wl2ihSizePart+wl3ihSizePart+wl4ihSizePart+ \
-   wcnihSizePart+wc1ihSizePart+wc2ihSizePart+wc3ihSizePart+wc4ihSizePart+ \
-   wccnihSizePart+wcc1ihSizePart+wcc2ihSizePart+wcc3ihSizePart+wcc4ihSizePart+ \
-   wbbnihSizePart+wbb1ihSizePart+wbb2ihSizePart+wbb3ihSizePart+wbb4ihSizePart+ \
-   tt_semiihSizePart+tt_fullihSizePart+ \
-   t_tihSizePart+tb_tihSizePart+ \
-   t_sihSizePart+tb_sihSizePart+ \
-   t_twihSizePart+tb_twihSizePart+ \
-   wwihSizePart+wzihSizePart+zzihSizePart+ \
-   zihSizePart+ \
-   qhSizePart
   SF = 1 + (dataihSizePart - mcSizePart)/qhSizePart
   log.write('1 + (data - mc)/qcd = '+str(SF)+'\n')
  log.write('---------------------------\n')
@@ -702,8 +716,8 @@ for leaf in leafs:
  log.write('  W2+bb:-----------'+str(wbb2ihSize)+'\n')
  log.write('  W3+bb:-----------'+str(wbb3ihSize)+'\n')
  log.write('  W4+bb:-----------'+str(wbb4ihSize)+'\n')
- log.write('tt semi Size:------'+str(tt_semiihSize)+'\n')
- log.write('tt full Size:------'+str(tt_fullihSize)+'\n')
+ log.write('tt semi Size:---'+str(tt_semiihSize)+'\n')
+ log.write('tt full Size:---'+str(tt_fullihSize)+'\n')
  log.write('t_t Size:-------'+str(t_tihSize)+'\n')
  log.write('tb_t Size:------'+str(tb_tihSize)+'\n')
  log.write('t_s Size:-------'+str(t_sihSize)+'\n')
@@ -714,6 +728,7 @@ for leaf in leafs:
  log.write('WZ Size:--------'+str(wzihSize)+'\n')
  log.write('ZZ Size:--------'+str(zzihSize)+'\n')
  log.write('Drell-Yan Size:-'+str(zihSize)+'\n')
+ log.write('Total MC Size:      '+str(mcSize)+'\n')
  if drawData:
   log.write('Data Size:          '+str(dataihSize)+'\n')
  log.write('---------------------------------------------\n')

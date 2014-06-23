@@ -12,21 +12,13 @@ import cmsPrelim as cpr
 import TheParameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<mt<20
-#sf_qcd = 1.9191895562 # PU_fullIdTight
-#sf_qcd = 2.19849549176 # PU_idTight
-#sf_qcd = 2.20315337368 # PU_idLoose
-#sf_qcd = 2.47131295199 # no PUID
-#sf_qcd = 2.49339202669 # prelim sf
-#sf_qcd = 2.26610972133 # temp with jresMet data / moreSV_two mc
-#sf_qcd = 2.14867279181 # temp with 18pb moreSV_toe data
-#sf_qcd = 2.22926637138 # SV_3 at 19742.
-#sf_qcd = 3.13331821456 # SV_3 with noPU jets
-#sf_qcd = 0.999199436189 # NewPat Signal
-#sf_qcd = 0.17076846467 # NewPat TT_1mu1e 2j 0b
-sf_qcd = 1. # NewPat TT_1mu1e 2j2b also 2j1b (actually was -1.asdf) 
-#sf_qcd = 3.74768567252 # NewPat TT_m
-#sf_qcd = 0.466720042977 # NewPat ST
 #sf_qcd = 1.
+sf_qcd = 1.19040846759 # Signal
+#sf_qcd = 2.2196499517 #TT_m
+#sf_qcd = 1.66907158262 #TT_me
+#sf_qcd =  0.716463222704 #ST
+
+#sf_qcd = 1.20199004669 # signal
 
 sf_Signal_Wbb    = 1. 
 sf_Signal_Tbar   = 1. 
@@ -59,7 +51,7 @@ sf_Top_Tbar      = 1.
 #sf_Top_Tbar      = 0.984493670886
 
 ratioRange = 0.3
-rebin = 1
+rebin = 5
 errorBand = False
 #canvas attributes
 canx = 800 # for one plot on page
@@ -568,9 +560,9 @@ for leaf in leafs:
   l.Draw()
   c.Update()
   print('you just read '+leaf)
-  save2 = raw_input ('Press Enter to Continue (type save to save)\n')
-  if save2 == 'save':
-   c.Print(path+i+'.png')
+  #save2 = raw_input ('Press Enter to Continue (type save to save)\n')
+  #if save2 == 'save':
+  c.Print(path+i+'.png')
    #c.Print(path+i+'_unscaled.png')
   print('')
   c.Close()

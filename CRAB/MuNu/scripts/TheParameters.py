@@ -10,10 +10,12 @@ def arams():
  #lumi = 19488. #  for jresMet
  #lumi = 18027. # for moreSV_toe
  #lumi = 18589. # for looseID  19488.
- lumi = 17469. # NewPat
+ lumi = 19751. # NewPat
+ #lumi = 19548. #post_synch_v0 
+
  btype = 't'
- njetcut = '30' #20,25,26,30,40
- jetcut = '30'
+ njetcut = '25' #20,25,26,30,40
+ jetcut = '25'
  I = 0
  F = 20
  iso_value = 0.12
@@ -24,8 +26,8 @@ def arams():
  #extraCut = '(vertixces < 15)'
 
  #naming where output goes
- path = '../plots/'
- extraName = 'NewPat_'
+ path = '../plots/NewlyRanged_'
+ extraName = ''
 
  drawQCD = True
  drawData = True
@@ -33,18 +35,18 @@ def arams():
  noMT = False # control but no mT cut
  Control = False # 1 mu, 0b, 2+ jets
  Ctl_Andrea = False # 1 mu, 1+ b, 2+ jets 
- Signal = False # 1 mu, 2bs, 2 jets
+ Signal = True # 1 mu, 2bs, 2 jets
  TT_m = False #1 mu, 2b, 4 j
- TT_me = True # 1mu, 1e
+ TT_me = False # 1mu, 1e
  ST = False
  Z_Region = False # two muons, no mT cut
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
  Tomislav = False
 
- DataCard = False
+ DataCard = True
 
- eventTreeLocation = 'New_Tree'
- #eventTreeLocation = 'muNuEventTree/eventTree'
+ #eventTreeLocation = 'New_Tree'
+ eventTreeLocation = 'muNuEventTree/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonUp/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonDown/eventTree'
  #eventTreeLocation = 'muNuEventTreeJetUp/eventTree'
@@ -73,11 +75,11 @@ def arams():
   jNr = 4
   jetVeto = True
  elif TT_me:
-  bNr = 1 
+  bNr = 2 
   jNr = 2
   jetVeto = False
  elif Z_Region:
-  bNr = 1
+  bNr = 2
   jNr = 2
   jetVeto = False
  elif ST:
@@ -120,18 +122,17 @@ def arams():
 #'J1_PUID_philv1Discriminant',
 #'J1_fullIdLoosePu',
 #'J2_fullIdLoosePu',
-'mt',
+#'mt',
 #'DiSVMass',
 #'vertices',
 #'(J1_mass_SSV+J2_mass_SSV)',
-#'J1_mass_SSV',
 #'J2_mass_SSV',
 #'J1_nTracks_SV',
 #'J2_nTracks_SV',
+#'J1_mass_SV_weighted',
 #'J1_mass_SSV_alt',
 #'J1_mass_SSV',
 #'J1_mass_SV_unweighted',
-#'J1_mass_SV_weighted',
 #'J2_mass_SV_unweighted',
 #'J2_mass_SV_weighted',
 #'J1_normChi2_SV',
@@ -175,7 +176,8 @@ def arams():
 #'J1DR',
 #'J2DR',
 #'ht',
-#'met',
+'met_pt',
+#'met_phi',
 #'DiMuonMass',
 #'nJetsPt25',
 #'nJetsPt30',
