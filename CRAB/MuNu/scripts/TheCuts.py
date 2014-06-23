@@ -23,25 +23,24 @@ def cutmaker(leaf='J1_pt',isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0
  if leaf=="mt": mt='(2>1)'
  else: mt = '(mt>45)'
 
- if btype == 't': bcut = '0.898'
- if btype == 'm': bcut = '0.679'
- if btype == 'l': bcut = '0.244'
- if btype =='m' or btype=='l': print('YOUR BTAG SCALE FACTORS ARE WRONG.  DEAL WITH IT')
-  
  realb_j1 = "(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4)"
  realb_j2 = "(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4)"
 
- #SFBJ1 = '((0.927563+(1.55479e-05*J1_pt))+(-1.90666e-07*(J1_pt*J1_pt)))'
- #SFBJ2 = '((0.927563+(1.55479e-05*J2_pt))+(-1.90666e-07*(J2_pt*J2_pt)))'
- #SFLJ1="(((1.00462+(0.00325971*J1_pt))+(-7.79184e-06*(J1_pt*J1_pt)))+(5.22506e-09*(J1_pt*(J1_pt*J1_pt))))"
- #SFLJ2="(((1.00462+(0.00325971*J2_pt))+(-7.79184e-06*(J2_pt*J2_pt)))+(5.22506e-09*(J2_pt*(J2_pt*J2_pt))))"
- #mc_j1btag  = '(J1_CSVbtag>%s && ((%s * %s)+(!%s * %s)))'%(bcut,realb_j1,realb_j1,SFBJ1,SFLJ1) 
- #mc_j2btag  = '(J2_CSVbtag>%s && ((%s * %s)+(!%s * %s)))'%(bcut,realb_j2,realb_j2,SFBJ2,SFLJ2) 
-
+ if btype == 't':
+  bcut = '0.898'
+  j1btagSF  = '((%s * J1_CSVT_SFb)+(!%s * J1_CSVT_SFl))'%(realb_j1,realb_j1) 
+  j2btagSF  = '((%s * J2_CSVT_SFb)+(!%s * J2_CSVT_SFl))'%(realb_j2,realb_j2) 
+ if btype == 'm':
+  bcut = '0.679'
+  j1btagSF  = '((%s * J1_CSVM_SFb)+(!%s * J1_CSVM_SFl))'%(realb_j1,realb_j1) 
+  j2btagSF  = '((%s * J2_CSVM_SFb)+(!%s * J2_CSVM_SFl))'%(realb_j2,realb_j2) 
+ if btype == 'l':
+  bcut = '0.244'
+  j1btagSF  = '((%s * J1_CSVL_SFb)+(!%s * J1_CSVL_SFl))'%(realb_j1,realb_j1) 
+  j2btagSF  = '((%s * J2_CSVL_SFb)+(!%s * J2_CSVL_SFl))'%(realb_j2,realb_j2) 
+  
  j1btag = '(J1_CSVbtag>%s)'%(bcut)
  j2btag = '(J2_CSVbtag>%s)'%(bcut)
- j1btagSF  = '((%s * J1_CSVT_SFb)+(!%s * J1_CSVT_SFl))'%(realb_j1,realb_j1) 
- j2btagSF  = '((%s * J2_CSVT_SFb)+(!%s * J2_CSVT_SFl))'%(realb_j2,realb_j2) 
  weight_2b = '('+j1btagSF+' * '+j2btagSF+')'
 
  weightEff = 'weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig'
