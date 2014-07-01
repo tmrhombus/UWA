@@ -14,28 +14,26 @@ process.load("UWAnalysis/Configuration/2012FullJSON")
 #process.source.lumisToProcess = LumiList.LumiList(filename = '/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/weights/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.json').getVLuminosityBlockRange()
 
 process.source.fileNames= cms.untracked.vstring(
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012C-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-BE363131-F777-E211-B6FD-90E6BA0D0989.root'
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012D-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-5E518B22-6987-E211-957B-00259073E324.root' # is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012D-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-5A70F673-988A-E211-AA1D-20CF305B04ED.root' # is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012D-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-5439930D-2A87-E211-8605-20CF305616E1.root' # is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012D-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-52DC95E8-7585-E211-9677-00259073E3FE.root' # is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012D-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-50B04B10-F187-E211-9229-001EC9D282A8.root' #is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012D-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-4E2784EC-3186-E211-A4D4-00259073E47E.root' # is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012B-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-CA359D13-A971-E211-A636-20CF3019DF03.root' # is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012B-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-46137865-0481-E211-B996-00259073E524.root' # is ok
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012A-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-B2C4A0A7-C96F-E211-8D86-0017A477042C.root' #bad file
-#'root://cmsxrootd.hep.wisc.edu//store/user/tapas/SingleMu/Run2012B-22Jan2013-v1/AOD/2013-06-25-8TeV-53X-PatTuple_Master/patTuple_cfg-FE73DA29-2472-E211-81BC-00261834B586.root'
  #'root://cmsxrootd.hep.wisc.edu//store/user/mverzett/SingleMu/Run2012A-22Jan2013-v1/AOD/Spring2014PATTuples_v2/patTuple_cfg-589969E7-646F-E211-998B-1CC1DE1CEDB2.root'
-'file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/PatTools/test/data.root'
+
+# for synching
+'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-000A8B8E-2875-E211-BC1E-00259073E3D6.root', 
+'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-0012575F-4C75-E211-A333-00259073E4D6.root', 
+'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-001833BF-0575-E211-B2C8-E0CB4E19F9AF.root', 
+'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-001DD9EE-3975-E211-8FE1-90E6BA19A1FE.root', 
+'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-002723BE-2575-E211-A28F-90E6BA19A231.root', 
+'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-0033FBE6-0E75-E211-91C6-00259073E4BE.root' 
+
+#'file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/PatTools/test/data.root'
 )
 process.source.inputCommands=cms.untracked.vstring(
  'keep *', 'drop *_finalState*_*_*',
  'drop *_patFinalStateEvent*_*_*'
 )
 
-#process.load("FWCore.MessageLogger.MessageLogger_cfi")
-#process.MessageLogger.cerr.threshold = 'ERROR'
-#process.MessageLogger.cerr.FwkReport.reportEvery = 1#00000
+process.load("FWCore.MessageLogger.MessageLogger_cfi")
+process.MessageLogger.cerr.threshold = 'ERROR'
+process.MessageLogger.cerr.FwkReport.reportEvery = 100000
 
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
@@ -108,7 +106,7 @@ from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 
 addMuNuEventTreePtData(process,'muNuEventTree')
 addEventSummary(process,True)
-process.TFileService.fileName = cms.string('data.root')
+process.TFileService.fileName = cms.string('Data.root')
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",

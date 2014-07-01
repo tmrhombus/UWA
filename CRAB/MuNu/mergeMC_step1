@@ -4,7 +4,7 @@
 
 voms-proxy-init --voms cms --valid 100:00
 
-version="post_synch_v0"
+version="post_synch_v4"
 
 farmoutAnalysisJobs \
    --merge \

@@ -2,7 +2,7 @@
 # Author: T.M.Perry UW-Madison
 # Moves/Merges MC files from /hdfs/... to working directory
 
-version="v0"
+version="v4"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/
 mkdir ${version}
 cd ${version}
