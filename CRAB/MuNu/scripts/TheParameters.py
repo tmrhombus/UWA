@@ -60,6 +60,7 @@ def arams():
 
  if Signal or Legacy:
   bNr = 2
+  #bNr = 2
   jNr = 2
   jetVeto = True
  elif Control or noMT:

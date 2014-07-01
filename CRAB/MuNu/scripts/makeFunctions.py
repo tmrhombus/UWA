@@ -33,7 +33,7 @@ def hist1D(tree,leaf,xmin=0,xmax=200,steps=20,cuts='(2>1)',I=-1,F=-1):
 def hist2D(tree,leafX,leafY,minX,maxX,stepsX,minY,maxY,stepsY,cuts):
  ''' 2D Histogram '''
  
- histo = TH2F('histo','histo',stepsX,minX,maxX,stepsY,minY,maxY)
+ histo = TH2F('histo','histo',int(stepsX),minX,maxX,int(stepsY),minY,maxY)
  tree.Draw(leafY+':'+leafX+'>>histo',cuts,'colz')
  histo.SetTitle('')
  gStyle.SetOptStat('')

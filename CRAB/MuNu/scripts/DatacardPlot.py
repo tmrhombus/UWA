@@ -10,18 +10,19 @@ from ROOT import gROOT,gStyle
 import histoRange as hr
 import cmsPrelim as cpr
 import TheParameters as p
-import scaleFactors as sf
+#import scaleFactors as sf
  
 # qcd scale factor is applied in DatacardHisto.py
 #sf_qcd = 1.9191895562 # PU_fullIdTight
-sf_qcd = 2.19849549176/2.05901169 # PU_idTight
+#sf_qcd = 2.19849549176/2.05901169 # PU_idTight
 #sf_qcd = 2.20315337368 # PU_idLoose
+sf_qcd = 1.
 
-sf_Signal_Wbb,sf_Signal_Wcc,sf_Signal_TTbar,sf_Signal_Tbar,sf_Signal_T,sf_Signal_tW,sf_Signal_Drell,sf_Signal_VV,sf_TTbar_Wbb,sf_TTbar_Tbar,sf_TTbar_tW,sf_TTbar_TTbar,sf_TTbar_T = sf.actor()
+#sf_Signal_Wbb,sf_Signal_Wcc,sf_Signal_TTbar,sf_Signal_Tbar,sf_Signal_T,sf_Signal_tW,sf_Signal_Drell,sf_Signal_VV,sf_TTbar_Wbb,sf_TTbar_Tbar,sf_TTbar_tW,sf_TTbar_TTbar,sf_TTbar_T = sf.actor()
 
 ratioRange = 0.3
 rebin = 1
-errorBand = False
+errorBand = True
 #canvas attributes
 #canx = 800 # for one plot on page
 #canx = 550 # for two plots on page with text
@@ -66,7 +67,7 @@ tex.SetNDC(True)
 gStyle.SetOptStat('')
 
 # get parameters to run on
-lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut = p.arams() 
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea = p.arams()
 
 sf_Wbb    = 1. 
 sf_Tbar   = 1. 
@@ -78,23 +79,23 @@ sf_T      = 1.
 sf_VV     = 1. 
 sf_Wl     = 1.
 sf_Wc     = 1.
-if Signal:
- print("youre at line 82")
- sf_Wbb    = sf_Signal_Wbb   
- sf_Tbar   = sf_Signal_Tbar  
- sf_tW     = sf_Signal_tW    
- sf_TTbar  = sf_Signal_TTbar   
- sf_Drell  = sf_Signal_Drell
- sf_Wcc    = sf_Signal_Wcc   
- sf_T      = sf_Signal_T     
- sf_VV     = sf_Signal_VV    
-if TT_m or TT_me:
- print("youre at line 92")
- sf_Wbb    = sf_TTbar_Wbb  
- sf_Tbar   = sf_TTbar_Tbar 
- sf_tW     = sf_TTbar_tW   
- sf_TTbar  = sf_TTbar_TTbar  
- sf_T      = sf_TTbar_T    
+#if Signal:
+# print("youre at line 82")
+# sf_Wbb    = sf_Signal_Wbb   
+# sf_Tbar   = sf_Signal_Tbar  
+# sf_tW     = sf_Signal_tW    
+# sf_TTbar  = sf_Signal_TTbar   
+# sf_Drell  = sf_Signal_Drell
+# sf_Wcc    = sf_Signal_Wcc   
+# sf_T      = sf_Signal_T     
+# sf_VV     = sf_Signal_VV    
+#if TT_m or TT_me:
+# print("youre at line 92")
+# sf_Wbb    = sf_TTbar_Wbb  
+# sf_Tbar   = sf_TTbar_Tbar 
+# sf_tW     = sf_TTbar_tW   
+# sf_TTbar  = sf_TTbar_TTbar  
+# sf_T      = sf_TTbar_T    
 
 for leaf in leafs:
 

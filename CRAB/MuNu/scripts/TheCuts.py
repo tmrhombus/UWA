@@ -39,8 +39,12 @@ def cutmaker(leaf='J1_pt',isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0
   j1btagSF  = '((%s * J1_CSVL_SFb)+(!%s * J1_CSVL_SFl))'%(realb_j1,realb_j1) 
   j2btagSF  = '((%s * J2_CSVL_SFb)+(!%s * J2_CSVL_SFl))'%(realb_j2,realb_j2) 
   
- j1btag = '(J1_CSVbtag>%s)'%(bcut)
- j2btag = '(J2_CSVbtag>%s)'%(bcut)
+ #j1btag = '(J1_CSVbtag>%s)'%(bcut)
+ #j2btag = '(J2_CSVbtag>%s)'%(bcut)
+ j1btag = '(J1_CSVbtag>0.898)'
+ j2btag = '(J2_CSVbtag>0.679)'
+ j1btagSF  = '((%s * J1_CSVT_SFb)+(!%s * J1_CSVT_SFl))'%(realb_j1,realb_j1) 
+ j2btagSF  = '((%s * J2_CSVM_SFb)+(!%s * J2_CSVM_SFl))'%(realb_j2,realb_j2) 
  weight_2b = '('+j1btagSF+' * '+j2btagSF+')'
 
  weightEff = 'weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig'

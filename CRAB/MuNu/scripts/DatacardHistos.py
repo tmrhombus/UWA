@@ -16,7 +16,8 @@ import TheParameters as p
 
 #import scaleqcd as qs
 
-sf_qcd = 0.999199436189 #newPat signal
+sf_qcd = 1.19040846759# signal
+#sf_qcd = 2.2196499517 # TT_m
 sf_drell = 1.
 sf_st = 1.   
 sf_st_t = 1.
@@ -31,24 +32,24 @@ CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,Cut
  leafs[0],iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut,Ctl_Andrea
 )
 
-data_filename     = '../data/newPat/Data.root'
-t_t_filename      = '../data/newPat/T_t.root'
-t_s_filename      = '../data/newPat/T_s.root'
-t_tw_filename     = '../data/newPat/T_tW.root'
-tb_t_filename     = '../data/newPat/Tbar_t.root'
-tb_s_filename     = '../data/newPat/Tbar_s.root'
-tb_tw_filename    = '../data/newPat/Tbar_tW.root'
-tt_semi_filename  = '../data/newPat/TTbar_semi.root'
-tt_full_filename  = '../data/newPat/TTbar_full.root'
-ww_filename       = '../data/newPat/WW.root'
-wz_filename       = '../data/newPat/WZ.root'
-zz_filename       = '../data/newPat/ZZ.root'
-wn_filename       = '../data/newPat/WJets.root'
-w1_filename       = '../data/newPat/W1Jet.root'
-w2_filename       = '../data/newPat/W2Jet.root'
-w3_filename       = '../data/newPat/W3Jet.root'
-w4_filename       = '../data/newPat/W4Jet.root'
-z_filename        = '../data/newPat/Drell.root'
+data_filename     = '../data/post_synch_v0/Data.root'
+t_t_filename      = '../data/post_synch_v0/T_t.root'
+t_s_filename      = '../data/post_synch_v0/T_s.root'
+t_tw_filename     = '../data/post_synch_v0/T_tW.root'
+tb_t_filename     = '../data/post_synch_v0/Tbar_t.root'
+tb_s_filename     = '../data/post_synch_v0/Tbar_s.root'
+tb_tw_filename    = '../data/post_synch_v0/Tbar_tW.root'
+tt_semi_filename  = '../data/post_synch_v0/TTbar_semi.root'
+tt_full_filename  = '../data/post_synch_v0/TTbar_full.root'
+ww_filename       = '../data/post_synch_v0/WW.root'
+wz_filename       = '../data/post_synch_v0/WZ.root'
+zz_filename       = '../data/post_synch_v0/ZZ.root'
+wn_filename       = '../data/post_synch_v0/WJets.root'
+w1_filename       = '../data/post_synch_v0/W1Jet.root'
+w2_filename       = '../data/post_synch_v0/W2Jet.root'
+w3_filename       = '../data/post_synch_v0/W3Jet.root'
+w4_filename       = '../data/post_synch_v0/W4Jet.root'
+z_filename        = '../data/post_synch_v0/Drell.root'
 
 data_file     = TFile( data_filename )
 t_t_file      = TFile( t_t_filename  )

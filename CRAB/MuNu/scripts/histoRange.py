@@ -24,9 +24,9 @@ def ranger(leaf):
    xunits = None
 
  elif leaf=='Wpt' or fnm.fnmatch(leaf,'J*_pt'):
-   steps = 15
-   xmin = 30
-   xmax = 220.
+   steps = 12
+   xmin = 25
+   xmax = 205.
    xtitle = leaf
    xunits = 'GeV'
 
@@ -44,7 +44,7 @@ def ranger(leaf):
    xtitle = 'p_{T}^{e}'
    xunits = 'GeV'
 
- elif leaf=='muonCharge':
+ elif leaf=='muon_charge':
    steps = 5
    xmin = -2.
    xmax = 2.
@@ -66,7 +66,7 @@ def ranger(leaf):
    xtitle = 'Transverse Mass'
    xunits = 'GeV'
 
- elif  leaf == 'met':
+ elif  leaf == 'met_pt':
    steps = 50
    xmin = 0.
    xmax = 200.
@@ -95,9 +95,9 @@ def ranger(leaf):
    xunits = 'GeV'
 
  elif fnm.fnmatch(leaf,'mJ*J*'):
-   steps = 16
+   steps = 15
    xmin = 20.
-   xmax = 180.
+   xmax = 170.
    xtitle = 'm^{JJ}'
    xunits = 'GeV'
 

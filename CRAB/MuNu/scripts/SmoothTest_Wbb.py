@@ -31,18 +31,22 @@ wn_tree  =  wn_file.Get(eventTreeLocation)
 
 leafs = [
 'J1_pt',
-'mt',
-'nJetsPt25',
-'met_pt',
-'muon_pt',
-'vertices',
+#'mt',
+#'nJetsPt25',
+#'met_pt',
+#'muon_pt',
+#'vertices',
 ]
 
 cut_standard = '(((weightFactor * 19751.0 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVT_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVT_SFl)))) * ((muNuRelPFIsoDB_A<0.12) && ((abs(muon_eta)<2.1 && muon_pt>30 && HLT_IsoMu24_eta2p1_v_fired) && (nrMu==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.898) && (J2_CSVbtag>0.898) && (mt>45))))'
 
-cut_modified = '(((weightFactor * 19751.0 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVM_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVM_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFl)))) * ((muNuRelPFIsoDB_A<0.12) && ((abs(muon_eta)<2.1 && muon_pt>30 && HLT_IsoMu24_eta2p1_v_fired) && (nrMu==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.679) && (J2_CSVbtag>0.679) && (mt>45))))'   # 2 medium btags
+#cut_modified = '(((weightFactor * 19751.0 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVM_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVM_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFl)))) * ((muNuRelPFIsoDB_A<0.12) && ((abs(muon_eta)<2.1 && muon_pt>30 && HLT_IsoMu24_eta2p1_v_fired) && (nrMu==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.679) && (J2_CSVbtag>0.679) && (mt>45))))'   # 2 medium btags
 
 #cut_modified = ' (((weightFactor * 19751.0 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVL_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVL_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVL_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVL_SFl)))) * ((muNuRelPFIsoDB_A<0.12) && ((abs(muon_eta)<2.1 && muon_pt>30 && HLT_IsoMu24_eta2p1_v_fired) && (nrMu==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.244) && (J2_CSVbtag>0.244) && (mt>45))))'  # 2 light btags
+
+#cut_modified = '(((weightFactor * 19751.0 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFl)))) * ((muNuRelPFIsoDB_A<0.12) && ((abs(muon_eta)<2.1 && muon_pt>30 && HLT_IsoMu24_eta2p1_v_fired) && (nrMu==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.898) && (mt>45))))'  # 1 tight btag
+
+cut_modified = '(((weightFactor * 19751.0 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFl)))) * ((muNuRelPFIsoDB_A<0.12) && ((abs(muon_eta)<2.1 && muon_pt>30 && HLT_IsoMu24_eta2p1_v_fired) && (nrMu==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.898) && (J2_CSVbtag>0.679) && (mt>45))))'  # 1st tight, 2nd medium
 
 
 I = -1
@@ -69,11 +73,13 @@ for leaf in leafs:
  hstd.Add(h3std)
  hstd.Add(h4std)
  hstd.Add(hnstd)
- hstd.Sumw2()
  hstd_err = hstd.Clone()
  hstd_err.SetName("hstd_err")
+ hstd_err.Sumw2()
+ hstd_err.SetFillColor(ROOT.EColor.kGreen+3)
+ hstd_err.SetFillStyle(3004)
 
- hstd.Scale(1./hstd.Integral())
+# hstd.Scale(1./hstd.Integral())
  stdMax = hstd.GetMaximum()
  hstd.SetLineColor(ROOT.EColor.kGreen+3)
  hstd.SetLineWidth(4)
@@ -95,28 +101,31 @@ for leaf in leafs:
  hmod.Add(h3mod)
  hmod.Add(h4mod)
  hmod.Add(hnmod)
- hmod.Sumw2()
+ hmod.Scale(hstd.Integral()/hmod.Integral())
  hmod_err = hmod.Clone()
  hmod_err.SetName("hmod_err")
+ hmod_err.Sumw2()
+ hmod_err.SetFillColor(ROOT.EColor.kRed)
+ hmod_err.SetFillStyle(3005)
 
- hmod.Scale(1./hmod.Integral())
+ #hmod.Scale(1./hmod.Integral())
  modMax = hmod.GetMaximum()
  hmod.SetLineColor(ROOT.EColor.kRed)
  hmod.SetLineWidth(4)
-
-
 
  leg=TLegend(0.5,0.5,0.9,0.8)
  leg.SetFillColor(0)
  leg.SetBorderSize(0)
  leg.AddEntry(hstd,'Standard, 2CSV Tight')
- leg.AddEntry(hmod,'Modified, 2CSV Medium')
+ leg.AddEntry(hmod,'Modified, 1st Tight 2nd Medium')
 
  can.cd()
  hstd.SetMaximum(1.1*max(stdMax,modMax))
  hstd.SetTitle(leaf)
  hstd.Draw('hist')
+ hstd_err.Draw('sames,E2')
  hmod.Draw('sames,hist')
+ hmod_err.Draw('sames,E2')
  leg.Draw('sames')
 
  can.Update()

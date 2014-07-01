@@ -11,10 +11,12 @@ from ROOT import gROOT,gStyle
 import aHisto as h #function to make histograms
 import histoRange as hr #manages range, lables for plots
 
-data_filename = '../data/post_synch_v0/Data_B.root' 
+data_filename = '../data/post_synch_v0/WJets.root' 
+#data_filename = '../data/post_synch_v0/Data_B.root' 
 
 cut_type = 'wbb'
-path = '../scripts/synch/Data_norm_%s'%(cut_type)
+path = '../scripts/synch/WJets_norm_%s'%(cut_type)
+#path = '../scripts/synch/Data_norm_%s'%(cut_type)
 
 data_file  = TFile( data_filename)
 eventTreeLocation = 'muNuEventTree/eventTree'
@@ -33,15 +35,20 @@ leafs = [
 ]
 
 cut = '(2>1)'
+j1btag = '(J1_CSVbtag > 0.898)'
+j2btag = '(J2_CSVbtag > 0.898)'
+j3btag = '(J3_CSVbtag > 0.898)'
+twoBTags = '('+j1btag+'&&'+j2btag+')'
+twoOfThreeBTags = '(('+j1btag+'&&'+j2btag+')||('+j1btag+'&&'+j3btag+')||('+j2btag+'&&'+j3btag+'))'
 
 if cut_type is 'wbb':
  cut='(((J1_idLooseJet)&&(J2_idLooseJet))&&(muNuRelPFIsoDB_A<0.12)&&(((((HLT_IsoMu24_eta2p1_v_fired)&&(nrEle==0 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)&&(nJets24Pt25==0))&&(2>1))&&((J1_CSVbtag>0.898)&&(J2_CSVbtag>0.898)))&&((J1_pt >25 && J2_pt>25 && abs(J1_eta)<2.4 && abs(J2_eta)<2.4)&& J3_pt<25)) && mt>45)'
 
 if cut_type is 'tt_me':
- cut='(((J1_idLooseJet)&&(J2_idLooseJet))&&(muNuRelPFIsoDB_A<0.12)&&(((((HLT_IsoMu24_eta2p1_v_fired)&&(nrEle==1 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)&&(2>1)&&(mt>45))&&(2>1))&&(((J1_CSVbtag>0.898))))&&((J1_pt>25 && J2_pt>25 && abs(J1_eta)<2.4 && abs(J2_eta)<2.4) && J3_pt<25)) && mt>45)'
+ cut='((J1_idLooseJet)&&(J2_idLooseJet)&&(muNuRelPFIsoDB_A<0.12)&&(HLT_IsoMu24_eta2p1_v_fired)&&(nrEle==1 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)&&(mt>45)&&(J1_pt>25 && J2_pt>25 && abs(J1_eta)<2.4 && abs(J2_eta)<2.4 && J3_pt<25) && '+twoBTags+')'
 
 if cut_type is 'tt_m':
- cut='((((J1_idLooseJet)&&(J2_idLooseJet))&&(J3_idLooseJet))&&(muNuRelPFIsoDB_A<0.12)&&(((((HLT_IsoMu24_eta2p1_v_fired)&&(nrEle==0 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)&&(2>1)&&(mt>45))&&(2>1))&&((J1_CSVbtag>0.898)&&(J2_CSVbtag>0.898)))&&(((J1_pt >25 && J2_pt>25 && abs(J1_eta)<2.4 && abs(J2_eta)<2.4)&& J3_pt  > 25 && abs(J3_eta) <  2.4))))'
+ cut='((J1_idLooseJet)&&(J2_idLooseJet)&&(J3_idLooseJet)&&(muNuRelPFIsoDB_A<0.12)&&(HLT_IsoMu24_eta2p1_v_fired)&&(nrEle==0 && nrMu==1 && abs(muon_eta)<2.1 && muon_pt>30)&&(mt>45)&&(J1_pt >25 && J2_pt>25 && abs(J1_eta)<2.4 && abs(J2_eta)<2.4 && J3_pt>25 && abs(J3_eta)<2.4 && abs(J4_eta)<2.4) && '+twoOfThreeBTags+')'
 
 I = -1
 F = -1
