@@ -22,7 +22,26 @@ process.source.fileNames= cms.untracked.vstring(
 'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-001833BF-0575-E211-B2C8-E0CB4E19F9AF.root', 
 'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-001DD9EE-3975-E211-8FE1-90E6BA19A1FE.root', 
 'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-002723BE-2575-E211-A28F-90E6BA19A231.root', 
-'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-0033FBE6-0E75-E211-91C6-00259073E4BE.root' 
+'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-0033FBE6-0E75-E211-91C6-00259073E4BE.root', 
+
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A4B3C43-C575-E211-8960-90E6BA0D09AD.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A4BE637-F777-E211-BA8E-485B39800BB5.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A542E64-4377-E211-A930-00259073E31C.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A5B339D-C974-E211-9242-002590747DE2.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A6226B7-CA78-E211-82F3-E0CB4E553643.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A68F191-7478-E211-A32A-00261834B51D.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A69AD6D-6477-E211-99CD-00259074AE44.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A6B0C87-2375-E211-B043-E0CB4EA0A926.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A6CF6B1-2675-E211-8CBD-90E6BA19A245.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A7A05AC-AB74-E211-AAEE-20CF3027A5C4.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A7ABD3B-2577-E211-9E3C-00259073E3D2.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A80B8A0-5775-E211-A3E6-E0CB4E29C505.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A82620F-4478-E211-9FF8-E0CB4E19F96E.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A870C87-2377-E211-8950-00259073E4C4.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A8FFDA5-B275-E211-B536-00261834B5D2.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A9005DE-4C77-E211-9C4F-00259073E340.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A9670CA-C875-E211-ACFC-20CF305616E1.root',
+#'root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples/patTuple_cfg-2A9B8F4B-EF77-E211-A0AA-485B39800B75.root',
 
 #'file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/PatTools/test/data.root'
 )
@@ -40,73 +59,15 @@ from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
 defaultReconstructionPT(process,'HLT',['HLT_IsoMu24_eta2p1_v'],
                         itsMC=False,itsData=True)
-global metCalibration
-
-process.metCalibration = cms.PSet(
- applyCalibration = cms.bool(True),
- calibrationScheme = cms.string("OneLeg"),
- responseU1   = cms.string("1.33223-0.917782*x"),
- responseU2   = cms.string("-0.013"),
- resolutionU1 = cms.string("11.1566+0.0654529*x+0.000124436*x*x"),
- resolutionU2 = cms.string("11.1235+0.0449872*x-6.39822e-5*x*x"),
- responseMCU1   = cms.string("1.26247-0.950094*x"),
- responseMCU2   = cms.string("-0.00544907"),
- resolutionMCU1 = cms.string("10.6449+0.0436475*x+3.07554e-5*x*x"),
- resolutionMCU2 = cms.string("10.5649+0.0225853*x-5.81371e-5*x*x")
-)
-
-process.findMuons = cms.EDFilter("PATMuonSelector",
-                                           src = cms.InputTag("cleanPatMuons"),
-                                           cut = cms.string('pt>25&&abs(eta)<2.1'),
-                                           filter = cms.bool(False)
-)
-
-process.jetsFilter = cms.EDFilter("CandViewCountFilter",
-                                src = cms.InputTag("jetsETARED"),
-                                minNumber = cms.uint32(1)
-                             )
-
-process.muonsFilter = cms.EDFilter("CandViewCountFilter",
-                                src = cms.InputTag("findMuons"),
-                                minNumber = cms.uint32(1)
-                             )
-
-process.jetsETARED = cms.EDProducer("PATJetCleaner",
-   src = cms.InputTag("selectedPatJets"),
-   preselection = cms.string('abs(eta)<3.&&pt>20&&userFloat("idLoose")>0'),
-   checkOverlaps = cms.PSet(
-       muons = cms.PSet(
-        src = cms.InputTag("findMuons"),
-        algorithm = cms.string("byDeltaR"),
-        preselection = cms.string("pt>10&&isGlobalMuon&&isTrackerMuon&&(chargedHadronIso()+max(photonIso+neutralHadronIso(),0.0))/pt()<0.3"),
-        deltaR = cms.double(0.5),
-        checkRecoComponents = cms.bool(False),
-        pairCut = cms.string(""),
-        requireNoOverlaps = cms.bool(True),
-       ),
-       electrons = cms.PSet(
-        src = cms.InputTag("cleanPatElectrons"),
-        algorithm = cms.string("byDeltaR"),
-        preselection = cms.string("pt>10&&(chargedHadronIso()+max(photonIso()+neutralHadronIso(),0.0))/pt()<0.3"),
-        deltaR = cms.double(0.5),
-        checkRecoComponents = cms.bool(False),
-        pairCut = cms.string(""),
-        requireNoOverlaps = cms.bool(True),
-       ),
-   ),
-   finalCut = cms.string('')
-)
-
-process.preCleaning=cms.Sequence(process.findMuons*process.jetsETARED*process.jetsFilter*process.muonsFilter)
 
 process.load("UWAnalysis.Configuration.wMuNuAnalysisPT_cff")
-process.eventSelection = cms.Path(process.preCleaning*process.selectionSequence) 
+process.eventSelection = cms.Path(process.selectionSequence) 
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbb import *
 
 addMuNuEventTreePtData(process,'muNuEventTree')
 addEventSummary(process,True)
-process.TFileService.fileName = cms.string('Data.root')
+process.TFileService.fileName = cms.string('Synchv4cccc_Data.root')
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",

@@ -2,7 +2,7 @@
 # Author: T.M.Perry UW-Madison
 # weights the MC samples in /$CMSSW_BASE/.../data/{version}
 
-version="post_synch_v4"
+version="post_synch_v5"
 cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/${version}
 
 EventWeightsIterativeWJets doOneD=1 weight=37509.0 histoName='summary/results' branch='weightFactor'
