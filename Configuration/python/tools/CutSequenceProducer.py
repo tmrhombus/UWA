@@ -577,7 +577,7 @@ class CutSequenceProducer(cms._ParameterTypeBase):
                dicand.verbosity = cms.untracked.int32(0)
                dicand.srcGenParticles = cms.InputTag(genParticles)
                dicand.metCalibration = cms.PSet(
-                   applyCalibration = cms.bool(True),
+                   applyCalibration = cms.bool(False),
                    calibrationScheme = cms.string("OneLeg"),
                    responseU1   = cms.string("1.33223-0.917782*x"),
                    responseU2   = cms.string("-0.013"),
@@ -587,10 +587,7 @@ class CutSequenceProducer(cms._ParameterTypeBase):
                    responseMCU2   = cms.string("-0.00544907"),
                    resolutionMCU1 = cms.string("10.6449+0.0436475*x+3.07554e-5*x*x"),
                    resolutionMCU2 = cms.string("10.5649+0.0225853*x-5.81371e-5*x*x")
-)
-
-               
-
+               )
 
                pyModule = sys.modules[self.pyModuleName[0]]
                if pyModule is None:
