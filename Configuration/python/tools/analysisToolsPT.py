@@ -66,6 +66,7 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
   SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)
   muonIDer(process,muons="rochCorMuons")
+  #mtMaker(process,muons="IDedMuons",met="metTypeOne")
   applyDefaultSelectionsPT(process,"patBRecoJets","IDedMuons")
   #applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
 
@@ -465,6 +466,16 @@ def muonIDer(process,muons="cleanPatMuons"):
   process.IDedMuonSeq = cms.Sequence(process.IDedMuons)
   process.IDedMuonPath= cms.Path(process.IDedMuonSeq)
   return process.IDedMuonPath
+
+
+def mtMaker(process,muons="IDedMuons",met="metTypeOne"):
+  process.mtMuons = cms.EDProducer("PATmTCalculator",
+   srcMuon = cms.InputTag( muons ),
+   srcMET = cms.InputTag( met )
+  )
+  process.mtMuonsSeq = cms.Sequence(process.mtMuons)
+  process.mtMuonsPath= cms.Path(process.mtMuonsSeq)
+  return process.mtMuonsPath
 
 
 def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
