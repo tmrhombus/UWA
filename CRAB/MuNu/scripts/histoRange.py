@@ -60,21 +60,21 @@ def ranger(leaf):
    setLogY = True
 
  elif leaf=='mt':
-   steps =50 
-   xmin = 0.
-   xmax = 200.
+   steps =20 
+   xmin = 4.
+   xmax = 240.
    xtitle = 'Transverse Mass'
    xunits = 'GeV'
 
  elif  leaf == 'met_pt':
-   steps = 50
+   steps = 24
    xmin = 0.
-   xmax = 200.
+   xmax = 240.
    xtitle = 'MET'
    xunits = 'GeV'
 
  elif leaf == 'vertices':
-   steps = 60
+   steps = 40
    xmin = 0.
    xmax = 40.
    xtitle = 'Nr. Vertices'

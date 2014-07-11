@@ -13,10 +13,13 @@ import TheParameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<mt<20
 #sf_qcd = 1.
-sf_qcd = 1.19040846759 # Signal
+#sf_qcd = 1.19040846759 # Signal
 #sf_qcd = 2.2196499517 #TT_m
 #sf_qcd = 1.66907158262 #TT_me
 #sf_qcd =  0.716463222704 #ST
+
+#sf_qcd = 0.0342524013772 #signal
+sf_qcd = 0.0598271961327 #TT_m
 
 #sf_qcd = 1.20199004669 # signal
 
@@ -51,8 +54,8 @@ sf_Top_Tbar      = 1.
 #sf_Top_Tbar      = 0.984493670886
 
 ratioRange = 0.3
-rebin = 5
-errorBand = False
+rebin = 1
+errorBand = True
 #canvas attributes
 canx = 800 # for one plot on page
 #canx = 550 # for two plots on page with text

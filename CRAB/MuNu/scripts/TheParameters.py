@@ -10,7 +10,7 @@ def arams():
  #lumi = 19488. #  for jresMet
  #lumi = 18027. # for moreSV_toe
  #lumi = 18589. # for looseID  19488.
- lumi = 19751. # NewPat
+ lumi = 19731. # NewPat
  #lumi = 19548. #post_synch_v0 
 
  btype = 't'
@@ -26,7 +26,7 @@ def arams():
  #extraCut = '(vertixces < 15)'
 
  #naming where output goes
- path = '../plots/NewlyRanged_'
+ path = '../plots/PS4_v2_'
  extraName = ''
 
  drawQCD = True
@@ -43,10 +43,10 @@ def arams():
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
  Tomislav = False
 
- DataCard = True
+ DataCard = False
 
- #eventTreeLocation = 'New_Tree'
- eventTreeLocation = 'muNuEventTree/eventTree'
+ eventTreeLocation = 'New_Tree'
+ #eventTreeLocation = 'muNuEventTree/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonUp/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonDown/eventTree'
  #eventTreeLocation = 'muNuEventTreeJetUp/eventTree'
@@ -59,8 +59,8 @@ def arams():
  jetVeto = False
 
  if Signal or Legacy:
+  #bNr = 0
   bNr = 2
-  #bNr = 2
   jNr = 2
   jetVeto = True
  elif Control or noMT:
@@ -73,8 +73,9 @@ def arams():
   jetVeto = False
  elif TT_m:
   bNr = 2
-  jNr = 4
-  jetVeto = True
+  jNr = 3
+  #jNr = 4
+  jetVeto = False
  elif TT_me:
   bNr = 2 
   jNr = 2
@@ -114,6 +115,16 @@ def arams():
  jet1_2dr2 = '(((J1_eta-J2_eta)*(J1_eta-J2_eta))+((J1_phi-J2_phi)*(J1_phi-J2_phi)))'
 
  leafs = [
+#'vertices',
+#'J1_mass_SV_weighted',
+#'J1_mass_SV_corrected',
+#'J1_mass_SV_unweighted',
+#'J1_pt',
+#'J1_eta',
+#'muon_pt',
+#'muon_eta',
+#'met_pt',
+'met_phi',
 #'J1_idBetaPu',
 #'J1_idBetaClassicPu',
 #'J1_idBetaStarPu',
@@ -125,15 +136,13 @@ def arams():
 #'J2_fullIdLoosePu',
 #'mt',
 #'DiSVMass',
-#'vertices',
+#'mJ3J4',
 #'(J1_mass_SSV+J2_mass_SSV)',
 #'J2_mass_SSV',
 #'J1_nTracks_SV',
 #'J2_nTracks_SV',
-#'J1_mass_SV_weighted',
 #'J1_mass_SSV_alt',
 #'J1_mass_SSV',
-#'J1_mass_SV_unweighted',
 #'J2_mass_SV_unweighted',
 #'J2_mass_SV_weighted',
 #'J1_normChi2_SV',
@@ -148,12 +157,8 @@ def arams():
 #'J1_phi_PV',
 #'J1_eta_PV',
 #'J1_mass_PV',
-#'J1_pt',
 #'(J1_mass_SV_weighted+J2_mass_SV_weighted)',
-#'J1_eta',
 #'J1_phi',
-#'muon_pt',
-#'muon_eta',
 #'muon_phi',
 #'muonCharge',
 #'J2_pt',
@@ -177,8 +182,6 @@ def arams():
 #'J1DR',
 #'J2DR',
 #'ht',
-'met_pt',
-#'met_phi',
 #'DiMuonMass',
 #'nJetsPt25',
 #'nJetsPt30',
@@ -189,7 +192,6 @@ def arams():
 #'Wpt',
 #'ptJJ',
 #'mJJ',
-#'mJ3J4',
 ]
 
  return lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea
