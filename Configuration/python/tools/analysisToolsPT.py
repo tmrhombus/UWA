@@ -76,9 +76,9 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
   #mvaMet(process) #Build MVA MET
+  IVF(process)
   if itsMC:
    genHadrons(process)  
-   IVF(process)
 
 
 def muonTriggerMatchPT(process,triggerProcess):
@@ -681,8 +681,9 @@ def IVF(process):
   process.LCProducer.src= cms.InputTag("bCandidates")
   process.LCProducer.primaryVertices= cms.InputTag("offlinePrimaryVertices")
   process.LCProducer.jetSource= cms.InputTag("ak5PFJets")
-
+  process.LCProducer.jetGenSource= cms.InputTag("ak5GenJets")
   process.dump = cms.EDAnalyzer("EventContentAnalyzer")
+  process.LCProducer.isMC = cms.bool(False)
   process.createBCandidateCollection=cms.Path(process.IVF*process.IMV1*process.TVA*process.IMV2*process.IMVF*process.bCandidates*process.LCProducer)
 
 
