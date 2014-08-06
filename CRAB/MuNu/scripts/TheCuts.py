@@ -8,22 +8,25 @@ def cutmaker(leaf='J1_pt',isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0
 
  goodMu = '(abs(muon_eta)<2.1 && muon_pt>30)'
  oneMu_noEle = '(nrMuLoose==1 && nrEle==0)'
- oneMu_oneEle = '(nrMuLoose==1 && nrEle==1 && ptEle>30)'
- twoMu_noEle = '(nrMu==2 && nrEle==0)'
+ oneMu_oneEle = '(nrMuLoose==1 && nrEle==1 && ele_pt>30)'
+ twoMu_noEle = '(nrMuLoose==2 && nrEle==0)'
+ #twoMu_noEle = '(nrMu==2 && nrEle==0)'
  noEleQCD = '(nrEle==0)'
  oneMu_noEleQCD = '(nrMuLoose==0 && nrEle==0)'
- oneMu_oneEleQCD = '(nrMuLoose==1 && nrEle==1 && ptEle>30)'
- twoMu_noEleQCD = '(nrMu==1 && nrEle==0)'
+ oneMu_oneEleQCD = '(nrMuLoose==1 && nrEle==1 && ele_pt>30)'
+ twoMu_noEleQCD = '(nrMuLoose==2 && nrEle==0)'
 
  j1Cent = '(J1_pt>%s && abs(J1_eta)<2.4 && J1_idLooseJet)'%(jetPt)
  j2Cent = '(J2_pt>%s && abs(J2_eta)<2.4 && J2_idLooseJet)'%(jetPt)
  j3Cent = '(J3_pt>%s && abs(J3_eta)<2.4 && J3_idLooseJet)'%(jetPt)
  j4Cent = '(J4_pt>%s && abs(J4_eta)<2.4 && J4_idLooseJet)'%(jetPt)
+ #noFJ = '(2>1)'
  noFJ = '(nJets24Pt25==0)'
  j1Fwd = '(J1_pt>%s && abs(J1_eta)>=2.4 && abs(J1_eta)<5.0 && J1_idLooseJet)'%(jetPt)
  j2Fwd = '(J2_pt>%s && abs(J2_eta)>=2.4 && abs(J2_eta)<5.0 && J2_idLooseJet)'%(jetPt)
  j3Veto = '(J3_pt<%s)'%(njetPt)
 
+ #if leaf=="mt": mt='(mt>45)'
  if leaf=="mt": mt='(2>1)'
  else: mt = '(mt>45)'
 
@@ -45,10 +48,9 @@ def cutmaker(leaf='J1_pt',isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0
   
  j1btag = '(J1_CSVbtag>%s)'%(bcut)
  j2btag = '(J2_CSVbtag>%s)'%(bcut)
- #j1btag = '(J1_CSVbtag>0.898)'
- #j2btag = '(J2_CSVbtag>0.679)'
- #j1btagSF  = '((%s * J1_CSVT_SFb)+(!%s * J1_CSVT_SFl))'%(realb_j1,realb_j1) 
- #j2btagSF  = '((%s * J2_CSVM_SFb)+(!%s * J2_CSVM_SFl))'%(realb_j2,realb_j2) 
+ j1btagSF  = '((%s * J1_CSVT_SFb)+(!%s * J1_CSVT_SFl))'%(realb_j1,realb_j1) 
+ j2btagSF  = '((%s * J2_CSVM_SFb)+(!%s * J2_CSVM_SFl))'%(realb_j2,realb_j2) 
+ #weight_2b = '('+j1btagSF+')'
  weight_2b = '('+j1btagSF+' * '+j2btagSF+')'
 
  weightEff = 'weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig'
@@ -59,6 +61,8 @@ def cutmaker(leaf='J1_pt',isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0
  if Signal:
   skim= '('+goodMu+' && '+oneMu_noEle+   ' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+j2btag+' && '+mt+')'
   skimq='('+goodMu+' && '+oneMu_noEleQCD+' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+j2btag+' && '+mt+')'
+  #skim= '('+goodMu+' && '+oneMu_noEle+   ' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+mt+')'
+  #skimq='('+goodMu+' && '+oneMu_noEleQCD+' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+mt+')'
   #skim= '('+goodMu+' && '+oneMu_noEle+   ' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+mt+')'
   #skimq='('+goodMu+' && '+oneMu_noEleQCD+' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+mt+')'
   weight    = '('+weight+' * '+weight_2b+')'
@@ -84,6 +88,8 @@ def cutmaker(leaf='J1_pt',isolationValue=0.12,antiIsoValue=0.2,lumi=19759.,bnr=0
  if TT_me:
   skim= '('+goodMu+' && '+oneMu_oneEle+   ' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+j2btag+' && '+mt+')'
   skimq='('+goodMu+' && '+oneMu_oneEleQCD+' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+j2btag+' && '+mt+')'
+  #skim= '('+goodMu+' && '+oneMu_oneEle+   ' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+mt+')'
+  #skimq='('+goodMu+' && '+oneMu_oneEleQCD+' && '+j1Cent+' && '+j2Cent+' && '+j3Veto+' && '+noFJ+' && '+j1btag+' && '+mt+')'
   weight    = '('+weight+' * '+weight_2b+')'
   weightT   = '('+weightT+' * '+weight_2b+')'
   weightTup = '('+weightTup+' * '+weight_2b+')'
