@@ -106,7 +106,7 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
         BCFS.BDeltaPHI(-777);
 	BCFS.BC1MASS(-777);
 	BCFS.BC2MASS(-777);
-	std::cout<<"In BCProducer"<<std::endl;
+	//std::cout<<"In BCProducer"<<std::endl;
 	// std::vector<reco::LeafCandidate> *blc = new std::vector<reco::LeafCandidate>;
 	
 	std::auto_ptr<BCandFinalStateCollection> BCandFS(new BCandFinalStateCollection);
@@ -162,7 +162,7 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 
 	//Selecting the good BCandidate
 	for(unsigned int i=0; i<svc.size(); i++){
-		std::cout<<"Testing the quality of the SV "<<i<<std::endl;		
+		//std::cout<<"Testing the quality of the SV "<<i<<std::endl;		
 		reco::Vertex svertex = svc[i];
 		GlobalVector flightaxis = flightDirection(pv,svertex);
 		reco::SecondaryVertex sv(pv,svertex,flightaxis,true);
@@ -171,11 +171,11 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 		if(svc[i].p4().M()>1.4 && sv.dist3d().significance()>5.0 && fabs(flightaxis.eta())<2.1 && svc[i].p4().Pt()>8.0) { 
 	  		oneBcand.isSelected = 1; 
 		}
-		std::cout<<"    Mass="<<svc[i].p4().M()
-			<<" sv.dist3d().significance()="<<sv.dist3d().significance()
-			<<" flightaxis.eta()="<<flightaxis.eta()
-			<<" svc[i].p4().Pt()="<<svc[i].p4().Pt()
-			<<" ===> is Selected? "<<oneBcand.isSelected<<std::endl;
+		//std::cout<<"    Mass="<<svc[i].p4().M()
+		//	<<" sv.dist3d().significance()="<<sv.dist3d().significance()
+		//	<<" flightaxis.eta()="<<flightaxis.eta()
+		//	<<" svc[i].p4().Pt()="<<svc[i].p4().Pt()
+		//	<<" ===> is Selected? "<<oneBcand.isSelected<<std::endl;
 		oneBcand.vertex = sv;
 		reco::Vertex::Point p(svc[i].x(),svc[i].y(),svc[i].z());
 		math::XYZTLorentzVectorD bCandmom;
@@ -184,13 +184,13 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 		TLorentzVector BLorentzV;  BLorentzV.SetPtEtaPhiM(lcc.p4().Pt(),lcc.p4().Eta(),lcc.p4().Phi(),lcc.p4().M());
 		oneBcand.kinematics = BLorentzV;
 		oneBcand.flightdir  = flightaxis;
-		std::cout<<"	Computing the kinematics:"<<std::endl;
-                std::cout<<"         lc.Eta= "<<lcc.eta()<<"      lcc.Phi="<<lcc.phi()<<std::endl;
-                std::cout<<"    (pv-SV).Eta= "<<flightaxis.eta()<<" (pv-sv).Phi="<<flightaxis.phi()<<std::endl;
+		//std::cout<<"	Computing the kinematics:"<<std::endl;
+                //std::cout<<"         lc.Eta= "<<lcc.eta()<<"      lcc.Phi="<<lcc.phi()<<std::endl;
+                //std::cout<<"    (pv-SV).Eta= "<<flightaxis.eta()<<" (pv-sv).Phi="<<flightaxis.phi()<<std::endl;
 
 		if( oneBcand.isSelected==1 ) selectedBcands.push_back( oneBcand );
 	}
-	std::cout<<"After Selection, "<<selectedBcands.size()<<" remains over the "<<svc.size()<<" ones present"<<std::endl;
+	//std::cout<<"After Selection, "<<selectedBcands.size()<<" remains over the "<<svc.size()<<" ones present"<<std::endl;
 	sort( selectedBcands.begin(), selectedBcands.end(), sortB );
 
 	BCFS.nBC(selectedBcands.size());
@@ -214,13 +214,13 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
                 	BCFS.BC1PT(selectedBcands[i].kinematics.Pt());
                  	BCFS.BC1ETA(selectedBcands[i].flightdir.eta());
                  	BCFS.BC1PHI(selectedBcands[i].flightdir.phi());
-			std::cout<<"	---> First BC, pt="<<selectedBcands[i].kinematics.Pt()
-				 <<"	eta="<<selectedBcands[i].flightdir.eta()
-				 <<"	phi="<<selectedBcands[i].flightdir.phi()
-				 <<"	nTrack="<<bCandtracks.size()
-				 <<"	3D sig="<<selectedBcands[i].vertex.dist3d().significance()
-				 <<"	mass="<<selectedBcands[i].kinematics.M()<<std::endl;	
-			std::cout<<"		Running jets to count the total energy associated to the first b-hadron"<<std::endl;
+			//std::cout<<"	---> First BC, pt="<<selectedBcands[i].kinematics.Pt()
+			//	 <<"	eta="<<selectedBcands[i].flightdir.eta()
+			//	 <<"	phi="<<selectedBcands[i].flightdir.phi()
+			//	 <<"	nTrack="<<bCandtracks.size()
+			//	 <<"	3D sig="<<selectedBcands[i].vertex.dist3d().significance()
+			//	 <<"	mass="<<selectedBcands[i].kinematics.M()<<std::endl;	
+			//std::cout<<"		Running jets to count the total energy associated to the first b-hadron"<<std::endl;
 			for(int j=0; j<nJets; j++){
 //				std::cout<<"      --- > jet number "<<j<<std::endl;
 				float etaj=TLV_jet[j].Eta();
@@ -231,10 +231,10 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 //				std::cout<<"         --- > not used yet pt="<<TLV_jet[j].Pt()<<" eta="<<etaj<<" phi="<<phij<<std::endl;
 	                        if(dRBJ<0.5){
 					if(index[j]==0){
-						std::cout<<"			jet "<<j<<"    --- > dr<0.5, adding the energy to sumEnergy: "<<sumEnergy
-							<<"---->"<<sumEnergy+TLV_jet[j].E()
-                                                        <<" , nJetAssociated="<<nJetAssociated
-							<<" --->"<<nJetAssociated+1<<std::endl;	
+						//std::cout<<"			jet "<<j<<"    --- > dr<0.5, adding the energy to sumEnergy: "<<sumEnergy
+						//	<<"---->"<<sumEnergy+TLV_jet[j].E()
+                                                //        <<" , nJetAssociated="<<nJetAssociated
+						//	<<" --->"<<nJetAssociated+1<<std::endl;	
 						sumEnergy+=TLV_jet[j].E();
 						index[j]=1;
 						if(nJetAssociated==0){
@@ -251,9 +251,9 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 						}
 						nJetTotalAssociated++;
 					}
-					else{std::cout<<"                    jet "<<j<<" already considered"<<std::endl;}	
+					//else{std::cout<<"                    jet "<<j<<" already considered"<<std::endl;}	
 					nJetAssociated++;
-					std::cout<<"          =============> nJetAssociated="<<nJetAssociated<<" nJetTotalAssociated="<<nJetTotalAssociated<<std::endl;
+					//std::cout<<"          =============> nJetAssociated="<<nJetAssociated<<" nJetTotalAssociated="<<nJetTotalAssociated<<std::endl;
 
 				}
                         }
@@ -268,8 +268,8 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
                         	                float dRBJ=sqrt(pow(dEtaBJ,2)+pow(dPhiBJ,2));
     //                  	                  std::cout<<"         --- > GenJet not used yet pt="<<TLV_Gjet[j].Pt()<<" eta="<<TLV_Gjet[j].Eta()<<" phi="<<TLV_Gjet[j].Phi()<<std::endl;
                         	                 if(dRBJ<0.5){
-                        	                        std::cout<<"			genjet "<<j<<"     --- > dr<0.5, adding the energy to sumGenEnergy: "<<sumGenEnergy
-								<<"---->"<<sumGenEnergy+TLV_Gjet[j].E()<<std::endl;
+                        	                        //std::cout<<"			genjet "<<j<<"     --- > dr<0.5, adding the energy to sumGenEnergy: "<<sumGenEnergy
+							//	<<"---->"<<sumGenEnergy+TLV_Gjet[j].E()<<std::endl;
                         	                        sumGenEnergy+=TLV_Gjet[j].E();
                         	                        Gindex[j]=1;
                         	                }
@@ -285,18 +285,18 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
                         BCFS.BC2PT(selectedBcands[i].kinematics.Pt());
                         BCFS.BC2ETA(selectedBcands[i].flightdir.eta());
                         BCFS.BC2PHI(selectedBcands[i].flightdir.phi());
-                        std::cout<<"	---> Second BC, pt="<<selectedBcands[i].kinematics.Pt()
-                                <<" eta="<<selectedBcands[i].flightdir.eta()
-                                <<" phi="<<selectedBcands[i].flightdir.phi()
-                                <<" nTrack="<<bCandtracks.size()
-                                <<" 3D sig="<<selectedBcands[i].vertex.dist3d().significance()
-                                <<" mass="<<selectedBcands[i].kinematics.M()<<std::endl;    				
+                        //std::cout<<"	---> Second BC, pt="<<selectedBcands[i].kinematics.Pt()
+                        //        <<" eta="<<selectedBcands[i].flightdir.eta()
+                        //        <<" phi="<<selectedBcands[i].flightdir.phi()
+                        //        <<" nTrack="<<bCandtracks.size()
+                        //        <<" 3D sig="<<selectedBcands[i].vertex.dist3d().significance()
+                        //        <<" mass="<<selectedBcands[i].kinematics.M()<<std::endl;    				
 	
 			float dphi=fabs(BCFS.BC1PHI()-BCFS.BC2PHI())<3.14159?fabs(BCFS.BC1PHI()-BCFS.BC2PHI()):6.28318-fabs(BCFS.BC1PHI()-BCFS.BC2PHI());
 			BCFS.BDeltaPHI(dphi);
                 	BCFS.BCDeltaR(sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2)));
-			std::cout<<"			DeltaR="<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<std::endl; 
-			std::cout<<"			Running jets to count the total energy associated to the second b-hadron"<<std::endl;
+			//std::cout<<"			DeltaR="<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<std::endl; 
+			//std::cout<<"			Running jets to count the total energy associated to the second b-hadron"<<std::endl;
 			for(int j=0; j<nJets; j++){
 //				std::cout<<"      --- > jet number "<<j<<std::endl,
                                float etaj=TLV_jet[j].Eta();
@@ -307,10 +307,10 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 //					std::cout<<"         --- > not used yet pt="<<TLV_jet[j].Pt()<<" eta="<<TLV_jet[j].Eta()<<" phi="<<TLV_jet[j].Phi()<<std::endl;
                 	  	if(dRBJ<0.5){
 					if(index[j]==0){
-						std::cout<<"			jet "<<j<<"     --- > dr<0.5, adding the energy to sumEnergy: "<<sumEnergy
-							<<"---->"<<sumEnergy+TLV_jet[j].E()
-                                                        <<" , nJetAssociated="<<nJetAssociated
-							<<" --->"<<nJetAssociated+1<<std::endl;
+						//std::cout<<"			jet "<<j<<"     --- > dr<0.5, adding the energy to sumEnergy: "<<sumEnergy
+						//	<<"---->"<<sumEnergy+TLV_jet[j].E()
+                                                //        <<" , nJetAssociated="<<nJetAssociated
+						//	<<" --->"<<nJetAssociated+1<<std::endl;
 						sumEnergy+=TLV_jet[j].E();
 						index[j]=1;
 						if(nJetAssociated==0){
@@ -327,9 +327,9 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
                                                 }
 						nJetTotalAssociated++;
 					}
-					else{std::cout<<"                    jet  "<<j<<" already considered"<<std::endl;}
+					//else{std::cout<<"                    jet  "<<j<<" already considered"<<std::endl;}
 					nJetAssociated++;
-					std::cout<<"          =============> nJetAssociated="<<nJetAssociated<<" nJetTotalAssociated="<<nJetTotalAssociated<<std::endl;
+					//std::cout<<"          =============> nJetAssociated="<<nJetAssociated<<" nJetTotalAssociated="<<nJetTotalAssociated<<std::endl;
 				}
 			}
 			if(isMC_){
@@ -357,7 +357,7 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 		nSV++;	
 	}
         BCandFS->push_back(BCFS);
-	std::cout<<"--->"<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<std::endl;	
+	//std::cout<<"--->"<<sqrt(pow(BCFS.BC1ETA()-BCFS.BC2ETA(),2)+pow(BCFS.BDeltaPHI(),2))<<std::endl;	
       	std::auto_ptr<BCandFinalStateCollection > bfsColl(BCandFS);
 	iEvent.put(bfsColl,"BCandFinalState");	
 	

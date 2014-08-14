@@ -65,10 +65,10 @@ void PATmTCalculator::produce(edm::Event& iEvent, const edm::EventSetup& es) {
      }   
     }
     //iEvent.put(outMET);
-   std::cout<<pi<<std::endl;
-   std::cout<<"muon"<<std::endl<<" "<<pt_muon<<" "<<phi_muon<<std::endl;
-   std::cout<<"met"<<std::endl<<" "<<pt_met<<" "<<phi_met<<std::endl;
-   std::cout<<"dphi = "<<dphi<<" mt = "<<mt<<std::endl;
+   //std::cout<<pi<<std::endl;
+   //std::cout<<"muon"<<std::endl<<" "<<pt_muon<<" "<<phi_muon<<std::endl;
+   //std::cout<<"met"<<std::endl<<" "<<pt_met<<" "<<phi_met<<std::endl;
+   //std::cout<<"dphi = "<<dphi<<" mt = "<<mt<<std::endl;
 
 }
 
