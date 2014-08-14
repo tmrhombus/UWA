@@ -105,9 +105,9 @@ def ranger(leaf):
    xunits = 'GeV'
 
  elif leaf == 'mJJ':
-   steps = 100
+   steps = 25
    xmin = 0.
-   xmax = 1000.
+   xmax = 500.
    xtitle = 'm^{JJ}'
    xunits = 'GeV'
 

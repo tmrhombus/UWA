@@ -14,24 +14,28 @@ import TheParameters as p
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<mt<20
 #sf_qcd = 1.
 
-#sf_qcd = 0.0341062899711 #signal
-sf_qcd = 0.0585445085049 * 0.5 #TT_m 3jet
+sf_qcd = 0.0341062899711 #signal
+#sf_qcd = 0.0533758948145
+#sf_qcd = 0.0585445085049 * 0.5 #TT_m 3jet
 #sf_qcd = 0.0921950704675 # TT_m 3jet 4040
 
-#sf_Signal_Wbb    = 1. 
+#sf_Signal_QCD    = 1. * sf_qcd
+#sf_Signal_Drell  = 1. 
+#sf_Signal_VV     = 1. 
+#sf_Signal_T      = 1. 
 #sf_Signal_Tbar   = 1. 
 #sf_Signal_tW     = 1. 
-#sf_Signal_TOP    = 1. 
-#sf_Signal_Z_jets = 1. 
+#sf_Signal_TTbar  = 1. 
+#sf_Signal_Wl     = 1. 
 #sf_Signal_Wcc    = 1. 
-#sf_Signal_T      = 1. #
-#sf_Signal_VV     = 1. 
-#
-#sf_Top_T         = 1.#  (2.26033000000000000e+05)/2497226 
-#sf_Top_TOP       = 1. 
-#sf_Top_tW        = 1. 
-#sf_Top_Wbb       = 1. 
-#sf_Top_Tbar      = 1. 
+#sf_Signal_Wbb    = 1. 
+
+sf_Top_Wbb       = 1. #1.9553517118    / 1.57266658081
+sf_Top_TTbar     = 1. #1366.90108757   / 1225.41492591
+sf_Top_tW        = 1. #33.7173900878   / 34.2463617338
+sf_Top_Tbar      = 1. #0.663758928599  / 0.6598701129
+sf_Top_T         = 1. #0.957306964662  / 0.950968565694
+sf_Top_QCD       = 1. * sf_qcd #0.0724173672497 / 0.102551698685
 
 sf_Signal_QCD    = (276.682527912 / 391.815720025) * sf_qcd
 sf_Signal_Drell  = 110.595743425 / 100.460683177
@@ -43,13 +47,13 @@ sf_Signal_TTbar  = 2738.7690035  / 2302.46459317
 sf_Signal_Wl     = 52.9669448168 / 74.6321442293
 sf_Signal_Wcc    = 130.726683911 / 144.534251764
 sf_Signal_Wbb    = 1160.15559794 / 946.523539255  
-
-sf_Top_Wbb       = 1.9553517118    / 1.57266658081
-sf_Top_TTbar     = 1366.90108757   / 1225.41492591
-sf_Top_tW        = 33.7173900878   / 34.2463617338
-sf_Top_Tbar      = 0.663758928599  / 0.6598701129
-sf_Top_T         = 0.957306964662  / 0.950968565694
-sf_Top_QCD       = 0.0724173672497 / 0.102551698685
+#
+#sf_Top_Wbb       = 1.9553517118    / 1.57266658081
+#sf_Top_TTbar     = 1366.90108757   / 1225.41492591
+#sf_Top_tW        = 33.7173900878   / 34.2463617338
+#sf_Top_Tbar      = 0.663758928599  / 0.6598701129
+#sf_Top_T         = 0.957306964662  / 0.950968565694
+#sf_Top_QCD       = 0.0724173672497 / 0.102551698685
 
 ratioRange = 0.3
 rebin = 1

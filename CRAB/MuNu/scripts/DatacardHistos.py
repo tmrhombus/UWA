@@ -16,9 +16,9 @@ import TheParameters as p
 
 #import scaleqcd as qs
 
-#sf_qcd = sf_qcd = 0.0585445085049 * 0.5 #TT_m 3jets
+sf_qcd = sf_qcd = 0.0585445085049 * 0.5 #TT_m 3jets
 #sf_qcd = 0.0351631022637 #signal
-sf_qcd = 0.0921950704675 # TT_m 3jet 4040
+#sf_qcd = 0.0921950704675 # TT_m 3jet 4040
 
 #sf_qcd = 0.0342524013772 #signal
 #sf_qcd = 0.0598271961327 #TT_m

@@ -20,7 +20,7 @@ def arams():
  #extraCut = '(vertixces < 15)'
 
  #naming where output goes
- path = '../plots/PS5_4aout_'
+ path = '../plots/PS5_14aout_'
  extraName = ''
 
  drawQCD = True
@@ -29,9 +29,9 @@ def arams():
  noMT = False # control but no mT cut
  Control = False # 1 mu, 0b, 2+ jets
  Ctl_Andrea = False # 1 mu, 1+ b, 2+ jets 
- Signal = False # 1 mu, 2bs, 2 jets
+ Signal = True # 1 mu, 2bs, 2 jets
  TT_m = False #1 mu, 2b, 4 j
- TT_me = True # 1mu, 1e
+ TT_me = False # 1mu, 1e
  ST = False
  Z_Region = False # two muons, no mT cut
  Legacy = False #voids everything else and puts parametrs from 7Tev analysis
@@ -112,9 +112,10 @@ def arams():
 #'DiMuonMass',
 #'DiMuonPt',
 #'mJ3J4',
+#'mJJ',
 #'mt',
 #'vertices',
-#'J1_pt',
+'J1_pt',
 #'J1_eta',
 #'muon_pt',
 #'muon_eta',
@@ -122,9 +123,9 @@ def arams():
 #'met_phi',
 #'J1_mass_PV',
 #'J1_mass_SSV',
-'J1_mass_SV_corrected',
-'J1_mass_SV_unweighted',
-'J1_mass_SV_weighted',
+#'J1_mass_SV_corrected',
+#'J1_mass_SV_unweighted',
+#'J1_mass_SV_weighted',
 #'J2_pt',
 #'J2_eta',
 #'J2_mass_PV',
