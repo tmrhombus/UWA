@@ -50,9 +50,10 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
    ReNameJetColl(process,inputJets='selectedPatJetsAK5chsPF')
 
   # type 1 met correction 
-  metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets')
+  #metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets')
   #metRenamer(process,met='systematicsMET')
-  #officialMetCorrector(process,met='systematicsMET',jets='resolutionSmearedJets',isMC=False)
+  officialMetCorrector(process,met='systematicsMET',jets='resolutionSmearedJets',isMC=itsMC)
+  #updatedOfficialMetCorrector(process,isMC=itsMC)
 
   jetOverloading(process,"resolutionSmearedJets")
 #  jetOverloading(process,"NewSelectedPatJets")
@@ -416,6 +417,39 @@ def officialMetCorrector(process,met='systematicsMET',jets='NewSelectedPatJets',
    #* process.patType1p2CorrectedPFMet
   )
   process.metCorrPath= cms.Path(process.metCorrSeq)
+  return process.metCorrPath
+
+
+def updatedOfficialMetCorrector(process,isMC=False):
+  process.load("JetMETCorrections.Type1MET.correctionTermsCaloMet_cff")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType1Type2_cff")
+  if isMC: process.corrPfMetType1.jetCorrLabel = cms.string("ak5PFL1FastL2L3")
+  else: process.corrPfMetType1.jetCorrLabel = cms.string("ak5PFL1FastL2L3Residual")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType0PFCandidate_cff")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType0RecoTrack_cff")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetShiftXY_cff")
+  if isMC: process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_mc
+  else: process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_data
+  process.load("JetMETCorrections.Type1MET.correctedMet_cff")
+  process.metCorrPath = cms.Path(
+  process.correctionTermsPfMetType1Type2 +
+  process.correctionTermsPfMetType0RecoTrack +
+  process.correctionTermsPfMetType0PFCandidate +
+  process.correctionTermsPfMetShiftXY +
+  process.correctionTermsCaloMet +
+  process.caloMetT1 +
+  process.caloMetT1T2 +
+  process.pfMetT0rt +
+  process.pfMetT0rtT1 +
+  process.pfMetT0pc +
+  process.pfMetT0pcT1 +
+  process.pfMetT0rtTxy +
+  process.pfMetT0rtT1Txy +
+  process.pfMetT0pcTxy +
+  process.pfMetT0pcT1Txy +
+  process.pfMetT1 +
+  process.pfMetT1Txy
+  )
   return process.metCorrPath
 
 

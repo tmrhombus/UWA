@@ -10,7 +10,11 @@ analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
 #analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','patType1CorrectedPFMet')
 #analysisConfigurator.addSmearing('patOverloadedTaus','cleanPatMuons','cleanPatElectrons','cleanPatJets','metTypeOne')
 #analysisConfigurator.addSmearing('patOverloadedTaus','rochCorMuons','cleanPatElectrons','cleanPatJets','metTypeOne')
-analysisConfigurator.addSmearing('patOverloadedTaus','selectedPatMuons','selectedPatElectrons','cleanPatJets','metTypeOne')
+# in use
+#analysisConfigurator.addSmearing('patOverloadedTaus','selectedPatMuons','selectedPatElectrons','cleanPatJets','metTypeOne')
+# try new met
+#analysisConfigurator.addSmearing('patOverloadedTaus','selectedPatMuons','selectedPatElectrons','cleanPatJets','pfMetT1')
+analysisConfigurator.addSmearing('patOverloadedTaus','selectedPatMuons','selectedPatElectrons','cleanPatJets','patType1CorrectedPFMet')
 
 DiMuonPreSel='leg1.isGlobalMuon && leg1.isTrackerMuon && leg2.isGlobalMuon && leg2.isTrackerMuon && leg1.pt()>20 && leg2.pt()>20 && leg1.charge * leg2.charge<0'
 DiMuonPreSel2='(leg1.isolationR03().sumPt+leg1.isolationR03().emEt+leg1.isolationR03().hadEt)/leg1.pt()<0.15 '

@@ -552,7 +552,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
 
 # Z Variables
     DiMuonMass = makeZColl("DiMuonMass","mass",sourceZ),
-    DiMuonPt = makeZColl("DiMuonPt","mass",sourceZ),
+    DiMuonPt = makeZColl("DiMuonPt","pt",sourceZ),
     mu1_pt = makeZColl("mu1_pt","leg1.pt()",sourceZ),
     mu2_pt = makeZColl("mu2_pt","leg2.pt()",sourceZ),
     mu1_phi = makeZColl("mu1_phi","leg1.phi()",sourceZ),
