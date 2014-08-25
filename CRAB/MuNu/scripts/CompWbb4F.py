@@ -11,59 +11,62 @@ from ROOT import gROOT,gStyle
 import aHisto as h #function to make histograms
 import histoRange as hr #manages range, lables for plots
 
-file_wbb4f_filename = '../plots/19aout_W4F2_wbb.root' 
-file_wbb4f = TFile(file_wbb4f_filename)
-
-path = '../plots/19aout_4Fcomp'
+path = '../plots/25aout_4Fcomp'
 
 leafs = [
-#'J1_pt',
-#'J2_pt',
-#'muon_pt',
-#'met_pt',
+'J1_pt',
+'J2_pt',
+'muon_pt',
+'met_pt',
 'mt'
 ]
 
-"../plots/PS5_1aout_2j2525_2bt_J1_pt.root",
-"../plots/PS5_1aout_2j2525_2bt_J2_pt.root",
-"../plots/PS5_1aout_2j2525_2bt_muon_pt.root",
-"../plots/PS5_1aout_2j2525_2bt_met_pt.root",
-"../plots/PS5_1aout_2j2525_2bt_mt.root"
-files = [
-#TFile("../plots/PS5_1aout_2j2525_2bt_J1_pt.root"),
-#TFile("../plots/PS5_1aout_2j2525_2bt_J2_pt.root"),
-#TFile("../plots/PS5_1aout_2j2525_2bt_muon_pt.root"),
-#TFile("../plots/PS5_1aout_2j2525_2bt_met_pt.root"),
-TFile("../plots/PS5_19aout_2j2525_2bt_mt.root ")
+filenames5f = [
+"../plots/PS6_25aout_2j2525_2bt_J1_pt.root",
+"../plots/PS6_25aout_2j2525_2bt_J2_pt.root",
+"../plots/PS6_25aout_2j2525_2bt_muon_pt.root",
+"../plots/PS6_25aout_2j2525_2bt_met_pt.root",
+"../plots/PS6_25aout_2j2525_2bt_mt.root "
+]
+filenames4f = [
+"../plots/PS6_25aoutv2_Wbb4F_J1_pt.root", 
+"../plots/PS6_25aoutv2_Wbb4F_J2_pt.root",
+"../plots/PS6_25aoutv2_Wbb4F_muon_pt.root",
+"../plots/PS6_25aoutv2_Wbb4F_met_pt.root",
+"../plots/PS6_25aoutv2_Wbb4F_mt.root",
 ]
 
 can = TCanvas('can','can',800,800)
-for file5f,leaf in zip(files,leafs):
+for filename5f,filename4f,leaf in zip(filenames5f,filenames4f,leafs):
+ 
+ file4f = TFile(filename4f)
+ file5f = TFile(filename5f) 
+
  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
 
  wbb_n_plot = file5f.Get("wbbnih")
  wbb_n_plot.SetName("wbb_n_plot")
- wbb_n_plot.SetLineColor(ROOT.EColor.kGreen-6)
+ wbb_n_plot.SetLineColor(ROOT.EColor.kGreen-3)
  wbb_n_plot.SetLineStyle(3)
  wbb_n_plot.SetLineWidth(1)
  wbb_1_plot = file5f.Get("wbb1ih")
  wbb_1_plot.SetName("wbb_1_plot")
- wbb_n_plot.SetLineColor(ROOT.EColor.kYellow-6)
- wbb_n_plot.SetLineStyle(3)
- wbb_n_plot.SetLineWidth(1)
+ wbb_1_plot.SetLineColor(ROOT.EColor.kYellow-3)
+ wbb_1_plot.SetLineStyle(3)
+ wbb_1_plot.SetLineWidth(1)
  wbb_2_plot = file5f.Get("wbb2ih")
  wbb_2_plot.SetName("wbb_2_plot")
- wbb_2_plot.SetLineColor(ROOT.EColor.kRed-6)
+ wbb_2_plot.SetLineColor(ROOT.EColor.kRed-3)
  wbb_2_plot.SetLineStyle(3)
  wbb_2_plot.SetLineWidth(1)
  wbb_3_plot = file5f.Get("wbb3ih")
  wbb_3_plot.SetName("wbb_3_plot")
- wbb_3_plot.SetLineColor(ROOT.EColor.kCyan-6)
+ wbb_3_plot.SetLineColor(ROOT.EColor.kCyan-3)
  wbb_3_plot.SetLineStyle(3)
  wbb_3_plot.SetLineWidth(1)
  wbb_4_plot = file5f.Get("wbb4ih")
  wbb_4_plot.SetName("wbb_4_plot")
- wbb_4_plot.SetLineColor(ROOT.EColor.kMagenta-6)
+ wbb_4_plot.SetLineColor(ROOT.EColor.kMagenta-3)
  wbb_4_plot.SetLineStyle(3)
  wbb_4_plot.SetLineWidth(1)
 
@@ -77,7 +80,7 @@ for file5f,leaf in zip(files,leafs):
  wbb_5f_plot.SetLineColor(ROOT.EColor.kBlue)
  wbb_5f_plot.SetLineStyle(1)
 
- wbb_4f_plot = file_wbb4f.Get(leaf)
+ wbb_4f_plot = file4f.Get("W4F_No")
  wbb_4f_plot.SetName("wbb_4f_plot")
  wbb_4f_plot.SetLineColor(ROOT.EColor.kRed)
  wbb_4f_plot.SetLineWidth(2)
@@ -88,14 +91,39 @@ for file5f,leaf in zip(files,leafs):
  leg.SetBorderSize(0)
  leg.AddEntry(wbb_4f_plot,'4 Flavor')
  leg.AddEntry(wbb_5f_plot,'5 Flavor')
+ leg.AddEntry(wbb_n_plot,'5 Flavor nJets')
+ leg.AddEntry(wbb_1_plot,'5 Flavor 1Jets')
+ leg.AddEntry(wbb_2_plot,'5 Flavor 2Jets')
+ leg.AddEntry(wbb_3_plot,'5 Flavor 3Jets')
+ leg.AddEntry(wbb_4_plot,'5 Flavor 4Jets')
 
+ wbb_n_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
+ wbb_1_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
+ wbb_2_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
+ wbb_3_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
+ wbb_4_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
+ #wbb_n_plot.Scale(1./wbb_n_plot.Integral(-100,10000))
+ #wbb_1_plot.Scale(1./wbb_1_plot.Integral(-100,10000))
+ #wbb_2_plot.Scale(1./wbb_2_plot.Integral(-100,10000))
+ #wbb_3_plot.Scale(1./wbb_3_plot.Integral(-100,10000))
+ #wbb_4_plot.Scale(1./wbb_4_plot.Integral(-100,10000))
+ wbb_4f_plot.Scale(1./wbb_4f_plot.Integral(-100,10000))
+ wbb_5f_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
+
+ gStyle.SetOptStat(0)
  can.cd()
  #hnwr.SetMaximum(0.07)
- wbb_5f_plot.SetTitle(leaf)
  wbb_5f_plot.Draw('hist')
+ wbb_n_plot.SetTitle(leaf)
+ wbb_n_plot.Draw('hist,sames')
+ wbb_1_plot.Draw('hist,sames')
+ wbb_2_plot.Draw('hist,sames')
+ wbb_3_plot.Draw('hist,sames')
+ wbb_4_plot.Draw('hist,sames')
+ wbb_5f_plot.SetTitle(leaf)
+ wbb_5f_plot.Draw('hist,sames')
  wbb_4f_plot.Draw('hist,sames')
- #leg.Draw('sames')
- #gStyle.SetOptStat(1122)
+ leg.Draw('sames')
 
  can.Update()
  print('you just read '+leaf)
@@ -105,3 +133,5 @@ for file5f,leaf in zip(files,leafs):
 # save = raw_input ('Press Enter to Continue (type save to save)\n')
 # if save == 'save':
  can.Print(path+'_'+leaf+'.png') 
+ file4f.Close()
+ file5f.Close()
