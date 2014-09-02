@@ -50,9 +50,9 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
    ReNameJetColl(process,inputJets='selectedPatJetsAK5chsPF')
 
   # type 1 met correction 
-  #metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets')
+  metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets',isMC=itsMC)
   #metRenamer(process,met='systematicsMET')
-  officialMetCorrector(process,met='systematicsMET',jets='resolutionSmearedJets',isMC=itsMC)
+  #officialMetCorrector(process,met='systematicsMET',jets='resolutionSmearedJets',isMC=itsMC)
   #updatedOfficialMetCorrector(process,isMC=itsMC)
 
   jetOverloading(process,"resolutionSmearedJets")
@@ -386,12 +386,20 @@ def metRenamer(process,met='systematicsMET'):
   return process.metTypeOnePath
 
 
-def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets'):
+def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets',isMC=False):
+  process.selectedVerticesForMEtCorr = cms.EDFilter("VertexSelector",
+   src = cms.InputTag('offlinePrimaryVertices'),
+   cut = cms.string("isValid & ndof >= 4 & chi2 > 0 & tracksSize > 0 & abs(z) < 24 & abs(position.Rho) < 2."),
+   filter = cms.bool(False)
+  )
+
   process.metTypeOne = cms.EDProducer("PATMETTypeOne",
    srcMET = cms.InputTag(met),
-   srcJ123 = cms.InputTag(jets123)
+   srcJ123 = cms.InputTag(jets123),
+   srcVert = cms.InputTag("selectedVerticesForMEtCorr"),
+   mc = cms.bool(isMC)
   )
-  process.metTypeOneSeq = cms.Sequence(process.metTypeOne)
+  process.metTypeOneSeq = cms.Sequence(process.selectedVerticesForMEtCorr * process.metTypeOne)
   process.metTypeOnePath= cms.Path(process.metTypeOneSeq)
   return process.metTypeOnePath
 
