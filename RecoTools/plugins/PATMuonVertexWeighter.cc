@@ -64,7 +64,7 @@ void PATMuonVertexWeighter::produce( edm::Event& evt, const edm::EventSetup& es 
     edm::Handle<reco::VertexCollection> vertices;
     evt.getByLabel(srcVert_, vertices);
     int nvtx = vertices->size();
-    std::cout<<nvtx<<std::endl;
+    //std::cout<<nvtx<<std::endl;
 
     float nrPU = 0.;
     edm::Handle<std::vector<PileupSummaryInfo> > PupInfo;

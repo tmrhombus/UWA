@@ -654,6 +654,7 @@ def makeCollections(source = 'wCandsJets', sourceZ = 'diMuonsSorted',sourceE = '
     met_pt = makeMuNu("met_pt","met().pt",source,True),
     met_phi = makeMuNu("met_phi","met().phi",source,True),
     mt = makeMuNu("mt","mt",source),
+    mt_new = makeMuNu("mt_new","lepton.userFloat('mt')",source),
     
     metJJ = makeMuNu("metjj","metjj",source),
     leptonjj = makeMuNu("leptonjj","leptonjj",source),

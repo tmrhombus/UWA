@@ -3,6 +3,9 @@
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/Framework/interface/EDProducer.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "FWCore/ServiceRegistry/interface/Service.h"
 
 // system include files
 #include <memory>
@@ -10,24 +13,13 @@
 #include <TLorentzVector.h>
 
 // user include files
-#include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/EDProducer.h"
 
-#include "FWCore/Framework/interface/Event.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-
-#include "FWCore/Utilities/interface/Exception.h"
-
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "DataFormats/PatCandidates/interface/MET.h"
 #include "DataFormats/JetReco/interface/GenJet.h"
-#include "FWCore/ServiceRegistry/interface/Service.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
 #include "DataFormats/VertexReco/interface/Vertex.h"
 #include "DataFormats/VertexReco/interface/VertexFwd.h"
-
 #include "DataFormats/Math/interface/deltaR.h"
-#include "DataFormats/PatCandidates/interface/MET.h"
 
 class PATMETTypeOne : public edm::EDProducer {
     public:
@@ -87,7 +79,8 @@ void PATMETTypeOne::produce(edm::Event& iEvent, const edm::EventSetup& es) {
      correctionType1 = findCorrectionType1(jetsL123, mc_);
      correctionXY = findCorrectionXY(Nvtx, mc_);
      inP4 = met.p4();
-     outP4 = inP4 + correctionType1 - correctionXY;
+     outP4 = inP4 - correctionXY;
+     //outP4 = inP4 + correctionType1 ;//- correctionXY;
      newmet.setP4(outP4);
 //     std::cout<<"MET In   pt "<<inP4.pt()      <<" eta "<<inP4.eta()<<" phi "<<inP4.phi()<<std::endl;
 //     std::cout<<"MET Corr pt "<<correctionType1.pt()<<" eta "<<correctionType1.eta()<<" phi "<<correctionType1.phi()<<std::endl;

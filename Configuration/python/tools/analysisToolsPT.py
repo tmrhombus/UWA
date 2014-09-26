@@ -35,15 +35,7 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #Build good vertex collection
   goodVertexFilter(process)       
 
-#  process.simpleSecondaryVertex = cms.ESProducer("SimpleSecondaryVertexESProducer",
-#      use3d = cms.bool(True),
-#      unBoost = cms.bool(False),
-#      useSignificance = cms.bool(True),
-#      minTracks = cms.uint32(2)
-#  )
-  
   # reRun Jets 
-  #reRunJets(process,isMC=itsMC,isData=itsData)
   if itsMC:
    resolutionSmearJets(process,jets='selectedPatJetsAK5chsPF')
   elif itsData:
@@ -51,32 +43,14 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
   # type 1 met correction 
   metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets',isMC=itsMC)
-  #metRenamer(process,met='systematicsMET')
-  #officialMetCorrector(process,met='systematicsMET',jets='resolutionSmearedJets',isMC=itsMC)
-  #updatedOfficialMetCorrector(process,isMC=itsMC)
-
   jetOverloading(process,"resolutionSmearedJets")
-#  jetOverloading(process,"NewSelectedPatJets")
-
   jetPUEmbedding(process,"patOverloadedJets")
   rochesterCorrector(process,muons="cleanPatMuons")
-  #muonIDer(process,"rochCorMuons")
-
-  #SVReconstruction(process,"patPUEmbeddedJets","cleanPatMuons",isMC=itsMC,isData=itsData)
-  #applyDefaultSelectionsPT(process,"patBRecoJets","cleanPatMuons")
-
   SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)
   muonIDer(process,muons="rochCorMuons")
-  #mtMaker(process,muons="IDedMuons",met="metTypeOne")
-
   vertexEmbedding(process,"IDedMuons","primaryVertexFilter","addPileupInfo")
-
-  applyDefaultSelectionsPT(process,"patBRecoJets","vertexEmbeddedMuons")
-  #applyDefaultSelectionsPT(process,"patBRecoJets","IDedMuons")
-  #applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
-
-  #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","IDedMuons")
-  #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","rochCorMuons")
+  mtMaker(process,muons="vertexEmbeddedMuons",met="metTypeOne")
+  applyDefaultSelectionsPT(process,"patBRecoJets","mtMuons")
 
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
