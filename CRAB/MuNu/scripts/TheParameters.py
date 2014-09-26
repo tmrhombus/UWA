@@ -3,9 +3,10 @@
 Parameters to be read by TheHistos.py and ThePlot.py
 Author: T.M.Perry
 '''
+import os
 
 def arams():
- lumi = 19775 # post_synch_v5
+ lumi = 19775 # post_synch_v5,v6c
 
  btype = 't'
  njetcut = '25' #20,25,26,30,40
@@ -20,7 +21,8 @@ def arams():
  #extraCut = '(vertixces < 15)'
 
  #naming where output goes
- path = '../plots/PS5_14aout_'
+ version = os.environ.get('version')
+ path = '../plots/%s_'%(version)
  extraName = ''
 
  drawQCD = True
@@ -30,7 +32,7 @@ def arams():
  Control = False # 1 mu, 0b, 2+ jets
  Ctl_Andrea = False # 1 mu, 1+ b, 2+ jets 
  Signal = True # 1 mu, 2bs, 2 jets
- TT_m = False #1 mu, 2b, 4 j
+ TT_m = False #1 mu, 2b, 3j
  TT_me = False # 1mu, 1e
  ST = False
  Z_Region = False # two muons, no mT cut
@@ -103,31 +105,32 @@ def arams():
  if Tomislav: extraName += '_tomi'
  if Z_Region: extraName += '_2mu'
  if noMT: extraName += '_noMT'
- if DataCard: extraName = 'Datacard_'+extraName
  if TT_me: extraName += '_1m1e'
 
  jet1_2dr2 = '(((J1_eta-J2_eta)*(J1_eta-J2_eta))+((J1_phi-J2_phi)*(J1_phi-J2_phi)))'
 
  leafs = [
-#'DiMuonMass',
-#'DiMuonPt',
-#'mJ3J4',
-#'mJJ',
-#'mt',
+'mt_new',
 #'vertices',
-'J1_pt',
+#'J1_pt',
 #'J1_eta',
 #'muon_pt',
 #'muon_eta',
 #'met_pt',
 #'met_phi',
-#'J1_mass_PV',
-#'J1_mass_SSV',
 #'J1_mass_SV_corrected',
 #'J1_mass_SV_unweighted',
 #'J1_mass_SV_weighted',
 #'J2_pt',
 #'J2_eta',
+#'ht',
+#'Wpt',
+#'DiMuonMass',
+#'DiMuonPt',
+#'mJ3J4',
+#'mJJ',
+#'J1_mass_PV',
+#'J1_mass_SSV',
 #'J2_mass_PV',
 #'J2_mass_SSV',
 #'J2_mass_SV_corrected',
@@ -185,15 +188,13 @@ def arams():
 #'J4_phi',
 #'J1DR',
 #'J2DR',
-#'ht',
 #'DiMuonMass',
 #'nJetsPt25',
 #'nJetsPt30',
-#'J1CSVbtag',
-#'J2CSVbtag',
+#'J1_CSVbtag',
+#'J2_CSVbtag',
 #jet1_2dr2,
 #'dz',
-#'Wpt',
 #'ptJJ',
 #'mJJ',
 ]

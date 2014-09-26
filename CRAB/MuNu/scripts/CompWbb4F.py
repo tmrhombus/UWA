@@ -7,33 +7,35 @@ import ROOT
 from ROOT import THStack,TH1F,TFile
 from ROOT import TLegend,TCanvas,TPad,TLatex,TLine
 from ROOT import gROOT,gStyle
+import os
 
 import aHisto as h #function to make histograms
 import histoRange as hr #manages range, lables for plots
 
-path = '../plots/25aout_4Fcomp'
+version = os.environ.get('version')
+path = '../plots/%s_4F5Fcomp_'%(version)
 
 leafs = [
 'J1_pt',
 'J2_pt',
 'muon_pt',
 'met_pt',
-'mt'
+'mt_new'
 ]
 
 filenames5f = [
-"../plots/PS6_25aout_2j2525_2bt_J1_pt.root",
-"../plots/PS6_25aout_2j2525_2bt_J2_pt.root",
-"../plots/PS6_25aout_2j2525_2bt_muon_pt.root",
-"../plots/PS6_25aout_2j2525_2bt_met_pt.root",
-"../plots/PS6_25aout_2j2525_2bt_mt.root "
+"../plots/%s_2j2525_2bt_J1_pt.root"%(version),
+"../plots/%s_2j2525_2bt_J2_pt.root"%(version),
+"../plots/%s_2j2525_2bt_muon_pt.root"%(version),
+"../plots/%s_2j2525_2bt_met_pt.root"%(version),
+"../plots/%s_2j2525_2bt_mt_new.root"%(version),
 ]
 filenames4f = [
-"../plots/PS6_25aoutv2_Wbb4F_J1_pt.root", 
-"../plots/PS6_25aoutv2_Wbb4F_J2_pt.root",
-"../plots/PS6_25aoutv2_Wbb4F_muon_pt.root",
-"../plots/PS6_25aoutv2_Wbb4F_met_pt.root",
-"../plots/PS6_25aoutv2_Wbb4F_mt.root",
+"../plots/%s_Wbb_4F_J1_pt.root"%(version), 
+"../plots/%s_Wbb_4F_J2_pt.root"%(version),
+"../plots/%s_Wbb_4F_muon_pt.root"%(version),
+"../plots/%s_Wbb_4F_met_pt.root"%(version),
+"../plots/%s_Wbb_4F_mt_new.root"%(version),
 ]
 
 can = TCanvas('can','can',800,800)
@@ -91,11 +93,11 @@ for filename5f,filename4f,leaf in zip(filenames5f,filenames4f,leafs):
  leg.SetBorderSize(0)
  leg.AddEntry(wbb_4f_plot,'4 Flavor')
  leg.AddEntry(wbb_5f_plot,'5 Flavor')
- leg.AddEntry(wbb_n_plot,'5 Flavor nJets')
- leg.AddEntry(wbb_1_plot,'5 Flavor 1Jets')
- leg.AddEntry(wbb_2_plot,'5 Flavor 2Jets')
- leg.AddEntry(wbb_3_plot,'5 Flavor 3Jets')
- leg.AddEntry(wbb_4_plot,'5 Flavor 4Jets')
+ #leg.AddEntry(wbb_n_plot,'5 Flavor nJets')
+ #leg.AddEntry(wbb_1_plot,'5 Flavor 1Jets')
+ #leg.AddEntry(wbb_2_plot,'5 Flavor 2Jets')
+ #leg.AddEntry(wbb_3_plot,'5 Flavor 3Jets')
+ #leg.AddEntry(wbb_4_plot,'5 Flavor 4Jets')
 
  wbb_n_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
  wbb_1_plot.Scale(1./wbb_5f_plot.Integral(-100,10000))
@@ -115,11 +117,11 @@ for filename5f,filename4f,leaf in zip(filenames5f,filenames4f,leafs):
  #hnwr.SetMaximum(0.07)
  wbb_5f_plot.Draw('hist')
  wbb_n_plot.SetTitle(leaf)
- wbb_n_plot.Draw('hist,sames')
- wbb_1_plot.Draw('hist,sames')
- wbb_2_plot.Draw('hist,sames')
- wbb_3_plot.Draw('hist,sames')
- wbb_4_plot.Draw('hist,sames')
+ #wbb_n_plot.Draw('hist,sames')
+ #wbb_1_plot.Draw('hist,sames')
+ #wbb_2_plot.Draw('hist,sames')
+ #wbb_3_plot.Draw('hist,sames')
+ #wbb_4_plot.Draw('hist,sames')
  wbb_5f_plot.SetTitle(leaf)
  wbb_5f_plot.Draw('hist,sames')
  wbb_4f_plot.Draw('hist,sames')
@@ -132,6 +134,6 @@ for filename5f,filename4f,leaf in zip(filenames5f,filenames4f,leafs):
  #print('Nr. Entries: %s'%(hnwr.GetEntries()))
 # save = raw_input ('Press Enter to Continue (type save to save)\n')
 # if save == 'save':
- can.Print(path+'_'+leaf+'.png') 
+ can.Print(path+leaf+'.png') 
  file4f.Close()
  file5f.Close()
