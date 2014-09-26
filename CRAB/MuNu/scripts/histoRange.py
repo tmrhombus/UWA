@@ -17,12 +17,15 @@ def ranger(leaf):
    xunits = None
 
  elif fnm.fnmatch(leaf,'*_phi*'):
-   steps = 24
-   xmin = -3.14159
-   xmax = 3.14159
+  # steps = 24
+  # xmin = -3.14159
+  # xmax = 3.14159
    #steps = 31
    #xmin = -3.45
    #xmax = 5.85
+   steps = 35
+   xmin = -3.4033
+   xmax = 5.7594
    xtitle = leaf
    xunits = None
 
@@ -62,8 +65,12 @@ def ranger(leaf):
    xunits = None
    setLogY = True
 
- elif leaf=='mt':
-   steps =24 
+ elif fnm.fnmatch(leaf,'mt*'):
+   # Andrea
+   #steps = 20
+   #xmin = 45.
+   #xmax = 205.
+   steps = 16 
    xmin = 0.
    xmax = 240.
    xtitle = 'Transverse Mass'
