@@ -1,7 +1,5 @@
 #!/bin/sh
-voms-proxy-init --voms cms --valid 100:00
-
-version="post_synch_v5b"
+#voms-proxy-init --voms cms --valid 100:00
 
 cat MNu-Pat_MC.py  > MuNuPAT.py
 cat CONDOR_MC.py >> MuNuPAT.py
@@ -30,7 +28,7 @@ cat CONDOR_MC.py >> MuNuPAT_newPAT.py
  # W1 Jet
  farmoutAnalysisJobs $1 --input-files-per-job=1 \
    --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c \
-   ${version}_W1Jet_p1 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT_newPAT.py
+   ${version}_W1Jet_p1 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
  
  farmoutAnalysisJobs $1 --input-files-per-job=1 \
    --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Spring2014PATTuples_v2c \
@@ -39,7 +37,7 @@ cat CONDOR_MC.py >> MuNuPAT_newPAT.py
  # W2 Jet
  farmoutAnalysisJobs $1 --input-files-per-job=1 \
    --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c \
-   ${version}_W2Jet_p1 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT_newPAT.py
+   ${version}_W2Jet_p1 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
  
  farmoutAnalysisJobs $1 --input-files-per-job=1 \
    --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Spring2014PATTuples_v2c \
@@ -48,11 +46,11 @@ cat CONDOR_MC.py >> MuNuPAT_newPAT.py
  # W3 Jet
  farmoutAnalysisJobs $1 --input-files-per-job=1 \
    --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/W3JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c \
-   ${version}_W3Jet_p1 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT_newPAT.py
+   ${version}_W3Jet_p1 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
  
  farmoutAnalysisJobs $1 --input-files-per-job=1 \
    --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/W3JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Spring2014PATTuples_v2c \
-   ${version}_W3Jet_p2 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT.py
+   ${version}_W3Jet_p2 $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT_newPAT.py
  
  # W4 Jet
  farmoutAnalysisJobs $1 --input-files-per-job=1 \
