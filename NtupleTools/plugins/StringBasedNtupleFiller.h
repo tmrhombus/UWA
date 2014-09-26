@@ -106,6 +106,7 @@ typedef StringBasedNtupleFiller<PATElecTauPair> PATEleTauPairFiller;
 typedef StringBasedNtupleFiller<PATElecMuPair> PATEleMuPairFiller;
 typedef StringBasedNtupleFiller<PATElecPair> PATElePairFiller;
 typedef StringBasedNtupleFiller<PATMuonNuPair> PATMuonNuPairFiller;
+typedef StringBasedNtupleFiller<PATElectronNuPair> PATElectronNuPairFiller;
 typedef StringBasedNtupleFiller<PATCandNuPair> PATCandNuPairFiller;
 typedef StringBasedNtupleFiller<PATMuTrackPair> PATMuTrackPairFiller;
 typedef StringBasedNtupleFiller<PATEleTrackPair> PATEleTrackPairFiller;
