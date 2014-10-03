@@ -166,7 +166,7 @@ namespace {
     edm::Wrapper<PATMuonNuPairCollection> dummyPATMuonNuPairCollectionWrapper;
     edm::Ptr<PATMuonNuPair> dummyPATMuonNuPairPtr;
 
-    /// create dictionaries for PATMuonNuPair objects
+    /// create dictionaries for PATElectronNuPair objects
     PATElectronNuPair dummyPATElectronNuPair;
     edm::Wrapper<PATElectronNuPair> dummyPATElectronNuPairWrapper;
     PATElectronNuPairCollection dummyPATElectronNuPairCollection;

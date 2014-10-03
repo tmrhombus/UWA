@@ -5,7 +5,7 @@
 #voms-proxy-init --voms cms --valid 100:00
 
 #version="SV_3"
-version="postsynch"
+version="post_synch_v5"
 echo $CMSSW_BASE
 rm list*txt
 if [ -f "merge*root" ]
@@ -61,7 +61,7 @@ do
                hadd -f $destdir/merged_${process}_${index_file}.root $liste
                let "index_file=index_file+1"
        done
-	hadd -f $destdir/merged_${process}.root $destdir/merged_${process}_*.root
+	hadd -f $destdir/${process}.root $destdir/merged_${process}_*.root
 	rm $destdir/merged_${process}_*.root
        rm list_${process}_*.txt
 done
@@ -69,31 +69,31 @@ done
 }
 
 
-theLoop T_tW MuNuPAT
-theLoop WW MuNuPAT
-theLoop Drell MuNuPAT
-theLoop TTbar_full MuNuPAT
-theLoop TTbar_semi MuNuPAT
-theLoop T_s MuNuPAT
-theLoop T_t MuNuPAT
-theLoop Tbar_s MuNuPAT
-theLoop Tbar_t MuNuPAT
-theLoop Tbar_tW MuNuPAT
-theLoop W1Jet MuNuPAT
-theLoop W2Jet MuNuPAT
-theLoop W3Jet_p1 MuNuPAT
+theLoop T_tW MuNuPAT_newPAT
+theLoop WW MuNuPAT_newPAT
+theLoop Drell MuNuPAT_newPAT
+theLoop TTbar_full MuNuPAT_newPAT
+theLoop TTbar_semi MuNuPAT_newPAT
+theLoop T_s MuNuPAT_newPAT
+theLoop T_t MuNuPAT_newPAT
+theLoop Tbar_s MuNuPAT_newPAT
+theLoop Tbar_t MuNuPAT_newPAT
+theLoop Tbar_tW MuNuPAT_newPAT
+theLoop W1Jet MuNuPAT_newPAT
+theLoop W2Jet MuNuPAT_newPAT
+theLoop W3Jet_p1 MuNuPAT_newPAT
 theLoop W3Jet_p2 MuNuPAT
 theLoop W4Jet MuNuPAT
 theLoop WJets MuNuPAT
-theLoop WZ MuNuPAT
-theLoop ZZ MuNuPAT
+theLoop WZ MuNuPAT_newPAT
+theLoop ZZ MuNuPAT_newPAT
 #theLoop DY2 MuNuPAT
 #theLoop DY1 MuNuPAT
 #theLoop DY3 MuNuPAT
 #theLoop DY4 MuNuPAT
 ##
-theLoop DATA1_8TeV MuNuPATDat
-theLoop DATA2_8TeV MuNuPATDat
-theLoop DATA3_8TeV MuNuPATDat
-theLoop DATA4_8TeV MuNuPATDat
+#theLoop DataA_8TeV MuNuPATDat
+#theLoop DataB_8TeV MuNuPATDat
+#theLoop DataC_8TeV MuNuPATDat
+#theLoop DataD_8TeV MuNuPATDat
 

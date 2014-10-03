@@ -35,43 +35,22 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #Build good vertex collection
   goodVertexFilter(process)       
 
-#  process.simpleSecondaryVertex = cms.ESProducer("SimpleSecondaryVertexESProducer",
-#      use3d = cms.bool(True),
-#      unBoost = cms.bool(False),
-#      useSignificance = cms.bool(True),
-#      minTracks = cms.uint32(2)
-#  )
-  
   # reRun Jets 
-  #reRunJets(process,isMC=itsMC,isData=itsData)
   if itsMC:
    resolutionSmearJets(process,jets='selectedPatJetsAK5chsPF')
   elif itsData:
    ReNameJetColl(process,inputJets='selectedPatJetsAK5chsPF')
 
   # type 1 met correction 
-  metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets')
-  #metRenamer(process,met='systematicsMET')
-  #officialMetCorrector(process,met='systematicsMET',jets='resolutionSmearedJets',isMC=False)
-
+  metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets',isMC=itsMC)
   jetOverloading(process,"resolutionSmearedJets")
-#  jetOverloading(process,"NewSelectedPatJets")
-
   jetPUEmbedding(process,"patOverloadedJets")
   rochesterCorrector(process,muons="cleanPatMuons")
-  #muonIDer(process,"rochCorMuons")
-
-  #SVReconstruction(process,"patPUEmbeddedJets","cleanPatMuons",isMC=itsMC,isData=itsData)
-  #applyDefaultSelectionsPT(process,"patBRecoJets","cleanPatMuons")
-
   SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)
   muonIDer(process,muons="rochCorMuons")
-  #mtMaker(process,muons="IDedMuons",met="metTypeOne")
-  applyDefaultSelectionsPT(process,"patBRecoJets","IDedMuons")
-  #applyDefaultSelectionsPT(process,"patBRecoJets","rochCorMuons")
-
-  #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","IDedMuons")
-  #applyDefaultSelectionsPT(process,"patPUEmbeddedJets","rochCorMuons")
+  vertexEmbedding(process,"IDedMuons","primaryVertexFilter","addPileupInfo")
+  mtMaker(process,muons="vertexEmbeddedMuons",met="metTypeOne")
+  applyDefaultSelectionsPT(process,"patBRecoJets","mtMuons")
 
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
 
@@ -385,12 +364,20 @@ def metRenamer(process,met='systematicsMET'):
   return process.metTypeOnePath
 
 
-def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets'):
+def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets',isMC=False):
+  process.selectedVerticesForMEtCorr = cms.EDFilter("VertexSelector",
+   src = cms.InputTag('offlinePrimaryVertices'),
+   cut = cms.string("isValid & ndof >= 4 & chi2 > 0 & tracksSize > 0 & abs(z) < 24 & abs(position.Rho) < 2."),
+   filter = cms.bool(False)
+  )
+
   process.metTypeOne = cms.EDProducer("PATMETTypeOne",
    srcMET = cms.InputTag(met),
-   srcJ123 = cms.InputTag(jets123)
+   srcJ123 = cms.InputTag(jets123),
+   srcVert = cms.InputTag("selectedVerticesForMEtCorr"),
+   mc = cms.bool(isMC)
   )
-  process.metTypeOneSeq = cms.Sequence(process.metTypeOne)
+  process.metTypeOneSeq = cms.Sequence(process.selectedVerticesForMEtCorr * process.metTypeOne)
   process.metTypeOnePath= cms.Path(process.metTypeOneSeq)
   return process.metTypeOnePath
 
@@ -416,6 +403,39 @@ def officialMetCorrector(process,met='systematicsMET',jets='NewSelectedPatJets',
    #* process.patType1p2CorrectedPFMet
   )
   process.metCorrPath= cms.Path(process.metCorrSeq)
+  return process.metCorrPath
+
+
+def updatedOfficialMetCorrector(process,isMC=False):
+  process.load("JetMETCorrections.Type1MET.correctionTermsCaloMet_cff")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType1Type2_cff")
+  if isMC: process.corrPfMetType1.jetCorrLabel = cms.string("ak5PFL1FastL2L3")
+  else: process.corrPfMetType1.jetCorrLabel = cms.string("ak5PFL1FastL2L3Residual")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType0PFCandidate_cff")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType0RecoTrack_cff")
+  process.load("JetMETCorrections.Type1MET.correctionTermsPfMetShiftXY_cff")
+  if isMC: process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_mc
+  else: process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_data
+  process.load("JetMETCorrections.Type1MET.correctedMet_cff")
+  process.metCorrPath = cms.Path(
+  process.correctionTermsPfMetType1Type2 +
+  process.correctionTermsPfMetType0RecoTrack +
+  process.correctionTermsPfMetType0PFCandidate +
+  process.correctionTermsPfMetShiftXY +
+  process.correctionTermsCaloMet +
+  process.caloMetT1 +
+  process.caloMetT1T2 +
+  process.pfMetT0rt +
+  process.pfMetT0rtT1 +
+  process.pfMetT0pc +
+  process.pfMetT0pcT1 +
+  process.pfMetT0rtTxy +
+  process.pfMetT0rtT1Txy +
+  process.pfMetT0pcTxy +
+  process.pfMetT0pcT1Txy +
+  process.pfMetT1 +
+  process.pfMetT1Txy
+  )
   return process.metCorrPath
 
 
@@ -466,6 +486,17 @@ def muonIDer(process,muons="cleanPatMuons"):
   process.IDedMuonSeq = cms.Sequence(process.IDedMuons)
   process.IDedMuonPath= cms.Path(process.IDedMuonSeq)
   return process.IDedMuonPath
+
+
+def vertexEmbedding(process,muons="IDedMuons",vertices="primaryVertexFilter",pu="addPileupInfo"):
+  process.vertexEmbeddedMuons = cms.EDProducer("PATMuonVertexWeighter",
+   srcMuon = cms.InputTag( muons ),
+   srcVert = cms.InputTag( vertices ),
+   srcPU   = cms.InputTag( pu )
+  )
+  process.vertexEmbeddedMuonSeq = cms.Sequence(process.vertexEmbeddedMuons)
+  process.vertexEmbeddedMuonPath= cms.Path(process.vertexEmbeddedMuonSeq)
+  return process.vertexEmbeddedMuonPath
 
 
 def mtMaker(process,muons="IDedMuons",met="metTypeOne"):

@@ -149,6 +149,7 @@ class PtJetVarFiller : public NtupleFillerBase {
 #include "UWAnalysis/DataFormats/interface/CompositePtrCandidateT1T2MEt.h"
 #include "UWAnalysis/DataFormats/interface/CompositePtrCandidateTMEt.h"
 typedef PtJetVarFiller<PATMuonNuPair> PATMuonNuPairPtJetVarFiller;
+typedef PtJetVarFiller<PATElectronNuPair> PATElectronNuPairPtJetVarFiller;
 //typedef PtJetVarFiller<PATMuTauPair> PATMuTauPairPtJetVarFiller;
 //typedef PtJetVarFiller<PATMuJetPair> PATMuJetPairPtJetVarFiller;
 //typedef PtJetVarFiller<PATMuPair> PATMuPairPtJetVarFiller;

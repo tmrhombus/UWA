@@ -59,21 +59,13 @@ class PATJetSmearer : public edm::EDProducer{
    iEvent.getByLabel(srcGenJet_, genJets);
 
 
-   double etaRange[6] = {0.0, 0.5, 1.1, 1.7, 2.3, 5.0};
-   double scale[5]   = {1.052, 1.057, 1.096, 1.134, 1.288};
-   double stat[5]    = {0.012, 0.012, 0.017, 0.035, 0.127};
-   double sysUp[5]   = {0.062, 0.056, 0.063, 0.087, 0.155};
-   double sysDown[5] = {0.061, 0.055, 0.062, 0.085, 0.153};
-   double errUp[5]   = {0.,0.,0.,0.,0.,};
-   double errDown[5] = {0.,0.,0.,0.,0.,};
+   double etaRange[8] = {0.0, 0.5, 1.1, 1.7, 2.3, 2.8, 3.2, 5.0};
+   double scale[7]   = {1.079, 1.099, 1.121, 1.208, 1.254, 1.395, 1.056};
+   double scaleUp[7] = {1.053, 1.071, 1.092, 1.162, 1.192, 1.332, 0.865};
+   double scaleDn[7] = {1.105, 1.127, 1.150, 1.254, 1.316, 1.458, 1.247};
    double sf = 1.;
    double sfUp = 1.;
    double sfDown = 1.;
-
-   for(unsigned int j=0;j<=4;++j){
-    errUp[j] = std::sqrt(stat[j]*stat[j]+sysUp[j]*sysUp[j]);
-    errDown[j] = std::sqrt(stat[j]*stat[j]+sysDown[j]*sysDown[j]);
-   }
 
    if(iEvent.getByLabel(src_,recoJets)){
     for(unsigned int i=0;i!=recoJets->size();++i){
@@ -102,11 +94,11 @@ class PATJetSmearer : public edm::EDProducer{
      double ptSmearedUp = reco_pt;
      double ptSmearedDown = reco_pt;
      
-     for(unsigned int j=0;j<=4;++j){
+     for(unsigned int j=0;j<=6;++j){
       if(reco_eta >= etaRange[j] && reco_eta < etaRange[j+1]){
        sf = scale[j];
-       sfUp = scale[j]+errUp[j];
-       sfDown = scale[j]+errDown[j];
+       sfUp = scaleUp[j];
+       sfDown = scaleDn[j];
       }
      }
 

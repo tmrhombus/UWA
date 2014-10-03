@@ -9,6 +9,8 @@ from ROOT import TLatex
 from ROOT import gROOT,gStyle
 from ROOT import *
 
+import os
+
 import aHisto as h #function to make histograms
 import TheCuts as ct  #function which makes cut strings
 import histoRange as hr #manages range, lables for plots
@@ -32,47 +34,30 @@ sf_vv = 1.
 #get parameters (used in cutmaker)
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea = p.arams() 
 
-CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutsMCnTup,CutsMCiTup,CutsMCnTdn,CutsMCiTdn = ct.cutmaker(
+CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutsMCnTup,CutsMCiTup,CutsMCnTdn,CutsMCiTdn, cutMcNonIso_Bup, cutMcNonIsoW_Bup, cutMcIso_Bup, cutMcWlNonIso_Bup, cutMcWlIso_Bup, cutMcWcNonIso_Bup, cutMcWcIso_Bup, cutMcWccNonIso_Bup, cutMcWccIso_Bup, cutMcWbbNonIso_Bup, cutMcWbbIso_Bup, cutMcNonIso_Bdn, cutMcNonIsoW_Bdn, cutMcIso_Bdn, cutMcWlNonIso_Bdn, cutMcWlIso_Bdn, cutMcWcNonIso_Bdn, cutMcWcIso_Bdn, cutMcWccNonIso_Bdn, cutMcWccIso_Bdn, cutMcWbbNonIso_Bdn, cutMcWbbIso_Bdn = ct.cutmaker(
  leafs[0],iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut,Ctl_Andrea
 )
 
-data_filename     = '../data/post_synch_v4/Filtered_Data.root'
-t_t_filename      = '../data/post_synch_v4/Filtered_T_t.root'
-t_s_filename      = '../data/post_synch_v4/Filtered_T_s.root'
-t_tw_filename     = '../data/post_synch_v4/Filtered_T_tW.root'
-tb_t_filename     = '../data/post_synch_v4/Filtered_Tbar_t.root'
-tb_s_filename     = '../data/post_synch_v4/Filtered_Tbar_s.root'
-tb_tw_filename    = '../data/post_synch_v4/Filtered_Tbar_tW.root'
-tt_semi_filename  = '../data/post_synch_v4/Filtered_TTbar_semi.root'
-tt_full_filename  = '../data/post_synch_v4/Filtered_TTbar_full.root'
-ww_filename       = '../data/post_synch_v4/Filtered_WW.root'
-wz_filename       = '../data/post_synch_v4/Filtered_WZ.root'
-zz_filename       = '../data/post_synch_v4/Filtered_ZZ.root'
-wn_filename       = '../data/post_synch_v4/Filtered_WJets.root'
-w1_filename       = '../data/post_synch_v4/Filtered_W1Jet.root'
-w2_filename       = '../data/post_synch_v4/Filtered_W2Jet.root'
-w3_filename       = '../data/post_synch_v4/Filtered_W3Jet.root'
-w4_filename       = '../data/post_synch_v4/Filtered_W4Jet.root'
-z_filename        = '../data/post_synch_v4/Filtered_Drell.root'
-
-#data_filename     = '../data/post_synch_v4/Data.root'
-#t_t_filename      = '../data/post_synch_v4/T_t.root'
-#t_s_filename      = '../data/post_synch_v4/T_s.root'
-#t_tw_filename     = '../data/post_synch_v4/T_tW.root'
-#tb_t_filename     = '../data/post_synch_v4/Tbar_t.root'
-#tb_s_filename     = '../data/post_synch_v4/Tbar_s.root'
-#tb_tw_filename    = '../data/post_synch_v4/Tbar_tW.root'
-#tt_semi_filename  = '../data/post_synch_v4/TTbar_semi.root'
-#tt_full_filename  = '../data/post_synch_v4/TTbar_full.root'
-#ww_filename       = '../data/post_synch_v4/WW.root'
-#wz_filename       = '../data/post_synch_v4/WZ.root'
-#zz_filename       = '../data/post_synch_v4/ZZ.root'
-#wn_filename       = '../data/post_synch_v4/WJets.root'
-#w1_filename       = '../data/post_synch_v4/W1Jet.root'
-#w2_filename       = '../data/post_synch_v4/W2Jet.root'
-#w3_filename       = '../data/post_synch_v4/W3Jet.root'
-#w4_filename       = '../data/post_synch_v4/W4Jet.root'
-#z_filename        = '../data/post_synch_v4/Drell.root'
+version = os.environ.get('version')
+dpath = "/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/data/%s/"%(version)
+data_filename     = dpath+'Fltd_Data.root'
+t_t_filename      = dpath+'Fltd_T_t.root'
+t_s_filename      = dpath+'Fltd_T_s.root'
+t_tw_filename     = dpath+'Fltd_T_tW.root'
+tb_t_filename     = dpath+'Fltd_Tbar_t.root'
+tb_s_filename     = dpath+'Fltd_Tbar_s.root'
+tb_tw_filename    = dpath+'Fltd_Tbar_tW.root'
+tt_semi_filename  = dpath+'Fltd_TTbar_semi.root'
+tt_full_filename  = dpath+'Fltd_TTbar_full.root'
+ww_filename       = dpath+'Fltd_WW.root'
+wz_filename       = dpath+'Fltd_WZ.root'
+zz_filename       = dpath+'Fltd_ZZ.root'
+wn_filename       = dpath+'Fltd_WJets.root'
+w1_filename       = dpath+'Fltd_W1Jet.root'
+w2_filename       = dpath+'Fltd_W2Jet.root'
+w3_filename       = dpath+'Fltd_W3Jet.root'
+w4_filename       = dpath+'Fltd_W4Jet.root'
+z_filename        = dpath+'Fltd_Drell.root'
 
 data_file      = TFile( data_filename )
 t_t_file       = TFile( t_t_filename  )
@@ -579,9 +564,10 @@ for leaf in leafs:
   qhSizePart
 
  log.write('------------------------------------------------\n')
- if leaf=='mt':
+ if leaf=='mt_new':
   log.write('You Probably Want to use this for QCD Scale\n')
-  SF = 1 + (dataihSizePart - mcSizePart)/qhSizePart
+  if qhSizePart!=0: SF = 1 + (dataihSizePart - mcSizePart)/qhSizePart
+  else: SF = 1
   log.write('1 + (data - mc)/qcd = '+str(SF)+'\n')
  log.write('---------------------------\n')
  log.write('---------------------------\n')

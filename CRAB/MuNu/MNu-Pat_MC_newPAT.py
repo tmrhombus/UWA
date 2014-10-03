@@ -8,7 +8,7 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V27::All' # for global tag with re-reco data
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(10)
 )
 
 process.source = cms.Source("PoolSource",
@@ -28,10 +28,10 @@ process.source = cms.Source("PoolSource",
 
 #synch TTbarMC
 "root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root",
-"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-5ACBC7A4-7D84-E211-A0B6-782BCB27B958.root",
-"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-AED5F4C3-6E84-E211-B83B-0002C90EEE6E.root",
-"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root",
-"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-5ADB775B-A284-E211-B0A2-90B11C18B19E.root"
+#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-5ACBC7A4-7D84-E211-A0B6-782BCB27B958.root",
+#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-AED5F4C3-6E84-E211-B83B-0002C90EEE6E.root",
+#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root",
+#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-5ADB775B-A284-E211-B0A2-90B11C18B19E.root"
  ),
  inputCommands=cms.untracked.vstring(
   'keep *',
@@ -108,7 +108,7 @@ addMuNuEventTreePtMC(process,'muNuEventTreeUCEUp',    'wCandsJetsUCEUp',    'diM
 addMuNuEventTreePtMC(process,'muNuEventTreeUCEDown',  'wCandsJetsUCEDown',  'diMuonsSortedUCEDown',  lhep="externalLHEProducer")
 
 #process.TFileService.fileName = cms.string('metCalibFalse.root') 
-process.TFileService.fileName = cms.string('numbertest_a.root') 
+process.TFileService.fileName = cms.string('gitMet.root') 
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",

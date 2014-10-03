@@ -11,6 +11,7 @@ DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATDiTauPairFiller, "PATDiTauPairFiller")
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATEleMuPairFiller, "PATEleMuPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATCandNuPairFiller, "PATCandNuPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuonNuPairFiller, "PATMuonNuPairFiller");
+DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATElectronNuPairFiller, "PATElectronNuPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuTrackPairFiller, "PATMuTrackPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATEleTrackPairFiller, "PATEleTrackPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuPairFiller, "PATMuPairFiller");

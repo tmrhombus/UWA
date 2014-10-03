@@ -61,7 +61,7 @@ class PATSimplePUID : public edm::EDProducer {
     for(unsigned int  l=0;l!=cands->size();++l){
 
 	pat::Jet jet = cands->at(l);
-	if(jet.hasTagInfo("trackIP"))printf("has Track IP TagInfo\n");
+	//if(jet.hasTagInfo("trackIP"))printf("has Track IP TagInfo\n");
 
         double nTrack=0;
 	double sumPt=0;
