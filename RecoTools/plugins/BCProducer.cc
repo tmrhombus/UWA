@@ -106,11 +106,7 @@ void BCProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
         BCFS.BDeltaPHI(-777);
 	BCFS.BC1MASS(-777);
 	BCFS.BC2MASS(-777);
-<<<<<<< HEAD
-//	std::cout<<"In BCProducer"<<std::endl;
-=======
 	//std::cout<<"In BCProducer"<<std::endl;
->>>>>>> upstream/master
 	// std::vector<reco::LeafCandidate> *blc = new std::vector<reco::LeafCandidate>;
 	
 	std::auto_ptr<BCandFinalStateCollection> BCandFS(new BCandFinalStateCollection);
