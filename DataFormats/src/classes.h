@@ -8,6 +8,7 @@
 #include "DataFormats/PatCandidates/interface/Tau.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
 #include "UWAnalysis/DataFormats/interface/BCandFinalState.h"
+#include "UWAnalysis/DataFormats/interface/GenBDWeight.h"
 
 namespace {
   struct UWanalysis_DataFormats_dictionary {
@@ -318,5 +319,13 @@ namespace {
     BCandFinalStateRefProd bcfsrp;
     BCandFinalStateRefVector bcrv;
     edm::Wrapper<BCandFinalStateCollection> wrbc;
+
+
+    GenBDWeight gbdw;
+    GenBDWeightCollection gbdwc;
+    GenBDWeightRefProd gbdwrp;
+    GenBDWeightRefVector gbdwrv;
+    edm::Wrapper<GenBDWeightCollection> wrgbdw;
+
   };
 }

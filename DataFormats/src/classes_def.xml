@@ -291,4 +291,12 @@
   <class name="BCandFinalStateRefVector"/>
   <class name="edm::Wrapper<BCandFinalStateCollection>"/>
 
+  <!-- create dictionaries for BCandFinalState objects -->
+  <class name="GenBDWeight"/>
+  <class name="GenBDWeightCollection"/>
+  <class name="GenBDWeightRefProd"/>
+  <class name="GenBDWeightRefVector"/>
+  <class name="edm::Wrapper<GenBDWeightCollection>"/>
+
+
 </lcgdict>
