@@ -31,11 +31,8 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   muonTriggerMatchPT(process,triggerProcess) 
   electronTriggerMatchPT(process,triggerProcess)  
   tauTriggerMatchPT(process,triggerProcess)    
-
-  #Build good vertex collection
   goodVertexFilter(process)       
 
-  # reRun Jets 
   if itsMC:
    resolutionSmearJets(process,jets='selectedPatJetsAK5chsPF')
   elif itsData:
@@ -49,7 +46,7 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)
   muonIDer(process,muons="rochCorMuons")
   vertexEmbedding(process,"IDedMuons","primaryVertexFilter","addPileupInfo")
-  mtMaker(process,muons="vertexEmbeddedMuons",met="metTypeOne")
+  mtMaker(process,muons="vertexEmbeddedMuons",met="metCorrected")
   applyDefaultSelectionsPT(process,"patBRecoJets","mtMuons")
 
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
@@ -371,15 +368,15 @@ def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets',isMC=
    filter = cms.bool(False)
   )
 
-  process.metTypeOne = cms.EDProducer("PATMETTypeOne",
+  process.metCorrected = cms.EDProducer("PATMETCorrector",
    srcMET = cms.InputTag(met),
    srcJ123 = cms.InputTag(jets123),
    srcVert = cms.InputTag("selectedVerticesForMEtCorr"),
    mc = cms.bool(isMC)
   )
-  process.metTypeOneSeq = cms.Sequence(process.selectedVerticesForMEtCorr * process.metTypeOne)
-  process.metTypeOnePath= cms.Path(process.metTypeOneSeq)
-  return process.metTypeOnePath
+  process.metCorrectedSeq = cms.Sequence(process.selectedVerticesForMEtCorr * process.metCorrected)
+  process.metCorrectedPath= cms.Path(process.metCorrectedSeq)
+  return process.metCorrectedPath
 
 
 def officialMetCorrector(process,met='systematicsMET',jets='NewSelectedPatJets',isMC=False):
@@ -499,7 +496,7 @@ def vertexEmbedding(process,muons="IDedMuons",vertices="primaryVertexFilter",pu=
   return process.vertexEmbeddedMuonPath
 
 
-def mtMaker(process,muons="IDedMuons",met="metTypeOne"):
+def mtMaker(process,muons="IDedMuons",met="metCorrected"):
   process.mtMuons = cms.EDProducer("PATmTCalculator",
    srcMuon = cms.InputTag( muons ),
    srcMET = cms.InputTag( met )
@@ -574,7 +571,7 @@ def applyDefaultSelectionsPT(process,jets,muons):
    )
   process.selectedPatElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag("cleanPatElectrons"),
-   cut = cms.string('pt>10&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
+   cut = cms.string('pt>10&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.15'),
    filter = cms.bool(False)
    )
   process.selectedPatMuons = cms.EDFilter("PATMuonSelector",
@@ -589,19 +586,25 @@ def applyDefaultSelectionsPT(process,jets,muons):
        muons = cms.PSet(
         src = cms.InputTag(muons),
         algorithm = cms.string("byDeltaR"),
-        preselection = cms.string('pt>10 && userInt("tightID") && (pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt<0.2'), #TightID, Loose Iso
+        #preselection = cms.string('(2>1)'), #TightIso
+        preselection = cms.string('(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt < 0.12'), #TightIso
+        #preselection = cms.string('pt>10 && userInt("tightID") && (pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt<0.2'), #TightID, Loose Iso
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
+        #requireNoOverlaps = cms.bool(False),
         requireNoOverlaps = cms.bool(True),
        ),
        electrons = cms.PSet(
         src = cms.InputTag("cleanPatElectrons"),
         algorithm = cms.string("byDeltaR"),
-        preselection = cms.string('pt>10&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
+        #preselection = cms.string('(2>1)'),
+        preselection = cms.string('(chargedHadronIso + neutralHadronIso + photonIso)/pt < 0.10'),
+        #preselection = cms.string('pt>10&&userFloat("wp95")>0&&(userIso(0)+max(photonIso+neutralHadronIso()-0.5*userIso(2),0.0))/pt()<0.2'),
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
+        #requireNoOverlaps = cms.bool(False),
         requireNoOverlaps = cms.bool(True),
        ),
    ),

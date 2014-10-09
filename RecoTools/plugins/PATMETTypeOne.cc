@@ -31,6 +31,8 @@ class PATMETTypeOne : public edm::EDProducer {
 	math::PtEtaPhiMLorentzVector findCorrectionType1(
           edm::Handle<pat::JetCollection> l123Jets, bool isMC);
         math::PtEtaPhiMLorentzVector findCorrectionXY(int nrVtx, bool isMC);
+        math::PtEtaPhiMLorentzVector antiCorrectionType1(
+          edm::Handle<pat::JetCollection> l123Jets);
     private:
 	edm::InputTag srcMET_;
         edm::InputTag srcJ123_;
@@ -71,15 +73,26 @@ void PATMETTypeOne::produce(edm::Event& iEvent, const edm::EventSetup& es) {
     math::PtEtaPhiMLorentzVector correctionXY;
     math::PtEtaPhiMLorentzVector inP4;
     math::PtEtaPhiMLorentzVector outP4;
+    math::PtEtaPhiMLorentzVector antiType1;
 
     if(iEvent.getByLabel(srcMET_,inMET)){
      pat::MET met=inMET->at(0);
      pat::MET newmet=inMET->at(0);
+ 
 
      correctionType1 = findCorrectionType1(jetsL123, mc_);
+     antiType1 = antiCorrectionType1(jetsL123);
      correctionXY = findCorrectionXY(Nvtx, mc_);
-     inP4 = met.p4();
-     outP4 = inP4 - correctionXY;
+     if(mc_){
+      inP4 = met.p4();
+      outP4 = inP4 - correctionXY;
+     }
+     //if(mc_){outP4 = inP4;}
+     if(!mc_){
+      inP4 = met.p4();
+      //inP4 = met.userCand("ues+")->p4();
+      outP4 = inP4 + antiType1;//- correctionXY;
+     }
      //outP4 = inP4 + correctionType1 ;//- correctionXY;
      newmet.setP4(outP4);
 //     std::cout<<"MET In   pt "<<inP4.pt()      <<" eta "<<inP4.eta()<<" phi "<<inP4.phi()<<std::endl;
@@ -115,6 +128,28 @@ pat::Jet PATMETTypeOne::jetMatchL1(pat::Jet jetL123, edm::Handle<pat::JetCollect
  return retVal;
 }
 
+// https://twiki.cern.ch/twiki/bin/view/CMS/METTypeOneType2Formulae
+math::PtEtaPhiMLorentzVector PATMETTypeOne::antiCorrectionType1(edm::Handle<pat::JetCollection> l123Jets)
+{
+ math::PtEtaPhiMLorentzVector corr;
+ //std::cout<<corr.pt()<<" "<<corr.eta()<<" "<<corr.phi()<<std::endl;
+ for(unsigned int i=0;i!=l123Jets->size();++i){
+  pat::Jet jet123 = l123Jets->at(i);
+  if (jet123.pt() > 10.)
+  {
+    corr += jet123.correctedP4("L1FastJet") - jet123.correctedP4("L3Absolute");
+    //else{corr += jet123.correctedP4("L1FastJet") - jet123.correctedP4("L2L3Residual");}
+   //corr += jet123.correctedP4("L1FastJet") - jet123.p4();
+//  std::cout<<"L1   px "<<jet123.correctedP4("L1FastJet").px()
+//               <<" py "<<jet123.correctedP4("L1FastJet").px()
+//               <<" pz "<<jet123.correctedP4("L1FastJet").px()<<std::endl;
+//  std::cout<<"L123 px "<<jet123.p4().px()
+//               <<" py "<<jet123.p4().px()
+//               <<" pz "<<jet123.p4().px()<<std::endl<<std::endl;
+  }
+ }
+ return corr;
+}
 // https://twiki.cern.ch/twiki/bin/view/CMS/METTypeOneType2Formulae
 math::PtEtaPhiMLorentzVector PATMETTypeOne::findCorrectionType1(edm::Handle<pat::JetCollection> l123Jets, bool isMC)
 {

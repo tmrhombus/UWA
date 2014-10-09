@@ -736,7 +736,7 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
    eventTree = cms.EDAnalyzer('EventTreeMaker',
       makeCollections(source,sourceZ),
       makeJetIDInfo(source),
-      #makeJetCorrectionInfo(),
+      makeJetCorrectionInfo(),
       makeJetSVInfo(source),
       coreCollections = cms.VInputTag(
            cms.InputTag(source)
