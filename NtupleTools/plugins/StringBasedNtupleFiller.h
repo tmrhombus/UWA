@@ -95,7 +95,8 @@ class StringBasedNtupleFiller : public NtupleFillerBase {
 #include "ZSV/BAnalysis/interface/SimBHadron.h"
 #include "UWAnalysis/RecoTools/plugins/PATJetOverloader.h"
 #include "UWAnalysis/DataFormats/interface/BCandFinalState.h"
-
+#include "UWAnalysis/DataFormats/interface/GenBDWeight.h"
+typedef StringBasedNtupleFiller<GenBDWeight> GenBDWeightFiller;
 typedef StringBasedNtupleFiller<BCandFinalState> bCandidatesFiller; 
 typedef StringBasedNtupleFiller<SimBHadron> SimBHadronsFiller;
 typedef StringBasedNtupleFiller<reco::GenParticle> PATGenParticleFiller;

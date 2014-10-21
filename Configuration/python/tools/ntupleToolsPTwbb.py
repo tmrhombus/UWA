@@ -160,6 +160,16 @@ def makeIVFBs(tagName,methodName):
   )
   return PSet
 
+def makeGenBWeight(tagName,methodName):
+  PSet = cms.PSet(
+        pluginType  = cms.string("GenBDWeightFiller"),
+        src         = cms.InputTag('GBWeightProducer','GenBDWeight'),
+        tag         = cms.string(tagName),
+        method      = cms.string(methodName+"()"),
+        leadingOnly = cms.untracked.bool(True)
+  )
+  return PSet
+
 def makeJetSVInfo(source = 'wCandsJets'):
     jetSVInfo = cms.PSet(
  # Jet b Tagging
@@ -842,6 +852,7 @@ def addMuNuEventTreePtMC(process,name,source = 'wCandsJets',sourceZ = 'diMuonsSo
       weightEtaMuonIso = makeMuNu("weightEtaMuonIso","EffWEIGHTeta_IS",source,True),
       weightEtaMuonID = makeMuNu("weightEtaMuonID","EffWEIGHTeta_ID",source,True),
       weightEtaMuonTrig = makeMuNu("weightEtaMuonTrig","EffWEIGHTeta_TR",source,True),
+      GBWeight = makeGenBWeight("GBWeight","theWeight"),
    )
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))
