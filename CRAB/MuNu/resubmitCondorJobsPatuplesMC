@@ -7,10 +7,10 @@ cat CONDOR_MC.py >> MuNuPAT.py
 cat MNu-Pat_MC_newPAT.py > MuNuPAT_newPAT.py
 cat CONDOR_MC.py >> MuNuPAT_newPAT.py
 
-# #TTbar
-# farmoutAnalysisJobs $1 --input-files-per-job=1  --memory-requirements=5000 --resubmit-failed-jobs --vsize-limit=5000 \
-#   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/Spring2014PATTuples \
-#   ${version}_TTbar_full $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT_newPAT.py
+ #TTbar
+ farmoutAnalysisJobs $1 --input-files-per-job=1  --memory-requirements=5000 --resubmit-failed-jobs --vsize-limit=5000 \
+   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/Spring2014PATTuples \
+   ${version}_TTbar_full $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/MuNuPAT_newPAT.py
  
  farmoutAnalysisJobs $1 --input-files-per-job=1  --memory-requirements=5000 --resubmit-failed-jobs --vsize-limit=5000 \
    --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples \

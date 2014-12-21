@@ -4,7 +4,7 @@
 
 #voms-proxy-init --voms cms --valid 100:00
 
-#TTbar
+TTbar
 farmoutAnalysisJobs \
    --merge --use-hadd \
    --input-files-per-job=100 \

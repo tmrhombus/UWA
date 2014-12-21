@@ -8,7 +8,7 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V27::All' # for global tag with re-reco data
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
+    input = cms.untracked.int32(40)
 )
 
 process.source = cms.Source("PoolSource",
@@ -26,12 +26,40 @@ process.source = cms.Source("PoolSource",
 #'file:///hdfs/store/user/mcepeda/TTJets_FullLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v2/AODSIM/Spring2014PATTuples/patTuple_cfg-529DE452-5798-E211-9D62-0026189438B1.root' 
 #"file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/PatTools/test/mc.root"
 
+#wbb 4flavor
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEDB7460-9B0D-E211-98E4-001E67398156.root"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FED59502-1B0D-E211-BB50-D8D385FF4A7C.root"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FECC1DD4-D80D-E211-88BA-001E673968A6.root"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FECA6FC2-770D-E211-9105-001E67397094.root"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEB6B2A5-870E-E211-A1FC-001E67396581.root"
+
+#test of new v2c pats
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FED0991E-94CE-E111-84E9-003048673F2C.root", 
+
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v2/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEF7AC04-A9EE-E111-8FCD-0025B3E06484.root",
+#
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEF3D07A-A803-E211-8AB4-001E67397698.root", 
+#
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEFD18A6-00E2-E211-A836-1CC1DE051028.root", 
+#
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEFE64DC-3C05-E211-80E4-003048D438EA.root", 
+#
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEF3BE77-7CE4-E211-BB7A-002618FDA262.root", 
+#
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W3JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEDEDCE3-0307-E211-BC69-003048D45FBA.root", 
+#
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W3JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEF973CF-DCEE-E211-A115-00259081A2C8.root", 
+#
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W4JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Spring2014PATTuples_v2c/patTuple_cfg-FEE65930-1407-E211-8EDF-003048678F6C.root", 
+
 #synch TTbarMC
 "root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root",
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-5ACBC7A4-7D84-E211-A0B6-782BCB27B958.root",
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-AED5F4C3-6E84-E211-B83B-0002C90EEE6E.root",
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root",
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Spring2014PATTuples/patTuple_cfg-5ADB775B-A284-E211-B0A2-90B11C18B19E.root"
+
+#"file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/tt_14ocbr14_5ADB775B-A284-E211-B0A2-90B11C18B19E.root"
  ),
  inputCommands=cms.untracked.vstring(
   'keep *',
@@ -49,7 +77,7 @@ from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
 defaultReconstructionPT(process,
  'HLT',
- ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v'],
+ ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v','HLT_Ele27_WP80'],
  itsMC=True,itsData=False)
 
 createGeneratedParticles(process,
@@ -107,8 +135,7 @@ addMuNuEventTreePtMC(process,'muNuEventTreeJetDown',  'wCandsJetsJetDown',  'diM
 addMuNuEventTreePtMC(process,'muNuEventTreeUCEUp',    'wCandsJetsUCEUp',    'diMuonsSortedUCEUp',    lhep="externalLHEProducer")
 addMuNuEventTreePtMC(process,'muNuEventTreeUCEDown',  'wCandsJetsUCEDown',  'diMuonsSortedUCEDown',  lhep="externalLHEProducer")
 
-#process.TFileService.fileName = cms.string('metCalibFalse.root') 
-process.TFileService.fileName = cms.string('gitMet.root') 
+process.TFileService.fileName = cms.string('mc_testnoele01.root') 
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",
@@ -117,3 +144,6 @@ process.TFileService.fileName = cms.string('gitMet.root')
 #                       'keep *'),
 # )
 #process.e = cms.EndPath(process.out)
+
+Pax = open("myConfig.py","w")
+Pax.write(process.dumpPython())

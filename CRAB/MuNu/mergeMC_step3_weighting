@@ -8,20 +8,20 @@ cd $CMSSW_BASE/src/UWAnalysis/CRAB/MuNu/data/${version}
 #QuickEventWeightsIterativeWJets  weight=36703.2 histoName='summary/results' branch='QweightFactor'
 #echo 'WJets Are Done'
 #date +"%T"
-#
+
 #date +"%T"
 #QuickEventWeightsIterative  outputFile='Wbb4F.root' weight=138.9    histoName='summary/results' branch="QweightFactor" #46.3*3 
 #echo 'Wbb4F'
 #date +"%T"
-#
+
 #date +"%T"
-#QuickEventWeightsIterative  outputFile='TTbar_full.root' weight=25.80    histoName='summary/results' branch="QweightFactor" #245.8*0.324*0.324 
+#QuickEventWeightsIterative  outputFile='TTbar_full.root' weight=25.257    histoName='summary/results' branch="QweightFactor" #240.6*0.324*0.324 
 #echo 'TTbar Full'
 #date +"%T"
-#QuickEventWeightsIterative  outputFile='TTbar_semi.root' weight=107.67    histoName='summary/results' branch="QweightFactor" #245.8*0.324*0.676*2
+#QuickEventWeightsIterative  outputFile='TTbar_semi.root' weight=105.394    histoName='summary/results' branch="QweightFactor" #240.6*0.324*0.676*2
 #echo 'TTbar Semi'
 #date +"%T"
-#
+
 #date +"%T"
 #QuickEventWeightsIterative  outputFile='Drell.root'      weight=3503.71  histoName='summary/results' branch="QweightFactor"
 #echo 'Drell'
