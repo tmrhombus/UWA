@@ -23,12 +23,13 @@ class StringBasedNtupleFiller : public NtupleFillerBase {
       src_(iConfig.getParameter<edm::InputTag>("src")),
       var_(iConfig.getParameter<std::string>("method")),
       tag_(iConfig.getParameter<std::string>("tag")),
-      leadingOnly_(iConfig.getUntrackedParameter<bool>("leadingOnly",true))
+      leadingOnly_(iConfig.getUntrackedParameter<bool>("leadingOnly",true)), 
+      myrank_(iConfig.getUntrackedParameter<double>("myrank",-1.))  // leadingOnly supercedes rank
 	{
 	  value = new std::vector<double>();
 	  singleValue=0.;
 	  function = new StringObjectFunction<T>(var_);
-	  if(!leadingOnly_)
+	  if(!leadingOnly_ && myrank_<0)
 	    vbranch = t->Branch(tag_.c_str(),"std::vector<double>",&value);
 	  else
 	    vbranch = t->Branch(tag_.c_str(),&singleValue,(tag_+"/F").c_str());
@@ -59,6 +60,12 @@ class StringBasedNtupleFiller : public NtupleFillerBase {
 	  if(handle->size()>0)
 	    singleValue = (*function)(handle->at(0));
 	}
+      else if(myrank_>-1){
+       if(handle->size()>myrank_){
+        singleValue = (*function)(handle->at((int) myrank_));
+       }
+       else {singleValue = -15;}
+      }
       else
 	for(unsigned int i=0;i<handle->size();++i) {
 	  value->push_back((*function)(handle->at(i)));
@@ -79,6 +86,7 @@ class StringBasedNtupleFiller : public NtupleFillerBase {
   std::string var_;
   std::string tag_;
   std::string rank_;
+  double myrank_;
   bool leadingOnly_;
   std::vector<double>* value;
   float singleValue;
@@ -95,10 +103,13 @@ class StringBasedNtupleFiller : public NtupleFillerBase {
 #include "ZSV/BAnalysis/interface/SimBHadron.h"
 #include "UWAnalysis/RecoTools/plugins/PATJetOverloader.h"
 #include "UWAnalysis/DataFormats/interface/BCandFinalState.h"
+#include "DataFormats/JetReco/interface/GenJet.h"
+#include "UWAnalysis/DataFormats/interface/DressedLepton.h"
 
 typedef StringBasedNtupleFiller<BCandFinalState> bCandidatesFiller; 
 typedef StringBasedNtupleFiller<SimBHadron> SimBHadronsFiller;
 typedef StringBasedNtupleFiller<reco::GenParticle> PATGenParticleFiller;
+typedef StringBasedNtupleFiller<DressedLepton> DressedLeptonFiller;
 typedef StringBasedNtupleFiller<PATMuTauPair> PATMuTauPairFiller;
 typedef StringBasedNtupleFiller<PATMuJetPair> PATMuJetPairFiller;
 typedef StringBasedNtupleFiller<PATDiTauPair> PATDiTauPairFiller;
@@ -112,9 +123,12 @@ typedef StringBasedNtupleFiller<PATMuTrackPair> PATMuTrackPairFiller;
 typedef StringBasedNtupleFiller<PATEleTrackPair> PATEleTrackPairFiller;
 typedef StringBasedNtupleFiller<PATMuPair> PATMuPairFiller;
 typedef StringBasedNtupleFiller<PATJetPair> PATJetPairFiller;
+typedef StringBasedNtupleFiller<reco::GenJet> GENJetFiller;
+typedef StringBasedNtupleFiller<pat::Jet> PATJetFiller;
 typedef StringBasedNtupleFiller<pat::Muon> PATMuonFiller;
 typedef StringBasedNtupleFiller<pat::Electron> PATElectronFiller;
-typedef StringBasedNtupleFiller<reco::MET> PATMETFiller;
+typedef StringBasedNtupleFiller<pat::MET> PATMETFiller;
+//typedef StringBasedNtupleFiller<reco::MET> PATMETFiller;
 typedef StringBasedNtupleFiller<reco::PFMET> PATPFMETFiller;
 typedef StringBasedNtupleFiller<reco::GenMET> PATGenMETFiller;
 typedef StringBasedNtupleFiller<PATMuMuMuTauQuad> PATMuMuMuTauQuadFiller;

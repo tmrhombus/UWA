@@ -5,6 +5,7 @@ DEFINE_EDM_PLUGIN(NtupleFillerFactory, bCandidatesFiller, "bCandidatesFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, SimBHadronsFiller, "SimBHadronsFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuTauPairFiller, "PATMuTauPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATGenParticleFiller, "PATGenParticleFiller");
+DEFINE_EDM_PLUGIN(NtupleFillerFactory, DressedLeptonFiller, "DressedLeptonFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuJetPairFiller, "PATMuJetPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATEleTauPairFiller, "PATEleTauPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATDiTauPairFiller, "PATDiTauPairFiller");
@@ -17,6 +18,8 @@ DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATEleTrackPairFiller, "PATEleTrackPairFi
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuPairFiller, "PATMuPairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATElePairFiller, "PATElePairFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATJetPairFiller, "PATJetPairFiller");
+DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATJetFiller, "PATJetFiller");
+DEFINE_EDM_PLUGIN(NtupleFillerFactory, GENJetFiller, "GENJetFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATMuonFiller, "PATMuonFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATElectronFiller, "PATElectronFiller");
 DEFINE_EDM_PLUGIN(NtupleFillerFactory, PATPFMETFiller, "PATPFMETFiller");
