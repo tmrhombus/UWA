@@ -52,57 +52,123 @@ PATMETCorrector::PATMETCorrector(
 
 void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
 
-    using namespace edm;
-    using namespace reco;
-
     // get the collections and define the new output MET
     std::auto_ptr<pat::METCollection> outMET(new pat::METCollection);
 
-    edm::Handle<pat::JetCollection> jets;
-    iEvent.getByLabel(srcJ123_,jets);
-
-    edm::Handle<reco::VertexCollection> vertices;
-    iEvent.getByLabel(srcVert_, vertices);
-    int Nvtx = vertices->size();
-
     edm::Handle<pat::METCollection> inMET;
 
-    math::PtEtaPhiMLorentzVector correctionType1;
-    math::PtEtaPhiMLorentzVector correctionXY;
-    math::PtEtaPhiMLorentzVector inP4;
-    math::PtEtaPhiMLorentzVector outP4;
-    math::PtEtaPhiMLorentzVector antiType1;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsRaw;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metType1;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metT0pcT1Txy;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsFullJESUp;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsFullJESDown;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsFullUESUp;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsFullUESDown;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsEESUp;
+    edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsEESDown;
 
+    iEvent.getByLabel("systematicsMET", "metsRaw",  handleLeafCand_metsRaw);
+    iEvent.getByLabel("systematicsMET", "metType1", handleLeafCand_metType1);
+    iEvent.getByLabel("systematicsMET", "metT0pcT1Txy",  handleLeafCand_metT0pcT1Txy);
+    iEvent.getByLabel("systematicsMET", "metsFullJESUp",   handleLeafCand_metsFullJESUp);
+    iEvent.getByLabel("systematicsMET", "metsFullJESDown", handleLeafCand_metsFullJESDown);
+    iEvent.getByLabel("systematicsMET", "metsFullUESUp",   handleLeafCand_metsFullUESUp);
+    iEvent.getByLabel("systematicsMET", "metsFullUESDown", handleLeafCand_metsFullUESDown);
+    iEvent.getByLabel("systematicsMET", "metsEESUp",   handleLeafCand_metsEESUp);
+    iEvent.getByLabel("systematicsMET", "metsEESDown", handleLeafCand_metsEESDown);
+
+    //std::cout<<"RecoTools/plugins/PATMETCorrector.cc: "<<handleLeafCand_metsRaw.product()->front().pt()<<std::endl;
+
+    math::PtEtaPhiMLorentzVector rawP4(
+     handleLeafCand_metsRaw.product()->front().pt(),
+     handleLeafCand_metsRaw.product()->front().eta(),
+     handleLeafCand_metsRaw.product()->front().phi(),
+     handleLeafCand_metsRaw.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector type1P4(
+     handleLeafCand_metType1.product()->front().pt(),
+     handleLeafCand_metType1.product()->front().eta(),
+     handleLeafCand_metType1.product()->front().phi(),
+     handleLeafCand_metType1.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector T0pcT1TxyP4(
+     handleLeafCand_metT0pcT1Txy.product()->front().pt(),
+     handleLeafCand_metT0pcT1Txy.product()->front().eta(),
+     handleLeafCand_metT0pcT1Txy.product()->front().phi(),
+     handleLeafCand_metT0pcT1Txy.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector eesUpP4(
+     handleLeafCand_metsEESUp.product()->front().pt(),
+     handleLeafCand_metsEESUp.product()->front().eta(),
+     handleLeafCand_metsEESUp.product()->front().phi(),
+     handleLeafCand_metsEESUp.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector eesDnP4(
+     handleLeafCand_metsEESDown.product()->front().pt(),
+     handleLeafCand_metsEESDown.product()->front().eta(),
+     handleLeafCand_metsEESDown.product()->front().phi(),
+     handleLeafCand_metsEESDown.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector jesUpP4(
+     handleLeafCand_metsFullJESUp.product()->front().pt(),
+     handleLeafCand_metsFullJESUp.product()->front().eta(),
+     handleLeafCand_metsFullJESUp.product()->front().phi(),
+     handleLeafCand_metsFullJESUp.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector jesDnP4(
+     handleLeafCand_metsFullJESDown.product()->front().pt(),
+     handleLeafCand_metsFullJESDown.product()->front().eta(),
+     handleLeafCand_metsFullJESDown.product()->front().phi(),
+     handleLeafCand_metsFullJESDown.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector uesUpP4(
+     handleLeafCand_metsFullUESUp.product()->front().pt(),
+     handleLeafCand_metsFullUESUp.product()->front().eta(),
+     handleLeafCand_metsFullUESUp.product()->front().phi(),
+     handleLeafCand_metsFullUESUp.product()->front().mass()
+    );
+
+    math::PtEtaPhiMLorentzVector uesDnP4(
+     handleLeafCand_metsFullUESDown.product()->front().pt(),
+     handleLeafCand_metsFullUESDown.product()->front().eta(),
+     handleLeafCand_metsFullUESDown.product()->front().phi(),
+     handleLeafCand_metsFullUESDown.product()->front().mass()
+    );
+    
     if(iEvent.getByLabel(srcMET_,inMET)){
-     pat::MET met=inMET->at(0);
      pat::MET newmet=inMET->at(0);
 
-     correctionType1 = findCorrectionType1(jets, mc_);
-     antiType1 = antiCorrectionType1(jets);
-     correctionXY = findCorrectionXY(Nvtx, mc_);
-     if(mc_){
-      inP4 = met.p4();
-      outP4 = inP4 - correctionXY;
-     }
-     if(!mc_){
-      //inP4 = met.p4();
-      //inP4 = met.userCand("type0rtT1Txy")->p4();
-      //inP4 = met.userCand("type0pcT1Txy")->p4();
-      inP4 = met.userCand("type1")->p4();
-      //inP4 = met.userCand("raw")->p4();
-      outP4 = inP4 - correctionXY;
-     }
-     newmet.setP4(outP4);
+     newmet.setP4(rawP4);
+     newmet.addUserFloat("eesUp_pt",eesUpP4.pt());
+     newmet.addUserFloat("eesUp_eta",eesUpP4.eta());
+     newmet.addUserFloat("uesUp_pt",uesUpP4.pt());
+     newmet.addUserFloat("uesUp_eta",uesUpP4.eta());
+     newmet.addUserFloat("jesUp_pt",jesUpP4.pt());
+     newmet.addUserFloat("jesUp_eta",jesUpP4.eta());
+     newmet.addUserFloat("eesDn_pt",eesDnP4.pt());
+     newmet.addUserFloat("eesDn_eta",eesDnP4.eta());
+     newmet.addUserFloat("uesDn_pt",uesDnP4.pt());
+     newmet.addUserFloat("uesDn_eta",uesDnP4.eta());
+     newmet.addUserFloat("jesDn_pt",jesDnP4.pt());
+     newmet.addUserFloat("jesDn_eta",jesDnP4.eta());
+     //std::cout<<eesUpP4<<std::endl;
      outMET->push_back(newmet);
     }
     iEvent.put(outMET);
 }
 
+
+// obsolete functions 
    // matches jets with L1 correction to jets with L123 corrections
 pat::Jet PATMETCorrector::jetMatchL1(pat::Jet jetL123, edm::Handle<pat::JetCollection> jetsL1){
  pat::Jet retVal;
- //const pat::Jet* retVal = 0;
- //double PT=-20;
  double dRbestMatch = 0.5;
    for (unsigned int i=0; i<jetsL1->size(); i++){
    pat::Jet  jetL1=jetsL1->at(i);
