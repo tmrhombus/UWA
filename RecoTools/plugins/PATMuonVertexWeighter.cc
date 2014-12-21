@@ -21,7 +21,7 @@
 
 /**
 * @class PATMuonVertexWeighter
-* @brief Adds nrVtx to Muons as Userfloat
+* @brief Adds nrVtx, PU, lumiWeight to Muons as Userfloat
 */
 class PATMuonVertexWeighter : public edm::EDProducer
 {
@@ -38,8 +38,6 @@ class PATMuonVertexWeighter : public edm::EDProducer
         edm::InputTag srcPU_;
 };
 
-
-
 PATMuonVertexWeighter::PATMuonVertexWeighter( const edm::ParameterSet& pset)
 {
     srcMuon_ = pset.getParameter<edm::InputTag>("srcMuon");
@@ -48,12 +46,6 @@ PATMuonVertexWeighter::PATMuonVertexWeighter( const edm::ParameterSet& pset)
     produces<pat::MuonCollection>();
 }
 
-
-
-/**
-* Create a new collection of pat::Muons with looseID and
-* push the collection to the event.
-*/
 void PATMuonVertexWeighter::produce( edm::Event& evt, const edm::EventSetup& es )
 {
     std::auto_ptr<pat::MuonCollection> out(new pat::MuonCollection);
@@ -64,7 +56,6 @@ void PATMuonVertexWeighter::produce( edm::Event& evt, const edm::EventSetup& es 
     edm::Handle<reco::VertexCollection> vertices;
     evt.getByLabel(srcVert_, vertices);
     int nvtx = vertices->size();
-    //std::cout<<nvtx<<std::endl;
 
     float nrPU = 0.;
     edm::Handle<std::vector<PileupSummaryInfo> > PupInfo;
@@ -102,9 +93,6 @@ void PATMuonVertexWeighter::produce( edm::Event& evt, const edm::EventSetup& es 
 
     evt.put( out );
 }
-
-//float PATMuonVertexWeighter::loopupMC (int n){
-//}
 
 #include "FWCore/Framework/interface/MakerMacros.h"
 DEFINE_FWK_MODULE(PATMuonVertexWeighter);
