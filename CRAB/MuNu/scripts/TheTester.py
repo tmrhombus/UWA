@@ -23,3 +23,5 @@ for leaf in leafs:
 
 print("Data Cuts: \n %s\n"%(CutsDatai))
 print("MC Cuts: \n %s\n"%(CutsMCi))
+print("Bup Cuts: \n %s\n"%(cutMcIso_Bup))
+print("Bdn Cuts: \n %s\n"%(cutMcIso_Bdn))

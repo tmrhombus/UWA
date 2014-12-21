@@ -71,6 +71,7 @@ def ranger(leaf):
    #xmin = 45.
    #xmax = 205.
    steps = 16 
+   #steps = 24 
    xmin = 0.
    xmax = 240.
    xtitle = 'Transverse Mass'
@@ -105,9 +106,12 @@ def ranger(leaf):
    xunits = 'GeV'
 
  elif leaf == 'ht':
-   steps = 50
+   steps = 20 
+   #steps = 25 
+   #steps = 50
    xmin = 50.
-   xmax = 400.
+   xmax = 550.
+   #xmax = 400.
    xtitle = 'h_{T}'
    xunits = 'GeV'
 

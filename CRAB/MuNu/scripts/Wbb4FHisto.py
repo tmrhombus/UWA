@@ -11,18 +11,10 @@ from ROOT import *
 import os
 
 import aHisto as h #function to make histograms
+import TheCuts as ct  #function which makes cut strings
 import histoRange as hr #manages range, lables for plots
+import TheParameters as p
 
-leafs = ["J1_pt",
-         "J2_pt",
-         "met_pt",
-         "muon_pt",
-         "mt_new"
-]
-cutnames = ['Wbb',
-            'TT_1m1e',
-            'TT_3j',
-]
 eventTreeLocations = [
 'muNuEventTree/eventTree',
 'muNuEventTreeMuonUp/eventTree',
@@ -34,45 +26,50 @@ eventTreeLocations = [
 ]
 I=-1
 F=-1
+
+#get parameters (used in cutmaker)
+lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea = p.arams()
+
+CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutsMCnTup,CutsMCiTup,CutsMCnTdn,CutsMCiTdn, cutMcNonIso_Bup, cutMcNonIsoW_Bup, cutMcIso_Bup, cutMcWlNonIso_Bup, cutMcWlIso_Bup, cutMcWcNonIso_Bup, cutMcWcIso_Bup, cutMcWccNonIso_Bup, cutMcWccIso_Bup, cutMcWbbNonIso_Bup, cutMcWbbIso_Bup, cutMcNonIso_Bdn, cutMcNonIsoW_Bdn, cutMcIso_Bdn, cutMcWlNonIso_Bdn, cutMcWlIso_Bdn, cutMcWcNonIso_Bdn, cutMcWcIso_Bdn, cutMcWccNonIso_Bdn, cutMcWccIso_Bdn, cutMcWbbNonIso_Bdn, cutMcWbbIso_Bdn = ct.cutmaker(
+ leafs[0],iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut,Ctl_Andrea
+)
+
 for leaf in leafs:
  print("------------")
  print(leaf)
  print("------------")
- for cutname in cutnames:
-  print(cutname) 
-  steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
-  version = os.environ.get('version')
-  W4F_filename       = '/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/data/%s/Wbb4F.root'%(version)
-  W4F_file        = TFile( W4F_filename )
+ steps, xmin, xmax, xtitle, xunits, setLogY = hr.ranger(leaf)
+ version = os.environ.get('version')
+ W4F_filename       = '/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/data/%s/Wbb4F.root'%(version)
+ W4F_file        = TFile( W4F_filename )
+ 
+ outname = "%s%s_4F_%s"%(path,extraName,leaf)
+ outFile=gROOT.FindObject('%s.root'%(outname))
+ if outFile : outFile.Close()
+ outFile = TFile('%s.root'%(outname),'RECREATE','4Flavor Histograms')
+ 
+ for etl in eventTreeLocations:
+  W4F_tree       =  W4F_file.Get(etl)
+  if etl == 'muNuEventTreeMuonUp/eventTree' : ps ='_muonUp'
+  if etl == 'muNuEventTreeMuonDown/eventTree' : ps ='_muonDown'
+  if etl == 'muNuEventTreeJetUp/eventTree' : ps ='_jetUp'
+  if etl == 'muNuEventTreeJetDown/eventTree' : ps ='_jetDown'
+  if etl == 'muNuEventTreeUCEUp/eventTree': ps = '_uceUp'
+  if etl == 'muNuEventTreeUCEDown/eventTree': ps = '_uceDown'
+  if etl == 'muNuEventTree/eventTree' : ps = ''
   
-  path = '../plots/%s_%s_4F_%s'%(version,cutname,leaf)
-  outFile=gROOT.FindObject(path+'.root')
-  if outFile : outFile.Close()
-  outFile = TFile(path+'.root','RECREATE','4Flavor Histograms')
-  
-  #if leaf=="mt": cutmt = '(mt>45)'
-  if leaf=="mt_new": cutmt = '(2 > 1)'
-  else: cutmt = '(mt_new>45)'
-  if cutname == 'Wbb': cut='(((QweightFactor * 19775 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFl)))) * ((muNuRelPFIsoDB_A<0.12 && HLT_IsoMu24_eta2p1_v_fired) && ((abs(muon_eta)<2.1 && muon_pt>30) && (nrMuLoose==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.898) && (J2_CSVbtag>0.898) && %s)))'%cutmt
-  if cutname == 'TT_3j': cut='(((QweightFactor * 19774 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFl)))) * ((muNuRelPFIsoDB_A<0.12 && HLT_IsoMu24_eta2p1_v_fired) && ((abs(muon_eta)<2.1 && muon_pt>30) && (nrMuLoose==1 && nrEle==0) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt>25 && abs(J3_eta)<2.4 && J3_idLooseJet) && (nJets24Pt25==0) && (J1_CSVbtag>0.898) && (J2_CSVbtag>0.898) && %s)))'%cutmt
-  if cutname == 'TT_1m1e': cut='(((QweightFactor * 19774 * weightEtaMuonID * weightEtaMuonIso * weightEtaMuonTrig) * ((((abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFb)+(!(abs(J1_partonFlavour)==5 || abs(J1_partonFlavour)==4) * J1_CSVT_SFl)) * (((abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFb)+(!(abs(J2_partonFlavour)==5 || abs(J2_partonFlavour)==4) * J2_CSVM_SFl)))) * ((muNuRelPFIsoDB_A<0.12 && HLT_IsoMu24_eta2p1_v_fired) && ((abs(muon_eta)<2.1 && muon_pt>30) && (nrMuLoose==1 && nrEle==1 && ele_pt>30) && (J1_pt>25 && abs(J1_eta)<2.4 && J1_idLooseJet) && (J2_pt>25 && abs(J2_eta)<2.4 && J2_idLooseJet) && (J3_pt<25) && (nJets24Pt25==0) && (J1_CSVbtag>0.898) && (J2_CSVbtag>0.898) && %s)))'%cutmt
-  
-  for eventTreeLocation in eventTreeLocations:
-   W4F_tree       =  W4F_file.Get(eventTreeLocation)
-   if eventTreeLocation == 'muNuEventTree/eventTree' : ps = 'No'
-   if eventTreeLocation == 'muNuEventTreeMuonUp/eventTree' : ps ='muonUp'
-   if eventTreeLocation == 'muNuEventTreeMuonDown/eventTree' : ps ='muonDown'
-   if eventTreeLocation == 'muNuEventTreeJetUp/eventTree' : ps ='jetUp'
-   if eventTreeLocation == 'muNuEventTreeJetDown/eventTree' : ps ='jetDown'
-   if eventTreeLocation == 'muNuEventTreeUCEUp/eventTree': ps = 'UCEUp'
-   if eventTreeLocation == 'muNuEventTreeUCEDown/eventTree': ps = 'UCEDown'
-   
-   w4fh,w4fhSize,w4fhSizePart,w4fhEntries = h.gram(W4F_tree,leaf,xmin,xmax,steps,cut,I,F)
-   w4fh.SetName("W4F_%s"%(ps))
-   print('  '+str(w4fhSize))
-   
-   outFile.Write()
-  outFile.Close()
-  print('')
-  print('Your File is here: '+path+'.root')
-  print('') 
+  w4fh,w4fhSize,w4fhSizePart,w4fhEntries = h.gram(W4F_tree,leaf,xmin,xmax,steps,CutsMCiwbb,I,F)
+  w4fh.SetName("Wbb4F%s"%(ps))
+  print('  '+str(w4fhSize))
+
+  if etl == 'muNuEventTree/eventTree':
+   Wbb4F_BeffUp,wbbBupSize,wbbBupSizePart,wbbBupEntries = h.gram(W4F_tree,leaf,xmin,xmax,steps,cutMcWbbIso_Bup,I,F)
+   Wbb4F_BeffUp.SetName('Wbb4F_BeffUp')
+   Wbb4F_BeffDown,wbbBdnSize,wbbBdnSizePart,wbbBdnEntries = h.gram(W4F_tree,leaf,xmin,xmax,steps,cutMcWbbIso_Bdn,I,F)
+   Wbb4F_BeffDown.SetName('Wbb4F_BeffDown')
+
+  outFile.Write()
+ outFile.Close()
+ print('')
+ print('Your File is here: '+outname+'.root')
+ print('') 

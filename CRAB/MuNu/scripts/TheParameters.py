@@ -6,7 +6,7 @@ Author: T.M.Perry
 import os
 
 def arams():
- lumi = 19775 # post_synch_v5,v6c
+ lumi = 19783 # post_synch_v5,v6c
 
  btype = 't'
  njetcut = '25' #20,25,26,30,40
@@ -23,7 +23,12 @@ def arams():
  #naming where output goes
  version = os.environ.get('version')
  path = '../plots/%s_'%(version)
- extraName = ''
+ #extraName = 'QCDwTRG_'
+ #extraName = 'MT45_rebin_'
+ extraName = 'fullMT_BinsOfT_'
+ #extraName = '1bSemiOff_J3FwdCut_'
+ #extraName = '1bSemiOff_mu15_chargeOpp_'
+ #extraName = 'bTag1M_noJetVeto_'
 
  drawQCD = True
  drawData = True
@@ -31,8 +36,8 @@ def arams():
  noMT = False # control but no mT cut
  Control = False # 1 mu, 0b, 2+ jets
  Ctl_Andrea = False # 1 mu, 1+ b, 2+ jets 
- Signal = True # 1 mu, 2bs, 2 jets
- TT_m = False #1 mu, 2b, 3j
+ Signal = False # 1 mu, 2bs, 2 jets
+ TT_m = True #1 mu, 2b, 3j
  TT_me = False # 1mu, 1e
  ST = False
  Z_Region = False # two muons, no mT cut
@@ -41,8 +46,8 @@ def arams():
 
  DataCard = False
 
- eventTreeLocation = 'New_Tree'
- #eventTreeLocation = 'muNuEventTree/eventTree'
+ #eventTreeLocation = 'New_Tree'
+ eventTreeLocation = 'muNuEventTree/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonUp/eventTree'
  #eventTreeLocation = 'muNuEventTreeMuonDown/eventTree'
  #eventTreeLocation = 'muNuEventTreeJetUp/eventTree'
@@ -73,6 +78,8 @@ def arams():
   jNr = 3
   jetVeto = False
  elif TT_me:
+  #bNr = 0
+  #bNr = 1
   bNr = 2
   jNr = 2
   jetVeto = False
@@ -111,23 +118,24 @@ def arams():
 
  leafs = [
 'mt_new',
-#'vertices',
+##'mt',
+##'vertices',
 #'J1_pt',
 #'J1_eta',
 #'muon_pt',
 #'muon_eta',
 #'met_pt',
 #'met_phi',
+#'ht',
+#'mJ3J4',
 #'J1_mass_SV_corrected',
 #'J1_mass_SV_unweighted',
 #'J1_mass_SV_weighted',
 #'J2_pt',
 #'J2_eta',
-#'ht',
 #'Wpt',
 #'DiMuonMass',
 #'DiMuonPt',
-#'mJ3J4',
 #'mJJ',
 #'J1_mass_PV',
 #'J1_mass_SSV',

@@ -9,14 +9,20 @@ from ROOT import TLatex
 from ROOT import gROOT,gStyle
 from ROOT import *
 
+import os
+
 import aHisto as h #function to make histograms
 import TheCuts as ct  #function which makes cut strings
 import histoRange as hr #manages range, lables for plots
 import TheParameters as p
 
-# 2014sptr25
-sf_qcd = 0.0360640893298 # Wbb
-#sf_qcd =  0.0571181704829 # TT_3j
+# scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<mt<20
+
+# Halloween
+#sf_qcd = 0.00000000001
+#sf_qcd =  # control
+#sf_qcd = 0.0025316635942 # Wbb
+sf_qcd = 0.00302154299378 # TT_3j
 #sf_qcd = 1. # TT_1m1e
 
 sf_drell = 1.
@@ -28,31 +34,36 @@ sf_vv = 1.
 
 #get parameters (used in cutmaker)
 lumi,bNr,btype,jNr,njetcut,jetcut,I,F,iso_value,antiIso_value,path,extraName,leafs,drawW,drawZ,drawQCD,drawData,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,eventTreeLocation,extraCut,Ctl_Andrea = p.arams()
-path=path+'Dcrd_'
+path=path+'Datacard_'
 
 CutsMCn, CutsMCnW, CutsMCi,CutsDatan,CutsDatai,CutsMCnwl,CutsMCiwl,CutsMCnwc,CutsMCiwc,CutsMCnwcc,CutsMCiwcc,CutsMCnwbb,CutsMCiwbb,CutsMCnT,CutsMCiT,CutsMCnTup,CutsMCiTup,CutsMCnTdn,CutsMCiTdn, cutMcNonIso_Bup, cutMcNonIsoW_Bup, cutMcIso_Bup, cutMcWlNonIso_Bup, cutMcWlIso_Bup, cutMcWcNonIso_Bup, cutMcWcIso_Bup, cutMcWccNonIso_Bup, cutMcWccIso_Bup, cutMcWbbNonIso_Bup, cutMcWbbIso_Bup, cutMcNonIso_Bdn, cutMcNonIsoW_Bdn, cutMcIso_Bdn, cutMcWlNonIso_Bdn, cutMcWlIso_Bdn, cutMcWcNonIso_Bdn, cutMcWcIso_Bdn, cutMcWccNonIso_Bdn, cutMcWccIso_Bdn, cutMcWbbNonIso_Bdn, cutMcWbbIso_Bdn = ct.cutmaker(
  leafs[0],iso_value,antiIso_value,lumi,bNr,btype,jNr,njetcut,jetcut,jetVeto,Control,Z_Region,Legacy,noMT,TT_m,TT_me,ST,Signal,Tomislav,extraCut,Ctl_Andrea
 )
 
-data_filename     = '../data/2014sptr25/Data.root'
-t_t_filename      = '../data/2014sptr25/T_t.root'
-t_s_filename      = '../data/2014sptr25/T_s.root'
-t_tw_filename     = '../data/2014sptr25/T_tW.root'
-tb_t_filename     = '../data/2014sptr25/Tbar_t.root'
-tb_s_filename     = '../data/2014sptr25/Tbar_s.root'
-tb_tw_filename    = '../data/2014sptr25/Tbar_tW.root'
-tt_semi_filename  = '../data/2014sptr25/TTbar_semi.root'
-tt_full_filename  = '../data/2014sptr25/TTbar_full.root'
-ww_filename       = '../data/2014sptr25/WW.root'
-wz_filename       = '../data/2014sptr25/WZ.root'
-zz_filename       = '../data/2014sptr25/ZZ.root'
-wn_filename       = '../data/2014sptr25/WJets.root'
-w1_filename       = '../data/2014sptr25/W1Jet.root'
-w2_filename       = '../data/2014sptr25/W2Jet.root'
-w3_filename       = '../data/2014sptr25/W3Jet.root'
-w4_filename       = '../data/2014sptr25/W4Jet.root'
-z_filename        = '../data/2014sptr25/Drell.root'
-w4f_filename      = '../data/2014sptr25/Wbb4F.root'
+
+version = os.environ.get('version')
+dpath = "/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/data/%s/"%(version)
+hpath = "/hdfs/store/user/tperry/%s/"%(version)
+npath = "/nfs_scratch/tperry/%s/Filtered_"%(version)
+data_filename     = npath+'Data.root'
+t_t_filename      = dpath+'T_t.root'
+t_s_filename      = npath+'T_s.root'
+t_tw_filename     = npath+'T_tW.root'
+tb_t_filename     = npath+'Tbar_t.root'
+tb_s_filename     = npath+'Tbar_s.root'
+tb_tw_filename    = npath+'Tbar_tW.root'
+tt_semi_filename  = npath+'TTbar_semi.root'
+tt_full_filename  = npath+'TTbar_full.root'
+ww_filename       = dpath+'WW.root'
+wz_filename       = dpath+'WZ.root'
+zz_filename       = dpath+'ZZ.root'
+wn_filename       = npath+'WJets.root'
+w1_filename       = npath+'W1Jet.root'
+w2_filename       = npath+'W2Jet.root'
+w3_filename       = npath+'W3Jet.root'
+w4_filename       = npath+'W4Jet.root'
+z_filename        = dpath+'Drell.root'
+w4f_filename      = npath+'Wbb4F.root'
 
 data_file     = TFile( data_filename )
 t_t_file      = TFile( t_t_filename  )
@@ -84,6 +95,7 @@ outFile = TFile(path+extraName+'_'+leaf+'.root','RECREATE','Demo ROOT file')
 
 log = open(path+extraName+'_'+leaf+'.log','w')
 
+
 eventTreeLocations = ['muNuEventTree/eventTree',
                       'muNuEventTreeMuonUp/eventTree',
                       'muNuEventTreeMuonDown/eventTree',
@@ -92,28 +104,36 @@ eventTreeLocations = ['muNuEventTree/eventTree',
                       'muNuEventTreeUCEUp/eventTree',
                       'muNuEventTreeUCEDown/eventTree'
                      ]
-for eventTreeLocation in eventTreeLocations:
+eventTreeLocations_fltr = ['muNuEventTree_eventTree',
+                           'muNuEventTreeMuonUp_eventTree',
+                           'muNuEventTreeMuonDown_eventTree',
+                           'muNuEventTreeJetUp_eventTree',
+                           'muNuEventTreeJetDown_eventTree',
+                           'muNuEventTreeUCEUp_eventTree',
+                           'muNuEventTreeUCEDown_eventTree'
+                          ]
+for eventTreeLocation,eventTreeLocation_fltr in zip(eventTreeLocations,eventTreeLocations_fltr):
  
  print('\n\n'+eventTreeLocation)
- data_tree     =  data_file.Get(eventTreeLocation) 
+ data_tree     =  data_file.Get(eventTreeLocation_fltr) 
  t_t_tree      =  t_t_file.Get(eventTreeLocation)
- t_s_tree      =  t_s_file.Get(eventTreeLocation)
- t_tw_tree     =  t_tw_file.Get(eventTreeLocation)
- tb_t_tree     =  tb_t_file.Get(eventTreeLocation)
- tb_s_tree     =  tb_s_file.Get(eventTreeLocation)
- tb_tw_tree    =  tb_tw_file.Get(eventTreeLocation)
- tt_semi_tree  =  tt_semi_file.Get(eventTreeLocation)
- tt_full_tree  =  tt_full_file.Get(eventTreeLocation)
+ t_s_tree      =  t_s_file.Get(eventTreeLocation_fltr)
+ t_tw_tree     =  t_tw_file.Get(eventTreeLocation_fltr)
+ tb_t_tree     =  tb_t_file.Get(eventTreeLocation_fltr)
+ tb_s_tree     =  tb_s_file.Get(eventTreeLocation_fltr)
+ tb_tw_tree    =  tb_tw_file.Get(eventTreeLocation_fltr)
+ tt_semi_tree  =  tt_semi_file.Get(eventTreeLocation_fltr)
+ tt_full_tree  =  tt_full_file.Get(eventTreeLocation_fltr)
  ww_tree       =  ww_file.Get(eventTreeLocation)
  wz_tree       =  wz_file.Get(eventTreeLocation)
  zz_tree       =  zz_file.Get(eventTreeLocation)
- wn_tree       =  wn_file.Get(eventTreeLocation)
- w1_tree       =  w1_file.Get(eventTreeLocation)
- w2_tree       =  w2_file.Get(eventTreeLocation)
- w3_tree       =  w3_file.Get(eventTreeLocation)
- w4_tree       =  w4_file.Get(eventTreeLocation)
+ wn_tree       =  wn_file.Get(eventTreeLocation_fltr)
+ w1_tree       =  w1_file.Get(eventTreeLocation_fltr)
+ w2_tree       =  w2_file.Get(eventTreeLocation_fltr)
+ w3_tree       =  w3_file.Get(eventTreeLocation_fltr)
+ w4_tree       =  w4_file.Get(eventTreeLocation_fltr)
  z_tree        =  z_file.Get(eventTreeLocation)
- w4f_tree      =  w4f_file.Get(eventTreeLocation)
+ w4f_tree      =  w4f_file.Get(eventTreeLocation_fltr)
  
  
  print('----------------------------')
@@ -581,7 +601,7 @@ for eventTreeLocation in eventTreeLocations:
    qhTdn.Add(w4nh,-1)
 
    QCD_BeffUp = datanh.Clone()
-   QCD_BeffUp.SetName('qhBup')
+   QCD_BeffUp.SetName('QCD_BeffUp')
    QCD_BeffUp.Add(znhBup,-1)    #Drell
    QCD_BeffUp.Add(t_tnhBup,-1)  #Single Top
    QCD_BeffUp.Add(tb_tnhBup,-1)
@@ -601,7 +621,7 @@ for eventTreeLocation in eventTreeLocations:
    QCD_BeffUp.Add(w4nhBup,-1)
 
    QCD_BeffDown = datanh.Clone()
-   QCD_BeffDown.SetName('qhTdn')
+   QCD_BeffDown.SetName('QCD_BeffDown')
    QCD_BeffDown.Add(znhBdn,-1)    #Drell
    QCD_BeffDown.Add(t_tnhBdn,-1)  #Single Top
    QCD_BeffDown.Add(tb_tnhBdn,-1)
@@ -1368,6 +1388,9 @@ for eventTreeLocation in eventTreeLocations:
  print('  '+str(wbb4fihSizePart))
  
  if eventTreeLocation == 'muNuEventTree/eventTree' :
+  data_obs = dataih.Clone()
+  data_obs.SetName("data_obs")
+
   QCD     = qh.Clone()
   QCD.SetName("QCD")
   DY     = zih.Clone()
@@ -1393,13 +1416,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl.Add(wl2ih)
   Wl.Add(wl3ih)
   Wl.Add(wl4ih)
-  Wcc    = wcnih.Clone()
+  Wl.Add(wcnih)
+  Wl.Add(wc1ih)
+  Wl.Add(wc2ih)
+  Wl.Add(wc3ih)
+  Wl.Add(wc4ih)
+  Wcc    = wccnih.Clone()
   Wcc.SetName("Wcc")
-  Wcc.Add(wc1ih)
-  Wcc.Add(wc2ih)
-  Wcc.Add(wc3ih)
-  Wcc.Add(wc4ih)
-  Wcc.Add(wccnih.Clone)
   Wcc.Add(wcc1ih)
   Wcc.Add(wcc2ih)
   Wcc.Add(wcc3ih)
@@ -1436,13 +1459,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_BeffUp.Add(wl2ihBup)
   Wl_BeffUp.Add(wl3ihBup)
   Wl_BeffUp.Add(wl4ihBup)
-  Wcc_BeffUp    = wcnihBup.Clone()
+  Wl_BeffUp.Add(wcnihBup)
+  Wl_BeffUp.Add(wc1ihBup)
+  Wl_BeffUp.Add(wc2ihBup)
+  Wl_BeffUp.Add(wc3ihBup)
+  Wl_BeffUp.Add(wc4ihBup)
+  Wcc_BeffUp    = wccnihBup.Clone()
   Wcc_BeffUp.SetName("Wcc_BeffUp")
-  Wcc_BeffUp.Add(wc1ihBup)
-  Wcc_BeffUp.Add(wc2ihBup)
-  Wcc_BeffUp.Add(wc3ihBup)
-  Wcc_BeffUp.Add(wc4ihBup)
-  Wcc_BeffUp.Add(wccnihBup)
   Wcc_BeffUp.Add(wcc1ihBup)
   Wcc_BeffUp.Add(wcc2ihBup)
   Wcc_BeffUp.Add(wcc3ihBup)
@@ -1479,13 +1502,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_BeffDown.Add(wl2ihBdn)
   Wl_BeffDown.Add(wl3ihBdn)
   Wl_BeffDown.Add(wl4ihBdn)
-  Wcc_BeffDown    = wcnihBdn.Clone()
+  Wl_BeffDown.Add(wcnihBdn)
+  Wl_BeffDown.Add(wc1ihBdn)
+  Wl_BeffDown.Add(wc2ihBdn)
+  Wl_BeffDown.Add(wc3ihBdn)
+  Wl_BeffDown.Add(wc4ihBdn)
+  Wcc_BeffDown    = wccnihBdn.Clone()
   Wcc_BeffDown.SetName("Wcc_BeffDown")
-  Wcc_BeffDown.Add(wc1ihBdn)
-  Wcc_BeffDown.Add(wc2ihBdn)
-  Wcc_BeffDown.Add(wc3ihBdn)
-  Wcc_BeffDown.Add(wc4ihBdn)
-  Wcc_BeffDown.Add(wccnihBdn)
   Wcc_BeffDown.Add(wcc1ihBdn)
   Wcc_BeffDown.Add(wcc2ihBdn)
   Wcc_BeffDown.Add(wcc3ihBdn)
@@ -1571,13 +1594,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_muonUp.Add(wl2ih)
   Wl_muonUp.Add(wl3ih)
   Wl_muonUp.Add(wl4ih)
-  Wcc_muonUp    = wcnih.Clone()
+  Wl_muonUp.Add(wcnih)
+  Wl_muonUp.Add(wc1ih)
+  Wl_muonUp.Add(wc2ih)
+  Wl_muonUp.Add(wc3ih)
+  Wl_muonUp.Add(wc4ih)
+  Wcc_muonUp    = wccnih.Clone()
   Wcc_muonUp.SetName("Wcc_muonUp")
-  Wcc_muonUp.Add(wc1ih)
-  Wcc_muonUp.Add(wc2ih)
-  Wcc_muonUp.Add(wc3ih)
-  Wcc_muonUp.Add(wc4ih)
-  Wcc_muonUp.Add(wccnih)
   Wcc_muonUp.Add(wcc1ih)
   Wcc_muonUp.Add(wcc2ih)
   Wcc_muonUp.Add(wcc3ih)
@@ -1617,13 +1640,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_muonDown.Add(wl2ih)
   Wl_muonDown.Add(wl3ih)
   Wl_muonDown.Add(wl4ih)
-  Wcc_muonDown    = wcnih.Clone()
+  Wl_muonDown.Add(wcnih)
+  Wl_muonDown.Add(wc1ih)
+  Wl_muonDown.Add(wc2ih)
+  Wl_muonDown.Add(wc3ih)
+  Wl_muonDown.Add(wc4ih)
+  Wcc_muonDown    = wccnih.Clone()
   Wcc_muonDown.SetName("Wcc_muonDown")
-  Wcc_muonDown.Add(wc1ih)
-  Wcc_muonDown.Add(wc2ih)
-  Wcc_muonDown.Add(wc3ih)
-  Wcc_muonDown.Add(wc4ih)
-  Wcc_muonDown.Add(wccnih)
   Wcc_muonDown.Add(wcc1ih)
   Wcc_muonDown.Add(wcc2ih)
   Wcc_muonDown.Add(wcc3ih)
@@ -1663,13 +1686,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_jetUp.Add(wl2ih)
   Wl_jetUp.Add(wl3ih)
   Wl_jetUp.Add(wl4ih)
-  Wcc_jetUp    = wcnih.Clone()
+  Wl_jetUp.Add(wcnih)
+  Wl_jetUp.Add(wc1ih)
+  Wl_jetUp.Add(wc2ih)
+  Wl_jetUp.Add(wc3ih)
+  Wl_jetUp.Add(wc4ih)
+  Wcc_jetUp    = wccnih.Clone()
   Wcc_jetUp.SetName("Wcc_jetUp")
-  Wcc_jetUp.Add(wc1ih)
-  Wcc_jetUp.Add(wc2ih)
-  Wcc_jetUp.Add(wc3ih)
-  Wcc_jetUp.Add(wc4ih)
-  Wcc_jetUp.Add(wccnih)
   Wcc_jetUp.Add(wcc1ih)
   Wcc_jetUp.Add(wcc2ih)
   Wcc_jetUp.Add(wcc3ih)
@@ -1709,13 +1732,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_jetDown.Add(wl2ih)
   Wl_jetDown.Add(wl3ih)
   Wl_jetDown.Add(wl4ih)
-  Wcc_jetDown    = wcnih.Clone()
+  Wl_jetDown.Add(wcnih)
+  Wl_jetDown.Add(wc1ih)
+  Wl_jetDown.Add(wc2ih)
+  Wl_jetDown.Add(wc3ih)
+  Wl_jetDown.Add(wc4ih)
+  Wcc_jetDown    = wccnih.Clone()
   Wcc_jetDown.SetName("Wcc_jetDown")
-  Wcc_jetDown.Add(wc1ih)
-  Wcc_jetDown.Add(wc2ih)
-  Wcc_jetDown.Add(wc3ih)
-  Wcc_jetDown.Add(wc4ih)
-  Wcc_jetDown.Add(wccnih)
   Wcc_jetDown.Add(wcc1ih)
   Wcc_jetDown.Add(wcc2ih)
   Wcc_jetDown.Add(wcc3ih)
@@ -1755,13 +1778,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_uceUp.Add(wl2ih)
   Wl_uceUp.Add(wl3ih)
   Wl_uceUp.Add(wl4ih)
-  Wcc_uceUp    = wcnih.Clone()
+  Wl_uceUp.Add(wcnih)
+  Wl_uceUp.Add(wc1ih)
+  Wl_uceUp.Add(wc2ih)
+  Wl_uceUp.Add(wc3ih)
+  Wl_uceUp.Add(wc4ih)
+  Wcc_uceUp    = wccnih.Clone()
   Wcc_uceUp.SetName("Wcc_uceUp")
-  Wcc_uceUp.Add(wc1ih)
-  Wcc_uceUp.Add(wc2ih)
-  Wcc_uceUp.Add(wc3ih)
-  Wcc_uceUp.Add(wc4ih)
-  Wcc_uceUp.Add(wccnih)
   Wcc_uceUp.Add(wcc1ih)
   Wcc_uceUp.Add(wcc2ih)
   Wcc_uceUp.Add(wcc3ih)
@@ -1801,13 +1824,13 @@ for eventTreeLocation in eventTreeLocations:
   Wl_uceDown.Add(wl2ih)
   Wl_uceDown.Add(wl3ih)
   Wl_uceDown.Add(wl4ih)
-  Wcc_uceDown    = wcnih.Clone()
+  Wl_uceDown.Add(wcnih)
+  Wl_uceDown.Add(wc1ih)
+  Wl_uceDown.Add(wc2ih)
+  Wl_uceDown.Add(wc3ih)
+  Wl_uceDown.Add(wc4ih)
+  Wcc_uceDown    = wccnih.Clone()
   Wcc_uceDown.SetName("Wcc_uceDown")
-  Wcc_uceDown.Add(wc1ih)
-  Wcc_uceDown.Add(wc2ih)
-  Wcc_uceDown.Add(wc3ih)
-  Wcc_uceDown.Add(wc4ih)
-  Wcc_uceDown.Add(wccnih)
   Wcc_uceDown.Add(wcc1ih)
   Wcc_uceDown.Add(wcc2ih)
   Wcc_uceDown.Add(wcc3ih)
@@ -1821,22 +1844,22 @@ for eventTreeLocation in eventTreeLocations:
   Wbb4F_uceDown = wbb4fih.Clone()
   Wbb4F_uceDown.SetName("Wbb4F_uceDown")
 
-# log.write('\n\n\n'+eventTreeLocation+'\n')
-# log.write('------------------------------------------------\n')
-# log.write('Non Isolated\n')
-# log.write('---------------------------\n')
-# log.write(' Cuts MC:      \n'+str(CutsMCn)+'\n\n')
-# log.write(' Cuts MC Top:  \n'+str(CutsMCnT)+'\n\n')
-# log.write(' Cuts Data:    \n'+str(CutsDatan)+'\n\n')
-# log.write('Isolated\n')
-# log.write('---------------------------\n')
-# log.write(' Cuts MC:  \n'+str(CutsMCi)+'\n\n')
-# log.write(' Cuts MC Top:  \n'+str(CutsMCiT)+'\n\n')
-# log.write(' Cuts Data: \n'+str(CutsDatai)+'\n\n')
-# log.write(' Cuts Wbb: \n'+str(CutsMCiwbb)+'\n\n')
-# log.write(' Cuts Wcc: \n'+str(CutsMCiwcc)+'\n\n')
-# log.write(' Cuts Wc: \n'+str(CutsMCiwc)+'\n\n')
-# log.write(' Cuts Wl: \n'+str(CutsMCiwl)+'\n\n')
+ log.write('\n\n\n'+eventTreeLocation+'\n')
+ log.write('------------------------------------------------\n')
+ log.write('Non Isolated\n')
+ log.write('---------------------------\n')
+ log.write(' Cuts MC:      \n'+str(CutsMCn)+'\n\n')
+ log.write(' Cuts MC Top:  \n'+str(CutsMCnT)+'\n\n')
+ log.write(' Cuts Data:    \n'+str(CutsDatan)+'\n\n')
+ log.write('Isolated\n')
+ log.write('---------------------------\n')
+ log.write(' Cuts MC:  \n'+str(CutsMCi)+'\n\n')
+ log.write(' Cuts MC Top:  \n'+str(CutsMCiT)+'\n\n')
+ log.write(' Cuts Data: \n'+str(CutsDatai)+'\n\n')
+ log.write(' Cuts Wbb: \n'+str(CutsMCiwbb)+'\n\n')
+ log.write(' Cuts Wcc: \n'+str(CutsMCiwcc)+'\n\n')
+ log.write(' Cuts Wc: \n'+str(CutsMCiwc)+'\n\n')
+ log.write(' Cuts Wl: \n'+str(CutsMCiwl)+'\n\n')
 # if drawQCD:
 #  log.write('Anti-Isolated Sizes\n')
 #  log.write('---------------------------\n')
@@ -2018,110 +2041,107 @@ for eventTreeLocation in eventTreeLocations:
  #log.write('QCD Size:       '+str(qhSize)+'\n')
 
  
- znhBup.Delete()	
- wwnhBup.Delete()	
- wznhBup.Delete()	
- zznhBup.Delete()	
- t_tnhBup.Delete()	
- tb_tnhBup.Delete()	
- t_snhBup.Delete()	
- tb_snhBup.Delete()	
- t_twnhBup.Delete()	
- tb_twnhBup.Delete()	
- tt_seminhBup.Delete()	
- tt_fullnhBup.Delete()	
- wnnhBup.Delete()	
- w1nhBup.Delete()	
- w2nhBup.Delete()	
- w3nhBup.Delete()	
- w4nhBup.Delete()	
- znhBdn.Delete()	
- wwnhBdn.Delete()	
- wznhBdn.Delete()	
- zznhBdn.Delete()	
- t_tnhBdn.Delete()	
- tb_tnhBdn.Delete()	
- t_snhBdn.Delete()	
- tb_snhBdn.Delete()	
- t_twnhBdn.Delete()	
- tb_twnhBdn.Delete()	
- tt_seminhBdn.Delete()	
- tt_fullnhBdn.Delete()	
- wnnhBdn.Delete()	
- w1nhBdn.Delete()	
- w2nhBdn.Delete()	
- w3nhBdn.Delete()	
- w4nhBdn.Delete()	
- qhTup.Delete()	
- qhTdn.Delete()	
- qhBup.Delete()	
- dataih.Delete()	
- zihBup.Delete()	
- wwihBup.Delete()	
- wzihBup.Delete()	
- zzihBup.Delete()	
- t_tihBup.Delete()	
- tb_tihBup.Delete()	
- t_sihBup.Delete()	
- tb_sihBup.Delete()	
- t_twihBup.Delete()	
- tb_twihBup.Delete()	
- tt_semiihBup.Delete()	
- tt_fullihBup.Delete()	
- wlnihBup.Delete()	
- wcnihBup.Delete()	
- wccnihBup.Delete()	
- wbbnihBup.Delete()	
- wl1ihBup.Delete()	
- wc1ihBup.Delete()	
- wcc1ihBup.Delete()	
- wbb1ihBup.Delete()	
- wl2ihBup.Delete()	
- wc2ihBup.Delete()	
- wcc2ihBup.Delete()	
- wbb2ihBup.Delete()	
- wl3ihBup.Delete()	
- wc3ihBup.Delete()	
- wcc3ihBup.Delete()	
- wbb3ihBup.Delete()	
- wl4ihBup.Delete()	
- wc4ihBup.Delete()	
- wcc4ihBup.Delete()	
- wbb4ihBup.Delete()	
- wbb4fihBup.Delete()
- zihBdn.Delete()	
- wwihBdn.Delete()	
- wzihBdn.Delete()	
- zzihBdn.Delete()	
- t_tihBdn.Delete()	
- tb_tihBdn.Delete()	
- t_sihBdn.Delete()	
- tb_sihBdn.Delete()	
- t_twihBdn.Delete()	
- tb_twihBdn.Delete()	
- tt_semiihBdn.Delete()	
- tt_fullihBdn.Delete()	
- wlnihBdn.Delete()	
- wcnihBdn.Delete()	
- wccnihBdn.Delete()	
- wbbnihBdn.Delete()	
- wl1ihBdn.Delete()	
- wc1ihBdn.Delete()	
- wcc1ihBdn.Delete()	
- wbb1ihBdn.Delete()	
- wl2ihBdn.Delete()	
- wc2ihBdn.Delete()	
- wcc2ihBdn.Delete()	
- wbb2ihBdn.Delete()	
- wl3ihBdn.Delete()	
- wc3ihBdn.Delete()	
- wcc3ihBdn.Delete()	
- wbb3ihBdn.Delete()	
- wl4ihBdn.Delete()	
- wc4ihBdn.Delete()	
- wcc4ihBdn.Delete()	
- wbb4ihBdn.Delete()
- wbb4fihBdn.Delete()
+ if eventTreeLocation == 'muNuEventTree/eventTree' :
+  znhBup.Delete()	
+  wwnhBup.Delete()	
+  wznhBup.Delete()	
+  zznhBup.Delete()	
+  t_tnhBup.Delete()	
+  tb_tnhBup.Delete()	
+  t_snhBup.Delete()	
+  tb_snhBup.Delete()	
+  t_twnhBup.Delete()	
+  tb_twnhBup.Delete()	
+  tt_seminhBup.Delete()	
+  tt_fullnhBup.Delete()	
+  wnnhBup.Delete()	
+  w1nhBup.Delete()	
+  w2nhBup.Delete()	
+  w3nhBup.Delete()	
+  w4nhBup.Delete()	
+  znhBdn.Delete()	
+  wwnhBdn.Delete()	
+  wznhBdn.Delete()	
+  zznhBdn.Delete()	
+  t_tnhBdn.Delete()	
+  tb_tnhBdn.Delete()	
+  t_snhBdn.Delete()	
+  tb_snhBdn.Delete()	
+  t_twnhBdn.Delete()	
+  tb_twnhBdn.Delete()	
+  tt_seminhBdn.Delete()	
+  tt_fullnhBdn.Delete()	
+  wnnhBdn.Delete()	
+  w1nhBdn.Delete()	
+  w2nhBdn.Delete()	
+  w3nhBdn.Delete()	
+  w4nhBdn.Delete()	
+  zihBup.Delete()	
+  wwihBup.Delete()	
+  wzihBup.Delete()	
+  zzihBup.Delete()	
+  t_tihBup.Delete()	
+  tb_tihBup.Delete()	
+  t_sihBup.Delete()	
+  tb_sihBup.Delete()	
+  t_twihBup.Delete()	
+  tb_twihBup.Delete()	
+  tt_semiihBup.Delete()	
+  tt_fullihBup.Delete()	
+  wlnihBup.Delete()	
+  wcnihBup.Delete()	
+  wccnihBup.Delete()	
+  wbbnihBup.Delete()	
+  wl1ihBup.Delete()	
+  wc1ihBup.Delete()	
+  wcc1ihBup.Delete()	
+  wbb1ihBup.Delete()	
+  wl2ihBup.Delete()	
+  wc2ihBup.Delete()	
+  wcc2ihBup.Delete()	
+  wbb2ihBup.Delete()	
+  wl3ihBup.Delete()	
+  wc3ihBup.Delete()	
+  wcc3ihBup.Delete()	
+  wbb3ihBup.Delete()	
+  wl4ihBup.Delete()	
+  wc4ihBup.Delete()	
+  wcc4ihBup.Delete()	
+  wbb4ihBup.Delete()	
+  wbb4fihBup.Delete()
+  zihBdn.Delete()	
+  wwihBdn.Delete()	
+  wzihBdn.Delete()	
+  zzihBdn.Delete()	
+  t_tihBdn.Delete()	
+  tb_tihBdn.Delete()	
+  t_sihBdn.Delete()	
+  tb_sihBdn.Delete()	
+  t_twihBdn.Delete()	
+  tb_twihBdn.Delete()	
+  tt_semiihBdn.Delete()	
+  tt_fullihBdn.Delete()	
+  wlnihBdn.Delete()	
+  wcnihBdn.Delete()	
+  wccnihBdn.Delete()	
+  wbbnihBdn.Delete()	
+  wl1ihBdn.Delete()	
+  wc1ihBdn.Delete()	
+  wcc1ihBdn.Delete()	
+  wbb1ihBdn.Delete()	
+  wl2ihBdn.Delete()	
+  wc2ihBdn.Delete()	
+  wcc2ihBdn.Delete()	
+  wbb2ihBdn.Delete()	
+  wl3ihBdn.Delete()	
+  wc3ihBdn.Delete()	
+  wcc3ihBdn.Delete()	
+  wbb3ihBdn.Delete()	
+  wl4ihBdn.Delete()	
+  wc4ihBdn.Delete()	
+  wcc4ihBdn.Delete()	
+  wbb4ihBdn.Delete()
+  wbb4fihBdn.Delete()
 
  znh.Delete()    #Drell
  t_tnh.Delete()  #Single Top
@@ -2145,7 +2165,6 @@ for eventTreeLocation in eventTreeLocations:
  w2nh.Delete()
  w3nh.Delete()
  w4nh.Delete()
- qh.Delete()
  zih.Delete()
  wwih.Delete()
  wzih.Delete()

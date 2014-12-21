@@ -13,13 +13,17 @@ import TheParameters as p
  
 # scale factors : sf_qcd = 1 + (data-allMC)/qcd in 0<mt<20
 
-# 2014sptr25
-sf_qcd = 0.0372622068224 # Wbb
-#sf_qcd = 0.0615629464432 # TT_3j
+# Halloween
+#sf_qcd = 0.00000000001
+#sf_qcd = 0.0025316635942 # Wbb
+sf_qcd = 0.00302154299378 # TT_3j
 #sf_qcd = 1. # TT_1m1e
+#sf_qcd = 0.0519607675029 # ST
+#sf_qcd = 0.0253012710684 # WJets
+#sf_qcd = 0.277049853807 # WJets + QCDwTRG
 
 sf_Top_Wbb          = 1. #1.9553517118    / 1.57266658081
-sf_Top_TTbar        = 1. #1366.90108757   / 1225.41492591
+sf_Top_TTbar        = 1. #240.6/245.8 #1. #1366.90108757   / 1225.41492591
 sf_Top_tW           = 1. #33.7173900878   / 34.2463617338
 sf_Top_Tbar         = 1. #0.663758928599  / 0.6598701129
 sf_Top_T            = 1. #0.957306964662  / 0.950968565694
