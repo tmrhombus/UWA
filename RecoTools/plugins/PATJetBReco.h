@@ -86,6 +86,12 @@ class PATJetBReco : public edm::EDProducer {
     if(iEvent.getByLabel(src_,cands)) 
       for(unsigned int  l=0;l!=cands->size();++l){
 	pat::Jet jet = cands->at(l);
+
+//   std::cout<<"PATJetBReco"<<
+//                " Jet pT: "<<jet.pt()<<
+//                " eta: "<<jet.eta()<<
+//                " phi: "<<jet.phi()<<std::endl;
+
 	reco::PFCandidatePtr pfcand;
 	std::vector<reco::PFCandidatePtr> chargedParticles;
 	std::vector<reco::PFCandidatePtr> chargedParticlesNoD0;
