@@ -291,4 +291,11 @@
   <class name="BCandFinalStateRefVector"/>
   <class name="edm::Wrapper<BCandFinalStateCollection>"/>
 
+  <!-- create dictionaries for Dressed Leptons -->
+  <class name="DressedLepton"/>
+  <class name="DressedLeptonCollection"/>
+  <class name="DressedLeptonRefProd"/>
+  <class name="DressedLeptonRefVector"/>
+  <class name="edm::Wrapper<DressedLeptonCollection>"/>
+
 </lcgdict>

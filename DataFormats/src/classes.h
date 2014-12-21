@@ -8,6 +8,7 @@
 #include "DataFormats/PatCandidates/interface/Tau.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
 #include "UWAnalysis/DataFormats/interface/BCandFinalState.h"
+#include "UWAnalysis/DataFormats/interface/DressedLepton.h"
 
 namespace {
   struct UWanalysis_DataFormats_dictionary {
@@ -318,5 +319,12 @@ namespace {
     BCandFinalStateRefProd bcfsrp;
     BCandFinalStateRefVector bcrv;
     edm::Wrapper<BCandFinalStateCollection> wrbc;
+
+    // Dressed Leptons
+    DressedLepton bb;
+    DressedLeptonCollection bb1;
+    DressedLeptonRefProd sbhrp;
+    DressedLeptonRefVector sbhrv;
+    edm::Wrapper<DressedLeptonCollection> wr2;
   };
 }
