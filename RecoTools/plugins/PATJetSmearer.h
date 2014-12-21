@@ -32,9 +32,12 @@ class PATJetSmearer : public edm::EDProducer{
 
 
  private:
-  double genRecoMatch(pat::Jet recoJet, edm::Handle<reco::GenJetCollection> genJets){
+   double genRecoMatch(pat::Jet recoJet, edm::Handle<reco::GenJetCollection> genJets, double& gen_pt, double& gen_eta, double& gen_phi){
     const reco::GenJet* retVal = 0;
-    double PT=-20;	
+//    double gen_pt = -10;
+//    double gen_eta = -99;
+//    double gen_phi = -99;
+    //double gen_kin[3] = {0,0,0};
     double dRbestMatch = 0.5;
     for ( reco::GenJetCollection::const_iterator genJet = genJets->begin();
       genJet != genJets->end(); ++genJet ) {
@@ -44,9 +47,41 @@ class PATJetSmearer : public edm::EDProducer{
         dRbestMatch = dR;
       }
     }
-    if(retVal!=0) PT=retVal->pt();	
-    return PT;
-   }
+ if(retVal!=0){
+  gen_pt = (retVal->pt());
+  gen_eta = (retVal->eta());
+  gen_phi = (retVal->phi());
+ }
+ //double [3] gen_kin = {};
+ //gen_kin[0] = gen_pt;
+ //gen_kin[1] = gen_eta;
+ //gen_kin[2] = gen_phi;
+ return gen_pt;
+}
+
+//    math::PtEtaPhiMLorentzVector genNoNu_p4;
+//    if(retVal!=0){
+//     genNoNu_p4->setPtEtaPhiM(retVal->pt(), retVal->eta(), retVal->phi(), retVal->mass());
+//    }
+//    return genNoNu_p4;
+//   }
+
+// double genRecoMatch(pat::Jet recoJet, edm::Handle<reco::GenJetCollection> genJets){
+//const reco::GenJet* retVal = 0;
+//double PT=-20;	
+//double dRbestMatch = 0.5;
+//for ( reco::GenJetCollection::const_iterator genJet = genJets->begin();
+//genJet != genJets->end(); ++genJet ) {
+//double dR = deltaR(recoJet.p4(), genJet->p4());
+//if ( dR < dRbestMatch ) {
+//retVal = &(*genJet) ;
+//dRbestMatch = dR;
+//}
+//}
+//if(retVal!=0) PT=retVal->pt();	
+//return PT;
+//}
+
 
   virtual void produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
   {
@@ -75,20 +110,22 @@ class PATJetSmearer : public edm::EDProducer{
 
      double reco_eta = fabs( jet.eta() );
      // matching using pointer back (may not be good for PU jets)
-     double gen_pt = -10;
+     double gen_pt_Nu = -10;
+     double gen_eta_Nu = -99;
+     double gen_phi_Nu = -99;
      bool matchedGenJet = jet.genJet();
-     if(matchedGenJet) gen_pt = jet.genJet()->pt();
-
+     if(matchedGenJet) {
+      gen_pt_Nu = jet.genJet()->pt();
+      gen_eta_Nu = jet.genJet()->eta();
+      gen_phi_Nu = jet.genJet()->phi();
+     }
 
      //alternative matching by looping over genJets collections and going for dR
-     double gen_pt_two = genRecoMatch(jet,genJets);
-
-//     if(matchedGenJet){
-//       std::cout<<matchedGenJet<<" match -->  "<<gen_pt
-//       << " gen pT, "<<reco_pt<<" reco pT"<<std::endl;
-//       std::cout<<"Other Gen pT "<<gen_pt_two<<std::endl<<std::endl;
-//       std::cout<<"reco pT: "<<reco_pt<<std::endl;
-//     }
+     double gen_pt_NoNu = -10;
+     double gen_eta_NoNu = -99;
+     double gen_phi_NoNu = -99;
+     genRecoMatch(jet,genJets,gen_pt_NoNu,gen_eta_NoNu,gen_phi_NoNu);
+     //std::cout<<"jet.genJet "<<gen_pt_Nu<<" "<<gen_pt_NoNu<<" NoNu"<<std::endl;
 
      double ptSmeared = reco_pt;
      double ptSmearedUp = reco_pt;
@@ -102,7 +139,13 @@ class PATJetSmearer : public edm::EDProducer{
       }
      }
 
-     if(gen_pt!=-10){
+     double gen_pt = gen_pt_NoNu;
+     double gen_eta = gen_eta_NoNu;
+     double gen_phi = gen_phi_NoNu;
+     //double gen_pt = gen_pt_Nu;
+     //double gen_eta = gen_eta_Nu;
+     //double gen_phi = gen_phi_Nu;
+     if(gen_pt > 0){
       ptSmeared     = std::max(0., gen_pt + sf     * (reco_pt - gen_pt) );
       ptSmearedUp   = std::max(0., gen_pt + sfUp   * (reco_pt - gen_pt) );
       ptSmearedDown = std::max(0., gen_pt + sfDown * (reco_pt - gen_pt) );
@@ -116,8 +159,12 @@ class PATJetSmearer : public edm::EDProducer{
     // std::cout<<"reco pT: "<<reco_pt<<" smeared pT: "<<ptSmeared<<" pt_gen: "<<gen_pt<<std::endl;
      math::PtEtaPhiMLorentzVector p4(ptSmeared,jet.eta(),jet.phi(),jet.mass());
      jet.setP4(p4);
-     jet.addUserFloat("pt_gen",gen_pt);
-     jet.addUserFloat("pt_gen_two",gen_pt_two);
+     jet.addUserFloat("pt_gen_Nu",gen_pt);
+     jet.addUserFloat("eta_gen_Nu",gen_eta);
+     jet.addUserFloat("phi_gen_Nu",gen_phi);
+     jet.addUserFloat("pt_gen_NoNu",gen_pt_NoNu);
+     jet.addUserFloat("eta_gen_NoNu",gen_eta_NoNu);
+     jet.addUserFloat("phi_gen_NoNu",gen_phi_NoNu);
      jet.addUserFloat("pt_uncorr",reco_pt);
      jet.addUserFloat("pt_smearedUp",ptSmearedUp);
      jet.addUserFloat("pt_smearedDown",ptSmearedDown);
