@@ -60,23 +60,19 @@ void PATmTCalculator::produce(edm::Event& iEvent, const edm::EventSetup& es) {
       if(muons->size()>0){
        if(mets->size()>0){
 
-    pat::MET met=mets->at(0);
-    pat::Muon muon=muons->at(0);
-    pt_muon = muon.pt();
-    pt_met = met.pt();
-    phi_muon = muon.phi();
-    phi_met = met.phi();
-    dphi = deltaPhi(muon.phi(),met.phi());
-    //dphi = fabs(phi_muon - phi_met);
-    //if (dphi > pi){dphi = 2*pi - dphi;} 
-    mt = sqrt(2*pt_muon*pt_met*(1. - cos(dphi)));
-    
-    for ( size_t i = 0; i < muons->size(); ++i )
-    {
-     pat::Muon muonV = muons->at(i);
-     muonV.addUserFloat("mt",mt);
-     out->push_back(muonV);
-    }
+        pat::MET met=mets->at(0);
+        pt_met = met.pt();
+        
+        for ( size_t i = 0; i < muons->size(); ++i )
+        {
+         pat::Muon muon = muons->at(i);
+         pt_muon = muon.pt();
+         phi_muon = muon.phi();
+         dphi = deltaPhi(muon.phi(),met.phi());
+         mt = sqrt(2*pt_muon*pt_met*(1. - cos(dphi)));
+         muon.addUserFloat("mt",mt);
+         out->push_back(muon);
+        }
        }
       }
      }
