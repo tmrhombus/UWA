@@ -1,4 +1,4 @@
-extraname="_vacance"
+extraname="_voila29"
 
 pushd /afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/
 
@@ -12,7 +12,8 @@ cmsRun synch_MC.py "root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_Sem
 #
 #
 #
-#cmsRun synch_Data.py 'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-2A4B3C43-C575-E211-8960-90E6BA0D09AD.root' "01"$extraname
+#cmsRun synch_DataMu.py 'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-2A4B3C43-C575-E211-8960-90E6BA0D09AD.root' "01mu"$extraname
+#cmsRun synch_DataEle.py 'root://cmsxrootd.hep.wisc.edu//store/user/taroni/SingleElectron/Run2012C-22Jan2013-v1/AOD/Fall2014PATTuples_V1/patTuple_cfg-0000284C-308B-E211-90D5-003048FEB8AE.root' "01ele"$extraname
 #cmsRun synch_Data.py 'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-2A4BE637-F777-E211-BA8E-485B39800BB5.root' "02"$extraname
 #cmsRun synch_Data.py 'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-2A542E64-4377-E211-A930-00259073E31C.root' "03"$extraname
 #cmsRun synch_Data.py 'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-2A5B339D-C974-E211-9242-002590747DE2.root' "04"$extraname

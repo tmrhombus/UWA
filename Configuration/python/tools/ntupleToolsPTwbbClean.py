@@ -33,7 +33,7 @@ def makeMuon(tagName,methodName,sourceMuons='smearedGoodMuons',lo=True):
    )
    return PSet
 
-def makeMET(tagName,methodName,sourceMET='metCorrected',lo=True):
+def makeMET(tagName,methodName,sourceMET='wgtPUembedMET',lo=True):
   PSet = cms.PSet(
          pluginType  = cms.string("PATMETFiller"),
          src         = cms.InputTag(sourceMET),
@@ -81,6 +81,16 @@ def makeIVFBs(tagName,methodName):
   PSet = cms.PSet(
         pluginType  = cms.string("bCandidatesFiller"),
         src         = cms.InputTag('LCProducer','BCandFinalState'),
+        tag         = cms.string(tagName),
+        method      = cms.string(methodName+"()"),
+        leadingOnly = cms.untracked.bool(True)
+  )
+  return PSet
+
+def makeGenBWeight(tagName,methodName):
+  PSet = cms.PSet(
+        pluginType  = cms.string("GenBDWeightFiller"),
+        src         = cms.InputTag('GBWeightProducer','GenBDWeight'),
         tag         = cms.string(tagName),
         method      = cms.string(methodName+"()"),
         leadingOnly = cms.untracked.bool(True)
@@ -304,128 +314,86 @@ def makeCSVJets(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
      fwdJ2_CSV = makeJetList(strName='CSV',methodName='bDiscriminator("combinedSecondaryVertexBJetTags")',
        pf='fwd',xn='',sourceJets=srcFwdJets)[1],
 
-    ###  TO DO ADD SCALE FACTORS ** PUT THEM IN JETS ALREADY WITH APPROPRIATE FLAVOR
+     goodJ1_partonFlavour = makeJetList(strName='partonFlavour',methodName='partonFlavour()',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_partonFlavour = makeJetList(strName='partonFlavour',methodName='partonFlavour()',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_partonFlavour = makeJetList(strName='partonFlavour',methodName='partonFlavour()',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ4_partonFlavour = makeJetList(strName='partonFlavour',methodName='partonFlavour()',pf='good',xn='',sourceJets=srcGoodJets)[3],
+     fwdJ1_partonFlavour = makeJetList(strName='partonFlavour',methodName='partonFlavour()',pf='fwd',xn='',sourceJets=srcFwdJets)[0],
+     fwdJ2_partonFlavour = makeJetList(strName='partonFlavour',methodName='partonFlavour()',pf='fwd',xn='',sourceJets=srcFwdJets)[1],
+
+     # from RecoTools/plugins/bTagSFer.h
+     goodJ1_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+     goodJ1_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+
+     goodJ1_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+     goodJ1_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+
+     goodJ1_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+     goodJ1_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+
+     fwdJ1_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+     fwdJ1_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+
+     fwdJ1_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+     fwdJ1_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+
+     fwdJ1_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+     fwdJ1_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+
+     # from RecoTools/plugins/PATJetCSVreweight.h
+     goodJ1_CSVreweight = makeJetList(strName='CSVreweight',methodName='userFloat("CSVreweight")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_CSVreweight = makeJetList(strName='CSVreweight',methodName='userFloat("CSVreweight")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_CSVreweight = makeJetList(strName='CSVreweight',methodName='userFloat("CSVreweight")',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ4_CSVreweight = makeJetList(strName='CSVreweight',methodName='userFloat("CSVreweight")',pf='good',xn='',sourceJets=srcGoodJets)[3],
+     fwdJ1_CSVreweight = makeJetList(strName='CSVreweight',methodName='userFloat("CSVreweight")',pf='fwd',xn='',sourceJets=srcFwdJets)[0],
+     fwdJ2_CSVreweight = makeJetList(strName='CSVreweight',methodName='userFloat("CSVreweight")',pf='fwd',xn='',sourceJets=srcFwdJets)[1],
   )
   return csvJets
-#def makeCSVscalefactors(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
-#  csvScalefactors = cms.PSet(
-#    # from RecoTools/plugins/bTagSFer.h 
-#    J1_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[0],
-#    J2_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[1],
-#    J3_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[2],
-#    J4_CSVM_SFb = makeJetUserFloat('CSVM_SFb','',source)[3],
-#    J1_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[0],
-#    J2_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[1],
-#    J3_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[2],
-#    J4_CSVM_errorb = makeJetUserFloat('CSVM_errorb','',source)[3],
-#    J1_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[0],
-#    J2_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[1],
-#    J3_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[2],
-#    J4_CSVM_SFl = makeJetUserFloat('CSVM_SFl','',source)[3],
-#    J1_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[0],
-#    J2_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[1],
-#    J3_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[2],
-#    J4_CSVM_SFl_down = makeJetUserFloat('CSVM_SFl_down','',source)[3],
-#    J1_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[0],
-#    J2_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[1],
-#    J3_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[2],
-#    J4_CSVM_SFl_up = makeJetUserFloat('CSVM_SFl_up','',source)[3],
-#
-#    J1_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[0],
-#    J2_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[1],
-#    J3_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[2],
-#    J4_CSVT_SFb = makeJetUserFloat('CSVT_SFb','',source)[3],
-#    J1_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[0],
-#    J2_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[1],
-#    J3_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[2],
-#    J4_CSVT_errorb = makeJetUserFloat('CSVT_errorb','',source)[3],
-#    J1_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[0],
-#    J2_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[1],
-#    J3_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[2],
-#    J4_CSVT_SFl = makeJetUserFloat('CSVT_SFl','',source)[3],
-#    J1_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[0],
-#    J2_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[1],
-#    J3_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[2],
-#    J4_CSVT_SFl_down = makeJetUserFloat('CSVT_SFl_down','',source)[3],
-#    J1_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[0],
-#    J2_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[1],
-#    J3_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[2],
-#    J4_CSVT_SFl_up = makeJetUserFloat('CSVT_SFl_up','',source)[3],
-#
-#    # from RecoTools/plugins/PATJetCSVreweight.h
-#    J1_CSVreweight = makeJetUserFloat('CSVreweight','',source)[0],
-#    J2_CSVreweight = makeJetUserFloat('CSVreweight','',source)[1],
-#    J3_CSVreweight = makeJetUserFloat('CSVreweight','',source)[2],
-#    J4_CSVreweight = makeJetUserFloat('CSVreweight','',source)[3],
-
-#    J1_partonFlavour = makeJetStringPar('partonFlavour','',source)[0],
-#    J2_partonFlavour = makeJetStringPar('partonFlavour','',source)[1],
-#    J3_partonFlavour = makeJetStringPar('partonFlavour','',source)[2],
-#    J4_partonFlavour = makeJetStringPar('partonFlavour','',source)[3],
-#  )
-#  return csvScalefactors
 
 def makeSVJets(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
   svJets = cms.PSet(
-  # SV info and tracks 
+     # from RecoTools/plugins/PATCSVVertex.cc
+     goodJ1_pt_SV_unweighted = makeJetList(strName='pt_SV_unweighted',methodName='userFloat("pt_SV_unweighted")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_pt_SV_unweighted = makeJetList(strName='pt_SV_unweighted',methodName='userFloat("pt_SV_unweighted")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_pt_SV_unweighted = makeJetList(strName='pt_SV_unweighted',methodName='userFloat("pt_SV_unweighted")',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ1_mass_SV_unweighted = makeJetList(strName='mass_SV_unweighted',methodName='userFloat("mass_SV_unweighted")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_mass_SV_unweighted = makeJetList(strName='mass_SV_unweighted',methodName='userFloat("mass_SV_unweighted")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_mass_SV_unweighted = makeJetList(strName='mass_SV_unweighted',methodName='userFloat("mass_SV_unweighted")',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ1_pt_SV_weighted = makeJetList(strName='pt_SV_weighted',methodName='userFloat("pt_SV_weighted")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_pt_SV_weighted = makeJetList(strName='pt_SV_weighted',methodName='userFloat("pt_SV_weighted")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_pt_SV_weighted = makeJetList(strName='pt_SV_weighted',methodName='userFloat("pt_SV_weighted")',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ1_mass_SV_weighted = makeJetList(strName='mass_SV_weighted',methodName='userFloat("mass_SV_weighted")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_mass_SV_weighted = makeJetList(strName='mass_SV_weighted',methodName='userFloat("mass_SV_weighted")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_mass_SV_weighted = makeJetList(strName='mass_SV_weighted',methodName='userFloat("mass_SV_weighted")',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ1_mass_SV_corrected = makeJetList(strName='mass_SV_corrected',methodName='userFloat("mass_SV_corrected")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_mass_SV_corrected = makeJetList(strName='mass_SV_corrected',methodName='userFloat("mass_SV_corrected")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_mass_SV_corrected = makeJetList(strName='mass_SV_corrected',methodName='userFloat("mass_SV_corrected")',pf='good',xn='',sourceJets=srcGoodJets)[2],
   )
   return svJets
-## from RecoTools/plugins/PATSSVJetEmbedder.h 
-#    J1_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[0],
-#    J2_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[1],
-#    J3_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[2],
-#    J4_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[3],
-#    J1_pt_SSV = makeJetUserFloat('pt_SSV','',source)[0],  
-#    J2_pt_SSV = makeJetUserFloat('pt_SSV','',source)[1],
-#    J3_pt_SSV = makeJetUserFloat('pt_SSV','',source)[2],
-#    J4_pt_SSV = makeJetUserFloat('pt_SSV','',source)[3],
-#    J1_eta_SSV = makeJetUserFloat('eta_SSV','',source)[0],  
-#    J2_eta_SSV = makeJetUserFloat('eta_SSV','',source)[1],
-#    J3_eta_SSV = makeJetUserFloat('eta_SSV','',source)[2],
-#    J4_eta_SSV = makeJetUserFloat('eta_SSV','',source)[3],
-#    J1_phi_SSV = makeJetUserFloat('phi_SSV','',source)[0],  
-#    J2_phi_SSV = makeJetUserFloat('phi_SSV','',source)[1],
-#    J3_phi_SSV = makeJetUserFloat('phi_SSV','',source)[2],
-#    J4_phi_SSV = makeJetUserFloat('phi_SSV','',source)[3],
-#    J1_mass_SSV = makeJetUserFloat('mass_SSV','',source)[0], # formerly J1SVMassb
-#    J2_mass_SSV = makeJetUserFloat('mass_SSV','',source)[1],
-#    J3_mass_SSV = makeJetUserFloat('mass_SSV','',source)[2],
-#    J4_mass_SSV = makeJetUserFloat('mass_SSV','',source)[3],
-#    J1_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[0],  
-#    J2_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[1],
-#    J3_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[2],
-#    J4_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[3],
-#
-## from RecoTools/plugins/PATCSVVertex.cc
-#    J1_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[0],
-#    J2_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[1],
-#    J3_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[2],
-#    J4_pt_SV_weighted = makeJetUserFloat('pt_SV_weighted','',source)[3],
-#    J1_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[0],
-#    J2_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[1],
-#    J3_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[2],
-#    J4_pt_SV_unweighted = makeJetUserFloat('pt_SV_unweighted','',source)[3],
-#    J1_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[0],
-#    J2_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[1],
-#    J3_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[2],
-#    J4_mass_SV_weighted = makeJetUserFloat('mass_SV_weighted','',source)[3],
-#    J1_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[0],
-#    J2_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[1],
-#    J3_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[2],
-#    J4_mass_SV_unweighted = makeJetUserFloat('mass_SV_unweighted','',source)[3],
-#    J1_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[0],
-#    J2_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[1],
-#    J3_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[2],
-#    J4_normChi2_SV = makeJetUserFloat('normChi2_SV','',source)[3],
-#    J1_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[0],
-#    J2_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[1],
-#    J3_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[2],
-#    J4_nTracks_SV = makeJetUserFloat('nTracks_SV','',source)[3],
-#    J1_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[0],
-#    J2_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[1],
-#    J3_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[2],
-#    J4_mass_SV_corrected = makeJetUserFloat('mass_SV_corrected','',source)[3],
-#    )
 
 def makeAltBTags(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
   altBTags = cms.PSet(
@@ -441,33 +409,41 @@ def makeAltBTags(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
 #    J2_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[1],
 #    J3_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[2],
 #    J4_TCHPbtag = makeJetBTag('TCHPbtag','trackCountingHighPurBJetTags',source)[3],
-#    J1_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[0],
-#    J2_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[1],
-#    J3_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[2],
-#    J4_CSVbtag = makeJetBTag('CSVbtag','combinedSecondaryVertexBJetTags',source)[3],
 #    J1_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[0],
 #    J2_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[1],
 #    J3_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[2],
 #    J4_CSVMVAbtag = makeJetBTag('CSVMVAbtag','combinedSecondaryVertexMVABJetTags',source)[3],
 
-def makeMETobjects(srcMET='metCorrected',srcElectrons='smearedGoodElectrons',srcMuons='smearedGoodMuons'):
+def makeMETobjects(srcMET='wgtPUembedMET',srcElectrons='smearedGoodElectrons',srcMuons='smearedGoodMuons'):
    metObjects = cms.PSet(
     met_pt = makeMET("met_pt","pt()",sourceMET=srcMET,lo=True),
-    met_eta = makeMET("met_eta","eta()",sourceMET=srcMET,lo=True),
+    met_phi = makeMET("met_eta","phi()",sourceMET=srcMET,lo=True),
     met_eesUp_pt = makeMET("met_eesUp_pt",'userFloat("eesUp_pt")',sourceMET=srcMET,lo=True),
     met_eesDn_pt = makeMET("met_eesDn_pt",'userFloat("eesDn_pt")',sourceMET=srcMET,lo=True),
     met_uesUp_pt = makeMET("met_uesUp_pt",'userFloat("uesUp_pt")',sourceMET=srcMET,lo=True),
     met_uesDn_pt = makeMET("met_uesDn_pt",'userFloat("uesDn_pt")',sourceMET=srcMET,lo=True),
     met_jesUp_pt = makeMET("met_jesUp_pt",'userFloat("jesUp_pt")',sourceMET=srcMET,lo=True),
     met_jesDn_pt = makeMET("met_jesDn_pt",'userFloat("jesDn_pt")',sourceMET=srcMET,lo=True),
-    met_eesUp_eta = makeMET("met_eesUp_eta","userFloat('eesUp_eta')",sourceMET=srcMET,lo=True),
-    met_eesDn_eta = makeMET("met_eesDn_eta","userFloat('eesDn_eta')",sourceMET=srcMET,lo=True),
-    met_uesUp_eta = makeMET("met_uesUp_eta","userFloat('uesUp_eta')",sourceMET=srcMET,lo=True),
-    met_uesDn_eta = makeMET("met_uesDn_eta","userFloat('uesDn_eta')",sourceMET=srcMET,lo=True),
-    met_jesUp_eta = makeMET("met_jesUp_eta","userFloat('jesUp_eta')",sourceMET=srcMET,lo=True),
-    met_jesDn_eta = makeMET("met_jesDn_eta","userFloat('jesDn_eta')",sourceMET=srcMET,lo=True),
+    met_eesUp_phi = makeMET("met_eesUp_phi","userFloat('eesUp_phi')",sourceMET=srcMET,lo=True),
+    met_eesDn_phi = makeMET("met_eesDn_phi","userFloat('eesDn_phi')",sourceMET=srcMET,lo=True),
+    met_uesUp_phi = makeMET("met_uesUp_phi","userFloat('uesUp_phi')",sourceMET=srcMET,lo=True),
+    met_uesDn_phi = makeMET("met_uesDn_phi","userFloat('uesDn_phi')",sourceMET=srcMET,lo=True),
+    met_jesUp_phi = makeMET("met_jesUp_phi","userFloat('jesUp_phi')",sourceMET=srcMET,lo=True),
+    met_jesDn_phi = makeMET("met_jesDn_phi","userFloat('jesDn_phi')",sourceMET=srcMET,lo=True),
     mt_electron_vec = makeElectron('mt_electron_vec','userFloat("mt")',sourceElectrons=srcElectrons,lo=False),
+    mt_electron_eesUp_vec = makeElectron('mt_electron_eesUp_vec','userFloat("mt_eesUp")',sourceElectrons=srcElectrons,lo=False),
+    mt_electron_eesDn_vec = makeElectron('mt_electron_eesDn_vec','userFloat("mt_eesDn")',sourceElectrons=srcElectrons,lo=False),
+    mt_electron_uesUp_vec = makeElectron('mt_electron_uesUp_vec','userFloat("mt_uesUp")',sourceElectrons=srcElectrons,lo=False),
+    mt_electron_uesDn_vec = makeElectron('mt_electron_uesDn_vec','userFloat("mt_uesDn")',sourceElectrons=srcElectrons,lo=False),
+    mt_electron_jesUp_vec = makeElectron('mt_electron_jesUp_vec','userFloat("mt_jesUp")',sourceElectrons=srcElectrons,lo=False),
+    mt_electron_jesDn_vec = makeElectron('mt_electron_jesDn_vec','userFloat("mt_jesDn")',sourceElectrons=srcElectrons,lo=False),
     mt_muon_vec = makeMuon('mt_muon_vec','userFloat("mt")',sourceMuons=srcMuons,lo=False),
+    mt_muon_eesUp_vec = makeMuon('mt_muon_eesUp_vec','userFloat("mt_eesUp")',sourceMuons=srcMuons,lo=False),
+    mt_muon_eesDn_vec = makeMuon('mt_muon_eesDn_vec','userFloat("mt_eesDn")',sourceMuons=srcMuons,lo=False),
+    mt_muon_uesUp_vec = makeMuon('mt_muon_uesUp_vec','userFloat("mt_uesUp")',sourceMuons=srcMuons,lo=False),
+    mt_muon_uesDn_vec = makeMuon('mt_muon_uesDn_vec','userFloat("mt_uesDn")',sourceMuons=srcMuons,lo=False),
+    mt_muon_jesUp_vec = makeMuon('mt_muon_jesUp_vec','userFloat("mt_jesUp")',sourceMuons=srcMuons,lo=False),
+    mt_muon_jesDn_vec = makeMuon('mt_muon_jesDn_vec','userFloat("mt_jesDn")',sourceMuons=srcMuons,lo=False),
    )
    return metObjects
 
@@ -572,40 +548,34 @@ def makeIVFcandidates():
   )
   return ivfCandidates
 
-def makeMuon(tagName,methodName,sourceMuons='smearedGoodMuons',lo=True):
-   PSet = cms.PSet(
-         pluginType  = cms.string("PATMuonFiller"),
-         src         = cms.InputTag(sourceMuons),
-         tag         = cms.string(tagName),
-         method      = cms.string(methodName),
-         leadingOnly = cms.untracked.bool(lo)
-   )
-   return PSet
 
-def makeMuNu(tagName,methodName,source='wCandsJets',lo=True):
-  PSet = cms.PSet(
-        pluginType  = cms.string("PATMuonNuPairFiller"),
-        src         = cms.InputTag(source),
-        tag         = cms.string(tagName),
-        method      = cms.string(methodName),
-        leadingOnly = cms.untracked.bool(lo)
-  )
-  return PSet
-
-def makeScaleFactors(srcMuons='smearedGoodMuons'):
+def makeScaleFactors(srcElectrons='smearedGoodElectrons',srcMuons='smearedGoodMuons',srcMET='wgtPUembedMET'):
   scaleFactors = cms.PSet(
-    EffWEIGHTCSVL    = makeMuon(tagName="EffWEIGHTCSVL",   methodName="SFCSVL1", sourceMuons=srcMuons,lo=False),
-    EffWEIGHTCSVL2   = makeMuon(tagName="EffWEIGHTCSVL2",  methodName="SFCSVL2", sourceMuons=srcMuons,lo=False),
-    EffWEIGHTCSVM    = makeMuon(tagName="EffWEIGHTCSVM",   methodName="SFCSVM1", sourceMuons=srcMuons,lo=False),
-    EffWEIGHTCSVM2   = makeMuon(tagName="EffWEIGHTCSVM2",  methodName="SFCSVM2", sourceMuons=srcMuons,lo=False),
-    EffWEIGHTCSVT    = makeMuon(tagName="EffWEIGHTCSVT",   methodName="SFCSVT1", sourceMuons=srcMuons,lo=False),
-    EffWEIGHTCSVT2   = makeMuon(tagName="EffWEIGHTCSVT2",  methodName="SFCSVT2", sourceMuons=srcMuons,lo=False),
-    EffWEIGHTSSVHEM  = makeMuon(tagName="EffWEIGHTSSVHEM", methodName="SFSSVHE1",sourceMuons=srcMuons,lo=False),
-    EffWEIGHTSSVHEM2 = makeMuon(tagName="EffWEIGHTSSVHEM2",methodName="SFSSVHE2",sourceMuons=srcMuons,lo=False),
-    # scale factors for electrons ?? 
-    weight_mu_TR  = makeMuon(tagName='weight_mu_TR', methodName='EffWEIGHTeta_TR',sourceMuons=srcMuons,lo=False),
-    weight_mu_Iso = makeMuon(tagName="weight_mu_Iso",methodName="EffWEIGHTeta_IS",sourceMuons=srcMuons,lo=False),
-    weight_mu_ID  = makeMuon(tagName="weight_mu_ID", methodName="EffWEIGHTeta_ID",sourceMuons=srcMuons,lo=False),
+    
+    SF_ele_IDIso = makeElectron(tagName="SF_ele_IDIso", methodName="userFloat('SF_IDIso')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_IDIso_errUp = makeElectron(tagName="SF_ele_IDIso_errUp", methodName="userFloat('SF_IDIso_errUp')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_IDIso_errDn = makeElectron(tagName="SF_ele_IDIso_errDn", methodName="userFloat('SF_IDIso_errDn')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_HLT = makeElectron(tagName="SF_ele_HLT", methodName="userFloat('SF_HLT')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_HLT_errUp = makeElectron(tagName="SF_ele_HLT_errUp", methodName="userFloat('SF_HLT_errUp')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_HLT_errDn = makeElectron(tagName="SF_ele_HLT_errDn", methodName="userFloat('SF_HLT_errDn')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_total = makeElectron(tagName="SF_ele_total", methodName="userFloat('SF_total')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_total_errUp = makeElectron(tagName="SF_ele_total_errUp", methodName="userFloat('SF_total_errUp')", sourceElectrons=srcElectrons, lo=False),
+    SF_ele_total_errDn = makeElectron(tagName="SF_ele_total_errDn", methodName="userFloat('SF_total_errDn')", sourceElectrons=srcElectrons, lo=False),
+
+    SF_mu_Iso = makeMuon(tagName="SF_mu_Iso", methodName="userFloat('SF_Iso')", sourceMuons=srcMuons, lo=False),
+    SF_mu_Iso_errUp = makeMuon(tagName="SF_mu_Iso_errUp", methodName="userFloat('SF_Iso_errUp')", sourceMuons=srcMuons, lo=False),
+    SF_mu_Iso_errDn = makeMuon(tagName="SF_mu_Iso_errDn", methodName="userFloat('SF_Iso_errDn')", sourceMuons=srcMuons, lo=False),
+    SF_mu_ID = makeMuon(tagName="SF_mu_ID", methodName="userFloat('SF_ID')", sourceMuons=srcMuons, lo=False),
+    SF_mu_ID_errUp = makeMuon(tagName="SF_mu_ID_errUp", methodName="userFloat('SF_ID_errUp')", sourceMuons=srcMuons, lo=False),
+    SF_mu_ID_errDn = makeMuon(tagName="SF_mu_ID_errDn", methodName="userFloat('SF_ID_errDn')", sourceMuons=srcMuons, lo=False),
+    SF_mu_HLT = makeMuon(tagName="SF_mu_HLT", methodName="userFloat('SF_HLT')", sourceMuons=srcMuons, lo=False),
+    SF_mu_HLT_errUp = makeMuon(tagName="SF_mu_HLT_errUp", methodName="userFloat('SF_HLT_errUp')", sourceMuons=srcMuons, lo=False),
+    SF_mu_HLT_errDn = makeMuon(tagName="SF_mu_HLT_errDn", methodName="userFloat('SF_HLT_errDn')", sourceMuons=srcMuons, lo=False),
+    SF_mu_total = makeMuon(tagName="SF_mu_total", methodName="userFloat('SF_total')", sourceMuons=srcMuons, lo=False),
+    SF_mu_total_errUp = makeMuon(tagName="SF_mu_total_errUp", methodName="userFloat('SF_total_errUp')", sourceMuons=srcMuons, lo=False),
+    SF_mu_total_errDn = makeMuon(tagName="SF_mu_total_errDn", methodName="userFloat('SF_total_errDn')", sourceMuons=srcMuons, lo=False),
+
+    SF_lumiWeightPU = makeMET("SF_lumiWeightPU",'userFloat("SF_lumiWeightPU")',sourceMET=srcMET,lo=True),
   )
   return scaleFactors
 
@@ -641,73 +611,127 @@ def makeGenJetInfo(srcAllJets='smearedAllJets'):
     J2_phi_gen_NoNu = makeJetList(strName='phi_gen_NoNu',methodName='userFloat("phi_gen_NoNu")',xn='',sourceJets=srcAllJets)[1],
     J3_phi_gen_NoNu = makeJetList(strName='phi_gen_NoNu',methodName='userFloat("phi_gen_NoNu")',xn='',sourceJets=srcAllJets)[2],
     J4_phi_gen_NoNu = makeJetList(strName='phi_gen_NoNu',methodName='userFloat("phi_gen_NoNu")',xn='',sourceJets=srcAllJets)[3],
-    J1_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[0],
-    J2_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[1],
-    J3_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[2],
-    J4_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[3],
-    J1_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[0],
-    J2_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[1],
-    J3_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[2],
-    J4_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[3],
-    J1_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[0],
-    J2_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[1],
-    J3_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[2],
-    J4_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[3],
+    #J1_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[0],
+    #J2_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[1],
+    #J3_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[2],
+    #J4_pt_gen_Nu = makeJetList(strName='pt_gen_Nu',methodName='userFloat("pt_gen_Nu")',xn='',sourceJets=srcAllJets)[3],
+    #J1_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[0],
+    #J2_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[1],
+    #J3_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[2],
+    #J4_eta_gen_Nu = makeJetList(strName='eta_gen_Nu',methodName='userFloat("eta_gen_Nu")',xn='',sourceJets=srcAllJets)[3],
+    #J1_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[0],
+    #J2_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[1],
+    #J3_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[2],
+    #J4_phi_gen_Nu = makeJetList(strName='phi_gen_Nu',methodName='userFloat("phi_gen_Nu")',xn='',sourceJets=srcAllJets)[3],
   )
   return jetGenInfo
 
-def addMuNuEventTreePtData(process,name):
+def addEventTreeData(process,name,
+      srcGLep,srcQLep,
+      srcGMu='smearedGoodMuons',
+      srcVMu='smearedVetoMuons',
+      srcQMu='smearedQCDMuons',
+      srcAMu='smearedAllMuons', 
+      srcGEle='smearedGoodElectrons',
+      srcVEle='smearedVetoElectrons',
+      srcQEle='smearedQCDElectrons',
+      srcAEle='smearedAllElectrons', 
+      srcGJet='smearedGoodJets',
+      srcFJet='smearedFwdJets',
+      srcAJet='smearedAllJets', 
+      srcCJet='smearedCleanJets'
+   ):
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
-     makeGoodLeptons(),
-     makeVetoLeptons(),
-     makeQCDLeptons(),
-     makeAllLeptons(),
-     makeGoodJetKinematics(),
-     makeFwdJetKinematics(),
-     makeCleanJetKinematics(),
-     makeAllJetKinematics(),
-     makeCSVJets(),
-     makeSVJets(), ##
-     makeAltBTags(), ##
-     makeMETobjects(),
+     makeGoodLeptons(srcGoodMuons=srcGMu,srcGoodElectrons=srcGEle),
+     makeVetoLeptons(srcVetoMuons=srcVMu,srcVetoElectrons=srcVEle),
+     makeQCDLeptons(srcQCDMuons=srcQMu,srcQCDElectrons=srcQEle),
+     #makeAllLeptons(srcAllMuons=srcAMu,srcAllElectrons=srcAEle),
+     makeGoodJetKinematics(srcGoodJets=srcGJet),
+     makeFwdJetKinematics(srcFwdJets=srcFJet),
+     #makeCleanJetKinematics(srcCleanJets=srcCJet),
+     #makeAllJetKinematics(srcAllJets=srcAJet),
+     makeCSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
+     #makeSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
+     #makeAltBTags(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
+     makeMETobjects(srcMET='wgtPUembedMET',srcElectrons=srcGEle,srcMuons=srcGMu), 
      makeVertexInfo(),
-     makeCountedCollections(),
+     makeCountedCollections(srcGoodMuons=srcGMu,
+                           srcVetoMuons=srcVMu,
+                           srcQCDMuons=srcQMu,
+                           srcAllMuons=srcAMu, #
+                           srcGoodElectrons=srcGEle,
+                           srcVetoElectrons=srcVEle,
+                           srcQCDElectrons=srcQEle,
+                           srcAllElectrons=srcAEle, #
+                           srcGoodJets=srcGJet,
+                           srcFwdJets=srcFJet,
+                           srcAllJets=srcAJet, #
+                           srcCleanJets=srcCJet, #
+                          ),
      makeIVFcandidates(),
      coreCollections = cms.VInputTag(
-       cms.InputTag("smearedAllMuons"),
-       cms.InputTag("smearedAllElectrons"),
+       cms.InputTag(srcGLep),
+       cms.InputTag(srcQLep),
      ),
    )
    setattr(process, name, eventTree)
    p = cms.Path(getattr(process,name))
    setattr(process, name+'Path', p)
 
-def addMuNuEventTreePtMC(process,name,lhep="externalLHEProducer"):
+def addEventTreeMC(process,name,
+      srcGMu='smearedGoodMuons',
+      srcVMu='smearedVetoMuons',
+      srcQMu='smearedQCDMuons',
+      srcAMu='smearedAllMuons', 
+      srcGEle='smearedGoodElectrons',
+      srcVEle='smearedVetoElectrons',
+      srcQEle='smearedQCDElectrons',
+      srcAEle='smearedAllElectrons', 
+      srcGJet='smearedGoodJets',
+      srcFJet='smearedFwdJets',
+      srcAJet='smearedAllJets', 
+      srcCJet='smearedCleanJets',
+      lhep="externalLHEProducer"
+      ):
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
-     makeGoodLeptons(),
-     makeVetoLeptons(),
-     makeQCDLeptons(),
-     makeAllLeptons(),
-     makeGoodJetKinematics(),
-     makeFwdJetKinematics(),
-     makeCleanJetKinematics(),
-     makeAllJetKinematics(),
-     makeCSVJets(),
-     makeSVJets(), ##
-     makeAltBTags(), ##
-     makeMETobjects(),
+     makeGoodLeptons(srcGoodMuons=srcGMu,srcGoodElectrons=srcGEle),
+     makeVetoLeptons(srcVetoMuons=srcVMu,srcVetoElectrons=srcVEle),
+     makeQCDLeptons(srcQCDMuons=srcQMu,srcQCDElectrons=srcQEle),
+     #makeAllLeptons(srcAllMuons=srcAMu,srcAllElectrons=srcAEle),
+     makeGoodJetKinematics(srcGoodJets=srcGJet),
+     makeFwdJetKinematics(srcFwdJets=srcFJet),
+     #makeCleanJetKinematics(srcCleanJets=srcCJet),
+     #makeAllJetKinematics(srcAllJets=srcAJet),
+     makeCSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
+     #makeSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
+     #makeAltBTags(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
+     makeMETobjects(srcMET='wgtPUembedMET',srcElectrons=srcGEle,srcMuons=srcGMu), 
      makeVertexInfo(),
-     makeCountedCollections(),
+     makeCountedCollections(srcGoodMuons=srcGMu,
+                           srcVetoMuons=srcVMu,
+                           srcQCDMuons=srcQMu,
+                           srcAllMuons=srcAMu, #
+                           srcGoodElectrons=srcGEle,
+                           srcVetoElectrons=srcVEle,
+                           srcQCDElectrons=srcQEle,
+                           srcAllElectrons=srcAEle, #
+                           srcGoodJets=srcGJet,
+                           srcFwdJets=srcFJet,
+                           srcAllJets=srcAJet, #
+                           srcCleanJets=srcCJet, #
+                          ),
      makeIVFcandidates(),
-     #makeScaleFactors(srcMuons='smearedGoodMuons'),
+     makeScaleFactors(srcElectrons=srcGEle,srcMuons=srcGMu,srcMET='wgtPUembedMET'),
      makeHenBHadrons(),
-     makeGenJetInfo(),
+     makeGenJetInfo(srcAllJets=srcAJet),
+     GBWeight = makeGenBWeight("GBWeight","theWeight"),
      coreCollections = cms.VInputTag(
-       cms.InputTag("smearedAllMuons"),
-       cms.InputTag("smearedAllElectrons"),
-       cms.InputTag("smearedAllJets"),
+       cms.InputTag(srcGMu),
+       cms.InputTag(srcQMu),
+       cms.InputTag(srcGEle),
+       cms.InputTag(srcQEle),
      ),
      topweight= cms.PSet(
            pluginType = cms.string("TopWeight"),
@@ -863,11 +887,6 @@ def addMuNuEventTreePtMC(process,name,lhep="externalLHEProducer"):
 #   )
 #   return jetCorrectionInfo
 
-
-
-
-
-
 #    J1_flightDistance = makeJetUserFloat('flightDistance','',source)[0],
 #    J2_flightDistance = makeJetUserFloat('flightDistance','',source)[1],
 #    J1_errorFlightDistance = makeJetUserFloat('errorFlightDistance','',source)[0],
@@ -978,3 +997,29 @@ def addMuNuEventTreePtMC(process,name,lhep="externalLHEProducer"):
 #    ht = makeMuNu("ht","ht",source,True),
 # )
 # return commonCollections
+## from RecoTools/plugins/PATSSVJetEmbedder.h 
+#    J1_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[0],
+#    J2_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[1],
+#    J3_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[2],
+#    J4_nTracks_SSV = makeJetUserFloat('nTracks_SSV','',source)[3],
+#    J1_pt_SSV = makeJetUserFloat('pt_SSV','',source)[0],  
+#    J2_pt_SSV = makeJetUserFloat('pt_SSV','',source)[1],
+#    J3_pt_SSV = makeJetUserFloat('pt_SSV','',source)[2],
+#    J4_pt_SSV = makeJetUserFloat('pt_SSV','',source)[3],
+#    J1_eta_SSV = makeJetUserFloat('eta_SSV','',source)[0],  
+#    J2_eta_SSV = makeJetUserFloat('eta_SSV','',source)[1],
+#    J3_eta_SSV = makeJetUserFloat('eta_SSV','',source)[2],
+#    J4_eta_SSV = makeJetUserFloat('eta_SSV','',source)[3],
+#    J1_phi_SSV = makeJetUserFloat('phi_SSV','',source)[0],  
+#    J2_phi_SSV = makeJetUserFloat('phi_SSV','',source)[1],
+#    J3_phi_SSV = makeJetUserFloat('phi_SSV','',source)[2],
+#    J4_phi_SSV = makeJetUserFloat('phi_SSV','',source)[3],
+#    J1_mass_SSV = makeJetUserFloat('mass_SSV','',source)[0], # formerly J1SVMassb
+#    J2_mass_SSV = makeJetUserFloat('mass_SSV','',source)[1],
+#    J3_mass_SSV = makeJetUserFloat('mass_SSV','',source)[2],
+#    J4_mass_SSV = makeJetUserFloat('mass_SSV','',source)[3],
+#    J1_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[0],  
+#    J2_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[1],
+#    J3_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[2],
+#    J4_mass_SSV_alt = makeJetUserFloat('mass_SSV_alt','',source)[3],
+#

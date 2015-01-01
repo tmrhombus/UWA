@@ -12,7 +12,7 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V27::All' # for global tag with re-reco data
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(15)
+    input = cms.untracked.int32(2500)
 )
 
 process.source = cms.Source("PoolSource",
@@ -73,7 +73,22 @@ process.load("UWAnalysis.Configuration.wMuNuAnalysisPT_cff")
 process.eventSelection = cms.Path(process.selectionSequence) ##changing to multiples see below
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbbClean import *
-addMuNuEventTreePtMC(process,'muNuEventTree',lhep="externalLHEProducer")
+
+addEventTreeMC(process,'muEleEventTree',
+      srcGMu='smearedGoodMuons',
+      srcVMu='smearedVetoMuons',
+      srcQMu='smearedQCDMuons',
+      srcAMu='smearedAllMuons',
+      srcGEle='smearedGoodElectrons',
+      srcVEle='smearedVetoElectrons',
+      srcQEle='smearedQCDElectrons',
+      srcAEle='smearedAllElectrons',
+      srcGJet='smearedGoodJets',
+      srcFJet='smearedFwdJets',
+      srcAJet='smearedAllJets',
+      srcCJet='smearedCleanJets',
+      lhep="externalLHEProducer"
+      )
 
 addEventSummary(process,True)
 

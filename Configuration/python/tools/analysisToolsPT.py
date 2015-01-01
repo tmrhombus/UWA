@@ -35,35 +35,37 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   electronTriggerMatchPT(process,triggerProcess)  
   tauTriggerMatchPT(process,triggerProcess)    
   goodVertexFilter(process)       
+  
+  # leptons
+  #rochesterCorrector(process,muons="cleanPatMuons")
+  #muScleCorrector(process,muons="cleanPatMuons",isMC=itsMC)
+  #electronEnergyCorrector(process,'cleanPatElectrons')
 
+  muonIDer(process,muons="cleanPatMuons")
+  leptonSFer(process,muons="IDedMuons",electrons="cleanPatElectrons")
+
+  # met
+  metAndmT(process,met='systematicsMET',muons="muAvecSF",electrons="eleAvecSF",isMC=itsMC)
+  wgtPUembedding(process,"metCorrected","primaryVertexFilter","addPileupInfo")
+  #vertexEmbedding(process,"IDedMuons","primaryVertexFilter","addPileupInfo")
+
+  # jets
   if itsMC:
    genLevel(process)
    resolutionSmearJets(process,jets='selectedPatJetsAK5chsPF')
   elif itsData:
    ReNameJetColl(process,inputJets='selectedPatJetsAK5chsPF')
 
-  metCorrector(process,met='systematicsMET',jets123='resolutionSmearedJets',isMC=itsMC)
   jetOverloading(process,"resolutionSmearedJets")
   jetPUEmbedding(process,"patOverloadedJets")
 
-  #rochesterCorrector(process,muons="cleanPatMuons")
-  #muScleCorrector(process,muons="cleanPatMuons",isMC=itsMC)
-  #electronEnergyCorrector(process,'cleanPatElectrons')
-
-  SVReconstruction(process,"patPUEmbeddedJets","cleanPatMuons",isMC=itsMC,isData=itsData)
+   # btag
+  SVReconstruction(process,"patPUEmbeddedJets",isMC=itsMC,isData=itsData)
   #SVReconstruction(process,"patPUEmbeddedJets","rochCorMuons",isMC=itsMC,isData=itsData)
 
-  #muonIDer(process,muons="muScleMuons")
-  #muonIDer(process,muons="rochCorMuons")
-  muonIDer(process,muons="cleanPatMuons")
-
-  vertexEmbedding(process,"IDedMuons","primaryVertexFilter","addPileupInfo")
-  mtMaker(process,muons="IDedMuons", electrons="cleanPatElectrons", met="metCorrected")
-  #mtMaker(process,muons="IDedMuons", electrons="cleanPatElectrons", met="systematicsMET")
-  #mtMaker(process,muons="IDedMuons", electrons="cleanPatElectrons", met="metCorrected")
-  #mtMaker(process,muons="IDedMuons", electrons="energyCorrectedElectrons", met="metCorrected")
-  applyDefaultSelectionsPT(process,"patCSVreweightedJets","mtMuons","mtEles")
-  #applyDefaultSelectionsPT(process,"patBRecoJets","mtMuons","mtEles")
+   # cleaning
+  applyDefaultSelectionsPT(process,"patBRecoJets","mtMuons","mtEles")
+  #applyDefaultSelectionsPT(process,"patCSVreweightedJets","mtMuons","mtEles")
 
   process.runAnalysisSequence = cms.Path(process.analysisSequence)
   #jetReading(process,jets='patBRecoJets')
@@ -480,6 +482,38 @@ def metRenamer(process,met='systematicsMET'):
   return process.metTypeOnePath
 
 
+def leptonSFer(process,muons="IDedMuons",electrons="cleanPatElectrons"):
+  process.eleAvecSF = cms.EDProducer("PATeleSFer",
+   src = cms.InputTag(electrons),
+  )
+  process.muAvecSF = cms.EDProducer("PATmuonSFer",
+   src = cms.InputTag(muons),
+  )
+  
+  process.leptonSFSeq = cms.Sequence(process.eleAvecSF + process.muAvecSF) 
+  process.leptonSFPath= cms.Path(process.leptonSFSeq)
+  return process.leptonSFPath
+
+def metAndmT(process,met='systematicsMET',muons="IDedMuons",electrons="cleanPatElectrons",isMC=False):
+  process.metCorrected = cms.EDProducer("PATMETCorrector",
+   srcMET = cms.InputTag(met),
+   isMC = cms.bool(isMC)
+  )
+  process.mtMuons = cms.EDProducer("PATmTmuonCalculator",
+   srcMuon = cms.InputTag( muons ),
+   srcMET = cms.InputTag( "metCorrected" )
+  )
+  process.mtEles = cms.EDProducer("PATmTeleCalculator",
+   srcEle = cms.InputTag( electrons ),
+   srcMET = cms.InputTag( "metCorrected" ) 
+  )
+  process.metCorrectedSeq = cms.Sequence(process.metCorrected)
+  process.mtMuonsSeq = cms.Sequence(process.mtMuons)
+  process.mtElesSeq = cms.Sequence (process.mtEles)
+  process.metAndmTPath = cms.Path(process.metCorrected + process.mtMuonsSeq + process.mtElesSeq)
+  return process.metAndmTPath
+
+
 def metCorrector(process,met='systematicsMET',jets123='NewSelectedPatJets',isMC=False):
   process.selectedVerticesForMEtCorr = cms.EDFilter("VertexSelector",
    src = cms.InputTag('offlinePrimaryVertices'),
@@ -643,15 +677,25 @@ def muonIDer(process,muons="cleanPatMuons"):
   return process.IDedMuonPath
 
 
-def vertexEmbedding(process,muons="IDedMuons",vertices="primaryVertexFilter",pu="addPileupInfo"):
-  process.vertexEmbeddedMuons = cms.EDProducer("PATMuonVertexWeighter",
-   srcMuon = cms.InputTag( muons ),
+#def vertexEmbedding(process,muons="IDedMuons",vertices="primaryVertexFilter",pu="addPileupInfo"):
+#  process.vertexEmbeddedMuons = cms.EDProducer("PATMuonVertexWeighter",
+#   srcMuon = cms.InputTag( muons ),
+#   srcVert = cms.InputTag( vertices ),
+#   srcPU   = cms.InputTag( pu )
+#  )
+#  process.vertexEmbeddedMuonSeq = cms.Sequence(process.vertexEmbeddedMuons)
+#  process.vertexEmbeddedMuonPath= cms.Path(process.vertexEmbeddedMuonSeq)
+#  return process.vertexEmbeddedMuonPath
+
+def wgtPUembedding(process,met="",vertices="primaryVertexFilter",pu="addPileupInfo"):
+  process.wgtPUembedMET = cms.EDProducer("PATMETVertexWeighter",
+   srcMET = cms.InputTag( met ),
    srcVert = cms.InputTag( vertices ),
    srcPU   = cms.InputTag( pu )
   )
-  process.vertexEmbeddedMuonSeq = cms.Sequence(process.vertexEmbeddedMuons)
-  process.vertexEmbeddedMuonPath= cms.Path(process.vertexEmbeddedMuonSeq)
-  return process.vertexEmbeddedMuonPath
+  process.wgtPUembedMETSeq = cms.Sequence(process.wgtPUembedMET)
+  process.wgtPUembedMETPath= cms.Path(process.wgtPUembedMETSeq)
+  return process.wgtPUembedMETPath
 
 
 def mtMaker(process,muons="IDedMuons", electrons="cleanPatElectrons", met="metCorrected"):
@@ -669,10 +713,11 @@ def mtMaker(process,muons="IDedMuons", electrons="cleanPatElectrons", met="metCo
   return process.mtMakerPath
 
 
-def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
+#def SVReconstruction(process,jets,muons,isMC=False,isData=False): 
+def SVReconstruction(process,jets,isMC=False,isData=False): 
   process.SVFoundJets=cms.EDProducer("bTagSFer",
     src = cms.InputTag(jets),
-    leptons = cms.InputTag(muons),
+    #leptons = cms.InputTag(muons),
     vertices=cms.InputTag("offlinePrimaryVertices") 
   )
   process.patSSVJets=cms.EDProducer("PATSSVJetEmbedder", 
@@ -681,36 +726,25 @@ def SVReconstruction(process,jets,muons,isMC=False,isData=False):
   process.patSSVJets2=cms.EDProducer("PATCSVVertex",
    src = cms.InputTag("patSSVJets")
   )
-  if isMC:
-   process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco', 
-    src = cms.InputTag("patSSVJets2"), 
-    leptons = cms.InputTag(muons), 
-    vertices=cms.InputTag("offlinePrimaryVertices") 
-   )
-  if isData:
-   process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco', 
-   #process.patBpmRecoJets = cms.EDProducer('PATJetBpmRecoData', 
-    src = cms.InputTag("patSSVJets2"),
-    leptons = cms.InputTag(muons), 
-    vertices=cms.InputTag("offlinePrimaryVertices")
-   ) 
+  process.patBpmRecoJets = cms.EDProducer('PATJetBpmReco', 
+   src = cms.InputTag("patSSVJets2"), 
+   vertices=cms.InputTag("offlinePrimaryVertices") 
+  )
   process.patBRecoJets = cms.EDProducer('PATJetBReco', 
-   #src = cms.InputTag("patSSVJets2"), 
    src = cms.InputTag("patBpmRecoJets"), 
-   leptons = cms.InputTag(muons), 
    vertices=cms.InputTag("offlinePrimaryVertices") 
   ) 
-  process.patCSVreweightedJets = cms.EDProducer('PATJetCSVreweight',
-   src = cms.InputTag("patBRecoJets")
-  )
+  #process.patCSVreweightedJets = cms.EDProducer('PATJetCSVreweight',
+  # src = cms.InputTag("patBRecoJets")
+  #)
   
   process.BReconstruction = cms.Sequence(
    process.SVFoundJets *
    process.patSSVJets *
    process.patSSVJets2 *
    process.patBpmRecoJets *
-   process.patBRecoJets *
-   process.patCSVreweightedJets
+   process.patBRecoJets 
+   #process.patCSVreweightedJets
   ) 
   process.createBRecoJets=cms.Path(process.BReconstruction) 
   return process.createBRecoJets 
@@ -1295,15 +1329,29 @@ def createSystematics(process,sequence,postfix,muScale,eScale,tauScale,jetScale,
         if(hasattr(mod,'name')):
           newValue = mod.name.value()+postfix
           mod.name=cms.string(newValue)
-      if mod.label().find('smearedMuons') !=-1 :
+      if mod.label().find('smearedVetoMuons') !=-1 :
+          mod.energyScale = cms.double(muScale)
+      if mod.label().find('smearedQCDMuons') !=-1 :
+          mod.energyScale = cms.double(muScale)
+      if mod.label().find('smearedGoodMuons') !=-1 :
           mod.energyScale = cms.double(muScale)
       if mod.label().find('smearedTaus') !=-1 :
           mod.energyScale = cms.double(tauScale)
-      if mod.label().find('smearedElectrons') !=-1 :
+      if mod.label().find('smearedVetoElectrons') !=-1 :
           mod.energyScale = cms.double(eScale)
           mod.deltaPtB = cms.double(electronresb)
           mod.deltaPtE = cms.double(electronrese)
-      if mod.label().find('smearedJets') !=-1 :
+      if mod.label().find('smearedQCDElectrons') !=-1 :
+          mod.energyScale = cms.double(eScale)
+          mod.deltaPtB = cms.double(electronresb)
+          mod.deltaPtE = cms.double(electronrese)
+      if mod.label().find('smearedGoodElectrons') !=-1 :
+          mod.energyScale = cms.double(eScale)
+          mod.deltaPtB = cms.double(electronresb)
+          mod.deltaPtE = cms.double(electronrese)
+      if mod.label().find('smearedGoodJets') !=-1 :
+          mod.energyScaleDB = cms.double(jetScale) ##changed from int32 to double
+      if mod.label().find('smearedFwdJets') !=-1 :
           mod.energyScaleDB = cms.double(jetScale) ##changed from int32 to double
       if mod.label().find('smearedMET') !=-1 :
           mod.unclusteredScale= cms.double(unclusteredScale)
