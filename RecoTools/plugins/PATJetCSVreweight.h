@@ -124,6 +124,8 @@ class PATJetCSVreweight : public edm::EDProducer{
 
     f_CSVwgt_HF->Close();
     f_CSVwgt_LF->Close();
+    f_CSVwgt_HF->Delete();
+    f_CSVwgt_LF->Delete();
 
 
 
