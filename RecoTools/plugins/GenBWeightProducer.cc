@@ -77,7 +77,7 @@ GenBWeightProducer::GenBWeightProducer(const edm::ParameterSet& pset):
  p431_(pset.getParameter<edm::FileInPath>("p431")),
  p441_(pset.getParameter<edm::FileInPath>("p441"))
 {
-	std::cout<<"in const"<<std::endl;	
+	//std::cout<<"in const"<<std::endl;	
 	//Reading the weight tables
         BRelWeights.open(pprop_.fullPath().c_str());
         B511DecayWeights.open(p511_.fullPath().c_str() );
@@ -91,23 +91,23 @@ GenBWeightProducer::GenBWeightProducer(const edm::ParameterSet& pset):
 	
         std::string key;
 	float value;
-	std::cout<<"Checking 511"<<std::endl;
+	//std::cout<<"Checking 511"<<std::endl;
 	MapFiller(B511DecayWeights,511);
-	std::cout<<"Checking 521"<<std::endl;
+	//std::cout<<"Checking 521"<<std::endl;
 	MapFiller(B521DecayWeights,521);
-	std::cout<<"Checking 531"<<std::endl;
+	//std::cout<<"Checking 531"<<std::endl;
 	MapFiller(B531DecayWeights,531);
-	std::cout<<"Checking 541"<<std::endl;
+	//std::cout<<"Checking 541"<<std::endl;
 	MapFiller(B541DecayWeights,541);
-	std::cout<<"Checking 411"<<std::endl;
+	//std::cout<<"Checking 411"<<std::endl;
         MapFiller(D411DecayWeights,411);
-	std::cout<<"Checking 421"<<std::endl;
+	//std::cout<<"Checking 421"<<std::endl;
         MapFiller(D421DecayWeights,421);
-	std::cout<<"Checking 431"<<std::endl;
+	//std::cout<<"Checking 431"<<std::endl;
         MapFiller(D431DecayWeights,431);
-	std::cout<<"Checking 441"<<std::endl;
+	//std::cout<<"Checking 441"<<std::endl;
         MapFiller(D441DecayWeights,441);
-	std::cout<<"Checking BRelWeights"<<std::endl;
+	//std::cout<<"Checking BRelWeights"<<std::endl;
 	if(BRelWeights.fail())throw cms::Exception("TxtFile") << BRelWeights.get()<<" not found";
        	while(!BRelWeights.eof()){
        	        BRelWeights >> key >> value;
@@ -135,7 +135,7 @@ GenBWeightProducer::~GenBWeightProducer()
 void GenBWeightProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 	Weight=1;
 	std::auto_ptr<GenBDWeightCollection> GenBDW(new GenBDWeightCollection);
-	std::cout<<"in produce"<<std::endl;
+	//std::cout<<"in produce"<<std::endl;
  	using namespace edm;
 
         Handle<reco::GenParticleCollection> GPC;
@@ -153,7 +153,7 @@ void GenBWeightProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSet
 			if(Id>500)weightProd=bPropMap[spdg];
 			if(theMap[spdg][key]) weightDecay=theMap[spdg][key];
 			Weight*=weightDecay*weightProd;
-			std::cout<<"Found a hadron: "<<Id<<" decay="<<key<<" "<<weightProd<<" "<<weightDecay<<"==> value="<<Weight<<std::endl;
+			//std::cout<<"Found a hadron: "<<Id<<" decay="<<key<<" "<<weightProd<<" "<<weightDecay<<"==> value="<<Weight<<std::endl;
 		}
         }
 	GBDW.theWeight(Weight);	
@@ -194,7 +194,7 @@ std::string GenBWeightProducer::GetKey(const reco::GenParticle* gp){
 void GenBWeightProducer::MapFiller(std::ifstream &textfile,int pdg)
 {
 	if(textfile.fail())throw cms::Exception("TxtFile") << textfile.get() << " not found";
-	std::cout<<"in MapFiller:checking "<<textfile.get()<<std::endl;
+	//std::cout<<"in MapFiller:checking "<<textfile.get()<<std::endl;
 	std::string key;
 	float value;
 	std::ostringstream opdg;
@@ -204,7 +204,7 @@ void GenBWeightProducer::MapFiller(std::ifstream &textfile,int pdg)
 	while(getline(textfile, line)){
 		textfile >> key >> value;
 		theMap[spdg][key]=value;
-		std::cout<<"line is "<<key<<" "<<value<<std::endl;
+		//std::cout<<"line is "<<key<<" "<<value<<std::endl;
 	}
 }
 
