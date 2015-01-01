@@ -71,7 +71,8 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #mvaMet(process) #Build MVA MET
   IVF(process)
   if itsMC:
-   genHadrons(process)  
+   genHadrons(process) 
+   GenBWeight(process) 
 
 
 def muonTriggerMatchPT(process,triggerProcess):
@@ -1039,6 +1040,21 @@ def genHadrons(process):
                                 )
   process.createSimCollections=cms.Path(process.bhadrons*process.cbarCands*process.cCands)
 
+
+def GenBWeight(process):
+  process.GBWeightProducer=cms.EDProducer("GenBWeightProducer",
+	pprop=cms.FileInPath('UWAnalysis/RecoTools/data/bHProp.txt'),
+  	p511=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_511_decaytable.txt'),
+  	p521=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_521_decaytable.txt'),
+  	p531=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_531_decaytable.txt'),
+  	p541=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_541_decaytable.txt'),
+  	p411=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_411_decaytable.txt'),
+  	p421=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_421_decaytable.txt'),
+  	p431=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_431_decaytable.txt'),
+  	p441=cms.FileInPath('UWAnalysis/RecoTools/data/fHadron_441_decaytable.txt')
+
+  )
+  process.GetBDWeights=cms.Path(process.GBWeightProducer)
 
 def IVF(process):
   process.load("RecoBTag.SecondaryVertex.secondaryVertex_cff")

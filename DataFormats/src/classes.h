@@ -9,6 +9,7 @@
 #include "DataFormats/PatCandidates/interface/Jet.h"
 #include "UWAnalysis/DataFormats/interface/BCandFinalState.h"
 #include "UWAnalysis/DataFormats/interface/DressedLepton.h"
+#include "UWAnalysis/DataFormats/interface/GenBDWeight.h"
 
 namespace {
   struct UWanalysis_DataFormats_dictionary {
@@ -326,5 +327,12 @@ namespace {
     DressedLeptonRefProd sbhrp;
     DressedLeptonRefVector sbhrv;
     edm::Wrapper<DressedLeptonCollection> wr2;
+
+    GenBDWeight gbdw;
+    GenBDWeightCollection gbdwc;
+    GenBDWeightRefProd gbdwrp;
+    GenBDWeightRefVector gbdwrv;
+    edm::Wrapper<GenBDWeightCollection> wrgbdw;
+
   };
 }

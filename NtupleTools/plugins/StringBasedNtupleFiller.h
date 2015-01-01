@@ -105,7 +105,8 @@ class StringBasedNtupleFiller : public NtupleFillerBase {
 #include "UWAnalysis/DataFormats/interface/BCandFinalState.h"
 #include "DataFormats/JetReco/interface/GenJet.h"
 #include "UWAnalysis/DataFormats/interface/DressedLepton.h"
-
+#include "UWAnalysis/DataFormats/interface/GenBDWeight.h"
+typedef StringBasedNtupleFiller<GenBDWeight> GenBDWeightFiller;
 typedef StringBasedNtupleFiller<BCandFinalState> bCandidatesFiller; 
 typedef StringBasedNtupleFiller<SimBHadron> SimBHadronsFiller;
 typedef StringBasedNtupleFiller<reco::GenParticle> PATGenParticleFiller;
