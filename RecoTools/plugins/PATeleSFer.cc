@@ -88,7 +88,7 @@ void PATeleSFer::produce( edm::Event& iEvent, const edm::EventSetup& es )
         electron.addUserFloat("SF_HLT_errDn",SF_HLT_errDn);
         electron.addUserFloat("SF_total",SF_total);
         electron.addUserFloat("SF_total_errUp",SF_total + SF_total_errUp);
-        electron.addUserFloat("SF_total_errDn",SF_total + SF_total_errDn);
+        electron.addUserFloat("SF_total_errDn",SF_total - SF_total_errDn);
         out->push_back(electron);
     }
 

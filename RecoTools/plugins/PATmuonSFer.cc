@@ -135,7 +135,7 @@ void PATmuonSFer::produce( edm::Event& iEvent, const edm::EventSetup& es )
         muon.addUserFloat("SF_HLT_errDn",SF_HLT_errDn);
         muon.addUserFloat("SF_total",SF_total);
         muon.addUserFloat("SF_total_errUp",SF_total + SF_total_errUp);
-        muon.addUserFloat("SF_total_errDn",SF_total + SF_total_errDn);
+        muon.addUserFloat("SF_total_errDn",SF_total - SF_total_errDn);
         out->push_back(muon);
     }
 
