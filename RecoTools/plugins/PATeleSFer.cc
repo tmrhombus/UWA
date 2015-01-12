@@ -55,9 +55,9 @@ void PATeleSFer::produce( edm::Event& iEvent, const edm::EventSetup& es )
         float SF_HLT = 1.;
         float SF_HLT_errUp = 0.;
         float SF_HLT_errDn = 0.;
-        float SF_total = 1.;
-        float SF_total_errUp = 0.;
-        float SF_total_errDn = 0.;
+        float SF_IDIsoHLT = 1.;
+        float SF_IDIsoHLT_errUp = 0.;
+        float SF_IDIsoHLT_errDn = 0.;
         pat::Electron electron = electrons->at(i);
 
         float electron_pt  = electron.pt();
@@ -71,9 +71,9 @@ void PATeleSFer::produce( edm::Event& iEvent, const edm::EventSetup& es )
         SF_HLT_errUp = SFtable_HLT->ErrUp(electron_pt,electron_eta);
         SF_HLT_errDn = SFtable_HLT->ErrDn(electron_pt,electron_eta);
 
-        SF_total = SF_IDIso * SF_HLT;
-        SF_total_errUp = sqrt( pow(SF_IDIso_errUp,2) + pow(SF_HLT_errUp,2) );
-        SF_total_errDn = sqrt( pow(SF_IDIso_errDn,2) + pow(SF_HLT_errDn,2) );
+        SF_IDIsoHLT = SF_IDIso * SF_HLT;
+        SF_IDIsoHLT_errUp = sqrt( pow(SF_IDIso_errUp,2) + pow(SF_HLT_errUp,2) );
+        SF_IDIsoHLT_errDn = sqrt( pow(SF_IDIso_errDn,2) + pow(SF_HLT_errDn,2) );
 
         //std::cout<<"RecoTools/plugins/PATeleSFer.cc "
         //<<electron_pt<<" "<<electron_eta<<"\n "<<
@@ -83,12 +83,12 @@ void PATeleSFer::produce( edm::Event& iEvent, const edm::EventSetup& es )
         electron.addUserFloat("SF_IDIso",SF_IDIso);
         electron.addUserFloat("SF_IDIso_errUp",SF_IDIso_errUp);
         electron.addUserFloat("SF_IDIso_errDn",SF_IDIso_errDn);
-        electron.addUserFloat("SF_HLT",SF_HLT);
-        electron.addUserFloat("SF_HLT_errUp",SF_HLT_errUp);
-        electron.addUserFloat("SF_HLT_errDn",SF_HLT_errDn);
-        electron.addUserFloat("SF_total",SF_total);
-        electron.addUserFloat("SF_total_errUp",SF_total + SF_total_errUp);
-        electron.addUserFloat("SF_total_errDn",SF_total - SF_total_errDn);
+        //electron.addUserFloat("SF_HLT",SF_HLT);
+        //electron.addUserFloat("SF_HLT_errUp",SF_HLT_errUp);
+        //electron.addUserFloat("SF_HLT_errDn",SF_HLT_errDn);
+        electron.addUserFloat("SF_IDIsoHLT",SF_IDIsoHLT);
+        electron.addUserFloat("SF_IDIsoHLT_errUp",SF_IDIsoHLT_errUp);
+        electron.addUserFloat("SF_IDIsoHLT_errDn",SF_IDIsoHLT_errDn);
         out->push_back(electron);
     }
 
