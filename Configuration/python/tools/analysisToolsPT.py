@@ -42,7 +42,9 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   #electronEnergyCorrector(process,'cleanPatElectrons')
 
   muonIDer(process,muons="cleanPatMuons")
-  leptonSFer(process,muons="IDedMuons",electrons="cleanPatElectrons")
+  eleIsolater(process,electrons="cleanPatElectrons")
+  leptonSFer(process,muons="IDedMuons",electrons="IsoedElectrons")
+  #leptonSFer(process,muons="IDedMuons",electrons="cleanPatElectrons")
 
   # met
   metAndmT(process,met='systematicsMET',muons="muAvecSF",electrons="eleAvecSF",isMC=itsMC)
@@ -677,6 +679,15 @@ def muonIDer(process,muons="cleanPatMuons"):
   return process.IDedMuonPath
 
 
+def eleIsolater(process,electrons="cleanPatElectrons"):
+  process.IsoedElectrons = cms.EDProducer("PATeleIsoEmbedder",
+   src = cms.InputTag( electrons ),
+  )
+  process.IsoedElectronsSeq = cms.Sequence(process.IsoedElectrons)
+  process.IsoedElectronsPath= cms.Path(process.IsoedElectronsSeq)
+  return process.IsoedElectronsPath
+
+
 #def vertexEmbedding(process,muons="IDedMuons",vertices="primaryVertexFilter",pu="addPileupInfo"):
 #  process.vertexEmbeddedMuons = cms.EDProducer("PATMuonVertexWeighter",
 #   srcMuon = cms.InputTag( muons ),
@@ -794,7 +805,8 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
       'abs(1./ecalEnergy - eSuperClusterOverP/ecalEnergy) < 0.05 &&' \
       'passConversionVeto &&' \
       'gsfTrack.trackerExpectedHitsInner.numberOfHits < 1'
-  electronIso = '(chargedHadronIso + max((neutralHadronIso + photonIso - 0.5*puChargedHadronIso),0.0))/et'
+  #electronIso = '(chargedHadronIso + max((neutralHadronIso + photonIso - 0.5*puChargedHadronIso),0.0))/et'
+  electronIso = 'userFloat("Iso03")'
   electronLooseIso = electronIso+' < 0.15'
   electronTightIso = electronIso+' < 0.10 '
   electronAntiIso  = electronIso+' > 0.15 '
