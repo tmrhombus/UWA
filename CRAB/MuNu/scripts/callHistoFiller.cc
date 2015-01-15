@@ -8,13 +8,14 @@ root -l -b
 .L callHistoFiller.cc
 callHistoFiller()
 
+root -l -b -q callHistoFiller.cc
+
 Author: T.M.Perry UW-Madison
 ********************************/
 
 #include <TStyle.h>
 #include <vector>
 #include <TChain.h>
-//#include <gROOT.h>
 #include "TROOT.h"
 #include "TSystem.h"
 #include "TApplication.h"
@@ -59,6 +60,7 @@ void callHistoFiller()
  TChain *chain_T_t_JetDown = new TChain("muEleEventTreeJetDown/eventTree");
  TChain *chain_T_t_LepUp =   new TChain("muEleEventTreeMuonUp/eventTree");
  TChain *chain_T_t_LepDown = new TChain("muEleEventTreeMuonDown/eventTree");
+ //chain_T_t->Add        ("/hdfs/store/user/tperry/NouvelleYear_T_t-MuEle-PATMC/*.root");
 
  TChain *chain_T_tW =         new TChain("muEleEventTree/eventTree");
  TChain *chain_T_tW_JetUp =   new TChain("muEleEventTreeJetUp/eventTree");
@@ -152,59 +154,59 @@ void callHistoFiller()
  UInt_t lumi;
  UInt_t nrEvents;
  Float_t crossSec;
- ///Samples.push_back("TTbar_full");
- ///Samples.push_back("TTbar_semi");
- ///Samples.push_back("T_s");
+ Samples.push_back("TTbar_full");
+ Samples.push_back("TTbar_semi");
+ Samples.push_back("T_s");
  Samples.push_back("T_t");
- ///Samples.push_back("T_tW");
- ///Samples.push_back("Tbar_s");
- ///Samples.push_back("Tbar_t");
- ///Samples.push_back("Tbar_tW");
- /////Samples.push_back("WlN");
- /////Samples.push_back("Wl1");
- /////Samples.push_back("Wl2");
- /////Samples.push_back("Wl3");
- /////Samples.push_back("Wl4");
- /////Samples.push_back("WcN");
- /////Samples.push_back("Wc1");
- /////Samples.push_back("Wc2");
- /////Samples.push_back("Wc3");
- /////Samples.push_back("Wc4");
- /////Samples.push_back("WccN");
- /////Samples.push_back("Wcc1");
- /////Samples.push_back("Wcc2");
- /////Samples.push_back("Wcc3");
- /////Samples.push_back("Wcc4");
- /////Samples.push_back("WbbN");
- /////Samples.push_back("Wbb1");
- /////Samples.push_back("Wbb2");
- /////Samples.push_back("Wbb3");
- /////Samples.push_back("Wbb4");
- ///Samples.push_back("Wbb4F");
- ///Samples.push_back("WW");
- ///Samples.push_back("WZ");
- ///Samples.push_back("ZZ");// [32]
+ Samples.push_back("T_tW");
+ Samples.push_back("Tbar_s");
+ Samples.push_back("Tbar_t");
+ Samples.push_back("Tbar_tW");
+ Samples.push_back("WlN");
+ Samples.push_back("Wl1");
+ Samples.push_back("Wl2");
+ Samples.push_back("Wl3");
+ Samples.push_back("Wl4");
+ Samples.push_back("WcN");
+ Samples.push_back("Wc1");
+ Samples.push_back("Wc2");
+ Samples.push_back("Wc3");
+ Samples.push_back("Wc4");
+ Samples.push_back("WccN");
+ Samples.push_back("Wcc1");
+ Samples.push_back("Wcc2");
+ Samples.push_back("Wcc3");
+ Samples.push_back("Wcc4");
+ Samples.push_back("WbbN");
+ Samples.push_back("Wbb1");
+ Samples.push_back("Wbb2");
+ Samples.push_back("Wbb3");
+ Samples.push_back("Wbb4");
+ Samples.push_back("Wbb4F");
+ Samples.push_back("WW");
+ Samples.push_back("WZ");
+ Samples.push_back("ZZ");// [32]
  EMu.push_back("ele");
  EMu.push_back("mu");
  MC.push_back("MC");
  //MC.push_back("Data"); // don't activate this, save data for another loop
  QCD.push_back("good");
- ///QCD.push_back("qcd");
+ QCD.push_back("qcd");
  Cuts.push_back("wbb");
- ///Cuts.push_back("tt3j");
- ///Cuts.push_back("tt1m1e");
- //Cuts.push_back("wjj");
- //Cuts.push_back("stt");
- //Cuts.push_back("dyjj");
- //Cuts.push_back("dybb");
+ Cuts.push_back("tt3j");
+ Cuts.push_back("tt1m1e");
+ Cuts.push_back("wjj");
+ Cuts.push_back("stt");
+ Cuts.push_back("dyjj");
+ Cuts.push_back("dybb");
  Shifts.push_back("aucun");
- //Shifts.push_back("SFs");
- ///Shifts.push_back("UESUp");
- ///Shifts.push_back("UESDown");
- ///Shifts.push_back("JetUp");
- ///Shifts.push_back("JetDown");
- ///Shifts.push_back("LepUp");
- ///Shifts.push_back("LepDown");
+ Shifts.push_back("SFs");
+ Shifts.push_back("UESUp");
+ Shifts.push_back("UESDown");
+ Shifts.push_back("JetUp");
+ Shifts.push_back("JetDown");
+ Shifts.push_back("LepUp");
+ Shifts.push_back("LepDown");
  for (std::vector<TString>::iterator mc = MC.begin(); mc != MC.end(); ++mc){
   std::cout<<"xxxxxx Starting New Loop: MC.mc = "<<*mc<<" xxxxxx"<<std::endl;
   for (std::vector<TString>::iterator cut = Cuts.begin(); cut != Cuts.end(); ++cut){

@@ -9,13 +9,6 @@
 // classes stored in the TTree
 #include <vector>
 
-// for reading SFs
-//#include "table.h" // I copied it to xxx/scripts/table.h
-//#include "RecoTools/interface/table.h"
-//#include "UWAnalysis/RecoTools/interface/table.h"
-//#include "$CMSSW_BASE/src/UWAnalysis/RecoTools/interface/table.h"
-//#include <table.h> 
-
 class histoFiller {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
@@ -45,22 +38,6 @@ public :
    Bool_t isWcc;
    Bool_t isWbb;
 
-   //// For SFs
-   //Float_t goodMu_pt; 
-   //Float_t goodMu_eta; 
-   //Float_t qcdMu_pt; 
-   //Float_t qcdMu_eta; 
-   //Float_t goodEle_pt; 
-   //Float_t goodEle_eta; 
-   //Float_t qcdEle_pt; 
-   //Float_t qcdEle_eta; 
-
-   //  table* SFtableMu_Id;  // tried as pointer and reference
-   //  table* SFtableMu_Iso;
-   //  table* SFtableMu_Trg;
-   //  table* SFtableEle_IdIso;
-   //  table* SFtableEle_Trg;
-
    Float_t SF_topBJ;
    Float_t SF_top2BJs;
    Float_t SF_top2BJs_errUp;
@@ -69,7 +46,7 @@ public :
    Float_t SF_IDIsoHLT;
    Float_t SF_IDIsoHLT_errUp;
    Float_t SF_IDIsoHLT_errDn;
-   Float_t SF_IDIso; // tried Float_t, float, double
+   Float_t SF_IDIso; 
    Float_t SF_IDIso_errUp;
    Float_t SF_IDIso_errDn;
    Float_t weight;
@@ -651,12 +628,6 @@ histoFiller::~histoFiller()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
-
-   //  delete SFtableMu_Id;
-   //  delete SFtableMu_Iso;
-   //  delete SFtableMu_Trg;
-   //  delete SFtableEle_IdIso;
-   //  delete SFtableEle_Trg;
    //  std::cout<<"We're actually deleting"<<std::endl;
 }
 
@@ -689,14 +660,6 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    // Init() will be called many times when running on PROOF
    // (once per file to be processed).
 
-   //  std::string base = std::getenv("CMSSW_BASE"); 
-   //  SFtableMu_Id = new table(base+"/src/UWAnalysis/RecoTools/data/SF_muon_ID.txt"); 
-   //  SFtableMu_Iso = new table(base+"/src/UWAnalysis/RecoTools/data/SF_muon_Iso.txt"); 
-   //  SFtableMu_Trg = new table(base+"/src/UWAnalysis/RecoTools/data/SF_muon_HLT.txt"); 
-   //  SFtableEle_IdIso = new table(base+"/src/UWAnalysis/RecoTools/data/SF_ele_IDIso.txt"); 
-   //  SFtableEle_Trg = new table(base+"/src/UWAnalysis/RecoTools/data/SF_ele_HLT.txt");
-
-
    // Set object pointer
    SF_goodEle_IDIsoHLT = 0;
    SF_goodEle_IDIsoHLT_errDn = 0;
@@ -715,6 +678,7 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    goodMu_eta_vec = 0;
    goodMu_phi_vec = 0;
    goodMu_pt_vec = 0;
+
    // Set branch addresses and branch pointers
    if (!tree) return;
    fChain = tree;
@@ -756,6 +720,58 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
     fChain->SetBranchAddress("SF_qcdMu_IDIsoHLT_errUp", &SF_qcdMu_IDIsoHLT_errUp, &b_SF_qcdMu_IDIsoHLT_errUp);
     fChain->SetBranchAddress("SF_qcdMu_IDIso_errDn", &SF_qcdMu_IDIso_errDn, &b_SF_qcdMu_IDIso_errDn);
     fChain->SetBranchAddress("SF_qcdMu_IDIso_errUp", &SF_qcdMu_IDIso_errUp, &b_SF_qcdMu_IDIso_errUp);
+    fChain->SetBranchAddress("bHadronsEta", &bHadronsEta, &b_bHadronsEta);
+    fChain->SetBranchAddress("bHadronsPhi", &bHadronsPhi, &b_bHadronsPhi);
+    fChain->SetBranchAddress("bHadronsPt", &bHadronsPt, &b_bHadronsPt);
+    fChain->SetBranchAddress("genBs", &genBs, &b_genBs);
+    fChain->SetBranchAddress("genCs", &genCs, &b_genCs);
+    fChain->SetBranchAddress("genDs", &genDs, &b_genDs);
+    fChain->SetBranchAddress("genSs", &genSs, &b_genSs);
+    fChain->SetBranchAddress("genTbars", &genTbars, &b_genTbars);
+    fChain->SetBranchAddress("genTs", &genTs, &b_genTs);
+    fChain->SetBranchAddress("genUs", &genUs, &b_genUs);
+    fChain->SetBranchAddress("genWs", &genWs, &b_genWs);
+    fChain->SetBranchAddress("met_eesDn_phi", &met_eesDn_phi, &b_met_eesDn_phi);
+    fChain->SetBranchAddress("met_eesDn_pt", &met_eesDn_pt, &b_met_eesDn_pt);
+    fChain->SetBranchAddress("met_eesUp_phi", &met_eesUp_phi, &b_met_eesUp_phi);
+    fChain->SetBranchAddress("met_eesUp_pt", &met_eesUp_pt, &b_met_eesUp_pt);
+    fChain->SetBranchAddress("met_jesDn_phi", &met_jesDn_phi, &b_met_jesDn_phi);
+    fChain->SetBranchAddress("met_jesDn_pt", &met_jesDn_pt, &b_met_jesDn_pt);
+    fChain->SetBranchAddress("met_jesUp_phi", &met_jesUp_phi, &b_met_jesUp_phi);
+    fChain->SetBranchAddress("met_jesUp_pt", &met_jesUp_pt, &b_met_jesUp_pt);
+    fChain->SetBranchAddress("met_uesDn_phi", &met_uesDn_phi, &b_met_uesDn_phi);
+    fChain->SetBranchAddress("met_uesDn_pt", &met_uesDn_pt, &b_met_uesDn_pt);
+    fChain->SetBranchAddress("met_uesUp_phi", &met_uesUp_phi, &b_met_uesUp_phi);
+    fChain->SetBranchAddress("met_uesUp_pt", &met_uesUp_pt, &b_met_uesUp_pt);
+    fChain->SetBranchAddress("mt_goodElectron_eesDn", &mt_goodElectron_eesDn, &b_mt_goodElectron_eesDn);
+    fChain->SetBranchAddress("mt_goodElectron_eesUp", &mt_goodElectron_eesUp, &b_mt_goodElectron_eesUp);
+    fChain->SetBranchAddress("mt_goodElectron_jesDn", &mt_goodElectron_jesDn, &b_mt_goodElectron_jesDn);
+    fChain->SetBranchAddress("mt_goodElectron_jesUp", &mt_goodElectron_jesUp, &b_mt_goodElectron_jesUp);
+    fChain->SetBranchAddress("mt_goodElectron_uesDn", &mt_goodElectron_uesDn, &b_mt_goodElectron_uesDn);
+    fChain->SetBranchAddress("mt_goodElectron_uesUp", &mt_goodElectron_uesUp, &b_mt_goodElectron_uesUp);
+    fChain->SetBranchAddress("mt_goodMuon_eesDn", &mt_goodMuon_eesDn, &b_mt_goodMuon_eesDn);
+    fChain->SetBranchAddress("mt_goodMuon_eesUp", &mt_goodMuon_eesUp, &b_mt_goodMuon_eesUp);
+    fChain->SetBranchAddress("mt_goodMuon_jesDn", &mt_goodMuon_jesDn, &b_mt_goodMuon_jesDn);
+    fChain->SetBranchAddress("mt_goodMuon_jesUp", &mt_goodMuon_jesUp, &b_mt_goodMuon_jesUp);
+    fChain->SetBranchAddress("mt_goodMuon_uesDn", &mt_goodMuon_uesDn, &b_mt_goodMuon_uesDn);
+    fChain->SetBranchAddress("mt_goodMuon_uesUp", &mt_goodMuon_uesUp, &b_mt_goodMuon_uesUp);
+    fChain->SetBranchAddress("mt_qcdElectron_eesDn", &mt_qcdElectron_eesDn, &b_mt_qcdElectron_eesDn);
+    fChain->SetBranchAddress("mt_qcdElectron_eesUp", &mt_qcdElectron_eesUp, &b_mt_qcdElectron_eesUp);
+    fChain->SetBranchAddress("mt_qcdElectron_jesDn", &mt_qcdElectron_jesDn, &b_mt_qcdElectron_jesDn);
+    fChain->SetBranchAddress("mt_qcdElectron_jesUp", &mt_qcdElectron_jesUp, &b_mt_qcdElectron_jesUp);
+    fChain->SetBranchAddress("mt_qcdElectron_uesDn", &mt_qcdElectron_uesDn, &b_mt_qcdElectron_uesDn);
+    fChain->SetBranchAddress("mt_qcdElectron_uesUp", &mt_qcdElectron_uesUp, &b_mt_qcdElectron_uesUp);
+    fChain->SetBranchAddress("mt_qcdMuon_eesDn", &mt_qcdMuon_eesDn, &b_mt_qcdMuon_eesDn);
+    fChain->SetBranchAddress("mt_qcdMuon_eesUp", &mt_qcdMuon_eesUp, &b_mt_qcdMuon_eesUp);
+    fChain->SetBranchAddress("mt_qcdMuon_jesDn", &mt_qcdMuon_jesDn, &b_mt_qcdMuon_jesDn);
+    fChain->SetBranchAddress("mt_qcdMuon_jesUp", &mt_qcdMuon_jesUp, &b_mt_qcdMuon_jesUp);
+    fChain->SetBranchAddress("mt_qcdMuon_uesDn", &mt_qcdMuon_uesDn, &b_mt_qcdMuon_uesDn);
+    fChain->SetBranchAddress("mt_qcdMuon_uesUp", &mt_qcdMuon_uesUp, &b_mt_qcdMuon_uesUp);
+    fChain->SetBranchAddress("LHEProduct", &LHEProduct, &b_LHEProduct);
+    fChain->SetBranchAddress("nbHadrons", &nbHadrons, &b_nbHadrons);
+    fChain->SetBranchAddress("weightTop", &weightTop, &b_weightTop);
+    fChain->SetBranchAddress("topPt", &topPt, &b_topPt);
+    fChain->SetBranchAddress("antitopPt", &antitopPt, &b_antitopPt);
    }
    fChain->SetBranchAddress("bCandidate1Eta", &bCandidate1Eta, &b_bCandidate1Eta);
    fChain->SetBranchAddress("bCandidate1Phi", &bCandidate1Phi, &b_bCandidate1Phi);
@@ -801,11 +817,6 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("bCandidatenJetAssociatedToBC", &bCandidatenJetAssociatedToBC, &b_bCandidatenJetAssociatedToBC);
    fChain->SetBranchAddress("bCandidatenJetAssociatedToBC1", &bCandidatenJetAssociatedToBC1, &b_bCandidatenJetAssociatedToBC1);
    fChain->SetBranchAddress("bCandidatenJetAssociatedToBC2", &bCandidatenJetAssociatedToBC2, &b_bCandidatenJetAssociatedToBC2);
-   if( isMC ) {
-    fChain->SetBranchAddress("bHadronsEta", &bHadronsEta, &b_bHadronsEta);
-    fChain->SetBranchAddress("bHadronsPhi", &bHadronsPhi, &b_bHadronsPhi);
-    fChain->SetBranchAddress("bHadronsPt", &bHadronsPt, &b_bHadronsPt);
-   }
    fChain->SetBranchAddress("fwdJ1_CSV", &fwdJ1_CSV, &b_fwdJ1_CSV);
    fChain->SetBranchAddress("fwdJ1_CSVreweight", &fwdJ1_CSVreweight, &b_fwdJ1_CSVreweight);
    fChain->SetBranchAddress("fwdJ1_SF_CSVM", &fwdJ1_SF_CSVM, &b_fwdJ1_SF_CSVM);
@@ -830,16 +841,6 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("fwdJ2_partonFlavour", &fwdJ2_partonFlavour, &b_fwdJ2_partonFlavour);
    fChain->SetBranchAddress("fwdJ2_phi", &fwdJ2_phi, &b_fwdJ2_phi);
    fChain->SetBranchAddress("fwdJ2_pt", &fwdJ2_pt, &b_fwdJ2_pt);
-   if( isMC ) {
-    fChain->SetBranchAddress("genBs", &genBs, &b_genBs);
-    fChain->SetBranchAddress("genCs", &genCs, &b_genCs);
-    fChain->SetBranchAddress("genDs", &genDs, &b_genDs);
-    fChain->SetBranchAddress("genSs", &genSs, &b_genSs);
-    fChain->SetBranchAddress("genTbars", &genTbars, &b_genTbars);
-    fChain->SetBranchAddress("genTs", &genTs, &b_genTs);
-    fChain->SetBranchAddress("genUs", &genUs, &b_genUs);
-    fChain->SetBranchAddress("genWs", &genWs, &b_genWs);
-   }
    fChain->SetBranchAddress("goodEle_charge_vec", &goodEle_charge_vec, &b_goodEle_charge_vec);
    fChain->SetBranchAddress("goodEle_eta_vec", &goodEle_eta_vec, &b_goodEle_eta_vec);
    fChain->SetBranchAddress("goodEle_phi_vec", &goodEle_phi_vec, &b_goodEle_phi_vec);
@@ -902,49 +903,6 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("mt_goodMuon", &mt_goodMuon, &b_mt_goodMuon);
    fChain->SetBranchAddress("mt_qcdElectron", &mt_qcdElectron, &b_mt_qcdElectron);
    fChain->SetBranchAddress("mt_qcdMuon", &mt_qcdMuon, &b_mt_qcdMuon);
-   if( isMC ) {
-    fChain->SetBranchAddress("met_eesDn_phi", &met_eesDn_phi, &b_met_eesDn_phi);
-    fChain->SetBranchAddress("met_eesDn_pt", &met_eesDn_pt, &b_met_eesDn_pt);
-    fChain->SetBranchAddress("met_eesUp_phi", &met_eesUp_phi, &b_met_eesUp_phi);
-    fChain->SetBranchAddress("met_eesUp_pt", &met_eesUp_pt, &b_met_eesUp_pt);
-    fChain->SetBranchAddress("met_jesDn_phi", &met_jesDn_phi, &b_met_jesDn_phi);
-    fChain->SetBranchAddress("met_jesDn_pt", &met_jesDn_pt, &b_met_jesDn_pt);
-    fChain->SetBranchAddress("met_jesUp_phi", &met_jesUp_phi, &b_met_jesUp_phi);
-    fChain->SetBranchAddress("met_jesUp_pt", &met_jesUp_pt, &b_met_jesUp_pt);
-    fChain->SetBranchAddress("met_uesDn_phi", &met_uesDn_phi, &b_met_uesDn_phi);
-    fChain->SetBranchAddress("met_uesDn_pt", &met_uesDn_pt, &b_met_uesDn_pt);
-    fChain->SetBranchAddress("met_uesUp_phi", &met_uesUp_phi, &b_met_uesUp_phi);
-    fChain->SetBranchAddress("met_uesUp_pt", &met_uesUp_pt, &b_met_uesUp_pt);
-    fChain->SetBranchAddress("mt_goodElectron_eesDn", &mt_goodElectron_eesDn, &b_mt_goodElectron_eesDn);
-    fChain->SetBranchAddress("mt_goodElectron_eesUp", &mt_goodElectron_eesUp, &b_mt_goodElectron_eesUp);
-    fChain->SetBranchAddress("mt_goodElectron_jesDn", &mt_goodElectron_jesDn, &b_mt_goodElectron_jesDn);
-    fChain->SetBranchAddress("mt_goodElectron_jesUp", &mt_goodElectron_jesUp, &b_mt_goodElectron_jesUp);
-    fChain->SetBranchAddress("mt_goodElectron_uesDn", &mt_goodElectron_uesDn, &b_mt_goodElectron_uesDn);
-    fChain->SetBranchAddress("mt_goodElectron_uesUp", &mt_goodElectron_uesUp, &b_mt_goodElectron_uesUp);
-    fChain->SetBranchAddress("mt_goodMuon_eesDn", &mt_goodMuon_eesDn, &b_mt_goodMuon_eesDn);
-    fChain->SetBranchAddress("mt_goodMuon_eesUp", &mt_goodMuon_eesUp, &b_mt_goodMuon_eesUp);
-    fChain->SetBranchAddress("mt_goodMuon_jesDn", &mt_goodMuon_jesDn, &b_mt_goodMuon_jesDn);
-    fChain->SetBranchAddress("mt_goodMuon_jesUp", &mt_goodMuon_jesUp, &b_mt_goodMuon_jesUp);
-    fChain->SetBranchAddress("mt_goodMuon_uesDn", &mt_goodMuon_uesDn, &b_mt_goodMuon_uesDn);
-    fChain->SetBranchAddress("mt_goodMuon_uesUp", &mt_goodMuon_uesUp, &b_mt_goodMuon_uesUp);
-    fChain->SetBranchAddress("mt_qcdElectron_eesDn", &mt_qcdElectron_eesDn, &b_mt_qcdElectron_eesDn);
-    fChain->SetBranchAddress("mt_qcdElectron_eesUp", &mt_qcdElectron_eesUp, &b_mt_qcdElectron_eesUp);
-    fChain->SetBranchAddress("mt_qcdElectron_jesDn", &mt_qcdElectron_jesDn, &b_mt_qcdElectron_jesDn);
-    fChain->SetBranchAddress("mt_qcdElectron_jesUp", &mt_qcdElectron_jesUp, &b_mt_qcdElectron_jesUp);
-    fChain->SetBranchAddress("mt_qcdElectron_uesDn", &mt_qcdElectron_uesDn, &b_mt_qcdElectron_uesDn);
-    fChain->SetBranchAddress("mt_qcdElectron_uesUp", &mt_qcdElectron_uesUp, &b_mt_qcdElectron_uesUp);
-    fChain->SetBranchAddress("mt_qcdMuon_eesDn", &mt_qcdMuon_eesDn, &b_mt_qcdMuon_eesDn);
-    fChain->SetBranchAddress("mt_qcdMuon_eesUp", &mt_qcdMuon_eesUp, &b_mt_qcdMuon_eesUp);
-    fChain->SetBranchAddress("mt_qcdMuon_jesDn", &mt_qcdMuon_jesDn, &b_mt_qcdMuon_jesDn);
-    fChain->SetBranchAddress("mt_qcdMuon_jesUp", &mt_qcdMuon_jesUp, &b_mt_qcdMuon_jesUp);
-    fChain->SetBranchAddress("mt_qcdMuon_uesDn", &mt_qcdMuon_uesDn, &b_mt_qcdMuon_uesDn);
-    fChain->SetBranchAddress("mt_qcdMuon_uesUp", &mt_qcdMuon_uesUp, &b_mt_qcdMuon_uesUp);
-    fChain->SetBranchAddress("LHEProduct", &LHEProduct, &b_LHEProduct);
-    fChain->SetBranchAddress("nbHadrons", &nbHadrons, &b_nbHadrons);
-    fChain->SetBranchAddress("weightTop", &weightTop, &b_weightTop);
-    fChain->SetBranchAddress("topPt", &topPt, &b_topPt);
-    fChain->SetBranchAddress("antitopPt", &antitopPt, &b_antitopPt);
-   }
    fChain->SetBranchAddress("nrAllEle", &nrAllEle, &b_nrAllEle);
    fChain->SetBranchAddress("nrAllJets", &nrAllJets, &b_nrAllJets);
    fChain->SetBranchAddress("nrAllMu", &nrAllMu, &b_nrAllMu);

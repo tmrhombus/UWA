@@ -13,7 +13,7 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC, Bool_t isQ
  if (fChain == 0) return;
  Long64_t nrEntries = fChain->GetEntries();
  //Long64_t nrEntries = fChain->GetEntriesFast();
- //Long64_t nb = 0;
+ Long64_t nb = 0;
  Float_t nrEntries_postcut = 0.;
 
  TH1F *h_goodJ1_pt = new TH1F("h_goodJ1_pt","",12,25,205); h_goodJ1_pt->Sumw2();
@@ -88,10 +88,11 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC, Bool_t isQ
 
  std::cout<<"Nr. Entries: "<<nrEntries<<std::endl;
  for (Long64_t jentry=0; jentry<nrEntries;jentry++) {
-  if(jentry%100000==0) std::cout<<" entry "<<jentry<<std::endl;
+  if(jentry%500000==0) std::cout<<" entry "<<jentry<<std::endl;
   Long64_t ientry = LoadTree(jentry);
   if (ientry < 0) break;
-  //nb = fChain->GetEntry(jentry);
+  nb = fChain->GetEntry(jentry);
+  if(!nb){std::cout<<"histoFiller.C can't fChain->GetEntry(jentry)"<<std::endl;}
 
   // split up the W samples
   //0 = ignore
@@ -542,7 +543,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC, Bool_t isQ
    lep_eta = qcdEle_eta;
    lep_phi = qcdEle_phi;
   }
-  //std::cout<<"shift: "<<shift<<" mt: "<<mt<<std::endl;
   h_mt->Fill(mt,weight);
   h_goodLep_pt->Fill(lep_pt,weight);
   h_goodLep_eta->Fill(lep_eta,weight);
