@@ -5,6 +5,7 @@
 #include <TChain.h>
 #include <TFile.h>
 #include <iostream>
+#include <exception>
 
 // classes stored in the TTree
 #include <vector>
@@ -38,30 +39,164 @@ public :
    Bool_t isWcc;
    Bool_t isWbb;
 
+   // universal scale factors
    Float_t SF_topBJ;
    Float_t SF_top2BJs;
    Float_t SF_top2BJs_errUp;
    Float_t SF_top2BJs_errDn;
    Float_t SF_CSVreweight;
-   Float_t SF_IDIsoHLT;
-   Float_t SF_IDIsoHLT_errUp;
-   Float_t SF_IDIsoHLT_errDn;
-   Float_t SF_IDIso; 
-   Float_t SF_IDIso_errUp;
-   Float_t SF_IDIso_errDn;
-   Float_t weight;
-   Float_t weight_CSVerrUp;
-   Float_t weight_CSVerrDn;
-   Float_t weight_EMuerrUp;
-   Float_t weight_EMuerrDn;
+   Float_t weight_good;
+   Float_t weight_good_CSVUp;
+   Float_t weight_good_CSVDn;
+   Float_t weight_good_EMuUp;
+   Float_t weight_good_EMuDn;
+   Float_t weight_qcd;
+   Float_t weight_qcd_CSVUp;
+   Float_t weight_qcd_CSVDn;
+   Float_t weight_qcd_EMuUp;
+   Float_t weight_qcd_EMuDn;
 
-   // histogram variables
-   Float_t mt;
-   Float_t lep_pt;
-   Float_t lep_eta;
-   Float_t lep_phi;
+   // histogram lepton variables
+   Float_t mt_good;
+   Float_t mt_qcd;
+   Float_t lep_good_pt;
+   Float_t lep_good_eta;
+   Float_t lep_good_phi;
+   Float_t lep_qcd_pt;
+   Float_t lep_qcd_eta;
+   Float_t lep_qcd_phi;
+   Float_t lep1_good_pt;
+   Float_t lep1_good_eta;
+   Float_t lep1_good_phi;
+   Float_t lep1_qcd_pt;
+   Float_t lep1_qcd_eta;
+   Float_t lep1_qcd_phi;
+   Float_t lep2_good_pt;
+   Float_t lep2_good_eta;
+   Float_t lep2_good_phi;
+   Float_t lep2_qcd_pt;
+   Float_t lep2_qcd_eta;
+   Float_t lep2_qcd_phi;
+   Float_t mu_good_pt;
+   Float_t mu_good_eta;
+   Float_t mu_good_phi;
+   Float_t mu_qcd_pt;
+   Float_t mu_qcd_eta;
+   Float_t mu_qcd_phi;
+   Float_t ele_good_pt;
+   Float_t ele_good_eta;
+   Float_t ele_good_phi;
+   Float_t ele_qcd_pt;
+   Float_t ele_qcd_eta;
+   Float_t ele_qcd_phi;
    Float_t dphiJJ;
    Float_t dRgoodJ1J2;
+
+   // selection-dependent scale factors
+   Float_t SF_wbb_good_IDIsoHLT;
+   Float_t SF_wbb_good_IDIsoHLT_errUp;
+   Float_t SF_wbb_good_IDIsoHLT_errDn;
+   Float_t SF_wbb_good_IDIso; 
+   Float_t SF_wbb_good_IDIso_errUp;
+   Float_t SF_wbb_good_IDIso_errDn;
+   Float_t SF_wbb_qcd_IDIsoHLT;
+   Float_t SF_wbb_qcd_IDIsoHLT_errUp;
+   Float_t SF_wbb_qcd_IDIsoHLT_errDn;
+   Float_t SF_wbb_qcd_IDIso; 
+   Float_t SF_wbb_qcd_IDIso_errUp;
+   Float_t SF_wbb_qcd_IDIso_errDn;
+   Float_t nrEntries_wbb_good_postcut;
+   Float_t nrEntries_wbb_qcd_postcut;
+
+   Float_t SF_tt3j_good_IDIsoHLT;
+   Float_t SF_tt3j_good_IDIsoHLT_errUp;
+   Float_t SF_tt3j_good_IDIsoHLT_errDn;
+   Float_t SF_tt3j_good_IDIso; 
+   Float_t SF_tt3j_good_IDIso_errUp;
+   Float_t SF_tt3j_good_IDIso_errDn;
+   Float_t SF_tt3j_qcd_IDIsoHLT;
+   Float_t SF_tt3j_qcd_IDIsoHLT_errUp;
+   Float_t SF_tt3j_qcd_IDIsoHLT_errDn;
+   Float_t SF_tt3j_qcd_IDIso; 
+   Float_t SF_tt3j_qcd_IDIso_errUp;
+   Float_t SF_tt3j_qcd_IDIso_errDn;
+   Float_t nrEntries_tt3j_good_postcut;
+   Float_t nrEntries_tt3j_qcd_postcut;
+
+   Float_t SF_tt1m1e_good_IDIsoHLT;
+   Float_t SF_tt1m1e_good_IDIsoHLT_errUp;
+   Float_t SF_tt1m1e_good_IDIsoHLT_errDn;
+   Float_t SF_tt1m1e_good_IDIso; 
+   Float_t SF_tt1m1e_good_IDIso_errUp;
+   Float_t SF_tt1m1e_good_IDIso_errDn;
+   Float_t SF_tt1m1e_qcd_IDIsoHLT;
+   Float_t SF_tt1m1e_qcd_IDIsoHLT_errUp;
+   Float_t SF_tt1m1e_qcd_IDIsoHLT_errDn;
+   Float_t SF_tt1m1e_qcd_IDIso; 
+   Float_t SF_tt1m1e_qcd_IDIso_errUp;
+   Float_t SF_tt1m1e_qcd_IDIso_errDn;
+   Float_t nrEntries_tt1m1e_good_postcut;
+   Float_t nrEntries_tt1m1e_qcd_postcut;
+
+   Float_t SF_wjj_good_IDIsoHLT;
+   Float_t SF_wjj_good_IDIsoHLT_errUp;
+   Float_t SF_wjj_good_IDIsoHLT_errDn;
+   Float_t SF_wjj_good_IDIso; 
+   Float_t SF_wjj_good_IDIso_errUp;
+   Float_t SF_wjj_good_IDIso_errDn;
+   Float_t SF_wjj_qcd_IDIsoHLT;
+   Float_t SF_wjj_qcd_IDIsoHLT_errUp;
+   Float_t SF_wjj_qcd_IDIsoHLT_errDn;
+   Float_t SF_wjj_qcd_IDIso; 
+   Float_t SF_wjj_qcd_IDIso_errUp;
+   Float_t SF_wjj_qcd_IDIso_errDn;
+   Float_t nrEntries_wjj_good_postcut;
+   Float_t nrEntries_wjj_qcd_postcut;
+
+   Float_t SF_stt_good_IDIsoHLT;
+   Float_t SF_stt_good_IDIsoHLT_errUp;
+   Float_t SF_stt_good_IDIsoHLT_errDn;
+   Float_t SF_stt_good_IDIso; 
+   Float_t SF_stt_good_IDIso_errUp;
+   Float_t SF_stt_good_IDIso_errDn;
+   Float_t SF_stt_qcd_IDIsoHLT;
+   Float_t SF_stt_qcd_IDIsoHLT_errUp;
+   Float_t SF_stt_qcd_IDIsoHLT_errDn;
+   Float_t SF_stt_qcd_IDIso; 
+   Float_t SF_stt_qcd_IDIso_errUp;
+   Float_t SF_stt_qcd_IDIso_errDn;
+   Float_t nrEntries_stt_good_postcut;
+   Float_t nrEntries_stt_qcd_postcut;
+
+   Float_t SF_dyjj_good_IDIsoHLT;
+   Float_t SF_dyjj_good_IDIsoHLT_errUp;
+   Float_t SF_dyjj_good_IDIsoHLT_errDn;
+   Float_t SF_dyjj_good_IDIso; 
+   Float_t SF_dyjj_good_IDIso_errUp;
+   Float_t SF_dyjj_good_IDIso_errDn;
+   Float_t SF_dyjj_qcd_IDIsoHLT;
+   Float_t SF_dyjj_qcd_IDIsoHLT_errUp;
+   Float_t SF_dyjj_qcd_IDIsoHLT_errDn;
+   Float_t SF_dyjj_qcd_IDIso; 
+   Float_t SF_dyjj_qcd_IDIso_errUp;
+   Float_t SF_dyjj_qcd_IDIso_errDn;
+   Float_t nrEntries_dyjj_good_postcut;
+   Float_t nrEntries_dyjj_qcd_postcut;
+
+   Float_t SF_dybb_good_IDIsoHLT;
+   Float_t SF_dybb_good_IDIsoHLT_errUp;
+   Float_t SF_dybb_good_IDIsoHLT_errDn;
+   Float_t SF_dybb_good_IDIso; 
+   Float_t SF_dybb_good_IDIso_errUp;
+   Float_t SF_dybb_good_IDIso_errDn;
+   Float_t SF_dybb_qcd_IDIsoHLT;
+   Float_t SF_dybb_qcd_IDIsoHLT_errUp;
+   Float_t SF_dybb_qcd_IDIsoHLT_errDn;
+   Float_t SF_dybb_qcd_IDIso; 
+   Float_t SF_dybb_qcd_IDIso_errUp;
+   Float_t SF_dybb_qcd_IDIso_errDn;
+   Float_t nrEntries_dybb_good_postcut;
+   Float_t nrEntries_dybb_qcd_postcut;
 
    // Declaration of leaf types
    UInt_t          EVENT;
@@ -599,8 +734,8 @@ public :
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree, Bool_t isMC);
-   virtual void     Loop(TString outFileName, Bool_t isMu, Bool_t isMC, Bool_t isQCD,
-    TString cutType, TString shift, Int_t jType, UInt_t luminosity, UInt_t nrEvents, Float_t crossSec);
+   virtual void     Loop(TString outFileName, Bool_t isMu, Bool_t isMC,
+    TString shift, Int_t jType, UInt_t luminosity, UInt_t nrEvents, Float_t crossSec);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 };
@@ -619,6 +754,8 @@ histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0)
       }
       TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/NouvelleYear_TTbar_semi-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
       dir->GetObject("eventTree",tree);
+      std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
+      std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
 
    }
    Init(tree, isMC);
@@ -949,6 +1086,7 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("vetoMu_eta", &vetoMu_eta, &b_vetoMu_eta);
    fChain->SetBranchAddress("vetoMu_phi", &vetoMu_phi, &b_vetoMu_phi);
    fChain->SetBranchAddress("vetoMu_pt", &vetoMu_pt, &b_vetoMu_pt);
+
    Notify();
 }
 
