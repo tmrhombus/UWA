@@ -11,12 +11,10 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
       Float_t crossSec)
 {
  if (fChain == 0) return;
- std::cout<<"about to fChain->GetEntries();"<<std::endl;
  //Long64_t nrEntries = fChain->GetEntries();
  Long64_t nrEntries = fChain->GetEntriesFast();
  Long64_t nb = 0;
 
- std::cout<<"initializing wbb histograms"<<std::endl;
  // wbb
  TH1F *h_wbb_good_goodJ1_pt   = new TH1F("h_wbb_good_goodJ1_pt","",12,25,205); h_wbb_good_goodJ1_pt->Sumw2(); 
  TH1F *h_wbb_good_goodJ2_pt   = new TH1F("h_wbb_good_goodJ2_pt","",12,25,205); h_wbb_good_goodJ2_pt->Sumw2(); 
@@ -158,7 +156,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
  TH1F *h_wbb_qcd_qcdLep_eta_EMuDown = new TH1F("h_wbb_qcd_qcdLep_eta_EMuDown","",20,-3,5); h_wbb_qcd_qcdLep_eta_EMuDown->Sumw2(); 
  TH1F *h_wbb_qcd_qcdLep_phi_EMuDown = new TH1F("h_wbb_qcd_qcdLep_phi_EMuDown","",35,-3.4033,5.7594); h_wbb_qcd_qcdLep_phi_EMuDown->Sumw2(); 
                                                 
- std::cout<<"initializing tt1m1e histograms"<<std::endl;
  // tt1m1e
  TH1F *h_tt1m1e_good_goodJ1_pt   = new TH1F("h_tt1m1e_good_goodJ1_pt","",12,25,205); h_tt1m1e_good_goodJ1_pt->Sumw2(); 
  TH1F *h_tt1m1e_good_goodJ2_pt   = new TH1F("h_tt1m1e_good_goodJ2_pt","",12,25,205); h_tt1m1e_good_goodJ2_pt->Sumw2(); 
@@ -300,7 +297,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
  TH1F *h_tt1m1e_qcd_qcdLep_eta_EMuDown = new TH1F("h_tt1m1e_qcd_qcdLep_eta_EMuDown","",20,-3,5); h_tt1m1e_qcd_qcdLep_eta_EMuDown->Sumw2(); 
  TH1F *h_tt1m1e_qcd_qcdLep_phi_EMuDown = new TH1F("h_tt1m1e_qcd_qcdLep_phi_EMuDown","",35,-3.4033,5.7594); h_tt1m1e_qcd_qcdLep_phi_EMuDown->Sumw2(); 
                                                 
- std::cout<<"initializing tt3j histograms"<<std::endl;
  // tt3j
  TH1F *h_tt3j_good_goodJ1_pt   = new TH1F("h_tt3j_good_goodJ1_pt","",12,25,205); h_tt3j_good_goodJ1_pt->Sumw2(); 
  TH1F *h_tt3j_good_goodJ2_pt   = new TH1F("h_tt3j_good_goodJ2_pt","",12,25,205); h_tt3j_good_goodJ2_pt->Sumw2(); 
@@ -442,7 +438,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
  TH1F *h_tt3j_qcd_qcdLep_eta_EMuDown = new TH1F("h_tt3j_qcd_qcdLep_eta_EMuDown","",20,-3,5); h_tt3j_qcd_qcdLep_eta_EMuDown->Sumw2(); 
  TH1F *h_tt3j_qcd_qcdLep_phi_EMuDown = new TH1F("h_tt3j_qcd_qcdLep_phi_EMuDown","",35,-3.4033,5.7594); h_tt3j_qcd_qcdLep_phi_EMuDown->Sumw2(); 
                                                 
- std::cout<<"initializing wjj histograms"<<std::endl;
  // wjj
  TH1F *h_wjj_good_goodJ1_pt   = new TH1F("h_wjj_good_goodJ1_pt","",12,25,205); h_wjj_good_goodJ1_pt->Sumw2(); 
  TH1F *h_wjj_good_goodJ2_pt   = new TH1F("h_wjj_good_goodJ2_pt","",12,25,205); h_wjj_good_goodJ2_pt->Sumw2(); 
@@ -472,7 +467,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
  TH1F *h_wjj_qcd_qcdLep_eta = new TH1F("h_wjj_qcd_qcdLep_eta","",20,-3,5); h_wjj_qcd_qcdLep_eta->Sumw2(); 
  TH1F *h_wjj_qcd_qcdLep_phi = new TH1F("h_wjj_qcd_qcdLep_phi","",35,-3.4033,5.7594); h_wjj_qcd_qcdLep_phi->Sumw2(); 
                                                 
- std::cout<<"initializing stt histograms"<<std::endl;
  // stt
  TH1F *h_stt_good_goodJ1_pt   = new TH1F("h_stt_good_goodJ1_pt","",12,25,205); h_stt_good_goodJ1_pt->Sumw2(); 
  TH1F *h_stt_good_goodJ2_pt   = new TH1F("h_stt_good_goodJ2_pt","",12,25,205); h_stt_good_goodJ2_pt->Sumw2(); 
@@ -502,7 +496,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
  TH1F *h_stt_qcd_qcdLep_eta = new TH1F("h_stt_qcd_qcdLep_eta","",20,-3,5); h_stt_qcd_qcdLep_eta->Sumw2(); 
  TH1F *h_stt_qcd_qcdLep_phi = new TH1F("h_stt_qcd_qcdLep_phi","",35,-3.4033,5.7594); h_stt_qcd_qcdLep_phi->Sumw2(); 
                                                 
- std::cout<<"initializing dyjj histograms"<<std::endl;
  // dyjj
  TH1F *h_dyjj_good_goodJ1_pt   = new TH1F("h_dyjj_good_goodJ1_pt","",12,25,205); h_dyjj_good_goodJ1_pt->Sumw2(); 
  TH1F *h_dyjj_good_goodJ2_pt   = new TH1F("h_dyjj_good_goodJ2_pt","",12,25,205); h_dyjj_good_goodJ2_pt->Sumw2(); 
@@ -536,7 +529,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
  TH1F *h_dyjj_qcd_qcdLep2_eta = new TH1F("h_dyjj_qcd_qcdLep2_eta","",20,-3,5); h_dyjj_qcd_qcdLep2_eta->Sumw2(); 
  TH1F *h_dyjj_qcd_qcdLep2_phi = new TH1F("h_dyjj_qcd_qcdLep2_phi","",35,-3.4033,5.7594); h_dyjj_qcd_qcdLep2_phi->Sumw2(); 
 
- std::cout<<"initializing dybb histograms"<<std::endl;
  // dybb
  TH1F *h_dybb_good_goodJ1_pt   = new TH1F("h_dybb_good_goodJ1_pt","",12,25,205); h_dybb_good_goodJ1_pt->Sumw2(); 
  TH1F *h_dybb_good_goodJ2_pt   = new TH1F("h_dybb_good_goodJ2_pt","",12,25,205); h_dybb_good_goodJ2_pt->Sumw2(); 
@@ -570,10 +562,10 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
  TH1F *h_dybb_qcd_qcdLep2_eta = new TH1F("h_dybb_qcd_qcdLep2_eta","",20,-3,5); h_dybb_qcd_qcdLep2_eta->Sumw2(); 
  TH1F *h_dybb_qcd_qcdLep2_phi = new TH1F("h_dybb_qcd_qcdLep2_phi","",35,-3.4033,5.7594); h_dybb_qcd_qcdLep2_phi->Sumw2(); 
 
- std::cout<<"Nr. Entries: "<<nrEntries<<std::endl;
+ std::cout<<"    Nr. Entries: "<<nrEntries<<std::endl;
  for (Long64_t jentry=0; jentry<nrEntries;jentry++) {
-  std::cout<<" entry "<<jentry<<std::endl;
-  //if(jentry%500000==0) std::cout<<" entry "<<jentry<<std::endl;
+  //std::cout<<" entry "<<jentry<<std::endl;
+  if(jentry%500000==0) std::cout<<"    entry "<<jentry<<std::endl;
   Long64_t ientry = LoadTree(jentry);
   if (ientry < 0) break;
   nb = fChain->GetEntry(jentry);
@@ -688,14 +680,35 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
   SF_CSVreweight = goodJ1_CSVreweight * goodJ2_CSVreweight;
 
   // Decide which filters our event passes
-  // wbb Selection
+//
+//  // wjj Selection
+//
+//  if( isMu ){
+//  }
+//  else {
+//  }
+//  // total weight
+//  if( isMC ){
+//  }
+//  else{
+//   weight_good = 1.; 
+//   weight_qcd =  1.; 
+//  }
+//
+  // wbb, wjj Selection
   Bool_t pass_wbb_good=kFALSE;
   Bool_t pass_wbb_qcd=kFALSE;
+  Bool_t pass_wjj_good=kFALSE;
+  Bool_t pass_wjj_qcd=kFALSE;
 
   if( isMu ){
-   if( oneGoodMuon && exactly2goodBJs ){ 
-    pass_wbb_good=kTRUE; 
-    nrEntries_wbb_good_postcut++;
+   if( oneGoodMuon && exactly2goodJs ){ 
+    pass_wjj_good=kTRUE; 
+    nrEntries_wjj_good_postcut++;
+    if ( exactly2goodBJs ){
+     pass_wbb_good=kTRUE; 
+     nrEntries_wbb_good_postcut++;
+    }
     mt_good = mt_goodMuon;
     if( shift=="JESUp" ) { mt_good = mt_goodMuon_jesUp; }
     if( shift=="JESDown" ) { mt_good = mt_goodMuon_jesDn; }
@@ -712,9 +725,13 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
      SF_wbb_good_IDIsoHLT_errDn = SF_wbb_good_IDIsoHLT - SF_goodMu_IDIsoHLT_errDn->at(0);
     }
    }
-   if( oneQCDMuon && exactly2goodBJs ){ 
-    pass_wbb_qcd=kTRUE; 
-    nrEntries_wbb_qcd_postcut++;
+   if( oneQCDMuon && exactly2goodJs ){ 
+    pass_wjj_qcd=kTRUE; 
+    nrEntries_wjj_qcd_postcut++;
+    if( exactly2goodBJs ){
+     pass_wbb_qcd=kTRUE; 
+     nrEntries_wbb_qcd_postcut++;
+    }
     mt_qcd = mt_qcdMuon;
     if( shift=="JESUp" ) { mt_qcd = mt_qcdMuon_jesUp; }
     if( shift=="JESDown" ) { mt_qcd = mt_qcdMuon_jesDn; }
@@ -733,9 +750,13 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
    }
   }
   else {
-   if( oneGoodElectron && exactly2goodBJs ){ 
-    pass_wbb_good=kTRUE; 
-    nrEntries_wbb_good_postcut++;
+   if( oneGoodElectron && exactly2goodJs ){ 
+    pass_wjj_good=kTRUE; 
+    nrEntries_wjj_good_postcut++;
+    if( exactly2goodBJs ){
+     pass_wbb_good=kTRUE; 
+     nrEntries_wbb_good_postcut++;
+    }
     mt_good = mt_goodElectron;
     if( shift=="JESUp" ) { mt_good = mt_goodElectron_jesUp; }
     if( shift=="JESDown" ) { mt_good = mt_goodElectron_jesDn; }
@@ -752,9 +773,13 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
      SF_wbb_good_IDIsoHLT_errDn = SF_wbb_good_IDIsoHLT - SF_goodEle_IDIsoHLT_errDn->at(0);
     }
    }
-   if( oneQCDElectron && exactly2goodBJs ){ 
-    pass_wbb_qcd=kTRUE; 
-    nrEntries_wbb_qcd_postcut++;
+   if( oneQCDElectron && exactly2goodJs ){ 
+    pass_wjj_qcd=kTRUE; 
+    nrEntries_wjj_qcd_postcut++;
+    if( exactly2goodBJs ){
+     pass_wbb_qcd=kTRUE; 
+     nrEntries_wbb_qcd_postcut++;
+    }
     mt_qcd = mt_qcdElectron;
     if( shift=="JESUp" ) { mt_qcd = mt_qcdElectron_jesUp; }
     if( shift=="JESDown" ) { mt_qcd = mt_qcdElectron_jesDn; }
@@ -774,6 +799,8 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
   }
   // total weight
   if( isMC ){
+   weight_good_light = SF_wjj_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
+   weight_qcd_light =  SF_wjj_qcd_IDIsoHLT  * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
    weight_good =       SF_wbb_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec * SF_top2BJs / nrEvents;
    weight_good_CSVUp = SF_wbb_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec * SF_top2BJs_errUp / nrEvents;
    weight_good_CSVDn = SF_wbb_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec * SF_top2BJs_errDn / nrEvents;
@@ -786,6 +813,8 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
    weight_qcd_EMuDn = SF_wbb_qcd_IDIsoHLT_errDn * SF_lumiWeightPU * luminosity * crossSec * SF_top2BJs / nrEvents;
   }
   else{
+   weight_good_light = 1.;
+   weight_qcd_light =  1.;
    weight_good =       1.; 
    weight_good_CSVUp = 1.;
    weight_good_CSVDn = 1.;
@@ -798,6 +827,25 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
    weight_qcd_EMuDn = 1.;
   }
 
+  if(pass_wjj_good){
+   h_wjj_good_goodJ1_pt->Fill(goodJ1_pt,weight_good_light);
+   h_wjj_good_goodJ2_pt->Fill(goodJ2_pt,weight_good_light);
+   h_wjj_good_goodJ1_eta->Fill(goodJ1_eta,weight_good_light);
+   h_wjj_good_goodJ2_eta->Fill(goodJ2_eta,weight_good_light);
+   h_wjj_good_goodJ1_phi->Fill(goodJ1_phi,weight_good_light);
+   h_wjj_good_goodJ2_phi->Fill(goodJ2_phi,weight_good_light);
+   h_wjj_good_goodJ1_CSV->Fill(goodJ1_CSV,weight_good_light);
+   h_wjj_good_goodJ2_CSV->Fill(goodJ2_CSV,weight_good_light);
+   dRgoodJ1J2 = -1.;
+    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
+    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
+    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
+   h_wjj_good_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_good_light);
+   h_wjj_good_mt->Fill(mt_good,weight_good_light);
+   h_wjj_good_goodLep_pt->Fill(lep_good_pt,weight_good_light);
+   h_wjj_good_goodLep_eta->Fill(lep_good_eta,weight_good_light);
+   h_wjj_good_goodLep_phi->Fill(lep_good_phi,weight_good_light);
+  } 
   if(pass_wbb_good){
    h_wbb_good_goodJ1_pt->Fill(goodJ1_pt,weight_good);
    h_wbb_good_goodJ2_pt->Fill(goodJ2_pt,weight_good);
@@ -874,6 +922,25 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
     h_wbb_good_goodLep_eta_EMuDown->Fill(lep_good_eta,weight_good_EMuDn);
     h_wbb_good_goodLep_phi_EMuDown->Fill(lep_good_phi,weight_good_EMuDn);
    }
+  } 
+  if(pass_wjj_qcd){
+   h_wjj_qcd_goodJ1_pt->Fill(goodJ1_pt,weight_qcd_light);
+   h_wjj_qcd_goodJ2_pt->Fill(goodJ2_pt,weight_qcd_light);
+   h_wjj_qcd_goodJ1_eta->Fill(goodJ1_eta,weight_qcd_light);
+   h_wjj_qcd_goodJ2_eta->Fill(goodJ2_eta,weight_qcd_light);
+   h_wjj_qcd_goodJ1_phi->Fill(goodJ1_phi,weight_qcd_light);
+   h_wjj_qcd_goodJ2_phi->Fill(goodJ2_phi,weight_qcd_light);
+   h_wjj_qcd_goodJ1_CSV->Fill(goodJ1_CSV,weight_qcd_light);
+   h_wjj_qcd_goodJ2_CSV->Fill(goodJ2_CSV,weight_qcd_light);
+   dRgoodJ1J2 = -1.;
+    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
+    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
+    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
+   h_wjj_qcd_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_qcd_light);
+   h_wjj_qcd_mt->Fill(mt_qcd,weight_qcd_light);
+   h_wjj_qcd_qcdLep_pt->Fill(lep_qcd_pt,weight_qcd_light);
+   h_wjj_qcd_qcdLep_eta->Fill(lep_qcd_eta,weight_qcd_light);
+   h_wjj_qcd_qcdLep_phi->Fill(lep_qcd_phi,weight_qcd_light);
   } 
   if(pass_wbb_qcd){
    h_wbb_qcd_goodJ1_pt->Fill(goodJ1_pt,weight_qcd);
@@ -1511,107 +1578,6 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
    }
   } 
 
-  // wjj Selection
-  Bool_t pass_wjj_good=kFALSE;
-  Bool_t pass_wjj_qcd=kFALSE;
-
-  if( isMu ){
-   if( oneGoodMuon && exactly2goodJs ){ 
-    pass_wjj_good=kTRUE; 
-    nrEntries_wjj_good_postcut++;
-    mt_good = mt_goodMuon;
-    lep_good_pt = goodMu_pt_vec->at(0);
-    lep_good_eta = goodMu_eta_vec->at(0);
-    lep_good_phi = goodMu_phi_vec->at(0);
-    if( isMC ){
-     SF_wjj_good_IDIsoHLT = SF_goodMu_IDIsoHLT->at(0);
-    }
-   }
-   if( oneQCDMuon && exactly2goodJs ){ 
-    pass_wjj_qcd=kTRUE; 
-    nrEntries_wjj_qcd_postcut++;
-    mt_qcd = mt_qcdMuon;
-    lep_qcd_pt = qcdMu_pt;
-    lep_qcd_eta = qcdMu_eta;
-    lep_qcd_phi = qcdMu_phi;
-    if( isMC ){
-     SF_wjj_qcd_IDIsoHLT = SF_qcdMu_IDIso;
-    }
-   }
-  }
-  else {
-   if( oneGoodElectron && exactly2goodJs ){ 
-    pass_wjj_good=kTRUE; 
-    nrEntries_wjj_good_postcut++;
-    mt_good = mt_goodElectron;
-    lep_good_pt = goodEle_pt_vec->at(0);
-    lep_good_eta = goodEle_eta_vec->at(0);
-    lep_good_phi = goodEle_phi_vec->at(0);
-    if( isMC ){
-     SF_wjj_good_IDIsoHLT = SF_goodEle_IDIsoHLT->at(0);
-    }
-   }
-   if( oneQCDElectron && exactly2goodJs ){ 
-    pass_wjj_qcd=kTRUE; 
-    nrEntries_wjj_qcd_postcut++;
-    mt_qcd = mt_qcdElectron;
-    lep_qcd_pt = qcdEle_pt;
-    lep_qcd_eta = qcdEle_eta;
-    lep_qcd_phi = qcdEle_phi;
-    if( isMC ){
-     SF_wjj_qcd_IDIsoHLT = SF_qcdEle_IDIso;
-    }
-   }
-  }
-  // total weight
-  if( isMC ){
-   weight_good = SF_wjj_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
-   weight_qcd =  SF_wjj_qcd_IDIsoHLT  * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
-  }
-  else{
-   weight_good = 1.; 
-   weight_qcd =  1.; 
-  }
-
-  if(pass_wjj_good){
-   h_wjj_good_goodJ1_pt->Fill(goodJ1_pt,weight_good);
-   h_wjj_good_goodJ2_pt->Fill(goodJ2_pt,weight_good);
-   h_wjj_good_goodJ1_eta->Fill(goodJ1_eta,weight_good);
-   h_wjj_good_goodJ2_eta->Fill(goodJ2_eta,weight_good);
-   h_wjj_good_goodJ1_phi->Fill(goodJ1_phi,weight_good);
-   h_wjj_good_goodJ2_phi->Fill(goodJ2_phi,weight_good);
-   h_wjj_good_goodJ1_CSV->Fill(goodJ1_CSV,weight_good);
-   h_wjj_good_goodJ2_CSV->Fill(goodJ2_CSV,weight_good);
-   dRgoodJ1J2 = -1.;
-    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
-    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
-    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
-   h_wjj_good_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_good);
-   h_wjj_good_mt->Fill(mt_good,weight_good);
-   h_wjj_good_goodLep_pt->Fill(lep_good_pt,weight_good);
-   h_wjj_good_goodLep_eta->Fill(lep_good_eta,weight_good);
-   h_wjj_good_goodLep_phi->Fill(lep_good_phi,weight_good);
-  } 
-  if(pass_wjj_qcd){
-   h_wjj_qcd_goodJ1_pt->Fill(goodJ1_pt,weight_qcd);
-   h_wjj_qcd_goodJ2_pt->Fill(goodJ2_pt,weight_qcd);
-   h_wjj_qcd_goodJ1_eta->Fill(goodJ1_eta,weight_qcd);
-   h_wjj_qcd_goodJ2_eta->Fill(goodJ2_eta,weight_qcd);
-   h_wjj_qcd_goodJ1_phi->Fill(goodJ1_phi,weight_qcd);
-   h_wjj_qcd_goodJ2_phi->Fill(goodJ2_phi,weight_qcd);
-   h_wjj_qcd_goodJ1_CSV->Fill(goodJ1_CSV,weight_qcd);
-   h_wjj_qcd_goodJ2_CSV->Fill(goodJ2_CSV,weight_qcd);
-   dRgoodJ1J2 = -1.;
-    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
-    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
-    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
-   h_wjj_qcd_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_qcd);
-   h_wjj_qcd_mt->Fill(mt_qcd,weight_qcd);
-   h_wjj_qcd_qcdLep_pt->Fill(lep_qcd_pt,weight_qcd);
-   h_wjj_qcd_qcdLep_eta->Fill(lep_qcd_eta,weight_qcd);
-   h_wjj_qcd_qcdLep_phi->Fill(lep_qcd_phi,weight_qcd);
-  } 
-
   // stt Selection
   Bool_t pass_stt_good=kFALSE;
   Bool_t pass_stt_qcd=kFALSE;
@@ -1713,127 +1679,19 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
    h_stt_qcd_qcdLep_phi->Fill(lep_qcd_phi,weight_qcd);
   } 
 
-  // dyjj Selection
+  // dyjj, dybb Selection
   Bool_t pass_dyjj_good=kFALSE;
   Bool_t pass_dyjj_qcd=kFALSE;
- 
+  Bool_t pass_dybb_good=kFALSE;
+  Bool_t pass_dybb_qcd=kFALSE;
   if( isMu ){
    if( twoGoodMuons && exactly2goodJs ){ 
     pass_dyjj_good=kTRUE; 
     nrEntries_dyjj_good_postcut++;
-    lep1_good_pt = goodMu_pt_vec->at(0);
-    lep1_good_eta = goodMu_eta_vec->at(0);
-    lep1_good_phi = goodMu_phi_vec->at(0);
-    lep2_good_pt = goodMu_pt_vec->at(1);
-    lep2_good_eta = goodMu_eta_vec->at(1);
-    lep2_good_phi = goodMu_phi_vec->at(1);
-    if( isMC ){
-     SF_dyjj_good_IDIsoHLT = SF_goodMu_IDIsoHLT->at(0) * SF_goodMu_IDIsoHLT->at(1);
-    }
-   }
-   if( twoQCDMuons && exactly2goodJs ){ 
-    pass_dyjj_qcd=kTRUE; 
-    nrEntries_dyjj_qcd_postcut++;
-    lep1_qcd_pt = qcdMu_pt;
-    lep1_qcd_eta = qcdMu_eta;
-    lep1_qcd_phi = qcdMu_phi;
-    lep2_qcd_pt = goodMu_pt_vec->at(1);
-    lep2_qcd_eta = goodMu_eta_vec->at(1);
-    lep2_qcd_phi = goodMu_phi_vec->at(1);
-    if( isMC ){
-     SF_dyjj_qcd_IDIsoHLT = SF_qcdMu_IDIso * SF_goodMu_IDIsoHLT->at(0); // * SF_goodMu_IDIso->at(0);
-    }
-   }
-  }
-  else {
-   if( twoGoodElectrons && exactly2goodJs ){ 
-    pass_dyjj_good=kTRUE; 
-    nrEntries_dyjj_good_postcut++;
-    lep1_good_pt = goodEle_pt_vec->at(0);
-    lep1_good_eta = goodEle_eta_vec->at(0);
-    lep1_good_phi = goodEle_phi_vec->at(0);
-    lep2_good_pt = goodEle_pt_vec->at(1);
-    lep2_good_eta = goodEle_eta_vec->at(1);
-    lep2_good_phi = goodEle_phi_vec->at(1);
-    if( isMC ){
-     SF_dyjj_good_IDIsoHLT = SF_goodEle_IDIsoHLT->at(0) * SF_goodEle_IDIsoHLT->at(1); // * SF_goodEle_IDIso->at(1);
-    }
-   }
-   if( twoQCDElectrons && exactly2goodJs ){ 
-    pass_dyjj_qcd=kTRUE; 
-    nrEntries_dyjj_qcd_postcut++;
-    lep1_qcd_pt = qcdEle_pt;
-    lep1_qcd_eta = qcdEle_eta;
-    lep1_qcd_phi = qcdEle_phi;
-    lep2_qcd_pt = goodEle_pt_vec->at(1);
-    lep2_qcd_eta = goodEle_eta_vec->at(1);
-    lep2_qcd_phi = goodEle_phi_vec->at(1);
-    if( isMC ){
-     SF_dyjj_qcd_IDIsoHLT = SF_qcdEle_IDIso * SF_goodEle_IDIsoHLT->at(0); // * SF_goodEle_IDIso->at(0);
-    }
-   }
-  }
-  // total weight
-  if( isMC ){
-   weight_good = SF_dyjj_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
-   weight_qcd =  SF_dyjj_qcd_IDIsoHLT  * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
-  }
-  else{
-   weight_good = 1.; 
-   weight_qcd =  1.; 
-  }
-
-  if(pass_dyjj_good){
-   h_dyjj_good_goodJ1_pt->Fill(goodJ1_pt,weight_good);
-   h_dyjj_good_goodJ2_pt->Fill(goodJ2_pt,weight_good);
-   h_dyjj_good_goodJ1_eta->Fill(goodJ1_eta,weight_good);
-   h_dyjj_good_goodJ2_eta->Fill(goodJ2_eta,weight_good);
-   h_dyjj_good_goodJ1_phi->Fill(goodJ1_phi,weight_good);
-   h_dyjj_good_goodJ2_phi->Fill(goodJ2_phi,weight_good);
-   h_dyjj_good_goodJ1_CSV->Fill(goodJ1_CSV,weight_good);
-   h_dyjj_good_goodJ2_CSV->Fill(goodJ2_CSV,weight_good);
-   dRgoodJ1J2 = -1.;
-    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
-    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
-    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
-   h_dyjj_good_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_good);
-   h_dyjj_good_goodLep1_pt->Fill(lep1_good_pt,weight_good);
-   h_dyjj_good_goodLep1_eta->Fill(lep1_good_eta,weight_good);
-   h_dyjj_good_goodLep1_phi->Fill(lep1_good_phi,weight_good);
-   h_dyjj_good_goodLep2_pt->Fill(lep2_good_pt,weight_good);
-   h_dyjj_good_goodLep2_eta->Fill(lep2_good_eta,weight_good);
-   h_dyjj_good_goodLep2_phi->Fill(lep2_good_phi,weight_good);
-  } 
-  if(pass_dyjj_qcd){
-   h_dyjj_qcd_goodJ1_pt->Fill(goodJ1_pt,weight_qcd);
-   h_dyjj_qcd_goodJ2_pt->Fill(goodJ2_pt,weight_qcd);
-   h_dyjj_qcd_goodJ1_eta->Fill(goodJ1_eta,weight_qcd);
-   h_dyjj_qcd_goodJ2_eta->Fill(goodJ2_eta,weight_qcd);
-   h_dyjj_qcd_goodJ1_phi->Fill(goodJ1_phi,weight_qcd);
-   h_dyjj_qcd_goodJ2_phi->Fill(goodJ2_phi,weight_qcd);
-   h_dyjj_qcd_goodJ1_CSV->Fill(goodJ1_CSV,weight_qcd);
-   h_dyjj_qcd_goodJ2_CSV->Fill(goodJ2_CSV,weight_qcd);
-   dRgoodJ1J2 = -1.;
-    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
-    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
-    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
-   h_dyjj_qcd_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_qcd);
-   h_dyjj_qcd_qcdLep1_pt->Fill(lep1_qcd_pt,weight_qcd);
-   h_dyjj_qcd_qcdLep1_eta->Fill(lep1_qcd_eta,weight_qcd);
-   h_dyjj_qcd_qcdLep1_phi->Fill(lep1_qcd_phi,weight_qcd);
-   h_dyjj_qcd_qcdLep2_pt->Fill(lep2_qcd_pt,weight_qcd);
-   h_dyjj_qcd_qcdLep2_eta->Fill(lep2_qcd_eta,weight_qcd);
-   h_dyjj_qcd_qcdLep2_phi->Fill(lep2_qcd_phi,weight_qcd);
-  } 
-
-  // dybb Selection
-  Bool_t pass_dybb_good=kFALSE;
-  Bool_t pass_dybb_qcd=kFALSE;
- 
-  if( isMu ){
-   if( twoGoodMuons && exactly2goodBJs ){ 
+    if( exactly2goodBJs ){
     pass_dybb_good=kTRUE; 
     nrEntries_dybb_good_postcut++;
+    }
     lep1_good_pt = goodMu_pt_vec->at(0);
     lep1_good_eta = goodMu_eta_vec->at(0);
     lep1_good_phi = goodMu_phi_vec->at(0);
@@ -1844,24 +1702,32 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
      SF_dybb_good_IDIsoHLT = SF_goodMu_IDIsoHLT->at(0) * SF_goodMu_IDIsoHLT->at(1);
     }
    }
-   if( twoQCDMuons && exactly2goodBJs ){ 
-    pass_dybb_qcd=kTRUE; 
-    nrEntries_dybb_qcd_postcut++;
+   if( twoQCDMuons && exactly2goodJs ){ 
+    pass_dyjj_qcd=kTRUE; 
+    nrEntries_dyjj_qcd_postcut++;
+    if( exactly2goodBJs ){ 
+     pass_dybb_qcd=kTRUE; 
+     nrEntries_dybb_qcd_postcut++;
+    }
     lep1_qcd_pt = qcdMu_pt;
     lep1_qcd_eta = qcdMu_eta;
     lep1_qcd_phi = qcdMu_phi;
-    lep2_qcd_pt = goodMu_pt_vec->at(1);
-    lep2_qcd_eta = goodMu_eta_vec->at(1);
-    lep2_qcd_phi = goodMu_phi_vec->at(1);
+    lep2_qcd_pt = goodMu_pt_vec->at(0);
+    lep2_qcd_eta = goodMu_eta_vec->at(0);
+    lep2_qcd_phi = goodMu_phi_vec->at(0);
     if( isMC ){
      SF_dybb_qcd_IDIsoHLT = SF_qcdMu_IDIso * SF_goodMu_IDIsoHLT->at(0); // * SF_goodMu_IDIso->at(0);
     }
    }
   }
   else {
-   if( twoGoodElectrons && exactly2goodBJs ){ 
-    pass_dybb_good=kTRUE; 
-    nrEntries_dybb_good_postcut++;
+   if( twoGoodElectrons && exactly2goodJs ){ 
+    pass_dyjj_good=kTRUE; 
+    nrEntries_dyjj_good_postcut++;
+    if( exactly2goodBJs ){ 
+     pass_dybb_good=kTRUE; 
+     nrEntries_dybb_good_postcut++;
+    }
     lep1_good_pt = goodEle_pt_vec->at(0);
     lep1_good_eta = goodEle_eta_vec->at(0);
     lep1_good_phi = goodEle_phi_vec->at(0);
@@ -1872,15 +1738,19 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
      SF_dybb_good_IDIsoHLT = SF_goodEle_IDIsoHLT->at(0) * SF_goodEle_IDIsoHLT->at(1); // * SF_goodEle_IDIso->at(1);
     }
    }
-   if( twoQCDElectrons && exactly2goodBJs ){ 
-    pass_dybb_qcd=kTRUE; 
-    nrEntries_dybb_qcd_postcut++;
+   if( twoQCDElectrons && exactly2goodJs ){ 
+    pass_dyjj_qcd=kTRUE; 
+    nrEntries_dyjj_qcd_postcut++;
+    if( twoQCDElectrons && exactly2goodBJs ){ 
+     pass_dybb_qcd=kTRUE; 
+     nrEntries_dybb_qcd_postcut++;
+    }
     lep1_qcd_pt = qcdEle_pt;
     lep1_qcd_eta = qcdEle_eta;
     lep1_qcd_phi = qcdEle_phi;
-    lep2_qcd_pt = goodEle_pt_vec->at(1);
-    lep2_qcd_eta = goodEle_eta_vec->at(1);
-    lep2_qcd_phi = goodEle_phi_vec->at(1);
+    lep2_qcd_pt = goodEle_pt_vec->at(0);
+    lep2_qcd_eta = goodEle_eta_vec->at(0);
+    lep2_qcd_phi = goodEle_phi_vec->at(0);
     if( isMC ){
      SF_dybb_qcd_IDIsoHLT = SF_qcdEle_IDIso * SF_goodEle_IDIsoHLT->at(0); // * SF_goodEle_IDIso->at(0);
     }
@@ -1888,13 +1758,60 @@ void histoFiller::Loop(TString outfileName, Bool_t isMu, Bool_t isMC,
   }
   // total weight
   if( isMC ){
+   weight_good_light = SF_dybb_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
+   weight_qcd_light =  SF_dybb_qcd_IDIsoHLT  * SF_lumiWeightPU * luminosity * crossSec / nrEvents;
    weight_good = SF_dybb_good_IDIsoHLT * SF_lumiWeightPU * luminosity * crossSec * SF_top2BJs / nrEvents;
    weight_qcd =  SF_dybb_qcd_IDIsoHLT  * SF_lumiWeightPU * luminosity * crossSec * SF_top2BJs / nrEvents;
   }
   else{
+   weight_good_light = 1.;
+   weight_qcd_light =  1.;
    weight_good = 1.; 
    weight_qcd =  1.; 
   }
+
+  if(pass_dyjj_good){
+   h_dyjj_good_goodJ1_pt->Fill(goodJ1_pt,weight_good_light);
+   h_dyjj_good_goodJ2_pt->Fill(goodJ2_pt,weight_good_light);
+   h_dyjj_good_goodJ1_eta->Fill(goodJ1_eta,weight_good_light);
+   h_dyjj_good_goodJ2_eta->Fill(goodJ2_eta,weight_good_light);
+   h_dyjj_good_goodJ1_phi->Fill(goodJ1_phi,weight_good_light);
+   h_dyjj_good_goodJ2_phi->Fill(goodJ2_phi,weight_good_light);
+   h_dyjj_good_goodJ1_CSV->Fill(goodJ1_CSV,weight_good_light);
+   h_dyjj_good_goodJ2_CSV->Fill(goodJ2_CSV,weight_good_light);
+   dRgoodJ1J2 = -1.;
+    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
+    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
+    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
+   h_dyjj_good_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_good_light);
+   h_dyjj_good_goodLep1_pt->Fill(lep1_good_pt,weight_good_light);
+   h_dyjj_good_goodLep1_eta->Fill(lep1_good_eta,weight_good_light);
+   h_dyjj_good_goodLep1_phi->Fill(lep1_good_phi,weight_good_light);
+   h_dyjj_good_goodLep2_pt->Fill(lep2_good_pt,weight_good_light);
+   h_dyjj_good_goodLep2_eta->Fill(lep2_good_eta,weight_good_light);
+   h_dyjj_good_goodLep2_phi->Fill(lep2_good_phi,weight_good_light);
+  } 
+  if(pass_dyjj_qcd){
+   h_dyjj_qcd_goodJ1_pt->Fill(goodJ1_pt,weight_qcd_light);
+   h_dyjj_qcd_goodJ2_pt->Fill(goodJ2_pt,weight_qcd_light);
+   h_dyjj_qcd_goodJ1_eta->Fill(goodJ1_eta,weight_qcd_light);
+   h_dyjj_qcd_goodJ2_eta->Fill(goodJ2_eta,weight_qcd_light);
+   h_dyjj_qcd_goodJ1_phi->Fill(goodJ1_phi,weight_qcd_light);
+   h_dyjj_qcd_goodJ2_phi->Fill(goodJ2_phi,weight_qcd_light);
+   h_dyjj_qcd_goodJ1_CSV->Fill(goodJ1_CSV,weight_qcd_light);
+   h_dyjj_qcd_goodJ2_CSV->Fill(goodJ2_CSV,weight_qcd_light);
+   dRgoodJ1J2 = -1.;
+    dphiJJ = abs(goodJ1_phi - goodJ2_phi);
+    if( dphiJJ>3.1416 ){ dphiJJ-=6.2832; }
+    dRgoodJ1J2 = sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
+   h_dyjj_qcd_dRgoodJ1J2->Fill(dRgoodJ1J2,weight_qcd_light);
+   h_dyjj_qcd_qcdLep1_pt->Fill(lep1_qcd_pt,weight_qcd_light);
+   h_dyjj_qcd_qcdLep1_eta->Fill(lep1_qcd_eta,weight_qcd_light);
+   h_dyjj_qcd_qcdLep1_phi->Fill(lep1_qcd_phi,weight_qcd_light);
+   h_dyjj_qcd_qcdLep2_pt->Fill(lep2_qcd_pt,weight_qcd_light);
+   h_dyjj_qcd_qcdLep2_eta->Fill(lep2_qcd_eta,weight_qcd_light);
+   h_dyjj_qcd_qcdLep2_phi->Fill(lep2_qcd_phi,weight_qcd_light);
+  } 
 
   if(pass_dybb_good){
    h_dybb_good_goodJ1_pt->Fill(goodJ1_pt,weight_good);

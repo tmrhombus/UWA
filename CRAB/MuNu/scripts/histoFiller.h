@@ -45,6 +45,8 @@ public :
    Float_t SF_top2BJs_errUp;
    Float_t SF_top2BJs_errDn;
    Float_t SF_CSVreweight;
+   Float_t weight_good_light;
+   Float_t weight_qcd_light;
    Float_t weight_good;
    Float_t weight_good_CSVUp;
    Float_t weight_good_CSVDn;
@@ -215,12 +217,12 @@ public :
    Float_t         J4_eta_gen_NoNu;
    Float_t         J4_phi_gen_NoNu;
    Float_t         J4_pt_gen_NoNu;
-   vector<double>  *SF_goodEle_IDIsoHLT;
-   vector<double>  *SF_goodEle_IDIsoHLT_errDn;
-   vector<double>  *SF_goodEle_IDIsoHLT_errUp;
-   vector<double>  *SF_goodMu_IDIsoHLT;
-   vector<double>  *SF_goodMu_IDIsoHLT_errDn;
-   vector<double>  *SF_goodMu_IDIsoHLT_errUp;
+   std::vector<double>  *SF_goodEle_IDIsoHLT;
+   std::vector<double>  *SF_goodEle_IDIsoHLT_errDn;
+   std::vector<double>  *SF_goodEle_IDIsoHLT_errUp;
+   std::vector<double>  *SF_goodMu_IDIsoHLT;
+   std::vector<double>  *SF_goodMu_IDIsoHLT_errDn;
+   std::vector<double>  *SF_goodMu_IDIsoHLT_errUp;
    Float_t         SF_lumiWeightPU;
    Float_t         SF_qcdEle_IDIso;
    Float_t         SF_qcdEle_IDIsoHLT;
@@ -278,9 +280,9 @@ public :
    Float_t         bCandidatenJetAssociatedToBC;
    Float_t         bCandidatenJetAssociatedToBC1;
    Float_t         bCandidatenJetAssociatedToBC2;
-   vector<double>  *bHadronsEta;
-   vector<double>  *bHadronsPhi;
-   vector<double>  *bHadronsPt;
+   std::vector<double>  *bHadronsEta;
+   std::vector<double>  *bHadronsPhi;
+   std::vector<double>  *bHadronsPt;
    Float_t         fwdJ1_CSV;
    Float_t         fwdJ1_CSVreweight;
    Float_t         fwdJ1_SF_CSVM;
@@ -313,10 +315,10 @@ public :
    Int_t           genTs;
    Int_t           genUs;
    Int_t           genWs;
-   vector<double>  *goodEle_charge_vec;
-   vector<double>  *goodEle_eta_vec;
-   vector<double>  *goodEle_phi_vec;
-   vector<double>  *goodEle_pt_vec;
+   std::vector<double>  *goodEle_charge_vec;
+   std::vector<double>  *goodEle_eta_vec;
+   std::vector<double>  *goodEle_phi_vec;
+   std::vector<double>  *goodEle_pt_vec;
    Float_t         goodJ1_CSV;
    Float_t         goodJ1_CSVreweight;
    Float_t         goodJ1_SF_CSVM;
@@ -365,10 +367,10 @@ public :
    Float_t         goodJ4_partonFlavour;
    Float_t         goodJ4_phi;
    Float_t         goodJ4_pt;
-   vector<double>  *goodMu_charge_vec;
-   vector<double>  *goodMu_eta_vec;
-   vector<double>  *goodMu_phi_vec;
-   vector<double>  *goodMu_pt_vec;
+   std::vector<double>  *goodMu_charge_vec;
+   std::vector<double>  *goodMu_eta_vec;
+   std::vector<double>  *goodMu_phi_vec;
+   std::vector<double>  *goodMu_pt_vec;
    Float_t         met_eesDn_phi;
    Float_t         met_eesDn_pt;
    Float_t         met_eesUp_phi;
@@ -754,8 +756,8 @@ histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0)
       }
       TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/NouvelleYear_TTbar_semi-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
       dir->GetObject("eventTree",tree);
-      std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
-      std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
+      //std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
+      //std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
 
    }
    Init(tree, isMC);

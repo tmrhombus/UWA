@@ -28,6 +28,8 @@ void callHistoFiller()
  if(error!=0){std::cout<<"ERROR LOADING histoFiller.C"<<std::endl;}
  histoFiller m;
 
+ TChain *chainDataEle    = new TChain("electronEventTree/eventTree");
+ TChain *chainDataMu     = new TChain("muonEventTree/eventTree");
  TChain *theChain        = new TChain("muEleEventTree/eventTree");
  TChain *theChainJESUp   = new TChain("muEleEventTreeJetUp/eventTree");
  TChain *theChainJESDown = new TChain("muEleEventTreeJetDown/eventTree");
@@ -49,27 +51,30 @@ void callHistoFiller()
  UInt_t lumi;
  UInt_t nrEvents;
  Float_t crossSec;
+ UInt_t counter = 0;
+ Float_t nrLoops;
  MC.push_back("MC");
  //MC.push_back("Data"); // don't activate this, save data for another loop
- //Samples.push_back("TTbar_full");
+ Samples.push_back("Drell");
+ Samples.push_back("TTbar_full");
  Samples.push_back("TTbar_semi");
- //Samples.push_back("T_s");
- //Samples.push_back("T_t");
- //Samples.push_back("T_tW");
- //Samples.push_back("Tbar_s");
- //Samples.push_back("Tbar_t");
- //Samples.push_back("Tbar_tW");
- //Samples.push_back("WJets");
- //Samples.push_back("W1Jet");
- //Samples.push_back("W2Jet");
- //Samples.push_back("W3Jet");
- //Samples.push_back("W4Jet");
- //Samples.push_back("Wbb4F");
- //Samples.push_back("WW");
- //Samples.push_back("WZ");
- //Samples.push_back("ZZ"); 
+ Samples.push_back("T_s");
+ Samples.push_back("T_t");
+ Samples.push_back("T_tW");
+ Samples.push_back("Tbar_s");
+ Samples.push_back("Tbar_t");
+ Samples.push_back("Tbar_tW");
+ Samples.push_back("WJets");
+ Samples.push_back("W1Jet");
+ Samples.push_back("W2Jet");
+ Samples.push_back("W3Jet");
+ Samples.push_back("W4Jet");
+ Samples.push_back("Wbb4F");
+ Samples.push_back("WW");
+ Samples.push_back("WZ");
+ Samples.push_back("ZZ"); 
  EMu.push_back("ele");
- //EMu.push_back("mu");
+ EMu.push_back("mu");
  //Shifts.push_back("aucun");
  Shifts.push_back("SFs");
  Shifts.push_back("UESUp");
@@ -78,6 +83,7 @@ void callHistoFiller()
  Shifts.push_back("JESDown");
  Shifts.push_back("LESUp");
  Shifts.push_back("LESDown");
+ nrLoops = Samples.size() * EMu.size() * Shifts.size() ;
  for (std::vector<TString>::iterator mc = MC.begin(); mc != MC.end(); ++mc){
   std::cout<<"xxxxxx Starting New Loop: MC.mc = "<<*mc<<" xxxxxx"<<std::endl;
   if(mc->EqualTo("MC")) {isMC_ = kTRUE;} 
@@ -108,7 +114,6 @@ void callHistoFiller()
     theChainJESDown ->Add("/hdfs/store/user/tperry/NouvelleYear_TTbar_semi-MuEle-PATMC/*.root");
     theChainLESUp   ->Add("/hdfs/store/user/tperry/NouvelleYear_TTbar_semi-MuEle-PATMC/*.root");
     theChainLESDown ->Add("/hdfs/store/user/tperry/NouvelleYear_TTbar_semi-MuEle-PATMC/*.root");
-    std::cout<<"added TTbar_semi to chain"<<std::endl;
     //theChain->Add("/hdfs/store/user/tperry/NouvelleYear_TTbar_semi-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
    }
    if(sample->EqualTo("T_s")){
@@ -284,24 +289,9 @@ void callHistoFiller()
 
     for (std::vector<TString>::iterator shift = Shifts.begin(); shift != Shifts.end(); ++shift){
      std::cout<<"   xxxxxx Starting New Loop: Shifts.shift = "<<*shift<<" xxxxxx"<<std::endl;
-     //if     (shift->EqualTo("UESUp"))   { dirName="muEleEventTree"; }
-     //else if(shift->EqualTo("UESDown")) { dirName="muEleEventTree"; }
-     //else if(shift->EqualTo("JESUp"))   { dirName="muEleEventTreeJetUp"; }
-     //else if(shift->EqualTo("JESDown")) { dirName="muEleEventTreeJetDown"; }
-     //else if(shift->EqualTo("LESUp"))   { dirName="muEleEventTreeMuonUp"; }
-     //else if(shift->EqualTo("LESDown")) { dirName="muEleEventTreeMuonDown"; }
-     //else if(shift->EqualTo("SFs"))     { dirName="muEleEventTree"; }
-     //else                               { dirName="muEleEventTree"; }
-     
-     //std::cout<<"theChain->GetEntries() "<<theChain->GetEntries()<<std::endl;
-     //std::cout<<"theChain->GetFile()->GetPath() "<<theChain->GetFile()->GetPath()<<std::endl;
 
-     //TDirectory * dir = (TDirectory*)theChain->Get( theChain->GetFile()->GetPath()+dirName );
-     ////TDirectory * dir = (TDirectory*)theChain->GetFile()->Get( theChain->GetFile()->GetPath()+dirName );
-     ////TDirectory * dir = (TDirectory*)theChain->GetFile()->Get(dirName);
-     //dir->GetObject("eventTree",tree);
-     //std::cout<<dir->GetName()<<tree->GetName()<<std::endl;
-     //m.Init(tree, isMC_);         
+     counter++;
+     std::cout<<"   On Loop "<<counter<<" of "<< nrLoops<<std::endl;
 
      //  std::vector<TString> MC;      mc  {MC, Data}
      //  std::vector<TString> Samples; sample
@@ -324,189 +314,78 @@ void callHistoFiller()
      else                               { m.Init(theChain, isMC_); }
      
      TString name = *sample+"_"+*emu+*mc+"_"+*shift;
-     std::cout<<"     "<<name<<std::endl;
+     std::cout<<"    "<<name<<std::endl;
+
      if(sample->EqualTo("WJets")
       || sample->EqualTo("W1Jet")
       || sample->EqualTo("W2Jet")
       || sample->EqualTo("W3Jet") 
       || sample->EqualTo("W4Jet") ){
-      std::cout<<"     Inside W+Jets loop"<<std::endl;
+      std::cout<<"    Inside W+Jets loop"<<std::endl;
       m.Loop("../plots/"+name+"Wbb", isMu_, isMC_, *shift, 4, lumi, nrEvents, crossSec);
       m.Loop("../plots/"+name+"Wcc", isMu_, isMC_, *shift, 3, lumi, nrEvents, crossSec);
       m.Loop("../plots/"+name+"Wc",  isMu_, isMC_, *shift, 2, lumi, nrEvents, crossSec);
       m.Loop("../plots/"+name+"Wl",  isMu_, isMC_, *shift, 1, lumi, nrEvents, crossSec);
      }
-     m.Loop("../plots/"+name, isMu_, isMC_, *shift, 0, lumi, nrEvents, crossSec);
+     else{ m.Loop("../plots/"+name, isMu_, isMC_, *shift, 0, lumi, nrEvents, crossSec); }
+
+    }
+   }
+  }
+ }
+
+ Samples.clear();
+ Samples.push_back("Data"); 
+ MC.clear();
+ MC.push_back("Data");
+ Shifts.clear();
+ Shifts.push_back("aucun");
+ for (std::vector<TString>::iterator mc = MC.begin(); mc != MC.end(); ++mc){
+  std::cout<<"xxxxxx Starting New Loop: MC.mc = "<<*mc<<" xxxxxx"<<std::endl;
+  for (std::vector<TString>::iterator sample = Samples.begin(); sample != Samples.end(); ++sample){
+   std::cout<<"xxxxxx Starting New Loop: Samples.sample = "<<*sample<<" xxxxxx"<<std::endl;
+   for (std::vector<TString>::iterator emu = EMu.begin(); emu != EMu.end(); ++emu){
+    std::cout<<"xxxxxx Starting New Loop: EMu.emu = "<<*emu<<" xxxxxx"<<std::endl;
+    for (std::vector<TString>::iterator shift = Shifts.begin(); shift != Shifts.end(); ++shift){
+     std::cout<<"xxxxxx Starting New Loop: Shifts.shift = "<<*shift<<" xxxxxx"<<std::endl;
+
+      // Name and set isMU_, isMC_, 
+      TString name = *sample+"_"+*emu+*mc+"_"+*shift;
+      std::cout<<name<<std::endl;
+      if(emu->EqualTo("ele")){isMu_ = kFALSE; lumi = 19757;}
+      else if(emu->EqualTo("mu")) {isMu_ = kTRUE; lumi = 19778;}
+      else {std::cout<<*emu<<" is your value for 'emu'"<<std::endl; break;}
+      if(mc->EqualTo("MC")) {isMC_ = kTRUE;} 
+      else if(mc->EqualTo("Data")) {isMC_ = kFALSE;} 
+      else {std::cout<<*mc<<" is your value for 'mc'"<<std::endl; break;}
+
+      //  initialize the correct chain
+      if(emu->EqualTo("mu")){
+       chainDataMu->Reset();
+       nrEvents = 1;
+       crossSec = 1;
+       chainDataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataA_8TeVMu-Mu-PATData/*root");
+       chainDataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataB_8TeVMu-Mu-PATData/*root");
+       chainDataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataC_8TeVMu-Mu-PATData/*root");
+       chainDataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataD_8TeVMu-Mu-PATData/*root");
+       m.Init(chainDataMu,isMC_); 
+      }
+
+      if(emu->EqualTo("ele")){
+       chainDataEle->Reset();
+       nrEvents = 1;
+       crossSec = 1;
+       chainDataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataA_8TeVEle-Ele-PATData/*root");
+       chainDataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataB_8TeVEle-Ele-PATData/*root");
+       chainDataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataC_8TeVEle-Ele-PATData/*root");
+       chainDataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataD_8TeVEle-Ele-PATData/*root");
+       m.Init(chainDataEle,isMC_); 
+      }
+
+      m.Loop("../plots/"+name, isMu_, isMC_, *shift, 0, lumi, nrEvents, crossSec);
+
     }
    }
   }
  }
 }
-
-//      m.Loop("../plots/"+name, isMu_, isMC_, isQCD_, *cut, *shift, jType, lumi, nrEvents, crossSec);
-//
-//      chain_TTbar_full->Reset();
-//      chain_TTbar_full_JetUp->Reset(); 
-//      chain_TTbar_full_JetDown->Reset(); 
-//      chain_TTbar_full_LepUp->Reset(); 
-//      chain_TTbar_full_LepDown->Reset(); 
-//
-//      chain_TTbar_semi->Reset();           
-//      chain_TTbar_semi_JetUp->Reset();     
-//      chain_TTbar_semi_JetDown->Reset();   
-//      chain_TTbar_semi_LepUp->Reset();     
-//      chain_TTbar_semi_LepDown->Reset();   
-//
-//      chain_T_s->Reset();
-//      chain_T_s_JetUp->Reset(); 
-//      chain_T_s_JetDown->Reset(); 
-//      chain_T_s_LepUp->Reset(); 
-//      chain_T_s_LepDown->Reset(); 
-//
-//      chain_T_t->Reset();
-//      chain_T_t_JetUp->Reset(); 
-//      chain_T_t_JetDown->Reset(); 
-//      chain_T_t_LepUp->Reset(); 
-//      chain_T_t_LepDown->Reset(); 
-//
-//      chain_T_tW->Reset();
-//      chain_T_tW_JetUp->Reset(); 
-//      chain_T_tW_JetDown->Reset(); 
-//      chain_T_tW_LepUp->Reset(); 
-//      chain_T_tW_LepDown->Reset(); 
-//
-//      chain_Tbar_s->Reset();
-//      chain_Tbar_s_JetUp->Reset(); 
-//      chain_Tbar_s_JetDown->Reset(); 
-//      chain_Tbar_s_LepUp->Reset(); 
-//      chain_Tbar_s_LepDown->Reset(); 
-//
-//      chain_Tbar_t->Reset();
-//      chain_Tbar_t_JetUp->Reset(); 
-//      chain_Tbar_t_JetDown->Reset(); 
-//      chain_Tbar_t_LepUp->Reset(); 
-//      chain_Tbar_t_LepDown->Reset(); 
-//
-//      chain_Tbar_tW->Reset();
-//      chain_Tbar_tW_JetUp->Reset(); 
-//      chain_Tbar_tW_JetDown->Reset(); 
-//      chain_Tbar_tW_LepUp->Reset(); 
-//      chain_Tbar_tW_LepDown->Reset(); 
-//
-//      chain_W1Jet->Reset();
-//      chain_W1Jet_JetUp->Reset(); 
-//      chain_W1Jet_JetDown->Reset(); 
-//      chain_W1Jet_LepUp->Reset(); 
-//      chain_W1Jet_LepDown->Reset(); 
-//
-//      chain_W2Jet->Reset();
-//      chain_W2Jet_JetUp->Reset(); 
-//      chain_W2Jet_JetDown->Reset(); 
-//      chain_W2Jet_LepUp->Reset(); 
-//      chain_W2Jet_LepDown->Reset(); 
-//
-//      chain_W3Jet->Reset();
-//      chain_W3Jet_JetUp->Reset(); 
-//      chain_W3Jet_JetDown->Reset(); 
-//      chain_W3Jet_LepUp->Reset(); 
-//      chain_W3Jet_LepDown->Reset(); 
-//
-//      chain_W4Jet->Reset();
-//      chain_W4Jet_JetUp->Reset(); 
-//      chain_W4Jet_JetDown->Reset(); 
-//      chain_W4Jet_LepUp->Reset(); 
-//      chain_W4Jet_LepDown->Reset(); 
-//
-//      chain_WJets->Reset();
-//      chain_WJets_JetUp->Reset(); 
-//      chain_WJets_JetDown->Reset(); 
-//      chain_WJets_LepUp->Reset(); 
-//      chain_WJets_LepDown->Reset(); 
-//
-//      chain_Wbb4F->Reset();
-//      chain_Wbb4F_JetUp->Reset(); 
-//      chain_Wbb4F_JetDown->Reset(); 
-//      chain_Wbb4F_LepUp->Reset(); 
-//      chain_Wbb4F_LepDown->Reset(); 
-//
-//      chain_WW->Reset();
-//      chain_WW_JetUp->Reset(); 
-//      chain_WW_JetDown->Reset(); 
-//      chain_WW_LepUp->Reset(); 
-//      chain_WW_LepDown->Reset(); 
-//
-//      chain_WZ->Reset();
-//      chain_WZ_JetUp->Reset(); 
-//      chain_WZ_JetDown->Reset(); 
-//      chain_WZ_LepUp->Reset(); 
-//      chain_WZ_LepDown->Reset(); 
-//
-//      chain_ZZ->Reset();
-//      chain_ZZ_JetUp->Reset(); 
-//      chain_ZZ_JetDown->Reset(); 
-//      chain_ZZ_LepUp->Reset(); 
-//      chain_ZZ_LepDown->Reset(); 
-
-// Samples.clear();
-// Samples.push_back("Data");// [32]
-// MC.clear();
-// MC.push_back("Data");
-// Shifts.clear();
-// Shifts.push_back("aucun");
-// for (std::vector<TString>::iterator mc = MC.begin(); mc != MC.end(); ++mc){
-//  std::cout<<"xxxxxx Starting New Loop: MC.mc = "<<*mc<<" xxxxxx"<<std::endl;
-//  for (std::vector<TString>::iterator cut = Cuts.begin(); cut != Cuts.end(); ++cut){
-//   std::cout<<"xxxxxx Starting New Loop: Cuts.cut = "<<*cut<<" xxxxxx"<<std::endl;
-//    for (std::vector<TString>::iterator sample = Samples.begin(); sample != Samples.end(); ++sample){
-//     std::cout<<"xxxxxx Starting New Loop: Samples.sample = "<<*sample<<" xxxxxx"<<std::endl;
-//     for (std::vector<TString>::iterator emu = EMu.begin(); emu != EMu.end(); ++emu){
-//      std::cout<<"xxxxxx Starting New Loop: EMu.emu = "<<*emu<<" xxxxxx"<<std::endl;
-//      for (std::vector<TString>::iterator shift = Shifts.begin(); shift != Shifts.end(); ++shift){
-//       std::cout<<"xxxxxx Starting New Loop: Shifts.shift = "<<*shift<<" xxxxxx"<<std::endl;
-//
-//        // Name and set isMU_, isMC_, isQCD_ 
-//        TString name = *sample+"_"+*emu+*mc+*qcd+"_"+*cut+*shift;
-//        std::cout<<name<<std::endl;
-//        if(emu->EqualTo("ele")){isMu_ = kFALSE; lumi = 19757;}
-//        else if(emu->EqualTo("mu")) {isMu_ = kTRUE; lumi = 19778;}
-//        else {std::cout<<*emu<<" is your value for 'emu'"<<std::endl; break;}
-//        if(mc->EqualTo("MC")) {isMC_ = kTRUE;} 
-//        else if(mc->EqualTo("Data")) {isMC_ = kFALSE;} 
-//        else {std::cout<<*mc<<" is your value for 'mc'"<<std::endl; break;}
-//        if(qcd->EqualTo("good")) {isQCD_ = kFALSE;}
-//        else if(qcd->EqualTo("qcd")) {isQCD_ = kTRUE;}
-//        else {std::cout<<*qcd<<" is your value for 'qcd'"<<std::endl; break;}
-//        jType = 0; // for the timebeing, only change for WJets samples
-//
-//        //  initialize the correct chain
-//        if(emu->EqualTo("mu")){
-//         nrEvents = 1;
-//         crossSec = 1;
-//         chain_DataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataA_8TeVMu-Mu-PATData/*root");
-//         chain_DataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataB_8TeVMu-Mu-PATData/*root");
-//         chain_DataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataC_8TeVMu-Mu-PATData/*root");
-//         chain_DataMu->Add("/hdfs/store/user/tperry/NouvelleYear_DataD_8TeVMu-Mu-PATData/*root");
-//         m.Init(chain_DataMu,isMC_); 
-//        }
-//
-//        if(emu->EqualTo("ele")){
-//         nrEvents = 1;
-//         crossSec = 1;
-//         chain_DataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataA_8TeVEle-Ele-PATData/*root");
-//         chain_DataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataB_8TeVEle-Ele-PATData/*root");
-//         chain_DataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataC_8TeVEle-Ele-PATData/*root");
-//         chain_DataEle->Add("/hdfs/store/user/tperry/NouvelleYear_DataD_8TeVEle-Ele-PATData/*root");
-//         m.Init(chain_DataEle,isMC_); 
-//        }
-//
-//        m.Loop("../plots/"+name, isMu_, isMC_, isQCD_, *cut, *shift, jType, lumi, nrEvents, crossSec);
-//
-//        chain_DataEle->Reset();
-//        chain_DataMu->Reset();
-//      }
-//     }
-//    }
-//   }
-//  }
-// }
-//}
