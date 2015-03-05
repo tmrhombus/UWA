@@ -30,7 +30,7 @@ numfiles = file_len(list_of_files)
 with open(list_of_files) as f:
  for filename in f:
   if counter % 100 == 0:
-   print "Processed " + str(counter) + " out of " + str(numfiles) + " files"
+   print("Processed " + str(counter) + " out of " + str(numfiles) + " files")
   #get file of current ntuples from input directory
   filename = filename.rstrip()
   ntuple_file = ROOT.TFile(filename)
