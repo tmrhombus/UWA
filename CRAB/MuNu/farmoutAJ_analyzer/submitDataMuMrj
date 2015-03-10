@@ -1,0 +1,97 @@
+nohup: ignoring input
+DataA_8TeVMu
+LCG_GFAL_INFOSYS is not set
+Using grid catalog type: UNKNOWN
+Using grid catalog : (null)
+VO name: cms
+Checksum type: None
+Destination SE type: SRMv2
+Destination SRM Request Token: put:1286
+Source URL: file:/nfs_scratch/tperry/LTComing_2-DataA_8TeVMu_callHistoFiller/user_code.tgz
+File size: 68995221
+Source URL for copy: file:/nfs_scratch/tperry/LTComing_2-DataA_8TeVMu_callHistoFiller/user_code.tgz
+Destination URL: gsiftp://g14n17.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/LTComing_2-DataA_8TeVMu_callHistoFiller/user_code.tgz
+# streams: 1
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    268.88 KB/sec avg    268.88 KB/sec inst     61865984 bytes  12564.52 KB/sec avg  59392.00 KB/sec inst     61865984 bytes  12564.52 KB/sec avg  59392.00 KB/sec inst
+Transfer took 6020 ms
+Generating submit files in /nfs_scratch/tperry/LTComing_2-DataA_8TeVMu_callHistoFiller...
+.........
+Submitting job(s).........
+9 job(s) submitted to cluster 3000097.
+
+Your jobs should show up in ~6 minutes
+at the NEW job monitoring web page :
+    http://www.hep.wisc.edu/cms/comp/jobs/
+Jobs for LTComing_2 are created in /nfs_scratch/tperry/LTComing_2-DataA_8TeVMu_callHistoFiller
+DataB_8TeVMu
+LCG_GFAL_INFOSYS is not set
+Using grid catalog type: UNKNOWN
+Using grid catalog : (null)
+VO name: cms
+Checksum type: None
+Destination SE type: SRMv2
+Destination SRM Request Token: put:1317
+Source URL: file:/nfs_scratch/tperry/LTComing_2-DataB_8TeVMu_callHistoFiller/user_code.tgz
+File size: 68995221
+Source URL for copy: file:/nfs_scratch/tperry/LTComing_2-DataB_8TeVMu_callHistoFiller/user_code.tgz
+Destination URL: gsiftp://g22n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/LTComing_2-DataB_8TeVMu_callHistoFiller/user_code.tgz
+# streams: 1
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    389.87 KB/sec avg    389.87 KB/sec inst     41943040 bytes  10991.47 KB/sec avg  36305.45 KB/sec inst     41943040 bytes  10991.47 KB/sec avg  36305.45 KB/sec inst
+Transfer took 5010 ms
+Generating submit files in /nfs_scratch/tperry/LTComing_2-DataB_8TeVMu_callHistoFiller...
+...........................................
+Submitting job(s)...........................................
+43 job(s) submitted to cluster 3000098.
+
+Your jobs should show up in ~6 minutes
+at the NEW job monitoring web page :
+    http://www.hep.wisc.edu/cms/comp/jobs/
+Jobs for LTComing_2 are created in /nfs_scratch/tperry/LTComing_2-DataB_8TeVMu_callHistoFiller
+DataC_8TeVMu
+LCG_GFAL_INFOSYS is not set
+Using grid catalog type: UNKNOWN
+Using grid catalog : (null)
+VO name: cms
+Checksum type: None
+Destination SE type: SRMv2
+Destination SRM Request Token: put:1329
+Source URL: file:/nfs_scratch/tperry/LTComing_2-DataC_8TeVMu_callHistoFiller/user_code.tgz
+File size: 68995221
+Source URL for copy: file:/nfs_scratch/tperry/LTComing_2-DataC_8TeVMu_callHistoFiller/user_code.tgz
+Destination URL: gsiftp://g22n17.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/LTComing_2-DataC_8TeVMu_callHistoFiller/user_code.tgz
+# streams: 1
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    374.44 KB/sec avg    374.44 KB/sec inst     55574528 bytes  14531.69 KB/sec avg  53248.00 KB/sec inst     55574528 bytes  14531.69 KB/sec avg  53248.00 KB/sec inst
+Transfer took 5030 ms
+Generating submit files in /nfs_scratch/tperry/LTComing_2-DataC_8TeVMu_callHistoFiller...
+..............................................................
+Submitting job(s)..............................................................
+62 job(s) submitted to cluster 3000099.
+
+Your jobs should show up in ~6 minutes
+at the NEW job monitoring web page :
+    http://www.hep.wisc.edu/cms/comp/jobs/
+Jobs for LTComing_2 are created in /nfs_scratch/tperry/LTComing_2-DataC_8TeVMu_callHistoFiller
+DataD_8TeVMu
+LCG_GFAL_INFOSYS is not set
+Using grid catalog type: UNKNOWN
+Using grid catalog : (null)
+VO name: cms
+Checksum type: None
+Destination SE type: SRMv2
+Destination SRM Request Token: put:1410
+Source URL: file:/nfs_scratch/tperry/LTComing_2-DataD_8TeVMu_callHistoFiller/user_code.tgz
+File size: 68995221
+Source URL for copy: file:/nfs_scratch/tperry/LTComing_2-DataD_8TeVMu_callHistoFiller/user_code.tgz
+Destination URL: gsiftp://g12n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/LTComing_2-DataD_8TeVMu_callHistoFiller/user_code.tgz
+# streams: 1
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    689.48 KB/sec avg    689.48 KB/sec inst      1048576 bytes    689.48 KB/sec avg    689.48 KB/sec inst
+Transfer took 3010 ms
+Generating submit files in /nfs_scratch/tperry/LTComing_2-DataD_8TeVMu_callHistoFiller...
+............................................................................
+Submitting job(s)............................................................................
+76 job(s) submitted to cluster 3000100.
+
+Your jobs should show up in ~6 minutes
+at the NEW job monitoring web page :
+    http://www.hep.wisc.edu/cms/comp/jobs/
+Jobs for LTComing_2 are created in /nfs_scratch/tperry/LTComing_2-DataD_8TeVMu_callHistoFiller
