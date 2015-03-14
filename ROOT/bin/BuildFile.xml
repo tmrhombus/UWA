@@ -10,6 +10,9 @@
 <bin name="BTagScaleFactorsHighJet" file = "BTagScaleFactorsHighJet.cc"> 
 </bin>
 
+<bin name="ReweightCSVtype1D" file="ReweightCSVtype1D.cc">
+</bin>
+
 <bin   name="EventWeightsEff" file="EventWeightsEff.cc">
 </bin>
 <bin   name="GetErrors" file="GetErrors.cc">
