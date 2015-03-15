@@ -35,11 +35,14 @@ class PATJetCSVreweight : public edm::EDProducer{
   {
    produces<pat::JetCollection>();
   }
-   ~PATJetCSVreweight() {}
-
+   ~PATJetCSVreweight() {
+   //std::cout<<"Deleting"<<std::endl;
+   //delete[] h_csv_wgt_hf;
+   //delete[] c_csv_wgt_hf;
+   //delete[] h_csv_wgt_lf;
+  }
 
  private:
-
 
   virtual void produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
   {
@@ -121,14 +124,6 @@ class PATJetCSVreweight : public edm::EDProducer{
       }
     }
 
-
-    f_CSVwgt_HF->Close();
-    f_CSVwgt_LF->Close();
-    f_CSVwgt_HF->Delete();
-    f_CSVwgt_LF->Delete();
-
-
-
     int iSysHF = 0;
 //    switch(iSysType){
 //    case sysType::JESup:           iSysHF=1; break;
@@ -164,10 +159,6 @@ class PATJetCSVreweight : public edm::EDProducer{
 //    default : iSysLF = 0; break;
 //    }
   
-    double csvWgthf = 1.;
-    double csvWgtC  = 1.;
-    double csvWgtlf = 1.;
-
    std::auto_ptr<pat::JetCollection> outJets(new pat::JetCollection);
    edm::Handle<pat::JetCollection> recoJets;
 
@@ -175,6 +166,10 @@ class PATJetCSVreweight : public edm::EDProducer{
     for(unsigned int i=0;i!=recoJets->size();++i){
     
     pat::Jet jet = recoJets->at(i);
+    double csvWgthf = 1.;
+    double csvWgtC  = 1.;
+    double csvWgtlf = 1.;
+
     double csv = jet.bDiscriminator("combinedSecondaryVertexBJetTags");
     double jetPt = jet.pt();
     double jetAbsEta = fabs( jet.eta() );
@@ -211,11 +206,21 @@ class PATJetCSVreweight : public edm::EDProducer{
     }
   
      double csvWgtTotal = csvWgthf * csvWgtC * csvWgtlf;
+     std::cout<<"CSV Weight "<<csvWgtTotal<<std::endl;
+      std::cout<<" csvWgthf "<<csvWgthf<<" csvWgtC "<<csvWgtC<<" csvWgtlf "<<csvWgtlf<<std::endl;  
+      std::cout<<"jetAbsEta "<<jetAbsEta<<" jetPt "<<jetPt<<" flavor "<<flavor<<" csv "<<csv<<std::endl;
+     //if ( csvWgtTotal>2. ) { 
+     // std::cout<<"  LOOK HERE XXXXXXXXXXXXXXXXXXXXXXXX "<<std::endl;
+     //}
      jet.addUserFloat("CSVreweight",csvWgtTotal);
      outJets->push_back(jet);
     }
    iEvent.put(outJets);
    }
+   f_CSVwgt_HF->Close();
+   f_CSVwgt_LF->Close();
+   f_CSVwgt_HF->Delete();
+   f_CSVwgt_LF->Delete();
   }
   // ----- member data -----
   edm::InputTag src_;

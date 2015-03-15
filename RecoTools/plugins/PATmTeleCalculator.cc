@@ -1,6 +1,3 @@
-// WARNING  never finished writing this
-// doesn't check for existance of muon/met and crashes
-
 // system include files
 #include <memory>
 #include <algorithm>

@@ -54,7 +54,7 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
 
     iEvent.getByLabel("systematicsMET", "metsRaw",  handleLeafCand_metsRaw);
     iEvent.getByLabel("systematicsMET", "metType1", handleLeafCand_metType1);
-    iEvent.getByLabel("patPfMetT1xy", handle_patPfMetT1xy);
+    //iEvent.getByLabel("patPfMetT1xy", handle_patPfMetT1xy);
     iEvent.getByLabel("systematicsMET", "metT0pcT1Txy",  handleLeafCand_metT0pcT1Txy);
 
     math::PtEtaPhiMLorentzVector rawP4(
@@ -71,12 +71,12 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
      handleLeafCand_metType1.product()->front().mass()
     );
 
-    math::PtEtaPhiMLorentzVector T1TxyP4(
-     handle_patPfMetT1xy->at(0).pt(),
-     handle_patPfMetT1xy->at(0).eta(),
-     handle_patPfMetT1xy->at(0).phi(),
-     handle_patPfMetT1xy->at(0).mass()
-    );
+    //math::PtEtaPhiMLorentzVector T1TxyP4(
+    // handle_patPfMetT1xy->at(0).pt(),
+    // handle_patPfMetT1xy->at(0).eta(),
+    // handle_patPfMetT1xy->at(0).phi(),
+    // handle_patPfMetT1xy->at(0).mass()
+    //);
 
     math::PtEtaPhiMLorentzVector T0pcT1TxyP4(
      handleLeafCand_metT0pcT1Txy.product()->front().pt(),

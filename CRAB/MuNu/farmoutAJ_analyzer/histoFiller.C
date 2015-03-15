@@ -127,15 +127,14 @@ void histoFiller::Loop(
   min2goodJs = 
    nrGoodJets>=2 && nrFwdJets==0;
   exactly2goodJs = 
-   nrGoodJets==2 && nrFwdJets==0///;         //// For Ilya
+   nrGoodJets==2 && nrFwdJets==0//;         //// For Ilya
    && goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
   min2goodBJs = 
    nrGoodJets>=2 && nrFwdJets==0
    && goodJ1_CSV>0.898 && goodJ2_CSV>0.898;
   exactly2goodBJs = 
-   nrGoodJets==2 && nrFwdJets==0
-   && goodJ1_CSV>0.898 && goodJ2_CSV>0.898//; //// For Ilya
-   && goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
+   exactly2goodJs 
+   && goodJ1_CSV>0.898 && goodJ2_CSV>0.898; //// For Ilya
   aGoodBJaFwdJ = 
    nrGoodJets==1 && nrFwdJets==1 
    && goodJ1_CSV>0.898;
@@ -144,18 +143,20 @@ void histoFiller::Loop(
   SF_top2BJs = goodJ1_SF_CSVT * goodJ2_SF_CSVT; 
   SF_top2BJs_errUp = goodJ1_SF_CSVT_errUp * goodJ2_SF_CSVT_errUp;
   SF_top2BJs_errDn = goodJ1_SF_CSVT_errDn * goodJ2_SF_CSVT_errDn; 
-  SF_goodBJfwdBJ = goodJ1_SF_CSVT * fwdJ1_SF_CSVT;
+  SF_goodBJfwdJ = goodJ1_SF_CSVT;
+
+  //SF_top2BJs =       1.; 
+  //SF_top2BJs_errUp = 1.; 
+  //SF_top2BJs_errDn = 1.; 
+  //SF_goodBJfwdJ =   1.; 
 
   SF_CSVrwtgJfJ = 1.; //goodJ1_CSVreweight ;
   SF_CSVrwt2gJs = 1.; //goodJ1_CSVreweight * goodJ2_CSVreweight;
 
   // define some variables that get plotted
-  // good mu
-  mt_mu_good = mt_goodMuon;
-  mt_mu_good_uesUp   = mt_goodMuon_uesUp;
-  mt_mu_good_uesDown = mt_goodMuon_uesDn;
+  // MET
   MET_pt = met_pt;
-  MET_phi = (met_eesDn_phi+met_eesUp_phi)/2. ; //met_phi
+  MET_phi = met_eta; // met_phi
   MET_pt_uesUp = met_uesUp_pt;
   MET_pt_uesDown = met_uesDn_pt;
   MET_phi_uesUp = met_uesUp_phi;
@@ -177,9 +178,11 @@ void histoFiller::Loop(
    MET_phi = met_eesDn_phi;
   }
 
-  passMET = MET_pt > 30.;
-  passMT = kTRUE;
-
+  // MT
+  // good mu
+  mt_mu_good = mt_goodMuon;
+  mt_mu_good_uesUp   = mt_goodMuon_uesUp;
+  mt_mu_good_uesDown = mt_goodMuon_uesDn;
   if( shift=="JESUp" ) { mt_mu_good = mt_goodMuon_jesUp; }
   if( shift=="JESDown" ) { mt_mu_good = mt_goodMuon_jesDn; }
   if( shift=="LESUp" )  { mt_mu_good = mt_goodMuon_eesUp; }
@@ -225,6 +228,7 @@ void histoFiller::Loop(
   lep_ele_qcd_eta = qcdEle_eta;
   lep_ele_qcd_phi = qcdEle_phi;
 
+  // MT and MET Selection Requirements
   // make sure mT > 0
   if( mt_mu_good <= 0 ){ mt_mu_good=-1.; }
   if( mt_mu_good_uesUp <= 0 ){ mt_mu_good_uesUp=-1.; }
@@ -239,6 +243,15 @@ void histoFiller::Loop(
   if( mt_ele_qcd_uesUp <= 0 ){ mt_ele_qcd_uesUp=-1.; }
   if( mt_ele_qcd_uesDown <= 0 ){ mt_ele_qcd_uesDown=-1.; }
 
+  // For Ilya
+  dphiJ1Met = dPhi(goodJ1_phi, MET_phi);
+
+  passMET =        MET_pt > 25. && dphiJ1Met > 0.4;
+  passMT_goodMu =  mt_mu_good > 30;
+  passMT_qcdMu =   mt_mu_qcd > 30;
+  passMT_goodEle = mt_ele_good > 30;
+  passMT_qcdEle =  mt_ele_qcd > 30;
+
   ////////////////////////////////
   // begin wjj, wbb Selection 3,0
   ////////////////////////////////
@@ -250,7 +263,7 @@ void histoFiller::Loop(
   Bool_t pass_wjj_ele_qcd=kFALSE;
   Bool_t pass_wbb_ele_good=kFALSE;
   Bool_t pass_wbb_ele_qcd=kFALSE;
-  if( oneGoodMuon && exactly2goodJs && passMET && passMT ){ // mu good
+  if( oneGoodMuon && exactly2goodJs && passMET && passMT_goodMu ){ // mu good
    pass_wjj_mu_good=kTRUE; 
    nrEntries_mu_wjj_good_postcut++;
    //std::cout<<"Pass wjj mu"<<std::endl;
@@ -267,7 +280,7 @@ void histoFiller::Loop(
     SF_wjj_mu_good_IDIsoHLT_errDn = SF_wjj_mu_good_IDIsoHLT - SF_goodMu_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDMuon && exactly2goodJs && passMET && passMT ){ // mu qcd
+  if( oneQCDMuon && exactly2goodJs && passMET && passMT_qcdMu ){ // mu qcd
    pass_wjj_mu_qcd=kTRUE; 
    nrEntries_mu_wjj_qcd_postcut++;
    if ( exactly2goodBJs ){
@@ -280,7 +293,7 @@ void histoFiller::Loop(
     SF_wjj_mu_qcd_IDIsoHLT_errDn = SF_wjj_mu_qcd_IDIsoHLT - SF_qcdMu_IDIso_errDn;
    }
   }
-  if( oneGoodElectron && exactly2goodJs && passMET && passMT ){ // ele good
+  if( oneGoodElectron && exactly2goodJs && passMET && passMT_goodEle ){ // ele good
    pass_wjj_ele_good=kTRUE; 
    nrEntries_ele_wjj_good_postcut++;
    if ( exactly2goodBJs ){
@@ -293,7 +306,7 @@ void histoFiller::Loop(
     SF_wjj_ele_good_IDIsoHLT_errDn = SF_wjj_ele_good_IDIsoHLT - SF_goodEle_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDElectron && exactly2goodJs && passMET && passMT ){ // ele qcd
+  if( oneQCDElectron && exactly2goodJs && passMET && passMT_qcdEle ){ // ele qcd
    pass_wjj_ele_qcd=kTRUE; 
    nrEntries_ele_wjj_qcd_postcut++;
    if ( exactly2goodBJs ){
@@ -492,7 +505,7 @@ void histoFiller::Loop(
   Bool_t pass_ttme_mu_qcd=kFALSE;
   Bool_t pass_ttme_ele_good=kFALSE;
   Bool_t pass_ttme_ele_qcd=kFALSE;
-  if( twoGoodLMuE && exactly2goodBJs && passMET && passMT ){ // mu good
+  if( twoGoodLMuE && exactly2goodBJs && passMET && passMT_goodMu ){ // mu good
    pass_ttme_mu_good=kTRUE; 
    nrEntries_mu_ttme_good_postcut++;
    if( isMC ){
@@ -503,7 +516,7 @@ void histoFiller::Loop(
      - std::sqrt( pow(SF_goodMu_IDIsoHLT_errDn->at(0),2) + pow(SF_goodEle_IDIsoHLT_errDn->at(0),2) );
    }
   }
-  if( twoGoodLEMu && exactly2goodBJs && passMET && passMT ){ // ele good
+  if( twoGoodLEMu && exactly2goodBJs && passMET && passMT_qcdMu ){ // ele good
    pass_ttme_ele_good=kTRUE; 
    nrEntries_ele_ttme_good_postcut++;
    if( isMC ){
@@ -514,7 +527,7 @@ void histoFiller::Loop(
      - std::sqrt( pow(SF_goodMu_IDIsoHLT_errDn->at(0),2) + pow(SF_goodEle_IDIsoHLT_errDn->at(0),2) );
    }
   }
-  if( twoQCDLMuE && exactly2goodBJs && passMET && passMT ){ // mu qcd
+  if( twoQCDLMuE && exactly2goodBJs && passMET && passMT_goodEle ){ // mu qcd
    pass_ttme_mu_qcd=kTRUE; 
    nrEntries_mu_ttme_qcd_postcut++;
    if( isMC ){
@@ -525,7 +538,7 @@ void histoFiller::Loop(
       - std::sqrt( pow(SF_qcdMu_IDIso_errDn,2) + pow(SF_goodEle_IDIsoHLT_errDn->at(0),2));
    }
   }
-  if( twoQCDLEMu && exactly2goodBJs && passMET && passMT ){ // mu/ele qcd
+  if( twoQCDLEMu && exactly2goodBJs && passMET && passMT_qcdEle ){ // mu/ele qcd
    pass_ttme_ele_qcd=kTRUE; 
    nrEntries_ele_ttme_qcd_postcut++;
    if( isMC ){
@@ -650,7 +663,7 @@ void histoFiller::Loop(
   Bool_t pass_ttjjj_mu_qcd=kFALSE;
   Bool_t pass_ttjjj_ele_good=kFALSE;
   Bool_t pass_ttjjj_ele_qcd=kFALSE;
-  if( oneGoodMuon && min2goodBJs && passMET && passMT ){ // mu good
+  if( oneGoodMuon && min2goodBJs && passMET && passMT_goodMu ){ // mu good
    pass_ttjjj_mu_good=kTRUE;
    nrEntries_mu_ttjjj_good_postcut++;
    if( isMC ){
@@ -659,7 +672,7 @@ void histoFiller::Loop(
     SF_ttjjj_mu_good_IDIsoHLT_errDn = SF_ttjjj_mu_good_IDIsoHLT - SF_goodMu_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDMuon && min2goodBJs && passMET && passMT ){ // mu qcd
+  if( oneQCDMuon && min2goodBJs && passMET && passMT_qcdMu ){ // mu qcd
    pass_ttjjj_mu_qcd=kTRUE;
    nrEntries_mu_ttjjj_qcd_postcut++;
    if( isMC ){
@@ -668,7 +681,7 @@ void histoFiller::Loop(
     SF_ttjjj_mu_qcd_IDIsoHLT_errDn = SF_ttjjj_mu_qcd_IDIsoHLT - SF_qcdMu_IDIso_errDn;
    }
   }
-  if( oneGoodElectron && min2goodBJs && passMET && passMT ){ // ele good
+  if( oneGoodElectron && min2goodBJs && passMET && passMT_goodEle ){ // ele good
    pass_ttjjj_ele_good=kTRUE;
    nrEntries_ele_ttjjj_good_postcut++;
    if( isMC ){
@@ -677,7 +690,7 @@ void histoFiller::Loop(
     SF_ttjjj_ele_good_IDIsoHLT_errDn = SF_ttjjj_ele_good_IDIsoHLT - SF_goodEle_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDElectron && min2goodBJs && passMET && passMT ){ // ele qcd
+  if( oneQCDElectron && min2goodBJs && passMET && passMT_qcdEle ){ // ele qcd
    pass_ttjjj_ele_qcd=kTRUE;
    nrEntries_ele_ttjjj_qcd_postcut++;
    if( isMC ){
@@ -801,7 +814,7 @@ void histoFiller::Loop(
   Bool_t pass_stt_mu_qcd=kFALSE;
   Bool_t pass_stt_ele_good=kFALSE;
   Bool_t pass_stt_ele_qcd=kFALSE;
-  if( oneGoodMuon && aGoodBJaFwdJ && passMET && passMT ){ // mu good
+  if( oneGoodMuon && aGoodBJaFwdJ && passMET && passMT_goodMu ){ // mu good
    pass_stt_mu_good=kTRUE;
    nrEntries_mu_stt_good_postcut++;
    if( isMC ){
@@ -810,7 +823,7 @@ void histoFiller::Loop(
     SF_stt_mu_good_IDIsoHLT_errDn = SF_stt_mu_good_IDIsoHLT - SF_goodMu_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDMuon && aGoodBJaFwdJ && passMET && passMT ){ // mu qcd
+  if( oneQCDMuon && aGoodBJaFwdJ && passMET && passMT_qcdMu ){ // mu qcd
    pass_stt_mu_qcd=kTRUE;
    nrEntries_mu_stt_qcd_postcut++;
    if( isMC ){
@@ -819,7 +832,7 @@ void histoFiller::Loop(
     SF_stt_mu_qcd_IDIsoHLT_errDn = SF_stt_mu_qcd_IDIsoHLT - SF_qcdMu_IDIso_errDn;
    }
   }
-  if( oneGoodElectron && aGoodBJaFwdJ && passMET && passMT ){ // ele good
+  if( oneGoodElectron && aGoodBJaFwdJ && passMET && passMT_goodEle ){ // ele good
    pass_stt_ele_good=kTRUE;
    nrEntries_ele_stt_good_postcut++;
    if( isMC ){
@@ -828,7 +841,7 @@ void histoFiller::Loop(
     SF_stt_ele_good_IDIsoHLT_errDn = SF_stt_ele_good_IDIsoHLT - SF_goodEle_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDElectron && aGoodBJaFwdJ && passMET && passMT ){ // ele qcd
+  if( oneQCDElectron && aGoodBJaFwdJ && passMET && passMT_qcdEle ){ // ele qcd
    pass_stt_ele_qcd=kTRUE;
    nrEntries_ele_stt_qcd_postcut++;
    if( isMC ){
@@ -841,28 +854,28 @@ void histoFiller::Loop(
   // total weight
   if( isMC ){
    // stt 
-   weight_stt_mu_good  = SF_stt_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_mu_qcd   = SF_stt_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_ele_good = SF_stt_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_ele_qcd  = SF_stt_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
+   weight_stt_mu_good  = SF_stt_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_mu_qcd   = SF_stt_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_ele_good = SF_stt_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_ele_qcd  = SF_stt_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
    // stt CSV
-   weight_stt_mu_good_CSVUp  = SF_stt_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errUp / nrEvents;
-   weight_stt_mu_qcd_CSVUp   = SF_stt_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errUp / nrEvents;
-   weight_stt_ele_good_CSVUp = SF_stt_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errUp / nrEvents;
-   weight_stt_ele_qcd_CSVUp  = SF_stt_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errUp / nrEvents;
-   weight_stt_mu_good_CSVDown  = SF_stt_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errDn / nrEvents;
-   weight_stt_mu_qcd_CSVDown   = SF_stt_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errDn / nrEvents;
-   weight_stt_ele_good_CSVDown = SF_stt_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errDn / nrEvents;
-   weight_stt_ele_qcd_CSVDown  = SF_stt_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ_errDn / nrEvents;
+   weight_stt_mu_good_CSVUp  = SF_stt_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errUp / nrEvents;
+   weight_stt_mu_qcd_CSVUp   = SF_stt_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errUp / nrEvents;
+   weight_stt_ele_good_CSVUp = SF_stt_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errUp / nrEvents;
+   weight_stt_ele_qcd_CSVUp  = SF_stt_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errUp / nrEvents;
+   weight_stt_mu_good_CSVDown  = SF_stt_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errDn / nrEvents;
+   weight_stt_mu_qcd_CSVDown   = SF_stt_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errDn / nrEvents;
+   weight_stt_ele_good_CSVDown = SF_stt_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errDn / nrEvents;
+   weight_stt_ele_qcd_CSVDown  = SF_stt_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ_errDn / nrEvents;
    // stt EMu
-   weight_stt_mu_good_EMuUp  = SF_stt_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_mu_qcd_EMuUp   = SF_stt_mu_qcd_IDIsoHLT_errUp   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_ele_good_EMuUp = SF_stt_ele_good_IDIsoHLT_errUp * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_ele_qcd_EMuUp  = SF_stt_ele_qcd_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_mu_good_EMuDown  = SF_stt_mu_good_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_mu_qcd_EMuDown   = SF_stt_mu_qcd_IDIsoHLT_errDn   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_ele_good_EMuDown = SF_stt_ele_good_IDIsoHLT_errDn * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
-   weight_stt_ele_qcd_EMuDown  = SF_stt_ele_qcd_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdBJ / nrEvents;
+   weight_stt_mu_good_EMuUp  = SF_stt_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_mu_qcd_EMuUp   = SF_stt_mu_qcd_IDIsoHLT_errUp   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_ele_good_EMuUp = SF_stt_ele_good_IDIsoHLT_errUp * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_ele_qcd_EMuUp  = SF_stt_ele_qcd_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_mu_good_EMuDown  = SF_stt_mu_good_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_mu_qcd_EMuDown   = SF_stt_mu_qcd_IDIsoHLT_errDn   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_ele_good_EMuDown = SF_stt_ele_good_IDIsoHLT_errDn * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
+   weight_stt_ele_qcd_EMuDown  = SF_stt_ele_qcd_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_ele * crossSec * SF_CSVrwtgJfJ * SF_goodBJfwdJ / nrEvents;
   }
   else{
    // stt

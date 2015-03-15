@@ -6,6 +6,10 @@
 <use name=roostats>
 <use name=tmva>
 
+
+<bin name="ReweightCSVtype1D" file="ReweightCSVtype1D.cc">
+</bin>
+
 <bin name="MVATrainer" file="MVATrainer.cc">
 </bin>
 

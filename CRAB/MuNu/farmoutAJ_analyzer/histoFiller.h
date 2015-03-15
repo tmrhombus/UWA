@@ -57,7 +57,10 @@ public :
    Bool_t twoQCDLEMu;
 
    Bool_t passMET;
-   Bool_t passMT;
+   Bool_t passMT_goodMu;
+   Bool_t passMT_qcdMu;
+   Bool_t passMT_goodEle;
+   Bool_t passMT_qcdEle;
 
    Bool_t min2goodJs;
    Bool_t exactly2goodJs;
@@ -78,9 +81,9 @@ public :
    Float_t SF_top2BJs;
    Float_t SF_top2BJs_errUp;
    Float_t SF_top2BJs_errDn;
-   Float_t SF_goodBJfwdBJ;
-   Float_t SF_goodBJfwdBJ_errUp;
-   Float_t SF_goodBJfwdBJ_errDn;
+   Float_t SF_goodBJfwdJ;
+   Float_t SF_goodBJfwdJ_errUp;
+   Float_t SF_goodBJfwdJ_errDn;
    Float_t SF_CSVrwt2gJs ;
    Float_t SF_CSVrwtgJfJ ;
 
@@ -128,6 +131,7 @@ public :
    Float_t dRgoodJ1J2;
    Float_t dphiJJ;
    Float_t detaJJ;
+   Float_t dphiJ1Met;
 
    // Id/Iso/HLT (EMu) Scale Factors
    // wjj
@@ -1013,11 +1017,28 @@ histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
+
+      //TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      //if (!f || !f->IsOpen()) {
+      //   f = new TFile("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      //}
+      //TDirectory * dir = (TDirectory*)f->Get("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
+
+
+      //TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      //if (!f || !f->IsOpen()) {
+      //   f = new TFile("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      //}
+      //TDirectory * dir = (TDirectory*)f->Get("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
+
       TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
       if (!f || !f->IsOpen()) {
          f = new TFile("/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
       }
       TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
+
+
+
       dir->GetObject("eventTree",tree);
       //std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
       //std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
@@ -1671,3 +1692,4 @@ Bool_t histoFiller::writeHistWriter( int pspace_nr, int syst_nr, Bool_t isW ){
 }
 
 #endif // #ifdef histoFiller_cxx
+

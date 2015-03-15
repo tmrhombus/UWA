@@ -38,7 +38,7 @@ void callHistoFiller()
 // TChain *theChainLESDown = new TChain("muEleEventTreeMuonDown/eventTree");
 
  TString shift="SFs";
- TString sample="TTbar_semi_VVC_";
+ TString sample="ZZ_Val_";
  Bool_t isMC_ = kTRUE ;
  Bool_t isW_ = kFALSE ;
 
@@ -59,11 +59,14 @@ void callHistoFiller()
 // TString outfileName = "TTbar_full_041812B4-F197-E211-9D31-00261894397E.root" ;
 // TString infileName = "/hdfs/store/user/tperry/Valentine_TTbar_full-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-041812B4-F197-E211-9D31-00261894397E.root" ;
 
-// TString outfileName = "TTbar_full_000560C1-FD97-E211-9F33-00304867924E.root" ;
-// TString infileName = "/hdfs/store/user/tperry/Valentine_TTbar_full-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-000560C1-FD97-E211-9F33-00304867924E.root" ;
- TString outfileName = sample+"00277FF2-7B84-E211-9475-782BCB27B958.root" ;
- TString infileName = "/hdfs/store/user/tperry/DibosonCheck_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
+ //TString outfileName = sample+"_000560C1-FD97-E211-9F33-00304867924E.root" ;
+ //TString infileName = "/hdfs/store/user/tperry/Valentine_TTbar_full-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-000560C1-FD97-E211-9F33-00304867924E.root" ;
+ //TString outfileName = sample+"00277FF2-7B84-E211-9475-782BCB27B958.root" ;
+ //TString infileName = "/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
  //TString infileName = "/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
+
+ TString outfileName = sample+"0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
+ TString infileName = "/hdfs/store/user/tperry/Valentine_ZZ-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
 
  // Define Sample Criteria
  UInt_t lumi_mu  = 19778 ;
