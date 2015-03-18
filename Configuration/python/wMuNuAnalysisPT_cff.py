@@ -7,7 +7,7 @@ analysisConfigurator = CutSequenceProducer(initialCounter = 'initialEvents',
                                   pyModuleName = __name__,
                                   pyNameSpace = locals())
 
-analysisConfigurator.addSmearedAll('allMuons','goodMuons','vetoMuons','qcdMuons','allElectrons','goodElectrons','vetoElectrons','qcdElectrons','allJets','cleanJets','goodJets','fwdJets',mpost='')
+#analysisConfigurator.addSmearedAll('allMuons','goodMuons','vetoMuons','qcdMuons','allElectrons','goodElectrons','vetoElectrons','qcdElectrons','allJets','cleanJets','goodJets','fwdJets',mpost='')
 
 #analysisConfigurator.addSmearing('patOverloadedTaus','goodMuons','goodElectrons','cleanPatJets','metCorrected',mpost="good")
 #analysisConfigurator.addSmearing('patOverloadedTaus','allMuons','allElectrons','cleanPatJets','metCorrected',mpost="all")
