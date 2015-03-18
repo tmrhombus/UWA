@@ -1,2404 +1,0 @@
-nohup: ignoring input
-Drell
-Drell Events: 25810323
-Drell XC: 3531.9
-25810323
-3531.9
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:289376
-Source URL: file:/nfs_scratch/tperry/avecDY-Drell_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Drell_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Drell_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    571.92 KB/sec avg    571.92 KB/sec inst      1048576 bytes    571.92 KB/sec avg    571.92 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Drell_SFs_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004966.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Drell_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:292115
-Source URL: file:/nfs_scratch/tperry/avecDY-Drell_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Drell_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s15n02.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Drell_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    575.85 KB/sec avg    575.85 KB/sec inst      1048576 bytes    575.85 KB/sec avg    575.85 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Drell_JESUp_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004967.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Drell_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:294619
-Source URL: file:/nfs_scratch/tperry/avecDY-Drell_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Drell_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n27.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Drell_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    132.74 KB/sec avg    132.74 KB/sec inst     38797312 bytes   4347.76 KB/sec avg  36864.00 KB/sec inst     38797312 bytes   4347.76 KB/sec avg  36864.00 KB/sec inst
-Transfer took 10050 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Drell_JESDown_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004968.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Drell_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:296355
-Source URL: file:/nfs_scratch/tperry/avecDY-Drell_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Drell_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Drell_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    426.54 KB/sec avg    426.54 KB/sec inst     49283072 bytes  14152.36 KB/sec avg  47104.00 KB/sec inst
-Transfer took 4280 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Drell_LESUp_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004969.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Drell_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-Drell_LESDown_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-Drell_LESDown_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-Drell_LESDown_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-Drell_LESDown_callHistoFiller/user_code.tgz Failed
-Generating submit files in /nfs_scratch/tperry/avecDY-Drell_LESDown_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004970.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Drell_LESDown_callHistoFiller
-TTbar_full
-TTbar_full Events: 10429331
-TTbar_full XC: 25.1
-10429331
-25.1
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection reset by peer
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports could not open connection to cmssrm2.hep.wisc.edu
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_SFs_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_SFs_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports could not open connection to cmssrm2.hep.wisc.edu
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports could not open connection to cmssrm2.hep.wisc.edu
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_SFs_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_SFs_callHistoFiller/user_code.tgz Failed
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_full_SFs_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004971.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_full_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports could not open connection to cmssrm2.hep.wisc.edu
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports could not open connection to cmssrm2.hep.wisc.edu
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_JESUp_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_JESUp_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports could not open connection to cmssrm2.hep.wisc.edu
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports could not open connection to cmssrm2.hep.wisc.edu
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_JESUp_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_JESUp_callHistoFiller/user_code.tgz Failed
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_full_JESUp_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004972.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_full_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][SRM_AUTHORIZATION_FAILURE] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: not mapped./DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=tmperry/CN=739156/CN=Thomas Mastrianni Perry
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_JESDown_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_JESDown_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][SRM_AUTHORIZATION_FAILURE] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: not mapped./DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=tmperry/CN=739156/CN=Thomas Mastrianni Perry
-lcg_cp: Permission denied
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_JESDown_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_JESDown_callHistoFiller/user_code.tgz Failed
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_full_JESDown_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004973.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_full_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_LESUp_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_LESUp_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][SRM_AUTHORIZATION_FAILURE] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: not mapped./DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=tmperry/CN=739156/CN=Thomas Mastrianni Perry
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_LESUp_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_LESUp_callHistoFiller/user_code.tgz Failed
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_full_LESUp_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004974.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_full_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_LESDown_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_LESDown_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_full_LESDown_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_full_LESDown_callHistoFiller/user_code.tgz Failed
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_full_LESDown_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004975.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_full_LESDown_callHistoFiller
-TTbar_semi
-TTbar_semi Events: 23492957
-TTbar_semi XC: 104.7
-23492957
-104.7
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_semi_SFs_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_semi_SFs_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-lcg_cp: Communication error on send
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_semi_SFs_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_semi_SFs_callHistoFiller/user_code.tgz Failed
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_semi_SFs_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004976.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_semi_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-[SE][Ls][] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: CGSI-gSOAP running on login05.hep.wisc.edu reports Error reading token data header: Connection closed
-[SE][PrepareToPut][SRM_FAILURE] httpg://cmssrm2.hep.wisc.edu:8443/srm/v2/server: <none>
-lcg_cp: Invalid argument
-lcg-cp -vbD srmv2 /nfs_scratch/tperry/avecDY-TTbar_semi_JESUp_callHistoFiller/user_code.tgz srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/avecDY-TTbar_semi_JESUp_callHistoFiller/user_code.tgz Failed. Retrying...
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:3079
-Source URL: file:/nfs_scratch/tperry/avecDY-TTbar_semi_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-TTbar_semi_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n06.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-TTbar_semi_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    614.45 KB/sec avg    614.45 KB/sec inst     62914560 bytes  23041.22 KB/sec avg  60416.00 KB/sec inst
-Transfer took 3150 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_semi_JESUp_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004977.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_semi_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:4033
-Source URL: file:/nfs_scratch/tperry/avecDY-TTbar_semi_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-TTbar_semi_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g25n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-TTbar_semi_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    494.78 KB/sec avg    494.78 KB/sec inst     22020096 bytes   7005.50 KB/sec avg  20480.00 KB/sec inst     22020096 bytes   7005.50 KB/sec avg  20480.00 KB/sec inst
-Transfer took 5040 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_semi_JESDown_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004978.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_semi_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:5722
-Source URL: file:/nfs_scratch/tperry/avecDY-TTbar_semi_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-TTbar_semi_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-TTbar_semi_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    440.40 KB/sec avg    440.40 KB/sec inst     63963136 bytes  18236.83 KB/sec avg  55854.54 KB/sec inst
-Transfer took 4040 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_semi_LESUp_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004979.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_semi_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:6897
-Source URL: file:/nfs_scratch/tperry/avecDY-TTbar_semi_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-TTbar_semi_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-TTbar_semi_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    274.74 KB/sec avg    274.74 KB/sec inst     13631488 bytes   2816.05 KB/sec avg  12288.00 KB/sec inst     13631488 bytes   2816.05 KB/sec avg  12288.00 KB/sec inst
-Transfer took 6030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-TTbar_semi_LESDown_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004980.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-TTbar_semi_LESDown_callHistoFiller
-T_s
-T_s Events: 259961
-T_s XC: 3.79
-259961
-3.79
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:7288
-Source URL: file:/nfs_scratch/tperry/avecDY-T_s_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_s_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n12.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_s_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    196.76 KB/sec avg    196.76 KB/sec inst     13631488 bytes   2145.59 KB/sec avg  12288.00 KB/sec inst     13631488 bytes   2145.59 KB/sec avg  12288.00 KB/sec inst
-Transfer took 8040 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_s_SFs_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004981.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_s_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:7646
-Source URL: file:/nfs_scratch/tperry/avecDY-T_s_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_s_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_s_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    441.45 KB/sec avg    441.45 KB/sec inst      1048576 bytes    441.45 KB/sec avg    441.45 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_s_JESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004982.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_s_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:8473
-Source URL: file:/nfs_scratch/tperry/avecDY-T_s_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_s_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n03.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_s_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    601.43 KB/sec avg    601.43 KB/sec inst      1048576 bytes    601.43 KB/sec avg    601.43 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_s_JESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004983.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_s_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:9476
-Source URL: file:/nfs_scratch/tperry/avecDY-T_s_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_s_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n16.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_s_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    573.65 KB/sec avg    573.65 KB/sec inst      1048576 bytes    573.65 KB/sec avg    573.65 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_s_LESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004984.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_s_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:10025
-Source URL: file:/nfs_scratch/tperry/avecDY-T_s_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_s_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n13.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_s_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    370.52 KB/sec avg    370.52 KB/sec inst     54525952 bytes  14147.94 KB/sec avg  52224.00 KB/sec inst     54525952 bytes  14147.94 KB/sec avg  52224.00 KB/sec inst
-Transfer took 5050 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_s_LESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004985.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_s_LESDown_callHistoFiller
-T_t
-T_t Events: 4391771
-T_t XC: 17.8
-4391771
-17.8
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:10635
-Source URL: file:/nfs_scratch/tperry/avecDY-T_t_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_t_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n03.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_t_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    560.05 KB/sec avg    560.05 KB/sec inst     38797312 bytes  12938.15 KB/sec avg  33512.73 KB/sec inst     38797312 bytes  12938.15 KB/sec avg  33512.73 KB/sec inst     38797312 bytes  12938.15 KB/sec avg  33512.73 KB/sec inst
-Transfer took 5030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_t_SFs_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004986.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_t_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:11150
-Source URL: file:/nfs_scratch/tperry/avecDY-T_t_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_t_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_t_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    458.86 KB/sec avg    458.86 KB/sec inst     60817408 bytes  18378.30 KB/sec avg  58368.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_t_JESUp_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004987.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_t_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:12288
-Source URL: file:/nfs_scratch/tperry/avecDY-T_t_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_t_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_t_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    661.12 KB/sec avg    661.12 KB/sec inst     46137344 bytes  17676.81 KB/sec avg  44032.00 KB/sec inst
-Transfer took 3040 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_t_JESDown_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004988.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_t_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:13665
-Source URL: file:/nfs_scratch/tperry/avecDY-T_t_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_t_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_t_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    480.86 KB/sec avg    480.86 KB/sec inst     52428800 bytes  16360.44 KB/sec avg  50176.00 KB/sec inst
-Transfer took 4050 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_t_LESUp_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004989.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_t_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:14792
-Source URL: file:/nfs_scratch/tperry/avecDY-T_t_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_t_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_t_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    420.21 KB/sec avg    420.21 KB/sec inst     56623104 bytes  16088.96 KB/sec avg  54272.00 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_t_LESDown_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004990.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_t_LESDown_callHistoFiller
-T_tW
-T_tW Events: 476173
-T_tW XC: 11.1
-476173
-11.1
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:15760
-Source URL: file:/nfs_scratch/tperry/avecDY-T_tW_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_tW_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_tW_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    428.61 KB/sec avg    428.61 KB/sec inst     41943040 bytes  12085.82 KB/sec avg  39936.00 KB/sec inst     41943040 bytes  12085.82 KB/sec avg  39936.00 KB/sec inst
-Transfer took 5040 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_tW_SFs_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004991.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_tW_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16146
-Source URL: file:/nfs_scratch/tperry/avecDY-T_tW_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_tW_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n27.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_tW_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    262.07 KB/sec avg    262.07 KB/sec inst      1048576 bytes    262.07 KB/sec avg    262.07 KB/sec inst     13631488 bytes   2606.46 KB/sec avg  10240.00 KB/sec inst
-Transfer took 6020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_tW_JESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004992.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_tW_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16249
-Source URL: file:/nfs_scratch/tperry/avecDY-T_tW_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_tW_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_tW_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    468.79 KB/sec avg    468.79 KB/sec inst     60817408 bytes  18651.30 KB/sec avg  58368.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_tW_JESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004993.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_tW_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16341
-Source URL: file:/nfs_scratch/tperry/avecDY-T_tW_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_tW_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_tW_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    423.51 KB/sec avg    423.51 KB/sec inst     59768832 bytes  17077.20 KB/sec avg  57344.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_tW_LESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004994.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_tW_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16449
-Source URL: file:/nfs_scratch/tperry/avecDY-T_tW_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-T_tW_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s15n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-T_tW_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    679.68 KB/sec avg    679.68 KB/sec inst     59768832 bytes  23285.87 KB/sec avg  57344.00 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-T_tW_LESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004995.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-T_tW_LESDown_callHistoFiller
-Tbar_s
-Tbar_s Events: 139974
-Tbar_s XC: 1.76
-139974
-1.76
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16548
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_s_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_s_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n26.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_s_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    168.80 KB/sec avg    168.80 KB/sec inst     12582912 bytes   1562.10 KB/sec avg   6257.78 KB/sec inst     12582912 bytes   1562.10 KB/sec avg   6257.78 KB/sec inst     62914560 bytes   6776.73 KB/sec avg  40960.00 KB/sec inst     62914560 bytes   6776.73 KB/sec avg  40960.00 KB/sec inst
-Transfer took 11030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_s_SFs_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004996.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_s_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16672
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_s_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_s_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_s_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    490.11 KB/sec avg    490.11 KB/sec inst     53477376 bytes  16374.64 KB/sec avg  46545.45 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_s_JESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004997.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_s_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16764
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_s_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_s_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_s_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    341.63 KB/sec avg    341.63 KB/sec inst     18874368 bytes   4611.00 KB/sec avg  17408.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_s_JESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004998.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_s_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16880
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_s_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_s_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s15n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_s_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    770.08 KB/sec avg    770.08 KB/sec inst      1048576 bytes    770.08 KB/sec avg    770.08 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_s_LESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004999.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_s_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:16974
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_s_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_s_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n30.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_s_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    490.45 KB/sec avg    490.45 KB/sec inst     38797312 bytes  12269.85 KB/sec avg  36864.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_s_LESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3005000.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_s_LESDown_callHistoFiller
-Tbar_t
-Tbar_t Events: 2195905
-Tbar_t XC: 9.6
-2195905
-9.6
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17101
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_t_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_t_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_t_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    429.01 KB/sec avg    429.01 KB/sec inst     35651584 bytes  10279.61 KB/sec avg  33792.00 KB/sec inst     58720256 bytes  12780.32 KB/sec avg  20480.00 KB/sec inst     58720256 bytes  12780.32 KB/sec avg  20480.00 KB/sec inst
-Transfer took 6020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_t_SFs_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3005001.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_t_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17195
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_t_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_t_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n15.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_t_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    402.21 KB/sec avg    402.21 KB/sec inst     44040192 bytes  12128.92 KB/sec avg  41984.00 KB/sec inst     44040192 bytes  12128.92 KB/sec avg  41984.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_t_JESUp_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3005002.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_t_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17337
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_t_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_t_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n19.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_t_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    195.80 KB/sec avg    195.80 KB/sec inst     15728640 bytes   2352.27 KB/sec avg  11027.69 KB/sec inst     36700160 bytes   4759.72 KB/sec avg  20480.00 KB/sec inst     36700160 bytes   4759.72 KB/sec avg  20480.00 KB/sec inst
-Transfer took 9030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_t_JESDown_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3005003.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_t_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17459
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_t_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_t_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_t_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    343.85 KB/sec avg    343.85 KB/sec inst     10485760 bytes   2510.99 KB/sec avg   8378.18 KB/sec inst     24117248 bytes   4637.98 KB/sec avg  13312.00 KB/sec inst     34603008 bytes   5469.67 KB/sec avg   9309.09 KB/sec inst     47185920 bytes   6419.55 KB/sec avg  12288.00 KB/sec inst     56623104 bytes   6679.82 KB/sec avg   8378.18 KB/sec inst     56623104 bytes   6679.82 KB/sec avg   8378.18 KB/sec inst
-Transfer took 10030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_t_LESUp_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3005004.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_t_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17612
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_t_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_t_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n32.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_t_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    201.07 KB/sec avg    201.07 KB/sec inst     55574528 bytes   8907.76 KB/sec avg  53248.00 KB/sec inst
-Transfer took 7030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_t_LESDown_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3005005.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_t_LESDown_callHistoFiller
-Tbar_tW
-Tbar_tW Events: 484502
-Tbar_tW XC: 11.1
-484502
-11.1
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17769
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_tW_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_tW_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_tW_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    191.04 KB/sec avg    191.04 KB/sec inst     33554432 bytes   5072.26 KB/sec avg  28858.18 KB/sec inst     33554432 bytes   5072.26 KB/sec avg  28858.18 KB/sec inst
-Transfer took 8030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_tW_SFs_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3005006.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_tW_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17884
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_tW_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_tW_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_tW_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    376.76 KB/sec avg    376.76 KB/sec inst     28311552 bytes   7436.38 KB/sec avg  26624.00 KB/sec inst     28311552 bytes   7436.38 KB/sec avg  26624.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_tW_JESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3005007.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_tW_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:17989
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_tW_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_tW_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_tW_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    276.94 KB/sec avg    276.94 KB/sec inst     26214400 bytes   5449.72 KB/sec avg  24576.00 KB/sec inst     26214400 bytes   5449.72 KB/sec avg  24576.00 KB/sec inst     26214400 bytes   5449.72 KB/sec avg  24576.00 KB/sec inst     31457280 bytes   3939.73 KB/sec avg   1651.61 KB/sec inst     67108864 bytes   7449.40 KB/sec avg  34816.00 KB/sec inst     67108864 bytes   7449.40 KB/sec avg  34816.00 KB/sec inst
-Transfer took 10020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_tW_JESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3005008.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_tW_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:18143
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_tW_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_tW_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n26.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_tW_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    435.46 KB/sec avg    435.46 KB/sec inst     63963136 bytes  18637.35 KB/sec avg  61440.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_tW_LESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3005009.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_tW_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:18249
-Source URL: file:/nfs_scratch/tperry/avecDY-Tbar_tW_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Tbar_tW_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Tbar_tW_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    338.19 KB/sec avg    338.19 KB/sec inst     51380224 bytes  12457.23 KB/sec avg  49152.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Tbar_tW_LESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3005010.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Tbar_tW_LESDown_callHistoFiller
-W1Jet
-W1Jet Events: 52593689
-W1Jet XC: 36703.2
-52593689
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:18349
-Source URL: file:/nfs_scratch/tperry/avecDY-W1Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W1Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n21.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W1Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    548.71 KB/sec avg    548.71 KB/sec inst      1048576 bytes    548.71 KB/sec avg    548.71 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W1Jet_SFs_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3005011.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W1Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:18485
-Source URL: file:/nfs_scratch/tperry/avecDY-W1Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W1Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g20n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W1Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    552.03 KB/sec avg    552.03 KB/sec inst     52428800 bytes  17933.64 KB/sec avg  50176.00 KB/sec inst     52428800 bytes  17933.64 KB/sec avg  50176.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W1Jet_JESUp_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3005012.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W1Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:18767
-Source URL: file:/nfs_scratch/tperry/avecDY-W1Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W1Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W1Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    684.91 KB/sec avg    684.91 KB/sec inst      1048576 bytes    684.91 KB/sec avg    684.91 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W1Jet_JESDown_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3005013.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W1Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:18890
-Source URL: file:/nfs_scratch/tperry/avecDY-W1Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W1Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W1Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    447.29 KB/sec avg    447.29 KB/sec inst     62914560 bytes  18678.39 KB/sec avg  60416.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W1Jet_LESUp_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3005014.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W1Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:19236
-Source URL: file:/nfs_scratch/tperry/avecDY-W1Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W1Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W1Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    368.75 KB/sec avg    368.75 KB/sec inst     35651584 bytes   9218.00 KB/sec avg  33792.00 KB/sec inst     35651584 bytes   9218.00 KB/sec avg  33792.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W1Jet_LESDown_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3005015.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W1Jet_LESDown_callHistoFiller
-W2Jet
-W2Jet Events: 64409521
-W2Jet XC: 36703.2
-64409521
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:19569
-Source URL: file:/nfs_scratch/tperry/avecDY-W2Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W2Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g23n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W2Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    295.30 KB/sec avg    295.30 KB/sec inst      1048576 bytes    295.30 KB/sec avg    295.30 KB/sec inst      1048576 bytes    295.30 KB/sec avg    295.30 KB/sec inst     14680064 bytes   2150.07 KB/sec avg   4160.00 KB/sec inst     14680064 bytes   2150.07 KB/sec avg   4160.00 KB/sec inst     14680064 bytes   2150.07 KB/sec avg   4160.00 KB/sec inst     14680064 bytes   2150.07 KB/sec avg   4160.00 KB/sec inst     62914560 bytes   6042.67 KB/sec avg  13458.29 KB/sec inst
-Transfer took 11030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W2Jet_SFs_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3005016.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W2Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:19785
-Source URL: file:/nfs_scratch/tperry/avecDY-W2Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W2Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g23n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W2Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    178.23 KB/sec avg    178.23 KB/sec inst      1048576 bytes    178.23 KB/sec avg    178.23 KB/sec inst     30408704 bytes   4042.81 KB/sec avg  17920.00 KB/sec inst     30408704 bytes   4042.81 KB/sec avg  17920.00 KB/sec inst
-Transfer took 9020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W2Jet_JESUp_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3005017.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W2Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:20142
-Source URL: file:/nfs_scratch/tperry/avecDY-W2Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W2Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n15.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W2Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    452.58 KB/sec avg    452.58 KB/sec inst     56623104 bytes  16948.53 KB/sec avg  54272.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W2Jet_JESDown_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3005018.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W2Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:20707
-Source URL: file:/nfs_scratch/tperry/avecDY-W2Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W2Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n02.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W2Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    299.79 KB/sec avg    299.79 KB/sec inst     30408704 bytes   6725.13 KB/sec avg  28672.00 KB/sec inst     66060288 bytes  11912.08 KB/sec avg  34816.00 KB/sec inst
-Transfer took 6020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W2Jet_LESUp_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3005019.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W2Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:21127
-Source URL: file:/nfs_scratch/tperry/avecDY-W2Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W2Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W2Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    670.08 KB/sec avg    670.08 KB/sec inst     55574528 bytes  20649.98 KB/sec avg  48407.28 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W2Jet_LESDown_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3005020.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W2Jet_LESDown_callHistoFiller
-W3Jet
-W3Jet Events: 30358906
-W3Jet XC: 36703.2
-30358906
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:21645
-Source URL: file:/nfs_scratch/tperry/avecDY-W3Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W3Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W3Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    497.95 KB/sec avg    497.95 KB/sec inst     63963136 bytes  20437.04 KB/sec avg  61440.00 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W3Jet_SFs_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3005021.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W3Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:22123
-Source URL: file:/nfs_scratch/tperry/avecDY-W3Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W3Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W3Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    279.15 KB/sec avg    279.15 KB/sec inst     56623104 bytes  11844.92 KB/sec avg  54272.00 KB/sec inst     56623104 bytes  11844.92 KB/sec avg  54272.00 KB/sec inst
-Transfer took 6020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W3Jet_JESUp_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3005022.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W3Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:22363
-Source URL: file:/nfs_scratch/tperry/avecDY-W3Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W3Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W3Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    344.94 KB/sec avg    344.94 KB/sec inst     53477376 bytes  12835.89 KB/sec avg  46545.46 KB/sec inst     53477376 bytes  12835.89 KB/sec avg  46545.46 KB/sec inst
-Transfer took 6010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W3Jet_JESDown_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3005023.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W3Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:22745
-Source URL: file:/nfs_scratch/tperry/avecDY-W3Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W3Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n22.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W3Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    517.31 KB/sec avg    517.31 KB/sec inst     58720256 bytes  19246.32 KB/sec avg  56320.00 KB/sec inst     58720256 bytes  19246.32 KB/sec avg  56320.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W3Jet_LESUp_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3005024.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W3Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:22984
-Source URL: file:/nfs_scratch/tperry/avecDY-W3Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W3Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n02.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W3Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    533.53 KB/sec avg    533.53 KB/sec inst     58720256 bytes  19643.05 KB/sec avg  56320.00 KB/sec inst     58720256 bytes  19643.05 KB/sec avg  56320.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W3Jet_LESDown_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3005025.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W3Jet_LESDown_callHistoFiller
-W4Jet
-W4Jet Events: 13042592
-W4Jet XC: 36703.2
-13042592
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:23273
-Source URL: file:/nfs_scratch/tperry/avecDY-W4Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W4Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n19.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W4Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    640.02 KB/sec avg    640.02 KB/sec inst      1048576 bytes    640.02 KB/sec avg    640.02 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W4Jet_SFs_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3005026.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W4Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:23513
-Source URL: file:/nfs_scratch/tperry/avecDY-W4Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W4Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n06.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W4Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    665.99 KB/sec avg    665.99 KB/sec inst     62914560 bytes  24212.17 KB/sec avg  60416.00 KB/sec inst     62914560 bytes  24212.17 KB/sec avg  60416.00 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W4Jet_JESUp_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3005027.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W4Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:23707
-Source URL: file:/nfs_scratch/tperry/avecDY-W4Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W4Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n19.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W4Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    679.62 KB/sec avg    679.62 KB/sec inst     52428800 bytes  20425.01 KB/sec avg  50176.00 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W4Jet_JESDown_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3005028.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W4Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:23917
-Source URL: file:/nfs_scratch/tperry/avecDY-W4Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W4Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W4Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    650.98 KB/sec avg    650.98 KB/sec inst      1048576 bytes    650.98 KB/sec avg    650.98 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W4Jet_LESUp_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3005029.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W4Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:24171
-Source URL: file:/nfs_scratch/tperry/avecDY-W4Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-W4Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n11.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-W4Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    336.56 KB/sec avg    336.56 KB/sec inst     38797312 bytes   9372.29 KB/sec avg  36864.00 KB/sec inst
-Transfer took 5030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-W4Jet_LESDown_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3005030.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-W4Jet_LESDown_callHistoFiller
-WJets
-WJets Events: 75865454
-WJets XC: 36703.2
-75865454
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:24408
-Source URL: file:/nfs_scratch/tperry/avecDY-WJets_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WJets_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WJets_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    354.50 KB/sec avg    354.50 KB/sec inst     34603008 bytes   8690.15 KB/sec avg  32768.00 KB/sec inst     34603008 bytes   8690.15 KB/sec avg  32768.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WJets_SFs_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3005031.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WJets_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:24707
-Source URL: file:/nfs_scratch/tperry/avecDY-WJets_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WJets_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n31.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WJets_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    519.82 KB/sec avg    519.82 KB/sec inst      1048576 bytes    519.82 KB/sec avg    519.82 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WJets_JESUp_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3005032.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WJets_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:25007
-Source URL: file:/nfs_scratch/tperry/avecDY-WJets_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WJets_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n16.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WJets_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    566.94 KB/sec avg    566.94 KB/sec inst      1048576 bytes    566.94 KB/sec avg    566.94 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WJets_JESDown_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3005033.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WJets_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:25316
-Source URL: file:/nfs_scratch/tperry/avecDY-WJets_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WJets_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WJets_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    339.28 KB/sec avg    339.28 KB/sec inst     44040192 bytes  10703.39 KB/sec avg  41984.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WJets_LESUp_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3005034.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WJets_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:25490
-Source URL: file:/nfs_scratch/tperry/avecDY-WJets_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WJets_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WJets_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    614.45 KB/sec avg    614.45 KB/sec inst     65011712 bytes  23809.16 KB/sec avg  62464.00 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WJets_LESDown_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3005035.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WJets_LESDown_callHistoFiller
-Wbb4F
-Wbb4F Events: 20294311
-Wbb4F XC: 138.9
-20294311
-138.9
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:25647
-Source URL: file:/nfs_scratch/tperry/avecDY-Wbb4F_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Wbb4F_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Wbb4F_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    411.41 KB/sec avg    411.41 KB/sec inst     32505856 bytes   9098.27 KB/sec avg  30720.00 KB/sec inst     32505856 bytes   9098.27 KB/sec avg  30720.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Wbb4F_SFs_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3005036.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Wbb4F_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:26108
-Source URL: file:/nfs_scratch/tperry/avecDY-Wbb4F_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Wbb4F_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s15n06.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Wbb4F_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    758.20 KB/sec avg    758.20 KB/sec inst      1048576 bytes    758.20 KB/sec avg    758.20 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Wbb4F_JESUp_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3005037.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Wbb4F_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:26332
-Source URL: file:/nfs_scratch/tperry/avecDY-Wbb4F_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Wbb4F_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Wbb4F_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    545.39 KB/sec avg    545.39 KB/sec inst      1048576 bytes    545.39 KB/sec avg    545.39 KB/sec inst      1048576 bytes    545.39 KB/sec avg    545.39 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Wbb4F_JESDown_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3005038.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Wbb4F_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:26503
-Source URL: file:/nfs_scratch/tperry/avecDY-Wbb4F_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Wbb4F_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Wbb4F_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    768.93 KB/sec avg    768.93 KB/sec inst      1048576 bytes    768.93 KB/sec avg    768.93 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Wbb4F_LESUp_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3005039.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Wbb4F_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:26624
-Source URL: file:/nfs_scratch/tperry/avecDY-Wbb4F_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-Wbb4F_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n18.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-Wbb4F_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    258.08 KB/sec avg    258.08 KB/sec inst     30408704 bytes   5333.54 KB/sec avg  17920.00 KB/sec inst     30408704 bytes   5333.54 KB/sec avg  17920.00 KB/sec inst
-Transfer took 7020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-Wbb4F_LESDown_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3005040.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-Wbb4F_LESDown_callHistoFiller
-WW
-WW Events: 10000431
-WW XC: 56.0
-10000431
-56.0
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:26779
-Source URL: file:/nfs_scratch/tperry/avecDY-WW_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WW_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n21.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WW_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    391.45 KB/sec avg    391.45 KB/sec inst     56623104 bytes  15292.51 KB/sec avg  54272.00 KB/sec inst     56623104 bytes  15292.51 KB/sec avg  54272.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WW_SFs_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005041.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WW_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:26846
-Source URL: file:/nfs_scratch/tperry/avecDY-WW_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WW_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n22.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WW_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    493.12 KB/sec avg    493.12 KB/sec inst     32505856 bytes  10318.03 KB/sec avg  30720.00 KB/sec inst     32505856 bytes  10318.03 KB/sec avg  30720.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WW_JESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005042.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WW_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:26932
-Source URL: file:/nfs_scratch/tperry/avecDY-WW_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WW_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WW_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    708.14 KB/sec avg    708.14 KB/sec inst     62914560 bytes  24131.50 KB/sec avg  54923.64 KB/sec inst
-Transfer took 3030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WW_JESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005043.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WW_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27032
-Source URL: file:/nfs_scratch/tperry/avecDY-WW_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WW_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WW_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    914.22 KB/sec avg    914.22 KB/sec inst
-Transfer took 2020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WW_LESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005044.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WW_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27188
-Source URL: file:/nfs_scratch/tperry/avecDY-WW_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WW_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WW_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    698.47 KB/sec avg    698.47 KB/sec inst     41943040 bytes  16609.43 KB/sec avg  39936.00 KB/sec inst     41943040 bytes  16609.43 KB/sec avg  39936.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WW_LESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005045.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WW_LESDown_callHistoFiller
-WZ
-WZ Events: 9979363
-WZ XC: 33.6
-9979363
-33.6
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27289
-Source URL: file:/nfs_scratch/tperry/avecDY-WZ_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WZ_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WZ_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    508.09 KB/sec avg    508.09 KB/sec inst     69011641 bytes  22350.00 KB/sec avg  66370.18 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WZ_SFs_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3005046.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WZ_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27390
-Source URL: file:/nfs_scratch/tperry/avecDY-WZ_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WZ_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n12.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WZ_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    610.68 KB/sec avg    610.68 KB/sec inst      1048576 bytes    610.68 KB/sec avg    610.68 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WZ_JESUp_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3005047.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WZ_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27489
-Source URL: file:/nfs_scratch/tperry/avecDY-WZ_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WZ_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n13.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WZ_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    200.07 KB/sec avg    200.07 KB/sec inst     16777216 bytes   2677.94 KB/sec avg  15360.00 KB/sec inst
-Transfer took 7030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WZ_JESDown_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3005048.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WZ_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27582
-Source URL: file:/nfs_scratch/tperry/avecDY-WZ_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WZ_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WZ_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    566.60 KB/sec avg    566.60 KB/sec inst     37748736 bytes  13131.58 KB/sec avg  35840.00 KB/sec inst     37748736 bytes  13131.58 KB/sec avg  35840.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WZ_LESUp_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3005049.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WZ_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27646
-Source URL: file:/nfs_scratch/tperry/avecDY-WZ_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-WZ_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-WZ_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    376.86 KB/sec avg    376.86 KB/sec inst     44040192 bytes  11266.88 KB/sec avg  38167.28 KB/sec inst     44040192 bytes  11266.88 KB/sec avg  38167.28 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-WZ_LESDown_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3005050.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-WZ_LESDown_callHistoFiller
-ZZ
-ZZ Events: 9799908
-ZZ XC: 8.2
-9799908
-8.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27712
-Source URL: file:/nfs_scratch/tperry/avecDY-ZZ_SFs_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-ZZ_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n21.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-ZZ_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    250.54 KB/sec avg    250.54 KB/sec inst     14680064 bytes   2661.14 KB/sec avg  10240.00 KB/sec inst     14680064 bytes   2661.14 KB/sec avg  10240.00 KB/sec inst
-Transfer took 7020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-ZZ_SFs_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005051.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-ZZ_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27760
-Source URL: file:/nfs_scratch/tperry/avecDY-ZZ_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-ZZ_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-ZZ_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    517.96 KB/sec avg    517.96 KB/sec inst     56623104 bytes  17970.93 KB/sec avg  49338.18 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-ZZ_JESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005052.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-ZZ_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27834
-Source URL: file:/nfs_scratch/tperry/avecDY-ZZ_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-ZZ_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n23.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-ZZ_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    771.82 KB/sec avg    771.82 KB/sec inst      1048576 bytes    771.82 KB/sec avg    771.82 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-ZZ_JESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005053.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-ZZ_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27921
-Source URL: file:/nfs_scratch/tperry/avecDY-ZZ_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-ZZ_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-ZZ_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    234.42 KB/sec avg    234.42 KB/sec inst      1048576 bytes    234.42 KB/sec avg    234.42 KB/sec inst
-Transfer took 6020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-ZZ_LESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005054.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-ZZ_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:27989
-Source URL: file:/nfs_scratch/tperry/avecDY-ZZ_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-ZZ_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n16.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-ZZ_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    459.67 KB/sec avg    459.67 KB/sec inst      1048576 bytes    459.67 KB/sec avg    459.67 KB/sec inst     14680064 bytes   3391.00 KB/sec avg   6656.00 KB/sec inst     48234496 bytes   8370.08 KB/sec avg  23405.72 KB/sec inst     63963136 bytes   9148.66 KB/sec avg  12800.00 KB/sec inst     63963136 bytes   9148.66 KB/sec avg  12800.00 KB/sec inst
-Transfer took 8020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-ZZ_LESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3005055.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-ZZ_LESDown_callHistoFiller
-DataA_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28044
-Source URL: file:/nfs_scratch/tperry/avecDY-DataA_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataA_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n15.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataA_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    688.18 KB/sec avg    688.18 KB/sec inst      1048576 bytes    688.18 KB/sec avg    688.18 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataA_8TeVMu_callHistoFiller...
-.........
-Submitting job(s).........
-9 job(s) submitted to cluster 3005056.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataA_8TeVMu_callHistoFiller
-DataB_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28120
-Source URL: file:/nfs_scratch/tperry/avecDY-DataB_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataB_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n23.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataB_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    841.32 KB/sec avg    841.32 KB/sec inst     12582912 bytes   5542.29 KB/sec avg  11264.00 KB/sec inst     20971520 bytes   6174.01 KB/sec avg   7447.27 KB/sec inst     31457280 bytes   6954.74 KB/sec avg   9309.09 KB/sec inst     48234496 bytes   8695.38 KB/sec avg  16384.00 KB/sec inst     48234496 bytes   8695.38 KB/sec avg  16384.00 KB/sec inst
-Transfer took 7020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataB_8TeVMu_callHistoFiller...
-...........................................
-Submitting job(s)...........................................
-43 job(s) submitted to cluster 3005057.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataB_8TeVMu_callHistoFiller
-DataC_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28208
-Source URL: file:/nfs_scratch/tperry/avecDY-DataC_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataC_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataC_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    271.15 KB/sec avg    271.15 KB/sec inst     25165824 bytes   5145.16 KB/sec avg  23552.00 KB/sec inst     62914560 bytes  10636.14 KB/sec avg  36864.00 KB/sec inst     62914560 bytes  10636.14 KB/sec avg  36864.00 KB/sec inst
-Transfer took 7020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataC_8TeVMu_callHistoFiller...
-..............................................................
-Submitting job(s)..............................................................
-62 job(s) submitted to cluster 3005058.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataC_8TeVMu_callHistoFiller
-DataD_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28316
-Source URL: file:/nfs_scratch/tperry/avecDY-DataD_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataD_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataD_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    305.69 KB/sec avg    305.69 KB/sec inst     30408704 bytes   6827.04 KB/sec avg  28672.00 KB/sec inst     30408704 bytes   6827.04 KB/sec avg  28672.00 KB/sec inst
-Transfer took 6030 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataD_8TeVMu_callHistoFiller...
-............................................................................
-Submitting job(s)............................................................................
-76 job(s) submitted to cluster 3005059.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataD_8TeVMu_callHistoFiller
-DataA_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28406
-Source URL: file:/nfs_scratch/tperry/avecDY-DataA_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataA_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataA_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    516.03 KB/sec avg    516.03 KB/sec inst     69011641 bytes  22582.43 KB/sec avg  66370.18 KB/sec inst     69011641 bytes  22582.43 KB/sec avg  66370.18 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataA_8TeVEle_callHistoFiller...
-............
-Submitting job(s)............
-12 job(s) submitted to cluster 3005060.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataA_8TeVEle_callHistoFiller
-DataB_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28469
-Source URL: file:/nfs_scratch/tperry/avecDY-DataB_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataB_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n12.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataB_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    456.95 KB/sec avg    456.95 KB/sec inst     55574528 bytes  16244.54 KB/sec avg  48407.27 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataB_8TeVEle_callHistoFiller...
-.....................................................
-Submitting job(s).....................................................
-53 job(s) submitted to cluster 3005061.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataB_8TeVEle_callHistoFiller
-DataC_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28604
-Source URL: file:/nfs_scratch/tperry/avecDY-DataC_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataC_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataC_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    323.37 KB/sec avg    323.37 KB/sec inst     47185920 bytes  11059.17 KB/sec avg  45056.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataC_8TeVEle_callHistoFiller...
-............................................................................
-Submitting job(s)............................................................................
-76 job(s) submitted to cluster 3005062.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataC_8TeVEle_callHistoFiller
-DataD_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:28668
-Source URL: file:/nfs_scratch/tperry/avecDY-DataD_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/avecDY-DataD_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g23n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/avecDY-DataD_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    251.17 KB/sec avg    251.17 KB/sec inst     44040192 bytes   8471.26 KB/sec avg  41984.00 KB/sec inst
-Transfer took 6020 ms
-Generating submit files in /nfs_scratch/tperry/avecDY-DataD_8TeVEle_callHistoFiller...
-................................................................................
-Submitting job(s)................................................................................
-80 job(s) submitted to cluster 3005063.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for avecDY are created in /nfs_scratch/tperry/avecDY-DataD_8TeVEle_callHistoFiller

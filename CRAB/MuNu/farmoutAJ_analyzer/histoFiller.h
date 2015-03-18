@@ -392,12 +392,12 @@ public :
    Float_t         J4_eta_gen_NoNu;
    Float_t         J4_phi_gen_NoNu;
    Float_t         J4_pt_gen_NoNu;
-   Float_t         SF_goodEle_IDIso;
+   vector<double>  *SF_goodEle_IDIso;
    vector<double>  *SF_goodEle_IDIsoHLT;
    vector<double>  *SF_goodEle_IDIsoHLT_errDn;
    vector<double>  *SF_goodEle_IDIsoHLT_errUp;
-   Float_t         SF_goodEle_IDIso_errDn;
-   Float_t         SF_goodEle_IDIso_errUp;
+   vector<double>  *SF_goodEle_IDIso_errDn;
+   vector<double>  *SF_goodEle_IDIso_errUp;
    vector<double>  *SF_goodMu_IDIso;
    vector<double>  *SF_goodMu_IDIsoHLT;
    vector<double>  *SF_goodMu_IDIsoHLT_errDn;
@@ -713,17 +713,6 @@ public :
    TBranch        *b_SF_qcdMu_IDIsoHLT_errUp;   //!
    TBranch        *b_SF_qcdMu_IDIso_errDn;   //!
    TBranch        *b_SF_qcdMu_IDIso_errUp;   //!
-   TBranch        *b_allMu_Iso_vec;   //!
-   TBranch        *b_allMu_chIso_vec;   //!
-   TBranch        *b_allMu_charge_vec;   //!
-   TBranch        *b_allMu_eta_vec;   //!
-   TBranch        *b_allMu_looseID_vec;   //!
-   TBranch        *b_allMu_nhIso_vec;   //!
-   TBranch        *b_allMu_phIso_vec;   //!
-   TBranch        *b_allMu_phi_vec;   //!
-   TBranch        *b_allMu_pt_vec;   //!
-   TBranch        *b_allMu_puIso_vec;   //!
-   TBranch        *b_allMu_tightID_vec;   //!
    TBranch        *b_bCandidate1Eta;   //!
    TBranch        *b_bCandidate1Phi;   //!
    TBranch        *b_bCandidate1Pt;   //!
@@ -1017,28 +1006,17 @@ histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-
-      //TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      //TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("root://cmsxrootd.hep.wisc.edu//store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
       //if (!f || !f->IsOpen()) {
-      //   f = new TFile("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
-      //}
-      //TDirectory * dir = (TDirectory*)f->Get("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
+      //   f = new TFile("root://cmsxrootd.hep.wisc.edu//store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      //}    
+      //TDirectory * dir = (TDirectory*)f->Get("root://cmsxrootd.hep.wisc.edu//store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
 
-
-      //TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
-      //if (!f || !f->IsOpen()) {
-      //   f = new TFile("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
-      //}
-      //TDirectory * dir = (TDirectory*)f->Get("root://cmsxrootd.hep.wisc.edu//store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
-
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+         f = new TFile("/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
-
-
-
+      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
       dir->GetObject("eventTree",tree);
       //std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
       //std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
@@ -1209,27 +1187,33 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    }
 
    // Set object pointer
-   SF_goodEle_IDIsoHLT = 0;
-   SF_goodEle_IDIsoHLT_errDn = 0;
-   SF_goodEle_IDIsoHLT_errUp = 0;
-   SF_goodMu_IDIsoHLT = 0;
-   SF_goodMu_IDIsoHLT_errDn = 0;
-   SF_goodMu_IDIsoHLT_errUp = 0;
-   bHadronsEta = 0;
-   bHadronsPhi = 0;
-   bHadronsPt = 0;
-   goodEle_Iso03_vec = 0;
-   goodEle_Iso04_vec = 0;
-   goodEle_charge_vec = 0;
-   goodEle_eta_vec = 0;
-   goodEle_mass_vec = 0;
-   goodEle_phi_vec = 0;
-   goodEle_pt_vec = 0;
-   goodMu_charge_vec = 0;
-   goodMu_eta_vec = 0;
-   goodMu_mass_vec = 0;
-   goodMu_phi_vec = 0;
-   goodMu_pt_vec = 0;
+   SF_goodEle_IDIso = 0; 
+   SF_goodEle_IDIsoHLT = 0; 
+   SF_goodEle_IDIsoHLT_errDn = 0; 
+   SF_goodEle_IDIsoHLT_errUp = 0; 
+   SF_goodEle_IDIso_errDn = 0; 
+   SF_goodEle_IDIso_errUp = 0; 
+   SF_goodMu_IDIso = 0; 
+   SF_goodMu_IDIsoHLT = 0; 
+   SF_goodMu_IDIsoHLT_errDn = 0; 
+   SF_goodMu_IDIsoHLT_errUp = 0; 
+   SF_goodMu_IDIso_errDn = 0; 
+   SF_goodMu_IDIso_errUp = 0; 
+   bHadronsEta = 0; 
+   bHadronsPhi = 0; 
+   bHadronsPt = 0; 
+   goodEle_Iso03_vec = 0; 
+   goodEle_Iso04_vec = 0; 
+   goodEle_charge_vec = 0; 
+   goodEle_eta_vec = 0; 
+   goodEle_mass_vec = 0; 
+   goodEle_phi_vec = 0; 
+   goodEle_pt_vec = 0; 
+   goodMu_charge_vec = 0; 
+   goodMu_eta_vec = 0; 
+   goodMu_mass_vec = 0; 
+   goodMu_phi_vec = 0; 
+   goodMu_pt_vec = 0; 
 
    // Set branch addresses and branch pointers
    if (!tree) return;
@@ -1692,4 +1676,3 @@ Bool_t histoFiller::writeHistWriter( int pspace_nr, int syst_nr, Bool_t isW ){
 }
 
 #endif // #ifdef histoFiller_cxx
-

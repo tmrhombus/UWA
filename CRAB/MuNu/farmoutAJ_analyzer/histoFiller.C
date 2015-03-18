@@ -127,14 +127,14 @@ void histoFiller::Loop(
   min2goodJs = 
    nrGoodJets>=2 && nrFwdJets==0;
   exactly2goodJs = 
-   nrGoodJets==2 && nrFwdJets==0//;         //// For Ilya
+   nrGoodJets==2 && nrFwdJets==0 //;         //// For Ilya
    && goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
   min2goodBJs = 
-   nrGoodJets>=2 && nrFwdJets==0
+   min2goodJs
    && goodJ1_CSV>0.898 && goodJ2_CSV>0.898;
   exactly2goodBJs = 
    exactly2goodJs 
-   && goodJ1_CSV>0.898 && goodJ2_CSV>0.898; //// For Ilya
+   && goodJ1_CSV>0.898 && goodJ2_CSV>0.898;
   aGoodBJaFwdJ = 
    nrGoodJets==1 && nrFwdJets==1 
    && goodJ1_CSV>0.898;
@@ -1009,11 +1009,11 @@ void histoFiller::Loop(
    }
    if( isMC ){
     // switch order once IDIso is vector
-    SF_dyjj_ele_good_IDIsoHLT = SF_goodEle_IDIsoHLT->at(1) * SF_goodEle_IDIso;
+    SF_dyjj_ele_good_IDIsoHLT = SF_goodEle_IDIsoHLT->at(0) * SF_goodEle_IDIso->at(1);
     SF_dyjj_ele_good_IDIsoHLT_errUp = SF_dyjj_ele_good_IDIsoHLT 
-     + std::sqrt( pow(SF_goodEle_IDIsoHLT_errUp->at(1),2) + pow(SF_goodEle_IDIso,2) );
+     + std::sqrt( pow(SF_goodEle_IDIsoHLT_errUp->at(0),2) + pow(SF_goodEle_IDIso_errUp->at(1),2) );
     SF_dyjj_ele_good_IDIsoHLT_errDn = SF_dyjj_ele_good_IDIsoHLT 
-     - std::sqrt( pow(SF_goodEle_IDIsoHLT_errDn->at(1),2) + pow(SF_goodEle_IDIso_errDn,2) );
+     - std::sqrt( pow(SF_goodEle_IDIsoHLT_errDn->at(0),2) + pow(SF_goodEle_IDIso_errDn->at(1),2) );
    }
   }
   if( twoQCDElectrons && exactly2goodJs ){ // ele qcd

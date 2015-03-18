@@ -1,2353 +1,0 @@
-nohup: ignoring input
-Drell
-Drell Events: 25810323
-Drell XC: 3531.9
-25810323
-3531.9
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263394
-Source URL: file:/nfs_scratch/tperry/Tous-Drell_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Drell_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Drell_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    216.64 KB/sec avg    216.64 KB/sec inst      1048576 bytes    216.64 KB/sec avg    216.64 KB/sec inst     13631488 bytes   2137.84 KB/sec avg   8192.00 KB/sec inst     13631488 bytes   2137.84 KB/sec avg   8192.00 KB/sec inst     30408704 bytes   3746.26 KB/sec avg   9637.65 KB/sec inst     63963136 bytes   6626.19 KB/sec avg  21845.33 KB/sec inst     63963136 bytes   6626.19 KB/sec avg  21845.33 KB/sec inst
-Transfer took 11010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Drell_SFs_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004340.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Drell_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263395
-Source URL: file:/nfs_scratch/tperry/Tous-Drell_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Drell_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n23.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Drell_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    181.95 KB/sec avg    181.95 KB/sec inst      8388608 bytes   1236.00 KB/sec avg   7168.00 KB/sec inst     41943040 bytes   5300.31 KB/sec avg  29789.09 KB/sec inst     67108864 bytes   7508.84 KB/sec avg  24576.00 KB/sec inst     67108864 bytes   7508.84 KB/sec avg  24576.00 KB/sec inst
-Transfer took 10020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Drell_JESUp_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004341.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Drell_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263479
-Source URL: file:/nfs_scratch/tperry/Tous-Drell_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Drell_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n27.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Drell_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    716.87 KB/sec avg    716.87 KB/sec inst      1048576 bytes    716.87 KB/sec avg    716.87 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Drell_JESDown_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004342.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Drell_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263487
-Source URL: file:/nfs_scratch/tperry/Tous-Drell_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Drell_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Drell_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    847.09 KB/sec avg    847.09 KB/sec inst      1048576 bytes    847.09 KB/sec avg    847.09 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Drell_LESUp_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004343.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Drell_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263489
-Source URL: file:/nfs_scratch/tperry/Tous-Drell_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Drell_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Drell_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    820.41 KB/sec avg    820.41 KB/sec inst      1048576 bytes    820.41 KB/sec avg    820.41 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Drell_LESDown_callHistoFiller...
-............................................
-Submitting job(s)............................................
-44 job(s) submitted to cluster 3004344.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Drell_LESDown_callHistoFiller
-TTbar_full
-TTbar_full Events: 10429331
-TTbar_full XC: 25.1
-10429331
-25.1
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263490
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_full_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_full_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_full_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    446.21 KB/sec avg    446.21 KB/sec inst     44040192 bytes  13052.98 KB/sec avg  41984.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_full_SFs_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004345.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_full_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263491
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_full_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_full_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_full_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    722.09 KB/sec avg    722.09 KB/sec inst      1048576 bytes    722.09 KB/sec avg    722.09 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_full_JESUp_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004372.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_full_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263608
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_full_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_full_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g26n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_full_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes     79.38 KB/sec avg     79.38 KB/sec inst      1048576 bytes     79.38 KB/sec avg     79.38 KB/sec inst      1048576 bytes     79.38 KB/sec avg     79.38 KB/sec inst      1048576 bytes     79.38 KB/sec avg     79.38 KB/sec inst      1048576 bytes     79.38 KB/sec avg     79.38 KB/sec inst     13631488 bytes    765.04 KB/sec avg   2730.67 KB/sec inst     31457280 bytes   1660.51 KB/sec avg  15825.46 KB/sec inst     47185920 bytes   2363.04 KB/sec avg  15360.00 KB/sec inst     47185920 bytes   2363.04 KB/sec avg  15360.00 KB/sec inst
-Transfer took 21020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_full_JESDown_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004501.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_full_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263628
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_full_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_full_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_full_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    349.63 KB/sec avg    349.63 KB/sec inst      1048576 bytes    349.63 KB/sec avg    349.63 KB/sec inst     41943040 bytes  10425.44 KB/sec avg  39936.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_full_LESUp_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004528.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_full_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263630
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_full_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_full_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n22.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_full_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    547.39 KB/sec avg    547.39 KB/sec inst     42991616 bytes  14625.04 KB/sec avg  40960.00 KB/sec inst     42991616 bytes  14625.04 KB/sec avg  40960.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_full_LESDown_callHistoFiller...
-.....................
-Submitting job(s).....................
-21 job(s) submitted to cluster 3004529.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_full_LESDown_callHistoFiller
-TTbar_semi
-TTbar_semi Events: 23492957
-TTbar_semi XC: 104.7
-23492957
-104.7
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263635
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_semi_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_semi_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n27.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_semi_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    450.23 KB/sec avg    450.23 KB/sec inst     41943040 bytes  12138.48 KB/sec avg  36305.46 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_semi_SFs_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004530.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_semi_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263755
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_semi_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_semi_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n12.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_semi_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    237.66 KB/sec avg    237.66 KB/sec inst      1048576 bytes    237.66 KB/sec avg    237.66 KB/sec inst     13631488 bytes   2179.19 KB/sec avg   6826.67 KB/sec inst     33554432 bytes   4609.57 KB/sec avg  19456.00 KB/sec inst     47185920 bytes   5415.64 KB/sec avg   9508.57 KB/sec inst     47185920 bytes   5415.64 KB/sec avg   9508.57 KB/sec inst
-Transfer took 10020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_semi_JESUp_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004531.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_semi_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263790
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_semi_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_semi_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n06.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_semi_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    208.18 KB/sec avg    208.18 KB/sec inst      1048576 bytes    208.18 KB/sec avg    208.18 KB/sec inst     14680064 bytes   2199.14 KB/sec avg   8320.00 KB/sec inst     14680064 bytes   2199.14 KB/sec avg   8320.00 KB/sec inst     63963136 bytes   7600.02 KB/sec avg  28310.59 KB/sec inst
-Transfer took 9020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_semi_JESDown_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004532.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_semi_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263812
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_semi_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_semi_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_semi_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    267.68 KB/sec avg    267.68 KB/sec inst     55574528 bytes  11246.86 KB/sec avg  53248.00 KB/sec inst     55574528 bytes  11246.86 KB/sec avg  53248.00 KB/sec inst
-Transfer took 6010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_semi_LESUp_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004533.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_semi_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:263843
-Source URL: file:/nfs_scratch/tperry/Tous-TTbar_semi_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-TTbar_semi_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n23.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-TTbar_semi_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    696.85 KB/sec avg    696.85 KB/sec inst     62914560 bytes  24879.78 KB/sec avg  60416.00 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-TTbar_semi_LESDown_callHistoFiller...
-.......................................................
-Submitting job(s).......................................................
-55 job(s) submitted to cluster 3004534.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-TTbar_semi_LESDown_callHistoFiller
-T_s
-T_s Events: 259961
-T_s XC: 3.79
-259961
-3.79
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264052
-Source URL: file:/nfs_scratch/tperry/Tous-T_s_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_s_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_s_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    520.28 KB/sec avg    520.28 KB/sec inst      1048576 bytes    520.28 KB/sec avg    520.28 KB/sec inst     61865984 bytes  20354.51 KB/sec avg  59392.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_s_SFs_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004535.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_s_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264078
-Source URL: file:/nfs_scratch/tperry/Tous-T_s_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_s_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_s_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    483.53 KB/sec avg    483.53 KB/sec inst     41943040 bytes  13137.72 KB/sec avg  39936.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_s_JESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004536.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_s_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264092
-Source URL: file:/nfs_scratch/tperry/Tous-T_s_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_s_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n03.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_s_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    747.92 KB/sec avg    747.92 KB/sec inst      1048576 bytes    747.92 KB/sec avg    747.92 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_s_JESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004537.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_s_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264134
-Source URL: file:/nfs_scratch/tperry/Tous-T_s_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_s_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n16.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_s_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    796.05 KB/sec avg    796.05 KB/sec inst      1048576 bytes    796.05 KB/sec avg    796.05 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_s_LESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004538.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_s_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264167
-Source URL: file:/nfs_scratch/tperry/Tous-T_s_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_s_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_s_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    119.04 KB/sec avg    119.04 KB/sec inst     12582912 bytes   1266.49 KB/sec avg  10240.00 KB/sec inst     14680064 bytes   1339.51 KB/sec avg   2048.00 KB/sec inst     35651584 bytes   2975.12 KB/sec avg  20480.00 KB/sec inst     56623104 bytes   4319.19 KB/sec avg  18618.18 KB/sec inst     56623104 bytes   4319.19 KB/sec avg  18618.18 KB/sec inst
-Transfer took 14020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_s_LESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004539.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_s_LESDown_callHistoFiller
-T_t
-T_t Events: 4391771
-T_t XC: 17.8
-4391771
-17.8
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264195
-Source URL: file:/nfs_scratch/tperry/Tous-T_t_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_t_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g20n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_t_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    648.34 KB/sec avg    648.34 KB/sec inst     51380224 bytes  19452.50 KB/sec avg  49152.00 KB/sec inst     51380224 bytes  19452.50 KB/sec avg  49152.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_t_SFs_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004540.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_t_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264225
-Source URL: file:/nfs_scratch/tperry/Tous-T_t_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_t_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g25n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_t_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    408.54 KB/sec avg    408.54 KB/sec inst     66060288 bytes  18397.75 KB/sec avg  63488.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_t_JESUp_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004541.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_t_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264256
-Source URL: file:/nfs_scratch/tperry/Tous-T_t_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_t_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s15n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_t_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    602.77 KB/sec avg    602.77 KB/sec inst      1048576 bytes    602.77 KB/sec avg    602.77 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_t_JESDown_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004542.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_t_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264302
-Source URL: file:/nfs_scratch/tperry/Tous-T_t_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_t_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_t_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    645.77 KB/sec avg    645.77 KB/sec inst      1048576 bytes    645.77 KB/sec avg    645.77 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_t_LESUp_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004543.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_t_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264349
-Source URL: file:/nfs_scratch/tperry/Tous-T_t_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_t_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n28.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_t_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    308.00 KB/sec avg    308.00 KB/sec inst     54525952 bytes  12312.75 KB/sec avg  52224.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_t_LESDown_callHistoFiller...
-........
-Submitting job(s)........
-8 job(s) submitted to cluster 3004544.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_t_LESDown_callHistoFiller
-T_tW
-T_tW Events: 476173
-T_tW XC: 11.1
-476173
-11.1
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264377
-Source URL: file:/nfs_scratch/tperry/Tous-T_tW_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_tW_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n28.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_tW_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    347.11 KB/sec avg    347.11 KB/sec inst      1048576 bytes    347.11 KB/sec avg    347.11 KB/sec inst     30408704 bytes   6826.52 KB/sec avg  20480.00 KB/sec inst     30408704 bytes   6826.52 KB/sec avg  20480.00 KB/sec inst
-Transfer took 6030 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_tW_SFs_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004545.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_tW_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264411
-Source URL: file:/nfs_scratch/tperry/Tous-T_tW_JESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_tW_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n06.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_tW_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    229.78 KB/sec avg    229.78 KB/sec inst     57671680 bytes  10321.61 KB/sec avg  55296.00 KB/sec inst
-Transfer took 6010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_tW_JESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004546.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_tW_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264456
-Source URL: file:/nfs_scratch/tperry/Tous-T_tW_JESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_tW_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n06.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_tW_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    553.46 KB/sec avg    553.46 KB/sec inst     60817408 bytes  20838.03 KB/sec avg  58368.00 KB/sec inst     60817408 bytes  20838.03 KB/sec avg  58368.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_tW_JESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004547.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_tW_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264505
-Source URL: file:/nfs_scratch/tperry/Tous-T_tW_LESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_tW_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_tW_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    523.09 KB/sec avg    523.09 KB/sec inst     49283072 bytes  15740.37 KB/sec avg  42821.82 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_tW_LESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004548.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_tW_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264544
-Source URL: file:/nfs_scratch/tperry/Tous-T_tW_LESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-T_tW_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-T_tW_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    254.10 KB/sec avg    254.10 KB/sec inst     46137344 bytes   8957.64 KB/sec avg  44032.00 KB/sec inst     62914560 bytes   9706.32 KB/sec avg  12603.08 KB/sec inst
-Transfer took 7020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-T_tW_LESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004549.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-T_tW_LESDown_callHistoFiller
-Tbar_s
-Tbar_s Events: 139974
-Tbar_s XC: 1.76
-139974
-1.76
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264561
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_s_SFs_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_s_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n22.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_s_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    362.11 KB/sec avg    362.11 KB/sec inst     44040192 bytes  10949.51 KB/sec avg  38167.27 KB/sec inst     44040192 bytes  10949.51 KB/sec avg  38167.27 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_s_SFs_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004550.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_s_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264579
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_s_JESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_s_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g20n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_s_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    628.20 KB/sec avg    628.20 KB/sec inst      1048576 bytes    628.20 KB/sec avg    628.20 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_s_JESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004551.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_s_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264611
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_s_JESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_s_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_s_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    463.47 KB/sec avg    463.47 KB/sec inst     40894464 bytes  12443.45 KB/sec avg  38912.00 KB/sec inst     40894464 bytes  12443.45 KB/sec avg  38912.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_s_JESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004552.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_s_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264632
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_s_LESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_s_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_s_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    662.07 KB/sec avg    662.07 KB/sec inst     58720256 bytes  21666.59 KB/sec avg  51200.00 KB/sec inst     58720256 bytes  21666.59 KB/sec avg  51200.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_s_LESUp_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004553.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_s_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264657
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_s_LESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_s_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_s_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    344.91 KB/sec avg    344.91 KB/sec inst     46137344 bytes  11352.33 KB/sec avg  44032.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_s_LESDown_callHistoFiller...
-.
-Submitting job(s).
-1 job(s) submitted to cluster 3004554.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_s_LESDown_callHistoFiller
-Tbar_t
-Tbar_t Events: 2195905
-Tbar_t XC: 9.6
-2195905
-9.6
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264668
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_t_SFs_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_t_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_t_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    666.06 KB/sec avg    666.06 KB/sec inst      1048576 bytes    666.06 KB/sec avg    666.06 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_t_SFs_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3004555.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_t_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264682
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_t_JESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_t_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_t_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    420.18 KB/sec avg    420.18 KB/sec inst     31457280 bytes   8937.88 KB/sec avg  29696.00 KB/sec inst     31457280 bytes   8937.88 KB/sec avg  29696.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_t_JESUp_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3004556.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_t_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264698
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_t_JESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_t_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_t_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    570.19 KB/sec avg    570.19 KB/sec inst      1048576 bytes    570.19 KB/sec avg    570.19 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_t_JESDown_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3004557.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_t_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264718
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_t_LESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_t_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n31.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_t_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    878.36 KB/sec avg    878.36 KB/sec inst     62914560 bytes  27116.08 KB/sec avg  54923.64 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_t_LESUp_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3004558.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_t_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264729
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_t_LESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_t_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n28.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_t_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    270.94 KB/sec avg    270.94 KB/sec inst     25165824 bytes   5036.72 KB/sec avg  21410.91 KB/sec inst     25165824 bytes   5036.72 KB/sec avg  21410.91 KB/sec inst     25165824 bytes   5036.72 KB/sec avg  21410.91 KB/sec inst     65011712 bytes   8843.12 KB/sec avg  16918.26 KB/sec inst
-Transfer took 8010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_t_LESDown_callHistoFiller...
-....
-Submitting job(s)....
-4 job(s) submitted to cluster 3004559.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_t_LESDown_callHistoFiller
-Tbar_tW
-Tbar_tW Events: 484502
-Tbar_tW XC: 11.1
-484502
-11.1
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264747
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_tW_SFs_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_tW_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n18.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_tW_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    536.65 KB/sec avg    536.65 KB/sec inst     59768832 bytes  20070.71 KB/sec avg  57344.00 KB/sec inst     59768832 bytes  20070.71 KB/sec avg  57344.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_tW_SFs_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004560.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_tW_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264753
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_tW_JESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_tW_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_tW_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    523.05 KB/sec avg    523.05 KB/sec inst     67108864 bytes  22157.35 KB/sec avg  64512.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_tW_JESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004561.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_tW_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264765
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_tW_JESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_tW_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g20n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_tW_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    732.93 KB/sec avg    732.93 KB/sec inst     55574528 bytes  22640.35 KB/sec avg  53248.00 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_tW_JESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004562.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_tW_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264774
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_tW_LESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_tW_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n05.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_tW_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes     93.70 KB/sec avg     93.70 KB/sec inst      1048576 bytes     93.70 KB/sec avg     93.70 KB/sec inst      1048576 bytes     93.70 KB/sec avg     93.70 KB/sec inst
-Transfer took 13030 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_tW_LESUp_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004563.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_tW_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264779
-Source URL: file:/nfs_scratch/tperry/Tous-Tbar_tW_LESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Tbar_tW_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n17.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Tbar_tW_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    187.17 KB/sec avg    187.17 KB/sec inst      1048576 bytes    187.17 KB/sec avg    187.17 KB/sec inst     14680064 bytes   2027.46 KB/sec avg   8320.00 KB/sec inst     63963136 bytes   7287.89 KB/sec avg  32085.33 KB/sec inst
-Transfer took 9020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Tbar_tW_LESDown_callHistoFiller...
-..
-Submitting job(s)..
-2 job(s) submitted to cluster 3004564.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Tbar_tW_LESDown_callHistoFiller
-W1Jet
-W1Jet Events: 52593689
-W1Jet XC: 36703.2
-52593689
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264787
-Source URL: file:/nfs_scratch/tperry/Tous-W1Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W1Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W1Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    430.62 KB/sec avg    430.62 KB/sec inst     45088768 bytes  12660.24 KB/sec avg  39098.18 KB/sec inst     60817408 bytes  13263.14 KB/sec avg  15360.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W1Jet_SFs_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3004565.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W1Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264793
-Source URL: file:/nfs_scratch/tperry/Tous-W1Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W1Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W1Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    276.30 KB/sec avg    276.30 KB/sec inst     14680064 bytes   3046.24 KB/sec avg  13312.00 KB/sec inst     30408704 bytes   5114.60 KB/sec avg  13963.64 KB/sec inst     49283072 bytes   7071.28 KB/sec avg  18432.00 KB/sec inst     69014255 bytes   8633.83 KB/sec avg  19268.73 KB/sec inst     69014255 bytes   8633.83 KB/sec avg  19268.73 KB/sec inst
-Transfer took 9010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W1Jet_JESUp_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3004566.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W1Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:264823
-Source URL: file:/nfs_scratch/tperry/Tous-W1Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W1Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s15n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W1Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    237.53 KB/sec avg    237.53 KB/sec inst     12582912 bytes   2229.70 KB/sec avg   9386.67 KB/sec inst     12582912 bytes   2229.70 KB/sec avg   9386.67 KB/sec inst
-Transfer took 7020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W1Jet_JESDown_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3004567.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W1Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265034
-Source URL: file:/nfs_scratch/tperry/Tous-W1Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W1Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n11.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W1Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    372.94 KB/sec avg    372.94 KB/sec inst     34603008 bytes   8786.76 KB/sec avg  29789.09 KB/sec inst     34603008 bytes   8786.76 KB/sec avg  29789.09 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W1Jet_LESUp_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3004568.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W1Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265091
-Source URL: file:/nfs_scratch/tperry/Tous-W1Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W1Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n23.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W1Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    848.42 KB/sec avg    848.42 KB/sec inst      1048576 bytes    848.42 KB/sec avg    848.42 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W1Jet_LESDown_callHistoFiller...
-...............................................................................................
-Submitting job(s)...............................................................................................
-95 job(s) submitted to cluster 3004569.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W1Jet_LESDown_callHistoFiller
-W2Jet
-W2Jet Events: 64409521
-W2Jet XC: 36703.2
-64409521
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265113
-Source URL: file:/nfs_scratch/tperry/Tous-W2Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W2Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W2Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    428.62 KB/sec avg    428.62 KB/sec inst      1048576 bytes    428.62 KB/sec avg    428.62 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W2Jet_SFs_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3004570.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W2Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265289
-Source URL: file:/nfs_scratch/tperry/Tous-W2Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69014255
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W2Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W2Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    507.08 KB/sec avg    507.08 KB/sec inst     62914560 bytes  20348.39 KB/sec avg  60416.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W2Jet_JESUp_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3004571.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W2Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265294
-Source URL: file:/nfs_scratch/tperry/Tous-W2Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W2Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n15.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W2Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    247.07 KB/sec avg    247.07 KB/sec inst     58720256 bytes  11146.58 KB/sec avg  56320.00 KB/sec inst
-Transfer took 6010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W2Jet_JESDown_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3004572.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W2Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265535
-Source URL: file:/nfs_scratch/tperry/Tous-W2Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W2Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W2Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    355.77 KB/sec avg    355.77 KB/sec inst      1048576 bytes    355.77 KB/sec avg    355.77 KB/sec inst      3145728 bytes    772.19 KB/sec avg   1861.82 KB/sec inst     63963136 bytes  12547.26 KB/sec avg  59392.00 KB/sec inst
-Transfer took 6010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W2Jet_LESUp_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3004573.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W2Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265555
-Source URL: file:/nfs_scratch/tperry/Tous-W2Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W2Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g25n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W2Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    399.15 KB/sec avg    399.15 KB/sec inst     35651584 bytes   9764.74 KB/sec avg  33792.00 KB/sec inst     35651584 bytes   9764.74 KB/sec avg  33792.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W2Jet_LESDown_callHistoFiller...
-....................................................................................................................
-Submitting job(s)....................................................................................................................
-116 job(s) submitted to cluster 3004574.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W2Jet_LESDown_callHistoFiller
-W3Jet
-W3Jet Events: 30358906
-W3Jet XC: 36703.2
-30358906
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265831
-Source URL: file:/nfs_scratch/tperry/Tous-W3Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W3Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n02.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W3Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    737.45 KB/sec avg    737.45 KB/sec inst      1048576 bytes    737.45 KB/sec avg    737.45 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W3Jet_SFs_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3004575.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W3Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:265935
-Source URL: file:/nfs_scratch/tperry/Tous-W3Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W3Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g25n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W3Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    288.43 KB/sec avg    288.43 KB/sec inst      9437184 bytes   1981.83 KB/sec avg   7447.27 KB/sec inst      9437184 bytes   1981.83 KB/sec avg   7447.27 KB/sec inst     14680064 bytes   2188.62 KB/sec avg   2694.74 KB/sec inst     19922944 bytes   2543.19 KB/sec avg   4654.54 KB/sec inst     26214400 bytes   2892.58 KB/sec avg   5120.00 KB/sec inst     26214400 bytes   2892.58 KB/sec avg   5120.00 KB/sec inst     30408704 bytes   2788.29 KB/sec avg   2275.56 KB/sec inst     36700160 bytes   3024.41 KB/sec avg   5120.00 KB/sec inst     42991616 bytes   3267.18 KB/sec avg   6144.00 KB/sec inst     49283072 bytes   3449.98 KB/sec avg   5585.45 KB/sec inst     49283072 bytes   3449.98 KB/sec avg   5585.45 KB/sec inst     57671680 bytes   3742.13 KB/sec avg   7447.27 KB/sec inst     67108864 bytes   4057.90 KB/sec avg   8378.18 KB/sec inst     67108864 bytes   4057.90 KB/sec avg   8378.18 KB/sec inst
-Transfer took 18050 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W3Jet_JESUp_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3004576.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W3Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:266243
-Source URL: file:/nfs_scratch/tperry/Tous-W3Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W3Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g18n13.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W3Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    206.94 KB/sec avg    206.94 KB/sec inst     36700160 bytes   6025.26 KB/sec avg  34816.00 KB/sec inst     49283072 bytes   6926.60 KB/sec avg  12288.00 KB/sec inst
-Transfer took 8010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W3Jet_JESDown_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3004577.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W3Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:266312
-Source URL: file:/nfs_scratch/tperry/Tous-W3Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W3Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W3Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    177.64 KB/sec avg    177.64 KB/sec inst     38797312 bytes   5600.96 KB/sec avg  36864.00 KB/sec inst     38797312 bytes   5600.96 KB/sec avg  36864.00 KB/sec inst
-Transfer took 8020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W3Jet_LESUp_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3004578.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W3Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:266385
-Source URL: file:/nfs_scratch/tperry/Tous-W3Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W3Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n17.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W3Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    683.35 KB/sec avg    683.35 KB/sec inst      1048576 bytes    683.35 KB/sec avg    683.35 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W3Jet_LESDown_callHistoFiller...
-......................................................................
-Submitting job(s)......................................................................
-70 job(s) submitted to cluster 3004579.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W3Jet_LESDown_callHistoFiller
-W4Jet
-W4Jet Events: 13042592
-W4Jet XC: 36703.2
-13042592
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:266453
-Source URL: file:/nfs_scratch/tperry/Tous-W4Jet_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W4Jet_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W4Jet_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    452.91 KB/sec avg    452.91 KB/sec inst     59768832 bytes  17899.12 KB/sec avg  57344.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W4Jet_SFs_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3004580.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W4Jet_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:266531
-Source URL: file:/nfs_scratch/tperry/Tous-W4Jet_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W4Jet_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W4Jet_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    342.63 KB/sec avg    342.63 KB/sec inst     46137344 bytes  11295.98 KB/sec avg  44032.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W4Jet_JESUp_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3004581.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W4Jet_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:266753
-Source URL: file:/nfs_scratch/tperry/Tous-W4Jet_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W4Jet_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n18.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W4Jet_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    599.53 KB/sec avg    599.53 KB/sec inst      1048576 bytes    599.53 KB/sec avg    599.53 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W4Jet_JESDown_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3004582.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W4Jet_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:267202
-Source URL: file:/nfs_scratch/tperry/Tous-W4Jet_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W4Jet_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W4Jet_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    421.21 KB/sec avg    421.21 KB/sec inst      1048576 bytes    421.21 KB/sec avg    421.21 KB/sec inst
-Transfer took 4040 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W4Jet_LESUp_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3004583.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W4Jet_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:267556
-Source URL: file:/nfs_scratch/tperry/Tous-W4Jet_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-W4Jet_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n04.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-W4Jet_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    595.84 KB/sec avg    595.84 KB/sec inst      1048576 bytes    595.84 KB/sec avg    595.84 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-W4Jet_LESDown_callHistoFiller...
-..........................
-Submitting job(s)..........................
-26 job(s) submitted to cluster 3004584.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-W4Jet_LESDown_callHistoFiller
-WJets
-WJets Events: 75865454
-WJets XC: 36703.2
-75865454
-36703.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:267625
-Source URL: file:/nfs_scratch/tperry/Tous-WJets_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WJets_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n13.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WJets_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    536.41 KB/sec avg    536.41 KB/sec inst     68157440 bytes  22880.76 KB/sec avg  65536.00 KB/sec inst     68157440 bytes  22880.76 KB/sec avg  65536.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WJets_SFs_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3004585.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WJets_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:267683
-Source URL: file:/nfs_scratch/tperry/Tous-WJets_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WJets_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n18.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WJets_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    497.41 KB/sec avg    497.41 KB/sec inst     65011712 bytes  20756.67 KB/sec avg  62464.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WJets_JESUp_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3004586.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WJets_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:267835
-Source URL: file:/nfs_scratch/tperry/Tous-WJets_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WJets_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WJets_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    294.26 KB/sec avg    294.26 KB/sec inst     33554432 bytes   7314.35 KB/sec avg  31744.00 KB/sec inst
-Transfer took 5140 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WJets_JESDown_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3004587.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WJets_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:267889
-Source URL: file:/nfs_scratch/tperry/Tous-WJets_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WJets_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n21.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WJets_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    390.70 KB/sec avg    390.70 KB/sec inst     62914560 bytes  16967.84 KB/sec avg  60416.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WJets_LESUp_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3004588.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WJets_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268163
-Source URL: file:/nfs_scratch/tperry/Tous-WJets_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WJets_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g22n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WJets_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    174.78 KB/sec avg    174.78 KB/sec inst     28311552 bytes   4031.07 KB/sec avg  26624.00 KB/sec inst     28311552 bytes   4031.07 KB/sec avg  26624.00 KB/sec inst     62914560 bytes   7439.40 KB/sec avg  24137.14 KB/sec inst
-Transfer took 9020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WJets_LESDown_callHistoFiller...
-................................................................................................................................
-Submitting job(s)................................................................................................................................
-128 job(s) submitted to cluster 3004599.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WJets_LESDown_callHistoFiller
-Wbb4F
-Wbb4F Events: 20294311
-Wbb4F XC: 138.9
-20294311
-138.9
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268216
-Source URL: file:/nfs_scratch/tperry/Tous-Wbb4F_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Wbb4F_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Wbb4F_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    573.54 KB/sec avg    573.54 KB/sec inst      1048576 bytes    573.54 KB/sec avg    573.54 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Wbb4F_SFs_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3004679.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Wbb4F_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268356
-Source URL: file:/nfs_scratch/tperry/Tous-Wbb4F_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Wbb4F_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n14.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Wbb4F_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    505.60 KB/sec avg    505.60 KB/sec inst
-Transfer took 3030 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Wbb4F_JESUp_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3004711.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Wbb4F_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268487
-Source URL: file:/nfs_scratch/tperry/Tous-Wbb4F_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Wbb4F_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n30.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Wbb4F_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    528.35 KB/sec avg    528.35 KB/sec inst     27262976 bytes   9061.56 KB/sec avg  25600.00 KB/sec inst     27262976 bytes   9061.56 KB/sec avg  25600.00 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Wbb4F_JESDown_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3004796.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Wbb4F_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268521
-Source URL: file:/nfs_scratch/tperry/Tous-Wbb4F_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Wbb4F_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Wbb4F_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    533.52 KB/sec avg    533.52 KB/sec inst      1048576 bytes    533.52 KB/sec avg    533.52 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Wbb4F_LESUp_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3004863.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Wbb4F_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268578
-Source URL: file:/nfs_scratch/tperry/Tous-Wbb4F_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-Wbb4F_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n13.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-Wbb4F_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    721.59 KB/sec avg    721.59 KB/sec inst      1048576 bytes    721.59 KB/sec avg    721.59 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-Wbb4F_LESDown_callHistoFiller...
-....................................
-Submitting job(s)....................................
-36 job(s) submitted to cluster 3004906.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-Wbb4F_LESDown_callHistoFiller
-WW
-WW Events: 10000431
-WW XC: 56.0
-10000431
-56.0
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268643
-Source URL: file:/nfs_scratch/tperry/Tous-WW_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WW_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n17.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WW_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    378.30 KB/sec avg    378.30 KB/sec inst     45088768 bytes  11878.55 KB/sec avg  43008.00 KB/sec inst     45088768 bytes  11878.55 KB/sec avg  43008.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WW_SFs_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004937.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WW_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268774
-Source URL: file:/nfs_scratch/tperry/Tous-WW_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WW_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n11.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WW_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    854.73 KB/sec avg    854.73 KB/sec inst      1048576 bytes    854.73 KB/sec avg    854.73 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WW_JESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004938.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WW_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268830
-Source URL: file:/nfs_scratch/tperry/Tous-WW_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WW_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g20n03.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WW_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    706.97 KB/sec avg    706.97 KB/sec inst      1048576 bytes    706.97 KB/sec avg    706.97 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WW_JESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004939.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WW_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268894
-Source URL: file:/nfs_scratch/tperry/Tous-WW_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WW_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WW_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    681.54 KB/sec avg    681.54 KB/sec inst      1048576 bytes    681.54 KB/sec avg    681.54 KB/sec inst
-Transfer took 3160 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WW_LESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004940.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WW_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:268952
-Source URL: file:/nfs_scratch/tperry/Tous-WW_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WW_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n20.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WW_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    848.62 KB/sec avg    848.62 KB/sec inst      1048576 bytes    848.62 KB/sec avg    848.62 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WW_LESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004941.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WW_LESDown_callHistoFiller
-WZ
-WZ Events: 9979363
-WZ XC: 33.6
-9979363
-33.6
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269020
-Source URL: file:/nfs_scratch/tperry/Tous-WZ_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WZ_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n10.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WZ_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    323.45 KB/sec avg    323.45 KB/sec inst     47185920 bytes  11061.39 KB/sec avg  45056.00 KB/sec inst
-Transfer took 5020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WZ_SFs_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3004942.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WZ_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269066
-Source URL: file:/nfs_scratch/tperry/Tous-WZ_JESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WZ_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g10n08.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WZ_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    344.09 KB/sec avg    344.09 KB/sec inst     54525952 bytes  13392.36 KB/sec avg  52224.00 KB/sec inst
-Transfer took 5010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WZ_JESUp_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3004943.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WZ_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269142
-Source URL: file:/nfs_scratch/tperry/Tous-WZ_JESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WZ_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WZ_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    474.82 KB/sec avg    474.82 KB/sec inst     65011712 bytes  20112.85 KB/sec avg  62464.00 KB/sec inst
-Transfer took 4030 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WZ_JESDown_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3004944.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WZ_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269196
-Source URL: file:/nfs_scratch/tperry/Tous-WZ_LESUp_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WZ_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WZ_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    372.50 KB/sec avg    372.50 KB/sec inst      1048576 bytes    372.50 KB/sec avg    372.50 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WZ_LESUp_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3004945.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WZ_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269264
-Source URL: file:/nfs_scratch/tperry/Tous-WZ_LESDown_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-WZ_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g12n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-WZ_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    661.67 KB/sec avg    661.67 KB/sec inst      1048576 bytes    661.67 KB/sec avg    661.67 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-WZ_LESDown_callHistoFiller...
-...................
-Submitting job(s)...................
-19 job(s) submitted to cluster 3004946.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-WZ_LESDown_callHistoFiller
-ZZ
-ZZ Events: 9799908
-ZZ XC: 8.2
-9799908
-8.2
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269359
-Source URL: file:/nfs_scratch/tperry/Tous-ZZ_SFs_callHistoFiller/user_code.tgz
-File size: 69011640
-Source URL for copy: file:/nfs_scratch/tperry/Tous-ZZ_SFs_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g25n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-ZZ_SFs_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    291.54 KB/sec avg    291.54 KB/sec inst      1048576 bytes    291.54 KB/sec avg    291.54 KB/sec inst     10485760 bytes   1857.65 KB/sec avg   4608.00 KB/sec inst     10485760 bytes   1857.65 KB/sec avg   4608.00 KB/sec inst     26214400 bytes   3650.70 KB/sec avg  10240.00 KB/sec inst
-Transfer took 8020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-ZZ_SFs_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004947.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-ZZ_SFs_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269463
-Source URL: file:/nfs_scratch/tperry/Tous-ZZ_JESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-ZZ_JESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n24.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-ZZ_JESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    885.41 KB/sec avg    885.41 KB/sec inst      1048576 bytes    885.41 KB/sec avg    885.41 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-ZZ_JESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004948.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-ZZ_JESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269545
-Source URL: file:/nfs_scratch/tperry/Tous-ZZ_JESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-ZZ_JESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g27n21.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-ZZ_JESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    657.16 KB/sec avg    657.16 KB/sec inst      1048576 bytes    657.16 KB/sec avg    657.16 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-ZZ_JESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004949.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-ZZ_JESDown_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269615
-Source URL: file:/nfs_scratch/tperry/Tous-ZZ_LESUp_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-ZZ_LESUp_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n07.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-ZZ_LESUp_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    678.71 KB/sec avg    678.71 KB/sec inst      1048576 bytes    678.71 KB/sec avg    678.71 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-ZZ_LESUp_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004950.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-ZZ_LESUp_callHistoFiller
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269681
-Source URL: file:/nfs_scratch/tperry/Tous-ZZ_LESDown_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-ZZ_LESDown_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g20n09.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-ZZ_LESDown_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    722.26 KB/sec avg    722.26 KB/sec inst      1048576 bytes    722.26 KB/sec avg    722.26 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-ZZ_LESDown_callHistoFiller...
-..................
-Submitting job(s)..................
-18 job(s) submitted to cluster 3004951.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-ZZ_LESDown_callHistoFiller
-DataA_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269733
-Source URL: file:/nfs_scratch/tperry/Tous-DataA_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataA_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://s17n03.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataA_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    612.31 KB/sec avg    612.31 KB/sec inst      1048576 bytes    612.31 KB/sec avg    612.31 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataA_8TeVMu_callHistoFiller...
-.........
-Submitting job(s).........
-9 job(s) submitted to cluster 3004952.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataA_8TeVMu_callHistoFiller
-DataB_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269805
-Source URL: file:/nfs_scratch/tperry/Tous-DataB_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataB_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n29.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataB_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    826.33 KB/sec avg    826.33 KB/sec inst      1048576 bytes    826.33 KB/sec avg    826.33 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataB_8TeVMu_callHistoFiller...
-...........................................
-Submitting job(s)...........................................
-43 job(s) submitted to cluster 3004953.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataB_8TeVMu_callHistoFiller
-DataC_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269840
-Source URL: file:/nfs_scratch/tperry/Tous-DataC_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataC_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n31.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataC_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    486.01 KB/sec avg    486.01 KB/sec inst      1048576 bytes    486.01 KB/sec avg    486.01 KB/sec inst
-Transfer took 4010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataC_8TeVMu_callHistoFiller...
-..............................................................
-Submitting job(s)..............................................................
-62 job(s) submitted to cluster 3004954.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataC_8TeVMu_callHistoFiller
-DataD_8TeVMu
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269862
-Source URL: file:/nfs_scratch/tperry/Tous-DataD_8TeVMu_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataD_8TeVMu_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g24n06.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataD_8TeVMu_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    243.93 KB/sec avg    243.93 KB/sec inst     62914560 bytes  11175.23 KB/sec avg  46473.85 KB/sec inst
-Transfer took 6010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataD_8TeVMu_callHistoFiller...
-............................................................................
-Submitting job(s)............................................................................
-76 job(s) submitted to cluster 3004955.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataD_8TeVMu_callHistoFiller
-DataA_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269973
-Source URL: file:/nfs_scratch/tperry/Tous-DataA_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataA_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n27.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataA_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    827.93 KB/sec avg    827.93 KB/sec inst      1048576 bytes    827.93 KB/sec avg    827.93 KB/sec inst
-Transfer took 3010 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataA_8TeVEle_callHistoFiller...
-............
-Submitting job(s)............
-12 job(s) submitted to cluster 3004956.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataA_8TeVEle_callHistoFiller
-DataB_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:269994
-Source URL: file:/nfs_scratch/tperry/Tous-DataB_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataB_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g19n15.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataB_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    489.86 KB/sec avg    489.86 KB/sec inst     61865984 bytes  19549.68 KB/sec avg  59392.00 KB/sec inst
-Transfer took 4020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataB_8TeVEle_callHistoFiller...
-.....................................................
-Submitting job(s).....................................................
-53 job(s) submitted to cluster 3004957.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataB_8TeVEle_callHistoFiller
-DataC_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:270014
-Source URL: file:/nfs_scratch/tperry/Tous-DataC_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataC_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g20n01.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataC_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    696.15 KB/sec avg    696.15 KB/sec inst      1048576 bytes    696.15 KB/sec avg    696.15 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataC_8TeVEle_callHistoFiller...
-............................................................................
-Submitting job(s)............................................................................
-76 job(s) submitted to cluster 3004958.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataC_8TeVEle_callHistoFiller
-DataD_8TeVEle
-LCG_GFAL_INFOSYS is not set
-Using grid catalog type: UNKNOWN
-Using grid catalog : (null)
-VO name: cms
-Checksum type: None
-Destination SE type: SRMv2
-Destination SRM Request Token: put:270157
-Source URL: file:/nfs_scratch/tperry/Tous-DataD_8TeVEle_callHistoFiller/user_code.tgz
-File size: 69011641
-Source URL for copy: file:/nfs_scratch/tperry/Tous-DataD_8TeVEle_callHistoFiller/user_code.tgz
-Destination URL: gsiftp://g14n16.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Tous-DataD_8TeVEle_callHistoFiller/user_code.tgz
-# streams: 1
-            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst      1048576 bytes    805.90 KB/sec avg    805.90 KB/sec inst      1048576 bytes    805.90 KB/sec avg    805.90 KB/sec inst
-Transfer took 3020 ms
-Generating submit files in /nfs_scratch/tperry/Tous-DataD_8TeVEle_callHistoFiller...
-................................................................................
-Submitting job(s)................................................................................
-80 job(s) submitted to cluster 3004959.
-
-Your jobs should show up in ~6 minutes
-at the NEW job monitoring web page :
-    http://www.hep.wisc.edu/cms/comp/jobs/
-Jobs for Tous are created in /nfs_scratch/tperry/Tous-DataD_8TeVEle_callHistoFiller

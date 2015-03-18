@@ -38,7 +38,7 @@ void callHistoFiller()
 // TChain *theChainLESDown = new TChain("muEleEventTreeMuonDown/eventTree");
 
  TString shift="SFs";
- TString sample="ZZ_Val_";
+ TString sample="ZZ";
  Bool_t isMC_ = kTRUE ;
  Bool_t isW_ = kFALSE ;
 
@@ -66,7 +66,11 @@ void callHistoFiller()
  //TString infileName = "/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
 
  TString outfileName = sample+"0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
- TString infileName = "/hdfs/store/user/tperry/Valentine_ZZ-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
+ TString infileName = "/hdfs/store/user/tperry/CestPi_ZZ-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
+// TString infileName = "/hdfs/store/user/tperry/Valentine_ZZ-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
+
+// TString outfileName = sample+"_B4989040-7A88-E211-9324-0015174F0894.root" ;
+// TString infileName = "/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-B4989040-7A88-E211-9324-0015174F0894.root" ;
 
  // Define Sample Criteria
  UInt_t lumi_mu  = 19778 ;
