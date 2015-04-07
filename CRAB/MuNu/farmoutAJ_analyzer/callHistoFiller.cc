@@ -29,6 +29,11 @@ void callHistoFiller()
  if(error!=0){std::cerr<<"ERROR LOADING histoFiller.C"<<std::endl;}
  histoFiller m;
 
+// gROOT->ProcessLine(".L histoFillerTTbarProgression.C++", &error);
+// if(error!=0){std::cerr<<"ERROR LOADING histoFiller.C"<<std::endl;}
+// histoFillerTTbarProgression m;
+
+
 // TChain *theChain    = new TChain("electronEventTree/eventTree");
 // TChain *theChain    = new TChain("muonEventTree/eventTree");
  TChain *theChain        = new TChain("muEleEventTree/eventTree");
@@ -65,7 +70,7 @@ void callHistoFiller()
  //TString infileName = "/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
  //TString infileName = "/hdfs/store/user/tperry/Valentine_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
 
- TString outfileName = sample+"0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
+ TString outfileName = sample+"-0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
  TString infileName = "/hdfs/store/user/tperry/CestPi_ZZ-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
 // TString infileName = "/hdfs/store/user/tperry/Valentine_ZZ-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-0000CAC5-D4DA-E111-8872-00A0D1EEF328.root" ;
 

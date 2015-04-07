@@ -21,10 +21,10 @@ process.source = cms.Source("PoolSource",
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root" # "source"
 
 #"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-00065798-2704-E211-B308-0025901D4C44.root" # "source"
-"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-0004D7A5-74E4-E211-9F79-002618943963.root"  #"externalLHEProducer"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-0004D7A5-74E4-E211-9F79-002618943963.root"  #"externalLHEProducer"
 
 # synch files
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root", 
+"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root", 
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-5ACBC7A4-7D84-E211-A0B6-782BCB27B958.root", 
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-AED5F4C3-6E84-E211-B83B-0002C90EEE6E.root", 
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root", 
@@ -45,7 +45,7 @@ from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
 defaultReconstructionPT(process,
  'HLT',
- ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v','HLT_Ele27_WP80'],
+ ['HLT_IsoMu24_eta2p1_v','HLT_Ele27_WP80'],
  itsMC=True,itsData=False,lhep_=LHESource)
 
 createGeneratedParticles(process,
@@ -170,7 +170,7 @@ addEventTreeMC(process,'muEleEventTreeMuonDown',
       lhep=LHESource
       )
 
-process.TFileService.fileName = cms.string('MC_externalLHEP_VVC.root') 
+process.TFileService.fileName = cms.string('MC_synch_00277FF2.root') 
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",

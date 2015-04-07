@@ -358,6 +358,10 @@ def makeCSVJets(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
      goodJ2_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='good', xn='', sourceJets=srcGoodJets)[1],
      goodJ3_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='good', xn='', sourceJets=srcGoodJets)[2],
      goodJ4_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+     goodJ1_SF_CSVL = makeJetList(strName='SF_CSVL',methodName='userFloat("SF_CSVL")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVL = makeJetList(strName='SF_CSVL',methodName='userFloat("SF_CSVL")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVL = makeJetList(strName='SF_CSVL',methodName='userFloat("SF_CSVL")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVL = makeJetList(strName='SF_CSVL',methodName='userFloat("SF_CSVL")', pf='good', xn='', sourceJets=srcGoodJets)[3],
 
      goodJ1_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[0],
      goodJ2_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[1],
@@ -367,6 +371,10 @@ def makeCSVJets(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
      goodJ2_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[1],
      goodJ3_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[2],
      goodJ4_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+     goodJ1_SF_CSVL_errUp = makeJetList(strName='SF_CSVL_errUp',methodName='userFloat("SF_CSVL_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVL_errUp = makeJetList(strName='SF_CSVL_errUp',methodName='userFloat("SF_CSVL_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVL_errUp = makeJetList(strName='SF_CSVL_errUp',methodName='userFloat("SF_CSVL_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVL_errUp = makeJetList(strName='SF_CSVL_errUp',methodName='userFloat("SF_CSVL_errUp")', pf='good', xn='', sourceJets=srcGoodJets)[3],
 
      goodJ1_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[0],
      goodJ2_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[1],
@@ -376,21 +384,31 @@ def makeCSVJets(srcGoodJets='smearedGoodJets',srcFwdJets='smearedFwdJets'):
      goodJ2_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[1],
      goodJ3_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[2],
      goodJ4_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[3],
+     goodJ1_SF_CSVL_errDn = makeJetList(strName='SF_CSVL_errDn',methodName='userFloat("SF_CSVL_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[0],
+     goodJ2_SF_CSVL_errDn = makeJetList(strName='SF_CSVL_errDn',methodName='userFloat("SF_CSVL_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[1],
+     goodJ3_SF_CSVL_errDn = makeJetList(strName='SF_CSVL_errDn',methodName='userFloat("SF_CSVL_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[2],
+     goodJ4_SF_CSVL_errDn = makeJetList(strName='SF_CSVL_errDn',methodName='userFloat("SF_CSVL_errDn")', pf='good', xn='', sourceJets=srcGoodJets)[3],
 
      fwdJ1_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
      fwdJ2_SF_CSVT = makeJetList(strName='SF_CSVT',methodName='userFloat("SF_CSVT")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
      fwdJ1_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
      fwdJ2_SF_CSVM = makeJetList(strName='SF_CSVM',methodName='userFloat("SF_CSVM")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+     fwdJ1_SF_CSVL = makeJetList(strName='SF_CSVL',methodName='userFloat("SF_CSVL")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVL = makeJetList(strName='SF_CSVL',methodName='userFloat("SF_CSVL")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
 
      fwdJ1_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
      fwdJ2_SF_CSVT_errUp = makeJetList(strName='SF_CSVT_errUp',methodName='userFloat("SF_CSVT_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
      fwdJ1_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
      fwdJ2_SF_CSVM_errUp = makeJetList(strName='SF_CSVM_errUp',methodName='userFloat("SF_CSVM_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+     fwdJ1_SF_CSVL_errUp = makeJetList(strName='SF_CSVL_errUp',methodName='userFloat("SF_CSVL_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVL_errUp = makeJetList(strName='SF_CSVL_errUp',methodName='userFloat("SF_CSVL_errUp")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
 
      fwdJ1_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
      fwdJ2_SF_CSVT_errDn = makeJetList(strName='SF_CSVT_errDn',methodName='userFloat("SF_CSVT_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
      fwdJ1_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
      fwdJ2_SF_CSVM_errDn = makeJetList(strName='SF_CSVM_errDn',methodName='userFloat("SF_CSVM_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
+     fwdJ1_SF_CSVL_errDn = makeJetList(strName='SF_CSVL_errDn',methodName='userFloat("SF_CSVL_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[0],
+     fwdJ2_SF_CSVL_errDn = makeJetList(strName='SF_CSVL_errDn',methodName='userFloat("SF_CSVL_errDn")', pf='fwd', xn='', sourceJets=srcFwdJets)[1],
 
      # from RecoTools/plugins/PATJetCSVreweight.h
      goodJ1_CSVreweight = makeJetList(strName='CSVreweight',methodName='userFloat("CSVreweight")',pf='good',xn='',sourceJets=srcGoodJets)[0],

@@ -30,7 +30,7 @@ process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
 defaultReconstructionPT(process,'HLT',
-                        ['HLT_IsoMu24_eta2p1_v','HLT_Mu40_eta2p1_v','HLT_Ele27_WP80'],
+                        ['HLT_IsoMu24_eta2p1_v','HLT_Ele27_WP80'],
                         itsMC=False,itsData=True)
 
 #from UWAnalysis.Configuration.tools.CutSequenceProducer import *

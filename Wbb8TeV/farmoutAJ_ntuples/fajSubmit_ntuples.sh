@@ -69,47 +69,47 @@ farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/dntaylor/DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
   ${version}_Drell $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
 
-### Single Top
-###tW
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
-##  ${version}_Tbar_tW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
-##  ${version}_T_tW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-###tt
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/TToLeptons_t-channel_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
-##  ${version}_T_t $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/TBarToLeptons_t-channel_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
-## ${version}_Tbar_t $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-###ts
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/T_s-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
-##  ${version}_T_s $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/Tbar_s-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
-##  ${version}_Tbar_s $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-###Diboson
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/aglevine/WW_TuneZ2star_8TeV_pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATuples_V1 \
-##  ${version}_WW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/aglevine/WZ_TuneZ2star_8TeV_pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATuples_V1 \
-##  ${version}_WZ $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-##
-##farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/aglevine/ZZ_TuneZ2star_8TeV_pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATuples_V1 \
-##  ${version}_ZZ $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
-## 
+## Single Top
+##tW
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/Tbar_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
+#  ${version}_Tbar_tW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/T_tW-channel-DR_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
+#  ${version}_T_tW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+##tt
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/TToLeptons_t-channel_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
+#  ${version}_T_t $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/TBarToLeptons_t-channel_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
+# ${version}_Tbar_t $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+##ts
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/T_s-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
+#  ${version}_T_s $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/Tbar_s-channel_TuneZ2star_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1 \
+#  ${version}_Tbar_s $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+##Diboson
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/aglevine/WW_TuneZ2star_8TeV_pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATuples_V1 \
+#  ${version}_WW $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/aglevine/WZ_TuneZ2star_8TeV_pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATuples_V1 \
+#  ${version}_WZ $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+#
+#farmoutAnalysisJobs $1 --input-files-per-job=1 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/aglevine/ZZ_TuneZ2star_8TeV_pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATuples_V1 \
+#  ${version}_ZZ $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/MuEle-PATMC.py "source"
+ 
 rm MuEle-PATMC.py
 
 ####
@@ -121,10 +121,10 @@ cat CONDOR.py      >> Mu-PATData.py
 cat Ele-Pat_Data.py > Ele-PATData.py
 cat CONDOR.py      >> Ele-PATData.py
 
-### muons
-##farmoutAnalysisJobs --input-files-per-job=1 --shared-fs --memory-requirements=5000 --vsize-limit=5000 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012A-22Jan2013-v1/AOD/Spring2014PATTuples_v3/ \
-##  ${version}_DataA_8TeVMu $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/Mu-PATData.py
+## muons
+#farmoutAnalysisJobs --input-files-per-job=1 --shared-fs --memory-requirements=5000 --vsize-limit=5000 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012A-22Jan2013-v1/AOD/Spring2014PATTuples_v3/ \
+#  ${version}_DataA_8TeVMu $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/Mu-PATData.py
 
 farmoutAnalysisJobs --input-files-per-job=1 --shared-fs --memory-requirements=5000 --vsize-limit=5000 --use-osg \
   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012B-22Jan2013-v1/AOD/Spring2014PATTuples_v3/ \
@@ -138,10 +138,10 @@ farmoutAnalysisJobs --input-files-per-job=1 --shared-fs --memory-requirements=50
   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012D-22Jan2013-v1/AOD/Spring2014PATTuples_v3/ \
   ${version}_DataD_8TeVMu $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/Mu-PATData.py
 
-### electrons
-##farmoutAnalysisJobs --input-files-per-job=1 --shared-fs --memory-requirements=5000 --vsize-limit=5000 --use-osg \
-##  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataA_8TeVEle-skimpattuple_cfg/ \
-##  ${version}_DataA_8TeVEle $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/Ele-PATData.py
+## electrons
+#farmoutAnalysisJobs --input-files-per-job=1 --shared-fs --memory-requirements=5000 --vsize-limit=5000 --use-osg \
+#  --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataA_8TeVEle-skimpattuple_cfg/ \
+#  ${version}_DataA_8TeVEle $CMSSW_BASE $CMSSW_BASE/src/UWAnalysis/Wbb8TeV/farmoutAJ_ntuples/Ele-PATData.py
 
 farmoutAnalysisJobs --input-files-per-job=1 --shared-fs --memory-requirements=5000 --vsize-limit=5000 --use-osg \
   --input-dir=root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataB_8TeVEle-skimpattuple_cfg/ \

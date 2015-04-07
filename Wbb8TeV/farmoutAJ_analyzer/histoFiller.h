@@ -24,21 +24,46 @@ public :
    std::vector<TString> QCD;     // 2
    std::vector<TString> Syst;    // 7
    std::vector<TString> WFlav;   // 5
+
    TH1F hists_met[7][2][2][7][5];
    TH1F hists_met_phi[7][2][2][7][5];
    TH1F hists_mt[7][2][2][7][5];
+
    TH1F hists_goodLep_pt[7][2][2][7][5];
+   TH1F hists_goodLep_eta[7][2][2][7][5];
+   TH1F hists_goodLep_phi[7][2][2][7][5];
+   TH1F hists_goodLep_mass[7][2][2][7][5];
+
    TH1F hists_goodJ1_pt[7][2][2][7][5];
-   TH1F hists_goodJ2_pt[7][2][2][7][5];
-   TH1F hists_goodJ1J2_dR[7][2][2][7][5];
-   TH1F hists_goodJ1J2_mass[7][2][2][7][5];
-   TH1F hists_goodJ1J2_pt[7][2][2][7][5];
+   TH1F hists_goodJ1_eta[7][2][2][7][5];
+   TH1F hists_goodJ1_phi[7][2][2][7][5];
+   TH1F hists_goodJ1_mass[7][2][2][7][5];
    TH1F hists_goodJ1_CSV[7][2][2][7][5];
    TH1F hists_goodJ1_mass_SV_unweighted[7][2][2][7][5];
    TH1F hists_goodJ1_mass_SV_corrected[7][2][2][7][5];
    TH1F hists_goodJ1_mass_SV_weighted[7][2][2][7][5];
-   TH1F hists_goodJ2_CSV[7][2][2][7][5]; //
-   TH1F hists_goodJ3J4_mass[7][2][2][7][5]; //
+
+   TH1F hists_goodJ2_pt[7][2][2][7][5];
+   TH1F hists_goodJ2_eta[7][2][2][7][5];
+   TH1F hists_goodJ2_phi[7][2][2][7][5];
+   TH1F hists_goodJ2_mass[7][2][2][7][5];
+   TH1F hists_goodJ2_CSV[7][2][2][7][5]; 
+
+   TH1F hists_goodJ1J2_dR[7][2][2][7][5];
+   TH1F hists_goodJ1J2_pt[7][2][2][7][5];
+   TH1F hists_goodJ1J2_eta[7][2][2][7][5];
+   TH1F hists_goodJ1J2_phi[7][2][2][7][5];
+   TH1F hists_goodJ1J2_mass[7][2][2][7][5];
+
+   TH1F hists_goodJ3J4_pt[7][2][2][7][5]; 
+   TH1F hists_goodJ3J4_eta[7][2][2][7][5]; 
+   TH1F hists_goodJ3J4_phi[7][2][2][7][5]; 
+   TH1F hists_goodJ3J4_mass[7][2][2][7][5]; 
+
+   TH1F hists_goodL1L2_mass[7][2][2][7][5];
+   TH1F hists_goodL1L2_pt[7][2][2][7][5];
+   TH1F hists_goodL1L2_eta[7][2][2][7][5];
+   TH1F hists_goodL1L2_phi[7][2][2][7][5];
 
    // For Cuts
    Bool_t oneGoodMuon;
@@ -61,6 +86,7 @@ public :
    Bool_t passMT_qcdMu;
    Bool_t passMT_goodEle;
    Bool_t passMT_qcdEle;
+   Bool_t diJetVVcut;
 
    Bool_t min2goodJs;
    Bool_t exactly2goodJs;
@@ -88,30 +114,34 @@ public :
    Float_t SF_CSVrwtgJfJ ;
 
    // histogram variables
-   Float_t mt_ele_qcd;
-   Float_t mt_ele_qcd_uesUp;
-   Float_t mt_ele_qcd_uesDown;
+   Float_t  mt_ele_qcd;
+   Float_t  mt_ele_qcd_uesUp;
+   Float_t  mt_ele_qcd_uesDown;
    Float_t lep_ele_qcd_pt;
    Float_t lep_ele_qcd_eta;
    Float_t lep_ele_qcd_phi;
-   Float_t mt_mu_good;
-   Float_t mt_mu_good_uesUp;
-   Float_t mt_mu_good_uesDown;
+   Float_t lep_ele_qcd_mass;
+   Float_t  mt_mu_good;
+   Float_t  mt_mu_good_uesUp;
+   Float_t  mt_mu_good_uesDown;
    Float_t lep_mu_good_pt;
    Float_t lep_mu_good_eta;
    Float_t lep_mu_good_phi;
-   Float_t mt_mu_qcd;
-   Float_t mt_mu_qcd_uesUp;
-   Float_t mt_mu_qcd_uesDown;
+   Float_t lep_mu_good_mass;
+   Float_t  mt_mu_qcd;
+   Float_t  mt_mu_qcd_uesUp;
+   Float_t  mt_mu_qcd_uesDown;
    Float_t lep_mu_qcd_pt;
    Float_t lep_mu_qcd_eta;
    Float_t lep_mu_qcd_phi;
-   Float_t mt_ele_good;
-   Float_t mt_ele_good_uesUp;
-   Float_t mt_ele_good_uesDown;
+   Float_t lep_mu_qcd_mass;
+   Float_t  mt_ele_good;
+   Float_t  mt_ele_good_uesUp;
+   Float_t  mt_ele_good_uesDown;
    Float_t lep_ele_good_pt;
    Float_t lep_ele_good_eta;
    Float_t lep_ele_good_phi;
+   Float_t lep_ele_good_mass;
    Float_t MET_pt;
    Float_t MET_phi;
    Float_t MET_pt_uesUp;
@@ -119,19 +149,41 @@ public :
    Float_t MET_phi_uesUp;
    Float_t MET_phi_uesDown;
    
+   // DiJets
    TLorentzVector fourVec_J1;
    TLorentzVector fourVec_J2;
    TLorentzVector fourVec_J1J2;
    TLorentzVector fourVec_J3;
    TLorentzVector fourVec_J4;
    TLorentzVector fourVec_J3J4;
-   double goodJ1J2_mass;
    double goodJ1J2_pt;
+   double goodJ1J2_eta;
+   double goodJ1J2_phi;
+   double goodJ1J2_mass;
+   double goodJ3J4_pt;
+   double goodJ3J4_eta;
+   double goodJ3J4_phi;
    double goodJ3J4_mass;
-   Float_t dRgoodJ1J2;
+   Float_t goodJ1J2_dR;
    Float_t dphiJJ;
    Float_t detaJJ;
    Float_t dphiJ1Met;
+
+   // DiLeptons
+   TLorentzVector fourVec_M1;
+   TLorentzVector fourVec_M2;
+   TLorentzVector fourVec_M1M2;
+   TLorentzVector fourVec_E1;
+   TLorentzVector fourVec_E2;
+   TLorentzVector fourVec_E1E2;
+   double goodM1M2_pt;
+   double goodM1M2_eta;
+   double goodM1M2_phi;
+   double goodM1M2_mass;
+   double goodE1E2_pt;
+   double goodE1E2_eta;
+   double goodE1E2_phi;
+   double goodE1E2_mass;
 
    // Id/Iso/HLT (EMu) Scale Factors
    // wjj
@@ -466,6 +518,9 @@ public :
    vector<double>  *bHadronsPt;
    Float_t         fwdJ1_CSV;
    Float_t         fwdJ1_CSVreweight;
+   Float_t         fwdJ1_SF_CSVL;
+   Float_t         fwdJ1_SF_CSVL_errDn;
+   Float_t         fwdJ1_SF_CSVL_errUp;
    Float_t         fwdJ1_SF_CSVM;
    Float_t         fwdJ1_SF_CSVM_errDn;
    Float_t         fwdJ1_SF_CSVM_errUp;
@@ -479,6 +534,9 @@ public :
    Float_t         fwdJ1_pt;
    Float_t         fwdJ2_CSV;
    Float_t         fwdJ2_CSVreweight;
+   Float_t         fwdJ2_SF_CSVL;
+   Float_t         fwdJ2_SF_CSVL_errDn;
+   Float_t         fwdJ2_SF_CSVL_errUp;
    Float_t         fwdJ2_SF_CSVM;
    Float_t         fwdJ2_SF_CSVM_errDn;
    Float_t         fwdJ2_SF_CSVM_errUp;
@@ -507,6 +565,9 @@ public :
    vector<double>  *goodEle_pt_vec;
    Float_t         goodJ1_CSV;
    Float_t         goodJ1_CSVreweight;
+   Float_t         goodJ1_SF_CSVL;
+   Float_t         goodJ1_SF_CSVL_errDn;
+   Float_t         goodJ1_SF_CSVL_errUp;
    Float_t         goodJ1_SF_CSVM;
    Float_t         goodJ1_SF_CSVM_errDn;
    Float_t         goodJ1_SF_CSVM_errUp;
@@ -525,6 +586,9 @@ public :
    Float_t         goodJ1_pt_SV_weighted;
    Float_t         goodJ2_CSV;
    Float_t         goodJ2_CSVreweight;
+   Float_t         goodJ2_SF_CSVL;
+   Float_t         goodJ2_SF_CSVL_errDn;
+   Float_t         goodJ2_SF_CSVL_errUp;
    Float_t         goodJ2_SF_CSVM;
    Float_t         goodJ2_SF_CSVM_errDn;
    Float_t         goodJ2_SF_CSVM_errUp;
@@ -543,6 +607,9 @@ public :
    Float_t         goodJ2_pt_SV_weighted;
    Float_t         goodJ3_CSV;
    Float_t         goodJ3_CSVreweight;
+   Float_t         goodJ3_SF_CSVL;
+   Float_t         goodJ3_SF_CSVL_errDn;
+   Float_t         goodJ3_SF_CSVL_errUp;
    Float_t         goodJ3_SF_CSVM;
    Float_t         goodJ3_SF_CSVM_errDn;
    Float_t         goodJ3_SF_CSVM_errUp;
@@ -561,6 +628,9 @@ public :
    Float_t         goodJ3_pt_SV_weighted;
    Float_t         goodJ4_CSV;
    Float_t         goodJ4_CSVreweight;
+   Float_t         goodJ4_SF_CSVL;
+   Float_t         goodJ4_SF_CSVL_errDn;
+   Float_t         goodJ4_SF_CSVL_errUp;
    Float_t         goodJ4_SF_CSVM;
    Float_t         goodJ4_SF_CSVM_errDn;
    Float_t         goodJ4_SF_CSVM_errUp;
@@ -585,7 +655,7 @@ public :
    Float_t         met_jesDn_pt;
    Float_t         met_jesUp_phi;
    Float_t         met_jesUp_pt;
-   Float_t         met_eta;
+   Float_t         met_phi;
    Float_t         met_pt;
    Float_t         met_uesDn_phi;
    Float_t         met_uesDn_pt;
@@ -652,10 +722,6 @@ public :
    Int_t           HLT_IsoMu24_eta2p1_v_fired;
    Int_t           HLT_IsoMu24_eta2p1_v_prescale;
    Int_t           HLT_IsoMu24_eta2p1_v_error;
-   Int_t           HLT_Mu40_eta2p1_v_wasRun;
-   Int_t           HLT_Mu40_eta2p1_v_fired;
-   Int_t           HLT_Mu40_eta2p1_v_prescale;
-   Int_t           HLT_Mu40_eta2p1_v_error;
    Int_t           HLT_Ele27_WP80_wasRun;
    Int_t           HLT_Ele27_WP80_fired;
    Int_t           HLT_Ele27_WP80_prescale;
@@ -762,6 +828,9 @@ public :
    TBranch        *b_bHadronsPt;   //!
    TBranch        *b_fwdJ1_CSV;   //!
    TBranch        *b_fwdJ1_CSVreweight;   //!
+   TBranch        *b_fwdJ1_SF_CSVL;   //!
+   TBranch        *b_fwdJ1_SF_CSVL_errDn;   //!
+   TBranch        *b_fwdJ1_SF_CSVL_errUp;   //!
    TBranch        *b_fwdJ1_SF_CSVM;   //!
    TBranch        *b_fwdJ1_SF_CSVM_errDn;   //!
    TBranch        *b_fwdJ1_SF_CSVM_errUp;   //!
@@ -775,6 +844,9 @@ public :
    TBranch        *b_fwdJ1_pt;   //!
    TBranch        *b_fwdJ2_CSV;   //!
    TBranch        *b_fwdJ2_CSVreweight;   //!
+   TBranch        *b_fwdJ2_SF_CSVL;   //!
+   TBranch        *b_fwdJ2_SF_CSVL_errDn;   //!
+   TBranch        *b_fwdJ2_SF_CSVL_errUp;   //!
    TBranch        *b_fwdJ2_SF_CSVM;   //!
    TBranch        *b_fwdJ2_SF_CSVM_errDn;   //!
    TBranch        *b_fwdJ2_SF_CSVM_errUp;   //!
@@ -803,6 +875,9 @@ public :
    TBranch        *b_goodEle_pt_vec;   //!
    TBranch        *b_goodJ1_CSV;   //!
    TBranch        *b_goodJ1_CSVreweight;   //!
+   TBranch        *b_goodJ1_SF_CSVL;   //!
+   TBranch        *b_goodJ1_SF_CSVL_errDn;   //!
+   TBranch        *b_goodJ1_SF_CSVL_errUp;   //!
    TBranch        *b_goodJ1_SF_CSVM;   //!
    TBranch        *b_goodJ1_SF_CSVM_errDn;   //!
    TBranch        *b_goodJ1_SF_CSVM_errUp;   //!
@@ -821,6 +896,9 @@ public :
    TBranch        *b_goodJ1_pt_SV_weighted;   //!
    TBranch        *b_goodJ2_CSV;   //!
    TBranch        *b_goodJ2_CSVreweight;   //!
+   TBranch        *b_goodJ2_SF_CSVL;   //!
+   TBranch        *b_goodJ2_SF_CSVL_errDn;   //!
+   TBranch        *b_goodJ2_SF_CSVL_errUp;   //!
    TBranch        *b_goodJ2_SF_CSVM;   //!
    TBranch        *b_goodJ2_SF_CSVM_errDn;   //!
    TBranch        *b_goodJ2_SF_CSVM_errUp;   //!
@@ -839,6 +917,9 @@ public :
    TBranch        *b_goodJ2_pt_SV_weighted;   //!
    TBranch        *b_goodJ3_CSV;   //!
    TBranch        *b_goodJ3_CSVreweight;   //!
+   TBranch        *b_goodJ3_SF_CSVL;   //!
+   TBranch        *b_goodJ3_SF_CSVL_errDn;   //!
+   TBranch        *b_goodJ3_SF_CSVL_errUp;   //!
    TBranch        *b_goodJ3_SF_CSVM;   //!
    TBranch        *b_goodJ3_SF_CSVM_errDn;   //!
    TBranch        *b_goodJ3_SF_CSVM_errUp;   //!
@@ -857,6 +938,9 @@ public :
    TBranch        *b_goodJ3_pt_SV_weighted;   //!
    TBranch        *b_goodJ4_CSV;   //!
    TBranch        *b_goodJ4_CSVreweight;   //!
+   TBranch        *b_goodJ4_SF_CSVL;   //!
+   TBranch        *b_goodJ4_SF_CSVL_errDn;   //!
+   TBranch        *b_goodJ4_SF_CSVL_errUp;   //!
    TBranch        *b_goodJ4_SF_CSVM;   //!
    TBranch        *b_goodJ4_SF_CSVM_errDn;   //!
    TBranch        *b_goodJ4_SF_CSVM_errUp;   //!
@@ -881,7 +965,7 @@ public :
    TBranch        *b_met_jesDn_pt;   //!
    TBranch        *b_met_jesUp_phi;   //!
    TBranch        *b_met_jesUp_pt;   //!
-   TBranch        *b_met_eta;   //!
+   TBranch        *b_met_phi;   //!
    TBranch        *b_met_pt;   //!
    TBranch        *b_met_uesDn_phi;   //!
    TBranch        *b_met_uesDn_pt;   //!
@@ -948,10 +1032,6 @@ public :
    TBranch        *b_HLT_IsoMu24_eta2p1_v_fired;   //!
    TBranch        *b_HLT_IsoMu24_eta2p1_v_prescale;   //!
    TBranch        *b_HLT_IsoMu24_eta2p1_v_error;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_wasRun;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_fired;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_prescale;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_error;   //!
    TBranch        *b_HLT_Ele27_WP80_wasRun;   //!
    TBranch        *b_HLT_Ele27_WP80_fired;   //!
    TBranch        *b_HLT_Ele27_WP80_prescale;   //!
@@ -981,9 +1061,12 @@ public :
    virtual Bool_t   Notify();
    virtual double   dPhi(double phi1, double phi2);
    virtual double   dEta(double eta1, double eta2);
-   virtual Bool_t   FillHistograms(int i, int j, int k, int l, int m,
-                     double metval, double metphival,
-                     double mt, double lep_pt, double weight );
+   virtual Bool_t   FillHistograms(
+                     int i, int j, int k, int l, int m, 
+                     double metval, double metphival, double mt,  
+                     double lep_pt, double lep_eta, double lep_phi, double lep_mass,
+                     double dilep_pt, double dilep_eta, double dilep_phi, double dilep_mass,
+                     double weight);
    virtual Bool_t   WriteHistograms(int i, int j, int k, int l, int m);
    virtual Bool_t   DeleteHistograms(int i, int j, int k, int l, int m);
    virtual Bool_t   writeHistWriter( int pspace_nr=3, int syst_nr=0, Bool_t isW=kFALSE );
@@ -1006,20 +1089,12 @@ histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      //TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("root://cmsxrootd.hep.wisc.edu//store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
-      //if (!f || !f->IsOpen()) {
-      //   f = new TFile("root://cmsxrootd.hep.wisc.edu//store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
-      //}    
-      //TDirectory * dir = (TDirectory*)f->Get("root://cmsxrootd.hep.wisc.edu//store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
-
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Mars_WJets_p1-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-4802B2B4-9BCF-E111-8285-003048D47A00.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root");
+         f = new TFile("/hdfs/store/user/tperry/Mars_WJets_p1-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-4802B2B4-9BCF-E111-8285-003048D47A00.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root:/muEleEventTree");
+      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Mars_WJets_p1-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-4802B2B4-9BCF-E111-8285-003048D47A00.root:/muEleEventTree");
       dir->GetObject("eventTree",tree);
-      //std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
-      //std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
 
    }
    Init(tree, isMC);
@@ -1104,20 +1179,42 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         TString histoname_met = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_met"+Syst[l]+WFlav[m];
         TString histoname_met_phi = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_met_phi"+Syst[l]+WFlav[m];
         TString histoname_mt = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_mt"+Syst[l]+WFlav[m];
+
         TString histoname_goodLep_pt = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodLep_pt"+Syst[l]+WFlav[m];
-        TString histoname_goodMu_pt = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodMu_pt"+Syst[l]+WFlav[m];
-        TString histoname_goodEle_pt = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodEle_pt"+Syst[l]+WFlav[m];
-        TString histoname_goodJ1_pt = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_pt"+Syst[l]+WFlav[m];
-        TString histoname_goodJ2_pt = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_pt"+Syst[l]+WFlav[m];
-        TString histoname_goodJ1J2_dR = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_dR"+Syst[l]+WFlav[m];
-        TString histoname_goodJ1J2_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_mass"+Syst[l]+WFlav[m];
-        TString histoname_goodJ1J2_pt = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_pt"+Syst[l]+WFlav[m];
-        TString histoname_goodJ3J4_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3J4_mass"+Syst[l]+WFlav[m];
-        TString histoname_goodJ1_CSV = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_CSV"+Syst[l]+WFlav[m];
-        TString histoname_goodJ2_CSV = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_CSV"+Syst[l]+WFlav[m];
+        TString histoname_goodLep_eta = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodLep_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodLep_phi = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodLep_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodLep_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodLep_mass"+Syst[l]+WFlav[m];
+
+        TString histoname_goodJ1_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_pt"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1_phi  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_mass"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1_CSV  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_CSV"+Syst[l]+WFlav[m];
         TString histoname_goodJ1_mass_SV_unweighted = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_mass_SV_unweighted"+Syst[l]+WFlav[m];
-        TString histoname_goodJ1_mass_SV_corrected = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_mass_SV_corrected"+Syst[l]+WFlav[m];
-        TString histoname_goodJ1_mass_SV_weighted = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_mass_SV_weighted"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1_mass_SV_corrected  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_mass_SV_corrected"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1_mass_SV_weighted   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1_mass_SV_weighted"+Syst[l]+WFlav[m];
+
+        TString histoname_goodJ2_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_pt"+Syst[l]+WFlav[m];
+        TString histoname_goodJ2_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodJ2_phi  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodJ2_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_mass"+Syst[l]+WFlav[m];
+        TString histoname_goodJ2_CSV  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_CSV"+Syst[l]+WFlav[m];
+
+        TString histoname_goodJ1J2_dR   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_dR"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1J2_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_pt"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1J2_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1J2_phi  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodJ1J2_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_mass"+Syst[l]+WFlav[m];
+
+        TString histoname_goodJ3J4_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3J4_pt"+Syst[l]+WFlav[m];
+        TString histoname_goodJ3J4_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3J4_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodJ3J4_phi  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3J4_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodJ3J4_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3J4_mass"+Syst[l]+WFlav[m];
+
+        TString histoname_goodL1L2_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodL1L2_pt"+Syst[l]+WFlav[m];
+        TString histoname_goodL1L2_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodL1L2_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodL1L2_phi  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodL1L2_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodL1L2_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodL1L2_mass"+Syst[l]+WFlav[m];
 
         //std::cout<<histoname<<std::endl;
         hists_met[i][j][k][l][m].Clear();
@@ -1132,29 +1229,39 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         hists_mt[i][j][k][l][m] = TH1F(histoname_mt, "Transverse Mass", 40, 0., 200.);
         hists_mt[i][j][k][l][m].Sumw2();                                               
 
+
         hists_goodLep_pt[i][j][k][l][m].Clear();
         hists_goodLep_pt[i][j][k][l][m] = TH1F(histoname_goodLep_pt, "Leading Lepton pT", 40, 0., 200.);
         hists_goodLep_pt[i][j][k][l][m].Sumw2();                                               
 
+        hists_goodLep_eta[i][j][k][l][m].Clear();
+        hists_goodLep_eta[i][j][k][l][m] = TH1F(histoname_goodLep_eta, "Leading Lepton Eta", 20, -3., 5.);
+        hists_goodLep_eta[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodLep_phi[i][j][k][l][m].Clear();
+        hists_goodLep_phi[i][j][k][l][m] = TH1F(histoname_goodLep_phi, "Leading Lepton Phi", 35, -3.4033, 5.7594);
+        hists_goodLep_phi[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodLep_mass[i][j][k][l][m].Clear();
+        hists_goodLep_mass[i][j][k][l][m] = TH1F(histoname_goodLep_mass, "Leading Lepton Mass", 40, 0., 200.);
+        hists_goodLep_mass[i][j][k][l][m].Sumw2();                                               
+
+
         hists_goodJ1_pt[i][j][k][l][m].Clear();
-        hists_goodJ1_pt[i][j][k][l][m] = TH1F(histoname_goodJ1_pt, "Leading Jet pT", 12, 25., 205.);
+        hists_goodJ1_pt[i][j][k][l][m] = TH1F(histoname_goodJ1_pt, "Leading Jet pT", 40, 0., 200.);
         hists_goodJ1_pt[i][j][k][l][m].Sumw2();                                               
 
-        hists_goodJ2_pt[i][j][k][l][m].Clear();
-        hists_goodJ2_pt[i][j][k][l][m] = TH1F(histoname_goodJ2_pt, "Subleading Jet pT", 12, 25., 205.);
-        hists_goodJ2_pt[i][j][k][l][m].Sumw2();                                               
+        hists_goodJ1_eta[i][j][k][l][m].Clear();
+        hists_goodJ1_eta[i][j][k][l][m] = TH1F(histoname_goodJ1_eta, "Leading Jet Eta", 20, -3., 5.);
+        hists_goodJ1_eta[i][j][k][l][m].Sumw2();                                               
 
-        hists_goodJ1J2_dR[i][j][k][l][m].Clear();
-        hists_goodJ1J2_dR[i][j][k][l][m] = TH1F(histoname_goodJ1J2_dR, "dR(J1,J2)", 16, 0., 8.);
-        hists_goodJ1J2_dR[i][j][k][l][m].Sumw2();                                               
+        hists_goodJ1_phi[i][j][k][l][m].Clear();
+        hists_goodJ1_phi[i][j][k][l][m] = TH1F(histoname_goodJ1_phi, "Leading Jet Phi", 35, -3.4033, 5.7594);
+        hists_goodJ1_phi[i][j][k][l][m].Sumw2();                                               
 
-        hists_goodJ1J2_mass[i][j][k][l][m].Clear();
-        hists_goodJ1J2_mass[i][j][k][l][m] = TH1F(histoname_goodJ1J2_mass, "mass(J1,J2)", 40, 0., 200.);
-        hists_goodJ1J2_mass[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1J2_pt[i][j][k][l][m].Clear();
-        hists_goodJ1J2_pt[i][j][k][l][m] = TH1F(histoname_goodJ1J2_pt, "pt(J1,J2)", 40, 0., 200.);
-        hists_goodJ1J2_pt[i][j][k][l][m].Sumw2();                                               
+        hists_goodJ1_mass[i][j][k][l][m].Clear();
+        hists_goodJ1_mass[i][j][k][l][m] = TH1F(histoname_goodJ1_mass, "Leading Jet Mass", 40, 0., 200.);
+        hists_goodJ1_mass[i][j][k][l][m].Sumw2();                                               
 
         hists_goodJ1_CSV[i][j][k][l][m].Clear();
         hists_goodJ1_CSV[i][j][k][l][m] = TH1F(histoname_goodJ1_CSV, "Leading Jet CSV", 40, 0., 1.);
@@ -1171,14 +1278,82 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Clear();
         hists_goodJ1_mass_SV_weighted[i][j][k][l][m] = TH1F(histoname_goodJ1_mass_SV_weighted, "Leading Jet mass_SV_weighted", 32, 0., 8.);
         hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Sumw2();                                               
+ 
+
+        hists_goodJ2_pt[i][j][k][l][m].Clear();
+        hists_goodJ2_pt[i][j][k][l][m] = TH1F(histoname_goodJ2_pt, "Subleading Jet pT", 40, 0., 200.);
+        hists_goodJ2_pt[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodJ2_eta[i][j][k][l][m].Clear();
+        hists_goodJ2_eta[i][j][k][l][m] = TH1F(histoname_goodJ2_eta, "Subleading Jet Eta", 20, -3., 5.);
+        hists_goodJ2_eta[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodJ2_phi[i][j][k][l][m].Clear();
+        hists_goodJ2_phi[i][j][k][l][m] = TH1F(histoname_goodJ2_phi, "Subleading Jet Phi", 35, -3.4033, 5.7594);
+        hists_goodJ2_phi[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodJ2_mass[i][j][k][l][m].Clear();
+        hists_goodJ2_mass[i][j][k][l][m] = TH1F(histoname_goodJ2_mass, "Subleading Jet Mass", 40, 0., 200.);
+        hists_goodJ2_mass[i][j][k][l][m].Sumw2();                                               
 
         hists_goodJ2_CSV[i][j][k][l][m].Clear();
         hists_goodJ2_CSV[i][j][k][l][m] = TH1F(histoname_goodJ2_CSV, "SubLeading Jet CSV", 40, 0., 1.);
         hists_goodJ2_CSV[i][j][k][l][m].Sumw2();                                               
 
+
+        hists_goodJ1J2_dR[i][j][k][l][m].Clear();
+        hists_goodJ1J2_dR[i][j][k][l][m] = TH1F(histoname_goodJ1J2_dR, "dR(J1,J2)", 16, 0., 8.);
+        hists_goodJ1J2_dR[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodJ1J2_pt[i][j][k][l][m].Clear();
+        hists_goodJ1J2_pt[i][j][k][l][m] = TH1F(histoname_goodJ1J2_pt, "pt(J1,J2)", 40, 0., 200.);
+        hists_goodJ1J2_pt[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodJ1J2_eta[i][j][k][l][m].Clear();
+        hists_goodJ1J2_eta[i][j][k][l][m] = TH1F(histoname_goodJ1J2_eta, "eta(J1,J2)", 20, -3., 5.);
+        hists_goodJ1J2_eta[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodJ1J2_phi[i][j][k][l][m].Clear();
+        hists_goodJ1J2_phi[i][j][k][l][m] = TH1F(histoname_goodJ1J2_phi, "phi(J1,J2)", 35, -3.4033, 5.7594);
+        hists_goodJ1J2_phi[i][j][k][l][m].Sumw2();                                               
+
+        hists_goodJ1J2_mass[i][j][k][l][m].Clear();
+        hists_goodJ1J2_mass[i][j][k][l][m] = TH1F(histoname_goodJ1J2_mass, "mass(J1,J2)", 40, 0., 200.);
+        hists_goodJ1J2_mass[i][j][k][l][m].Sumw2();                                               
+
+
+        hists_goodJ3J4_pt[i][j][k][l][m].Clear();
+        hists_goodJ3J4_pt[i][j][k][l][m] = TH1F(histoname_goodJ3J4_pt, "pt(J3,J4)", 40, 0., 200.);
+        hists_goodJ3J4_pt[i][j][k][l][m].Sumw2();                                              
+        
+        hists_goodJ3J4_eta[i][j][k][l][m].Clear();
+        hists_goodJ3J4_eta[i][j][k][l][m] = TH1F(histoname_goodJ3J4_eta, "eta(J3,J4)", 20, -3., 5.);
+        hists_goodJ3J4_eta[i][j][k][l][m].Sumw2();                                               
+        
+        hists_goodJ3J4_phi[i][j][k][l][m].Clear();
+        hists_goodJ3J4_phi[i][j][k][l][m] = TH1F(histoname_goodJ3J4_phi, "phi(J3,J4)", 35, -3.4033, 5.7594);
+        hists_goodJ3J4_phi[i][j][k][l][m].Sumw2();                                               
+        
         hists_goodJ3J4_mass[i][j][k][l][m].Clear();
         hists_goodJ3J4_mass[i][j][k][l][m] = TH1F(histoname_goodJ3J4_mass, "mass(J3,J4)", 40, 0., 200.);
         hists_goodJ3J4_mass[i][j][k][l][m].Sumw2();                                               
+        
+
+        hists_goodL1L2_pt[i][j][k][l][m].Clear();
+        hists_goodL1L2_pt[i][j][k][l][m] = TH1F(histoname_goodL1L2_pt, "pt(L1,L2)", 40, 0., 200.);
+        hists_goodL1L2_pt[i][j][k][l][m].Sumw2();                                              
+        
+        hists_goodL1L2_eta[i][j][k][l][m].Clear();
+        hists_goodL1L2_eta[i][j][k][l][m] = TH1F(histoname_goodL1L2_eta, "eta(L1,L2)", 20, -3., 5.);
+        hists_goodL1L2_eta[i][j][k][l][m].Sumw2();                                               
+        
+        hists_goodL1L2_phi[i][j][k][l][m].Clear();
+        hists_goodL1L2_phi[i][j][k][l][m] = TH1F(histoname_goodL1L2_phi, "phi(L1,L2)", 35, -3.4033, 5.7594);
+        hists_goodL1L2_phi[i][j][k][l][m].Sumw2();                                               
+        
+        hists_goodL1L2_mass[i][j][k][l][m].Clear();
+        hists_goodL1L2_mass[i][j][k][l][m] = TH1F(histoname_goodL1L2_mass, "mass(L1,L2)", 40, 0., 200.);
+        hists_goodL1L2_mass[i][j][k][l][m].Sumw2();                                               
         
        }
       }
@@ -1187,33 +1362,33 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    }
 
    // Set object pointer
-   SF_goodEle_IDIso = 0; 
-   SF_goodEle_IDIsoHLT = 0; 
-   SF_goodEle_IDIsoHLT_errDn = 0; 
-   SF_goodEle_IDIsoHLT_errUp = 0; 
-   SF_goodEle_IDIso_errDn = 0; 
-   SF_goodEle_IDIso_errUp = 0; 
-   SF_goodMu_IDIso = 0; 
-   SF_goodMu_IDIsoHLT = 0; 
-   SF_goodMu_IDIsoHLT_errDn = 0; 
-   SF_goodMu_IDIsoHLT_errUp = 0; 
-   SF_goodMu_IDIso_errDn = 0; 
-   SF_goodMu_IDIso_errUp = 0; 
-   bHadronsEta = 0; 
-   bHadronsPhi = 0; 
-   bHadronsPt = 0; 
-   goodEle_Iso03_vec = 0; 
-   goodEle_Iso04_vec = 0; 
-   goodEle_charge_vec = 0; 
-   goodEle_eta_vec = 0; 
-   goodEle_mass_vec = 0; 
-   goodEle_phi_vec = 0; 
-   goodEle_pt_vec = 0; 
-   goodMu_charge_vec = 0; 
-   goodMu_eta_vec = 0; 
-   goodMu_mass_vec = 0; 
-   goodMu_phi_vec = 0; 
-   goodMu_pt_vec = 0; 
+   SF_goodEle_IDIso = 0;
+   SF_goodEle_IDIsoHLT = 0;
+   SF_goodEle_IDIsoHLT_errDn = 0;
+   SF_goodEle_IDIsoHLT_errUp = 0;
+   SF_goodEle_IDIso_errDn = 0;
+   SF_goodEle_IDIso_errUp = 0;
+   SF_goodMu_IDIso = 0;
+   SF_goodMu_IDIsoHLT = 0;
+   SF_goodMu_IDIsoHLT_errDn = 0;
+   SF_goodMu_IDIsoHLT_errUp = 0;
+   SF_goodMu_IDIso_errDn = 0;
+   SF_goodMu_IDIso_errUp = 0;
+   bHadronsEta = 0;
+   bHadronsPhi = 0;
+   bHadronsPt = 0;
+   goodEle_Iso03_vec = 0;
+   goodEle_Iso04_vec = 0;
+   goodEle_charge_vec = 0;
+   goodEle_eta_vec = 0;
+   goodEle_mass_vec = 0;
+   goodEle_phi_vec = 0;
+   goodEle_pt_vec = 0;
+   goodMu_charge_vec = 0;
+   goodMu_eta_vec = 0;
+   goodMu_mass_vec = 0;
+   goodMu_phi_vec = 0;
+   goodMu_pt_vec = 0;
 
    // Set branch addresses and branch pointers
    if (!tree) return;
@@ -1224,44 +1399,44 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("RUN", &RUN, &b_RUN);
    fChain->SetBranchAddress("LUMI", &LUMI, &b_LUMI);
    if( isMC ) {
-    fChain->SetBranchAddress("GBWeight", &GBWeight, &b_GBWeight);
-    fChain->SetBranchAddress("J1_eta_gen_NoNu", &J1_eta_gen_NoNu, &b_J1_eta_gen_NoNu);
-    fChain->SetBranchAddress("J1_phi_gen_NoNu", &J1_phi_gen_NoNu, &b_J1_phi_gen_NoNu);
-    fChain->SetBranchAddress("J1_pt_gen_NoNu", &J1_pt_gen_NoNu, &b_J1_pt_gen_NoNu);
-    fChain->SetBranchAddress("J2_eta_gen_NoNu", &J2_eta_gen_NoNu, &b_J2_eta_gen_NoNu);
-    fChain->SetBranchAddress("J2_phi_gen_NoNu", &J2_phi_gen_NoNu, &b_J2_phi_gen_NoNu);
-    fChain->SetBranchAddress("J2_pt_gen_NoNu", &J2_pt_gen_NoNu, &b_J2_pt_gen_NoNu);
-    fChain->SetBranchAddress("J3_eta_gen_NoNu", &J3_eta_gen_NoNu, &b_J3_eta_gen_NoNu);
-    fChain->SetBranchAddress("J3_phi_gen_NoNu", &J3_phi_gen_NoNu, &b_J3_phi_gen_NoNu);
-    fChain->SetBranchAddress("J3_pt_gen_NoNu", &J3_pt_gen_NoNu, &b_J3_pt_gen_NoNu);
-    fChain->SetBranchAddress("J4_eta_gen_NoNu", &J4_eta_gen_NoNu, &b_J4_eta_gen_NoNu);
-    fChain->SetBranchAddress("J4_phi_gen_NoNu", &J4_phi_gen_NoNu, &b_J4_phi_gen_NoNu);
-    fChain->SetBranchAddress("J4_pt_gen_NoNu", &J4_pt_gen_NoNu, &b_J4_pt_gen_NoNu);
-    fChain->SetBranchAddress("SF_goodEle_IDIso", &SF_goodEle_IDIso, &b_SF_goodEle_IDIso);
-    fChain->SetBranchAddress("SF_goodEle_IDIsoHLT", &SF_goodEle_IDIsoHLT, &b_SF_goodEle_IDIsoHLT);
-    fChain->SetBranchAddress("SF_goodEle_IDIsoHLT_errDn", &SF_goodEle_IDIsoHLT_errDn, &b_SF_goodEle_IDIsoHLT_errDn);
-    fChain->SetBranchAddress("SF_goodEle_IDIsoHLT_errUp", &SF_goodEle_IDIsoHLT_errUp, &b_SF_goodEle_IDIsoHLT_errUp);
-    fChain->SetBranchAddress("SF_goodEle_IDIso_errDn", &SF_goodEle_IDIso_errDn, &b_SF_goodEle_IDIso_errDn);
-    fChain->SetBranchAddress("SF_goodEle_IDIso_errUp", &SF_goodEle_IDIso_errUp, &b_SF_goodEle_IDIso_errUp);
-    fChain->SetBranchAddress("SF_goodMu_IDIso", &SF_goodMu_IDIso, &b_SF_goodMu_IDIso);
-    fChain->SetBranchAddress("SF_goodMu_IDIsoHLT", &SF_goodMu_IDIsoHLT, &b_SF_goodMu_IDIsoHLT);
-    fChain->SetBranchAddress("SF_goodMu_IDIsoHLT_errDn", &SF_goodMu_IDIsoHLT_errDn, &b_SF_goodMu_IDIsoHLT_errDn);
-    fChain->SetBranchAddress("SF_goodMu_IDIsoHLT_errUp", &SF_goodMu_IDIsoHLT_errUp, &b_SF_goodMu_IDIsoHLT_errUp);
-    fChain->SetBranchAddress("SF_goodMu_IDIso_errDn", &SF_goodMu_IDIso_errDn, &b_SF_goodMu_IDIso_errDn);
-    fChain->SetBranchAddress("SF_goodMu_IDIso_errUp", &SF_goodMu_IDIso_errUp, &b_SF_goodMu_IDIso_errUp);
-    fChain->SetBranchAddress("SF_lumiWeightPU", &SF_lumiWeightPU, &b_SF_lumiWeightPU);
-    fChain->SetBranchAddress("SF_qcdEle_IDIso", &SF_qcdEle_IDIso, &b_SF_qcdEle_IDIso);
-    fChain->SetBranchAddress("SF_qcdEle_IDIsoHLT", &SF_qcdEle_IDIsoHLT, &b_SF_qcdEle_IDIsoHLT);
-    fChain->SetBranchAddress("SF_qcdEle_IDIsoHLT_errDn", &SF_qcdEle_IDIsoHLT_errDn, &b_SF_qcdEle_IDIsoHLT_errDn);
-    fChain->SetBranchAddress("SF_qcdEle_IDIsoHLT_errUp", &SF_qcdEle_IDIsoHLT_errUp, &b_SF_qcdEle_IDIsoHLT_errUp);
-    fChain->SetBranchAddress("SF_qcdEle_IDIso_errDn", &SF_qcdEle_IDIso_errDn, &b_SF_qcdEle_IDIso_errDn);
-    fChain->SetBranchAddress("SF_qcdEle_IDIso_errUp", &SF_qcdEle_IDIso_errUp, &b_SF_qcdEle_IDIso_errUp);
-    fChain->SetBranchAddress("SF_qcdMu_IDIso", &SF_qcdMu_IDIso, &b_SF_qcdMu_IDIso);
-    fChain->SetBranchAddress("SF_qcdMu_IDIsoHLT", &SF_qcdMu_IDIsoHLT, &b_SF_qcdMu_IDIsoHLT);
-    fChain->SetBranchAddress("SF_qcdMu_IDIsoHLT_errDn", &SF_qcdMu_IDIsoHLT_errDn, &b_SF_qcdMu_IDIsoHLT_errDn);
-    fChain->SetBranchAddress("SF_qcdMu_IDIsoHLT_errUp", &SF_qcdMu_IDIsoHLT_errUp, &b_SF_qcdMu_IDIsoHLT_errUp);
-    fChain->SetBranchAddress("SF_qcdMu_IDIso_errDn", &SF_qcdMu_IDIso_errDn, &b_SF_qcdMu_IDIso_errDn);
-    fChain->SetBranchAddress("SF_qcdMu_IDIso_errUp", &SF_qcdMu_IDIso_errUp, &b_SF_qcdMu_IDIso_errUp);
+   fChain->SetBranchAddress("GBWeight", &GBWeight, &b_GBWeight);
+   fChain->SetBranchAddress("J1_eta_gen_NoNu", &J1_eta_gen_NoNu, &b_J1_eta_gen_NoNu);
+   fChain->SetBranchAddress("J1_phi_gen_NoNu", &J1_phi_gen_NoNu, &b_J1_phi_gen_NoNu);
+   fChain->SetBranchAddress("J1_pt_gen_NoNu", &J1_pt_gen_NoNu, &b_J1_pt_gen_NoNu);
+   fChain->SetBranchAddress("J2_eta_gen_NoNu", &J2_eta_gen_NoNu, &b_J2_eta_gen_NoNu);
+   fChain->SetBranchAddress("J2_phi_gen_NoNu", &J2_phi_gen_NoNu, &b_J2_phi_gen_NoNu);
+   fChain->SetBranchAddress("J2_pt_gen_NoNu", &J2_pt_gen_NoNu, &b_J2_pt_gen_NoNu);
+   fChain->SetBranchAddress("J3_eta_gen_NoNu", &J3_eta_gen_NoNu, &b_J3_eta_gen_NoNu);
+   fChain->SetBranchAddress("J3_phi_gen_NoNu", &J3_phi_gen_NoNu, &b_J3_phi_gen_NoNu);
+   fChain->SetBranchAddress("J3_pt_gen_NoNu", &J3_pt_gen_NoNu, &b_J3_pt_gen_NoNu);
+   fChain->SetBranchAddress("J4_eta_gen_NoNu", &J4_eta_gen_NoNu, &b_J4_eta_gen_NoNu);
+   fChain->SetBranchAddress("J4_phi_gen_NoNu", &J4_phi_gen_NoNu, &b_J4_phi_gen_NoNu);
+   fChain->SetBranchAddress("J4_pt_gen_NoNu", &J4_pt_gen_NoNu, &b_J4_pt_gen_NoNu);
+   fChain->SetBranchAddress("SF_goodEle_IDIso", &SF_goodEle_IDIso, &b_SF_goodEle_IDIso);
+   fChain->SetBranchAddress("SF_goodEle_IDIsoHLT", &SF_goodEle_IDIsoHLT, &b_SF_goodEle_IDIsoHLT);
+   fChain->SetBranchAddress("SF_goodEle_IDIsoHLT_errDn", &SF_goodEle_IDIsoHLT_errDn, &b_SF_goodEle_IDIsoHLT_errDn);
+   fChain->SetBranchAddress("SF_goodEle_IDIsoHLT_errUp", &SF_goodEle_IDIsoHLT_errUp, &b_SF_goodEle_IDIsoHLT_errUp);
+   fChain->SetBranchAddress("SF_goodEle_IDIso_errDn", &SF_goodEle_IDIso_errDn, &b_SF_goodEle_IDIso_errDn);
+   fChain->SetBranchAddress("SF_goodEle_IDIso_errUp", &SF_goodEle_IDIso_errUp, &b_SF_goodEle_IDIso_errUp);
+   fChain->SetBranchAddress("SF_goodMu_IDIso", &SF_goodMu_IDIso, &b_SF_goodMu_IDIso);
+   fChain->SetBranchAddress("SF_goodMu_IDIsoHLT", &SF_goodMu_IDIsoHLT, &b_SF_goodMu_IDIsoHLT);
+   fChain->SetBranchAddress("SF_goodMu_IDIsoHLT_errDn", &SF_goodMu_IDIsoHLT_errDn, &b_SF_goodMu_IDIsoHLT_errDn);
+   fChain->SetBranchAddress("SF_goodMu_IDIsoHLT_errUp", &SF_goodMu_IDIsoHLT_errUp, &b_SF_goodMu_IDIsoHLT_errUp);
+   fChain->SetBranchAddress("SF_goodMu_IDIso_errDn", &SF_goodMu_IDIso_errDn, &b_SF_goodMu_IDIso_errDn);
+   fChain->SetBranchAddress("SF_goodMu_IDIso_errUp", &SF_goodMu_IDIso_errUp, &b_SF_goodMu_IDIso_errUp);
+   fChain->SetBranchAddress("SF_lumiWeightPU", &SF_lumiWeightPU, &b_SF_lumiWeightPU);
+   fChain->SetBranchAddress("SF_qcdEle_IDIso", &SF_qcdEle_IDIso, &b_SF_qcdEle_IDIso);
+   fChain->SetBranchAddress("SF_qcdEle_IDIsoHLT", &SF_qcdEle_IDIsoHLT, &b_SF_qcdEle_IDIsoHLT);
+   fChain->SetBranchAddress("SF_qcdEle_IDIsoHLT_errDn", &SF_qcdEle_IDIsoHLT_errDn, &b_SF_qcdEle_IDIsoHLT_errDn);
+   fChain->SetBranchAddress("SF_qcdEle_IDIsoHLT_errUp", &SF_qcdEle_IDIsoHLT_errUp, &b_SF_qcdEle_IDIsoHLT_errUp);
+   fChain->SetBranchAddress("SF_qcdEle_IDIso_errDn", &SF_qcdEle_IDIso_errDn, &b_SF_qcdEle_IDIso_errDn);
+   fChain->SetBranchAddress("SF_qcdEle_IDIso_errUp", &SF_qcdEle_IDIso_errUp, &b_SF_qcdEle_IDIso_errUp);
+   fChain->SetBranchAddress("SF_qcdMu_IDIso", &SF_qcdMu_IDIso, &b_SF_qcdMu_IDIso);
+   fChain->SetBranchAddress("SF_qcdMu_IDIsoHLT", &SF_qcdMu_IDIsoHLT, &b_SF_qcdMu_IDIsoHLT);
+   fChain->SetBranchAddress("SF_qcdMu_IDIsoHLT_errDn", &SF_qcdMu_IDIsoHLT_errDn, &b_SF_qcdMu_IDIsoHLT_errDn);
+   fChain->SetBranchAddress("SF_qcdMu_IDIsoHLT_errUp", &SF_qcdMu_IDIsoHLT_errUp, &b_SF_qcdMu_IDIsoHLT_errUp);
+   fChain->SetBranchAddress("SF_qcdMu_IDIso_errDn", &SF_qcdMu_IDIso_errDn, &b_SF_qcdMu_IDIso_errDn);
+   fChain->SetBranchAddress("SF_qcdMu_IDIso_errUp", &SF_qcdMu_IDIso_errUp, &b_SF_qcdMu_IDIso_errUp);
     fChain->SetBranchAddress("bHadronsEta", &bHadronsEta, &b_bHadronsEta);
     fChain->SetBranchAddress("bHadronsPhi", &bHadronsPhi, &b_bHadronsPhi);
     fChain->SetBranchAddress("bHadronsPt", &bHadronsPt, &b_bHadronsPt);
@@ -1361,6 +1536,9 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("bCandidatenJetAssociatedToBC2", &bCandidatenJetAssociatedToBC2, &b_bCandidatenJetAssociatedToBC2);
    fChain->SetBranchAddress("fwdJ1_CSV", &fwdJ1_CSV, &b_fwdJ1_CSV);
    fChain->SetBranchAddress("fwdJ1_CSVreweight", &fwdJ1_CSVreweight, &b_fwdJ1_CSVreweight);
+   fChain->SetBranchAddress("fwdJ1_SF_CSVL", &fwdJ1_SF_CSVL, &b_fwdJ1_SF_CSVL);
+   fChain->SetBranchAddress("fwdJ1_SF_CSVL_errDn", &fwdJ1_SF_CSVL_errDn, &b_fwdJ1_SF_CSVL_errDn);
+   fChain->SetBranchAddress("fwdJ1_SF_CSVL_errUp", &fwdJ1_SF_CSVL_errUp, &b_fwdJ1_SF_CSVL_errUp);
    fChain->SetBranchAddress("fwdJ1_SF_CSVM", &fwdJ1_SF_CSVM, &b_fwdJ1_SF_CSVM);
    fChain->SetBranchAddress("fwdJ1_SF_CSVM_errDn", &fwdJ1_SF_CSVM_errDn, &b_fwdJ1_SF_CSVM_errDn);
    fChain->SetBranchAddress("fwdJ1_SF_CSVM_errUp", &fwdJ1_SF_CSVM_errUp, &b_fwdJ1_SF_CSVM_errUp);
@@ -1374,6 +1552,9 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("fwdJ1_pt", &fwdJ1_pt, &b_fwdJ1_pt);
    fChain->SetBranchAddress("fwdJ2_CSV", &fwdJ2_CSV, &b_fwdJ2_CSV);
    fChain->SetBranchAddress("fwdJ2_CSVreweight", &fwdJ2_CSVreweight, &b_fwdJ2_CSVreweight);
+   fChain->SetBranchAddress("fwdJ2_SF_CSVL", &fwdJ2_SF_CSVL, &b_fwdJ2_SF_CSVL);
+   fChain->SetBranchAddress("fwdJ2_SF_CSVL_errDn", &fwdJ2_SF_CSVL_errDn, &b_fwdJ2_SF_CSVL_errDn);
+   fChain->SetBranchAddress("fwdJ2_SF_CSVL_errUp", &fwdJ2_SF_CSVL_errUp, &b_fwdJ2_SF_CSVL_errUp);
    fChain->SetBranchAddress("fwdJ2_SF_CSVM", &fwdJ2_SF_CSVM, &b_fwdJ2_SF_CSVM);
    fChain->SetBranchAddress("fwdJ2_SF_CSVM_errDn", &fwdJ2_SF_CSVM_errDn, &b_fwdJ2_SF_CSVM_errDn);
    fChain->SetBranchAddress("fwdJ2_SF_CSVM_errUp", &fwdJ2_SF_CSVM_errUp, &b_fwdJ2_SF_CSVM_errUp);
@@ -1394,6 +1575,9 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("goodEle_pt_vec", &goodEle_pt_vec, &b_goodEle_pt_vec);
    fChain->SetBranchAddress("goodJ1_CSV", &goodJ1_CSV, &b_goodJ1_CSV);
    fChain->SetBranchAddress("goodJ1_CSVreweight", &goodJ1_CSVreweight, &b_goodJ1_CSVreweight);
+   fChain->SetBranchAddress("goodJ1_SF_CSVL", &goodJ1_SF_CSVL, &b_goodJ1_SF_CSVL);
+   fChain->SetBranchAddress("goodJ1_SF_CSVL_errDn", &goodJ1_SF_CSVL_errDn, &b_goodJ1_SF_CSVL_errDn);
+   fChain->SetBranchAddress("goodJ1_SF_CSVL_errUp", &goodJ1_SF_CSVL_errUp, &b_goodJ1_SF_CSVL_errUp);
    fChain->SetBranchAddress("goodJ1_SF_CSVM", &goodJ1_SF_CSVM, &b_goodJ1_SF_CSVM);
    fChain->SetBranchAddress("goodJ1_SF_CSVM_errDn", &goodJ1_SF_CSVM_errDn, &b_goodJ1_SF_CSVM_errDn);
    fChain->SetBranchAddress("goodJ1_SF_CSVM_errUp", &goodJ1_SF_CSVM_errUp, &b_goodJ1_SF_CSVM_errUp);
@@ -1412,6 +1596,9 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("goodJ1_pt_SV_weighted", &goodJ1_pt_SV_weighted, &b_goodJ1_pt_SV_weighted);
    fChain->SetBranchAddress("goodJ2_CSV", &goodJ2_CSV, &b_goodJ2_CSV);
    fChain->SetBranchAddress("goodJ2_CSVreweight", &goodJ2_CSVreweight, &b_goodJ2_CSVreweight);
+   fChain->SetBranchAddress("goodJ2_SF_CSVL", &goodJ2_SF_CSVL, &b_goodJ2_SF_CSVL);
+   fChain->SetBranchAddress("goodJ2_SF_CSVL_errDn", &goodJ2_SF_CSVL_errDn, &b_goodJ2_SF_CSVL_errDn);
+   fChain->SetBranchAddress("goodJ2_SF_CSVL_errUp", &goodJ2_SF_CSVL_errUp, &b_goodJ2_SF_CSVL_errUp);
    fChain->SetBranchAddress("goodJ2_SF_CSVM", &goodJ2_SF_CSVM, &b_goodJ2_SF_CSVM);
    fChain->SetBranchAddress("goodJ2_SF_CSVM_errDn", &goodJ2_SF_CSVM_errDn, &b_goodJ2_SF_CSVM_errDn);
    fChain->SetBranchAddress("goodJ2_SF_CSVM_errUp", &goodJ2_SF_CSVM_errUp, &b_goodJ2_SF_CSVM_errUp);
@@ -1430,6 +1617,9 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("goodJ2_pt_SV_weighted", &goodJ2_pt_SV_weighted, &b_goodJ2_pt_SV_weighted);
    fChain->SetBranchAddress("goodJ3_CSV", &goodJ3_CSV, &b_goodJ3_CSV);
    fChain->SetBranchAddress("goodJ3_CSVreweight", &goodJ3_CSVreweight, &b_goodJ3_CSVreweight);
+   fChain->SetBranchAddress("goodJ3_SF_CSVL", &goodJ3_SF_CSVL, &b_goodJ3_SF_CSVL);
+   fChain->SetBranchAddress("goodJ3_SF_CSVL_errDn", &goodJ3_SF_CSVL_errDn, &b_goodJ3_SF_CSVL_errDn);
+   fChain->SetBranchAddress("goodJ3_SF_CSVL_errUp", &goodJ3_SF_CSVL_errUp, &b_goodJ3_SF_CSVL_errUp);
    fChain->SetBranchAddress("goodJ3_SF_CSVM", &goodJ3_SF_CSVM, &b_goodJ3_SF_CSVM);
    fChain->SetBranchAddress("goodJ3_SF_CSVM_errDn", &goodJ3_SF_CSVM_errDn, &b_goodJ3_SF_CSVM_errDn);
    fChain->SetBranchAddress("goodJ3_SF_CSVM_errUp", &goodJ3_SF_CSVM_errUp, &b_goodJ3_SF_CSVM_errUp);
@@ -1448,6 +1638,9 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("goodJ3_pt_SV_weighted", &goodJ3_pt_SV_weighted, &b_goodJ3_pt_SV_weighted);
    fChain->SetBranchAddress("goodJ4_CSV", &goodJ4_CSV, &b_goodJ4_CSV);
    fChain->SetBranchAddress("goodJ4_CSVreweight", &goodJ4_CSVreweight, &b_goodJ4_CSVreweight);
+   fChain->SetBranchAddress("goodJ4_SF_CSVL", &goodJ4_SF_CSVL, &b_goodJ4_SF_CSVL);
+   fChain->SetBranchAddress("goodJ4_SF_CSVL_errDn", &goodJ4_SF_CSVL_errDn, &b_goodJ4_SF_CSVL_errDn);
+   fChain->SetBranchAddress("goodJ4_SF_CSVL_errUp", &goodJ4_SF_CSVL_errUp, &b_goodJ4_SF_CSVL_errUp);
    fChain->SetBranchAddress("goodJ4_SF_CSVM", &goodJ4_SF_CSVM, &b_goodJ4_SF_CSVM);
    fChain->SetBranchAddress("goodJ4_SF_CSVM_errDn", &goodJ4_SF_CSVM_errDn, &b_goodJ4_SF_CSVM_errDn);
    fChain->SetBranchAddress("goodJ4_SF_CSVM_errUp", &goodJ4_SF_CSVM_errUp, &b_goodJ4_SF_CSVM_errUp);
@@ -1464,7 +1657,7 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("goodMu_mass_vec", &goodMu_mass_vec, &b_goodMu_mass_vec);
    fChain->SetBranchAddress("goodMu_phi_vec", &goodMu_phi_vec, &b_goodMu_phi_vec);
    fChain->SetBranchAddress("goodMu_pt_vec", &goodMu_pt_vec, &b_goodMu_pt_vec);
-   fChain->SetBranchAddress("met_eta", &met_eta, &b_met_eta);
+   fChain->SetBranchAddress("met_phi", &met_phi, &b_met_phi);
    fChain->SetBranchAddress("met_pt", &met_pt, &b_met_pt);
    fChain->SetBranchAddress("mt_goodElectron", &mt_goodElectron, &b_mt_goodElectron);
    fChain->SetBranchAddress("mt_goodMuon", &mt_goodMuon, &b_mt_goodMuon);
@@ -1498,10 +1691,6 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_fired", &HLT_IsoMu24_eta2p1_v_fired, &b_HLT_IsoMu24_eta2p1_v_fired);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_prescale", &HLT_IsoMu24_eta2p1_v_prescale, &b_HLT_IsoMu24_eta2p1_v_prescale);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_error", &HLT_IsoMu24_eta2p1_v_error, &b_HLT_IsoMu24_eta2p1_v_error);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_wasRun", &HLT_Mu40_eta2p1_v_wasRun, &b_HLT_Mu40_eta2p1_v_wasRun);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_fired", &HLT_Mu40_eta2p1_v_fired, &b_HLT_Mu40_eta2p1_v_fired);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_prescale", &HLT_Mu40_eta2p1_v_prescale, &b_HLT_Mu40_eta2p1_v_prescale);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_error", &HLT_Mu40_eta2p1_v_error, &b_HLT_Mu40_eta2p1_v_error);
    fChain->SetBranchAddress("HLT_Ele27_WP80_wasRun", &HLT_Ele27_WP80_wasRun, &b_HLT_Ele27_WP80_wasRun);
    fChain->SetBranchAddress("HLT_Ele27_WP80_fired", &HLT_Ele27_WP80_fired, &b_HLT_Ele27_WP80_fired);
    fChain->SetBranchAddress("HLT_Ele27_WP80_prescale", &HLT_Ele27_WP80_prescale, &b_HLT_Ele27_WP80_prescale);
@@ -1549,58 +1738,139 @@ double histoFiller::dEta(double eta1, double eta2){
  return deta;
 }
 
-Bool_t histoFiller::FillHistograms(int i, int j, int k, int l, int m, double metval, double metphival, double mt, double lep_pt, double weight){
+Bool_t histoFiller::FillHistograms(
+  int i, int j, int k, int l, int m, 
+  double metval, double metphival, double mt, 
+  double lep_pt, double lep_eta, double lep_phi, double lep_mass,
+  double dilep_pt, double dilep_eta, double dilep_phi, double dilep_mass,
+  double weight){
+
  hists_met[i][j][k][l][m].Fill(metval,weight);
  hists_met_phi[i][j][k][l][m].Fill(metphival,weight);
  hists_mt[i][j][k][l][m].Fill(mt,weight);
+
  hists_goodLep_pt[i][j][k][l][m].Fill(lep_pt,weight);
+ hists_goodLep_eta[i][j][k][l][m].Fill(lep_eta,weight);
+ hists_goodLep_phi[i][j][k][l][m].Fill(lep_phi,weight);
+ hists_goodLep_mass[i][j][k][l][m].Fill(lep_mass,weight);
+
  hists_goodJ1_pt[i][j][k][l][m].Fill(goodJ1_pt,weight);
- hists_goodJ2_pt[i][j][k][l][m].Fill(goodJ2_pt,weight);
- hists_goodJ1J2_dR[i][j][k][l][m].Fill(dRgoodJ1J2,weight);
- hists_goodJ1J2_mass[i][j][k][l][m].Fill(goodJ1J2_mass,weight);
- hists_goodJ1J2_pt[i][j][k][l][m].Fill(goodJ1J2_pt,weight);
+ hists_goodJ1_eta[i][j][k][l][m].Fill(goodJ1_eta,weight);
+ hists_goodJ1_phi[i][j][k][l][m].Fill(goodJ1_phi,weight);
+ hists_goodJ1_mass[i][j][k][l][m].Fill(goodJ1_mass,weight);
  hists_goodJ1_CSV[i][j][k][l][m].Fill(goodJ1_CSV,weight);
  hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Fill(goodJ1_mass_SV_unweighted,weight);
  hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Fill(goodJ1_mass_SV_corrected,weight);
  hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Fill(goodJ1_mass_SV_weighted,weight);
+
+ hists_goodJ2_pt[i][j][k][l][m].Fill(goodJ2_pt,weight);
+ hists_goodJ2_eta[i][j][k][l][m].Fill(goodJ2_eta,weight);
+ hists_goodJ2_phi[i][j][k][l][m].Fill(goodJ2_phi,weight);
+ hists_goodJ2_mass[i][j][k][l][m].Fill(goodJ2_mass,weight);
  hists_goodJ2_CSV[i][j][k][l][m].Fill(goodJ2_CSV,weight);
- hists_goodJ3J4_mass[i][j][k][l][m].Fill(goodJ3J4_mass,weight);
+
+ hists_goodJ1J2_dR[i][j][k][l][m].Fill(goodJ1J2_dR,weight);
+ hists_goodJ1J2_pt[i][j][k][l][m].Fill(goodJ1J2_pt,weight);
+ hists_goodJ1J2_eta[i][j][k][l][m].Fill(goodJ1J2_eta,weight);
+ hists_goodJ1J2_phi[i][j][k][l][m].Fill(goodJ1J2_phi,weight);
+ hists_goodJ1J2_mass[i][j][k][l][m].Fill(goodJ1J2_mass,weight);
+
+ hists_goodJ3J4_pt[i][j][k][l][m].Fill(goodJ3J4_pt,weight); 
+ hists_goodJ3J4_eta[i][j][k][l][m].Fill(goodJ3J4_eta,weight); 
+ hists_goodJ3J4_phi[i][j][k][l][m].Fill(goodJ3J4_phi,weight); 
+ hists_goodJ3J4_mass[i][j][k][l][m].Fill(goodJ3J4_mass,weight); 
+
+ hists_goodL1L2_pt[i][j][k][l][m].Fill(dilep_pt,weight);
+ hists_goodL1L2_eta[i][j][k][l][m].Fill(dilep_eta,weight);
+ hists_goodL1L2_phi[i][j][k][l][m].Fill(dilep_phi,weight);
+ hists_goodL1L2_mass[i][j][k][l][m].Fill(dilep_mass,weight);
+
  return kTRUE;
 }
 Bool_t histoFiller::WriteHistograms(int i, int j, int k, int l, int m){
  hists_met[i][j][k][l][m].Write();
  hists_met_phi[i][j][k][l][m].Write();
  hists_mt[i][j][k][l][m].Write();
+
  hists_goodLep_pt[i][j][k][l][m].Write();
+ hists_goodLep_eta[i][j][k][l][m].Write();
+ hists_goodLep_phi[i][j][k][l][m].Write();
+ hists_goodLep_mass[i][j][k][l][m].Write();
+
  hists_goodJ1_pt[i][j][k][l][m].Write();
- hists_goodJ2_pt[i][j][k][l][m].Write();
- hists_goodJ1J2_dR[i][j][k][l][m].Write();
- hists_goodJ1J2_mass[i][j][k][l][m].Write();
- hists_goodJ1J2_pt[i][j][k][l][m].Write();
+ hists_goodJ1_eta[i][j][k][l][m].Write();
+ hists_goodJ1_phi[i][j][k][l][m].Write();
+ hists_goodJ1_mass[i][j][k][l][m].Write();
  hists_goodJ1_CSV[i][j][k][l][m].Write();
  hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Write();
  hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Write();
  hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Write();
- hists_goodJ2_CSV[i][j][k][l][m].Write();
- hists_goodJ3J4_mass[i][j][k][l][m].Write();
+
+ hists_goodJ2_pt[i][j][k][l][m].Write();
+ hists_goodJ2_eta[i][j][k][l][m].Write();
+ hists_goodJ2_phi[i][j][k][l][m].Write();
+ hists_goodJ2_mass[i][j][k][l][m].Write();
+ hists_goodJ2_CSV[i][j][k][l][m].Write(); 
+
+ hists_goodJ1J2_dR[i][j][k][l][m].Write();
+ hists_goodJ1J2_pt[i][j][k][l][m].Write();
+ hists_goodJ1J2_eta[i][j][k][l][m].Write();
+ hists_goodJ1J2_phi[i][j][k][l][m].Write();
+ hists_goodJ1J2_mass[i][j][k][l][m].Write();
+
+ hists_goodJ3J4_pt[i][j][k][l][m].Write(); 
+ hists_goodJ3J4_eta[i][j][k][l][m].Write(); 
+ hists_goodJ3J4_phi[i][j][k][l][m].Write(); 
+ hists_goodJ3J4_mass[i][j][k][l][m].Write(); 
+
+ hists_goodL1L2_mass[i][j][k][l][m].Write();
+ hists_goodL1L2_pt[i][j][k][l][m].Write();
+ hists_goodL1L2_eta[i][j][k][l][m].Write();
+ hists_goodL1L2_phi[i][j][k][l][m].Write();
+
  return kTRUE;
 }
 Bool_t histoFiller::DeleteHistograms(int i, int j, int k, int l, int m){
  hists_met[i][j][k][l][m].Delete();
  hists_met_phi[i][j][k][l][m].Delete();
  hists_mt[i][j][k][l][m].Delete();
+
  hists_goodLep_pt[i][j][k][l][m].Delete();
+ hists_goodLep_eta[i][j][k][l][m].Delete();
+ hists_goodLep_phi[i][j][k][l][m].Delete();
+ hists_goodLep_mass[i][j][k][l][m].Delete();
+
  hists_goodJ1_pt[i][j][k][l][m].Delete();
- hists_goodJ2_pt[i][j][k][l][m].Delete();
- hists_goodJ1J2_dR[i][j][k][l][m].Delete();
- hists_goodJ1J2_mass[i][j][k][l][m].Delete();
- hists_goodJ1J2_pt[i][j][k][l][m].Delete();
+ hists_goodJ1_eta[i][j][k][l][m].Delete();
+ hists_goodJ1_phi[i][j][k][l][m].Delete();
+ hists_goodJ1_mass[i][j][k][l][m].Delete();
  hists_goodJ1_CSV[i][j][k][l][m].Delete();
  hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Delete();
  hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Delete();
  hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Delete();
- hists_goodJ2_CSV[i][j][k][l][m].Delete();
- hists_goodJ3J4_mass[i][j][k][l][m].Delete();
+
+ hists_goodJ2_pt[i][j][k][l][m].Delete();
+ hists_goodJ2_eta[i][j][k][l][m].Delete();
+ hists_goodJ2_phi[i][j][k][l][m].Delete();
+ hists_goodJ2_mass[i][j][k][l][m].Delete();
+ hists_goodJ2_CSV[i][j][k][l][m].Delete(); 
+
+ hists_goodJ1J2_dR[i][j][k][l][m].Delete();
+ hists_goodJ1J2_pt[i][j][k][l][m].Delete();
+ hists_goodJ1J2_eta[i][j][k][l][m].Delete();
+ hists_goodJ1J2_phi[i][j][k][l][m].Delete();
+ hists_goodJ1J2_mass[i][j][k][l][m].Delete();
+
+ hists_goodJ3J4_pt[i][j][k][l][m].Delete(); 
+ hists_goodJ3J4_eta[i][j][k][l][m].Delete(); 
+ hists_goodJ3J4_phi[i][j][k][l][m].Delete(); 
+ hists_goodJ3J4_mass[i][j][k][l][m].Delete(); 
+
+ hists_goodL1L2_mass[i][j][k][l][m].Delete();
+ hists_goodL1L2_pt[i][j][k][l][m].Delete();
+ hists_goodL1L2_eta[i][j][k][l][m].Delete();
+ hists_goodL1L2_phi[i][j][k][l][m].Delete();
+
  return kTRUE;
 }
 
@@ -1614,46 +1884,130 @@ Bool_t histoFiller::fillHistWriter(
   Float_t weight_mu_good_val, Float_t weight_mu_qcd_val, Float_t weight_ele_good_val, Float_t weight_ele_qcd_val
 )
 {
+ // mu good
  if( pass_mu_good )          { 
-  FillHistograms(pspace_nr,0,0,syst_nr,0,met_pt_val,met_phi_val,mt_mu_good_val,lep_mu_good_pt,weight_mu_good_val); } 
+  FillHistograms(pspace_nr,0,0,syst_nr,0,
+   met_pt_val,met_phi_val,mt_mu_good_val,
+   lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+
  if( pass_mu_good && isWl )  {
-  FillHistograms(pspace_nr,0,0,syst_nr,1,met_pt_val,met_phi_val,mt_mu_good_val,lep_mu_good_pt,weight_mu_good_val); } 
+  FillHistograms(pspace_nr,0,0,syst_nr,1,
+   met_pt_val,met_phi_val,mt_mu_good_val,
+   lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+
  if( pass_mu_good && isWc )  {
-  FillHistograms(pspace_nr,0,0,syst_nr,2,met_pt_val,met_phi_val,mt_mu_good_val,lep_mu_good_pt,weight_mu_good_val); } 
+  FillHistograms(pspace_nr,0,0,syst_nr,2,
+   met_pt_val,met_phi_val,mt_mu_good_val,
+   lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+
  if( pass_mu_good && isWcc ) {
-  FillHistograms(pspace_nr,0,0,syst_nr,3,met_pt_val,met_phi_val,mt_mu_good_val,lep_mu_good_pt,weight_mu_good_val); } 
+  FillHistograms(pspace_nr,0,0,syst_nr,3,
+   met_pt_val,met_phi_val,mt_mu_good_val,
+   lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+
  if( pass_mu_good && isWbb ) {
-  FillHistograms(pspace_nr,0,0,syst_nr,4,met_pt_val,met_phi_val,mt_mu_good_val,lep_mu_good_pt,weight_mu_good_val); } 
+  FillHistograms(pspace_nr,0,0,syst_nr,4,
+   met_pt_val,met_phi_val,mt_mu_good_val,
+   lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+
+ // mu qcd
  if( pass_mu_qcd )           {
-  FillHistograms(pspace_nr,0,1,syst_nr,0,met_pt_val,met_phi_val,mt_mu_qcd_val,lep_mu_qcd_pt,weight_mu_qcd_val); } 
+  FillHistograms(pspace_nr,0,1,syst_nr,0,
+   met_pt_val,met_phi_val,mt_mu_qcd_val,
+   lep_mu_qcd_pt, lep_mu_qcd_eta, lep_mu_qcd_phi, lep_mu_qcd_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_qcd_val); } 
+
  if( pass_mu_qcd && isWl )   {
-  FillHistograms(pspace_nr,0,1,syst_nr,1,met_pt_val,met_phi_val,mt_mu_qcd_val,lep_mu_qcd_pt,weight_mu_qcd_val); } 
+  FillHistograms(pspace_nr,0,1,syst_nr,1,
+   met_pt_val,met_phi_val,mt_mu_qcd_val,
+   lep_mu_qcd_pt, lep_mu_qcd_eta, lep_mu_qcd_phi, lep_mu_qcd_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_qcd_val); } 
+
  if( pass_mu_qcd && isWc )   {
-  FillHistograms(pspace_nr,0,1,syst_nr,2,met_pt_val,met_phi_val,mt_mu_qcd_val,lep_mu_qcd_pt,weight_mu_qcd_val); } 
+  FillHistograms(pspace_nr,0,1,syst_nr,2,
+   met_pt_val,met_phi_val,mt_mu_qcd_val,
+   lep_mu_qcd_pt, lep_mu_qcd_eta, lep_mu_qcd_phi, lep_mu_qcd_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_qcd_val); } 
+
  if( pass_mu_qcd && isWcc )  {
-  FillHistograms(pspace_nr,0,1,syst_nr,3,met_pt_val,met_phi_val,mt_mu_qcd_val,lep_mu_qcd_pt,weight_mu_qcd_val); } 
+  FillHistograms(pspace_nr,0,1,syst_nr,3,
+   met_pt_val,met_phi_val,mt_mu_qcd_val,
+   lep_mu_qcd_pt, lep_mu_qcd_eta, lep_mu_qcd_phi, lep_mu_qcd_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_qcd_val); } 
+
  if( pass_mu_qcd && isWbb )  {
-  FillHistograms(pspace_nr,0,1,syst_nr,4,met_pt_val,met_phi_val,mt_mu_qcd_val,lep_mu_qcd_pt,weight_mu_qcd_val); }    
+  FillHistograms(pspace_nr,0,1,syst_nr,4,
+   met_pt_val,met_phi_val,mt_mu_qcd_val,
+   lep_mu_qcd_pt, lep_mu_qcd_eta, lep_mu_qcd_phi, lep_mu_qcd_mass,
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_qcd_val); } 
+
+  // ele good
  if( pass_ele_good )          {
-  FillHistograms(pspace_nr,1,0,syst_nr,0,met_pt_val,met_phi_val,mt_ele_good_val,lep_ele_good_pt,weight_ele_good_val); }    
+  FillHistograms(pspace_nr,1,0,syst_nr,0,
+   met_pt_val,met_phi_val,mt_ele_good_val,
+   lep_ele_good_pt, lep_ele_good_eta, lep_ele_good_phi, lep_ele_good_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_good_val); }    
+
  if( pass_ele_good && isWl )  {
-  FillHistograms(pspace_nr,1,0,syst_nr,1,met_pt_val,met_phi_val,mt_ele_good_val,lep_ele_good_pt,weight_ele_good_val); }    
+  FillHistograms(pspace_nr,1,0,syst_nr,1,
+   met_pt_val,met_phi_val,mt_ele_good_val,
+   lep_ele_good_pt, lep_ele_good_eta, lep_ele_good_phi, lep_ele_good_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_good_val); }    
+
  if( pass_ele_good && isWc )  {
-  FillHistograms(pspace_nr,1,0,syst_nr,2,met_pt_val,met_phi_val,mt_ele_good_val,lep_ele_good_pt,weight_ele_good_val); }    
+  FillHistograms(pspace_nr,1,0,syst_nr,2,
+   met_pt_val,met_phi_val,mt_ele_good_val,
+   lep_ele_good_pt, lep_ele_good_eta, lep_ele_good_phi, lep_ele_good_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_good_val); }    
+
  if( pass_ele_good && isWcc ) {
-  FillHistograms(pspace_nr,1,0,syst_nr,3,met_pt_val,met_phi_val,mt_ele_good_val,lep_ele_good_pt,weight_ele_good_val); }    
+  FillHistograms(pspace_nr,1,0,syst_nr,3,
+   met_pt_val,met_phi_val,mt_ele_good_val,
+   lep_ele_good_pt, lep_ele_good_eta, lep_ele_good_phi, lep_ele_good_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_good_val); }    
+
  if( pass_ele_good && isWbb ) {
-  FillHistograms(pspace_nr,1,0,syst_nr,4,met_pt_val,met_phi_val,mt_ele_good_val,lep_ele_good_pt,weight_ele_good_val); }    
+  FillHistograms(pspace_nr,1,0,syst_nr,4,
+   met_pt_val,met_phi_val,mt_ele_good_val,
+   lep_ele_good_pt, lep_ele_good_eta, lep_ele_good_phi, lep_ele_good_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_good_val); }    
+
+ // ele qcd
  if( pass_ele_qcd )           {
-  FillHistograms(pspace_nr,1,1,syst_nr,0,met_pt_val,met_phi_val,mt_ele_qcd_val,lep_ele_qcd_pt,weight_ele_qcd_val); }      
+  FillHistograms(pspace_nr,1,1,syst_nr,0,
+   met_pt_val,met_phi_val,mt_ele_qcd_val,
+   lep_ele_qcd_pt, lep_ele_qcd_eta, lep_ele_qcd_phi, lep_ele_qcd_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_qcd_val); }      
+
  if( pass_ele_qcd && isWl )   {
-  FillHistograms(pspace_nr,1,1,syst_nr,1,met_pt_val,met_phi_val,mt_ele_qcd_val,lep_ele_qcd_pt,weight_ele_qcd_val); }      
+  FillHistograms(pspace_nr,1,1,syst_nr,1,
+   met_pt_val,met_phi_val,mt_ele_qcd_val,
+   lep_ele_qcd_pt, lep_ele_qcd_eta, lep_ele_qcd_phi, lep_ele_qcd_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_qcd_val); }      
+
  if( pass_ele_qcd && isWc )   {
-  FillHistograms(pspace_nr,1,1,syst_nr,2,met_pt_val,met_phi_val,mt_ele_qcd_val,lep_ele_qcd_pt,weight_ele_qcd_val); }      
+  FillHistograms(pspace_nr,1,1,syst_nr,2,
+   met_pt_val,met_phi_val,mt_ele_qcd_val,
+   lep_ele_qcd_pt, lep_ele_qcd_eta, lep_ele_qcd_phi, lep_ele_qcd_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_qcd_val); }      
+
  if( pass_ele_qcd && isWcc )  {
-  FillHistograms(pspace_nr,1,1,syst_nr,3,met_pt_val,met_phi_val,mt_ele_qcd_val,lep_ele_qcd_pt,weight_ele_qcd_val); }      
+  FillHistograms(pspace_nr,1,1,syst_nr,3,
+   met_pt_val,met_phi_val,mt_ele_qcd_val,
+   lep_ele_qcd_pt, lep_ele_qcd_eta, lep_ele_qcd_phi, lep_ele_qcd_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_qcd_val); }      
+
  if( pass_ele_qcd && isWbb )  {
-  FillHistograms(pspace_nr,1,1,syst_nr,4,met_pt_val,met_phi_val,mt_ele_qcd_val,lep_ele_qcd_pt,weight_ele_qcd_val); }      
+  FillHistograms(pspace_nr,1,1,syst_nr,4,
+   met_pt_val,met_phi_val,mt_ele_qcd_val,
+   lep_ele_qcd_pt, lep_ele_qcd_eta, lep_ele_qcd_phi, lep_ele_qcd_mass,
+   goodE1E2_pt, goodE1E2_eta, goodE1E2_phi, goodE1E2_mass, weight_ele_qcd_val); }      
+
  return kTRUE;
 }
 

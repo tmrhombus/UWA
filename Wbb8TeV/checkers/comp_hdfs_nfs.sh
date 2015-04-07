@@ -37,8 +37,8 @@ for MCsample in \
  "ZZ"
 
 do
- nf=$(ls -d /nfs_scratch/tperry/${version}_${MCsample}-MuEle-PATMC*/*/ | wc -l)
- n5=$((((${nf}+49)/50)))
+ nfs_full=$(ls -d /nfs_scratch/tperry/${version}_${MCsample}-MuEle-PATMC*/*/ | wc -l)
+ nfs_ful5=$((((${nfs_full}+49)/50)))
  nm=$(ls -d /nfs_scratch/tperry/${version}_${MCsample}-mergeFilesJob/*/ | wc -l)
 
  hf=$(ls -1 /hdfs/store/user/tperry/${version}_${MCsample}-MuEle-PATMC*/*.root | wc -l)
@@ -46,16 +46,16 @@ do
  hm=$(ls -1 /hdfs/store/user/tperry/${version}_${MCsample}-mergeFilesJob/*.root | wc -l)
 
  hmcf=$(($hmcf+$hf)) 
- nmcf=$(($nmcf+$nf)) 
+ nmcf=$(($nmcf+$nfs_full)) 
  hmcm=$(($hmcm+$hm)) 
  nmcm=$(($nmcm+$nm)) 
  
- df=$((${nf}-${hf}))
- pf=`echo "${hf} ${nf}" | awk '{printf "%.5f \n", 100*$1/$2}'`
+ df=$((${nfs_full}-${hf}))
+ pf=`echo "${hf} ${nfs_full}" | awk '{printf "%.5f \n", 100*$1/$2}'`
 
  echo -e "${MCsample}\t /nfs\t /hdfs"
- echo -e "  full\t ${nf}\t ${hf}\t  ${pf}% Complete"
- echo -e "  full/50\t ${n5}\t ${h5}\t ${df} failed jobs"
+ echo -e "  full\t ${nfs_full}\t ${hf}\t  ${pf}% Complete"
+ echo -e "  full/50\t ${nfs_ful5}\t ${h5}\t ${df} failed jobs"
  echo -e "  merged\t ${nm}\t ${hm}"
 
 # if [[ $MCsample == *"_p"* ]]
@@ -94,25 +94,25 @@ for sample in \
 do
  
  # 
- nf=$(ls -d /nfs_scratch/tperry/${version}_${sample}-*-PATData/*/ | wc -l)
- n5=$((((${nf}+49)/50)))
+ nfs_full=$(ls -d /nfs_scratch/tperry/${version}_${sample}-*-PATData/*/ | wc -l)
+ nfs_ful5=$((((${nfs_full}+99)/100)))
  nm=$(ls -d /nfs_scratch/tperry/${version}_${sample}-mergeFilesJob/*/ | wc -l)
 
  hf=$(ls -1 /hdfs/store/user/tperry/${version}_${sample}-*-PATData/*.root | wc -l)
- h5=$((((${hf}+49)/50)))
+ h5=$((((${hf}+99)/100)))
  hm=$(ls -1 /hdfs/store/user/tperry/${version}_${sample}-mergeFilesJob/*.root | wc -l)
 
  hdf=$(($hdf+$hf)) 
- ndf=$(($ndf+$nf)) 
+ ndf=$(($ndf+$nfs_full)) 
  hdm=$(($hdm+$hm)) 
  ndm=$(($ndm+$nm)) 
 
- df=$((${nf}-${hf}))
- pf=`echo "${hf} ${nf}" | awk '{printf "%.5f \n", 100*$1/$2}'`
+ df=$((${nfs_full}-${hf}))
+ pf=`echo "${hf} ${nfs_full}" | awk '{printf "%.5f \n", 100*$1/$2}'`
 
  echo -e "${sample}\t /nfs\t /hdfs"
- echo -e "  full\t ${nf}\t ${hf}\t  ${pf}% Complete"
- echo -e "  full/50\t ${n5}\t ${h5}\t ${df} failed jobs"
+ echo -e "  full\t ${nfs_full}\t ${hf}\t  ${pf}% Complete"
+ echo -e "  full/100\t ${nfs_ful5}\t ${h5}\t ${df} failed jobs"
  echo -e "  merged\t ${nm}\t ${hm}"
 
 #  na=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${sample}_callHistoFiller/*/ | wc -l)
@@ -128,61 +128,4 @@ echo "/nfs ${ndf}   /hdfs ${hdf}  ${pdf}% Completed"
 echo
 echo
 
-
-
-#####
-## Count Data Mu
-#####
-#for DMuSample in \
-# "DataA_8TeVMu" 
-# "DataB_8TeVMu" \
-# "DataC_8TeVMu" \
-# "DataD_8TeVMu" 
-#do
-# nf=$(ls -d /nfs_scratch/tperry/${version}_${DMuSample}-Mu-PATData/*/ | wc -l)
-# n5=$((((${nf}+49)/50)))
-# nm=$(ls -d /nfs_scratch/tperry/${version}_${DMuSample}-mergeFilesJob/*/ | wc -l)
-#
-# hf=$(ls -1 /hdfs/store/user/tperry/${version}_${DMuSample}-Mu-PATData/*.root | wc -l)
-# h5=$((((${hf}+49)/50)))
-# hm=$(ls -1 /hdfs/store/user/tperry/${version}_${DMuSample}-mergeFilesJob/*.root | wc -l)
-#
-# echo -e "${DMuSample}\t /nfs\t /hdfs"
-# echo -e "  full\t ${nf}\t ${hf}"
-# echo -e "  full/50\t ${n5}\t ${h5}"
-# echo -e "  merged\t ${nm}\t ${hm}"
-#
-# na=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${DMuSample}_callHistoFiller/*/ | wc -l)
-# ha=$(ls -1 /hdfs/store/user/tperry/${version}_${runname}-${DMuSample}_callHistoFiller/*.root | wc -l) 
-# echo -e "  ${alzd}\t ${na}\t ${ha} "
-# echo
-#done
-#
-#####
-## Count Data Ele
-#####
-#for DEleSample in \
-# "DataA_8TeVEle" 
-# "DataB_8TeVEle" \
-# "DataC_8TeVEle" \
-# "DataD_8TeVEle"
-#do
-# nf=$(ls -d /nfs_scratch/tperry/${version}_${DEleSample}-Ele-PATData/*/ | wc -l)
-# n5=$((((${nf}+49)/50)))
-# nm=$(ls -d /nfs_scratch/tperry/${version}_${DEleSample}-mergeFilesJob/*/ | wc -l)
-#
-# hf=$(ls -1 /hdfs/store/user/tperry/${version}_${DEleSample}-Ele-PATData/*.root | wc -l)
-# h5=$((((${hf}+49)/50)))
-# hm=$(ls -1 /hdfs/store/user/tperry/${version}_${DEleSample}-mergeFilesJob/*.root | wc -l)
-#
-# echo -e "${DEleSample}\t /nfs\t /hdfs"
-# echo -e "  full\t ${nf}\t ${hf}"
-# echo -e "  full/50\t ${n5}\t ${h5}"
-# echo -e "  merged\t ${nm}\t ${hm}"
-#
-# na=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${DEleSample}_callHistoFiller/*/ | wc -l)
-# ha=$(ls -1 /hdfs/store/user/tperry/${version}_${runname}-${DEleSample}_callHistoFiller/*.root | wc -l) 
-# echo -e "  ${alzd}\t ${na}\t ${ha} "
-# echo
-#done
 

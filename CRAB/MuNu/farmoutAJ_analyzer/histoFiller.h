@@ -61,6 +61,7 @@ public :
    Bool_t passMT_qcdMu;
    Bool_t passMT_goodEle;
    Bool_t passMT_qcdEle;
+   Bool_t diJetVVcut;
 
    Bool_t min2goodJs;
    Bool_t exactly2goodJs;

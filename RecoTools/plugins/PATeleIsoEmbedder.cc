@@ -58,7 +58,7 @@ void PATeleIsoEmbedder::produce( edm::Event& iEvent, const edm::EventSetup& es )
         pcHI03 = electron.isoDeposit(pat::IsolationKeys(12))->depositWithin(0.3);
         pcHI04 = electron.isoDeposit(pat::IsolationKeys(12))->depositWithin(0.4);
 
-        Iso03 = ( cHI04 + std::max( (nHI03 + gI03 - 0.5*pcHI03) ,0.0) ) / et;
+        Iso03 = ( cHI03 + std::max( (nHI03 + gI03 - 0.5*pcHI03) ,0.0) ) / et;
         Iso04 = ( cHI04 + std::max( (nHI04 + gI04 - 0.5*pcHI04) ,0.0) ) / et;
 
         //  std::cout<<"cHI:  "<<cHI04<< " "<<cHI03<<std::endl;

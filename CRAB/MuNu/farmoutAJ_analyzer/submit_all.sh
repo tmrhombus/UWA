@@ -14,19 +14,16 @@ mkdir -p ./Submit_${version}
 lumi_mu="19778" # CestPi
 lumi_ele="19661" # CestPi
 
-#shifts[0]="SFs"
-#shifts[1]="JESUp"
-#shifts[2]="JESDown"
-#shifts[3]="LESUp"
-#shifts[4]="LESDown"
-
-shifts[0]="JESUp"
+shifts[0]="SFs"
+shifts[1]="JESUp"
+shifts[2]="JESDown"
+shifts[3]="LESUp"
+shifts[4]="LESDown"
 
 # choose sample
 for samplename in \
- "W2Jet" 
+ "Drell" 
 
-# "Drell" \
 # "TTbar_full" \
 # "TTbar_semi" \
 # "T_s" \
@@ -133,62 +130,63 @@ do
 done # samplename in mc_samples
 
 
-#for samplename in \
-# "DataA_8TeVMu" \
-# "DataA_8TeVEle" \
+for samplename in \
+ "DataA_8TeVMu" \
+ "DataA_8TeVEle" 
+
 # "DataB_8TeVMu" \
 # "DataC_8TeVMu" \
 # "DataD_8TeVMu" \
 # "DataB_8TeVEle" \
 # "DataC_8TeVEle" \
 # "DataD_8TeVEle"
-#
-#do
-# echo "${samplename}"
-# # make a list of all the sample filenames
-#
-# find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
-#  ../SampleInfo/${version}/Lists/list_${samplename}.txt #
-#
-# cp "../SampleInfo/${version}/Lists/list_${samplename}.txt" \
-#    "../SampleInfo/${version}/Lists/xrd_list_${samplename}.txt" #
-# # format as xrootd
-# mylist="../SampleInfo/${version}/Lists/xrd_list_${samplename}.txt"
-# sed -i 's@/hdfs/@root://cmsxrootd.hep.wisc.edu//@g' $mylist #
-#
-# # we shouldn't scale data..
-# nrE="100"
-# xc="-1"
-# isMC="kFALSE"
-# isW="kFALSE"
-# theshift=""
-#
-# if [[ ${samplename} == *Mu ]];  then treename="muonEventTree/eventTree"     ; fi
-# if [[ ${samplename} == *Ele ]]; then treename="electronEventTree/eventTree" ; fi
-#
-# # make correct executable xx_callHistoFiller()
-# cp template_callHistoFiller.cc                   "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@PSANDSHIFT@${samplename}${theshift}@g" "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@PSNAME@${samplename}@g"                "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@LUMIMU@${lumi_mu}@g"                   "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@LUMIELE@${lumi_ele}@g"                 "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@NREVENTS@${nrE}@g"                     "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@CROSSSEC@${xc}@g"                      "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@ISMC@${isMC}@g"                        "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@ISW@${isW}@g"                          "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@SHIFT@${theshift}@g"                   "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-# sed -i "s@TREENAME@${treename}@g"                "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-#
-# farmoutAnalysisJobs \
-#  --infer-cmssw-path \
-#  --fwklite \
-#  --use-hdfs \
-#  --input-file-list=${mylist} \
-#  --extra-inputs=${CMSSW_BASE}/src/UWAnalysis/CRAB/MuNu/farmoutAJ_analyzer/histoFiller.C,${CMSSW_BASE}/src/UWAnalysis/CRAB/MuNu/farmoutAJ_analyzer/histoFiller.h \
-#  ${version}_${runname} \
-#  "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
-#
-#done # samplename in data_samples
+
+do
+ echo "${samplename}"
+ # make a list of all the sample filenames
+
+ find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
+  ../SampleInfo/${version}/Lists/list_${samplename}.txt #
+
+ cp "../SampleInfo/${version}/Lists/list_${samplename}.txt" \
+    "../SampleInfo/${version}/Lists/xrd_list_${samplename}.txt" #
+ # format as xrootd
+ mylist="../SampleInfo/${version}/Lists/xrd_list_${samplename}.txt"
+ sed -i 's@/hdfs/@root://cmsxrootd.hep.wisc.edu//@g' $mylist #
+
+ # we shouldn't scale data..
+ nrE="100"
+ xc="-1"
+ isMC="kFALSE"
+ isW="kFALSE"
+ theshift=""
+
+ if [[ ${samplename} == *Mu ]];  then treename="muonEventTree/eventTree"     ; fi
+ if [[ ${samplename} == *Ele ]]; then treename="electronEventTree/eventTree" ; fi
+
+ # make correct executable xx_callHistoFiller()
+ cp template_callHistoFiller.cc                   "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@PSANDSHIFT@${samplename}${theshift}@g" "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@PSNAME@${samplename}@g"                "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@LUMIMU@${lumi_mu}@g"                   "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@LUMIELE@${lumi_ele}@g"                 "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@NREVENTS@${nrE}@g"                     "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@CROSSSEC@${xc}@g"                      "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@ISMC@${isMC}@g"                        "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@ISW@${isW}@g"                          "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@SHIFT@${theshift}@g"                   "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+ sed -i "s@TREENAME@${treename}@g"                "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+
+ farmoutAnalysisJobs \
+  --infer-cmssw-path \
+  --fwklite \
+  --use-hdfs \
+  --input-file-list=${mylist} \
+  --extra-inputs=${CMSSW_BASE}/src/UWAnalysis/CRAB/MuNu/farmoutAJ_analyzer/histoFiller.C,${CMSSW_BASE}/src/UWAnalysis/CRAB/MuNu/farmoutAJ_analyzer/histoFiller.h \
+  ${version}_${runname} \
+  "./Submit_${version}/${samplename}${theshift}_callHistoFiller.cc"
+
+done # samplename in data_samples
 
 END=$(date +%s);
 echo "Finished at `date`"

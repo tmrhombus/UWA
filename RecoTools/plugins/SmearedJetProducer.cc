@@ -21,7 +21,7 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     using namespace reco;
 
     edm::ESHandle<JetCorrectorParametersCollection> JetCorParColl;
-    iSetup.get<JetCorrectionsRecord>().get("AK5PF",JetCorParColl); 
+    iSetup.get<JetCorrectionsRecord>().get("AK5PFchs",JetCorParColl); 
     JetCorrectorParameters const & JetCorPar = (*JetCorParColl)["Uncertainty"];
     JetCorrectionUncertainty *jecUnc = new JetCorrectionUncertainty(JetCorPar);
 
@@ -35,8 +35,6 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
         // " pT: "<<object.pt()<<
         // " eta: "<<object.eta()<<
         // " phi: "<<object.phi()<<std::endl;
-	//std::cout << " original object(" << i << "): Pt = " << object.pt() << "," 
-	//	    << " eta = " << object.eta() << ", phi = " << object.phi() << std::endl;
 
 	if (object.pt()>1.) {smearingModule->smear(object);}
 

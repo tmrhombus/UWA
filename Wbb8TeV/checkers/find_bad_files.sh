@@ -40,14 +40,23 @@ for MCsample in \
 
 do
  
+#  echo $MCsample
+#  outfile="/afs/hep.wisc.edu/home/tperry/www/scrap/BadFiles/${version}_${MCsample}.sh.txt"
+#  touch ${outfile}
+#
+#  grep -r "was not found, could not be opened, or is corrupted" '/nfs_scratch/tperry/'"${version}"'_'"${MCsample}"*/*/*err > ${outfile}
+#
+# sed -i 's@^.*//store@# gsido rm /hdfs/store@g' "${outfile}"
+# sed -i 's@was not found, could not be opened, or is corrupted.@@g' "${outfile}"
+
+ 
   echo $MCsample
-  outfile="/afs/hep.wisc.edu/home/tperry/www/scrap/BadFiles/${version}_${MCsample}.sh.txt"
+  outfile="/afs/hep.wisc.edu/home/tperry/www/scrap/BadFiles/rm_nfs_${version}_${MCsample}.sh.txt"
   touch ${outfile}
 
   grep -r "was not found, could not be opened, or is corrupted" '/nfs_scratch/tperry/'"${version}"'_'"${MCsample}"*/*/*err > ${outfile}
 
- sed -i 's@^.*//store@# gsido rm /hdfs/store@g' "${outfile}"
- sed -i 's@was not found, could not be opened, or is corrupted.@@g' "${outfile}"
+  sed -i 's@/nfs_scratch/'"${USER}"'/'"${version}"'_'"${MCsample}"'\(.*\)/.*err:Input.*@rm -rf /nfs_scratch/'"${USER}"'/'"${version}"'_'"${MCsample}"'\1@g' ${outfile}
 
  echo
 done

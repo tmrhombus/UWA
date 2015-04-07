@@ -37,12 +37,18 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
   goodVertexFilter(process)       
   
   # leptons
-  #rochesterCorrector(process,muons="cleanPatMuons")
-  #muScleCorrector(process,muons="cleanPatMuons",isMC=itsMC)
-  #electronEnergyCorrector(process,'cleanPatElectrons')
+  ## uncorrected leptons
+  #muonIDer(process,muons="cleanPatMuons")
+  #eleIsolater(process,electrons="cleanPatElectrons")
+  #leptonSFer(process,muons="IDedMuons",electrons="IsoedElectrons")
+  ##leptonSFer(process,muons="IDedMuons",electrons="cleanPatElectrons")
 
-  muonIDer(process,muons="cleanPatMuons")
-  eleIsolater(process,electrons="cleanPatElectrons")
+  # energy corrected leptons
+  rochesterCorrector(process,muons="cleanPatMuons")
+  #muScleCorrector(process,muons="cleanPatMuons",isMC=itsMC)
+  electronEnergyCorrector(process,'cleanPatElectrons')
+  muonIDer(process,muons="rochCorMuons")
+  eleIsolater(process,electrons="energyCorrectedElectrons")
   leptonSFer(process,muons="IDedMuons",electrons="IsoedElectrons")
   #leptonSFer(process,muons="IDedMuons",electrons="cleanPatElectrons")
 
@@ -811,16 +817,16 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
   electronIso = 'userFloat("Iso03")'
   electronLooseIso = electronIso+' < 0.15'
   electronTightIso = electronIso+' < 0.10 '
-  electronAntiIso  = electronIso+' > 0.3 '  # VV Check
-  #electronAntiIso  = electronIso+' > 0.15 '  # Wbb
+  #electronAntiIso  = electronIso+' > 0.3 '  # VV, CestPiVV,
+  electronAntiIso  = electronIso+' > 0.15 '  # Wbb, CestPi, Mars
 
   muonLooseID = ' userFloat("looseID")>0 '
   muonTightID = ' userInt("tightID")==1 '
   muonIso = '(pfIsolationR04().sumChargedHadronPt + max((pfIsolationR04().sumNeutralHadronEt + pfIsolationR04().sumPhotonEt - 0.5*pfIsolationR04().sumPUPt),0.0))/pt'
   muonLooseIso = muonIso+' < 0.20 '
   muonTightIso = muonIso+' < 0.12 '
-  muonAntiIso  = muonIso+' > 0.3 '  # VV Check
-  #muonAntiIso  = muonIso+' > 0.20 '  # Wbb
+  #muonAntiIso  = muonIso+' > 0.3 '  # VV, CestPiVV,
+  muonAntiIso  = muonIso+' > 0.20 '  # Wbb, CestPi, Mars
 
   process.allMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag( muons ),
@@ -834,39 +840,39 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
   )
   process.goodMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag( muons ),
-   cut = cms.string('pt>25 && abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),  # VV Check
-   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),   # Wbb
+   #cut = cms.string('pt>25 && abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),  # VV, CestPiVV,
+   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),   # Wbb, CestPi, Mars
    filter = cms.bool(False),
   )
   process.goodElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag( electrons ),
-   cut = cms.string('pt>30 && abs(eta)<2.5 && %s && %s'%(electronTightIso,electronTightID)),  # VV Check
-   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronTightIso,electronTightID)),   # Wbb
+   #cut = cms.string('pt>30 && abs(eta)<2.5 && %s && %s'%(electronTightIso,electronTightID)),  # VV, CestPiVV,
+   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronTightIso,electronTightID)),   # Wbb, CestPi, Mars
    #cut = cms.string('pt>30 && ( abs(eta)<1.4442 || ( abs(eta)>1.566 && abs(eta)<2.1 ) ) && %s && %s'%(electronTightIso,electronTightID)),
    filter = cms.bool(False),
   )
   process.vetoMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag( muons ),
-   cut = cms.string('pt>10 && abs(eta)<2.5 && %s && %s'%(muonLooseIso,muonLooseID)),  # VV Check
-   #cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(muonLooseIso,muonLooseID)),   # Wbb
+   #cut = cms.string('pt>10 && abs(eta)<2.5 && %s && %s'%(muonLooseIso,muonLooseID)),  # VV, CestPiVV,
+   cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(muonLooseIso,muonLooseID)),   # Wbb, CestPi, Mars
    filter = cms.bool(False),
   )
   process.vetoElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag( electrons ),
-   cut = cms.string('pt>10 && abs(eta)<2.5 && %s && %s'%(electronLooseIso,electronLooseID)),  # VV Check
-   #cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(electronLooseIso,electronLooseID)),   # Wbb
+   #cut = cms.string('pt>10 && abs(eta)<2.5 && %s && %s'%(electronLooseIso,electronLooseID)),  # VV, CestPiVV,
+   cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(electronLooseIso,electronLooseID)),   # Wbb, CestPi, Mars
    filter = cms.bool(False),
   )
   process.qcdMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag( muons ),
-   cut = cms.string('pt>20 && abs(eta)<2.5 && %s && %s'%(muonAntiIso,muonTightID)),  # VV Check
-   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonAntiIso,muonTightID)),   # Wbb
+   #cut = cms.string('pt>20 && abs(eta)<2.5 && %s && %s'%(muonAntiIso,muonTightID)),  # VV, CestPiVV,
+   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonAntiIso,muonTightID)),   # Wbb, CestPi, Mars
    filter = cms.bool(False),
   )
   process.qcdElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag( electrons ),
-   cut = cms.string('pt>20 && abs(eta)<2.5 && %s'%(electronAntiIso)),                       # VV Check
-   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronAntiIso,electronTightID)),  # Wbb
+   #cut = cms.string('pt>20 && abs(eta)<2.5 && %s'%(electronAntiIso)),                       # VV, CestPiVV,
+   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronAntiIso,electronTightID)),  # Wbb, CestPi, Mars
    #cut = cms.string('pt>30 && ( abs(eta)<1.4442 || ( abs(eta)>1.566 && abs(eta)<2.1 ) ) && %s && %s'%(electronAntiIso,electronTightID)),
    filter = cms.bool(False),
   )
@@ -879,8 +885,9 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
         src = cms.InputTag(muons),
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
-          'pt > 10 && abs(eta) < 2.5 && %s && %s'%(muonLooseIso,muonLooseID)  # VV Check
-          #'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb
+          #'pt > 10 && abs(eta) < 2.5 && %s && %s'%(muonLooseIso,muonLooseID)  # VV, CestPiVV,
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb, CestPi, Mars
+          #'pt > 10 && abs(eta) < 2.4 && %s && %s'%(muonLooseIso,muonLooseID)   # Jupiter? (Loose Mu)
         ),
         deltaR = cms.double(0.3),
         #deltaR = cms.double(0.5),
@@ -892,11 +899,11 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
         src = cms.InputTag( electrons ),
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
-          'pt > 20 && abs(eta) < 2.5 && %s && %s'%(electronLooseIso,electronLooseID)  # VV Check
-          #'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb
+          #'pt > 20 && abs(eta) < 2.5 && %s && %s'%(electronLooseIso,electronLooseID)  # VV, CestPiVV,
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb, CestPi, Mars
         ),
-        deltaR = cms.double(0.3),  # VV Check
-        #deltaR = cms.double(0.5),   # Wbb
+        #deltaR = cms.double(0.3),  # VV, CestPiVV,
+        deltaR = cms.double(0.5),   # Wbb, CestPi?, Mars
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
         requireNoOverlaps = cms.bool(False),
@@ -913,8 +920,8 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
         src = cms.InputTag(muons),
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
-          'pt > 10 && abs(eta) < 2.5 && %s && %s'%(muonLooseIso,muonLooseID)  # VV Check
-          #'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb
+          #'pt > 10 && abs(eta) < 2.5 && %s && %s'%(muonLooseIso,muonLooseID)  # VV, CestPiVV,
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb, CestPi, Mars
         ),
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
@@ -925,12 +932,12 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
         src = cms.InputTag( electrons ),
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
-          'pt > 20 && abs(eta) < 2.5 && %s && %s'%(electronLooseIso,electronLooseID)  # VV Check
-          #'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb
+          #'pt > 20 && abs(eta) < 2.5 && %s && %s'%(electronLooseIso,electronLooseID)  # VV, CestPiVV,
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb, CestPi, Mars
           #'pt > 30 && ( abs(eta)<1.4442 || ( abs(eta)>1.566 && abs(eta)<2.1 ) ) && %s && %s'%(electronTightIso,electronTightID)
         ),
-        deltaR = cms.double(0.3),  # VV Check
-        #deltaR = cms.double(0.5), # Wbb
+        #deltaR = cms.double(0.3),  # VV, CestPiVV,
+        deltaR = cms.double(0.5), # Wbb, CestPi, Mars
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
         requireNoOverlaps = cms.bool(True),
@@ -940,13 +947,13 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
    )	
 
   process.goodJets = process.cleanJets.clone(
-   preselection = cms.string("abs(eta)<2.4 && pt>30 && userFloat('idLoose')>0")  # VV Check
-   #preselection = cms.string("abs(eta)<2.4 && pt>25 && userFloat('idLoose')>0")   # Wbb
+   #preselection = cms.string("abs(eta)<2.4 && pt>30 && userFloat('idLoose')>0")  # VV, CestPiVV,
+   preselection = cms.string("abs(eta)<2.4 && pt>25 && userFloat('idLoose')>0")   # Wbb, CestPi, Mars
   )
 
   process.fwdJets = process.cleanJets.clone(
-   preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && pt>30 && userFloat('idLoose')>0")  # VV Check
-   #preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && pt>25 && userFloat('idLoose')>0")   # Wbb
+   #preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && pt>30 && userFloat('idLoose')>0")  # VV, CestPiVV,
+   preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && pt>25 && userFloat('idLoose')>0")   # Wbb, CestPi, Mars
   )
 
   process.selectedObjectsForSyst = cms.Sequence(

@@ -127,8 +127,7 @@ void histoFiller::Loop(
   min2goodJs = 
    nrGoodJets>=2 && nrFwdJets==0;
   exactly2goodJs = 
-   nrGoodJets==2 && nrFwdJets==0 //;         //// For Ilya
-   && goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
+   nrGoodJets==2 && nrFwdJets==0;
   min2goodBJs = 
    min2goodJs
    && goodJ1_CSV>0.898 && goodJ2_CSV>0.898;
@@ -245,6 +244,8 @@ void histoFiller::Loop(
 
   // For Ilya
   dphiJ1Met = dPhi(goodJ1_phi, MET_phi);
+  diJetVVcut =  /// For Ilya, DiJet Cuts
+   goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
 
   passMET =        MET_pt > 25. && dphiJ1Met > 0.4;
   passMT_goodMu =  mt_mu_good > 30;
@@ -263,7 +264,7 @@ void histoFiller::Loop(
   Bool_t pass_wjj_ele_qcd=kFALSE;
   Bool_t pass_wbb_ele_good=kFALSE;
   Bool_t pass_wbb_ele_qcd=kFALSE;
-  if( oneGoodMuon && exactly2goodJs && passMET && passMT_goodMu ){ // mu good
+  if( oneGoodMuon && exactly2goodJs && diJetVVcut && passMET && passMT_goodMu ){ // mu good
    pass_wjj_mu_good=kTRUE; 
    nrEntries_mu_wjj_good_postcut++;
    //std::cout<<"Pass wjj mu"<<std::endl;
@@ -280,7 +281,8 @@ void histoFiller::Loop(
     SF_wjj_mu_good_IDIsoHLT_errDn = SF_wjj_mu_good_IDIsoHLT - SF_goodMu_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDMuon && exactly2goodJs && passMET && passMT_qcdMu ){ // mu qcd
+  //if( oneQCDMuon && exactly2goodJs && diJetVVcut && passMET && passMT_qcdMu ){ // mu qcd
+  if( oneQCDMuon && exactly2goodJs ){ // mu qcd
    pass_wjj_mu_qcd=kTRUE; 
    nrEntries_mu_wjj_qcd_postcut++;
    if ( exactly2goodBJs ){
@@ -293,7 +295,7 @@ void histoFiller::Loop(
     SF_wjj_mu_qcd_IDIsoHLT_errDn = SF_wjj_mu_qcd_IDIsoHLT - SF_qcdMu_IDIso_errDn;
    }
   }
-  if( oneGoodElectron && exactly2goodJs && passMET && passMT_goodEle ){ // ele good
+  if( oneGoodElectron && exactly2goodJs && diJetVVcut && passMET && passMT_goodEle ){ // ele good
    pass_wjj_ele_good=kTRUE; 
    nrEntries_ele_wjj_good_postcut++;
    if ( exactly2goodBJs ){
@@ -306,7 +308,8 @@ void histoFiller::Loop(
     SF_wjj_ele_good_IDIsoHLT_errDn = SF_wjj_ele_good_IDIsoHLT - SF_goodEle_IDIsoHLT_errDn->at(0);
    }
   }
-  if( oneQCDElectron && exactly2goodJs && passMET && passMT_qcdEle ){ // ele qcd
+  //if( oneQCDElectron && exactly2goodJs && diJetVVcut && passMET && passMT_qcdEle ){ // ele qcd
+  if( oneQCDElectron && exactly2goodJs ){ // ele qcd
    pass_wjj_ele_qcd=kTRUE; 
    nrEntries_ele_wjj_qcd_postcut++;
    if ( exactly2goodBJs ){
