@@ -14,7 +14,8 @@ process.load("UWAnalysis/Configuration/2012FullJSON")
 #process.source.lumisToProcess = LumiList.LumiList(filename = '/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/weights/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.json').getVLuminosityBlockRange()
 
 process.source.fileNames= cms.untracked.vstring(
- 'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-F25282EE-2077-E211-B3C0-00261834B5AF.root'
+ 'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012B-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-783AA1AC-B277-E211-BFE3-BCAEC54B302D.root'
+ #'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-F25282EE-2077-E211-B3C0-00261834B5AF.root'
 #'root://cmsxrootd.hep.wisc.edu//store/user/tperry/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-2A4B3C43-C575-E211-8960-90E6BA0D09AD.root'
 )
 process.source.inputCommands=cms.untracked.vstring(
@@ -76,12 +77,12 @@ addEventTreeData(process,'muonEventTree',
       srcQEle='qcdElectrons',
       srcAEle='allElectrons',
       srcGJet='goodJets',
-      srcFJet='smearedFwdJets',
+      srcFJet='fwdJets',
       srcAJet='allJets',
-      srcCJet='smearedCleanJets'
+      srcCJet='cleanJets'
    )
 addEventSummary(process,True)
-process.TFileService.fileName = cms.string('Data_Mu_VVC.root')
+process.TFileService.fileName = cms.string('NoLepReg_DataMu_783AA1AC-B277-E211-BFE3-BCAEC54B302D.root')
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",

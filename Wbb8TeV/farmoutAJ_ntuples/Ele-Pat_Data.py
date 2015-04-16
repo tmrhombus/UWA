@@ -60,9 +60,9 @@ addEventTreeData(process,'electronEventTree',
       srcQEle='qcdElectrons',
       srcAEle='allElectrons',
       srcGJet='goodJets',
-      srcFJet='smearedFwdJets',
+      srcFJet='fwdJets',
       srcAJet='allJets',
-      srcCJet='smearedCleanJets'
+      srcCJet='cleanJets'
    )   
 addEventSummary(process,True)
 process.TFileService.fileName = cms.string('Data_Ele_VVC.root')
