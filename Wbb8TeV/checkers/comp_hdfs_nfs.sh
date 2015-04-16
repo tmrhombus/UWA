@@ -1,6 +1,9 @@
 echo
 echo "${version} ${runname}"
 
+countmerged="False"
+countanalyzed="False"
+
 shifts[0]="SFs"
 shifts[1]="JESUp"
 shifts[2]="JESDown"
@@ -37,46 +40,52 @@ for MCsample in \
  "ZZ"
 
 do
+ # ntuples
  nfs_full=$(ls -d /nfs_scratch/tperry/${version}_${MCsample}-MuEle-PATMC*/*/ | wc -l)
- nfs_ful5=$((((${nfs_full}+49)/50)))
- nm=$(ls -d /nfs_scratch/tperry/${version}_${MCsample}-mergeFilesJob/*/ | wc -l)
-
- hf=$(ls -1 /hdfs/store/user/tperry/${version}_${MCsample}-MuEle-PATMC*/*.root | wc -l)
- h5=$((((${hf}+49)/50)))
- hm=$(ls -1 /hdfs/store/user/tperry/${version}_${MCsample}-mergeFilesJob/*.root | wc -l)
-
- hmcf=$(($hmcf+$hf)) 
- nmcf=$(($nmcf+$nfs_full)) 
- hmcm=$(($hmcm+$hm)) 
- nmcm=$(($nmcm+$nm)) 
+ nfs_mergecount=`python -c "from math import ceil; print ceil(${nfs_full}/50.)"`
+ hdfs_full=$(ls -1 /hdfs/store/user/tperry/${version}_${MCsample}-MuEle-PATMC*/*.root | wc -l)
+ hdfs_mergecount=`python -c "from math import ceil; print ceil(${hdfs_full}/50.)"`
+ hdfs_mc_full_total=$(($hdfs_mc_full_total+$hdfs_full)) 
+ nfs_mc_full_total=$(($nfs_mc_full_total+$nfs_full)) 
  
- df=$((${nfs_full}-${hf}))
- pf=`echo "${hf} ${nfs_full}" | awk '{printf "%.5f \n", 100*$1/$2}'`
+ failed_jobs=$((${nfs_full}-${hdfs_full}))
+ percent_completed=`echo "${hdfs_full} ${nfs_full}" | awk '{printf "%.5f \n", 100*$1/$2}'`
 
  echo -e "${MCsample}\t /nfs\t /hdfs"
- echo -e "  full\t ${nfs_full}\t ${hf}\t  ${pf}% Complete"
- echo -e "  full/50\t ${nfs_ful5}\t ${h5}\t ${df} failed jobs"
- echo -e "  merged\t ${nm}\t ${hm}"
+ echo -e "  full\t ${nfs_full}\t ${hdfs_full}\t  ${percent_completed}% Complete"
+ echo -e "  full/50\t ${nfs_mergecount}\t ${hdfs_mergecount}\t ${failed_jobs} failed jobs"
 
-# if [[ $MCsample == *"_p"* ]]
-# then
-#  MCsample=${MCsample%_p1}
-#  MCsample=${MCsample%_p2}
-# fi
-# for myshift in "${shifts[@]}" 
-#  do
-#  na=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${MCsample}_${myshift}_callHistoFiller/*/ | wc -l)
-#  ha=$(ls -1 /hdfs/store/user/tperry/${version}_${runname}-${MCsample}_${myshift}_callHistoFiller/*.root | wc -l) 
-#  echo -e "  ${myshift}\t ${na}\t ${ha} "
-# done
+ # merged 
+ if [ "$countmerged" = "True" ]
+ then
+  hdfs_merged=$(ls -1 /hdfs/store/user/tperry/${version}_${MCsample}-mergeFilesJob/*.root | wc -l)
+  nfs_merged=$(ls -d /nfs_scratch/tperry/${version}_${MCsample}-mergeFilesJob/*/ | wc -l)
+  hdfs_mc_merged_total=$(($hdfs_mc_merged_total+$hdfs_merged)) 
+  nfs_mc_merged_total=$(($nfs_mc_merged_total+$nfs_merged)) 
+  echo -e "  merged\t ${nfs_merged}\t ${hdfs_merged}"
+ fi
+
+ # analyzed
+ if [ "$countanalyzed" = "True" ]
+ then
+  # drop _p1 or _p2 from end of samplename
+  MCsample=${MCsample%_p1}
+  MCsample=${MCsample%_p2}
+  for myshift in "${shifts[@]}" 
+   do
+   nfs_analyzed=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${MCsample}_${myshift}_callHistoFiller/*/ | wc -l)
+   hdfs_analyzed=$(ls -1 /hdfs/store/user/tperry/${version}_${runname}-${MCsample}_${myshift}_callHistoFiller/*.root | wc -l) 
+   echo -e "  ${myshift}\t ${nfs_analyzed}\t ${hdfs_analyzed} "
+  done
+ fi
  echo
 done
 
 
-pmcf=`echo "${hmcf} ${nmcf}" | awk '{printf "%.5f \n", 100*$1/$2}'`
+percent_mc_completed_total=`echo "${hdfs_mc_full_total} ${nfs_mc_full_total}" | awk '{printf "%.5f \n", 100*$1/$2}'`
 echo
 echo "Total MC"
-echo "/nfs ${nmcf}   /hdfs ${hmcf}  ${pmcf}% Completed"
+echo "/nfs ${nfs_mc_full_total}   /hdfs ${hdfs_mc_full_total}  ${percent_mc_completed_total}% Completed"
 echo
 echo
 
@@ -93,39 +102,48 @@ for sample in \
 
 do
  
- # 
  nfs_full=$(ls -d /nfs_scratch/tperry/${version}_${sample}-*-PATData/*/ | wc -l)
- nfs_ful5=$((((${nfs_full}+99)/100)))
- nm=$(ls -d /nfs_scratch/tperry/${version}_${sample}-mergeFilesJob/*/ | wc -l)
+ nfs_mergecount=`python -c "from math import ceil; print ceil(${nfs_full}/100.)"`
+ hdfs_full=$(ls -1 /hdfs/store/user/tperry/${version}_${sample}-*-PATData/*.root | wc -l)
+ hdfs_mergecount=`python -c "from math import ceil; print ceil(${hdfs_full}/100.)"`
+ hdfs_data_full_total=$(($hdfs_data_full_total+$hdfs_full)) 
+ nfs_data_full_total=$(($nfs_data_full_total+$nfs_full)) 
 
- hf=$(ls -1 /hdfs/store/user/tperry/${version}_${sample}-*-PATData/*.root | wc -l)
- h5=$((((${hf}+99)/100)))
- hm=$(ls -1 /hdfs/store/user/tperry/${version}_${sample}-mergeFilesJob/*.root | wc -l)
-
- hdf=$(($hdf+$hf)) 
- ndf=$(($ndf+$nfs_full)) 
- hdm=$(($hdm+$hm)) 
- ndm=$(($ndm+$nm)) 
-
- df=$((${nfs_full}-${hf}))
- pf=`echo "${hf} ${nfs_full}" | awk '{printf "%.5f \n", 100*$1/$2}'`
+ failed_jobs=$((${nfs_full}-${hdfs_full}))
+ percent_completed=`echo "${hdfs_full} ${nfs_full}" | awk '{printf "%.5f \n", 100*$1/$2}'`
 
  echo -e "${sample}\t /nfs\t /hdfs"
- echo -e "  full\t ${nfs_full}\t ${hf}\t  ${pf}% Complete"
- echo -e "  full/100\t ${nfs_ful5}\t ${h5}\t ${df} failed jobs"
- echo -e "  merged\t ${nm}\t ${hm}"
+ echo -e "  full\t ${nfs_full}\t ${hdfs_full}\t  ${percent_completed}% Complete"
+ echo -e "  full/100\t ${nfs_mergecount}\t ${hdfs_mergecount}\t ${failed_jobs} failed jobs"
 
-#  na=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${sample}_callHistoFiller/*/ | wc -l)
-#  ha=$(ls -1 /hdfs/store/user/tperry/${version}_${runname}-${sample}_callHistoFiller/*.root | wc -l) 
-#  echo -e "  \t ${na}\t ${ha} "
+ if [ "$countmerged" = "True" ]
+ then
+  nfs_merged=$(ls -d /nfs_scratch/tperry/${version}_${sample}-mergeFilesJob/*/ | wc -l)
+  hdfs_merged=$(ls -1 /hdfs/store/user/tperry/${version}_${sample}-mergeFilesJob/*.root | wc -l)
+  hdfs_data_merged_total=$(($hdfs_data_merged_total+$hdfs_merged)) 
+  nfs_data_merged_total=$(($nfs_data_merged_total+$nfs_merged)) 
+  echo -e "  merged\t ${nfs_merged}\t ${hdfs_merged}"
+ fi
+
+ if [ "$countanalyzed" = "True" ]
+ then
+  nfs_analyzed=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${sample}_callHistoFiller/*/ | wc -l)
+  hdfs_analyzed=$(ls -1 /hdfs/store/user/tperry/${version}_${runname}-${sample}_callHistoFiller/*.root | wc -l) 
+  echo -e "  \t ${nfs_analyzed}\t ${hdfs_analyzed} "
+ fi
  echo
 done
 
-pdf=`echo "${hdf} ${ndf}" | awk '{printf "%.5f \n", 100*$1/$2}'`
+percent_data_completed_total=`echo "${hdfs_data_full_total} ${nfs_data_full_total}" | awk '{printf "%.5f \n", 100*$1/$2}'`
 echo
 echo "Total Data"
-echo "/nfs ${ndf}   /hdfs ${hdf}  ${pdf}% Completed"
+echo "/nfs ${nfs_data_full_total}   /hdfs ${hdfs_data_full_total}  ${percent_data_completed_total}% Completed"
 echo
 echo
 
 
+
+# for checking individual files
+# grep -l "exited with status 0" /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_good.txt
+# ls /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_all.txt
+# grep -Fvf good_dataAEle.txt all_dataAEle.txt > dataAEle_bad.txt
