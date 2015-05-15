@@ -44,11 +44,11 @@ def defaultReconstructionPT(process,triggerProcess = 'HLT',triggerPaths = ['HLT_
 
   # energy corrected leptons
   if itsMC:
-   #rochesterCorrector(process,muons="cleanPatMuons") # Earth, Neptune
+   rochesterCorrector(process,muons="cleanPatMuons") # Earth, Neptune, Venus
    #muScleCorrector(process,muons="cleanPatMuons",isMC=itsMC)
    #electronEnergyCorrector(process,'cleanPatElectrons') # Earth
-   ReNameMuColl(process,inputMuons="cleanPatMuons") # Mercury
-   ReNameEleColl(process,inputEles="cleanPatElectrons") # Neptune, Mercury
+   #ReNameMuColl(process,inputMuons="cleanPatMuons") # Mercury
+   ReNameEleColl(process,inputEles="cleanPatElectrons") # Neptune, Mercury, Venus
   else:
    ReNameMuColl(process,inputMuons="cleanPatMuons")
    ReNameEleColl(process,inputEles="cleanPatElectrons")
@@ -854,38 +854,44 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
   process.goodMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag( muons ),
    #cut = cms.string('pt>25 && abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),  # VV, CestPiVV, Venus
-   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   cut = cms.string('abs(eta)<2.1 && %s && %s'%(muonTightIso,muonTightID)),   # Dercury
    filter = cms.bool(False),
   )
   process.goodElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag( electrons ),
    #cut = cms.string('pt>30 && abs(eta)<2.5 && %s && %s'%(electronTightIso,electronTightID)),  # VV, CestPiVV, Venus
-   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronTightIso,electronTightID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronTightIso,electronTightID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   cut = cms.string('abs(eta)<2.1 && %s && %s'%(electronTightIso,electronTightID)),   # Dercury
    #cut = cms.string('pt>30 && ( abs(eta)<1.4442 || ( abs(eta)>1.566 && abs(eta)<2.1 ) ) && %s && %s'%(electronTightIso,electronTightID)),
    filter = cms.bool(False),
   )
   process.vetoMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag( muons ),
    #cut = cms.string('pt>10 && abs(eta)<2.5 && %s && %s'%(muonLooseIso,muonLooseID)),  # VV, CestPiVV, Venus
-   cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(muonLooseIso,muonLooseID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   #cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(muonLooseIso,muonLooseID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   cut = cms.string('abs(eta)<2.4 && %s && %s'%(muonLooseIso,muonLooseID)),   # Dercury
    filter = cms.bool(False),
   )
   process.vetoElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag( electrons ),
    #cut = cms.string('pt>10 && abs(eta)<2.5 && %s && %s'%(electronLooseIso,electronLooseID)),  # VV, CestPiVV, Venus
-   cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(electronLooseIso,electronLooseID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   #cut = cms.string('pt>10 && abs(eta)<2.4 && %s && %s'%(electronLooseIso,electronLooseID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   cut = cms.string('abs(eta)<2.4 && %s && %s'%(electronLooseIso,electronLooseID)),   # Dercury
    filter = cms.bool(False),
   )
   process.qcdMuons = cms.EDFilter("PATMuonSelector",
    src = cms.InputTag( muons ),
    #cut = cms.string('pt>20 && abs(eta)<2.5 && %s && %s'%(muonAntiIso,muonTightID)),  # VV, CestPiVV, Venus
-   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonAntiIso,muonTightID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(muonAntiIso,muonTightID)),   # Wbb, CestPi, Earth, Neptune, Mercury
+   cut = cms.string('abs(eta)<2.1 && %s && %s'%(muonAntiIso,muonTightID)),   # Dercury
    filter = cms.bool(False),
   )
   process.qcdElectrons = cms.EDFilter("PATElectronSelector",
    src = cms.InputTag( electrons ),
    #cut = cms.string('pt>20 && abs(eta)<2.5 && %s'%(electronAntiIso)),                       # VV, CestPiVV, Venus
-   cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronAntiIso,electronTightID)),  # Wbb, CestPi, Earth, Neptune, Mercury
+   #cut = cms.string('pt>30 && abs(eta)<2.1 && %s && %s'%(electronAntiIso,electronTightID)),  # Wbb, CestPi, Earth, Neptune, Mercury
+   cut = cms.string('abs(eta)<2.1 && %s && %s'%(electronAntiIso,electronTightID)),  # Dercury
    #cut = cms.string('pt>30 && ( abs(eta)<1.4442 || ( abs(eta)>1.566 && abs(eta)<2.1 ) ) && %s && %s'%(electronAntiIso,electronTightID)),
    filter = cms.bool(False),
   )
@@ -899,11 +905,11 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
           #'pt > 10 && abs(eta) < 2.5 && %s && %s'%(muonLooseIso,muonLooseID)  # VV, CestPiVV, Venus
-          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb, CestPi, Earth, Neptune, Mercury
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb, CestPi, Earth, Neptune, MDercury
           #'pt > 10 && abs(eta) < 2.4 && %s && %s'%(muonLooseIso,muonLooseID)   # Jupiter? (Loose Mu)
         ),
         #deltaR = cms.double(0.3), # Venus
-        deltaR = cms.double(0.5), # Earth, Neptune
+        deltaR = cms.double(0.5), # Earth, Neptune, MDercury
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
         requireNoOverlaps = cms.bool(False),
@@ -913,10 +919,10 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
           #'pt > 20 && abs(eta) < 2.5 && %s && %s'%(electronLooseIso,electronLooseID)  # VV, CestPiVV, Venus
-          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb, CestPi, Earth, Neptune, Mercury
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb, CestPi, Earth, Neptune, MDercury
         ),
         #deltaR = cms.double(0.3),  # VV, CestPiVV, Venus
-        deltaR = cms.double(0.5),   # Wbb, CestPi, Earth, Neptune
+        deltaR = cms.double(0.5),   # Wbb, CestPi, Earth, Neptune, MDercury
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
         requireNoOverlaps = cms.bool(False),
@@ -927,14 +933,15 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
 
   process.cleanJets = cms.EDProducer("PATJetCleaner",
    src = cms.InputTag(jets),
-   preselection = cms.string('abs(eta)<5.0&&pt>20&&userFloat("idLoose")>0'),
+   preselection = cms.string('abs(eta)<5.0&&userFloat("idLoose")>0'), # Dercury
+   #preselection = cms.string('abs(eta)<5.0&&pt>20&&userFloat("idLoose")>0'), # Mercury
    checkOverlaps = cms.PSet( 
        muons = cms.PSet(
         src = cms.InputTag(muons),
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
           #'pt > 10 && abs(eta) < 2.5 && %s && %s'%(muonLooseIso,muonLooseID)  # VV, CestPiVV, Venus
-          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb, CestPi, Earth, Neptune, Mercury
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(muonTightIso,muonTightID)   # Wbb, CestPi, Earth, Neptune, MDercury
         ),
         deltaR = cms.double(0.5),
         checkRecoComponents = cms.bool(False),
@@ -946,11 +953,11 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
         algorithm = cms.string("byDeltaR"),
         preselection = cms.string(
           #'pt > 20 && abs(eta) < 2.5 && %s && %s'%(electronLooseIso,electronLooseID)  # VV, CestPiVV, Venus
-          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb, CestPi, Earth, Neptune, Mercury
+          'pt > 30 && abs(eta) < 2.1 && %s && %s'%(electronTightIso,electronTightID)   # Wbb, CestPi, Earth, Neptune, MDercury
           #'pt > 30 && ( abs(eta)<1.4442 || ( abs(eta)>1.566 && abs(eta)<2.1 ) ) && %s && %s'%(electronTightIso,electronTightID)
         ),
         #deltaR = cms.double(0.3),  # VV, CestPiVV, Venus
-        deltaR = cms.double(0.5), # Wbb, CestPi, Earth, Neptune
+        deltaR = cms.double(0.5), # Wbb, CestPi, Earth, Neptune, MDercury
         checkRecoComponents = cms.bool(False),
         pairCut = cms.string(""),
         requireNoOverlaps = cms.bool(True),
@@ -961,12 +968,14 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
 
   process.goodJets = process.cleanJets.clone(
    #preselection = cms.string("abs(eta)<2.4 && pt>30 && userFloat('idLoose')>0")  # VV, CestPiVV, Venus
-   preselection = cms.string("abs(eta)<2.4 && pt>25 && userFloat('idLoose')>0")   # Wbb, CestPi, Earth, Neptune, Mercury
+   #preselection = cms.string("abs(eta)<2.4 && pt>25 && userFloat('idLoose')>0")   # Wbb, CestPi, Earth, Neptune, Mercury
+   preselection = cms.string("abs(eta)<2.4 && userFloat('idLoose')>0")   # Dercury
   )
 
   process.fwdJets = process.cleanJets.clone(
    #preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && pt>30 && userFloat('idLoose')>0")  # VV, CestPiVV, Venus
-   preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && pt>25 && userFloat('idLoose')>0")   # Wbb, CestPi, Earth, Neptune, Mercury
+   #preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && pt>25 && userFloat('idLoose')>0")   # Wbb, CestPi, Earth, Neptune, Mercury
+   preselection = cms.string("abs(eta)>=2.4 && abs(eta)<5.0 && userFloat('idLoose')>0")   # Dercury
   )
 
   process.selectedObjectsForSyst = cms.Sequence(

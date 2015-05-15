@@ -54,7 +54,7 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
 
     iEvent.getByLabel("systematicsMET", "metsRaw",  handleLeafCand_metsRaw);
     iEvent.getByLabel("systematicsMET", "metType1", handleLeafCand_metType1);
-    //iEvent.getByLabel("patPfMetT1xy", handle_patPfMetT1xy);
+    iEvent.getByLabel("patPfMetT1xy", handle_patPfMetT1xy);
     iEvent.getByLabel("systematicsMET", "metT0pcT1Txy",  handleLeafCand_metT0pcT1Txy);
 
     math::PtEtaPhiMLorentzVector rawP4(
@@ -71,12 +71,12 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
      handleLeafCand_metType1.product()->front().mass()
     );
 
-    //math::PtEtaPhiMLorentzVector T1TxyP4(
-    // handle_patPfMetT1xy->at(0).pt(),
-    // handle_patPfMetT1xy->at(0).eta(),
-    // handle_patPfMetT1xy->at(0).phi(),
-    // handle_patPfMetT1xy->at(0).mass()
-    //);
+    math::PtEtaPhiMLorentzVector T1TxyP4(
+     handle_patPfMetT1xy->at(0).pt(),
+     handle_patPfMetT1xy->at(0).eta(),
+     handle_patPfMetT1xy->at(0).phi(),
+     handle_patPfMetT1xy->at(0).mass()
+    );
 
     math::PtEtaPhiMLorentzVector T0pcT1TxyP4(
      handleLeafCand_metT0pcT1Txy.product()->front().pt(),
@@ -89,11 +89,19 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
      pat::MET newmet=inMET->at(0);
 
      //newmet.setP4(rawP4);
-     newmet.setP4(type1P4);
-     //newmet.setP4(T1TxyP4);
-     //newmet.setP4(T0pcT1TxyP4);
+     //newmet.setP4(type1P4);
+     newmet.setP4(T1TxyP4);
+     //newmet.setP4(T0pcT1TxyP4)
      
      if(isMC_){
+
+      math::PtEtaPhiMLorentzVector offset;
+      offset = newmet.p4()-type1P4;
+      //std::cout<<"MET: UWAnalysis/RecoTools/plugins/PATMETCorrector.cc"<<std::endl;
+      //std::cout<<" offset pt:  "<<offset.pt()<<std::endl;
+      //std::cout<<" offset eta: "<<offset.eta()<<std::endl;
+      //std::cout<<" offset phi: "<<offset.phi()<<std::endl;
+
       edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsFullJESUp;
       edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsFullJESDown;
       edm::Handle<std::vector<reco::LeafCandidate>> handleLeafCand_metsFullUESUp;
@@ -108,19 +116,24 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
       iEvent.getByLabel("systematicsMET", "metsEESUp",   handleLeafCand_metsEESUp);
       iEvent.getByLabel("systematicsMET", "metsEESDown", handleLeafCand_metsEESDown);
 
-      math::PtEtaPhiMLorentzVector eesUpP4(
-       handleLeafCand_metsEESUp.product()->front().pt(),
-       handleLeafCand_metsEESUp.product()->front().eta(),
-       handleLeafCand_metsEESUp.product()->front().phi(),
-       handleLeafCand_metsEESUp.product()->front().mass()
-      );
-
       math::PtEtaPhiMLorentzVector eesDnP4(
        handleLeafCand_metsEESDown.product()->front().pt(),
        handleLeafCand_metsEESDown.product()->front().eta(),
        handleLeafCand_metsEESDown.product()->front().phi(),
        handleLeafCand_metsEESDown.product()->front().mass()
       );
+      eesDnP4+=offset;
+
+      Float_t eesUpPt;
+      eesUpPt = 2*type1P4.pt() - handleLeafCand_metsEESDown.product()->front().pt();
+      math::PtEtaPhiMLorentzVector eesUpP4(
+       //handleLeafCand_metsEESUp.product()->front().pt(),
+       eesUpPt,
+       handleLeafCand_metsEESUp.product()->front().eta(),
+       handleLeafCand_metsEESUp.product()->front().phi(),
+       handleLeafCand_metsEESUp.product()->front().mass()
+      );
+      eesUpP4+=offset;
 
       math::PtEtaPhiMLorentzVector jesUpP4(
        handleLeafCand_metsFullJESUp.product()->front().pt(),
@@ -128,6 +141,7 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
        handleLeafCand_metsFullJESUp.product()->front().phi(),
        handleLeafCand_metsFullJESUp.product()->front().mass()
       );
+      jesUpP4+=offset;
 
       math::PtEtaPhiMLorentzVector jesDnP4(
        handleLeafCand_metsFullJESDown.product()->front().pt(),
@@ -135,6 +149,7 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
        handleLeafCand_metsFullJESDown.product()->front().phi(),
        handleLeafCand_metsFullJESDown.product()->front().mass()
       );
+      jesDnP4+=offset;
 
       math::PtEtaPhiMLorentzVector uesUpP4(
        handleLeafCand_metsFullUESUp.product()->front().pt(),
@@ -142,6 +157,7 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
        handleLeafCand_metsFullUESUp.product()->front().phi(),
        handleLeafCand_metsFullUESUp.product()->front().mass()
       );
+      uesUpP4+=offset;
 
       math::PtEtaPhiMLorentzVector uesDnP4(
        handleLeafCand_metsFullUESDown.product()->front().pt(),
@@ -149,6 +165,24 @@ void PATMETCorrector::produce(edm::Event& iEvent, const edm::EventSetup& es) {
        handleLeafCand_metsFullUESDown.product()->front().phi(),
        handleLeafCand_metsFullUESDown.product()->front().mass()
       );
+      uesDnP4+=offset;
+
+      //std::cout<<"  Raw:  "<<handleLeafCand_metsRaw.product()->front().pt()<<std::endl;
+      //std::cout<<"  T1:   "<<handleLeafCand_metType1.product()->front().pt()<<std::endl;
+      //std::cout<<"  T1xy: "<<handle_patPfMetT1xy->at(0).pt()<<std::endl;
+      //std::cout<<"  eesUp pt:  "<<eesUpP4.pt()<<std::endl;
+      //std::cout<<"  eesDn pt:  "<<eesDnP4.pt()<<std::endl;
+      //std::cout<<"  jesUp pt:  "<<jesUpP4.pt()<<std::endl;
+      //std::cout<<"  jesDn pt:  "<<jesDnP4.pt()<<std::endl;
+      //std::cout<<"  uesUp pt:  "<<uesUpP4.pt()<<std::endl;
+      //std::cout<<"  uesDn pt:  "<<uesDnP4.pt()<<std::endl;
+      //std::cout<<"   T1xy: "<<handle_patPfMetT1xy->at(0).pt()<<std::endl;
+      //std::cout<<"   ees:  "<<(eesUpP4.pt()+eesDnP4.pt())/2<<std::endl;
+      //std::cout<<"   ues:  "<<(uesUpP4.pt()+uesDnP4.pt())/2<<std::endl;
+      //std::cout<<"   jes:  "<<(jesUpP4.pt()+jesDnP4.pt())/2<<std::endl;
+      //std::cout<<"  JESDn pt:  "<<jesDnP4.pt()<<std::endl;
+      //std::cout<<"  JESUp pt:  "<<jesUpP4.pt()<<std::endl;
+
       newmet.addUserFloat("eesUp_pt",eesUpP4.pt());
       newmet.addUserFloat("eesUp_phi",eesUpP4.phi());
       newmet.addUserFloat("uesUp_pt",uesUpP4.pt());

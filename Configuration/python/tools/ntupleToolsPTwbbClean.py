@@ -265,6 +265,15 @@ def makeGoodJetKinematics(srcGoodJets="smearedGoodJets"):
      goodJ2_mass = makeJetList(strName='mass',methodName='mass()',pf='good',xn='',sourceJets=srcGoodJets)[1],
      goodJ3_mass = makeJetList(strName='mass',methodName='mass()',pf='good',xn='',sourceJets=srcGoodJets)[2],
      goodJ4_mass = makeJetList(strName='mass',methodName='mass()',pf='good',xn='',sourceJets=srcGoodJets)[3],
+
+     goodJ1_pt_resUp = makeJetList(strName='pt_resUp',methodName='userFloat("pt_smearedUp")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_pt_resUp = makeJetList(strName='pt_resUp',methodName='userFloat("pt_smearedUp")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_pt_resUp = makeJetList(strName='pt_resUp',methodName='userFloat("pt_smearedUp")',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ4_pt_resUp = makeJetList(strName='pt_resUp',methodName='userFloat("pt_smearedUp")',pf='good',xn='',sourceJets=srcGoodJets)[3],
+     goodJ1_pt_resDown = makeJetList(strName='pt_resDown',methodName='userFloat("pt_smearedDown")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ2_pt_resDown = makeJetList(strName='pt_resDown',methodName='userFloat("pt_smearedDown")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ3_pt_resDown = makeJetList(strName='pt_resDown',methodName='userFloat("pt_smearedDown")',pf='good',xn='',sourceJets=srcGoodJets)[2],
+     goodJ4_pt_resDown = makeJetList(strName='pt_resDown',methodName='userFloat("pt_smearedDown")',pf='good',xn='',sourceJets=srcGoodJets)[3],
   )
   return goodJetKinematics
 
@@ -286,6 +295,9 @@ def makeFwdJetKinematics(srcFwdJets="smearedFwdJets"):
      fwdJ2_mass = makeJetList(strName='mass',methodName='mass()',pf='fwd',xn='',sourceJets=srcFwdJets)[1],
      #fwdJ3_mass = makeJetList(strName='mass',methodName='mass()',pf='fwd',xn='',sourceJets=srcFwdJets)[2],
      #fwdJ4_mass = makeJetList(strName='mass',methodName='mass()',pf='fwd',xn='',sourceJets=srcFwdJets)[3],
+
+     fwdJ1_pt_resUp = makeJetList(strName='pt_resUp',methodName='userFloat("pt_smearedUp")',pf='fwd',xn='',sourceJets=srcFwdJets)[0],
+     fwdJ2_pt_resUp = makeJetList(strName='pt_resUp',methodName='userFloat("pt_smearedUp")',pf='fwd',xn='',sourceJets=srcFwdJets)[1],
   )
   return fwdJetKinematics
 
