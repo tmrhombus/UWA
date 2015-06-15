@@ -36,40 +36,20 @@ void callHistoFiller()
 // TChain *theChain    = new TChain("muonEventTree/eventTree");
 // TChain *theChain    = new TChain("electronEventTree/eventTree");
  TChain *theChain        = new TChain("muEleEventTree/eventTree");
-// TChain *theChainJESUp   = new TChain("muEleEventTreeJetUp/eventTree");
-// TChain *theChainJESDown = new TChain("muEleEventTreeJetDown/eventTree");
-// TChain *theChainLESUp   = new TChain("muEleEventTreeMuonUp/eventTree");
-// TChain *theChainLESDown = new TChain("muEleEventTreeMuonDown/eventTree");
 
  TString path="./test/";
 
- TString shift="SFs";
-// TString sample="DataMu";
-// TString sample="DataEle";
- TString sample=path+"TTsemi";
+ TString shift="";
+ TString sample="W1Jet";
  Bool_t isMC_ = kTRUE ;
- Bool_t isW_ = kFALSE ;
+ Bool_t isW_ = kTRUE ;
 
-// TString outfileName = sample+"-70D48CDB-4C77-E211-9C19-90E6BA19A204.root" ;
-// TString infileName = "/hdfs/store/user/tperry/VVCheckExtended_DataC_8TeVMu-mergeFilesJob/mergeFilesJob-Mu-PATData-patTuple_cfg-70D48CDB-4C77-E211-9C19-90E6BA19A204.root" ;
+ TString outfileName = sample+"-0003D872-C40E-E211-8C51-003048673FE6.root" ;
+ TString infileName = "/hdfs/store/user/tperry/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root" ;
 
-//TString outfileName = sample+"-76FA1AAC-AE71-E211-A952-20CF305616D6.root" ;
-//TString infileName = "/hdfs/store/user/tperry/CestPi_DataB_8TeVMu-mergeFilesJob/mergeFilesJob-Mu-PATData-patTuple_cfg-76FA1AAC-AE71-E211-A952-20CF305616D6.root" ;
+// TString outfileName = sample+"-002F5062-346F-E211-BF00-1CC1DE04DF20.root" ;
+// TString infileName = "/hdfs/store/user/tperry/Dercury/Dercury_DataA_8TeVMu-mergeFilesJob/mergeFilesJob-Mu-PATData-patTuple_cfg-002F5062-346F-E211-BF00-1CC1DE04DF20.root" ;
 
-// TString outfileName = sample+"-5C8CB7D5-1793-E211-AF98-003048678FE0.root" ;
-// TString infileName = "/hdfs/store/user/tperry/CestPi_DataD_8TeVEle-mergeFilesJob/mergeFilesJob-Ele-PATData-skimpattuple_cfg-patTuple_cfg-5C8CB7D5-1793-E211-AF98-003048678FE0.root" ;
-
-// TString outfileName = sample+"-B8FE9CBF-9B85-E211-AEF3-0025904B0FC0.root" ;
-// TString infileName = "/hdfs/store/user/tperry/VVCheckExtended_DataC_8TeVEle-mergeFilesJob/mergeFilesJob-Ele-PATData-skimpattuple_cfg-patTuple_cfg-B8FE9CBF-9B85-E211-AEF3-0025904B0FC0.root" ;
-
- TString outfileName = sample+"-TWO-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root" ;
- TString infileName = "/hdfs/store/user/tperry/Mars_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root" ;
-
-// TString outfileName = sample+"-5672E4CF-9ED3-E111-A20D-002481E76008.root" ;
-// TString infileName = "/hdfs/store/user/tperry/CestPi_Drell-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-5672E4CF-9ED3-E111-A20D-002481E76008.root" ;
-
- //TString outfileName = sample+"-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
- //TString infileName = "/hdfs/store/user/tperry/VVCheckExtended_TTbar_semi-MuEle-PATMC_V7A/MuEle-PATMC_V7A-patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root" ;
 
  // Define Sample Criteria
  UInt_t lumi_mu  = 19778 ;
@@ -85,6 +65,7 @@ void callHistoFiller()
   std::cout << "Input File Name: "  << infileName <<  std::endl;
  
   theChain->Reset();
+
   theChain->Add( infileName );
  
   m.Init(theChain, isMC_); 

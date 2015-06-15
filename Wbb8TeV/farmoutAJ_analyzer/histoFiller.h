@@ -9,6 +9,7 @@
 #include <exception>
 #include <cmath>
 #include <TLorentzVector.h>
+#include <algorithm>    // std::count_if
 
 // classes stored in the TTree
 #include <vector>
@@ -29,43 +30,68 @@ public :
    TH1F hists_met_phi[7][2][2][7][5];
    TH1F hists_mt[7][2][2][7][5];
 
-   TH1F hists_goodLep_pt[7][2][2][7][5];
-   TH1F hists_goodLep_eta[7][2][2][7][5];
-   TH1F hists_goodLep_phi[7][2][2][7][5];
-   TH1F hists_goodLep_mass[7][2][2][7][5];
-
-   TH1F hists_goodJ1_pt[7][2][2][7][5];
-   TH1F hists_goodJ1_eta[7][2][2][7][5];
-   TH1F hists_goodJ1_phi[7][2][2][7][5];
-   TH1F hists_goodJ1_mass[7][2][2][7][5];
-   TH1F hists_goodJ1_CSV[7][2][2][7][5];
-   TH1F hists_goodJ1_mass_SV_unweighted[7][2][2][7][5];
-   TH1F hists_goodJ1_mass_SV_corrected[7][2][2][7][5];
-   TH1F hists_goodJ1_mass_SV_weighted[7][2][2][7][5];
-
-   TH1F hists_goodJ2_pt[7][2][2][7][5];
-   TH1F hists_goodJ2_eta[7][2][2][7][5];
-   TH1F hists_goodJ2_phi[7][2][2][7][5];
-   TH1F hists_goodJ2_mass[7][2][2][7][5];
-   TH1F hists_goodJ2_CSV[7][2][2][7][5]; 
-
-   TH1F hists_goodJ1J2_dR[7][2][2][7][5];
-   TH1F hists_goodJ1J2_pt[7][2][2][7][5];
-   TH1F hists_goodJ1J2_eta[7][2][2][7][5];
-   TH1F hists_goodJ1J2_phi[7][2][2][7][5];
-   TH1F hists_goodJ1J2_mass[7][2][2][7][5];
-
-   TH1F hists_goodJ3J4_pt[7][2][2][7][5]; 
-   TH1F hists_goodJ3J4_eta[7][2][2][7][5]; 
-   TH1F hists_goodJ3J4_phi[7][2][2][7][5]; 
-   TH1F hists_goodJ3J4_mass[7][2][2][7][5]; 
-
-   TH1F hists_goodL1L2_mass[7][2][2][7][5];
-   TH1F hists_goodL1L2_pt[7][2][2][7][5];
-   TH1F hists_goodL1L2_eta[7][2][2][7][5];
-   TH1F hists_goodL1L2_phi[7][2][2][7][5];
+//   TH1F hists_goodLep_pt[7][2][2][7][5];                            //
+//   TH1F hists_goodLep_eta[7][2][2][7][5];                           //
+//   TH1F hists_goodLep_phi[7][2][2][7][5];                           //
+//   TH1F hists_goodLep_mass[7][2][2][7][5];                          //
+//                                                                    //
+//   TH1F hists_goodJ1_pt[7][2][2][7][5];                             //
+//   TH1F hists_goodJ1_eta[7][2][2][7][5];                            //
+//   TH1F hists_goodJ1_phi[7][2][2][7][5];                            //
+//   TH1F hists_goodJ1_mass[7][2][2][7][5];                           //
+//   TH1F hists_goodJ1_CSV[7][2][2][7][5];                            //
+//   TH1F hists_goodJ1_mass_SV_unweighted[7][2][2][7][5];             //
+//   TH1F hists_goodJ1_mass_SV_corrected[7][2][2][7][5];              //
+//   TH1F hists_goodJ1_mass_SV_weighted[7][2][2][7][5];               //
+//                                                                    //
+//   TH1F hists_goodJ2_pt[7][2][2][7][5];                             //
+//   TH1F hists_goodJ2_eta[7][2][2][7][5];                            //
+//   TH1F hists_goodJ2_phi[7][2][2][7][5];                            //
+//   TH1F hists_goodJ2_mass[7][2][2][7][5];                           //
+//   TH1F hists_goodJ2_CSV[7][2][2][7][5];                            //
+//                                                                    //
+//   TH1F hists_goodJ3_pt[7][2][2][7][5];                             //
+//   TH1F hists_goodJ3_eta[7][2][2][7][5];                            //
+//   TH1F hists_goodJ3_phi[7][2][2][7][5];                            //
+//   TH1F hists_goodJ3_mass[7][2][2][7][5];                           //
+//   TH1F hists_goodJ3_CSV[7][2][2][7][5];                            //
+//                                                                    //
+//   TH1F hists_goodJ4_pt[7][2][2][7][5];                             //
+//   TH1F hists_goodJ4_eta[7][2][2][7][5];                            //
+//   TH1F hists_goodJ4_phi[7][2][2][7][5];                            //
+//   TH1F hists_goodJ4_mass[7][2][2][7][5];                           //
+//   TH1F hists_goodJ4_CSV[7][2][2][7][5];                            //
+//                                                                    //
+//   TH1F hists_goodJ1J2_dR[7][2][2][7][5];                           //
+//   TH1F hists_goodJ1J2_pt[7][2][2][7][5];                           //
+//   TH1F hists_goodJ1J2_eta[7][2][2][7][5];                          //
+//   TH1F hists_goodJ1J2_phi[7][2][2][7][5];                          //
+//   TH1F hists_goodJ1J2_mass[7][2][2][7][5];                         //
+//                                                                    //
+//   TH1F hists_goodJ3J4_pt[7][2][2][7][5];                           //
+//   TH1F hists_goodJ3J4_eta[7][2][2][7][5];                          //
+//   TH1F hists_goodJ3J4_phi[7][2][2][7][5];                          //
+//   TH1F hists_goodJ3J4_mass[7][2][2][7][5];                         //
+//                                                                    //
+//   TH1F hists_goodL1L2_mass[7][2][2][7][5];                         //
+//   TH1F hists_goodL1L2_pt[7][2][2][7][5];                           //
+//   TH1F hists_goodL1L2_eta[7][2][2][7][5];                          //
+//   TH1F hists_goodL1L2_phi[7][2][2][7][5];                          //
 
    // For Cuts
+   Int_t nbrAllEle;
+   Int_t nbrAllJets;
+   Int_t nbrAllMu;
+   Int_t nbrCleanJets;
+   Int_t nbrFwdJets;
+   Int_t nbrGoodEle;
+   Int_t nbrGoodJets;
+   Int_t nbrGoodMu;
+   Int_t nbrQCDEle;
+   Int_t nbrQCDMu;
+   Int_t nbrVetoEle;
+   Int_t nbrVetoMu;
+
    Bool_t oneGoodMuon;
    Bool_t oneQCDMuon;
    Bool_t twoGoodMuons;
@@ -93,6 +119,7 @@ public :
    Bool_t min2goodBJs;
    Bool_t exactly2goodBJs;
    Bool_t aGoodBJaFwdJ;
+   Bool_t min3gJs2gBJs;
 
    // W splitting
    Bool_t twoCs;
@@ -398,34 +425,34 @@ public :
    Float_t weight_dyjj_ele_qcd_EMuDown  ;
 
    // selection-dependent counters
-   Int_t nrEntries_mu_wbb_good_postcut;
-   Int_t nrEntries_mu_wbb_qcd_postcut;
-   Int_t nrEntries_ele_wbb_good_postcut;
-   Int_t nrEntries_ele_wbb_qcd_postcut;
-   Int_t nrEntries_mu_ttme_good_postcut;
-   Int_t nrEntries_mu_ttme_qcd_postcut;
-   Int_t nrEntries_ele_ttme_good_postcut;
-   Int_t nrEntries_ele_ttme_qcd_postcut;
-   Int_t nrEntries_mu_ttjjj_good_postcut;
-   Int_t nrEntries_mu_ttjjj_qcd_postcut;
-   Int_t nrEntries_ele_ttjjj_good_postcut;
-   Int_t nrEntries_ele_ttjjj_qcd_postcut;
-   Int_t nrEntries_mu_wjj_good_postcut;
-   Int_t nrEntries_mu_wjj_qcd_postcut;
-   Int_t nrEntries_ele_wjj_good_postcut;
-   Int_t nrEntries_ele_wjj_qcd_postcut;
-   Int_t nrEntries_mu_stt_good_postcut;
-   Int_t nrEntries_mu_stt_qcd_postcut;
-   Int_t nrEntries_ele_stt_good_postcut;
-   Int_t nrEntries_ele_stt_qcd_postcut;
-   Int_t nrEntries_mu_dybb_good_postcut;
-   Int_t nrEntries_mu_dybb_qcd_postcut;
-   Int_t nrEntries_ele_dybb_good_postcut;
-   Int_t nrEntries_ele_dybb_qcd_postcut;
-   Int_t nrEntries_mu_dyjj_good_postcut;
-   Int_t nrEntries_mu_dyjj_qcd_postcut;
-   Int_t nrEntries_ele_dyjj_good_postcut;
-   Int_t nrEntries_ele_dyjj_qcd_postcut;
+   Int_t nbrEntries_mu_wbb_good_postcut;
+   Int_t nbrEntries_mu_wbb_qcd_postcut;
+   Int_t nbrEntries_ele_wbb_good_postcut;
+   Int_t nbrEntries_ele_wbb_qcd_postcut;
+   Int_t nbrEntries_mu_ttme_good_postcut;
+   Int_t nbrEntries_mu_ttme_qcd_postcut;
+   Int_t nbrEntries_ele_ttme_good_postcut;
+   Int_t nbrEntries_ele_ttme_qcd_postcut;
+   Int_t nbrEntries_mu_ttjjj_good_postcut;
+   Int_t nbrEntries_mu_ttjjj_qcd_postcut;
+   Int_t nbrEntries_ele_ttjjj_good_postcut;
+   Int_t nbrEntries_ele_ttjjj_qcd_postcut;
+   Int_t nbrEntries_mu_wjj_good_postcut;
+   Int_t nbrEntries_mu_wjj_qcd_postcut;
+   Int_t nbrEntries_ele_wjj_good_postcut;
+   Int_t nbrEntries_ele_wjj_qcd_postcut;
+   Int_t nbrEntries_mu_stt_good_postcut;
+   Int_t nbrEntries_mu_stt_qcd_postcut;
+   Int_t nbrEntries_ele_stt_good_postcut;
+   Int_t nbrEntries_ele_stt_qcd_postcut;
+   Int_t nbrEntries_mu_dybb_good_postcut;
+   Int_t nbrEntries_mu_dybb_qcd_postcut;
+   Int_t nbrEntries_ele_dybb_good_postcut;
+   Int_t nbrEntries_ele_dybb_qcd_postcut;
+   Int_t nbrEntries_mu_dyjj_good_postcut;
+   Int_t nbrEntries_mu_dyjj_qcd_postcut;
+   Int_t nbrEntries_ele_dyjj_good_postcut;
+   Int_t nbrEntries_ele_dyjj_qcd_postcut;
 
    // Declaration of leaf types
    UInt_t          EVENT;
@@ -444,18 +471,18 @@ public :
    Float_t         J4_eta_gen_NoNu;
    Float_t         J4_phi_gen_NoNu;
    Float_t         J4_pt_gen_NoNu;
-   vector<double>  *SF_goodEle_IDIso;
-   vector<double>  *SF_goodEle_IDIsoHLT;
-   vector<double>  *SF_goodEle_IDIsoHLT_errDn;
-   vector<double>  *SF_goodEle_IDIsoHLT_errUp;
-   vector<double>  *SF_goodEle_IDIso_errDn;
-   vector<double>  *SF_goodEle_IDIso_errUp;
-   vector<double>  *SF_goodMu_IDIso;
-   vector<double>  *SF_goodMu_IDIsoHLT;
-   vector<double>  *SF_goodMu_IDIsoHLT_errDn;
-   vector<double>  *SF_goodMu_IDIsoHLT_errUp;
-   vector<double>  *SF_goodMu_IDIso_errDn;
-   vector<double>  *SF_goodMu_IDIso_errUp;
+   std::vector<double>  *SF_goodEle_IDIso;
+   std::vector<double>  *SF_goodEle_IDIsoHLT;
+   std::vector<double>  *SF_goodEle_IDIsoHLT_errDn;
+   std::vector<double>  *SF_goodEle_IDIsoHLT_errUp;
+   std::vector<double>  *SF_goodEle_IDIso_errDn;
+   std::vector<double>  *SF_goodEle_IDIso_errUp;
+   std::vector<double>  *SF_goodMu_IDIso;
+   std::vector<double>  *SF_goodMu_IDIsoHLT;
+   std::vector<double>  *SF_goodMu_IDIsoHLT_errDn;
+   std::vector<double>  *SF_goodMu_IDIsoHLT_errUp;
+   std::vector<double>  *SF_goodMu_IDIso_errDn;
+   std::vector<double>  *SF_goodMu_IDIso_errUp;
    Float_t         SF_lumiWeightPU;
    Float_t         SF_qcdEle_IDIso;
    Float_t         SF_qcdEle_IDIsoHLT;
@@ -513,9 +540,9 @@ public :
    Float_t         bCandidatenJetAssociatedToBC;
    Float_t         bCandidatenJetAssociatedToBC1;
    Float_t         bCandidatenJetAssociatedToBC2;
-   vector<double>  *bHadronsEta;
-   vector<double>  *bHadronsPhi;
-   vector<double>  *bHadronsPt;
+   std::vector<double>  *bHadronsEta;
+   std::vector<double>  *bHadronsPhi;
+   std::vector<double>  *bHadronsPt;
    Float_t         fwdJ1_CSV;
    Float_t         fwdJ1_CSVreweight;
    Float_t         fwdJ1_SF_CSVL;
@@ -556,13 +583,13 @@ public :
    Int_t           genTs;
    Int_t           genUs;
    Int_t           genWs;
-   vector<double>  *goodEle_Iso03_vec;
-   vector<double>  *goodEle_Iso04_vec;
-   vector<double>  *goodEle_charge_vec;
-   vector<double>  *goodEle_eta_vec;
-   vector<double>  *goodEle_mass_vec;
-   vector<double>  *goodEle_phi_vec;
-   vector<double>  *goodEle_pt_vec;
+   std::vector<double>  *goodEle_Iso03_vec;
+   std::vector<double>  *goodEle_Iso04_vec;
+   std::vector<double>  *goodEle_charge_vec;
+   std::vector<double>  *goodEle_eta_vec;
+   std::vector<double>  *goodEle_mass_vec;
+   std::vector<double>  *goodEle_phi_vec;
+   std::vector<double>  *goodEle_pt_vec;
    Float_t         goodJ1_CSV;
    Float_t         goodJ1_CSVreweight;
    Float_t         goodJ1_SF_CSVL;
@@ -642,11 +669,11 @@ public :
    Float_t         goodJ4_partonFlavour;
    Float_t         goodJ4_phi;
    Float_t         goodJ4_pt;
-   vector<double>  *goodMu_charge_vec;
-   vector<double>  *goodMu_eta_vec;
-   vector<double>  *goodMu_mass_vec;
-   vector<double>  *goodMu_phi_vec;
-   vector<double>  *goodMu_pt_vec;
+   std::vector<double>  *goodMu_charge_vec;
+   std::vector<double>  *goodMu_eta_vec;
+   std::vector<double>  *goodMu_mass_vec;
+   std::vector<double>  *goodMu_phi_vec;
+   std::vector<double>  *goodMu_pt_vec;
    Float_t         met_eesDn_phi;
    Float_t         met_eesDn_pt;
    Float_t         met_eesUp_phi;
@@ -707,14 +734,22 @@ public :
    Float_t         puTruth;
    Float_t         puBX0;
    Float_t         puBXplus;
-   Float_t         qcdEle_charge;
-   Float_t         qcdEle_eta;
-   Float_t         qcdEle_phi;
-   Float_t         qcdEle_pt;
-   Float_t         qcdMu_charge;
-   Float_t         qcdMu_eta;
-   Float_t         qcdMu_phi;
-   Float_t         qcdMu_pt;
+   vector<double>  *qcdEle_charge_vec;
+   vector<double>  *qcdEle_eta_vec;
+   vector<double>  *qcdEle_phi_vec;
+   vector<double>  *qcdEle_pt_vec;
+   vector<double>  *qcdMu_charge_vec;
+   vector<double>  *qcdMu_eta_vec;
+   vector<double>  *qcdMu_phi_vec;
+   vector<double>  *qcdMu_pt_vec;
+////   Float_t         qcdEle_charge;
+////   Float_t         qcdEle_eta;
+////   Float_t         qcdEle_phi;
+////   Float_t         qcdEle_pt;
+////   Float_t         qcdMu_charge;
+////   Float_t         qcdMu_eta;
+////   Float_t         qcdMu_phi;
+////   Float_t         qcdMu_pt;
    Float_t         weightTop;
    Float_t         topPt;
    Float_t         antitopPt;
@@ -728,14 +763,22 @@ public :
    Int_t           HLT_Ele27_WP80_error;
    Int_t           HLT_Any;
    Int_t           vertices;
-   Float_t         vetoEle_charge;
-   Float_t         vetoEle_eta;
-   Float_t         vetoEle_phi;
-   Float_t         vetoEle_pt;
-   Float_t         vetoMu_charge;
-   Float_t         vetoMu_eta;
-   Float_t         vetoMu_phi;
-   Float_t         vetoMu_pt;
+   vector<double>  *vetoEle_charge_vec;
+   vector<double>  *vetoEle_eta_vec;
+   vector<double>  *vetoEle_phi_vec;
+   vector<double>  *vetoEle_pt_vec;
+   vector<double>  *vetoMu_charge_vec;
+   vector<double>  *vetoMu_eta_vec;
+   vector<double>  *vetoMu_phi_vec;
+   vector<double>  *vetoMu_pt_vec;
+////   Float_t         vetoEle_charge;
+////   Float_t         vetoEle_eta;
+////   Float_t         vetoEle_phi;
+////   Float_t         vetoEle_pt;
+////   Float_t         vetoMu_charge;
+////   Float_t         vetoMu_eta;
+////   Float_t         vetoMu_phi;
+////   Float_t         vetoMu_pt;
 
    // List of branches
    TBranch        *b_EVENT;   //!
@@ -1017,14 +1060,14 @@ public :
    TBranch        *b_puTruth;   //!
    TBranch        *b_puBX0;   //!
    TBranch        *b_puBXplus;   //!
-   TBranch        *b_qcdEle_charge;   //!
-   TBranch        *b_qcdEle_eta;   //!
-   TBranch        *b_qcdEle_phi;   //!
-   TBranch        *b_qcdEle_pt;   //!
-   TBranch        *b_qcdMu_charge;   //!
-   TBranch        *b_qcdMu_eta;   //!
-   TBranch        *b_qcdMu_phi;   //!
-   TBranch        *b_qcdMu_pt;   //!
+   TBranch        *b_qcdEle_charge_vec;   //!
+   TBranch        *b_qcdEle_eta_vec;   //!
+   TBranch        *b_qcdEle_phi_vec;   //!
+   TBranch        *b_qcdEle_pt_vec;   //!
+   TBranch        *b_qcdMu_charge_vec;   //!
+   TBranch        *b_qcdMu_eta_vec;   //!
+   TBranch        *b_qcdMu_phi_vec;   //!
+   TBranch        *b_qcdMu_pt_vec;   //!
    TBranch        *b_weightTop;   //!
    TBranch        *b_topPt;   //!
    TBranch        *b_antitopPt;   //!
@@ -1038,14 +1081,14 @@ public :
    TBranch        *b_HLT_Ele27_WP80_error;   //!
    TBranch        *b_HLT_Any;   //!
    TBranch        *b_vertices;   //!
-   TBranch        *b_vetoEle_charge;   //!
-   TBranch        *b_vetoEle_eta;   //!
-   TBranch        *b_vetoEle_phi;   //!
-   TBranch        *b_vetoEle_pt;   //!
-   TBranch        *b_vetoMu_charge;   //!
-   TBranch        *b_vetoMu_eta;   //!
-   TBranch        *b_vetoMu_phi;   //!
-   TBranch        *b_vetoMu_pt;   //!
+   TBranch        *b_vetoEle_charge_vec;   //!
+   TBranch        *b_vetoEle_eta_vec;   //!
+   TBranch        *b_vetoEle_phi_vec;   //!
+   TBranch        *b_vetoEle_pt_vec;   //!
+   TBranch        *b_vetoMu_charge_vec;   //!
+   TBranch        *b_vetoMu_eta_vec;   //!
+   TBranch        *b_vetoMu_phi_vec;   //!
+   TBranch        *b_vetoMu_pt_vec;   //!
 
    histoFiller(TTree *tree=0, Bool_t isMC=kTRUE);
    virtual ~histoFiller();
@@ -1089,11 +1132,11 @@ histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Mars_WJets_p1-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-4802B2B4-9BCF-E111-8285-003048D47A00.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/hdfs/store/user/tperry/Mars_WJets_p1-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-4802B2B4-9BCF-E111-8285-003048D47A00.root");
+         f = new TFile("/hdfs/store/user/tperry/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Mars_WJets_p1-MuEle-PATMC/MuEle-PATMC-patTuple_cfg-4802B2B4-9BCF-E111-8285-003048D47A00.root:/muEleEventTree");
+      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
       dir->GetObject("eventTree",tree);
 
    }
@@ -1128,16 +1171,36 @@ Long64_t histoFiller::LoadTree(Long64_t entry)
 
 void histoFiller::Init(TTree *tree, Bool_t isMC)
 {
+
    // selection-dependent counters
-   nrEntries_mu_wjj_good_postcut = 0 ;
-   nrEntries_mu_wbb_good_postcut = 0 ;
-   nrEntries_mu_wjj_qcd_postcut = 0 ;
-   nrEntries_mu_wbb_qcd_postcut = 0 ;
-   
-   nrEntries_ele_wjj_good_postcut = 0 ;
-   nrEntries_ele_wbb_good_postcut = 0 ;
-   nrEntries_ele_wjj_qcd_postcut = 0 ;
-   nrEntries_ele_wbb_qcd_postcut = 0 ;
+   nbrEntries_mu_wbb_good_postcut = 0;
+   nbrEntries_mu_wbb_qcd_postcut = 0;
+   nbrEntries_ele_wbb_good_postcut = 0;
+   nbrEntries_ele_wbb_qcd_postcut = 0;
+   nbrEntries_mu_ttme_good_postcut = 0;
+   nbrEntries_mu_ttme_qcd_postcut = 0;
+   nbrEntries_ele_ttme_good_postcut = 0;
+   nbrEntries_ele_ttme_qcd_postcut = 0;
+   nbrEntries_mu_ttjjj_good_postcut = 0;
+   nbrEntries_mu_ttjjj_qcd_postcut = 0;
+   nbrEntries_ele_ttjjj_good_postcut = 0;
+   nbrEntries_ele_ttjjj_qcd_postcut = 0;
+   nbrEntries_mu_wjj_good_postcut = 0;
+   nbrEntries_mu_wjj_qcd_postcut = 0;
+   nbrEntries_ele_wjj_good_postcut = 0;
+   nbrEntries_ele_wjj_qcd_postcut = 0;
+   nbrEntries_mu_stt_good_postcut = 0;
+   nbrEntries_mu_stt_qcd_postcut = 0;
+   nbrEntries_ele_stt_good_postcut = 0;
+   nbrEntries_ele_stt_qcd_postcut = 0;
+   nbrEntries_mu_dybb_good_postcut = 0;
+   nbrEntries_mu_dybb_qcd_postcut = 0;
+   nbrEntries_ele_dybb_good_postcut = 0;
+   nbrEntries_ele_dybb_qcd_postcut = 0;
+   nbrEntries_mu_dyjj_good_postcut = 0;
+   nbrEntries_mu_dyjj_qcd_postcut = 0;
+   nbrEntries_ele_dyjj_good_postcut = 0;
+   nbrEntries_ele_dyjj_qcd_postcut = 0;
 
    PSpace.clear();
    EMu.clear();
@@ -1200,6 +1263,18 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         TString histoname_goodJ2_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_mass"+Syst[l]+WFlav[m];
         TString histoname_goodJ2_CSV  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2_CSV"+Syst[l]+WFlav[m];
 
+        TString histoname_goodJ3_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3_pt"+Syst[l]+WFlav[m];
+        TString histoname_goodJ3_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodJ3_phi  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodJ3_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3_mass"+Syst[l]+WFlav[m];
+        TString histoname_goodJ3_CSV  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ3_CSV"+Syst[l]+WFlav[m];
+
+        TString histoname_goodJ4_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ4_pt"+Syst[l]+WFlav[m];
+        TString histoname_goodJ4_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ4_eta"+Syst[l]+WFlav[m];
+        TString histoname_goodJ4_phi  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ4_phi"+Syst[l]+WFlav[m];
+        TString histoname_goodJ4_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ4_mass"+Syst[l]+WFlav[m];
+        TString histoname_goodJ4_CSV  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ4_CSV"+Syst[l]+WFlav[m];
+
         TString histoname_goodJ1J2_dR   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_dR"+Syst[l]+WFlav[m];
         TString histoname_goodJ1J2_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_pt"+Syst[l]+WFlav[m];
         TString histoname_goodJ1J2_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_eta"+Syst[l]+WFlav[m];
@@ -1226,134 +1301,176 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         hists_met_phi[i][j][k][l][m].Sumw2();                                               
 
         hists_mt[i][j][k][l][m].Clear();
-        hists_mt[i][j][k][l][m] = TH1F(histoname_mt, "Transverse Mass", 40, 0., 200.);
+        hists_mt[i][j][k][l][m] = TH1F(histoname_mt, "Transverse Mass", 25, 0., 200.);
         hists_mt[i][j][k][l][m].Sumw2();                                               
 
 
-        hists_goodLep_pt[i][j][k][l][m].Clear();
-        hists_goodLep_pt[i][j][k][l][m] = TH1F(histoname_goodLep_pt, "Leading Lepton pT", 40, 0., 200.);
-        hists_goodLep_pt[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodLep_eta[i][j][k][l][m].Clear();
-        hists_goodLep_eta[i][j][k][l][m] = TH1F(histoname_goodLep_eta, "Leading Lepton Eta", 20, -3., 5.);
-        hists_goodLep_eta[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodLep_phi[i][j][k][l][m].Clear();
-        hists_goodLep_phi[i][j][k][l][m] = TH1F(histoname_goodLep_phi, "Leading Lepton Phi", 35, -3.4033, 5.7594);
-        hists_goodLep_phi[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodLep_mass[i][j][k][l][m].Clear();
-        hists_goodLep_mass[i][j][k][l][m] = TH1F(histoname_goodLep_mass, "Leading Lepton Mass", 40, 0., 200.);
-        hists_goodLep_mass[i][j][k][l][m].Sumw2();                                               
-
-
-        hists_goodJ1_pt[i][j][k][l][m].Clear();
-        hists_goodJ1_pt[i][j][k][l][m] = TH1F(histoname_goodJ1_pt, "Leading Jet pT", 40, 0., 200.);
-        hists_goodJ1_pt[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1_eta[i][j][k][l][m].Clear();
-        hists_goodJ1_eta[i][j][k][l][m] = TH1F(histoname_goodJ1_eta, "Leading Jet Eta", 20, -3., 5.);
-        hists_goodJ1_eta[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1_phi[i][j][k][l][m].Clear();
-        hists_goodJ1_phi[i][j][k][l][m] = TH1F(histoname_goodJ1_phi, "Leading Jet Phi", 35, -3.4033, 5.7594);
-        hists_goodJ1_phi[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1_mass[i][j][k][l][m].Clear();
-        hists_goodJ1_mass[i][j][k][l][m] = TH1F(histoname_goodJ1_mass, "Leading Jet Mass", 40, 0., 200.);
-        hists_goodJ1_mass[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1_CSV[i][j][k][l][m].Clear();
-        hists_goodJ1_CSV[i][j][k][l][m] = TH1F(histoname_goodJ1_CSV, "Leading Jet CSV", 40, 0., 1.);
-        hists_goodJ1_CSV[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Clear();
-        hists_goodJ1_mass_SV_unweighted[i][j][k][l][m] = TH1F(histoname_goodJ1_mass_SV_unweighted, "Leading Jet mass_SV_unweighted", 32, 0., 8.);
-        hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Clear();
-        hists_goodJ1_mass_SV_corrected[i][j][k][l][m] = TH1F(histoname_goodJ1_mass_SV_corrected, "Leading Jet mass_SV_corrected", 32, 0., 8.);
-        hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Clear();
-        hists_goodJ1_mass_SV_weighted[i][j][k][l][m] = TH1F(histoname_goodJ1_mass_SV_weighted, "Leading Jet mass_SV_weighted", 32, 0., 8.);
-        hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Sumw2();                                               
- 
-
-        hists_goodJ2_pt[i][j][k][l][m].Clear();
-        hists_goodJ2_pt[i][j][k][l][m] = TH1F(histoname_goodJ2_pt, "Subleading Jet pT", 40, 0., 200.);
-        hists_goodJ2_pt[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ2_eta[i][j][k][l][m].Clear();
-        hists_goodJ2_eta[i][j][k][l][m] = TH1F(histoname_goodJ2_eta, "Subleading Jet Eta", 20, -3., 5.);
-        hists_goodJ2_eta[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ2_phi[i][j][k][l][m].Clear();
-        hists_goodJ2_phi[i][j][k][l][m] = TH1F(histoname_goodJ2_phi, "Subleading Jet Phi", 35, -3.4033, 5.7594);
-        hists_goodJ2_phi[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ2_mass[i][j][k][l][m].Clear();
-        hists_goodJ2_mass[i][j][k][l][m] = TH1F(histoname_goodJ2_mass, "Subleading Jet Mass", 40, 0., 200.);
-        hists_goodJ2_mass[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ2_CSV[i][j][k][l][m].Clear();
-        hists_goodJ2_CSV[i][j][k][l][m] = TH1F(histoname_goodJ2_CSV, "SubLeading Jet CSV", 40, 0., 1.);
-        hists_goodJ2_CSV[i][j][k][l][m].Sumw2();                                               
-
-
-        hists_goodJ1J2_dR[i][j][k][l][m].Clear();
-        hists_goodJ1J2_dR[i][j][k][l][m] = TH1F(histoname_goodJ1J2_dR, "dR(J1,J2)", 16, 0., 8.);
-        hists_goodJ1J2_dR[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1J2_pt[i][j][k][l][m].Clear();
-        hists_goodJ1J2_pt[i][j][k][l][m] = TH1F(histoname_goodJ1J2_pt, "pt(J1,J2)", 40, 0., 200.);
-        hists_goodJ1J2_pt[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1J2_eta[i][j][k][l][m].Clear();
-        hists_goodJ1J2_eta[i][j][k][l][m] = TH1F(histoname_goodJ1J2_eta, "eta(J1,J2)", 20, -3., 5.);
-        hists_goodJ1J2_eta[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1J2_phi[i][j][k][l][m].Clear();
-        hists_goodJ1J2_phi[i][j][k][l][m] = TH1F(histoname_goodJ1J2_phi, "phi(J1,J2)", 35, -3.4033, 5.7594);
-        hists_goodJ1J2_phi[i][j][k][l][m].Sumw2();                                               
-
-        hists_goodJ1J2_mass[i][j][k][l][m].Clear();
-        hists_goodJ1J2_mass[i][j][k][l][m] = TH1F(histoname_goodJ1J2_mass, "mass(J1,J2)", 40, 0., 200.);
-        hists_goodJ1J2_mass[i][j][k][l][m].Sumw2();                                               
-
-
-        hists_goodJ3J4_pt[i][j][k][l][m].Clear();
-        hists_goodJ3J4_pt[i][j][k][l][m] = TH1F(histoname_goodJ3J4_pt, "pt(J3,J4)", 40, 0., 200.);
-        hists_goodJ3J4_pt[i][j][k][l][m].Sumw2();                                              
-        
-        hists_goodJ3J4_eta[i][j][k][l][m].Clear();
-        hists_goodJ3J4_eta[i][j][k][l][m] = TH1F(histoname_goodJ3J4_eta, "eta(J3,J4)", 20, -3., 5.);
-        hists_goodJ3J4_eta[i][j][k][l][m].Sumw2();                                               
-        
-        hists_goodJ3J4_phi[i][j][k][l][m].Clear();
-        hists_goodJ3J4_phi[i][j][k][l][m] = TH1F(histoname_goodJ3J4_phi, "phi(J3,J4)", 35, -3.4033, 5.7594);
-        hists_goodJ3J4_phi[i][j][k][l][m].Sumw2();                                               
-        
-        hists_goodJ3J4_mass[i][j][k][l][m].Clear();
-        hists_goodJ3J4_mass[i][j][k][l][m] = TH1F(histoname_goodJ3J4_mass, "mass(J3,J4)", 40, 0., 200.);
-        hists_goodJ3J4_mass[i][j][k][l][m].Sumw2();                                               
-        
-
-        hists_goodL1L2_pt[i][j][k][l][m].Clear();
-        hists_goodL1L2_pt[i][j][k][l][m] = TH1F(histoname_goodL1L2_pt, "pt(L1,L2)", 40, 0., 200.);
-        hists_goodL1L2_pt[i][j][k][l][m].Sumw2();                                              
-        
-        hists_goodL1L2_eta[i][j][k][l][m].Clear();
-        hists_goodL1L2_eta[i][j][k][l][m] = TH1F(histoname_goodL1L2_eta, "eta(L1,L2)", 20, -3., 5.);
-        hists_goodL1L2_eta[i][j][k][l][m].Sumw2();                                               
-        
-        hists_goodL1L2_phi[i][j][k][l][m].Clear();
-        hists_goodL1L2_phi[i][j][k][l][m] = TH1F(histoname_goodL1L2_phi, "phi(L1,L2)", 35, -3.4033, 5.7594);
-        hists_goodL1L2_phi[i][j][k][l][m].Sumw2();                                               
-        
-        hists_goodL1L2_mass[i][j][k][l][m].Clear();
-        hists_goodL1L2_mass[i][j][k][l][m] = TH1F(histoname_goodL1L2_mass, "mass(L1,L2)", 40, 0., 200.);
-        hists_goodL1L2_mass[i][j][k][l][m].Sumw2();                                               
+//        hists_goodLep_pt[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodLep_pt[i][j][k][l][m] = TH1F(histoname_goodLep_pt, "Leading Lepton pT", 40, 0., 200.);                                           //
+//        hists_goodLep_pt[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodLep_eta[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodLep_eta[i][j][k][l][m] = TH1F(histoname_goodLep_eta, "Leading Lepton Eta", 20, -3., 5.);                                         //
+//        hists_goodLep_eta[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodLep_phi[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodLep_phi[i][j][k][l][m] = TH1F(histoname_goodLep_phi, "Leading Lepton Phi", 35, -3.4033, 5.7594);                                 //
+//        hists_goodLep_phi[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodLep_mass[i][j][k][l][m].Clear();                                                                                                 //
+//        hists_goodLep_mass[i][j][k][l][m] = TH1F(histoname_goodLep_mass, "Leading Lepton Mass", 40, 0., 200.);                                     //
+//        hists_goodLep_mass[i][j][k][l][m].Sumw2();                                                                                                 //
+//                                                                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ1_pt[i][j][k][l][m].Clear();                                                                                                    //
+//        hists_goodJ1_pt[i][j][k][l][m] = TH1F(histoname_goodJ1_pt, "Leading Jet pT", 40, 0., 200.);                                                //
+//        hists_goodJ1_pt[i][j][k][l][m].Sumw2();                                                                                                    //
+//                                                                                                                                                   //
+//        hists_goodJ1_eta[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ1_eta[i][j][k][l][m] = TH1F(histoname_goodJ1_eta, "Leading Jet Eta", 20, -3., 5.);                                              //
+//        hists_goodJ1_eta[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ1_phi[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ1_phi[i][j][k][l][m] = TH1F(histoname_goodJ1_phi, "Leading Jet Phi", 35, -3.4033, 5.7594);                                      //
+//        hists_goodJ1_phi[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ1_mass[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodJ1_mass[i][j][k][l][m] = TH1F(histoname_goodJ1_mass, "Leading Jet Mass", 40, 0., 200.);                                          //
+//        hists_goodJ1_mass[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodJ1_CSV[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ1_CSV[i][j][k][l][m] = TH1F(histoname_goodJ1_CSV, "Leading Jet CSV", 40, 0., 1.);                                               //
+//        hists_goodJ1_CSV[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Clear();                                                                                    //
+//        hists_goodJ1_mass_SV_unweighted[i][j][k][l][m] = TH1F(histoname_goodJ1_mass_SV_unweighted, "Leading Jet mass_SV_unweighted", 32, 0., 8.);  //
+//        hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Sumw2();                                                                                    //
+//                                                                                                                                                   //
+//        hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Clear();                                                                                     //
+//        hists_goodJ1_mass_SV_corrected[i][j][k][l][m] = TH1F(histoname_goodJ1_mass_SV_corrected, "Leading Jet mass_SV_corrected", 32, 0., 8.);     //
+//        hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Sumw2();                                                                                     //
+//                                                                                                                                                   //
+//        hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Clear();                                                                                      //
+//        hists_goodJ1_mass_SV_weighted[i][j][k][l][m] = TH1F(histoname_goodJ1_mass_SV_weighted, "Leading Jet mass_SV_weighted", 32, 0., 8.);        //
+//        hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Sumw2();                                                                                      //
+//                                                                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ2_pt[i][j][k][l][m].Clear();                                                                                                    //
+//        hists_goodJ2_pt[i][j][k][l][m] = TH1F(histoname_goodJ2_pt, "Subleading Jet pT", 40, 0., 200.);                                             //
+//        hists_goodJ2_pt[i][j][k][l][m].Sumw2();                                                                                                    //
+//                                                                                                                                                   //
+//        hists_goodJ2_eta[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ2_eta[i][j][k][l][m] = TH1F(histoname_goodJ2_eta, "Subleading Jet Eta", 20, -3., 5.);                                           //
+//        hists_goodJ2_eta[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ2_phi[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ2_phi[i][j][k][l][m] = TH1F(histoname_goodJ2_phi, "Subleading Jet Phi", 35, -3.4033, 5.7594);                                   //
+//        hists_goodJ2_phi[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ2_mass[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodJ2_mass[i][j][k][l][m] = TH1F(histoname_goodJ2_mass, "Subleading Jet Mass", 40, 0., 200.);                                       //
+//        hists_goodJ2_mass[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodJ2_CSV[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ2_CSV[i][j][k][l][m] = TH1F(histoname_goodJ2_CSV, "SubLeading Jet CSV", 40, 0., 1.);                                            //
+//        hists_goodJ2_CSV[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ3_pt[i][j][k][l][m].Clear();                                                                                                    //
+//        hists_goodJ3_pt[i][j][k][l][m] = TH1F(histoname_goodJ3_pt, "Third Jet pT", 40, 0., 200.);                                                  //
+//        hists_goodJ3_pt[i][j][k][l][m].Sumw2();                                                                                                    //
+//                                                                                                                                                   //
+//        hists_goodJ3_eta[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ3_eta[i][j][k][l][m] = TH1F(histoname_goodJ3_eta, "Third Jet Eta", 20, -3., 5.);                                                //
+//        hists_goodJ3_eta[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ3_phi[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ3_phi[i][j][k][l][m] = TH1F(histoname_goodJ3_phi, "Third Jet Phi", 35, -3.4033, 5.7594);                                        //
+//        hists_goodJ3_phi[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ3_mass[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodJ3_mass[i][j][k][l][m] = TH1F(histoname_goodJ3_mass, "Third Jet Mass", 40, 0., 200.);                                            //
+//        hists_goodJ3_mass[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodJ3_CSV[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ3_CSV[i][j][k][l][m] = TH1F(histoname_goodJ3_CSV, "Third Jet CSV", 40, 0., 1.);                                                 //
+//        hists_goodJ3_CSV[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ4_pt[i][j][k][l][m].Clear();                                                                                                    //
+//        hists_goodJ4_pt[i][j][k][l][m] = TH1F(histoname_goodJ4_pt, "Fourth Jet pT", 40, 0., 200.);                                                 //
+//        hists_goodJ4_pt[i][j][k][l][m].Sumw2();                                                                                                    //
+//                                                                                                                                                   //
+//        hists_goodJ4_eta[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ4_eta[i][j][k][l][m] = TH1F(histoname_goodJ4_eta, "Fourth Jet Eta", 20, -3., 5.);                                               //
+//        hists_goodJ4_eta[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ4_phi[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ4_phi[i][j][k][l][m] = TH1F(histoname_goodJ4_phi, "Fourth Jet Phi", 35, -3.4033, 5.7594);                                       //
+//        hists_goodJ4_phi[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ4_mass[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodJ4_mass[i][j][k][l][m] = TH1F(histoname_goodJ4_mass, "Fourth Jet Mass", 40, 0., 200.);                                           //
+//        hists_goodJ4_mass[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodJ4_CSV[i][j][k][l][m].Clear();                                                                                                   //
+//        hists_goodJ4_CSV[i][j][k][l][m] = TH1F(histoname_goodJ4_CSV, "Fourth Jet CSV", 40, 0., 1.);                                                //
+//        hists_goodJ4_CSV[i][j][k][l][m].Sumw2();                                                                                                   //
+//                                                                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ1J2_dR[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodJ1J2_dR[i][j][k][l][m] = TH1F(histoname_goodJ1J2_dR, "dR(J1,J2)", 16, 0., 8.);                                                   //
+//        hists_goodJ1J2_dR[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodJ1J2_pt[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodJ1J2_pt[i][j][k][l][m] = TH1F(histoname_goodJ1J2_pt, "pt(J1,J2)", 40, 0., 200.);                                                 //
+//        hists_goodJ1J2_pt[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodJ1J2_eta[i][j][k][l][m].Clear();                                                                                                 //
+//        hists_goodJ1J2_eta[i][j][k][l][m] = TH1F(histoname_goodJ1J2_eta, "eta(J1,J2)", 20, -3., 5.);                                               //
+//        hists_goodJ1J2_eta[i][j][k][l][m].Sumw2();                                                                                                 //
+//                                                                                                                                                   //
+//        hists_goodJ1J2_phi[i][j][k][l][m].Clear();                                                                                                 //
+//        hists_goodJ1J2_phi[i][j][k][l][m] = TH1F(histoname_goodJ1J2_phi, "phi(J1,J2)", 35, -3.4033, 5.7594);                                       //
+//        hists_goodJ1J2_phi[i][j][k][l][m].Sumw2();                                                                                                 //
+//                                                                                                                                                   //
+//        hists_goodJ1J2_mass[i][j][k][l][m].Clear();                                                                                                //
+//        hists_goodJ1J2_mass[i][j][k][l][m] = TH1F(histoname_goodJ1J2_mass, "mass(J1,J2)", 40, 0., 200.);                                           //
+//        hists_goodJ1J2_mass[i][j][k][l][m].Sumw2();                                                                                                //
+//                                                                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodJ3J4_pt[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodJ3J4_pt[i][j][k][l][m] = TH1F(histoname_goodJ3J4_pt, "pt(J3,J4)", 40, 0., 200.);                                                 //
+//        hists_goodJ3J4_pt[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodJ3J4_eta[i][j][k][l][m].Clear();                                                                                                 //
+//        hists_goodJ3J4_eta[i][j][k][l][m] = TH1F(histoname_goodJ3J4_eta, "eta(J3,J4)", 20, -3., 5.);                                               //
+//        hists_goodJ3J4_eta[i][j][k][l][m].Sumw2();                                                                                                 //
+//                                                                                                                                                   //
+//        hists_goodJ3J4_phi[i][j][k][l][m].Clear();                                                                                                 //
+//        hists_goodJ3J4_phi[i][j][k][l][m] = TH1F(histoname_goodJ3J4_phi, "phi(J3,J4)", 35, -3.4033, 5.7594);                                       //
+//        hists_goodJ3J4_phi[i][j][k][l][m].Sumw2();                                                                                                 //
+//                                                                                                                                                   //
+//        hists_goodJ3J4_mass[i][j][k][l][m].Clear();                                                                                                //
+//        hists_goodJ3J4_mass[i][j][k][l][m] = TH1F(histoname_goodJ3J4_mass, "mass(J3,J4)", 40, 0., 200.);                                           //
+//        hists_goodJ3J4_mass[i][j][k][l][m].Sumw2();                                                                                                //
+//                                                                                                                                                   //
+//                                                                                                                                                   //
+//        hists_goodL1L2_pt[i][j][k][l][m].Clear();                                                                                                  //
+//        hists_goodL1L2_pt[i][j][k][l][m] = TH1F(histoname_goodL1L2_pt, "pt(L1,L2)", 40, 0., 200.);                                                 //
+//        hists_goodL1L2_pt[i][j][k][l][m].Sumw2();                                                                                                  //
+//                                                                                                                                                   //
+//        hists_goodL1L2_eta[i][j][k][l][m].Clear();                                                                                                 //
+//        hists_goodL1L2_eta[i][j][k][l][m] = TH1F(histoname_goodL1L2_eta, "eta(L1,L2)", 20, -3., 5.);                                               //
+//        hists_goodL1L2_eta[i][j][k][l][m].Sumw2();                                                                                                 //
+//                                                                                                                                                   //
+//        hists_goodL1L2_phi[i][j][k][l][m].Clear();                                                                                                 //
+//        hists_goodL1L2_phi[i][j][k][l][m] = TH1F(histoname_goodL1L2_phi, "phi(L1,L2)", 35, -3.4033, 5.7594);                                       //
+//        hists_goodL1L2_phi[i][j][k][l][m].Sumw2();                                                                                                 //
+//                                                                                                                                                   //
+//        hists_goodL1L2_mass[i][j][k][l][m].Clear();                                                                                                //
+//        hists_goodL1L2_mass[i][j][k][l][m] = TH1F(histoname_goodL1L2_mass, "mass(L1,L2)", 40, 0., 200.);                                           //
+//        hists_goodL1L2_mass[i][j][k][l][m].Sumw2();                                                                                                //
         
        }
       }
@@ -1389,6 +1506,22 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    goodMu_mass_vec = 0;
    goodMu_phi_vec = 0;
    goodMu_pt_vec = 0;
+   qcdEle_charge_vec = 0; ////
+   qcdEle_eta_vec = 0; 
+   qcdEle_phi_vec = 0; 
+   qcdEle_pt_vec = 0; 
+   qcdMu_charge_vec = 0; 
+   qcdMu_eta_vec = 0; 
+   qcdMu_phi_vec = 0; 
+   qcdMu_pt_vec = 0; 
+   vetoEle_charge_vec = 0; 
+   vetoEle_eta_vec = 0; 
+   vetoEle_phi_vec = 0; 
+   vetoEle_pt_vec = 0; 
+   vetoMu_charge_vec = 0; 
+   vetoMu_eta_vec = 0; 
+   vetoMu_phi_vec = 0; 
+   vetoMu_pt_vec = 0; 
 
    // Set branch addresses and branch pointers
    if (!tree) return;
@@ -1679,14 +1812,14 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("puTruth", &puTruth, &b_puTruth);
    fChain->SetBranchAddress("puBX0", &puBX0, &b_puBX0);
    fChain->SetBranchAddress("puBXplus", &puBXplus, &b_puBXplus);
-   fChain->SetBranchAddress("qcdEle_charge", &qcdEle_charge, &b_qcdEle_charge);
-   fChain->SetBranchAddress("qcdEle_eta", &qcdEle_eta, &b_qcdEle_eta);
-   fChain->SetBranchAddress("qcdEle_phi", &qcdEle_phi, &b_qcdEle_phi);
-   fChain->SetBranchAddress("qcdEle_pt", &qcdEle_pt, &b_qcdEle_pt);
-   fChain->SetBranchAddress("qcdMu_charge", &qcdMu_charge, &b_qcdMu_charge);
-   fChain->SetBranchAddress("qcdMu_eta", &qcdMu_eta, &b_qcdMu_eta);
-   fChain->SetBranchAddress("qcdMu_phi", &qcdMu_phi, &b_qcdMu_phi);
-   fChain->SetBranchAddress("qcdMu_pt", &qcdMu_pt, &b_qcdMu_pt);
+   fChain->SetBranchAddress("qcdEle_charge_vec", &qcdEle_charge_vec, &b_qcdEle_charge_vec);
+   fChain->SetBranchAddress("qcdEle_eta_vec", &qcdEle_eta_vec, &b_qcdEle_eta_vec);
+   fChain->SetBranchAddress("qcdEle_phi_vec", &qcdEle_phi_vec, &b_qcdEle_phi_vec);
+   fChain->SetBranchAddress("qcdEle_pt_vec", &qcdEle_pt_vec, &b_qcdEle_pt_vec);
+   fChain->SetBranchAddress("qcdMu_charge_vec", &qcdMu_charge_vec, &b_qcdMu_charge_vec);
+   fChain->SetBranchAddress("qcdMu_eta_vec", &qcdMu_eta_vec, &b_qcdMu_eta_vec);
+   fChain->SetBranchAddress("qcdMu_phi_vec", &qcdMu_phi_vec, &b_qcdMu_phi_vec);
+   fChain->SetBranchAddress("qcdMu_pt_vec", &qcdMu_pt_vec, &b_qcdMu_pt_vec);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_wasRun", &HLT_IsoMu24_eta2p1_v_wasRun, &b_HLT_IsoMu24_eta2p1_v_wasRun);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_fired", &HLT_IsoMu24_eta2p1_v_fired, &b_HLT_IsoMu24_eta2p1_v_fired);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_prescale", &HLT_IsoMu24_eta2p1_v_prescale, &b_HLT_IsoMu24_eta2p1_v_prescale);
@@ -1697,14 +1830,14 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("HLT_Ele27_WP80_error", &HLT_Ele27_WP80_error, &b_HLT_Ele27_WP80_error);
    fChain->SetBranchAddress("HLT_Any", &HLT_Any, &b_HLT_Any);
    fChain->SetBranchAddress("vertices", &vertices, &b_vertices);
-   fChain->SetBranchAddress("vetoEle_charge", &vetoEle_charge, &b_vetoEle_charge);
-   fChain->SetBranchAddress("vetoEle_eta", &vetoEle_eta, &b_vetoEle_eta);
-   fChain->SetBranchAddress("vetoEle_phi", &vetoEle_phi, &b_vetoEle_phi);
-   fChain->SetBranchAddress("vetoEle_pt", &vetoEle_pt, &b_vetoEle_pt);
-   fChain->SetBranchAddress("vetoMu_charge", &vetoMu_charge, &b_vetoMu_charge);
-   fChain->SetBranchAddress("vetoMu_eta", &vetoMu_eta, &b_vetoMu_eta);
-   fChain->SetBranchAddress("vetoMu_phi", &vetoMu_phi, &b_vetoMu_phi);
-   fChain->SetBranchAddress("vetoMu_pt", &vetoMu_pt, &b_vetoMu_pt);
+   fChain->SetBranchAddress("vetoEle_charge_vec", &vetoEle_charge_vec, &b_vetoEle_charge_vec);
+   fChain->SetBranchAddress("vetoEle_eta_vec", &vetoEle_eta_vec, &b_vetoEle_eta_vec);
+   fChain->SetBranchAddress("vetoEle_phi_vec", &vetoEle_phi_vec, &b_vetoEle_phi_vec);
+   fChain->SetBranchAddress("vetoEle_pt_vec", &vetoEle_pt_vec, &b_vetoEle_pt_vec);
+   fChain->SetBranchAddress("vetoMu_charge_vec", &vetoMu_charge_vec, &b_vetoMu_charge_vec);
+   fChain->SetBranchAddress("vetoMu_eta_vec", &vetoMu_eta_vec, &b_vetoMu_eta_vec);
+   fChain->SetBranchAddress("vetoMu_phi_vec", &vetoMu_phi_vec, &b_vetoMu_phi_vec);
+   fChain->SetBranchAddress("vetoMu_pt_vec", &vetoMu_pt_vec, &b_vetoMu_pt_vec);
 
    Notify();
 }
@@ -1749,41 +1882,53 @@ Bool_t histoFiller::FillHistograms(
  hists_met_phi[i][j][k][l][m].Fill(metphival,weight);
  hists_mt[i][j][k][l][m].Fill(mt,weight);
 
- hists_goodLep_pt[i][j][k][l][m].Fill(lep_pt,weight);
- hists_goodLep_eta[i][j][k][l][m].Fill(lep_eta,weight);
- hists_goodLep_phi[i][j][k][l][m].Fill(lep_phi,weight);
- hists_goodLep_mass[i][j][k][l][m].Fill(lep_mass,weight);
-
- hists_goodJ1_pt[i][j][k][l][m].Fill(goodJ1_pt,weight);
- hists_goodJ1_eta[i][j][k][l][m].Fill(goodJ1_eta,weight);
- hists_goodJ1_phi[i][j][k][l][m].Fill(goodJ1_phi,weight);
- hists_goodJ1_mass[i][j][k][l][m].Fill(goodJ1_mass,weight);
- hists_goodJ1_CSV[i][j][k][l][m].Fill(goodJ1_CSV,weight);
- hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Fill(goodJ1_mass_SV_unweighted,weight);
- hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Fill(goodJ1_mass_SV_corrected,weight);
- hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Fill(goodJ1_mass_SV_weighted,weight);
-
- hists_goodJ2_pt[i][j][k][l][m].Fill(goodJ2_pt,weight);
- hists_goodJ2_eta[i][j][k][l][m].Fill(goodJ2_eta,weight);
- hists_goodJ2_phi[i][j][k][l][m].Fill(goodJ2_phi,weight);
- hists_goodJ2_mass[i][j][k][l][m].Fill(goodJ2_mass,weight);
- hists_goodJ2_CSV[i][j][k][l][m].Fill(goodJ2_CSV,weight);
-
- hists_goodJ1J2_dR[i][j][k][l][m].Fill(goodJ1J2_dR,weight);
- hists_goodJ1J2_pt[i][j][k][l][m].Fill(goodJ1J2_pt,weight);
- hists_goodJ1J2_eta[i][j][k][l][m].Fill(goodJ1J2_eta,weight);
- hists_goodJ1J2_phi[i][j][k][l][m].Fill(goodJ1J2_phi,weight);
- hists_goodJ1J2_mass[i][j][k][l][m].Fill(goodJ1J2_mass,weight);
-
- hists_goodJ3J4_pt[i][j][k][l][m].Fill(goodJ3J4_pt,weight); 
- hists_goodJ3J4_eta[i][j][k][l][m].Fill(goodJ3J4_eta,weight); 
- hists_goodJ3J4_phi[i][j][k][l][m].Fill(goodJ3J4_phi,weight); 
- hists_goodJ3J4_mass[i][j][k][l][m].Fill(goodJ3J4_mass,weight); 
-
- hists_goodL1L2_pt[i][j][k][l][m].Fill(dilep_pt,weight);
- hists_goodL1L2_eta[i][j][k][l][m].Fill(dilep_eta,weight);
- hists_goodL1L2_phi[i][j][k][l][m].Fill(dilep_phi,weight);
- hists_goodL1L2_mass[i][j][k][l][m].Fill(dilep_mass,weight);
+// hists_goodLep_pt[i][j][k][l][m].Fill(lep_pt,weight);                                                        //
+// hists_goodLep_eta[i][j][k][l][m].Fill(lep_eta,weight);                                                      //
+// hists_goodLep_phi[i][j][k][l][m].Fill(lep_phi,weight);                                                      //
+// hists_goodLep_mass[i][j][k][l][m].Fill(lep_mass,weight);                                                    //
+//                                                                                                             //
+// hists_goodJ1_pt[i][j][k][l][m].Fill(goodJ1_pt,weight);                                                      //
+// hists_goodJ1_eta[i][j][k][l][m].Fill(goodJ1_eta,weight);                                                    //
+// hists_goodJ1_phi[i][j][k][l][m].Fill(goodJ1_phi,weight);                                                    //
+// hists_goodJ1_mass[i][j][k][l][m].Fill(goodJ1_mass,weight);                                                  //
+// hists_goodJ1_CSV[i][j][k][l][m].Fill(goodJ1_CSV,weight);                                                    //
+// hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Fill(goodJ1_mass_SV_unweighted,weight);                      //
+// hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Fill(goodJ1_mass_SV_corrected,weight);                        //
+// hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Fill(goodJ1_mass_SV_weighted,weight);                          //
+//                                                                                                             //
+// hists_goodJ2_pt[i][j][k][l][m].Fill(goodJ2_pt,weight);                                                      //
+// hists_goodJ2_eta[i][j][k][l][m].Fill(goodJ2_eta,weight);                                                    //
+// hists_goodJ2_phi[i][j][k][l][m].Fill(goodJ2_phi,weight);                                                    //
+// hists_goodJ2_mass[i][j][k][l][m].Fill(goodJ2_mass,weight);                                                  //
+// hists_goodJ2_CSV[i][j][k][l][m].Fill(goodJ2_CSV,weight);                                                    //
+//                                                                                                             //
+// hists_goodJ3_pt[i][j][k][l][m].Fill(goodJ3_pt,weight);                                                      //
+// hists_goodJ3_eta[i][j][k][l][m].Fill(goodJ3_eta,weight);                                                    //
+// hists_goodJ3_phi[i][j][k][l][m].Fill(goodJ3_phi,weight);                                                    //
+// hists_goodJ3_mass[i][j][k][l][m].Fill(goodJ3_mass,weight);                                                  //
+// hists_goodJ3_CSV[i][j][k][l][m].Fill(goodJ3_CSV,weight);                                                    //
+//                                                                                                             //
+// hists_goodJ4_pt[i][j][k][l][m].Fill(goodJ4_pt,weight);                                                      //
+// hists_goodJ4_eta[i][j][k][l][m].Fill(goodJ4_eta,weight);                                                    //
+// hists_goodJ4_phi[i][j][k][l][m].Fill(goodJ4_phi,weight);                                                    //
+// hists_goodJ4_mass[i][j][k][l][m].Fill(goodJ4_mass,weight);                                                  //
+// hists_goodJ4_CSV[i][j][k][l][m].Fill(goodJ4_CSV,weight);                                                    //
+//                                                                                                             //
+// hists_goodJ1J2_dR[i][j][k][l][m].Fill(goodJ1J2_dR,weight);                                                  //
+// hists_goodJ1J2_pt[i][j][k][l][m].Fill(goodJ1J2_pt,weight);                                                  //
+// hists_goodJ1J2_eta[i][j][k][l][m].Fill(goodJ1J2_eta,weight);                                                //
+// hists_goodJ1J2_phi[i][j][k][l][m].Fill(goodJ1J2_phi,weight);                                                //
+// hists_goodJ1J2_mass[i][j][k][l][m].Fill(goodJ1J2_mass,weight);                                              //
+//                                                                                                             //
+// hists_goodJ3J4_pt[i][j][k][l][m].Fill(goodJ3J4_pt,weight);                                                  //
+// hists_goodJ3J4_eta[i][j][k][l][m].Fill(goodJ3J4_eta,weight);                                                //
+// hists_goodJ3J4_phi[i][j][k][l][m].Fill(goodJ3J4_phi,weight);                                                //
+// hists_goodJ3J4_mass[i][j][k][l][m].Fill(goodJ3J4_mass,weight);                                              //
+//                                                                                                             //
+// hists_goodL1L2_pt[i][j][k][l][m].Fill(dilep_pt,weight);                                                     //
+// hists_goodL1L2_eta[i][j][k][l][m].Fill(dilep_eta,weight);                                                   //
+// hists_goodL1L2_phi[i][j][k][l][m].Fill(dilep_phi,weight);                                                   //
+// hists_goodL1L2_mass[i][j][k][l][m].Fill(dilep_mass,weight);                                                 //
 
  return kTRUE;
 }
@@ -1792,41 +1937,53 @@ Bool_t histoFiller::WriteHistograms(int i, int j, int k, int l, int m){
  hists_met_phi[i][j][k][l][m].Write();
  hists_mt[i][j][k][l][m].Write();
 
- hists_goodLep_pt[i][j][k][l][m].Write();
- hists_goodLep_eta[i][j][k][l][m].Write();
- hists_goodLep_phi[i][j][k][l][m].Write();
- hists_goodLep_mass[i][j][k][l][m].Write();
-
- hists_goodJ1_pt[i][j][k][l][m].Write();
- hists_goodJ1_eta[i][j][k][l][m].Write();
- hists_goodJ1_phi[i][j][k][l][m].Write();
- hists_goodJ1_mass[i][j][k][l][m].Write();
- hists_goodJ1_CSV[i][j][k][l][m].Write();
- hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Write();
- hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Write();
- hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Write();
-
- hists_goodJ2_pt[i][j][k][l][m].Write();
- hists_goodJ2_eta[i][j][k][l][m].Write();
- hists_goodJ2_phi[i][j][k][l][m].Write();
- hists_goodJ2_mass[i][j][k][l][m].Write();
- hists_goodJ2_CSV[i][j][k][l][m].Write(); 
-
- hists_goodJ1J2_dR[i][j][k][l][m].Write();
- hists_goodJ1J2_pt[i][j][k][l][m].Write();
- hists_goodJ1J2_eta[i][j][k][l][m].Write();
- hists_goodJ1J2_phi[i][j][k][l][m].Write();
- hists_goodJ1J2_mass[i][j][k][l][m].Write();
-
- hists_goodJ3J4_pt[i][j][k][l][m].Write(); 
- hists_goodJ3J4_eta[i][j][k][l][m].Write(); 
- hists_goodJ3J4_phi[i][j][k][l][m].Write(); 
- hists_goodJ3J4_mass[i][j][k][l][m].Write(); 
-
- hists_goodL1L2_mass[i][j][k][l][m].Write();
- hists_goodL1L2_pt[i][j][k][l][m].Write();
- hists_goodL1L2_eta[i][j][k][l][m].Write();
- hists_goodL1L2_phi[i][j][k][l][m].Write();
+// hists_goodLep_pt[i][j][k][l][m].Write();                           //
+// hists_goodLep_eta[i][j][k][l][m].Write();                          //
+// hists_goodLep_phi[i][j][k][l][m].Write();                          //
+// hists_goodLep_mass[i][j][k][l][m].Write();                         //
+//                                                                    //
+// hists_goodJ1_pt[i][j][k][l][m].Write();                            //
+// hists_goodJ1_eta[i][j][k][l][m].Write();                           //
+// hists_goodJ1_phi[i][j][k][l][m].Write();                           //
+// hists_goodJ1_mass[i][j][k][l][m].Write();                          //
+// hists_goodJ1_CSV[i][j][k][l][m].Write();                           //
+// hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Write();            //
+// hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Write();             //
+// hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Write();              //
+//                                                                    //
+// hists_goodJ2_pt[i][j][k][l][m].Write();                            //
+// hists_goodJ2_eta[i][j][k][l][m].Write();                           //
+// hists_goodJ2_phi[i][j][k][l][m].Write();                           //
+// hists_goodJ2_mass[i][j][k][l][m].Write();                          //
+// hists_goodJ2_CSV[i][j][k][l][m].Write();                           //
+//                                                                    //
+// hists_goodJ3_pt[i][j][k][l][m].Write();                            //
+// hists_goodJ3_eta[i][j][k][l][m].Write();                           //
+// hists_goodJ3_phi[i][j][k][l][m].Write();                           //
+// hists_goodJ3_mass[i][j][k][l][m].Write();                          //
+// hists_goodJ3_CSV[i][j][k][l][m].Write();                           //
+//                                                                    //
+// hists_goodJ4_pt[i][j][k][l][m].Write();                            //
+// hists_goodJ4_eta[i][j][k][l][m].Write();                           //
+// hists_goodJ4_phi[i][j][k][l][m].Write();                           //
+// hists_goodJ4_mass[i][j][k][l][m].Write();                          //
+// hists_goodJ4_CSV[i][j][k][l][m].Write();                           //
+//                                                                    //
+// hists_goodJ1J2_dR[i][j][k][l][m].Write();                          //
+// hists_goodJ1J2_pt[i][j][k][l][m].Write();                          //
+// hists_goodJ1J2_eta[i][j][k][l][m].Write();                         //
+// hists_goodJ1J2_phi[i][j][k][l][m].Write();                         //
+// hists_goodJ1J2_mass[i][j][k][l][m].Write();                        //
+//                                                                    //
+// hists_goodJ3J4_pt[i][j][k][l][m].Write();                          //
+// hists_goodJ3J4_eta[i][j][k][l][m].Write();                         //
+// hists_goodJ3J4_phi[i][j][k][l][m].Write();                         //
+// hists_goodJ3J4_mass[i][j][k][l][m].Write();                        //
+//                                                                    //
+// hists_goodL1L2_mass[i][j][k][l][m].Write();                        //
+// hists_goodL1L2_pt[i][j][k][l][m].Write();                          //
+// hists_goodL1L2_eta[i][j][k][l][m].Write();                         //
+// hists_goodL1L2_phi[i][j][k][l][m].Write();                         //
 
  return kTRUE;
 }
@@ -1835,41 +1992,53 @@ Bool_t histoFiller::DeleteHistograms(int i, int j, int k, int l, int m){
  hists_met_phi[i][j][k][l][m].Delete();
  hists_mt[i][j][k][l][m].Delete();
 
- hists_goodLep_pt[i][j][k][l][m].Delete();
- hists_goodLep_eta[i][j][k][l][m].Delete();
- hists_goodLep_phi[i][j][k][l][m].Delete();
- hists_goodLep_mass[i][j][k][l][m].Delete();
-
- hists_goodJ1_pt[i][j][k][l][m].Delete();
- hists_goodJ1_eta[i][j][k][l][m].Delete();
- hists_goodJ1_phi[i][j][k][l][m].Delete();
- hists_goodJ1_mass[i][j][k][l][m].Delete();
- hists_goodJ1_CSV[i][j][k][l][m].Delete();
- hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Delete();
- hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Delete();
- hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Delete();
-
- hists_goodJ2_pt[i][j][k][l][m].Delete();
- hists_goodJ2_eta[i][j][k][l][m].Delete();
- hists_goodJ2_phi[i][j][k][l][m].Delete();
- hists_goodJ2_mass[i][j][k][l][m].Delete();
- hists_goodJ2_CSV[i][j][k][l][m].Delete(); 
-
- hists_goodJ1J2_dR[i][j][k][l][m].Delete();
- hists_goodJ1J2_pt[i][j][k][l][m].Delete();
- hists_goodJ1J2_eta[i][j][k][l][m].Delete();
- hists_goodJ1J2_phi[i][j][k][l][m].Delete();
- hists_goodJ1J2_mass[i][j][k][l][m].Delete();
-
- hists_goodJ3J4_pt[i][j][k][l][m].Delete(); 
- hists_goodJ3J4_eta[i][j][k][l][m].Delete(); 
- hists_goodJ3J4_phi[i][j][k][l][m].Delete(); 
- hists_goodJ3J4_mass[i][j][k][l][m].Delete(); 
-
- hists_goodL1L2_mass[i][j][k][l][m].Delete();
- hists_goodL1L2_pt[i][j][k][l][m].Delete();
- hists_goodL1L2_eta[i][j][k][l][m].Delete();
- hists_goodL1L2_phi[i][j][k][l][m].Delete();
+// hists_goodLep_pt[i][j][k][l][m].Delete();                     //
+// hists_goodLep_eta[i][j][k][l][m].Delete();                    //
+// hists_goodLep_phi[i][j][k][l][m].Delete();                    //
+// hists_goodLep_mass[i][j][k][l][m].Delete();                   //
+//                                                               //
+// hists_goodJ1_pt[i][j][k][l][m].Delete();                      //
+// hists_goodJ1_eta[i][j][k][l][m].Delete();                     //
+// hists_goodJ1_phi[i][j][k][l][m].Delete();                     //
+// hists_goodJ1_mass[i][j][k][l][m].Delete();                    //
+// hists_goodJ1_CSV[i][j][k][l][m].Delete();                     //
+// hists_goodJ1_mass_SV_unweighted[i][j][k][l][m].Delete();      //
+// hists_goodJ1_mass_SV_corrected[i][j][k][l][m].Delete();       //
+// hists_goodJ1_mass_SV_weighted[i][j][k][l][m].Delete();        //
+//                                                               //
+// hists_goodJ2_pt[i][j][k][l][m].Delete();                      //
+// hists_goodJ2_eta[i][j][k][l][m].Delete();                     //
+// hists_goodJ2_phi[i][j][k][l][m].Delete();                     //
+// hists_goodJ2_mass[i][j][k][l][m].Delete();                    //
+// hists_goodJ2_CSV[i][j][k][l][m].Delete();                     //
+//                                                               //
+// hists_goodJ3_pt[i][j][k][l][m].Delete();                      //
+// hists_goodJ3_eta[i][j][k][l][m].Delete();                     //
+// hists_goodJ3_phi[i][j][k][l][m].Delete();                     //
+// hists_goodJ3_mass[i][j][k][l][m].Delete();                    //
+// hists_goodJ3_CSV[i][j][k][l][m].Delete();                     //
+//                                                               //
+// hists_goodJ4_pt[i][j][k][l][m].Delete();                      //
+// hists_goodJ4_eta[i][j][k][l][m].Delete();                     //
+// hists_goodJ4_phi[i][j][k][l][m].Delete();                     //
+// hists_goodJ4_mass[i][j][k][l][m].Delete();                    //
+// hists_goodJ4_CSV[i][j][k][l][m].Delete();                     //
+//                                                               //
+// hists_goodJ1J2_dR[i][j][k][l][m].Delete();                    //
+// hists_goodJ1J2_pt[i][j][k][l][m].Delete();                    //
+// hists_goodJ1J2_eta[i][j][k][l][m].Delete();                   //
+// hists_goodJ1J2_phi[i][j][k][l][m].Delete();                   //
+// hists_goodJ1J2_mass[i][j][k][l][m].Delete();                  //
+//                                                               //
+// hists_goodJ3J4_pt[i][j][k][l][m].Delete();                    //
+// hists_goodJ3J4_eta[i][j][k][l][m].Delete();                   //
+// hists_goodJ3J4_phi[i][j][k][l][m].Delete();                   //
+// hists_goodJ3J4_mass[i][j][k][l][m].Delete();                  //
+//                                                               //
+// hists_goodL1L2_mass[i][j][k][l][m].Delete();                  //
+// hists_goodL1L2_pt[i][j][k][l][m].Delete();                    //
+// hists_goodL1L2_eta[i][j][k][l][m].Delete();                   //
+// hists_goodL1L2_phi[i][j][k][l][m].Delete();                   //
 
  return kTRUE;
 }
