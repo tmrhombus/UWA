@@ -88,11 +88,18 @@ class PATJetSmearer : public edm::EDProducer{
    using namespace edm;
    using namespace reco;
 
+   std::auto_ptr<pat::JetCollection> smeared_tmp(new pat::JetCollection);
    std::auto_ptr<pat::JetCollection> smeared(new pat::JetCollection);
    edm::Handle<pat::JetCollection> recoJets;
    edm::Handle<reco::GenJetCollection> genJets;
    iEvent.getByLabel(srcGenJet_, genJets);
 
+   math::PtEtaPhiMLorentzVector shift_p4;
+   math::PtEtaPhiMLorentzVector shift_p4_Up;
+   math::PtEtaPhiMLorentzVector shift_p4_Dn;
+   math::PtEtaPhiMLorentzVector total_shift_p4(0.,0.,0.,0.);
+   math::PtEtaPhiMLorentzVector total_shift_p4_Up(0.,0.,0.,0.);
+   math::PtEtaPhiMLorentzVector total_shift_p4_Dn(0.,0.,0.,0.);
 
    double etaRange[8] = {0.0, 0.5, 1.1, 1.7, 2.3, 2.8, 3.2, 5.0};
    double scale[7]   = {1.079, 1.099, 1.121, 1.208, 1.254, 1.395, 1.056};
@@ -158,6 +165,14 @@ class PATJetSmearer : public edm::EDProducer{
 
     // std::cout<<"reco pT: "<<reco_pt<<" smeared pT: "<<ptSmeared<<" pt_gen: "<<gen_pt<<std::endl;
      math::PtEtaPhiMLorentzVector p4(ptSmeared,jet.eta(),jet.phi(),jet.mass());
+     math::PtEtaPhiMLorentzVector p4_Up(ptSmearedUp,jet.eta(),jet.phi(),jet.mass());
+     math::PtEtaPhiMLorentzVector p4_Dn(ptSmearedDown,jet.eta(),jet.phi(),jet.mass());
+     shift_p4 = p4 - jet.p4();
+     shift_p4_Up = p4_Up - jet.p4();
+     shift_p4_Dn = p4_Dn - jet.p4();
+     total_shift_p4 = total_shift_p4 + shift_p4;
+     total_shift_p4_Up = total_shift_p4_Up + shift_p4_Up;
+     total_shift_p4_Dn = total_shift_p4_Dn + shift_p4_Dn;
      jet.setP4(p4);
      jet.addUserFloat("pt_gen_Nu",gen_pt);
      jet.addUserFloat("eta_gen_Nu",gen_eta);
@@ -168,6 +183,25 @@ class PATJetSmearer : public edm::EDProducer{
      jet.addUserFloat("pt_uncorr",reco_pt);
      jet.addUserFloat("pt_smearedUp",ptSmearedUp);
      jet.addUserFloat("pt_smearedDown",ptSmearedDown);
+     jet.addUserFloat("shift_pt",shift_p4.pt());
+     jet.addUserFloat("shift_pt_Up",shift_p4_Up.pt());
+     jet.addUserFloat("shift_pt_Dn",shift_p4_Dn.pt());
+     smeared_tmp->push_back(jet);
+    }
+    for(unsigned int i=0;i!=smeared_tmp->size();++i){
+     pat::Jet jet = smeared_tmp->at(i);
+     jet.addUserFloat("total_shift_pt",total_shift_p4.pt());
+     jet.addUserFloat("total_shift_eta",total_shift_p4.eta());
+     jet.addUserFloat("total_shift_phi",total_shift_p4.phi());
+     jet.addUserFloat("total_shift_mass",total_shift_p4.mass());
+     jet.addUserFloat("total_shift_pt_Up",total_shift_p4_Up.pt());
+     jet.addUserFloat("total_shift_eta_Up",total_shift_p4_Up.eta());
+     jet.addUserFloat("total_shift_phi_Up",total_shift_p4_Up.phi());
+     jet.addUserFloat("total_shift_mass_Up",total_shift_p4_Up.mass());
+     jet.addUserFloat("total_shift_pt_Dn",total_shift_p4_Dn.pt());
+     jet.addUserFloat("total_shift_eta_Dn",total_shift_p4_Dn.eta());
+     jet.addUserFloat("total_shift_phi_Dn",total_shift_p4_Dn.phi());
+     jet.addUserFloat("total_shift_mass_Dn",total_shift_p4_Dn.mass());
      smeared->push_back(jet);
     }
    iEvent.put(smeared);
