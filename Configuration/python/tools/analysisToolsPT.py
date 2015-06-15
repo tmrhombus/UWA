@@ -826,8 +826,8 @@ def applyDefaultSelectionsPT(process,jets,muons,electrons):
       'passConversionVeto &&' \
       'gsfTrack.trackerExpectedHitsInner.numberOfHits < 1'
   #electronIso = '(chargedHadronIso + max((neutralHadronIso + photonIso - 0.5*puChargedHadronIso),0.0))/et'
-  #electronIso = 'userFloat("Iso04")'
-  electronIso = 'userFloat("Iso03")'
+  #electronIso = 'userFloat("Iso04")' # Bercury
+  electronIso = 'userFloat("Iso03")' # Q/M/Dercury
   electronLooseIso = electronIso+' < 0.15'
   electronTightIso = electronIso+' < 0.10 '
   #electronAntiIso  = electronIso+' > 0.3 '  # VV, CestPiVV, Venus

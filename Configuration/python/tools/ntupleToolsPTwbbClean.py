@@ -159,29 +159,29 @@ def makeGoodLeptons(srcGoodMuons='smearedGoodMuons',srcGoodElectrons='smearedGoo
 
 def makeVetoLeptons(srcVetoMuons='smearedVetoMuons',srcVetoElectrons='smearedVetoElectrons'):
   vetoLeptons = cms.PSet(
-      vetoMu_pt = makeMuon("vetoMu_pt","pt",sourceMuons=srcVetoMuons,lo=True),
-      vetoMu_eta = makeMuon("vetoMu_eta","eta",sourceMuons=srcVetoMuons,lo=True),
-      vetoMu_phi = makeMuon("vetoMu_phi","phi",sourceMuons=srcVetoMuons,lo=True),
-      vetoMu_charge = makeMuon("vetoMu_charge","charge",sourceMuons=srcVetoMuons,lo=True),
+      vetoMu_pt_vec = makeMuon("vetoMu_pt_vec","pt",sourceMuons=srcVetoMuons,lo=False),
+      vetoMu_eta_vec = makeMuon("vetoMu_eta_vec","eta",sourceMuons=srcVetoMuons,lo=False),
+      vetoMu_phi_vec = makeMuon("vetoMu_phi_vec","phi",sourceMuons=srcVetoMuons,lo=False),
+      vetoMu_charge_vec = makeMuon("vetoMu_charge_vec","charge",sourceMuons=srcVetoMuons,lo=False),
 
-      vetoEle_pt = makeElectron("vetoEle_pt","pt",sourceElectrons=srcVetoElectrons,lo=True),
-      vetoEle_eta = makeElectron("vetoEle_eta","eta",sourceElectrons=srcVetoElectrons,lo=True),
-      vetoEle_phi = makeElectron("vetoEle_phi","phi",sourceElectrons=srcVetoElectrons,lo=True),
-      vetoEle_charge = makeElectron("vetoEle_charge","charge",sourceElectrons=srcVetoElectrons,lo=True),
+      vetoEle_pt_vec = makeElectron("vetoEle_pt_vec","pt",sourceElectrons=srcVetoElectrons,lo=False),
+      vetoEle_eta_vec = makeElectron("vetoEle_eta_vec","eta",sourceElectrons=srcVetoElectrons,lo=False),
+      vetoEle_phi_vec = makeElectron("vetoEle_phi_vec","phi",sourceElectrons=srcVetoElectrons,lo=False),
+      vetoEle_charge_vec = makeElectron("vetoEle_charge_vec","charge",sourceElectrons=srcVetoElectrons,lo=False),
   )
   return vetoLeptons
 
 def makeQCDLeptons(srcQCDMuons='smearedQCDMuons',srcQCDElectrons='smearedQCDElectrons'):
   qcdLeptons = cms.PSet(
-      qcdMu_pt = makeMuon("qcdMu_pt","pt",sourceMuons=srcQCDMuons,lo=True),
-      qcdMu_eta = makeMuon("qcdMu_eta","eta",sourceMuons=srcQCDMuons,lo=True),
-      qcdMu_phi = makeMuon("qcdMu_phi","phi",sourceMuons=srcQCDMuons,lo=True),
-      qcdMu_charge = makeMuon("qcdMu_charge","charge",sourceMuons=srcQCDMuons,lo=True),
+      qcdMu_pt_vec = makeMuon("qcdMu_pt_vec","pt",sourceMuons=srcQCDMuons,lo=False),
+      qcdMu_eta_vec = makeMuon("qcdMu_eta_vec","eta",sourceMuons=srcQCDMuons,lo=False),
+      qcdMu_phi_vec = makeMuon("qcdMu_phi_vec","phi",sourceMuons=srcQCDMuons,lo=False),
+      qcdMu_charge_vec = makeMuon("qcdMu_charge_vec","charge",sourceMuons=srcQCDMuons,lo=False),
 
-      qcdEle_pt = makeElectron("qcdEle_pt","pt",sourceElectrons=srcQCDElectrons,lo=True),
-      qcdEle_eta = makeElectron("qcdEle_eta","eta",sourceElectrons=srcQCDElectrons,lo=True),
-      qcdEle_phi = makeElectron("qcdEle_phi","phi",sourceElectrons=srcQCDElectrons,lo=True),
-      qcdEle_charge = makeElectron("qcdEle_charge","charge",sourceElectrons=srcQCDElectrons,lo=True),
+      qcdEle_pt_vec = makeElectron("qcdEle_pt_vec","pt",sourceElectrons=srcQCDElectrons,lo=False),
+      qcdEle_eta_vec = makeElectron("qcdEle_eta_vec","eta",sourceElectrons=srcQCDElectrons,lo=False),
+      qcdEle_phi_vec = makeElectron("qcdEle_phi_vec","phi",sourceElectrons=srcQCDElectrons,lo=False),
+      qcdEle_charge_vec = makeElectron("qcdEle_charge_vec","charge",sourceElectrons=srcQCDElectrons,lo=False),
   )
   return qcdLeptons
 
@@ -274,6 +274,20 @@ def makeGoodJetKinematics(srcGoodJets="smearedGoodJets"):
      goodJ2_pt_resDown = makeJetList(strName='pt_resDown',methodName='userFloat("pt_smearedDown")',pf='good',xn='',sourceJets=srcGoodJets)[1],
      goodJ3_pt_resDown = makeJetList(strName='pt_resDown',methodName='userFloat("pt_smearedDown")',pf='good',xn='',sourceJets=srcGoodJets)[2],
      goodJ4_pt_resDown = makeJetList(strName='pt_resDown',methodName='userFloat("pt_smearedDown")',pf='good',xn='',sourceJets=srcGoodJets)[3],
+
+     goodJ1_shift_pt = makeJetList(strName='shift_pt',methodName='userFloat("shift_pt")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ1_shift_pt_Up = makeJetList(strName='shift_pt_Up',methodName='userFloat("shift_pt_Up")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ1_shift_pt_Dn = makeJetList(strName='shift_pt_Dn',methodName='userFloat("shift_pt_Dn")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ1_total_shift_pt = makeJetList(strName='total_shift_pt',methodName='userFloat("total_shift_pt")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ1_total_shift_pt_Up = makeJetList(strName='total_shift_pt_Up',methodName='userFloat("total_shift_pt_Up")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+     goodJ1_total_shift_pt_Dn = makeJetList(strName='total_shift_pt_Dn',methodName='userFloat("total_shift_pt_Dn")',pf='good',xn='',sourceJets=srcGoodJets)[0],
+
+     goodJ2_shift_pt = makeJetList(strName='shift_pt',methodName='userFloat("shift_pt")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ2_shift_pt_Up = makeJetList(strName='shift_pt_Up',methodName='userFloat("shift_pt_Up")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ2_shift_pt_Dn = makeJetList(strName='shift_pt_Dn',methodName='userFloat("shift_pt_Dn")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ2_total_shift_pt = makeJetList(strName='total_shift_pt',methodName='userFloat("total_shift_pt")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ2_total_shift_pt_Up = makeJetList(strName='total_shift_pt_Up',methodName='userFloat("total_shift_pt_Up")',pf='good',xn='',sourceJets=srcGoodJets)[1],
+     goodJ2_total_shift_pt_Dn = makeJetList(strName='total_shift_pt_Dn',methodName='userFloat("total_shift_pt_Dn")',pf='good',xn='',sourceJets=srcGoodJets)[1],
   )
   return goodJetKinematics
 
@@ -733,11 +747,11 @@ def addEventTreeData(process,name,
      makeGoodLeptons(srcGoodMuons=srcGMu,srcGoodElectrons=srcGEle),
      makeVetoLeptons(srcVetoMuons=srcVMu,srcVetoElectrons=srcVEle),
      makeQCDLeptons(srcQCDMuons=srcQMu,srcQCDElectrons=srcQEle),
-     #makeAllLeptons(srcAllMuons=srcAMu,srcAllElectrons=srcAEle),
+     makeAllLeptons(srcAllMuons=srcAMu,srcAllElectrons=srcAEle),
      makeGoodJetKinematics(srcGoodJets=srcGJet),
      makeFwdJetKinematics(srcFwdJets=srcFJet),
-     #makeCleanJetKinematics(srcCleanJets=srcCJet),
-     #makeAllJetKinematics(srcAllJets=srcAJet),
+     makeCleanJetKinematics(srcCleanJets=srcCJet),
+     makeAllJetKinematics(srcAllJets=srcAJet),
      makeCSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
      makeSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
      makeAltBTags(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
@@ -787,11 +801,11 @@ def addEventTreeMC(process,name,
      makeGoodLeptons(srcGoodMuons=srcGMu,srcGoodElectrons=srcGEle),
      makeVetoLeptons(srcVetoMuons=srcVMu,srcVetoElectrons=srcVEle),
      makeQCDLeptons(srcQCDMuons=srcQMu,srcQCDElectrons=srcQEle),
-     #makeAllLeptons(srcAllMuons=srcAMu,srcAllElectrons=srcAEle), #
+     makeAllLeptons(srcAllMuons=srcAMu,srcAllElectrons=srcAEle), #
      makeGoodJetKinematics(srcGoodJets=srcGJet),
      makeFwdJetKinematics(srcFwdJets=srcFJet),
-     #makeCleanJetKinematics(srcCleanJets=srcCJet),
-     #makeAllJetKinematics(srcAllJets=srcAJet),
+     makeCleanJetKinematics(srcCleanJets=srcCJet),
+     makeAllJetKinematics(srcAllJets=srcAJet),
      makeCSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
      makeSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
      #makeAltBTags(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
