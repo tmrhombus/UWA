@@ -1,8 +1,9 @@
 echo
-echo "${version} ${runname}"
+echo "version: ${version}"
+echo "runname: ${runname}"
 
-countmerged="False"
-countanalyzed="False"
+  countmerged="True"
+countanalyzed="True"
 
 shifts[0]="SFs"
 shifts[1]="JESUp"
@@ -143,7 +144,7 @@ echo
 
 
 
-# for checking individual files
+## for checking individual files
 # grep -l "exited with status 0" /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_good.txt
 # ls /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_all.txt
 # grep -Fvf good_dataAEle.txt all_dataAEle.txt > dataAEle_bad.txt
