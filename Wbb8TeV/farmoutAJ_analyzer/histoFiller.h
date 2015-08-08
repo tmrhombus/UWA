@@ -118,6 +118,7 @@ public :
    Bool_t exactly2goodJs;
    Bool_t min2goodBJs;
    Bool_t exactly2goodBJs;
+   Bool_t exactly2goodJsOneB;
    Bool_t aGoodBJaFwdJ;
    Bool_t min3gJs2gBJs;
 
@@ -134,9 +135,13 @@ public :
    Float_t SF_top2BJs;
    Float_t SF_top2BJs_errUp;
    Float_t SF_top2BJs_errDn;
-   Float_t SF_goodBJfwdJ;
-   Float_t SF_goodBJfwdJ_errUp;
-   Float_t SF_goodBJfwdJ_errDn;
+   Float_t SF_oneGoodBJ;
+   Float_t SF_oneGoodBJ_errUp;
+   Float_t SF_oneGoodBJ_errDn;
+
+   //Float_t SF_goodBJfwdJ;
+   //Float_t SF_goodBJfwdJ_errUp;
+   //Float_t SF_goodBJfwdJ_errDn;
    Float_t SF_CSVrwt2gJs ;
    Float_t SF_CSVrwtgJfJ ;
 
@@ -285,6 +290,15 @@ public :
    Float_t weight_wjj_mu_qcd   ;
    Float_t weight_wjj_ele_good ;
    Float_t weight_wjj_ele_qcd  ;
+   // wjj CSV
+   Float_t weight_wjj_mu_good_CSVUp  ;
+   Float_t weight_wjj_mu_qcd_CSVUp   ;
+   Float_t weight_wjj_ele_good_CSVUp ;
+   Float_t weight_wjj_ele_qcd_CSVUp  ;
+   Float_t weight_wjj_mu_good_CSVDown  ;
+   Float_t weight_wjj_mu_qcd_CSVDown   ;
+   Float_t weight_wjj_ele_good_CSVDown ;
+   Float_t weight_wjj_ele_qcd_CSVDown  ;
    // wjj EMu
    Float_t weight_wjj_mu_good_EMuUp  ;
    Float_t weight_wjj_mu_qcd_EMuUp   ;
@@ -414,6 +428,15 @@ public :
    Float_t weight_dyjj_mu_qcd   ;
    Float_t weight_dyjj_ele_good ;
    Float_t weight_dyjj_ele_qcd  ;
+   // dyjj CSV
+   Float_t weight_dyjj_mu_good_CSVUp  ;
+   Float_t weight_dyjj_mu_qcd_CSVUp   ;
+   Float_t weight_dyjj_ele_good_CSVUp ;
+   Float_t weight_dyjj_ele_qcd_CSVUp  ;
+   Float_t weight_dyjj_mu_good_CSVDown  ;
+   Float_t weight_dyjj_mu_qcd_CSVDown   ;
+   Float_t weight_dyjj_ele_good_CSVDown ;
+   Float_t weight_dyjj_ele_qcd_CSVDown  ;
    // dyjj EMu
    Float_t weight_dyjj_mu_good_EMuUp  ;
    Float_t weight_dyjj_mu_qcd_EMuUp   ;
@@ -742,14 +765,6 @@ public :
    vector<double>  *qcdMu_eta_vec;
    vector<double>  *qcdMu_phi_vec;
    vector<double>  *qcdMu_pt_vec;
-////   Float_t         qcdEle_charge;
-////   Float_t         qcdEle_eta;
-////   Float_t         qcdEle_phi;
-////   Float_t         qcdEle_pt;
-////   Float_t         qcdMu_charge;
-////   Float_t         qcdMu_eta;
-////   Float_t         qcdMu_phi;
-////   Float_t         qcdMu_pt;
    Float_t         weightTop;
    Float_t         topPt;
    Float_t         antitopPt;
@@ -771,14 +786,6 @@ public :
    vector<double>  *vetoMu_eta_vec;
    vector<double>  *vetoMu_phi_vec;
    vector<double>  *vetoMu_pt_vec;
-////   Float_t         vetoEle_charge;
-////   Float_t         vetoEle_eta;
-////   Float_t         vetoEle_phi;
-////   Float_t         vetoEle_pt;
-////   Float_t         vetoMu_charge;
-////   Float_t         vetoMu_eta;
-////   Float_t         vetoMu_phi;
-////   Float_t         vetoMu_pt;
 
    // List of branches
    TBranch        *b_EVENT;   //!
@@ -1132,11 +1139,11 @@ histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/hdfs/store/user/tperry/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
+         f = new TFile("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
+      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
       dir->GetObject("eventTree",tree);
 
    }
@@ -1301,7 +1308,7 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         hists_met_phi[i][j][k][l][m].Sumw2();                                               
 
         hists_mt[i][j][k][l][m].Clear();
-        hists_mt[i][j][k][l][m] = TH1F(histoname_mt, "Transverse Mass", 25, 0., 200.);
+        hists_mt[i][j][k][l][m] = TH1F(histoname_mt, "Transverse Mass", 210, 0., 210.);
         hists_mt[i][j][k][l][m].Sumw2();                                               
 
 

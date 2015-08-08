@@ -50,15 +50,15 @@ do
   #find ${hdfs}/${version}_${samplename}*/*root > \ # unmerged samples
   if ! [[ ${samplename} == W*Jet* ]] || [[ ${samplename} == W4Jet ]]
   then
-   #find ${hdfs}/${version}/${version}_${samplename}-mergeFilesJob/*root > \
-   find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
+   #find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
+   find ${hdfs}/${version}/${version}_${samplename}-mergeFilesJob/*root > \
     ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
   else 
-   #find ${hdfs}/${version}/${version}_${samplename}_p1-mergeFilesJob/*root > \
-   find ${hdfs}/${version}_${samplename}_p1-mergeFilesJob/*root > \
+   #find ${hdfs}/${version}_${samplename}_p1-mergeFilesJob/*root > \
+   find ${hdfs}/${version}/${version}_${samplename}_p1-mergeFilesJob/*root > \
     ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
-   #find ${hdfs}/${version}/${version}_${samplename}_p2-mergeFilesJob/*root >> \
-   find ${hdfs}/${version}_${samplename}_p2-mergeFilesJob/*root >> \
+   #find ${hdfs}/${version}_${samplename}_p2-mergeFilesJob/*root >> \
+   find ${hdfs}/${version}/${version}_${samplename}_p2-mergeFilesJob/*root >> \
     ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
   fi
   
@@ -145,8 +145,8 @@ do
  echo "${samplename}"
  # make a list of all the sample filenames
 
- #find ${hdfs}/${version}/${version}_${samplename}-mergeFilesJob/*root > \
- find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
+ #find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
+ find ${hdfs}/${version}/${version}_${samplename}-mergeFilesJob/*root > \
   ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
 
  cp "${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt" \
