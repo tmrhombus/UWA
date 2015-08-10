@@ -1,5 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 import sys
+from FWCore.ParameterSet.VarParsing import VarParsing
 
 sys.setrecursionlimit(10000)
 
@@ -9,16 +10,20 @@ process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'START53_V27::All' # for global tag with re-reco data
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(-1)
+    input = cms.untracked.int32(100)
 )
 
 process.source = cms.Source("PoolSource",
  fileNames = cms.untracked.vstring(
-#"file:///afs/hep.wisc.edu/cms/mcepeda/UpdateRecipe/CMSSW_5_3_22/src/FinalStateAnalysis/PatTools/test/test.root"
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root", # "source"
+#"file:///hdfs/store/user/nsmith/DYJetsToLL_M-10To50filter_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/ZHinv2015/patTuple_cfg-005F1D61-E0EF-E111-AE51-E0CB4E29C4D5.root"
+
+
+"file:///hdfs/store/user/tperry/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root"
+#"file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/PatTools/test/SKIMTEST_W2Jet_p2-64628488-9FE4-E211-96FF-0026189438D5.root"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W1Jet_p1_s-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-00035FC4-C903-E211-BB66-003048D477C2.root",
 #"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root" # "source"
 
-"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-84403EFB-54CE-E111-BF8A-001E673969FF.root" # "source"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-84403EFB-54CE-E111-BF8A-001E673969FF.root" # "source"
 #"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-00065798-2704-E211-B308-0025901D4C44.root" # "source"
 #"root://cmsxrootd.hep.wisc.edu//hdfs/store/user/tperry/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-4C1B8B0D-4603-E211-8B77-002590200B60.root" # "source"
 #"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-0004D7A5-74E4-E211-9F79-002618943963.root"  #"externalLHEProducer"
@@ -41,6 +46,7 @@ process.source = cms.Source("PoolSource",
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 process.MessageLogger.cerr.FwkReport.reportEvery = 100
 
+# RECO LEVEL
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 from UWAnalysis.Configuration.tools.analysisToolsPT import *
 
@@ -75,18 +81,172 @@ createGeneratedParticles(process,
 )
 
 process.load("UWAnalysis.Configuration.countSmearEvents_cff")
-process.eventSelection = cms.Path(process.selectionSequence) ##changing to multiples see below
+process.eventSelection = cms.Path(process.selectionSequence)
 
 # createSystematics in analysisToolsPT
-process.selectionSequenceMuonUp    = createSystematics(process,process.selectionSequence,'MuonUp'  ,1.01, 1.0, 1.0, 0, 1.0)
-process.selectionSequenceMuonDown  = createSystematics(process,process.selectionSequence,'MuonDown',0.99, 1.0, 1.0, 0, 1.0)
-process.selectionSequenceJetUp     = createSystematics(process,process.selectionSequence,'JetUp'   ,1.00, 1.0, 1.0, 1, 1.0)
-process.selectionSequenceJetDown   = createSystematics(process,process.selectionSequence,'JetDown' ,1.00, 1.0, 1.0,-1, 1.0)
+process.selectionSequenceMuonUp        = createSystematics(process,process.selectionSequence,'MuonUp'      ,1.01, 1.0, 1.0, 0, 1.0)
+process.selectionSequenceMuonDown      = createSystematics(process,process.selectionSequence,'MuonDown'    ,0.99, 1.0, 1.0, 0, 1.0)
+process.selectionSequenceElectronUp    = createSystematics(process,process.selectionSequence,'ElectronUp'  ,1.0, 1.01, 1.0, 0, 1.0)
+process.selectionSequenceElectronDown  = createSystematics(process,process.selectionSequence,'ElectronDown',1.0, 0.99, 1.0, 0, 1.0)
+process.selectionSequenceJetUp         = createSystematics(process,process.selectionSequence,'JetUp'       ,1.00, 1.0, 1.0, 1, 1.0)
+process.selectionSequenceJetDown       = createSystematics(process,process.selectionSequence,'JetDown'     ,1.00, 1.0, 1.0,-1, 1.0)
 
-process.eventSelectionMuonUp    =  cms.Path(process.selectionSequenceMuonUp)
-process.eventSelectionMuonDown  =  cms.Path(process.selectionSequenceMuonDown)
-process.eventSelectionJetUp     =  cms.Path(process.selectionSequenceJetUp)
-process.eventSelectionJetDown   =  cms.Path(process.selectionSequenceJetDown)
+process.eventSelectionMuonUp        =  cms.Path(process.selectionSequenceMuonUp)
+process.eventSelectionMuonDown      =  cms.Path(process.selectionSequenceMuonDown)
+process.eventSelectionElectronUp    =  cms.Path(process.selectionSequenceElectronUp)
+process.eventSelectionElectronDown  =  cms.Path(process.selectionSequenceElectronDown)
+process.eventSelectionJetUp         =  cms.Path(process.selectionSequenceJetUp)
+process.eventSelectionJetDown       =  cms.Path(process.selectionSequenceJetDown)
+
+# GEN LEVEL
+options = VarParsing ('analysis')
+options.outputFile = "2.root"
+options.register(
+    'CrossSection',
+#    12234.4*3*0.05626,
+        46.3*3,
+    VarParsing.multiplicity.singleton,
+    VarParsing.varType.float,
+    "CrossSection")
+
+options.register(
+    'selectNUP',
+    -1, 
+    VarParsing.multiplicity.singleton,
+    VarParsing.varType.int,
+    "selectNUP")
+
+options.parseArguments()
+
+from RecoJets.JetProducers.GenJetParameters_cfi import *
+from RecoJets.JetProducers.AnomalousCellParameters_cfi import *
+
+process.load("RecoJets.Configuration.GenJetParticles_cff")
+process.load("RecoJets.JetProducers.ak5GenJets_cfi")
+
+process.genParticlesNoNeutrinos = cms.EDProducer("GenParticlePruner",
+    src = cms.InputTag("genParticles"),
+    select = cms.vstring(
+        "drop  *", # this is the default
+        "keep status = 1 ",
+        "drop abs(pdgId) = 12", "drop abs(pdgId) = 14", "drop abs(pdgId) = 16" 
+    )   
+)
+
+process.neutrinos = cms.EDProducer("GenParticlePruner",
+    src = cms.InputTag("genParticles"),
+    select = cms.vstring(
+        "drop  *", # this is the default
+        "keep abs(pdgId) = 12 & status =1 ", "keep abs(pdgId) = 14 & status =  1", "keep abs(pdgId) = 16 & status = 1"
+    )
+)
+
+process.GenJetParameters.src=cms.InputTag("genParticlesNoNeutrinos")
+
+process.ak5GenJetsNoNu = cms.EDProducer(
+     "FastjetJetProducer",
+     GenJetParameters,
+     AnomalousCellParameters,
+     jetAlgorithm = cms.string("AntiKt"),
+     rParam       = cms.double(0.5)
+     )
+
+process.partonJetsSeq=cms.Sequence(process.genParticlesNoNeutrinos*process.ak5GenJetsNoNu*process.neutrinos)
+
+process.LHEFilter = cms.EDFilter("GenFilterLHE",
+        PartonMultiplicity=cms.untracked.int32(0),
+        PartonMultiplicityMAX=cms.untracked.int32(20),
+)
+
+# Produce PDF weights (maximum is 3)
+process.pdfWeights = cms.EDProducer("PdfWeightProducer",
+      # Fix MADGRAPH if buggy (this PDF set will also appear on output, 
+      # so only two more PDF sets can be added in PdfSetNames if not "")
+      FixMADGRAPH = cms.untracked.int32(3),
+      GenTag = cms.untracked.InputTag("genParticles"),
+      PdfInfoTag = cms.untracked.InputTag("generator"),
+      PdfSetNames = cms.untracked.vstring(
+             "CT10.LHgrid",
+#             "MSTW2008nlo68cl.LHgrid",
+#             "cteq66.LHgrid",
+             "MSTW2008nnlo68cl.LHgrid",
+             "cteq6ll.LHpdf" ,
+      )
+)
+
+process.bhadrons = cms.EDProducer('MCBHadronProducer',
+                                  quarkId = cms.uint32(5)
+                                  )
+
+process.btaggedGenJets= cms.EDProducer('GENJetBtagger',
+                                src=cms.InputTag("ak5GenJetsNoNu"),
+                                srcSIMB=cms.InputTag("bhadrons")
+)
+
+process.cleanGenJets= cms.EDProducer('GenJetCleaner',
+                                src=cms.InputTag("btaggedGenJets"),
+                                srcDressedLepton=cms.InputTag("dressedLeptons"),
+                                onlyGoodLeptons=cms.bool(True)
+)
+
+process.dressedLeptons = cms.EDProducer("DressedGenLeptonsProducer",
+                                src= cms.InputTag("genParticles"),
+#                                genPDGID= cms.untracked.int32(0), # 0 --> muons and electrons,  13 --> muons  11--> electrons
+#                                genSTATUS= cms.untracked.int32(1)
+                                 minPT = cms.untracked.double(0),
+                                 maxETA = cms.untracked.double(10),
+)
+
+
+process.cleanGenJetsAndrea= cms.EDProducer('GenJetCleaner',
+                                src=cms.InputTag("btaggedGenJets"),
+                                srcDressedLepton=cms.InputTag("dressedLeptons"),
+                                onlyGoodLeptons=cms.bool(False),
+                                excludeTaus=cms.untracked.bool(True)
+)
+
+
+process.Filter=cms.Sequence(process.partonJetsSeq*process.dressedLeptons*process.bhadrons*process.btaggedGenJets*process.cleanGenJets*process.cleanGenJetsAndrea*process.LHEFilter)#*process.pdfWeights)
+process.eventSelectionMC = cms.Path(process.Filter) ##changing to multiples see below
+
+process.load("SimGeneral.HepPDTESSource.pythiapdt_cfi")
+process.printTree = cms.EDAnalyzer("ParticleListDrawer",
+  maxEventsToPrint = cms.untracked.int32(1),
+  printVertex = cms.untracked.bool(False),
+  src = cms.InputTag("genParticles")
+)
+
+#process.list=cms.Path(process.printTree)
+
+
+
+process.crossSectionJet25Lepton30=cms.EDFilter("GenStudy",
+      DressedLepton=cms.untracked.InputTag("dressedLeptons"),
+      Jets=cms.untracked.InputTag("cleanGenJets"),
+      SIMB=cms.untracked.InputTag("bhadrons"),
+      Neutrinos=cms.untracked.InputTag("neutrinos"),
+      filterByNUP=cms.untracked.int32(options.selectNUP),
+      selLeptonPDGID=cms.untracked.int32(13),
+      ptCutJetis=cms.untracked.double(25),
+      ptCutLepton=cms.untracked.double(30),
+      inputCrossSection=cms.untracked.double(options.CrossSection)
+)
+
+process.crossSectionJet25Lepton30Andrea=cms.EDFilter("GenStudyAndrea",
+      DressedLepton=cms.untracked.InputTag("dressedLeptons"),
+      Jets=cms.untracked.InputTag("cleanGenJets"),
+      SIMB=cms.untracked.InputTag("bhadrons"),
+      Neutrinos=cms.untracked.InputTag("neutrinos"),
+      filterByNUP=cms.untracked.int32(options.selectNUP),
+      selLeptonPDGID=cms.untracked.int32(13),
+      ptCutJetis=cms.untracked.double(25),
+      ptCutLepton=cms.untracked.double(30),
+      inputCrossSection=cms.untracked.double(options.CrossSection)
+)
+
+process.eventSelectionMC = cms.Path(process.Filter*process.crossSectionJet25Lepton30Andrea)
+
+
 
 from UWAnalysis.Configuration.tools.ntupleToolsPTwbbClean import *
 addEventTreeMC(process,'muEleEventTree',
@@ -102,7 +262,10 @@ addEventTreeMC(process,'muEleEventTree',
       srcFJet='smearedFwdJets',
       srcAJet='smearedAllJets',
       srcCJet='smearedCleanJets',
-      lhep="source"
+      lhep="source",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="btaggedGenJets"
       )
 
 addEventSummary(process,True)
@@ -120,7 +283,10 @@ addEventTreeMC(process,'muEleEventTreeJetUp',
       srcFJet='smearedFwdJetsJetUp',
       srcAJet='smearedAllJetsJetUp',
       srcCJet='smearedCleanJetsJetUp',
-      lhep="source"
+      lhep="source",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="btaggedGenJets"
       )
 
 addEventTreeMC(process,'muEleEventTreeJetDown',
@@ -136,7 +302,10 @@ addEventTreeMC(process,'muEleEventTreeJetDown',
       srcFJet='smearedFwdJetsJetDown',
       srcAJet='smearedAllJetsJetDown',
       srcCJet='smearedCleanJetsJetDown',
-      lhep="source"
+      lhep="source",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="btaggedGenJets"
       )
 
 addEventTreeMC(process,'muEleEventTreeMuonUp',
@@ -152,7 +321,10 @@ addEventTreeMC(process,'muEleEventTreeMuonUp',
       srcFJet='smearedFwdJetsMuonUp',
       srcAJet='smearedAllJetsMuonUp',
       srcCJet='smearedCleanJetsMuonUp',
-      lhep="source"
+      lhep="source",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="btaggedGenJets"
       )
 
 addEventTreeMC(process,'muEleEventTreeMuonDown',
@@ -168,10 +340,51 @@ addEventTreeMC(process,'muEleEventTreeMuonDown',
       srcFJet='smearedFwdJetsMuonDown',
       srcAJet='smearedAllJetsMuonDown',
       srcCJet='smearedCleanJetsMuonDown',
-      lhep="source"
+      lhep="source",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="btaggedGenJets"
       )
 
-process.TFileService.fileName = cms.string('V1_WJets_84403EFB-54CE-E111-BF8A-001E673969FF.root') 
+addEventTreeMC(process,'muEleEventTreeElectronUp',
+      srcGMu='smearedGoodMuonsElectronUp',
+      srcVMu='smearedVetoMuonsElectronUp',
+      srcQMu='smearedQCDMuonsElectronUp',
+      srcAMu='smearedAllMuonsElectronUp',
+      srcGEle='smearedGoodElectronsElectronUp',
+      srcVEle='smearedVetoElectronsElectronUp',
+      srcQEle='smearedQCDElectronsElectronUp',
+      srcAEle='smearedAllElectronsElectronUp',
+      srcGJet='smearedGoodJetsElectronUp',
+      srcFJet='smearedFwdJetsElectronUp',
+      srcAJet='smearedAllJetsElectronUp',
+      srcCJet='smearedCleanJetsElectronUp',
+      lhep="source",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="btaggedGenJets"
+      )
+
+addEventTreeMC(process,'muEleEventTreeElectronDown',
+      srcGMu='smearedGoodMuonsElectronDown',
+      srcVMu='smearedVetoMuonsElectronDown',
+      srcQMu='smearedQCDMuonsElectronDown',
+      srcAMu='smearedAllMuonsElectronDown',
+      srcGEle='smearedGoodElectronsElectronDown',
+      srcVEle='smearedVetoElectronsElectronDown',
+      srcQEle='smearedQCDElectronsElectronDown',
+      srcAEle='smearedAllElectronsElectronDown',
+      srcGJet='smearedGoodJetsElectronDown',
+      srcFJet='smearedFwdJetsElectronDown',
+      srcAJet='smearedAllJetsElectronDown',
+      srcCJet='smearedCleanJetsElectronDown',
+      lhep="source",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="btaggedGenJets"
+      )
+
+process.TFileService.fileName = cms.string('Bastille_Wbb4F_g.root') 
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",

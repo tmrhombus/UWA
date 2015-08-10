@@ -1,0 +1,91 @@
+\section{Introduction}\label{Intro}
+The analysis uses a sample of proton-proton collisions 
+at $\sqrt{s}=8\TeV$ collected in 2012 with the CMS experiment at the LHC 
+and  corresponding to an 
+integrated luminosity of $19.8\fbinv$. In order to select b-jets, this analysis uses
+the Combined Secondary Vertex algorithm at the tight b-tagging working point. 
+
+
+
+The measurement of \cPZ$/\cPgg^*$ (henceforth denoted by ``\cPZ'') or
+\Wpm production in association with b quarks in proton-proton
+collisions at the Large Hadron Collider (LHC) is relevant for various
+experimental searches. In particular, these processes constitute a
+background to standard model (SM) Higgs production associated with a
+\cPZ~or a \Wpm boson, where the Higgs boson decays into a $b\bar{b}$
+pair. The discovery by the ATLAS and Compact Muon Solenoid (CMS)
+experiments of a neutral boson with a mass of about
+$125\GeV$~\cite{Aad:2012tfa,Chatrchyan:2012ufa} motivates further studies to
+establish its nature and determine the coupling of the new boson to b
+quarks. Furthermore, different models based on an extension (minimal
+or not) of the Higgs sector are being tested against the LHC data
+through final states composed of lepton(s) and b-jet(s).  In this
+context, a better understanding of the b-hadrons and/or associated
+jets dynamics, as well as of the vector boson is required to refine
+the background prediction and increase the sensitivity to new physics.
+
+The leading order(LO) diagram describing the $\Wbb$ production is  
+shown in Fig.~\ref{fig:WbbDiag} and the $\bbbar$ pair is produced from initial gluon radiation.
+This diagram can be compared  
+to the associated Higgs
+production diagram presented in Fig.~\ref{fig:WHbbDiag}. 
+
+\begin{figure}[!hbtp]
+    \center
+    \subfloat[\Wmnbb]{\label{fig:WbbDiag}\includegraphics[height=4cm]{figs/diagrams/Wbb.pdf}}
+    \subfloat[\WmnH]{\label{fig:WHbbDiag}\includegraphics[height=4cm]{figs/diagrams/WH.pdf}}
+    \caption{LO feynman diagrams of production of \Wmnbb and associate production of the Higgs boson in \WmnH. 
+\Wmnbb is an irreducible backround in the measurement of $\HBB$ production.}
+    %\caption{Leading Order Decay Mode for \Wmnbb}
+    \label{fig:diagrams}
+  %\end{center}
+\end{figure}
+
+%Tree-level calculations allowing for large numbers of extra
+%partons in the matrix elements (as initial- and final-state
+%radiations) are available. These are provided by
+%\MADGRAPH~\cite{Alwall:2007st,Alwall:2011uj},
+%{\ALPGEN~\cite{Mangano:2002ea}, and \SHERPA~\cite{Gleisberg:2008ta},
+%in both the five- and four-flavour approaches, \ie by considering the
+%five or four lightest quark flavours in the proton parton distribution
+%function (PDF) sets. Next-to-leading-order (NLO) calculations have
+%been performed in both the five-flavour (\MCFM)~\cite{Campbell:2000bg}
+%and four-flavour~\cite{FebresCordero:2008ci,Cordero:2009kv}
+%approaches. A fully-automated NLO computation matched to a parton
+%shower simulation is implemented by the a\MCATNLO event
+%generator~\cite{Frederix:2011qg,Frixione:2002ik}. A detailed
+%discussion of b-quark production in the different calculation schemes
+%is available in Ref.~\cite{Maltoni:2012pa}.
+
+%The production mechanism of $\bbbar$ pairs together with $\PW$ or $\cPZ$ bosons has been the subject of extensive theoretical studies and is included in different simulation programs~\cite{Oleari:2011ey,Frederix:2011qg,Madgraph5}, but is still not thoroughly understood. 
+
+In the past, the production of \cPZ+1 and 2 b
+jets~\cite{Chatrchyan:2012vr,Chatrchyan:2014dha,Chatrchyan:2013zja,Aad:2011jn,Aad:2014dvb},
+and \Wpm+ b jets~\cite{Chatrchyan:2013uza,Aad:2013vka} have been
+studied by the ATLAS and CMS collaborations, at a centre-of-mass
+energy $\sqrt{s}$ of 7 TeV using up to 5~fb$^{-1}$ of integrated
+luminosity. This analysis  updates the conclusions of the $\sqrt{s}=7\TeV$ analysis of  \Wpm+ b jets, using  8\TeV collected by the CMS detector in 2012, corresponding to integrated luminosity of 19.8\fbinv.
+In addition the current analysis also uses both muon and electron $\PW$ decay channels, whereas the former one used only muons.
+
+The event generators used to simulate the signal and
+background event samples are used as follows: the production of a vector boson or a pair of top-antitop pair in association with jets
+(resp. V+jets, with V=W,Z, and $\ttbar$ + jets) is performed at tree-level using \MADGRAPH~5.1~\cite{Madgraph5} interfaced with
+\PYTHIA~6.4.24~\cite{Sjostrand:2006za}.
+Since multiple partonic multiplicities are used, the $K_T$-MLM merging scheme is used, assuming a matching scale of 20 and 30 GeV, respectively
+for hadronization.
+The V+jets samples are generated using the five-flavor scheme, which includes massless b quarks in the initial state.
+
+Single-top-quark event samples are generated at next-to-leading order (NLO) with
+\POWHEG~2.0~\cite{Alioli:2008gx,Nason:2004rx,Frixione:2007vw}.
+Diboson ($\WW$, $\WZ$, $\ZZ$) samples are
+generated with
+\PYTHIA~6.4.24.
+For LO generators, the default PDF set used is CTEQ6L~\cite{CTEQ66}, while for NLO generators the
+showering of partons and hadronization are simulated with \PYTHIA using the Z2
+tune~\cite{Field:2010bc}.
+For all processes, the detector response is simulated using a detailed
+description of the CMS detector based on  \GEANTfour~\cite{GEANT}.
+The reconstruction of simulated events is performed with
+the same algorithms used for the analyzed data sample.
+The simulated event samples include additional minimum-bias interactions per bunch crossing
+(pileup).

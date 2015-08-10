@@ -1,0 +1,267 @@
+\section{Data and Simulated Samples}\label{Samples}
+\subsection{Data}
+
+This analysis is based on the proton-proton collision data collected
+by CMS during 2012, and reconstructed using $\textrm{CMSSW}\_5\_3\_X$. Quality requirements 
+are applied to restrict the sample to the best quality data corresponding to an
+integrated luminosity of $19.8~\textrm{fb}^{-1}$.
+
+%Trigger conditions evolved rapidly in this period, following the steep rise in luminosity delivered by the LHC.
+%The lowest unprescaled single isolated trigger thresholds were $p_T
+%\ge 17$~GeV for muons and at the beginning of the run and 
+%$p_T \ge 24$~GeV towards the end of the run. 
+%In order to provide a uniform trigger behaviour,  
+
+The datasample was restricted to events which passed either 
+HLT\_IsoMu24\_eta2p1 or HLT\_Ele27\_WP80 single lepton trigger menus. 
+%Furthermore, the HLT\_IsoMu24\_eta2p1 requires that the muon be with in 
+%the range of $|\eta|<2.1$; this restriction in $\eta$ is required to reduce trigger rates. 
+
+% to be used.
+%Both trigger paths require an isolated muon (tracker+calorimeter
+%isolation) -- CHECK.
+
+Table~\ref{tab:datasample} lists the different data sets, lowest unprescaled triggers and luminosities used for the analysis.
+
+\begin{table}[htb]
+\caption{Datasets and corresponding luminosities used in the analysis.} 
+\begin{center}
+\footnotesize
+%\scriptsize
+\begin{tabular}{|l|c|c|}\hline
+  Data sample & Run range &  Luminosity \\ \hline
+  /SingleMu/Run2012A-22Jan2013-v1/AOD &  190645:2486-193621:2596 & 889 pb$^{-1}$  \\
+  /SingleMu/Run2012B-22Jan2013-v1/AOD &  193834:2605-196531:2739 & 4428 pb$^{-1}$   \\
+  /SingleMu/Run2012C-22Jan2013-v1/AOD &  198049:2797-203742:3102 & 7145 pb$^{-1}$   \\
+  /SingleMu/Run2012D-22Jan2013-v1/AOD &  203777:3108-208686:3378 & 7316 pb$^{-1}$ \\\hline  \hline
+  /SingleElectron/Run2012A-22Jan2013-v1/AOD &  190645:2486-193621:2596 & 889 pb$^{-1}$  \\
+  /SingleElectron/Run2012B-22Jan2013-v1/AOD &  193834:2605-196531:2739 & 4420 pb$^{-1}$   \\
+  /SingleElectron/Run2012C-22Jan2013-v1/AOD &  198049:2797-203742:3102 & 7133 pb$^{-1}$   \\
+  /SingleElectron/Run2012D-22Jan2013-v1/AOD &  203777:3108-208686:3378 & 7314 pb$^{-1}$ \\\hline  \hline
+  
+  Total (Certified) & \multicolumn{2}{|c|}{ $\cal{L}$ $= 19.8~{\rm fb}^{-1}$ } \\ \hline
+\end{tabular}
+\label{tab:datasample}
+\end{center}
+\end{table}
+
+%The data selected for this analysis is only data where all CMS sub-detectors have 
+%been determined to perform well. 
+
+%During the data taking the instantaneous luminiosity 
+%which is known to a precision of 4.5\% ref. varied from 10$^{29}$ to 10$^{33}     // This is old, the final number is 2.2 (checked with Higgs guys)
+%cm ^{-2}s^{-1}$. Datasets are listed in Table    . Events were selected which passed 
+%a single muon trigger of either HLT\_IsoMu24\_eta2p1 or HLT\_IsoMu24.
+
+\subsection{Simulation}
+All the Monte Carlo (MC) samples used in the analysis correspond to the  {Summer12} official CMS production.
+Tree-level calculations allowing for large numbers of extra
+partons in the matrix elements (as initial- and final-state
+radiations) are available and provided by
+\MADGRAPH~\cite{Alwall:2007st,Alwall:2011uj},
+{\ALPGEN~\cite{Mangano:2002ea}, and \SHERPA~\cite{Gleisberg:2008ta},
+in both the five- and four-flavour approaches, \ie by considering the
+five or four lightest quark flavours in the proton parton distribution
+function (PDF) sets. Next-to-leading-order (NLO) calculations have
+been performed in both the five-flavour (\MCFM)~\cite{Campbell:2000bg}
+and four-flavour~\cite{FebresCordero:2008ci,Cordero:2009kv}
+approaches. A fully-automated NLO computation matched to a parton
+shower simulation is implemented by the a\MCATNLO event
+generator~\cite{Frederix:2011qg,Frixione:2002ik}. A detailed
+discussion of b-quark production in the different calculation schemes
+is available in Ref.~\cite{Maltoni:2012pa}.
+Simulation samples of events with the $\PW$ or $\cPZ$ boson, or with $\ttbar$ are generated with
+\MADGRAPH~\cite{MADGRAPH} interfaced with
+\PYTHIA~\cite{Sjostrand:2006za}.
+Single top samples are generated with POWHEG~\cite{POWHEG},
+also interfaced with \PYTHIA.
+Diboson samples ($WW$, $WZ$, $ZZ$) are
+generated with PYTHIA. All PYTHIA samples use the CMS Z2 reference tune.
+All PYTHIA leading-order event samples use CTEQ6LL PDFs.
+QCD samples were generated with \PYTHIA, however, 
+the statistical limitations of this QCD sample caused it to be 
+non-ideal for use in this analysis. 
+The QCD background contribution is therefore derived using a data-driven approach.
+
+All simulated samples are processed through the full detector simulation (with GEANT4~\cite{GEANT4}), 
+trigger emulation and event reconstruction chain (CMSSW\_5\_3\_X) of the CMS experiment.
+
+The generated samples include the simulation of properly-correlated in-time and out-of-time
+pileup interations. The PU\_S10\_START53\_V7A-v1 scheme used is based on a
+flat+Poisson tail distribution for the number of pileup interactions.
+%This assumes a poisson distribution of pileup interactions with a mean
+%of about 11 events, that do not exactly match the conditions of 2011 data-taking. 
+In this note, the number of pileup interactions from the simulation 
+truth have been re-weighted to the pileup distribution for data.
+%, by matching the number of reconstructed
+%vertices in Monte Carlo to those observed in data. %% Which method do we use in the end?
+
+The name of the samples and cross-section used are presented in Table~\ref{tab:MCSAMPLES}.
+%Table~\ref{tab:cmsmeasuredvsteo} shows the comparison of these theoretical values to the measurements of the cross-sections of the main processes (W, Z, diboson production and ttbar) performed by CMS using 2010 and 2011 data.
+
+
+%The MC samples include the simulation of properly-correlated in-time and out-of-time
+%pile-up interations assuming a poisson distribution of pileup interactions with a mean
+%of about 11 events. The MC samples are then re-weighted to reproduce the distribution
+%of the number of Vertices observed in the data.
+
+
+%For the signal sample, the generator Madgraph is used \cite{madgraph}; this tree-level generator
+%allows calculation of matrix elements for all diagrams at tree level for the chosen processes
+%and the creation of parton level events. For the signal ``WJetsToLNu'' sample the matrix-element
+%event generation is made with different parton multiplicities. In this way the production 
+%of b-quarks in association with a W-boson is done either at the level of the hard scattering 
+%or during parton showering. For all of this analysis, except where noted, the Madgraph 
+%``WJetsToLNu'' sample is separated into three subsamples. These subsamples are labelled as
+%W+bb, W+c, W+l for samples that contain respectively any generator particle b-quark (pdgId = $\pm$ 5)
+%any generator particle c-quark (pdgId = $\pm$ 4), and all other generated events. 
+
+\begin{table}[htb]
+\caption{Monte Carlo Samples used in this analysis.} 
+\begin{center}
+\begin{tabular}{|r|l|l|l|}
+\hline
+%\begin{adjustwidth}{-4em}{-4em}
+
+%\bf &\bf & \bf{Reference Cross-Sections}\\ 
+\bf Process&\bf MC Samples:& \bf{$\sigma$[pb]}\\ 
+\hline
+$\MyW + $jets   & WJetsToLNu$\_$TuneZ2Star$\_$8TeV-madgraph-tarball               &37509.0 \\ 
+$\MyW + $1 jet  & W1JetsToLNu$\_$TuneZ2Star$\_$8TeV-madgraph                      &37509.0 \\
+$\MyW + $2 jets & W2JetsToLNu$\_$TuneZ2Star$\_$8TeV-madgraph                      &37509.0 \\
+$\MyW + $3 jets & W3JetsToLNu$\_$TuneZ2Star$\_$8TeV-madgraph                      &37509.0 \\
+$\MyW + $4 jets & W4JetsToLNu$\_$TuneZ2Star$\_$8TeV-madgraph                      &37509.0 \\
+$\MyW+b\bar{b}$ 4 flavor & WbbJetsToLNu$\_$Massive$\_$TuneZ2star$\_$8TeV-madgraph-pythia6$\_$tauola &138.9 \\
+\hline
+$t\bar{t}$ semileptonic & TTJets$\_$SemiLeptMGDecays$\_$8TeV-madgraph-tauola     &107.67 \\
+$t\bar{t}$ fullleptonic & TTJets$\_$FullLeptMGDecays$\_$8TeV-madgraph-tauola     &25.8   \\
+$t$ t-channel  & TToLeptons$\_$t-channel$\_$8TeV-powheg-tauola                   &18.44  \\ 
+$t$ s-channel  & T$\_$s-channel$\_$TuneZ2star$\_$8TeV-powheg-tauola              &3.79   \\
+$t$ tW-channel & T$\_$tW-channel-DR$\_$TuneZ2star$\_$8TeV-powheg-tauola          &11.1   \\
+$\bar{t}$ t-channel  & TBarToLeptons$\_$t-channel$\_$8TeV-powheg-tauola          &10.04  \\
+$\bar{t}$ s-channel  & Tbar$\_$s-channel$\_$TuneZ2star$\_$8TeV-powheg-tauola     &1.76   \\
+$\bar{t}$ tW-channel & Tbar$\_$tW-channel-DR$\_$TuneZ2star$\_$8TeV-powheg-tauola &11.1   \\
+\hline
+$\MyZ + jets  $ & DYJetsToLL$\_$M-50$\_$TuneZ2Star$\_$8TeV-madgraph-tarball        &3503.71 \\
+$\MyW\MyW     $ & WW$\_$TuneZ2star$\_$8TeV$\_$pythia6$\_$tauola                    &56.75   \\
+$\MyW\MyZ     $ & WZ$\_$TuneZ2star$\_$8TeV$\_$pythia6$\_$tauola                    &33.21   \\
+$\MyZ\MyZ     $ & ZZ$\_$TuneZ2star$\_$8TeV$\_$pythia6$\_$tauola                    &8.26    \\
+\hline
+\end{tabular}
+%\end{adjustwidth}
+\label{tab:MCSAMPLES}
+\end{center}
+\end{table}
+
+
+%The MC samples include the simulation of properly-correlated in-time and out-of-time
+%pile-up interations assuming a poisson distribution of pileup interactions with a mean
+%of about 11 events. The MC samples are then re-weighted to reproduce the distribution
+%of the number of Vertices observed in the data.
+
+
+\subsection{References and definitions at the generator level~\label{sec:normalization}}
+
+The MADGRAPH+PYTHIA signal sample (``WJetsToLNu'') uses the matrix-element
+event generation with different parton multiplicities, where
+the b-quarks in association with a $\MyW$-boson are simulated either at 
+the level of the hard scattering 
+or during parton showering via gluon radiation. 
+
+%At the generator level, the MadGraph jet definition is adopted, which uses a
+%$k_T$ algorithm with parameter $D=1$ and a tunable cutoff scale $Q_{min}$~\cite{ME_PS_comparisons}.
+%In CMS generated samples, $Q_{min}=10~\GeV$ for partonic jets at the matrix element level
+%satisfying $p_T^{jet}>10~\GeV$ and $|\eta^{jet}|<5$~\cite{MadGraph_Twiki}. This
+%convention has the advantage of offering a well defined parton-jet association by
+%construction. 
+
+This sample is separated into four subsamples labelled as:
+\Wbb ~(contains a pair of generated b-Hadrons with pdgId = $\pm 5$), 
+\Wcc ~(contains a pair of generated c-Hadrons with pdgId = $\pm 4$), 
+\Wc ~(contains a single generated c-quark with pdgId = $\pm 4$), 
+\Wudsg ~(all other generated events). 
+This division is done sequentially, events containing b-quarks selected first.
+After that, a $\WJ$ event is classified as a $\Wc$ signal event if it contains an odd number of charm
+quarks in the final state, as expected from the presence of a weak charged current
+exchange. Events containing an even (non-zero) number of charm quarks
+are assigned to the $\Wcc$ category. 
+$\WJ$ events that are not classified as $\Wbb$, $\Wc$ or $\Wcc$ are
+assigned to the $\Wudsg$ category.
+
+This classification scheme is well suited for comparisons with analytical theory
+calculations of the $\Wbb$ cross section and provides a convenient separation of two
+components with different physical interest. 
+
+The adopted definition also ensures that any uncertainties in the
+description of $g\to\ccbar$ in the fragmentation step only affect
+the relative flavor composition of the background, but leave the $\Wc$ signal
+yield invariant.
+
+Events containing b quarks in the final state are always classified as $\Wbb$ in order
+to correctly identify $b\to c$ decays. While this
+implies that $\Wc$ events with additional $g\to\bbbar$ splitting are not
+classified as genuine $\Wc$ events, the quantitative effect on the analysis is
+negligible. 
+%
+
+%Despite the unambiguous definition of the $\Wc$ signal,
+%it is important to identify several sub-components in the inclusive
+%$\Wj$ sample. In particular, we need to identify at the generator level events
+%containing beauty hadrons or $g\ra\ccbar$ splittings with sizable transverse momenta,
+%which could be experimentally tagged as $\Wc$ events.
+%We define as $W+b$ events all events that contain at the generator level at least
+%one bottom quark $b$ with $p_T^{b}>10~\GeV$ and $|\eta^{b}|<2.5$, and as $\Wcc$ all
+%events that are not identified as $\Wc$ signal but contain at least one charm quark
+%$c$ with $p_T^{b}>10~\GeV$ and $|\eta^{b}|<2.5$. These choices
+%are obviously dependent on the details of the parton shower generator
+%(MADGRAPH+PYTHIA). However, any (sensible) change in the definition is expected to
+%have a negligible effect on the results of the present study. It is just
+%a necessary convention to classify and disentangle components of the background that
+%must be kept under control at various steps of the analysis.
+
+%The \MADGRAPH  cross section,
+%corrected to the NNLO using the standard reference
+%cross-section value in CMS (FEWZ, MSTWNNLO), is
+%estimated to be $1.30\pm0.09(pdf)\pm0.13(Q^2,\textrm{matching})$ pb. 
+%This cross section is calculated at the level of final state particles, by requiring a muon with $p_T>25$~\GeV and $|\eta|<2.1$ and
+%at least two jets, reconstructed using the anti-kt jet algorithm with distance parameter 0.5, with $p_T>25$~\GeV and $|\eta|<2.4$ and
+%each containing at least one b-hadron with $p_T>5$~\GeV. This is the full cross-section, without taking into account any jet vetoes.
+%If we restrict this cross-section to those events with only 2 particle jets (anti-kt, $DR=0.5$), which are btagged, 
+%cross-section of $0.59\pm0.006(pdf)\pm0.06(Q^2,\textrm{matching})$ pb.
+%
+%We will unfold to this last value, taking into account the jet vetos in the cross-section definition at b-hadron level.
+%
+%%The measured cross section is unfolded to the parton level for muons with
+%%$\pt > 25\GeV$ and $|\eta|<2.1$ and two b-quarks (as defined above) with
+%%$\pt > 25\GeV$ and $|\eta|<2.5$. 
+%
+%%The \MADGRAPH  cross section, 
+%%corrected to the NNLO using the standard reference 
+%%cross-section value in CMS (FEWZ~\cite{FEWZ}, MSTWNNLO), is
+%%estimated to be $1.1\pm\unit{pb}$. 
+%%This value takes into account a correction factor estimated with MCFM to compensate from 
+%%the difference in the jet generation in \MADGRAPH ($k_T$, $DR=1$, cut off scale $Q_{min}$) and in the offline reconstruction
+%%(anti-$k_T$, $DR=0.5$, no cut off scale)).
+%%The effect is fully dominated by the different integrated QCD activity expected
+%%around the charm jet direction in the $D=0.5$ and the $D=1$ cone cases.
+%%As expected, and within the quoted uncertainty, 
+%%The correction
+%%%is found to be independent of the details of the parameters relevant for this study
+%%(PDF set, W boson charge, lepton cuts, jet details), and has no visible effect in
+%%relative measurements like $\Rcpm$.
+%
+%%The efficiency of the event reconstruction, $11.25\pm0.01(pdf)\pm1.0(Q^2,\textrm{matching})\%$, is obtained with \MADGRAPH. The scale and factorization
+%error is a conservative estimation, based in the small Monte Carlo samples centrally produced for the computation of Q2 and matching systematic uncertainties. 
+%Their size limitates the measurement. A more sophisticated scheme will be used in the future.  
+%
+%A correction factor $C_{bB}\approx0.92\pm0.01$ to extrapolate from the b-hadron measurement to the parton-level cross-section
+%is preliminarily estimated with Madgraph. This factor has been measured and found to be consistent in the 4F and in the 5F schemes. The difference within the results
+%is taken into account in the given uncertainty.
+% 
+%Finally, the cross-section can be compared to the NLO cross section
+%$0.94 ^{+0.4}_{-0.3}\unit{pb}$ (without vetos)  or $0.52\pm 0.03\unit{pb}$
+%%calculated with MCFM~\cite{Campbell:2010ff, Badger:2010mg}.
+%The MCFM cross section is calculated for a jet cone of $DR=0.5$, using mstw08nnlo PDF, and 
+%$\mu_{\rm{F}} = \mu_{\rm{R}} = m_{\PW} + 2m_{\rm{b}}$. The error on the cross section
+%is estimated by varying the $\mu_{\rm{F,R}}$ simultaneously  up and down by a factor two.
+%%The equivalent MCFM NLO cross section for a jet cone of $DR=1$ is found to be $0.78 ^{+0.4}_{-0.3}\unit{pb}$.

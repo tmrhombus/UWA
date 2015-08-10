@@ -1,0 +1,291 @@
+\section{Combine Fit}\label{sec:CombineFit}
+In this Appendix, we present an analysis in the $W\rightarrow \mu\nu$
+ channel and perform a simultaneous fit using the \Wbb signal region and a $t\bar{t}$ 
+ control region in an independant framework from that presented in the body of the text.
+We also examine the differences between using a 4-flavour generator-level quark scheme
+ and using a 5-flavour scheme as well as the effect of performing the fit in the $t\bar{t}$ 
+ multijet phase space in comparison with the $t\bar{t}$ multilepton phase space.
+
+\subsection{Fit Methodology}
+Applying the selections described in the text for the Signal, $t\bar{t}$ multilepton
+ and $t\bar{t}$ multijet regions, we recover the distributions illustrated in 
+ Figure \ref{fig:wbbttbar_prefit} after applying all scale factors. 
+Two \Wbb samples are considered, a 4-flavour and a 5-flavour sample. 
+The 5-flavour sample is pullled from the inclusive and exclusive W+Jets samples 
+ indicated in table \ref{tab:MCSAMPLES}, requiring a b-parton to be found in a selected jet. 
+The shape of the 4-flavour sample is taken from the sample indicated in the same table
+ and the normalization is taken from the normalization of the 5-flavour sample.
+
+\begin{figure}[htb]
+\center
+\subfigure[]{\label{fig:4f_prefit}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_1m1e_UUbb_PreFit.png}}
+\subfigure[]{\label{fig:5f_prefit}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb5F_1m1e_UUbb_PreFit.png}} 
+\\
+\subfigure[]{\label{fig:1m1e_prefit}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_1m1e_TTbr_PreFit.png}}
+\subfigure[]{\label{fig:3j_prefit}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_3j_TTbr_PreFit.png}} 
+\caption{
+ The four input distributions used in combination for the four fits.
+ In the signal region, the distribution from the \Wbb sample with the 4-flavour quark scheme
+  is \ref{fig:4f_prefit} and that from the 5-flavour scheme is \ref{fig:5f_prefit}.
+ The unfit $t\bar{t}$ multilepton region is shown in \ref{fig:1m1e_prefit} 
+  and the unfit $t\bar{t}$ multijet region is shown in \ref{fig:3j_prefit}.
+ }
+\label{fig:wbbttbar_prefit}
+\end{figure}
+
+The fit is performed using the Higgs Combine Tool\cite{combine}, and here all
+ background physics processes are included
+ with normalizations floating with independant nuisance parameters. 
+The values of these parameters
+ are calculated as the quotient of the cross section and its uncertainty and are
+ considered to be uncorrelated in the fit.
+Systematic uncertainties in the shapes of distributions are also taken into account
+ for uncertainties associated with the $b$-tag scale factors, muon energy scale,
+ jet energy scale, and the energy scale of the particles which did not get clustered into jets
+ but are used in the calculation of \MET.
+These uncertainties are correlated across all samples, as is an overall 
+ uncertainty in the luminosity.
+The distrbution of the
+ number of events for the process is considered to have
+ a logarithmic normal shape and the numerical values of
+ the uncertainties used in the final fit are quoted in Table \ref{tab:NuisanceTable}.
+The fit is performed simultaneously in the signal and background regions. An iterative 
+minimization is performed using Minuit2 and the Migrad minimization 
+algorithm to determine the final scale factor value and error. \cite{MNUserGuide}
+
+\begin{table}[htb]
+\begin{center}
+\small
+\begin{tabular}{r|l|l|l|l|l}
+\hline
+{}   & {}  & \multicolumn{4}{c}{Contribution to} \\
+Source                &Uncertainty& 4F, multilepton & 4F, multijet & 5F, multilepton & 5F, multijet \\
+\hline \hline
+b-Tag Scale Factor	 & 1$\sigma$  & 0.6$\sigma$ & 1.1$\sigma$ & $0.6\sigma$ & 1.1$\sigma$ \\
+Muon Energy Scale	 & 1$\sigma$  & 0.0$\sigma$ & 0.4$\sigma$ & $0.7\sigma$ & 1.0$\sigma$ \\
+Jet Energy Scale	 & 1$\sigma$  & 1.2$\sigma$ & 0.4$\sigma$ & $1.0\sigma$ & 0.0$\sigma$ \\
+Unclustered Energy Scale & 1$\sigma$  & 0.0$\sigma$ & 0.0$\sigma$ & $0.0$       & 0.0$\sigma$ \\
+Luminosity               & $2.6\%$    & $0.4\%$     & $2.4\%$     & $0.6\%$     & $2.5\%$     \\
+QCD Scale		 & $50\%$     & $33\%$      & $33\%$      & $25\%$      & $26\%$      \\
+Drell-Yan+Jets Scale	 & $7.9\%$    & $0.1\%$     & $0.0\%$     & $0.5\%$     & $0.5\%$     \\
+Diboson Scale            & $8.1\%$    & $0.2\%$     & $0.1\%$     & $0.4\%$     & $0.4\%$     \\
+W+cc Scale		 & $8.1\%$    & $0.3\%$     & $0.4\%$     & $0.4\%$     & $0.3\%$     \\ 
+W+Light Jets Scale       & $13.2\%$   & $7.1\%$     & $8.7\%$     & $4.4\%$     & $6.2\%$     \\
+Single AntiTop Scale     & $5.4\%$    & $0.6\%$     & $0.5\%$     & $0.6\%$     & $0.5\%$     \\
+Single Top Scale         & $4.2\%$    & $0.1\%$     & $0.0\%$     & $0.3\%$     & $0.1\%$     \\
+TTbar Scale              & $3.5\%$    & $1.7\%$     & $5.2\%$     & $2.1\%$     & $5.6\%$     \\
+\hline
+\end{tabular}
+\caption{Listed in the first column are the ystematic uncertainties present in the fit, 
+  including correlated 1 $\sigma$ shape variations for the first four
+  listed, and uncorrelated normalization parameters
+  for each of the contributing backgrounds.
+ The second column indicates the $1\sigma$ error level set in the fit
+  and the remaining four columns indicate the extent to which the variable
+  was actually moved in each of the four fits. 
+ The fits are labeled as: \Wbb quark flavor sample, $t\bar{t}$ phase space. }
+\label{tab:NuisanceTable}
+\end{center}
+\end{table}
+
+\subsection{Fit Results \label{sec:SignalExtraction}}
+
+In total, four independant fits were performed, one for each combination of
+ \Wbb quark scheme and $t\bar{t}$ phase space.
+Figures~\ref{fig:postfits_Wbb4F_1m1e},\ref{fig:postfits_Wbb4F_3j},
+ \ref{fig:postfits_Wbb5F_1m1e},\ref{fig:postfits_Wbb5F_3j} 
+ illustrate the results of the
+ fits in both the Signal and TTbar background regions. 
+The observed data distribution is found to be in
+ good agreement with the prediction by the \MADGRAPH+\PYTHIA Monte Carlo. 
+The fitted yields in the signal region for each of the processes
+ involved can be found in Tables \ref{tab:fitYields_4F_1m1e},
+ \ref{tab:fitYields_4F_3j},\ref{tab:fitYields_5F_1m1e},\ref{tab:fitYields_5F_3j}
+ and are compared against the original Monte Carlo prediction. 
+The output of these fits are signal strengths of $r=1.369\pm0.137$,
+ $r=1.190\pm0.148$, $r=1.357\pm0.135$, $r=1.184\pm0.138$ for 
+ 4F/multilepton, 4F/multijet, 5F/multilepton, and 5F/multijet fits respectively. 
+To verify the stability of the fit, the fit was perfomed repeatedly,
+ removing a different uncertainty from each iteration. 
+The outcomes of these tests can be seen in Figure \ref{fig:stabilityOfFits}
+  and it is clear that the fits have converged to a stable point.
+
+\begin{figure}[htb]
+\center
+\subfigure[]{\label{fig:sig04_1m1e_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_1m1e_UUbb_Fitted.png}}
+\subfigure[]{\label{fig:tt04_1m1e_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_1m1e_TTbr_Fitted.png}}
+\caption{Results of the fit in the Signal region using the 4-Flavour quark scheme (\ref{fig:sig04_1m1e_mt_post})
+ and in the TTbar multilepton (\ref{fig:tt04_1m1e_mt_post}) region.
+ Shown here are the transverse mass distributions.}
+\label{fig:postfits_Wbb4F_1m1e}
+\end{figure}
+
+\begin{figure}[htb]
+\center
+\subfigure[]{\label{fig:sig04_3j_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_3j_UUbb_Fitted.png}}
+\subfigure[]{\label{fig:tt04_3j_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_3j_TTbr_Fitted.png}}
+\caption{Results of the fit in the Signal region using the 4-Flavour quark scheme (\ref{fig:sig04_3j_mt_post})
+ and in the TTbar multijet (\ref{fig:tt04_3j_mt_post}) region.
+ Shown here are the transverse mass distributions.}
+\label{fig:postfits_Wbb4F_3j}
+\end{figure}
+
+\begin{figure}[htb]
+\center
+\subfigure[]{\label{fig:sig05_1m1e_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb5F_1m1e_UUbb_Fitted.png}}
+\subfigure[]{\label{fig:tt05_1m1e_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb5F_1m1e_TTbr_Fitted.png}}
+\caption{Results of the fit in the Signal region using the 5-Flavour quark scheme (\ref{fig:sig05_1m1e_mt_post})
+ and in the TTbar multilepton (\ref{fig:tt05_1m1e_mt_post}) region.
+ Shown here are the transverse mass distributions.}
+\label{fig:postfits_Wbb5F_1m1e}
+\end{figure}
+
+\begin{figure}[htb]
+\center
+\subfigure[]{\label{fig:sig05_3j_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb5F_3j_UUbb_Fitted.png}}
+\subfigure[]{\label{fig:tt05_3j_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb5F_3j_TTbr_Fitted.png}}
+\caption{Results of the fit in the Signal region using the 5-Flavour quark scheme (\ref{fig:sig05_3j_mt_post})
+ and in the TTbar multijet (\ref{fig:tt05_3j_mt_post}) region.
+ Shown here are the transverse mass distributions.}
+\label{fig:postfits_Wbb5F_3j}
+\end{figure}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{r|l|l|l|l|l|l}
+\bf{W+bb} & \multicolumn{6}{c}{Fit Result: r = 1.369 $\pm$ 0.137}\\ 
+Wbb4F & \multicolumn{6}{c}{Fit Bias: 1.0000 $\pm$ 0.187}\\ 
+1m1e & \multicolumn{3}{c}{Full $m_T$ range} & \multicolumn{3}{c}{$m_T>45$}\\ 
+{} & PreFit & PostFit & Ratio & PreFit & PostFit & Ratio \\ \hline 
+W+bb  &	 1158.95 &	 1655.08 &	 1.43 &	 882.11 &	 1263.61 &	 1.43\\ 
+TTbar  &	 2888.52 &	 3249.23 &	 1.12 &	 2257.96 &	 2540.38 &	 1.13\\ 
+T  &	 559.02 &	 612.63 &	 1.10 &	 421.51 &	 460.46 &	 1.09\\ 
+Tbar  &	 343.69 &	 377.34 &	 1.10 &	 264.59 &	 289.68 &	 1.09\\ 
+W+udscg  &	 164.74 &	 184.89 &	 1.12 &	 146.67 &	 165.53 &	 1.13\\ 
+W+cc  &	 52.06 &	 55.65 &	 1.07 &	 41.18 &	 44.39 &	 1.08\\ 
+Diboson  &	 153.64 &	 160.07 &	 1.04 &	 112.53 &	 116.65 &	 1.04\\ 
+Drell-Yan  &	 166.30 &	 173.50 &	 1.04 &	 107.13 &	 109.96 &	 1.03\\ 
+QCD  &	 1308.26 &	 1003.50 &	 0.77 &	 360.65 &	 276.64 &	 0.77\\ 
+Total MC  &	 6795.18 &	 7471.89 &	 1.10 &	 4594.33 &	 5267.30 &	 1.15\\ 
+\hline \hline 
+Data & \multicolumn{2}{c|}{7513.0} & 1.006 & \multicolumn{2}{c|}{5313.0} & 1.009 
+\end{tabular}
+\caption{
+ Yields of MC samples before and after the fitting
+  in both the full range of transverse mass and restricted 
+  to $\MT>45$GeV.
+ Shown above are results from the fit made using the 4-flavour \Wbb sample and the
+  $t\bar{t}$ multilepton phase space.}
+\label{tab:fitYields_4F_1m1e}
+\end{center}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{r|l|l|l|l|l|l}
+\bf{W+bb} & \multicolumn{6}{c}{Fit Result: r = 1.190 $\pm$ 0.148}\\ 
+Wbb4F & \multicolumn{6}{c}{Fit Bias: 1.0000 $\pm$ 0.172}\\ 
+3j & \multicolumn{3}{c}{Full $m_T$ range} & \multicolumn{3}{c}{$m_T>45$}\\ 
+{} & PreFit & PostFit & Ratio & PreFit & PostFit & Ratio \\ \hline 
+W+bb  &	 1158.95 &	 1511.65 &	 1.30 &	 882.11 &	 1151.79 &	 1.31\\ 
+TTbar  &	 2888.52 &	 3357.26 &	 1.16 &	 2257.96 &	 2630.61 &	 1.17\\ 
+T  &	 559.02 &	 624.60 &	 1.12 &	 421.51 &	 470.49 &	 1.12\\ 
+Tbar  &	 343.69 &	 384.12 &	 1.12 &	 264.59 &	 295.57 &	 1.12\\ 
+W+udscg  &	 164.74 &	 220.63 &	 1.34 &	 146.67 &	 197.00 &	 1.34\\ 
+W+cc  &	 52.06 &	 56.31 &	 1.08 &	 41.18 &	 43.69 &	 1.06\\ 
+Diboson  &	 153.64 &	 168.80 &	 1.10 &	 112.53 &	 123.55 &	 1.10\\ 
+Drell-Yan  &	 166.30 &	 190.25 &	 1.14 &	 107.13 &	 121.97 &	 1.14\\ 
+QCD  &	 1308.26 &	 999.23 &	 0.76 &	 360.65 &	 275.46 &	 0.76\\ 
+Total MC  &	 6795.18 &	 7512.85 &	 1.11 &	 4594.33 &	 5310.14 &	 1.16\\ 
+\hline \hline 
+Data & \multicolumn{2}{c|}{7513.0} & 1.000 & \multicolumn{2}{c|}{5313.0} & 1.001 
+\end{tabular}
+\caption{
+ Yields of MC samples before and after the fitting
+  in both the full range of transverse mass and restricted 
+  to $\MT>45$GeV.
+ Shown above are results from the fit made using the 4-flavour \Wbb sample and the
+  $t\bar{t}$ multijet phase space.}
+\label{tab:fitYields_4F_3j}
+\end{center}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{r|l|l|l|l|l|l}
+\bf{W+bb} & \multicolumn{6}{c}{Fit Result: r = 1.357 $\pm$ 0.135}\\ 
+Wbb5F & \multicolumn{6}{c}{Fit Bias: 1.0000 $\pm$ 0.170}\\ 
+1m1e & \multicolumn{3}{c}{Full $m_T$ range} & \multicolumn{3}{c}{$m_T>45$}\\ 
+{} & PreFit & PostFit & Ratio & PreFit & PostFit & Ratio \\ \hline 
+W+bb  &	 1158.95 &	 1630.28 &	 1.41 &	 903.60 &	 1273.09 &	 1.41\\ 
+TTbar  &	 2888.52 &	 3229.35 &	 1.12 &	 2257.96 &	 2526.29 &	 1.12\\ 
+T  &	 559.02 &	 607.11 &	 1.09 &	 421.51 &	 456.56 &	 1.08\\ 
+Tbar  &	 343.69 &	 374.51 &	 1.09 &	 264.59 &	 287.78 &	 1.09\\ 
+W+udscg  &	 164.74 &	 190.30 &	 1.16 &	 146.67 &	 170.25 &	 1.16\\ 
+W+cc  &	 52.06 &	 48.92 &	 0.94 &	 41.18 &	 37.52 &	 0.91\\ 
+Diboson  &	 153.64 &	 159.47 &	 1.04 &	 112.53 &	 116.34 &	 1.03\\ 
+Drell-Yan  &	 166.30 &	 173.67 &	 1.04 &	 107.13 &	 110.25 &	 1.03\\ 
+QCD  &	 1308.26 &	 1064.19 &	 0.81 &	 360.65 &	 293.37 &	 0.81\\ 
+Total MC  &	 6795.18 &	 7477.80 &	 1.10 &	 4615.82 &	 5271.45 &	 1.14\\ 
+\hline \hline 
+Data & \multicolumn{2}{c|}{7513.0} & 1.005 & \multicolumn{2}{c|}{5313.0} & 1.008 
+\end{tabular}
+\caption{
+ Yields of MC samples before and after the fitting
+  in both the full range of transverse mass and restricted 
+  to $\MT>45$GeV.
+ Shown above are results from the fit made using the 5-flavour \Wbb sample and the
+  $t\bar{t}$ multilepton phase space.}
+\label{tab:fitYields_5F_1m1e}
+\end{center}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{r|l|l|l|l|l|l}
+\bf{W+bb} & \multicolumn{6}{c}{Fit Result: r = 1.184 $\pm$ 0.138}\\ 
+Wbb5F & \multicolumn{6}{c}{Fit Bias: 1.0000 $\pm$ 0.158}\\ 
+3j & \multicolumn{3}{c}{Full $m_T$ range} & \multicolumn{3}{c}{$m_T>45$}\\ 
+{} & PreFit & PostFit & Ratio & PreFit & PostFit & Ratio \\ \hline 
+W+bb  &	 1158.95 &	 1497.47 &	 1.29 &	 903.60 &	 1168.90 &	 1.29\\ 
+TTbar  &	 2888.52 &	 3329.10 &	 1.15 &	 2257.96 &	 2610.00 &	 1.16\\ 
+T  &	 559.02 &	 618.32 &	 1.11 &	 421.51 &	 466.09 &	 1.11\\ 
+Tbar  &	 343.69 &	 380.79 &	 1.11 &	 264.59 &	 293.29 &	 1.11\\ 
+W+udscg  &	 164.74 &	 227.92 &	 1.38 &	 146.67 &	 203.32 &	 1.39\\ 
+W+cc  &	 52.06 &	 51.33 &	 0.99 &	 41.18 &	 38.49 &	 0.93\\ 
+Diboson  &	 153.64 &	 168.35 &	 1.10 &	 112.53 &	 123.38 &	 1.10\\ 
+Drell-Yan  &	 166.30 &	 190.84 &	 1.15 &	 107.13 &	 122.66 &	 1.14\\ 
+QCD  &	 1308.26 &	 1056.00 &	 0.81 &	 360.65 &	 291.11 &	 0.81\\ 
+Total MC  &	 6795.18 &	 7520.13 &	 1.11 &	 4615.82 &	 5317.24 &	 1.15\\ 
+\hline \hline 
+Data & \multicolumn{2}{c|}{7513.0} & 0.999 & \multicolumn{2}{c|}{5313.0} & 0.999 
+\end{tabular}
+\caption{
+ Yields of MC samples before and after the fitting
+  in both the full range of transverse mass and restricted 
+  to $\MT>45$GeV.
+ Shown above are results from the fit made using the 5-flavour \Wbb sample and the
+  $t\bar{t}$ multijet phase space.}
+\label{tab:fitYields_5F_3j}
+\end{center}
+\end{table}
+
+\begin{figure}[htb]
+\center
+\subfigure[]{\label{fig:sof_4f_1m1e}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_1m1e_FitStability.png}}
+\subfigure[]{\label{fig:sof_4f_3j}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb4F_1m1e_FitStability.png}} 
+\\
+\subfigure[]{\label{fig:sof_5f_1m1e}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb5F_1m1e_FitStability.png}}
+\subfigure[]{\label{fig:sof_5f_3j}\includegraphics[width=0.4\textwidth]{figs/plots/Wbb5F_3j_FitStability.png}}
+\caption{The stability of the fit is tested by systematically removing
+ fitting parameters and the outcome is above.
+ In the first column, we have all parameters included
+ and in the subsequent ones, the label indicates the removed parameter.
+ The sign (s) indicates a correlated shape uncertainty. Shown here are 
+ 4F/multilepton (\ref{fig:sof_4f_1m1e}), 4F/multijet (\ref{fig:sof_4f_3j}),
+ 5F/multilepton (\ref{fig:sof_5f_1m1e}), and 5F/multijet (\ref{fig:sof_5f_3j}) fits respectively.
+ }
+\label{fig:stabilityOfFits}
+\end{figure}
+
+

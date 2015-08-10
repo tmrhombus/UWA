@@ -1,0 +1,293 @@
+\section{Cross Section Measurement}
+\label{sec:xsections}
+
+The cross section has been measured with the following simple formula:
+$$ \sigma (W \rightarrow l \nu + bb) = \frac{N_{\mathrm{total}} - N_{\mathrm{background}}}{\epsilon \mathcal{L}} \mathrm{,}$$
+where $N_{\mathrm{total}} - N_{\mathrm{background}}$ is the difference between 
+the total number of events selected in data with the set of selections described in 
+section~\ref{sec:wbbselection} and the number of background events estimated with 
+the technique described in section~\ref{sec:transversemassfit}.
+The efficiency for selecting events, $\epsilon$,
+has been estimated in simulation (see section~\ref{sec:genlevelEfficiency} for details).
+The first section of the present chapter 
+deals with the estimate of all the experimental 
+uncertainties that may lead to a systematic effect in the measured cross 
+section. In the second section, the measured inclusive 
+cross sections will be shown and compared to the most accurate 
+theoretical prediction. Here, the technique adopted in order to 
+combine the results in the two separate leptonic decay channels will 
+be described as well.
+Eventually, in the third section, an interpretation of the measurement 
+will be given and future perspective for this analysis evaluated.
+%-------------------
+
+\subsection{Systematic and statistical uncertainties}
+\label{sec:systunc}
+
+The systematic sources of uncertainty are essentially divided into
+five categories:
+\begin{enumerate}
+   \item jet energy corrections and resolution;
+   \item lepton selection data/MC scale factors;
+   \item $b$-tagging scale factors;
+   \item background subtraction; 
+   \item integrated luminosity measurement and pile-up reweighting procedure.
+\end{enumerate}
+
+\subsubsection{Jet energy corrections and resolution}
+Jet energy correction uncertainties affect the jet energy
+measurement and are associated to the L1, L2, L3 
+and residual corrections. %described in section~\ref{sec:jetReco}.
+The overall effect is propagated by adding in
+quadrature the individual contributions to the uncertainty, as evaluated
+in dedicated studies~\cite{jetmet010}. The systematic effect due
+to the application of each type of JEC is estimated by comparing 
+the final yield of selected events
+obtained using the standard JEC and its variations
+by plus or minus one standard deviation.
+By performing this measurement, the JEC uncertainty 
+has been found to contribute for $15\%$ and $18\%$, respectively 
+in the electron and muon channel, of the total 
+cross section.  \\
+
+In a very similar fashion, the systematic uncertainty related to 
+the jet energy resolution scaling factors %described in section~\ref{sec:JER}
+ is estimated by comparing
+the final number of selected events 
+using the standard JER correction and its variations.
+The JEC uncertainty has been estimated to be of $5.5\%$ and $3.5\%$
+in the electron and muon channel respectively.
+
+\subsubsection{Lepton selection scale factors}
+
+The contribution to the systematic uncertainty 
+from the lepton selection scale factor measured with the 
+\textit{Tag\&Probe} technique described in Appendix~\ref{sec:tagandprobe}
+is estimated with the same technique 
+used for the JEC and JER systematics:
+the final number of events is estimated
+with two different sets of scale factors obtained by adding and subtracting
+their associated experimental uncertainty.
+The uncertainty on the lepton efficiency scale factor has 
+been found to contribute $1.5\%$ (electron channel) 
+and $2\%$ (muon channel) to the cross section measurement.
+
+\subsubsection{b-tagging scale factors}
+
+The uncertainty on the data driven $b$-tagging scale factors measurement 
+comes mainly from pileup effects, from the the modelling of the $b$ fragmentation 
+function and of the gluon splitting phenomenon, and from 
+the effects of the kinematical cuts applied during the selection of
+$\mu +$~jets events~\cite{btagPOG2}.
+The $b$-tagging efficiency scale factors
+contribute for $6\%$ of the total cross section to the systematic 
+uncertainty in both the leptonic decay channels.
+
+\subsubsection{Background subtraction}
+
+The systematic uncertainty on the background subtraction procedure 
+descends from the theoretical uncertainty on the cross sections used to rescale
+the simulated background samples and from the uncertainty of the fit 
+procedure for the estimate of the background scale parameters described in 
+section~\ref{sec:transversemassfit}. 
+All these uncertainty contribute for $12\%$ of the total cross section both 
+in the electron and muon decay channels.
+%This contribution is evaluated by
+%performing a comparison between the theoretical errors associated to 
+%each of the MC cross sections and to their most recent experimental errors measured by 
+%CMS \cite{Czakon:2013goa}\cite{wwwzref}\cite{zzref}. 
+%All the used values are summarized in table~\ref{MCxsUnc}. 
+%In order to quote the global systematic error, the biggest fluctuation between 
+%the experimental and theoretical values is taken as the final uncertainty.
+
+\subsubsection{Integrated luminosity and pile-up reweighting}
+
+The measurement of the integrated luminosity~\cite{luminosity} 
+of the data recorded by CMS in 2012
+has an associated uncertainty of about $2.6\%$ that affects the global
+uncertainty and has thus been taken into account.
+The systematic uncertainty coming from the pile-up reweighting
+procedure is the propagation of the uncertainty on the total inelastic 
+cross section as estimated in simulation and on the measured luminosity 
+of the data sample.
+Its contribution has been estimated by 
+modifying the minimum bias cross section 
+by $\pm 5 \%$ and propagating the effects through the 
+pileup reweighting procedure and the final results. 
+The corresponding uncertainty has been found to be $4\%$ and $5\%$,
+respectively, in the electron and muon channels.
+
+\subsubsection{Statistical uncertainties}
+
+The following sources of statistical uncertainty have been taken into account: 
+\begin{itemize}
+  \item the statistical uncertainty associated to the selected data sample,
+  \item the statistical uncertainty related to the simulated background samples 
+    used to perform the background subtraction;
+  \item the statistic uncertainty on the efficiency measurement 
+    (see section~\refal{sec:genlevelEfficiency} for details);
+  \item the statistical uncertainties on the $c_{t\bar{t}}$, 
+    $c_{\mathrm{QCD}}$ and $c_{\mathrm{scale}}$ scale factors evaluated with 
+    the background subtraction fit procedure described in section~\ref{sec:transversemassfit}.
+\end{itemize}
+All these uncertainties have been summed in quadrature, yielding a global statistical
+uncertainty of about $11\%$ and $10\%$ in
+the electron and muon channels, respectively.
+
+\subsubsection{Breakdown of the uncertainties}
+
+All the contributions to the systematic uncertainty described in this section are considered 
+to be uncorrelated and summed in quadrature.
+The detailed breakdown of the systematic and statistic uncertainties on the measured
+cross section is presented in
+table~\ref{tab:finalxsectab}.
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|r|c|c|}
+\hline
+\textbf{Source} & $W \rightarrow e \nu + bb$ & $W \rightarrow \mu \nu + bb$ \\ 
+\hline
+JEC                & $15.0\%$  & $18.0\%$ \\ 
+JER                & $5.5\%$   & $3.5\%$ \\ 
+Lepton SF          & $1.5\%$   & $2.0\%$ \\ 
+$b$-tagging SF     & $6.0\%$   & $6.0\%$ \\ 
+Background subtr.  & $12.1\%$  & $12.4\%$ \\ 
+Pileup             & $4.0\%$   & $5.0\%$ \\ 
+Lumi               & $2.6\%$   & $2.6\%$ \\ 
+\hline \hline
+Statistic          & $10.9\%$   & $9.5\%$ \\ 
+\hline
+\end{tabular}
+%\end{adjustwidth}
+\end{center}
+\caption{Breakdown of the sources of systematic and statistic uncertainty.} 
+\label{tab:finalxsectab}
+\end{table}
+
+
+\subsection{Inclusive cross section measurement}
+
+In this section the results of the cross section measurement are 
+eventually presented.
+As described in detail in section~\ref{sec:genlevelEfficiency}, 
+the cross section measurement has been performed in the particle level 
+fiducial region represented by one lepton with transverse momentum 
+$p_{T}>30$~GeV and pseudorapidity $|\eta|<2.1$, exactly two $b$-jets 
+with transverse momentum $p_{T}>25$~GeV and pseudorapidity $|\eta|<2.4$.
+Leptons from $B$~hadron decays have been rejected, or otherwise 
+corrected for final state radiation by summing the four-momenta 
+of photons in a a cone of radius $R=0.1$ around the lepton.
+Jets have been clustered on top of the full list of generated particles 
+except neutrinos; jets with a distance $R<0.5$ from a lepton have been 
+rejected. At generator level, $b$-jets are tagged when at least one of the 
+clustered particles descends from a $B$~hadron and within a cone of radius $R=0.5$
+from the jet axis.
+
+\subsubsection{Theoretical prediction}
+
+The expected theoretical cross section in the phase space described above 
+has been calculated with \textsc{mcfm~6.8}~\cite{mcfm}
+in the massless $5$-flavour scheme at NLO precision 
+with the \textsc{MSTW2008NNLO}~\cite{mstw2008} parton density function 
+and the renormalization and factorization scales set to the mass of the $W$.
+The result of this calculation is the following:
+$$\sigma_{\mathrm{TH}} (W \rightarrow l \nu + bb) = 0.51 \pm 0.06~\mathrm{pb.}$$
+The uncertainty associated to this result corresponds to the statistical uncertainty of 
+the integration step of the calculation.
+Activities are ongoing in order to estimate the uncertainties related to the 
+particular choice of PDF and factorization and renormalization scales.
+
+\subsubsection{Double parton scattering}
+
+The contribution from double parton scattering (DPS) has been estimated with the 
+formula:
+$$\sigma_{DPS} = \frac{\sigma_{W} \times \sigma_{bb}}{\sigma_{eff}} \mathrm{.}$$
+The values of $\sigma_{W}$ and $\sigma_{bb}$ have been estimated 
+in the same fiducial region of the analysis selection:
+$$\sigma_{W} = 4361 \pm 79 ~\mathrm{pb,}$$
+$$\sigma_{bb} = 0.18 \pm 0.9 ~\mu \mathrm{b.}$$
+The estimate of the cross section for the inclusive production of $W$ bosons, $\sigma_{W}$, 
+is the output of a NNLO calculation with \textsc{FEWZ} and has a very small 
+associated uncertainty, negligible when compared to the uncertainty associated 
+to the estimate of the other cross sections in this formula. 
+The inclusive $b$~pair production cross section has a much bigger 
+associated uncertainty, due to the fact that it has been estimated on a sample of 
+events generated with \textsc{MadGraph} and it is accurate up to LO precision.
+Efforts are ongoing in order to improve the uncertainty associated to the 
+prediction of $\sigma_{bb}$.
+The value of $\sigma_{eff}$ has been measured by CMS~\cite{sigmaeffCMS}:
+$$\sigma_{eff} = 20.7 \pm 6.6  ~\mathrm{mb,}$$
+resulting in a contribution of the DPS to the $W+bb$ cross section of 
+$0.4~\pm~0.02$~pb. The DPS corrected theoretical prediction is thus:
+%$0.41~\pm~0.024$~pb. The DPS corrected theoretical prediction is thus:
+$$\sigma_{\mathrm{TH}} (W \rightarrow l \nu + bb) = 0.55 \pm 0.06~\mathrm{(stat.)}~ \pm 0.02~\mathrm{(DPS)}~\mathrm{pb.}$$
+
+\subsubsection{Experimental measurement}
+
+The experimental results to which the above theoretical prediction 
+can be compared are:
+$$\sigma (W \rightarrow e \nu + bb) = 0.654 \pm 0.071\mathrm{(stat.)} \pm 0.141\mathrm{(syst.)}~\mathrm{pb.}$$
+$$\sigma (W \rightarrow \mu \nu + bb) = 0.656 \pm 0.062\mathrm{(stat.)} \pm 0.153\mathrm{(syst.)}~\mathrm{pb.}$$
+respectively in the electron and muon decay channel of the $W$ boson.
+%The final statistical uncertainty associated to the measurements takes into account 
+%the statistical uncertainty on the data sample as well as the 
+%statistical uncertainties on the simulated background samples. 
+The quoted statistic and systematic uncertainties comprise all the effects 
+described in the previous section. 
+As already mentioned in the previous chapter, these uncertainties
+do not take into account the effects related to the particular choice of 
+the PDF and renormalization scale in the theoretical prediction used to estimate 
+the selection efficiency. These effects may have a non negligible impact on the results and 
+have been estimated in the previous measurement of $W+bb$ cross section performed 
+in CMS on the sample of proton-proton collisions at $7$~TeV and found to contribute 
+for the $10\%$ of the total cross section~\cite{cmsWbb7tev}.
+
+\subsubsection{Combination of the results}
+
+The experimental results for the electron and muon decay channels
+of the $W$ boson, coming from fully uncorrelated samples of events, 
+have been statistically combined in order to reduce the statistical 
+uncertainty on the measured cross section:
+$$\sigma (W \rightarrow e \nu + bb) = 0.655 \pm 0.047\mathrm{(stat.)} \pm 0.145\mathrm{(syst.)}~\mathrm{pb.}$$
+The systematic uncertainty associated to the combined cross section 
+has been estimated by separately combining each one of the contributions
+described in the previous section.
+The systematic uncertainties are not in principle uncorrelated. 
+These correlations have been taken into account during the combination 
+of the results.
+With good approximation, the systematic uncertainties due to 
+jet energy corrections and resolution, to the $b$-tagging scale factors, to the 
+pileup reweighting and to the luminosity measurement have been 
+considered as fully correlated, since they correspond basically to the 
+measurement of the same quantity performed on top of two statistically independent 
+samples of events.
+The uncertainty due to lepton efficiency scale factors instead has been treated as a 
+fully uncorrelated quantity between the electron and muon species.
+
+\subsection{Interpretation and perspectives}
+
+The presented results are in good agreement between the measurements performed
+in the electron and muon decay channels of the $W$ boson and, within the 
+uncertainties, they agree with the cross section theoretical 
+prediction computed with \textsc{mcfm} in the massless 5-flavour scheme.
+The uncertainty on the experimental results is driven by systematic detector effects,
+the most important being the jet related systematic uncertainties.
+The sample of events collected by CMS in 2012 at $\sqrt{s}=8$~TeV has proven to be 
+appropriate for a first measurement of differential cross sections as a function of the 
+most interesting kinematical observables of the $W+bb$ system. 
+
+%Consequently, the differential measurement will be the natural extension to the present 
+%work. Activities are ongoing in order to measure the differential cross 
+%sections for all the observables of which the detector level distributions have been 
+%presented in the previous chapter: namely, the transverse momentum and the pseudorapidity of 
+%the $b$-jets and of the $W$ boson, along with the angular distributions of the 
+%$W+bb$ system. These results will be unfolded from detector effects in order 
+%to obtain particle level differential cross sections that can be possibly compared with 
+%the predictions from the most recent physics generators.
+%There is a strong interest from the theorists community, in fact, in testing the 
+%level of comprehension of the kinematical properties of the $W+bb$ system.
+%Such a measurement 
+%is very important for understanding better the $b$~quark content of the proton and for 
+%testing the accuracy of perturbative QCD calculations involving final states 
+%with massive $b$~quarks.

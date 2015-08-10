@@ -1,0 +1,127 @@
+\section{Background estimation}\label{BkgControl}
+
+After all selection requirements are applyed the major background contributions are:
+$\PW$+jets,$\ttbar$, single top, $\cPZ$+jets and QCD. Contributions from these backgrounds are obtained in 
+a simultaneus fit, which also provides a final estimate for signal and background yields.
+The shapes of the backgrounds are all taken from MC, with the exception of QCD which has been described above. The initial yield is also
+taken from MC, normilized to the NNLO predicitons and allowed to vary in the fit within
+uncertainites which are described in the next section.
+To prove the validity of the MC shapes and normalizations a set of control regions is 
+provided for the background contributions.
+
+\subsection{W+jets: light and charm component}
+
+$\PW$+jets is the dominating background before
+applying the b-tag requirements.
+The MC describes well both the shape
+and event yield of the $\PW$+jet events as shown
+in Fig.~\ref{fig:wjj_plots}, where the $\pt$ 
+of the highest $\pt$ jet is shown along with the $\pt$ and $\eta$ of the
+muon and $\MT$ of the reconstructed $\PW$.
+
+\begin{figure}
+ \center
+ \subfloat[]{\label{fig:initialmuonpt}\includegraphics[width=0.4\textwidth]{figs/plots/2j0b_mu_pt_prefit.png}}
+ \subfloat[]{\label{fig:initialmuoneta}\includegraphics[width=0.4\textwidth]{figs/plots/2j0b_mu_eta_prefit.png}}
+ \\
+ \subfloat[]{\label{fig:initialmt}\includegraphics[width=0.4\textwidth]{figs/plots/2j0b_mt_prefit.png}}
+ \subfloat[]{\label{fig:initialj1pt}\includegraphics[width=0.4\textwidth]{figs/plots/2j0b_J1_pt_prefit.png}}
+ \caption{
+  Selecting for a Tight ID muon with $p_{T}>$30 GeV and exactly two central PFchs-Jets passing Loose ID,
+   we recover the distributions shown above. 
+  Shown in (\ref{fig:initialmuonpt}) is the transverse momentum of the muon
+   and (\ref{fig:initialmuoneta}) is the $\eta$ distribution.
+  The transverse Mass of the reconstructed W boson is given in (\ref{fig:initialmt})
+   and (\ref{fig:initialj1pt}) shows the transverse momentum of the leading jet.
+ } 
+    \label{fig:wjj_plots}
+\end{figure}
+
+The true $\Wc$ contribution in the signal region is minimal, 
+and only possible due to mistaging of a second jet in
+the event. However, the contribution of events
+with one hard charm and one hard anti-charm originated by gluon 
+splitting is not negligable and moreover these events have kinematics closely related 
+to that of our signal. 
+
+\subsection{Top backgrounds}
+\label{section:topbackgrounds}
+
+To validate the description of the $\ttbar$ contribution two 
+control regions are defined and referred to as multilepton 
+and multijet $\ttbar$ regions.
+The selections for the multijet region are the same as 
+those for the $\Wbb$ region except that the veto on the third jet is removed. 
+As can be seen in Figure \ref{fig:ttbar_multijet_mt_presel}, this control region is dominated by $\ttbar$.
+The selections for the multilepton region differ from those for the $\Wbb$ region in that exactly two well-isolated opposite-flavor leptons are required. 
+Figure \ref{fig:ttbar_multilepton_mt_presel} shows this control region,
+and because of its purity, this region is used ultimately to constrain the fit.
+
+%The agreement in this final state can be studied by requiring atleast one Isolated Muon 
+%and four jets, two of which are \(b\)-tagged and two untagged. This selection and good 
+%agreement is shown in Figure \ref{fig:ttbarCR}.
+%The two untagged jets originate from the decay of a \(W\)\rightarrow \)c-quark s-quark,
+%therefore, a comparison of the reconstruction of the mass of the untagged dijet to the \(W\) mass indicates 
+%good jet energy resolution.  As shown in Figure \ref{fig:ttbarJE}, the peak is 
+%aligned with the \(W\) mass. % so the jet energy scale is well calibrated
+%1619/1768 = 91.57 ttbar / MC  or 1619/1901 = 85.17% ttbar / Data   
+\begin{figure}
+      \center
+      \subfloat[multijet]   {\label{fig:ttbar_multijet_mt_presel}\includegraphics[width=0.4\textwidth]{figs/plots/3j2b_mt_prefit.png}}
+      \subfloat[multilepton]{\label{fig:ttbar_multilepton_mt_presel}\includegraphics[width=0.4\textwidth]{figs/plots/2j2b_1m1e_mt_prefit.png}}
+      \caption{The two $\ttbar$ control regions are shown here. Multijet, requiring at least 3 jets and multilepton keeping the jet veto and requiring two opposite-flavor leptons.
+      }
+      \label{fig:ttbar_presel}
+\end{figure}
+
+
+%The single top control region is defined by usual selection requirements, without lepton and jet vetos, but
+%in this case only one of the two highest-$\pt$ jets is required to have b-tag and the other one should have
+%$\eta > 2.8$. The agreement between data and MC for this control region is demonstrated in the
+%Fig.~\ref{fig:sTopMT}. In the fit the single top contribution shape and normalization is taken from the 
+%the MC simulation.
+%%
+%%
+%%\begin{figure}
+%%      \center
+%%      \includegraphics[height=10cm]{fig/backgrounds/MtCal_SingleTop.pdf}
+%%      \includegraphics[height=10cm]{fig/backgrounds/highestJetPt_J1Pt_top.pdf}
+%%      \caption{The single top control region defined by one \(b\)-tagged jet and one forward jet at \(\eta>2.8\).
+%%Both the transverse mass of the selected W in the $t\rightarrow b \mu \nu$ process (left) and the pt of the leading jet (right) show remarkable agreement with the
+%%Monte Carlo prediction.}
+%%      \label{fig:sTopMT}
+%%\end{figure}
+
+\subsection{$\Zll + b\bar{b}$ background}
+
+This backround is validated in a control region where the $\Wbb$
+selection requirements are applied, but the lepton veto 
+is inverted, requiring two isolated, same-flavor leptons 
+and the \MT requirement is dropped.
+Shown in Figure \ref{fig:z_peak} is the invariant mass of dimuon pairs
+and peak is formed at the \MyZ mass,
+demonstrating good lepton energy resolution.
+
+\begin{figure}
+      \center
+      \includegraphics[width=0.4\textwidth]{figs/plots/2j2b_2m_mass_ll_prefit.png}
+      \caption{Mass of the delepton pair in the $\Zll$ control region.
+      }
+      \label{fig:z_peak}
+\end{figure}
+
+
+%Two control regions are defined for Z/$\gamma$+Jets. One is based on the Z+ 2 Jets
+%background where 1 jet is outside of the acceptance; this first control region is defined
+%as having atleast 2 muons with a combined invariant mass between 70 and 110 GeV. The second
+%control region is based on the $Z\rightarrow\mu\mu$ +1 Jet background where 1 muon is not isolated and
+%gets taken as a jet. The uncertainty from these regions is taken to be $\pm 5.3\%$. 
+%This control region is also used as a comparsion to the SV mass shape in Appendix~\ref{chapter:SVMassShapes}; 
+%kinematic distributions can also be found there.
+
+
+%\subsection{Other Electroweak Backgrounds}
+%
+%Negligible, these shapes and yields are taken from MC.
+%
+

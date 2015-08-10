@@ -1,0 +1,191 @@
+\section{Event Selection}
+\label{sec:wbbselection}
+
+In this section the $W + bb$ final state is
+defined along with the detector level kinematical
+phase space in which the final state is selected.
+A reconstructed lepton is required to be present
+in selected events, with transverse momentum $p_{T} > 30$~GeV
+and pseudorapidity $|\eta| < 2.1$. In the particular case of electrons
+the pseudorapidity range $1.4442 < |\eta| < 1.566$, corresponding
+to the gap between the barrel and the endcaps of the ECAL, is
+further excluded. The selected lepton needs to satisfy the set of
+Tight ID and Tight Isolation
+requirements described in the previous section.
+The transverse momentum threshold at $p_{T} > 30$~GeV is imposed by
+the trigger selection thresholds at $27$~GeV and $24$~GeV for electrons and
+muons respectively and the pseudorapidity range $|\eta| < 2.1$ corresponds to the
+region where the SingleMu Trigger operated.
+These kinematical cuts have been chosen to be symmetric for the two lepton
+species in order to statistically combine the cross
+section measurements in the two independent channels.
+The selection of a final state with one isolated lepton is meant to tag the
+visible part of the decay of a $W$ boson.
+
+The contribution from events where a $Z$ boson, a pair of vector bosons
+or a $t\bar{t}$~quark pair is produced has been reduced by rejecting
+events with an additional reconstructed lepton. Looser requirements
+are applied to the additional leptons to be vetoed: they must have transverse momentum
+$p_{T} > 10$~GeV, pseudorapidity $|\eta| < 2.4$ which corresponds to the
+acceptance of the tracking system, as well as pass the Loose ID and Loose Isolation
+ identification and isolation requirements.
+A single lepton final state may be faked as well by multijet events (QCD) where a lepton
+has been produced in the hadronization process of a jet and misidentified
+as an isolated lepton from the primary vertex.
+The rate of this kind of misidentification is very low, but, given the cross
+section disparity of several orders of magnitudes in favour of multijet events,
+the contribution from QCD is not negligible, and has been estimated using the data driven
+technique described in section~\ref{sec:qcd}. 
+
+In order to reduce such a background
+contribution, a threshold on the transverse mass $m_{\mathrm{T}}$ of the $W$ boson
+at $m_{\mathrm{T}} > 45$~GeV has been applied, where  $m_{\mathrm{T}}$ is defined
+in Eq. \ref{eq:mt}. 
+The missing transverse momentum in multijet events is small and hence the
+$m_{T}$ variable has a good discriminating power against QCD background
+processes. 
+Events are selected where two PF jets have been clustered with the
+anti-$k_t$ algorithm (size parameter $R = 0.5$) in the tracker acceptance
+($|\eta| < 2.4$) and with transverse momentum $p_{T} > 25$~GeV.
+Reconstructed jets within a distance of $R < 0.5$ to the nearest reconstructed and isolated
+lepton are rejected, in order to exclude leptons clustered as jets.
+Both the jets are required to satisfy a CSV tight $b$-tagging requirement
+(CSV discriminator~$> 0.898$).
+Events with additional jets are rejected. The purpose of this extra-jet veto
+is to control the amount of contamination from $t\bar{t}$~quark pair processes.
+The $t\bar{t}$ production is the most relevant contribution to the background
+in the present analysis and it becomes the dominant process in events with an
+associated jet multiplicity greater than two.
+In addition to these selections, events are rejected if any jet is
+reconstructed in the forward region of the detector at pseudorapidity
+$|\eta| > 2.4$. Such a forward jet veto is expected to reduce the contribution
+from the production of single $t$~quarks: the topology of these events is
+characterized by the emission of a forward jet in the $s$-channel production mode.
+
+\subsection{Pileup multiplicity}
+\label{sec:pileupreweight}
+
+The number of pileup interactions
+per event is strongly dependent on the operating
+conditions of the LHC colliding beams of protons.
+This contribution can be split into the fraction of collisions
+between protons belonging to the colliding bunches (\textit{in-time}
+pileup) and between protons belonging to the tails of bunches adjacent
+to the colliding ones (\textit{out-of-time} pileup).
+During the 2012 acquisition period, an average of $21$ pileup interactions per
+event were produced, with a peak of $78$ reconstructed pileup vertices
+registered in the 2012D dataset.
+
+The pile-up events distribution in data is calculated by the convolution of the
+bunch crossing instantaneous luminosity and the total inelastic pp cross section.
+In figure~\ref{fig:pileupreweighting} the distribution of the number of
+reconstructed vertices is compared
+in the 2012 \texttt{SingleMuon} dataset and in simulation before and after the
+pileup reweighting procedure, showing that the simulation achieves an acceptable degree
+of agreement with respect to the real data pileup conditions after the
+application of the weights.
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/muons/h_recoVTX}
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/muons/w_recoVTX}
+        \end{center}
+        \caption{The distribution of the number of reconstructed vertices in simulation is
+          compared against
+          the reconstructed number of vertices in real data (black dots) before and
+          after the pileup reweighting procedure, in the left and right plots respectively.}
+        \label{fig:pileupreweighting}
+\end{figure}
+
+\subsection{Selection efficiency}
+\label{sec:genlevelEfficiency}
+
+The efficiency of all the selections applied in this analysis
+is estimated in simulation within
+the generator level fiducial region defined by:
+\begin{itemize}
+  \item one electron or muon with transverse momentum $p_{T} > 30$~GeV and
+    pseudorapidity $|\eta| < 2.1$;
+  \item exactly two $b$-jets with transverse momentum $p_{T} > 25$~GeV and
+    pseudorapidity $|\eta| < 2.4$;
+\end{itemize}
+events with additional leptons or jets are rejected.
+The selected leptons energy has been corrected by summing
+the vector four-momenta of
+all the photons generated within a cone of radius $R = 0.1$
+around the lepton. This correction is meant to recover the
+energy radiated via electroweak final state radiation
+by leptons produced in the hard scattering process.
+Additionally, leptons generated from the decay of a $B$~hadron have
+been rejected, in order to suppress the contribution from
+semileptonic $b$ decays.
+
+Generator level jets are clustered on top of the full list of generated
+stable particles in the event with the exception of neutrinos.
+Jets with a distance smaller than $R = 0.5$ with respect to a
+lepton are rejected.
+The definition of a
+$b$~jet at generator level consists in the requirement of a $B$~hadron to be
+present among the jet constituents and within a cone of radius $R = 0.4$
+with respect to the jet axis.
+No additional cut is applied on the transverse mass of the $W$ boson.
+In this fiducial region, the selection efficiency for this analysis has
+been measured to be equal to:
+$$\epsilon (W \rightarrow e \nu + bb) = (6.99 \pm 1.14) ~ \% $$
+$$\epsilon (W \rightarrow \mu \nu + bb) = (8.20 \pm 1.23) ~ \% $$
+The measurement has been performed on top of the sample of signal $W + bb$ events
+generated with \textsc{MadGraph} in the $4$-flavour scheme 
+and the associated uncertainty corresponds to the propagation of statistical
+uncertainties on the sample of generated events.
+The theoretical uncertainty related to the particular choice of
+the PDF and of the renormalization and factorization scales have not been taken into account here.
+%This point wil be discussed again in the next chapter together with the estimate of 
+%systematic uncertainties. 
+As a reference, the contribution of PDF and
+renormalization and factorization scales in the
+measurement of the selection efficiency has been
+estimated in the previous $W + bb$ analysis performed
+in CMS on the sample of proton-proton collisions at $7$~TeV~\cite{Chatrchyan:2013uza} and
+has been found to contribute for the $10\%$ of the measured cross section.
+
+
+%The signal events are selected requiring:
+%
+%\begin{itemize}
+%\item One muon or electron  
+% \subitem $\pt^\ell>30~\GeV$ and $\abs{\eta^{\ell}}<2.1$ 
+% \subitem passes trigger and Tight ID requirements
+% \subitem passes the Tight Isolation requirements, muon(electron): $I_{rel}^{PF}<0.12(0.10)$
+%\item Rejection of events with a second lepton
+% \subitem $\pt^\ell>10~\GeV$ and $\abs{\eta^\ell}<2.4$
+% \subitem which passes Loose ID and isolation, muon(electron):  $I_{rel}^{PF}<0.20(0.15)$
+%\item Two jets
+% \subitem $\pt^{\text{jets}}>25~\GeV$ and $\abs{\eta^{jets}}<2.4$
+% \subitem Loose Jet ID
+% \subitem both jets pass the CSV tight working point (bdiscriminator > 0.898)
+%\item Rejection of events with more than two jets 
+%\item Rejection of events with a jet with $\ET>25\GeV$ and $2.4<|\eta|<5$, to reduce the $\ttbar$ contamination.
+%\item The transverse mass of the system is required to be $M_{T}>45~\GeV$.
+%\end{itemize}
+%
+%Figure \ref{fig:preselplots} shows the muons $\pt$ and $\eta$, and 
+%$\MT$ distributions  
+%before requiring b-tagging. Good agreement is observed between data and simulation. 
+%%Figure \ref{fig:CSVbdisc} shows the b-tagging CSV discriminator for the leading and subleading jet. 
+%
+%\begin{figure}
+%    \center
+%    \subfloat[]{\label{fig:initialmuonpt}\includegraphics[width=0.3\textwidth]{figs/plots/2j0b_mu_pt_prefit.png}}
+%    \subfloat[]{\label{fig:initialmuoneta}\includegraphics[width=0.3\textwidth]{figs/plots/2j0b_mu_eta_prefit.png}}
+%    \subfloat[]{\label{fig:initialmt}\includegraphics[width=0.3\textwidth]{figs/plots/2j0b_mt_prefit.png}}
+%    \caption{(\ref{fig:initialmuonpt}) Transverse momentum of the muon after selecting only isolated Tight ID Muons 
+%with $p_{T}>$30 GeV and (\ref{fig:initialmuoneta}) $\eta$ distribution of the muon.
+%(\ref{fig:initialmt}) Transverse Mass of the reconstructed
+%W boson while requiring that it be produced in association with two PFchs-Jets each with loose ID,
+% $p_{T} >$ 25 GeV, and $\eta<$2.4. %The MET used in this analysis has been calibrated using the recoil of the W boson.
+% } 
+%    \label{fig:preselplots}
+%\end{figure}
+%
+%

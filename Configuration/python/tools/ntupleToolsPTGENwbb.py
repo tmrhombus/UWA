@@ -1,15 +1,15 @@
 import FWCore.ParameterSet.Config as cms
 
-def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",srcTaggedGenJets="cleanGenJets"):
+def addMCEventTree(process,name,srcGenParticles="genParticles",srcGenLep="dressedLeptons",srcTaggedGenJets="cleanGenJets"):
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
                               coreCollections = cms.VInputTag(
-                                   cms.InputTag(src)
+                                   cms.InputTag(srcGenParticles)
                               ),
 			     # gen Level identification
 	                genID = cms.PSet(
                 	        pluginType = cms.string("GenID"),
-                        	src        = cms.InputTag("genParticles"),
+                        	src        = cms.InputTag(srcGenParticles),
         	        ),
 
                 genID2 = cms.PSet(
@@ -19,7 +19,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
                         saveBs     = cms.untracked.bool(True),
        		        ptMin      = cms.untracked.double(0),
                         etaMax     = cms.untracked.double(10),
-                         src        = cms.InputTag("genParticles"),
+                         src        = cms.InputTag(srcGenParticles),
 
                 ),
 
@@ -157,7 +157,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptons = cms.PSet(
                                     pluginType = cms.string("DressedLeptonFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonPDGID"),
                                     method     = cms.string("pdgId()"),
                                     leadingOnly=cms.untracked.bool(False)
@@ -166,7 +166,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptonsType = cms.PSet(
                                     pluginType = cms.string("DressedLeptonFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonType"),
                                     method     = cms.string("Type()"),
                                     leadingOnly=cms.untracked.bool(False)
@@ -174,7 +174,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptonsMOM = cms.PSet(
                                     pluginType = cms.string("DressedLeptonFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonMotherPDGID"),
                                     method     = cms.string("MotherPDGID()"),
                                     leadingOnly=cms.untracked.bool(False)
@@ -182,7 +182,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptonsOriginalPt = cms.PSet(
                                     pluginType = cms.string("DressedLeptonFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonOriginalPT"),
                                     method     = cms.string("originalPt()"),
                                     leadingOnly=cms.untracked.bool(False)
@@ -190,7 +190,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptonsPT = cms.PSet(
                                     pluginType = cms.string("DressedLeptonFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonPT"),
                                     method     = cms.string("pt()"),
                                     leadingOnly=cms.untracked.bool(False)
@@ -198,7 +198,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptonsETA = cms.PSet(
                                     pluginType = cms.string("DressedLeptonFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonETA"),
                                     method     = cms.string("eta()"),
                                     leadingOnly=cms.untracked.bool(False)
@@ -206,7 +206,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptonsPHI = cms.PSet(
                                     pluginType = cms.string("DressedLeptonFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonPHI"),
                                     method     = cms.string("phi()"),
                                     leadingOnly=cms.untracked.bool(False)
@@ -248,7 +248,7 @@ def addMCEventTree(process,name,src="genParticles",srcMuons="dressedLeptons",src
 
                              dressedLeptonsSIZE = cms.PSet(
                                     pluginType = cms.string("CollectionSizeFiller"),
-                                    src        = cms.InputTag(srcMuons),
+                                    src        = cms.InputTag(srcGenLep),
                                     tag        = cms.string("dressedLeptonSIZE"),
                               ),
 

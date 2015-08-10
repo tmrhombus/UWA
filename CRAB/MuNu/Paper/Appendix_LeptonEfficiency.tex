@@ -1,0 +1,68 @@
+\section{Appendix: Lepton efficiency}
+\label{sec:tagandprobe}
+
+Leptons have been exploited to trigger the events in the datasets
+for this analysis
+and to tag the final state of a $W$ boson decay.
+In these steps several quality requirements have been applied on
+top of the reconstructed leptons,
+as described earlier in this chapter.
+Selection criteria are applied as well at reconstruction level,
+as described in the previous chapter.
+The overall efficiency related to these lepton selection requirements plays a
+leading role in the global efficiency with which $W + bb$ events are
+selected within the defined kinematical phase space.
+This efficiency has been measured with a data driven technique,
+generally referred to as ``\textit{Tag\&Probe}'' method.
+The \textit{Tag\&Probe} exploits the kinematical properties of the
+$Z$ boson decay in order to provide an estimate of selection efficiencies
+independent from simulation. A sample of $Z$ boson decays is tagged by selecting
+events with one isolated lepton and compatible with tight isolation and
+identification requirements. The focus of this \textit{tag} lepton selection
+is to avoid any possible bias on the identification of additional
+leptons in the event, that would mystify the efficiency measurement.
+The actual efficiency measurement is performed on top of the second decay lepton,
+called \textit{probe},
+of the $Z$ with the following simple relation:
+$$ \epsilon = \frac{ N_{passing}^{probes}}{N_{passing}^{probes} + N_{failing}^{probes} } \mathrm{.}$$
+Both the samples of probes that pass or fail the selection, and its efficiency
+is to be measured, contain a fraction of background events where a $Z$ boson has not
+been really produced. The fraction of background to both the samples is subtracted
+by means of an extended Maximum-Likelihood fit to the invariant mass
+of the tag and probe leptons around the $Z$ mass value.
+The signal fraction is parametrized by the convolution of
+a $Z$ generator shape and a Gaussian spread function taking into account
+the response of the detector, while the background is parametrized with several combinations
+of exponential and polynomial functions depending on the kinematical configuration of the
+tag and probe lepton pair: the efficiency is measured in fact  as a function of the
+probe lepton transverse momentum and pseudorapidity. To a smaller extent,
+lepton efficiencies depend on the jet multiplicity and number of pileup interactions
+in the event as well; these dependencies have not been taken into account, since they
+have been found to be negligible within the
+statistical uncertainties on the measured efficiency.
+In figure~\ref{fig:tagandprobefit} an example of a \textit{Tag\&Probe} fit
+is shown.
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.6\textwidth]{figs/trieste_plots/tap}
+        \end{center}
+        \caption{Example of a \textit{Tag\&Probe} fit. In green and red
+          the fit to the invariant mass distribution of the
+          tag and probe lepton pairs for the distribution of the probes
+          respectively passing and failing the selection criterium of
+          which the efficiency is to be measured.
+          In blue the final simultaneous fit on the global distribution
+          in order to compute the efficiency.}
+        \label{fig:tagandprobefit}
+\end{figure}
+
+In this particular analysis the efficiency of trigger, reconstruction and
+offline selection has been separately measured for electrons and muons both
+in data and in Monte Carlo events. From these efficiencies,
+a set of Monte Carlo scale factors has been derived as a function of the
+lepton transverse momentum and pseudorapidity:
+$$SF_{HLT,~reco,~offline~ID/ISO} (p_{T},\eta) = \frac{\epsilon_{HLT,~reco,~offline~ID/ISO}^{data}}{\epsilon_{HLT,~reco,~offline~ID/ISO}^{MC}} \mathrm{.}$$
+These scale factors have been used to reweight simulated events in order obtain
+a consistent description of lepton selection effeciencies with respect to real data.

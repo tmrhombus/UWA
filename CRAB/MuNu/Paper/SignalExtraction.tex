@@ -1,0 +1,352 @@
+\section{Signal Extraction}\label{BkgControl2}
+\subsection{Fit Methodology}
+The goal of this analysis is to study the process W$+\gBB$ where
+each b parton hadronizes and forms a jet; to minimize effects due to colinear 
+production of b-hadrons and the occurence of one b-hadron falling outside the
+accceptance, it is required that the two highest-$p_{T}$ jets are both
+b-Tagged. 
+The Combined Secondary Vertex Tight working point is chosen to maximize
+both the $\Wbb $ signal significance and the signal to background ratio.
+It is especially effective at minimizing $\Wcc$ contamination.
+
+The cross-sections for the primary backgrounds are taken from previous studies at 
+8 TeV, the shapes are taken from Monte Carlo, as previously mentioned.
+These background normalizations are verified in Section ~\ref{BkgControl}.
+Each background physics process is included in the fit as a nuisance parameter where the distrbution of the number of events for the process is considered to have a logarithmic normal shape where the uncertainty as quoted in Table \ref{tab:NuisanceTable} are $\pm1\sigma$ during the final fit.\\
+
+
+\begin{table}[htb]
+\begin{center}
+\small
+\begin{tabular}{|r|l|l|}
+\hline
+Source    &Nuisance   &Contribution\\
+          &Parameter  &to Final Systematics [\%]\\
+\hline
+Jet Energy Clustering   & $10\%$      &0.0  \\
+b-Tag Efficiency        & $12\%$      &2.9  \\
+b-Tag Efficiency: Charm & $24\%$      &9.4  \\
+b-Tag Fake Rate         & $15\%$      &5.5  \\
+Single Top Scale        & $8\%$       &6.1  \\
+TTbar Scale             & $20\%$      &38.3 \\
+Single AntiTop Scale    & $10\%$      &4.1  \\
+Diboson Scale           & $17\%$      &0.4  \\
+W+cc                    & $50\%$      &17.6 \\ 
+Z+Jets                  & $10\%$      &1.7  \\
+Single Top tW Scale     & $30\%$      &20.7 \\
+Top Efficiency          & $6\% $      &41.3 \\
+Jet Energy Scale        & 1 $\sigma$  &2.0  \\
+Luminosity              & 2.6         &1.5  \\
+Muon Energy Scale       & $1\sigma$   &80.4 \\
+QCD MC                  & $50\%$      &41.4 \\
+W+Light Jets            & $50\%$      &15.9 \\
+\hline
+\end{tabular}
+\caption{Systematic Uncertainties}%Add in MC Uncertainties here??
+\label{tab:NuisanceTable}
+\end{center}
+\end{table}
+
+
+
+
+
+%\begin{table}[htb]
+%\begin{center}
+%\small
+%\begin{tabular}{|c|c|c|}
+%\hline
+%Source&Contribution&Contribution\\ 
+%&to Final Systematics [pb]&to Final Systematics [\%]\\
+%\hline
+%b-Tag Efficiency& 0.070&11.5\\
+%b-Tag Efficiency TOP/C& 0.016&4.5\\
+%Luminosity& 0.021&2.2\\
+%Jet Energy Scale&0.025&2.0\\
+%Jet Energy Clustering&0.005&0.4\\
+%Muon Energy Scale + Efficiency& 0.007&0.6\\
+%QCD MC&0.022&1.3\\
+%Top MC&0.022&2\\
+%Other MC Backgrounds&0.014&1.1\\
+%Total& 0.18 pb&13.5\%\\
+%\hline
+%Luminosity& 0.021&2.2\\
+%\hline
+%%Fit (Shape uncertainty) & $7\%$ \\
+%\hline
+%\end{tabular}
+%\caption{Systematic Uncertainties}%Add in MC Uncertainties here??
+%\label{tab:NuisanceTable}
+%\end{center}
+%\end{table}
+
+%\begin{table}[htb]
+%\begin{center}
+%\small
+%\begin{tabular}{|c|c|}
+%\hline
+%Source &Contribution\\ 
+%~&to Final Systematics\\
+%\hline
+%b-Tag Efficiency       & $33\%$\\
+%b-Tag Efficiency TOP   & $5\%$\\
+%b-Tag Efficiency C     & $4\%$\\
+%Luminosity             & $0.4\%$\\
+%Jet Energy Scale       &  $27\%$\\
+%Jet Energy Clustering  & $<1\%$\\
+%Muon Energy Scale      &$<1\%$\\
+%$t\bar{t}$ MC          &$1.6\%$\\
+%W$+c\bar{c}$ MC        &$4\%$\\
+%QCD MC                 &$16\%$\\
+%Other MC Backgrounds   & $3.7\%$\\
+%\hline
+%Total& $100\%$\\
+%\hline
+%\end{tabular}
+%\caption{Contribution of each one of the systematic ncertainties. Note that the }
+%%Add in MC Uncertainties here??
+%\label{tab:NuisanceTable}
+%\end{center}
+%\end{table}
+%
+
+%When fitting nuisance parameters where it is expected that a varying of the 
+%value will be propagated to either the  
+%Transverse mass of the W or to $H_{T}$ then a shape uncertainty is included. For
+%example, when considering the Jet Clustering Energy Uncertainty the 
+%Jet Clustering (JEC) threshold is varied by $\pm10\%$ this is then 
+%propagated to the Missing $E_{T}$ by varying the JEC threshold and
+%re-summing the total energy in the event and using this re-summation 
+%to calculate the Missing $E_{T}$ and the Transverse Mass of the W. 
+%The shape variation for JEC uncertainty in the Transverse Mass of the W 
+%is shown in figure (\ref{fig:UCEVariation}). 
+
+For this study the final yields are extracted via a binned maximum likelihood fit.
+Furthermore, to constrain the most prominent backgrounds and reduce the final
+systematic uncertainty a combined fit is performed on 
+two regions: the signal, $\Wbb$, region which is designed to maximize the $\Wbb$ signal
+significance, and is described in Section (\ref{bjetselection}) and an orthogonal background region
+referred to in Secion \ref{section:topbackgrounds} as $\ttbar$ multilepton
+which was chosen to accurately estimate the $t\bar{t}$ background.
+
+The final signal selection is summarized in Table (\ref{tab:FitRegions}).
+
+\begin{table}[htb]
+\center
+\begin{tabular}{r|c|c}
+\hline
+Variable&Signal Region &$t\bar{t}$ Region\\
+  \hline
+  \hline
+  \# Jets $p_{T}>$ 25 GeV $\eta<2.4$&2&$2$\\
+  \# Jets $p_{T}>$ 25 GeV $2.4<\eta<4.5$&0&0\\
+  \# Isolated Leptons&1&2\\
+  Secondary Vertex& 1 per Jet&1 per Jet\\
+\hline
+\hline
+\end{tabular}
+\caption{Selection Requirements on $\Wbb $ Signal and $t\bar{t}$ Background Regions.}
+\label{tab:FitRegions}
+\end{table}
+
+%The fit for the Signal Region is performed on a two dimensional phase space of the 
+%Transverse Mass of the selected W boson versus $H_{T}$. Any background process with 
+%a contribution to the total yield of over $0.5\%$ is included as a niusance paramenter 
+%in the fit. 
+
+The background region is designed to select $t\bar{t}$ events. This is done
+by requiring one isolated muon and one isolated electron;
+the two highest $p_{T}$ jets are required to be b-tagged with a CSV discriminant 
+at the tight working point.
+During the fit the assigned uncertainty to the $t\bar{t}$ background is taken to be completely correlated between the signal and background regions. The 
+other MC backgrounds are considered uncorrelated and are only included in the 
+$t\bar{t}$ shape fit if their contribution is greater than $0.5\%$.
+
+The fit is done simultaneously in the signal and background regions. An iterative 
+minimization is performed using Minuit2 and the Migrad minimization 
+algorithm to determine the final scale factor value and error. \cite{MNUserGuide}
+
+\subsection{Fit Results \label{sec:SignalExtraction}}
+
+The fitted yields in the signal region for each one of the processes involved can be found in Table \ref{tab:fitYields}, compared to the
+original Monte Carlo prediction. 
+
+XXXXX DIFFERENT VERSIONS OF THE FIT XXXXXXXXX
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{r|l|l|l}
+\bf{W+bb} & \multicolumn{3}{c}{Fit Result: r = 1.309 $\pm$ 0.268}\\
+{} & \multicolumn{3}{c}{Fit Bias: 1.0004 $\pm$ 0.243}\\
+{}         & PreFit  & PostFit & Ratio \\ \hline
+W+bb       & 951.66  & 1261.53 & 1.33\\
+W+cc       & 123.78  & 111.39  & 0.90\\
+W+udscg    & 68.45   & 54.25   & 0.79\\
+TTbar      & 2352.17 & 2626.31 & 1.12\\
+Top        & 397.63  & 408.37  & 1.03\\
+Tbar       & 227.15  & 234.54  & 1.03\\
+T tW       & 88.60   & 86.89   & 0.98\\
+Drell-Yan  & 102.17  & 107.15  & 1.05\\
+Diboson    & 116.24  & 117.16  & 1.01\\
+QCD        & 387.06  & 327.32  & 0.85\\
+Total MC   & 4814.92 & 5334.91 & 1.11\\
+\hline \hline
+Data  & \multicolumn{2}{c|}{5335.0} & 1.000
+\end{tabular}
+\caption{Yields of MC samples before and after the fitting.}
+\label{tab:fitYields}
+\end{center}
+\end{table}
+
+
+%We perform two versions of the fit. In Fit A, we supress the light and jet contribution to a minimum 
+%by selecting two CSVT bjets. The only remaining backgrounds are top-related, and are found to be well separated from the signal using 
+%the transverse momentum distribution of the leading jet. 
+%In this case, the total number of observed data events in the signal region are $N_{(S+B)}=1110\pm33$. 
+%
+%In Fit B, we loosen the btagging criteria (2 CSVM bjets) and then fit to the two-dimensional distribution of the 
+%$h_T$ and the sum of the invariant masses of the two jets. In this case, the total number of observed data events in the signal region are $N_{(S+B)}=1980\pm44$.
+%
+%Only Fit A  will be used in the final unfolding of the cross-section in the next section. Fit B is considered to be a cross-check of the robustness of the analysis
+%versus $\Wcc$ contamination.
+%
+%In both cases the top contribution is constrained in a dedicated signal region (4 jets, 2 btagged, Table~\ref{tab:FitRegions})  
+%by a fit to the invariant mass of the two non-btagged jets (W Mass).
+%
+%The signal strength obtained for the $\Wbb$ signal is in very good agreement in the two fits, and measured to be:
+%\begin{itemize}
+%\item Fit A: 2 CSV Tight b-Tags (Main analysis) 
+%\begin{eqnarray}
+%\rho_{\Wbb}=0.90 \pm 0.08 (stat.) ^{-0.13}_{+0.16} (syst.)
+%\nonumber
+%\end{eqnarray}
+%\item Fit B: 2 CSV Medium b-Tags (Cross-Check)
+%\begin{eqnarray}
+%\rho_{\Wbb}=0.87 \pm 0.07 (stat.) ^{-0.13}_{+0.14} (syst.) % This is what comes out of the tool 
+%\nonumber
+%\end{eqnarray}
+%\end{itemize}
+%
+%\begin{table}[htb]
+%\begin{tabular}{|c|c|c| c|c|c| c|c|c|c|}
+%\hline
+%\multicolumn{9}{|c|}{Fit A: 2 CSVT b-jets } \\
+%\hline
+%Process                &\Wbb         &W+light         & \Wc($\bar{c}$) &Z+jets          &$t\bar{t}$    &Single Top     & VV             &QCD \\
+%
+%\hline                 %& 301.7      & 1.              &20             & 29.4          &542.2          &142.0     &16.9           &43.4   \\
+%MC prediction          & 332.3       & 1.5             & 21.0          & 30.9          &595.5          &160.3     &18.9           &33.1 \\
+%
+%\hline
+%Fitted                 &300          &1               & 20.3            &32.2          &647          &169.6          &17.1           &33. \\
+%Yields                 &$-56/+63 $       &1\pm1      & $\pm 4.1$     & $\pm 2.9$     & $\pm 51.8$  & $\pm 12.8$     & $\pm 3.4$    & $\pm 16$\\
+%
+%\hline\hline
+%\multicolumn{9}{|c|}{Fit B: 2 CSVM b-jets } \\
+%\hline
+%Process                &\Wbb         &W+light         & \Wc($\bar{c}$) &Z+jets          &$t\bar{t}$    &Single Top     & VV             &QCD \\
+%\hline                %& 526      & 30.1       &228.8       & 66.2              &983.8        &307        &31.2                &83.4   \\
+%MC prediction          & 557.5       & 18.9           &169.2           & 54.8           &893.8         &273.9           &33.1           &18.9\\          
+%\hline
+%Fitted                 &479          &19.0             & 266            &68            &928.6          &282.          &31           &20. \\
+%Yields                 &$-71/+67 $       &$\pm1.9$       & $\pm 19$     & $\pm 7$     & $\pm 46.4$       & $\pm 27.7$     & $\pm 13.$    & $\pm 5$\\
+%\hline
+%\end{tabular}
+%\caption{Comparison of the Monte Carlo expected contributions for each one of the processes involved in the measurement and the results of the likelihood minimization performed.
+%These yields correspond to the signal region (see Table~\ref{tab:FitRegions}).}
+%\label{tab:fitYields}
+%\end{table}
+
+Figure~\ref{fig:postfits} illustrates the results of the fit in both the Signal and TTbar background regions. 
+The observed data distribution is found to be in good agreement with the prediction by the \MADGRAPH+\PYTHIA Monte Carlo. 
+
+\begin{figure}
+\center
+\subfigure[]{\label{fig:sig_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/2j2b_mt_fitted.png}}
+\subfigure[]{\label{fig:tt_mt_post}\includegraphics[width=0.4\textwidth]{figs/plots/2j2b_1m1e_mt_fitted.png}}
+\caption{Results of the fit in the Signal (\ref{fig:sig_mt_post}) and TTbar multilepton (\ref{fig:tt_mt_post}) regions. Shown here are the transverse mass distributions.}
+\label{fig:postfits}
+\end{figure}
+
+
+%\begin{figure}[!hbtp]
+%    \center
+%    \includegraphics[width=0.6\textwidth]{fig/initial/highestJetPt.pdf}
+%    \caption{Main analysis. Distribution for the highest jet $P_{T}$ in a tight selection (CVST b-jets). Monte Carlo predictions are 
+%    normalized to the results of the fit. }
+%    %\caption{Leading Order Decay Mode for \Wmnbb}
+%    \label{fig:2tightregion}
+%  %\end{center}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%    \center
+%    \subfigure[]{\label{fig:finalJ1SVMass}\includegraphics[width=0.45\textwidth]{fig/final/J1SVMass.pdf}}
+%    \subfigure[]{\label{fig:finalJ2SVMass}\includegraphics[width=0.45\textwidth]{fig/final/J2SVMass.pdf}} 
+%    \caption{Fit B cross-check analysis. Secondary Vertex Mass distributions for the leading (right) and subleading (left) jets with two medium b-tags. The Monte Carlo predictions are 
+%normalized to the results of the fit. }
+%      \label{fig:postfitdistributionsSV}
+%\end{figure}
+%
+%Figure~\ref{fig:postfitdistributions} shows different aspects of the W and dijet system in the signal region, also normalized to
+%the results of our likelihood minimization. The agreement observed with the transverse mass ($M_T$), missing transverse energy ($E_T^{miss}$), W transverse momentum 
+%(W~$p_T$)
+%and transverse hadronic energy of the system ($H_T$) is shown to agree with Monte Carlo to within 1 sigma. % "Very good" is very unscientific 
+%
+%\begin{figure}[htbp]
+%    \center
+%
+%    \subfigure[]{\label{fig:finalMtCal}\includegraphics[width=0.45\textwidth]{fig/final/tight/MtCal.pdf}} 
+%    \subfigure[]{\label{fig:finalJ1J2DR}\includegraphics[width=0.45\textwidth]{fig/final/tight/J1J2_DeltaR.pdf}} \\  % This is broken!!
+%%    \subfigure[]{\label{fig:finalJ1J2DR}\includegraphics[width=0.45\textwidth]{fig/final/tight/deltaR_2CSVT.png}} \\
+%    \subfigure[]{\label{fig:finalWPt}\includegraphics[width=0.45\textwidth]{fig/final/tight/WPt.pdf}}
+%    \subfigure[]{\label{fig:finalmJJ}\includegraphics[width=0.45\textwidth]{fig/final/tight/mJJ.pdf}}
+%% there is some problem with these plots:
+%%    \subfigure[]{\label{fig:finalMjj}\includegraphics[width=0.25\textwidth]{fig/final/mJJ.pdf}}
+%%    \subfigure[]{\label{fig:finalPtJJ}\includegraphics[width=0.25\textwidth]{fig/final/ptJJ.pdf}}
+%    \caption{Distributions of kinematic variables of the W+dijet system in the signal region with two tight b-tags. Monte Carlo predictions are 
+%normalized to the results of the fit.}
+%      \label{fig:postfitdistributions}
+%\end{figure}
+%
+%More kinematical distributions describing the $\Wbb$ system can be found in Appendix~\ref{chapter:InitialDist}.
+%
+%\begin{figure}[!hbtp]
+%    \center
+%    \subfloat[High $p_{T}$ Jet Secondary Vertex Mass]{\label{fig:J1CSVbtag}\includegraphics[height=7cm]{fig/final/J1SVMass.pdf}}
+%    \subfloat[Second $p_{T}$ Jet Secondary Vertex Mass]{\label{fig:J2CSVbtag}\includegraphics[height=7cm]{fig/final/J2SVMass.pdf}}
+%    \caption{Highest $p_{T}$ and second highest $p_{T}$ Secondary Vertex masses.}
+%    %\caption{Leading Order Decay Mode for \Wmnbb}
+%    \label{fig:SVMassFinal}
+%  %\end{center}
+%\end{figure}
+
+
+%\begin{figure}[!hbtp]
+%    \center
+%    \subfloat[Transverse Mass of W]{\label{fig:Mt}\includegraphics[height=7cm]{fig/final/MtCal.pdf}}
+%    \subfloat[Missing ET]{\label{fig:MET}\includegraphics[height=7cm]{fig/final/met.pdf}}
+%    \caption{Transverse Mass and Missing ET.}
+%    %\caption{Leading Order Decay Mode for \Wmnbb}
+%    \label{fig:MTfinal}
+  %\end{center}
+%\end{figure}
+
+
+%\subsection{Additional tests to the stability of the fit}
+%
+%\begin{table}[htb]
+%\begin{tabular}{|c|c|c|c|c|}
+%\hline
+%              & $M_{jj}$ (W Mass)        &  No  $t\bar{t}$          &  $t\bar{t}$ scaled to dilepton            & Dilepton   \\
+%              & Control Region           &  Control Region          &  ($M_{jj}$ only for JES)                  & Control Region                    \\ \hline
+%$\rho(\Wbb)$  & $0.90_{-0.16}^{+0.18}$   &  $0.88_{-0.18}^{+0.22}$  &  $0.90_{-0.16}^{+0.19}$                   &  $0.94_{-0.18}^{+0.19}$   \\ \hline
+%ttbar expected& 595.5                    & 595.5                    & 535.9                                     &  595.5  \\           
+%ttbar fitted  & $647.3\pm8\%$            & $655 \pm8\%$             &  $639.2 \pm7\%$                           &  $621\pm9.5\%$ \\ \hline 
+%JES           & $-0.75\pm 0.28 \sigma$   & $-0.5\pm 1.05 \sigma$     &  $-0.75\pm 0.30 \sigma$                   &  $-1.0\pm 0.65 \sigma$  \\ \hline          
+%\end{tabular}
+%\caption{ Cross-Check fits to test the stability of the ttbar background.
+%} 
+%\label{tab:ttbarChecks}
+%\end{table}
+%

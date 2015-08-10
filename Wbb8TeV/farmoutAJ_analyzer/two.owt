@@ -1,0 +1,12 @@
+nohup: ignoring input
+
+Processing callHistoFiller.cc...
+Info in <TUnixSystem::ACLiC>: creating shared library /afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/Wbb8TeV/farmoutAJ_analyzer/./histoFiller_C.so
+Sample = ./test/TTsemi
+Shift = SFs
+Output File Name: ./test/TTsemi-TWO-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root
+Input File Name: /hdfs/store/user/tperry/Mars_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root
+    entry 0
+    entry 100000
+    entry 200000
+    entry 300000

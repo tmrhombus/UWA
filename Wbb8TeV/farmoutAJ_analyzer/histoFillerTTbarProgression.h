@@ -736,14 +736,14 @@ public :
    Float_t         puTruth;
    Float_t         puBX0;
    Float_t         puBXplus;
-   Float_t         qcdEle_charge;
-   Float_t         qcdEle_eta;
-   Float_t         qcdEle_phi;
-   Float_t         qcdEle_pt;
-   Float_t         qcdMu_charge;
-   Float_t         qcdMu_eta;
-   Float_t         qcdMu_phi;
-   Float_t         qcdMu_pt;
+   vector<double>  *qcdEle_charge_vec;
+   vector<double>  *qcdEle_eta_vec;
+   vector<double>  *qcdEle_phi_vec;
+   vector<double>  *qcdEle_pt_vec;
+   vector<double>  *qcdMu_charge_vec;
+   vector<double>  *qcdMu_eta_vec;
+   vector<double>  *qcdMu_phi_vec;
+   vector<double>  *qcdMu_pt_vec;
    Float_t         weightTop;
    Float_t         topPt;
    Float_t         antitopPt;
@@ -751,24 +751,20 @@ public :
    Int_t           HLT_IsoMu24_eta2p1_v_fired;
    Int_t           HLT_IsoMu24_eta2p1_v_prescale;
    Int_t           HLT_IsoMu24_eta2p1_v_error;
-   Int_t           HLT_Mu40_eta2p1_v_wasRun;
-   Int_t           HLT_Mu40_eta2p1_v_fired;
-   Int_t           HLT_Mu40_eta2p1_v_prescale;
-   Int_t           HLT_Mu40_eta2p1_v_error;
    Int_t           HLT_Ele27_WP80_wasRun;
    Int_t           HLT_Ele27_WP80_fired;
    Int_t           HLT_Ele27_WP80_prescale;
    Int_t           HLT_Ele27_WP80_error;
    Int_t           HLT_Any;
    Int_t           vertices;
-   Float_t         vetoEle_charge;
-   Float_t         vetoEle_eta;
-   Float_t         vetoEle_phi;
-   Float_t         vetoEle_pt;
-   Float_t         vetoMu_charge;
-   Float_t         vetoMu_eta;
-   Float_t         vetoMu_phi;
-   Float_t         vetoMu_pt;
+   vector<double>  *vetoEle_charge_vec;
+   vector<double>  *vetoEle_eta_vec;
+   vector<double>  *vetoEle_phi_vec;
+   vector<double>  *vetoEle_pt_vec;
+   vector<double>  *vetoMu_charge_vec;
+   vector<double>  *vetoMu_eta_vec;
+   vector<double>  *vetoMu_phi_vec;
+   vector<double>  *vetoMu_pt_vec;
 
    // List of branches
    TBranch        *b_EVENT;   //!
@@ -1032,14 +1028,14 @@ public :
    TBranch        *b_puTruth;   //!
    TBranch        *b_puBX0;   //!
    TBranch        *b_puBXplus;   //!
-   TBranch        *b_qcdEle_charge;   //!
-   TBranch        *b_qcdEle_eta;   //!
-   TBranch        *b_qcdEle_phi;   //!
-   TBranch        *b_qcdEle_pt;   //!
-   TBranch        *b_qcdMu_charge;   //!
-   TBranch        *b_qcdMu_eta;   //!
-   TBranch        *b_qcdMu_phi;   //!
-   TBranch        *b_qcdMu_pt;   //!
+   TBranch        *b_qcdEle_charge_vec;   //!
+   TBranch        *b_qcdEle_eta_vec;   //!
+   TBranch        *b_qcdEle_phi_vec;   //!
+   TBranch        *b_qcdEle_pt_vec;   //!
+   TBranch        *b_qcdMu_charge_vec;   //!
+   TBranch        *b_qcdMu_eta_vec;   //!
+   TBranch        *b_qcdMu_phi_vec;   //!
+   TBranch        *b_qcdMu_pt_vec;   //!
    TBranch        *b_weightTop;   //!
    TBranch        *b_topPt;   //!
    TBranch        *b_antitopPt;   //!
@@ -1047,24 +1043,20 @@ public :
    TBranch        *b_HLT_IsoMu24_eta2p1_v_fired;   //!
    TBranch        *b_HLT_IsoMu24_eta2p1_v_prescale;   //!
    TBranch        *b_HLT_IsoMu24_eta2p1_v_error;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_wasRun;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_fired;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_prescale;   //!
-   TBranch        *b_HLT_Mu40_eta2p1_v_error;   //!
    TBranch        *b_HLT_Ele27_WP80_wasRun;   //!
    TBranch        *b_HLT_Ele27_WP80_fired;   //!
    TBranch        *b_HLT_Ele27_WP80_prescale;   //!
    TBranch        *b_HLT_Ele27_WP80_error;   //!
    TBranch        *b_HLT_Any;   //!
    TBranch        *b_vertices;   //!
-   TBranch        *b_vetoEle_charge;   //!
-   TBranch        *b_vetoEle_eta;   //!
-   TBranch        *b_vetoEle_phi;   //!
-   TBranch        *b_vetoEle_pt;   //!
-   TBranch        *b_vetoMu_charge;   //!
-   TBranch        *b_vetoMu_eta;   //!
-   TBranch        *b_vetoMu_phi;   //!
-   TBranch        *b_vetoMu_pt;   //!
+   TBranch        *b_vetoEle_charge_vec;   //!
+   TBranch        *b_vetoEle_eta_vec;   //!
+   TBranch        *b_vetoEle_phi_vec;   //!
+   TBranch        *b_vetoEle_pt_vec;   //!
+   TBranch        *b_vetoMu_charge_vec;   //!
+   TBranch        *b_vetoMu_eta_vec;   //!
+   TBranch        *b_vetoMu_phi_vec;   //!
+   TBranch        *b_vetoMu_pt_vec;   //!
 
    histoFillerTTbarProgression(TTree *tree=0, Bool_t isMC=kTRUE);
    virtual ~histoFillerTTbarProgression();
@@ -1105,12 +1097,20 @@ histoFillerTTbarProgression::histoFillerTTbarProgression(TTree *tree, Bool_t isM
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root");
+         f = new TFile("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root:/muEleEventTree");
+      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
       dir->GetObject("eventTree",tree);
+
+
+//      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root");
+//      if (!f || !f->IsOpen()) {
+//         f = new TFile("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root");
+//      }
+//      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root:/muEleEventTree");
+//      dir->GetObject("eventTree",tree);
       //std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
       //std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
 
@@ -1357,6 +1357,22 @@ void histoFillerTTbarProgression::Init(TTree *tree, Bool_t isMC)
    goodMu_mass_vec = 0; 
    goodMu_phi_vec = 0; 
    goodMu_pt_vec = 0; 
+   qcdEle_charge_vec = 0; ////
+   qcdEle_eta_vec = 0;
+   qcdEle_phi_vec = 0;
+   qcdEle_pt_vec = 0;
+   qcdMu_charge_vec = 0;
+   qcdMu_eta_vec = 0;
+   qcdMu_phi_vec = 0;
+   qcdMu_pt_vec = 0;
+   vetoEle_charge_vec = 0;
+   vetoEle_eta_vec = 0;
+   vetoEle_phi_vec = 0;
+   vetoEle_pt_vec = 0;
+   vetoMu_charge_vec = 0;
+   vetoMu_eta_vec = 0;
+   vetoMu_phi_vec = 0;
+   vetoMu_pt_vec = 0;
 
    // Set branch addresses and branch pointers
    if (!tree) return;
@@ -1629,36 +1645,32 @@ void histoFillerTTbarProgression::Init(TTree *tree, Bool_t isMC)
    fChain->SetBranchAddress("puTruth", &puTruth, &b_puTruth);
    fChain->SetBranchAddress("puBX0", &puBX0, &b_puBX0);
    fChain->SetBranchAddress("puBXplus", &puBXplus, &b_puBXplus);
-   fChain->SetBranchAddress("qcdEle_charge", &qcdEle_charge, &b_qcdEle_charge);
-   fChain->SetBranchAddress("qcdEle_eta", &qcdEle_eta, &b_qcdEle_eta);
-   fChain->SetBranchAddress("qcdEle_phi", &qcdEle_phi, &b_qcdEle_phi);
-   fChain->SetBranchAddress("qcdEle_pt", &qcdEle_pt, &b_qcdEle_pt);
-   fChain->SetBranchAddress("qcdMu_charge", &qcdMu_charge, &b_qcdMu_charge);
-   fChain->SetBranchAddress("qcdMu_eta", &qcdMu_eta, &b_qcdMu_eta);
-   fChain->SetBranchAddress("qcdMu_phi", &qcdMu_phi, &b_qcdMu_phi);
-   fChain->SetBranchAddress("qcdMu_pt", &qcdMu_pt, &b_qcdMu_pt);
+   fChain->SetBranchAddress("qcdEle_charge_vec", &qcdEle_charge_vec, &b_qcdEle_charge_vec);
+   fChain->SetBranchAddress("qcdEle_eta_vec", &qcdEle_eta_vec, &b_qcdEle_eta_vec);
+   fChain->SetBranchAddress("qcdEle_phi_vec", &qcdEle_phi_vec, &b_qcdEle_phi_vec);
+   fChain->SetBranchAddress("qcdEle_pt_vec", &qcdEle_pt_vec, &b_qcdEle_pt_vec);
+   fChain->SetBranchAddress("qcdMu_charge_vec", &qcdMu_charge_vec, &b_qcdMu_charge_vec);
+   fChain->SetBranchAddress("qcdMu_eta_vec", &qcdMu_eta_vec, &b_qcdMu_eta_vec);
+   fChain->SetBranchAddress("qcdMu_phi_vec", &qcdMu_phi_vec, &b_qcdMu_phi_vec);
+   fChain->SetBranchAddress("qcdMu_pt_vec", &qcdMu_pt_vec, &b_qcdMu_pt_vec);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_wasRun", &HLT_IsoMu24_eta2p1_v_wasRun, &b_HLT_IsoMu24_eta2p1_v_wasRun);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_fired", &HLT_IsoMu24_eta2p1_v_fired, &b_HLT_IsoMu24_eta2p1_v_fired);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_prescale", &HLT_IsoMu24_eta2p1_v_prescale, &b_HLT_IsoMu24_eta2p1_v_prescale);
    fChain->SetBranchAddress("HLT_IsoMu24_eta2p1_v_error", &HLT_IsoMu24_eta2p1_v_error, &b_HLT_IsoMu24_eta2p1_v_error);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_wasRun", &HLT_Mu40_eta2p1_v_wasRun, &b_HLT_Mu40_eta2p1_v_wasRun);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_fired", &HLT_Mu40_eta2p1_v_fired, &b_HLT_Mu40_eta2p1_v_fired);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_prescale", &HLT_Mu40_eta2p1_v_prescale, &b_HLT_Mu40_eta2p1_v_prescale);
-   fChain->SetBranchAddress("HLT_Mu40_eta2p1_v_error", &HLT_Mu40_eta2p1_v_error, &b_HLT_Mu40_eta2p1_v_error);
    fChain->SetBranchAddress("HLT_Ele27_WP80_wasRun", &HLT_Ele27_WP80_wasRun, &b_HLT_Ele27_WP80_wasRun);
    fChain->SetBranchAddress("HLT_Ele27_WP80_fired", &HLT_Ele27_WP80_fired, &b_HLT_Ele27_WP80_fired);
    fChain->SetBranchAddress("HLT_Ele27_WP80_prescale", &HLT_Ele27_WP80_prescale, &b_HLT_Ele27_WP80_prescale);
    fChain->SetBranchAddress("HLT_Ele27_WP80_error", &HLT_Ele27_WP80_error, &b_HLT_Ele27_WP80_error);
    fChain->SetBranchAddress("HLT_Any", &HLT_Any, &b_HLT_Any);
    fChain->SetBranchAddress("vertices", &vertices, &b_vertices);
-   fChain->SetBranchAddress("vetoEle_charge", &vetoEle_charge, &b_vetoEle_charge);
-   fChain->SetBranchAddress("vetoEle_eta", &vetoEle_eta, &b_vetoEle_eta);
-   fChain->SetBranchAddress("vetoEle_phi", &vetoEle_phi, &b_vetoEle_phi);
-   fChain->SetBranchAddress("vetoEle_pt", &vetoEle_pt, &b_vetoEle_pt);
-   fChain->SetBranchAddress("vetoMu_charge", &vetoMu_charge, &b_vetoMu_charge);
-   fChain->SetBranchAddress("vetoMu_eta", &vetoMu_eta, &b_vetoMu_eta);
-   fChain->SetBranchAddress("vetoMu_phi", &vetoMu_phi, &b_vetoMu_phi);
-   fChain->SetBranchAddress("vetoMu_pt", &vetoMu_pt, &b_vetoMu_pt);
+   fChain->SetBranchAddress("vetoEle_charge_vec", &vetoEle_charge_vec, &b_vetoEle_charge_vec);
+   fChain->SetBranchAddress("vetoEle_eta_vec", &vetoEle_eta_vec, &b_vetoEle_eta_vec);
+   fChain->SetBranchAddress("vetoEle_phi_vec", &vetoEle_phi_vec, &b_vetoEle_phi_vec);
+   fChain->SetBranchAddress("vetoEle_pt_vec", &vetoEle_pt_vec, &b_vetoEle_pt_vec);
+   fChain->SetBranchAddress("vetoMu_charge_vec", &vetoMu_charge_vec, &b_vetoMu_charge_vec);
+   fChain->SetBranchAddress("vetoMu_eta_vec", &vetoMu_eta_vec, &b_vetoMu_eta_vec);
+   fChain->SetBranchAddress("vetoMu_phi_vec", &vetoMu_phi_vec, &b_vetoMu_phi_vec);
+   fChain->SetBranchAddress("vetoMu_pt_vec", &vetoMu_pt_vec, &b_vetoMu_pt_vec);
 
    Notify();
 }

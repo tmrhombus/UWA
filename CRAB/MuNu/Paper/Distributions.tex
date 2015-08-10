@@ -1,0 +1,167 @@
+%-------------------
+\section{Detector level distributions}
+\label{sec:detectorlevel}
+
+The interesting kinematical observables of the $W + bb$ system are presented here
+for the selection described in section~\ref{sec:wbbselection} performed on the
+data and Monte Carlo samples listed in section~\ref{sec:dataset}.
+The signal component has been selected in the sample of $W + bb$ generated with
+\textsc{MadGraph} in the $4$-flavour number scheme.
+The simulated events have been reweighted with the procedures
+described in section~\ref{sec:scalefactors},
+in order to achieve the best possible
+agreement with real data.
+The signal $W + bb$ contribution, along with the contribution of top-antitop, QCD and
+Single~top background processes, has been estimated with the fitting procedure
+described in the previous section (sec.~\ref{sec:transversemassfit}).
+The distributions are shown at detector level,
+meaning that no effort has been spent in
+deconvolving the detector response function from the measured distributions.
+Results are shown both for the $W \rightarrow e \nu + bb$ and for the
+$W \rightarrow \mu \nu + bb$.
+The following list includes all the relevant kinematical distribution of
+the $W + bb$ system presented here:
+\begin{itemize}
+  \item the transverse momentum $p_{T}$ of the first and of the second $b$-jet
+    in the event, in order of decreasing $p_{T}$, are shown in
+    figures~\ref{fig:1stjetpt} and~\ref{fig:2ndjetpt};
+  \item the pseudorapidity $\eta$ of the first and of the second $b$-jet,
+    in figures~\ref{fig:1stjeteta} and~\ref{fig:2ndjeteta};
+  \item the $p_{T}$ and $\eta$ of the di-jet system, defined as the
+     two $b$-jets four-momentum vector sum in figures~\ref{fig:dijetpt} and~\ref{fig:dijeteta};
+  \item the transverse momentum $p_{T}$ of the $W$ boson, defined as the
+    vector sum of the $\vec{E}_{T}^{miss}$ and the $p_{T}$ of the lepton,
+    in figure~\ref{fig:Wpt};
+  \item the angular distance $\Delta R$ in the $(\phi,\eta)$~space between the two
+    $b$-jets, in figure~\ref{fig:bjetDeltaR};
+  \item the polar angle $\Delta \phi$ between the two
+    $b$-jets, in figure~\ref{fig:bjetDeltaPhi};
+  \item the jet $H_{T}$ observable, defined as the scalar sum of the
+    transverse momentum of all the jets in the event ($H_{T} = \sum_{i = jets} p_{T}(i)$),
+    in figure~\ref{fig:jetHt};
+\end{itemize}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_first_jet_pt_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_first_jet_pt_bb}
+        \end{center}
+        \caption{Spectrum of the most energetic $b$-jet $p_{T}$.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:1stjetpt}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_second_jet_pt_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_second_jet_pt_bb}
+        \end{center}
+        \caption{Spectrum of the second $b$-jet $p_{T}$.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:2ndjetpt}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_first_jet_eta_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_first_jet_eta_bb}
+        \end{center}
+        \caption{Pseudorapidity of the most energetic $b$-jet.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:1stjeteta}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_second_jet_eta_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_second_jet_eta_bb}
+        \end{center}
+        \caption{Pseudorapidity of the second $b$-jet.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:2ndjeteta}
+\end{figure}
+
+\clearpage
+
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_dijet_pt_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_dijet_pt_bb}
+        \end{center}
+        \caption{The $p_{T}$ of the four-vector sum of the two $b$-jets in the event.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:dijetpt}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_dijet_eta_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_dijet_eta_bb}
+        \end{center}
+        \caption{The pseudorapidity of the four-vector sum of the two jets in the event.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:dijeteta}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_pt_W_wenu_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_pt_W_wmnu_bb}
+        \end{center}
+        \caption{The $p_{T}$ of the $W$ boson.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:Wpt}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_deltaR_wenu_2b}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_deltaR_wmnu_2b}
+        \end{center}
+        \caption{The angular distance $\Delta R$ between the two $b$-jets in the event.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:bjetDeltaR}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_delta_wenu_2b}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_delta_wmnu_2b}
+        \end{center}
+        \caption{The azimuthal distance $\Delta\phi$ between the two $b$-jets in the event.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:bjetDeltaPhi}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_Ht_bb}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_Ht_bb}
+        \end{center}
+        \caption{The jet $H_{T}$ of the event, defined as the scalar sum of the
+          $p_{T}$ of all the jets in the event.
+          The electron decay channel is on the top plot,
+          the muon decay channel on the bottom.}
+        \label{fig:jetHt}
+\end{figure}
+

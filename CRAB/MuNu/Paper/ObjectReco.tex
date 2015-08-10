@@ -1,0 +1,252 @@
+\section{Physics object definition}
+\label{Physics Object Defintion}
+A complete reconstruction of the individual particles emerging from 
+each collision event is obtained via a particle-flow (PF) 
+technique~\cite{CMS-PAS-PFT-09-001, CMS-PAS-PFT-10-002}. This approach 
+uses the information from all CMS sub-detectors to identify and reconstruct 
+individual particles in the collision event, classifying them into 
+mutually exclusive categories: charged hadrons, neutral hadrons, photons, electrons, and muons.
+
+\subsection{Muons}
+The muon reconstruction algorithm combines information from the 
+silicon tracker and the muon spectrometer. Muons are selected 
+from the reconstructed muon-track candidates by applying requirements
+on the track components in the muon system and on matched energy 
+deposits in the calorimeters~\cite{CMS-PAS-PFT-10-003}. 
+Muons are reconstructed within $|\eta| < 2.1$ and with $p_{T} > 30\GeV$.
+In order to ensure the use of only well-reconstructed muons, the muon 
+POG has defined a Tight ID working point~\cite{MUONPAS} which 
+requires that candidates should be a Global Muon and a PF Muon 
+satisfying the following additional criteria: 
+
+\begin{itemize}
+\item The $\chi^{2}/\mathrm{ndof}$ of the global track must be less than 10;
+\item At least one good muon chamber hit must be included in the Global Muon track fit;
+\item There must exist identified muon segments in at least two muon stations (quailfying the muon as a Tracker Muon);
+\item The transverse and the longitudinal impact parameter of the inner track, $d_{xy}$ and $d_z$, as calculated with respect to the primary vertex  built with the highest sum $p_{T}$ squared of the associated tracks, are required to satisfy the cuts: $|d_{xy}|< 0.2 \, \mathrm{cm}$, $|d_{z}| < 0.5 \, \mathrm{cm}$;
+\item More than 5 hits in the silicon tracker along the inner track of the muon and at least one hit in the pixel detector must be identified;
+\end{itemize}
+
+For the sake of background rejection, a Loose ID working point is
+also defined which requires candidates to be a PF muon and either
+a Global muon or a Tracker muon.
+
+
+Muons from the $\MyW$ decays are typically well isolated with
+respect to other tracks in the event and a
+ PF-based approach is used to claculate the degree of isolation.
+Charged particles, photons and neutral hadrons are used
+to define the isolation measure; in particular all charged 
+particles are considered, while photons and neutral hadrons
+are considered in the isolation sum only if $E_{T} > 0.5 \GeV$.
+The isolation variables sum up the contribution of the particles
+of the above types in a cone of  
+$\Delta R = \sqrt{{\Delta \phi}^2 + {\Delta \eta}^2}=0.4$, 
+around the lepton axis and 
+
+the particle-based isolation measure is defined as:
+\begin{equation}\label{eq:IsoPF}
+I_{\text{rel}}^{\text{PF}} = \frac{\left[\Sigma p_{T}^{\text{charged}}+\text{max}\left( 0, \Sigma E_{T}^{\gamma} + \Sigma E_{T}^{\text{neutral}} - 0.5\Sigma E_{T}^{\text{PU}} \right) \right]}{P_{T}^\ell}
+\end{equation}
+where $p_{T}^{\text{charged}}$ is the sum of the transverse momenta
+of the charged hadrons and   $E_{T}^{\gamma}$, $E_{T}^{\text{neutral}}$
+and $E_{T}^{\text{PU}}$ are the sums of the photons, neutral 
+hadrons and pileup transverse energy respectively. 
+Selected muons are required to pass the Tight Isolation requirement
+of $I_{\text{rel}}^{\text{PF}} < 0.12$ and the Loose Isolation requirement
+of $I_{\text{rel}}^{\text{PF}} < 0.2$ is used for second-lepton rejection. 
+% mention delta beta ?
+
+Studies of the \MyZ mass peak from \Zmm decays show a slight disagreement 
+between data and MC as a function of muon charge, $\eta$ and $\phi$ which 
+results largely from tracker misalignment. In
+this analysis we therefore apply momentum corrections to shift
+and smear the muon momentum.
+
+%The effect of pile-up interactions in the isolation cone of of leptons is corrected the using the FastJet energy density ($\rho$) in the event
+%~\cite{FastJetPUSubtraction}. The  total isolation sum is corrected according to the formula $\Sigma Iso_{corrected} = \Sigma Iso - \rho \cdot A$ where is the area of the isolation cone, $A=\pi R_{ISO}^%{2}$. In this way the isolation cut efficiencies are made stable with changing conditions of pile-up.
+
+%Events with a second loose lepton with $p_{T}>10~\GeV$ are vetoed as $\Zll$ or $\ttbar$ candidates.
+
+\subsection{Electrons}
+
+Electrons, coherently to how muons are selected, 
+must satisfy a Tight ID cut selection
+whose cuts are applied to three different groups of 
+variables: those concerning electron identification, isolation 
+and the rejection of converted photons.
+
+For what concerns electron identification, 
+misidentified electrons are rejected by the $\Delta\eta$,
+$\Delta\phi$ variables, namely the difference between the angular
+coordinates of the supercluster and the reconstructed track. 
+A cut on the spread of the
+shower shape of the electromagnetic particles distributions along the
+$\eta$ direction is also performed. 
+Electrons from
+converted photons are rejected by applying a cut on the inner detector
+tracks consistent with a photon conversion partner near the electron,
+and each electron track must have one hit in the innermost pixel
+layer.  
+Electron isolation criteria exploit the full particle flow
+based event reconstruction, using  particles within a cone around the
+electron direction of $\Delta R < 0.3$ . The same isolation variable
+as calculated for the muon is used is defined in Eq. \ref{eq:IsoPF} but
+for the electron, the Tight working point corresponds to 
+$I_{\text{rel}}^{\text{PF}} < 0.10$ and the Loose working point is
+$I_{\text{rel}}^{\text{PF}} < 0.15$. 
+All the selection variables described above 
+and their corresponding threshold 
+are summarized in Table \ref{tab:elecuts}.
+Selected electrons are required to have a $\pt>30$~GeV and fall within 
+$\abs{\eta}<2.1$. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rcc}
+\hline
+& BARREL & ENDCAP\\
+\hline
+$\Delta \eta <$ & 0.004(0.007) & 0.005(0.009)\\
+$\Delta \phi <$  & 0.03(0.15) & 0.02(0.10) \\
+$\sigma(i\eta i\eta) <$   & 0.01 & 0.03 \\
+H/E $<$  & 0.12 & 0.10 \\
+\hline
+$|$d0(vtx)$|$ $<$ & 0.02 cm & 0.02 cm \\
+$|$dZ(vtx)$|$ $<$ & 0.1(0.2) cm & 0.1(0.2) cm \\
+$|\left(1 / E - 1 / p\right)| < $ & 0.05 & 0.05 \\
+$I_{\text{rel}}^{\text{PF}} < $ & 0.10(0.15) & 0.10(0.15) \\
+Vertex Fit Probability $\leq$ & $10^{-6}$ & $10^{-6}$  \\
+MissingHits $\leq$    & 0 & 1\\
+ \hline
+\end{tabular}
+\caption{Electron identification, electron isolation and rejection of converted photons
+variables with the corresponding threshold values for the Tight ID(Loose ID) selection.}
+\label{tab:elecuts}
+\end{table}
+
+\subsection{\MyW}
+These identified, isolated leptons are then combined with the missing transverse 
+energy $\MET$ of the event to form a leptonic $\MyW$ candidate. Transverse mass ($\MT$)
+is defined as  
+\begin{equation} \label{eq:mt}
+m_\mathrm{T}^{\ell,\MET} = \sqrt{2 \pt^{\ell} \MET (1-\cos \Delta \phi)}\
+\end{equation}
+where
+$\Delta \phi$
+is the difference in azimuth between $\MET$ and $\pt^{\ell}$.
+Missing transverse energy is reconstructed using the PF algorithm;
+the $\MET$ template has been recoil-corrected event-by-event in bins of
+the W transverse momentum determined from a study of the hadronic
+recoil distributions of$\Zmm$ events in the data. This procedure
+is described in ~\cite{WZCMS:2010}.
+
+\subsection{Jets / SV}
+Jets are reconstructed from the PF 
+~\cite{PFMET}, using
+the anti-$k_T$ clustering algorithm~\cite{ref:antikt}
+with a size parameter of $R = 0.5$. 
+The presence of additional interactions with respect to the primary one, 
+i.e. pileup events, may add additional energy to the jets from the main
+interaction, or may add tracks and calorimetric energy around the deposits 
+of otherwise isolated leptons. An algorithm~\cite{fastjet1, fastjet2} that 
+evaluates the event energy density not related to the hard interaction is
+used to correct the jet energy measurement. 
+Charged particles with tracks not originating from the primary vertex are 
+removed from the jet clustering.
+Jet energy corrections (JEC) are applied to improve the accuracy of the 
+jet \pt measurement and to flatten the jet energy response as a function
+of $\eta$ and \pt~\cite{jme-10-010}.
+Jets are selected which pass the Tight ID
+criteria which require less than 90\% of the EM and HCAL deposits 
+to come from neutral particles and that the jet be composed
+of two or more objects.
+Additionally, within the $\eta$ range of $\abs{\eta}<2.4$ 
+Tight ID jets are required to have a charged hadron fraction and multiplicity
+greater than zero as well as a charged EM fraction less than 99\%. 
+A Loose Jet ID is also defined which differs from the Tight definition
+only in that the Neutral Hadron and EM fractions are required to be
+less than 99\% instead of 90\%.
+
+The kinematics of the jets are also corrected for nonlinearities 
+in the calorimeters.
+Pileup corrections are applied to MC and data in order ot remove 
+energy from pileup events and thus remove the lumonisoty dependance 
+of the jet energy.
+Studies of the dijet balance show that a relative jet correction 
+should also be applied in order to make the jet response independant
+of $\eta$ and these corrections are applied also to MC and data.
+In order to make the jet response independant of $\pt$, an absolute
+jet correction is applied to MC and data, and a small residual 
+data calibration is applied to data alone in order to correct for the 
+residual $\abs{\eta}$ and $\pt$ dependance coming from imperfections
+in the geometric modeling of the CMS detector.
+It is also observed in \MyZ  decays that the jet resolution is 
+simulated as too fine so an $\eta$- and $\pt$-dependant smearing
+is applied to MC. Jets which fall within $\Delta R < 0.5$ from a lepton candidate 
+are also excluded from the jet collection.
+
+This analysis uses the Combined Secondary Vertex (CSV) $b$-tagging algorithm which makes use 
+of the long lifetime and heavy-flavour of the $b$-hadrons.  
+The CSV $b$-tagging algorithm combines the following variables into a single discriminating 
+variable using a Likelihood ratio technique: secondary vertex mass, multiplicity of charged 
+particles associated to the secondary vertex, the flight significance associated to the
+secondary vertex, the energy of charged particles associated to the SV divided by the energy 
+of all charged particles associated to the jet, the rapidities of charged particle tracks associated
+to the secondary vertex, and the track impact parameter significance exceeding the charm threshold.
+%These variables are plotted in Appendix (\ref{chapter:InitialDist}). 
+This algorithm was tuned 
+using $b$, $c$ and non-heavy flavour jets from QCD and top samples and provides extreme discrimination 
+of heavy and udsg jets. 
+%At a b-tagging efficiency of 60$\%$, jets from light quarks can be reduced 
+%by a factor of 100!~\cite{refCSV}.
+
+%This analysis has employed two different b-tagging algorithms. 
+%First, a simple b-tagging discrimination by selecting events in which a secondary vertex
+%is found within the jet (SSVHE), by a refit of the tracks contained in the jet volume. 
+%This simple algorithm is the basis of our W+C/W+BB discrimination
+%process. 
+
+%A second, more comprehensive btagging algorithm is the Combined Secondary Vertex
+%B-Tagging algorithm \ref{}. This algorithm makes use of the long lifetime
+%of the b-Hadron (~5 ps) to reconstruct a secondary vertex for the
+%jet. Discrimination power is stronger for this second algorithm, but being broaded in description, it also includes events 
+%in which a classically defined secondary vertex (solely based on tracks) is not found within the jet. 
+ %% CSV combines more than just SV, which is the difference in a couple of sentences? What do we win with CSV (apart from sync. to the Higgs,
+%% that is something we cannot write.
+
+%Secondary vertices are reconstructed inside the jet using the Trimmed Kalman Vertex Finder.
+%This algorithm begins by taking as input all tracks that are inside of the jet and performing a compatibility fit. It then 
+%removes the least compatible track and refits the vertex; this procedure is repeated until
+%the fit is below a given threshold. The secondary vertex studied in this note is that which has
+%the greatest significance of flight distance. %This variable can be found in Appendix (\ref{chapter:InitialDist}).
+
+%The Combined Secondary Vertex medium working point is chosen to maximize both the $\Wbb $ signal 
+%significance and the signal to background ratio. It is also imposed that there is a reconstructed 
+%Secondary Vertex within each of the two jets selected.
+
+The efficiency of the CSV b-tagging algorithm has been shown to be different in data and Monte Carlo.
+The $b$-Discriminator has been assigned a Loose, Medium and Tight working point for which scale 
+factors to correct simulated Monte Carlo Yields have been produced by the $b$-tagging Physics Object Group.
+%The Monte Carlo simulation is corrected using scale factors which take into account the differences
+%in the efficiencies in data and Monte Carlo. 
+These scale factors are defined as $\epsilon_{DATA}/\epsilon_{MC}$, and are based upon $p_{T}$ and $\eta$ of the jet. 
+This algorithm exhibits powerful discrimination betweeen $b$-jets and light-jets, 
+along with some discrimination power between $b$-jets and $c$-jets.
+They are calculated by comparing the efficiencies and fake-rates for real $b$-jets in $t\bar{t}$ and QCD samples.
+The corrections used in this analysis have been done in agreement with the central prescription and recipes provided 
+by the b-Tagging POG \cite{BTAGNOTE}.
+
+\subsection{QCD}
+\label{sec:qcd}
+The QCD multijet sample is taken from a data-driven method. 
+The shape is found in a given control region before applying 
+the cut on \MT  by inverting the isolation on the lepton (muon: $I_{\text{rel}}^{\text{PF}}>0.2$, electron: $I_{\text{rel}}^{\text{PF}}>0.15$) and subtracting the remaining MC from the data.
+This shape is then preliminarily scaled to fill the disagreement between data and MC in the range $0\le\MT<20$ where QCD is expected to dominate as can be seen in Figure \ref{fig:qcdshape}. 
+
+\begin{figure}
+ \center
+ \includegraphics[width=0.4\textwidth]{figs/plots/2j2b_qcd_shape.png}
+ \caption{The shape for the QCD is found by inverting the lepton isolation and subtracting MC from the data.}
+ \label{fig:qcdshape}
+\end{figure}

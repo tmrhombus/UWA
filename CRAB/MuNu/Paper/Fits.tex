@@ -1,0 +1,342 @@
+\section{Fits}\label{sec:Fits}
+
+\subsection{Prefit Signal Region}
+\label{sec:backgrounds}
+
+% PREFIT
+In Figure~\ref{fig:transvMassPrefit} the transverse mass distribution for events
+selected with the prescription described in section~\ref{sec:wbbselection} both
+in the electron and the muon decay channels of the $W$ boson is shown.
+The black dots indicate the events from data. The colored areas indicate
+the contribution from simulated signal (light dashed yellow) and
+background events.
+The simulated events have been reweighted with the set of Monte Carlo scale factors
+described earlier and the numerical
+ yields from each contribution are reported in table~\ref{tab:yieldsPrefit}.
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_mt_wenu_bb_wide}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_mt_wmnu_bb_wide}
+        \end{center}
+        \caption{The transverse mass distribution of events in the signal region for the
+        electron (top) and muon (bottom) decay channels of the $W$ bosons.}
+        \label{fig:transvMassPrefit}
+\end{figure}
+
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Sample} & $W \rightarrow e \nu + bb$ & $W \rightarrow \mu \nu + bb$ \\
+\hline
+DATA        & 5073   & 5322 \\
+\hline
+$W + bb$    & 729.3  & 872.0 \\
+$W + c$     & 68.6   & 74.0 \\
+$W + light$ & 134.5  & 138.1 \\
+$W(\rightarrow \tau \nu) + bb$  & 15.4 & 22.6 \\
+$t\bar{t}$  & 2028.6 & 2295.9 \\
+Single $t$  & 584.9  & 701.2 \\
+$WW$        & 92.9   & 113.4 \\
+%$WZ$        & - & - \\
+%$ZZ$        & - & - \\
+$Z + jets$  & 84.2   & 129.4 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Selected number of events in the signal region and with event-by-event scale factors applied.}
+\label{tab:yieldsPrefit}
+\end{table}
+
+% TTBAR FIT
+
+\subsubsection{Top-antitop control region}
+\label{sec:ttbar}
+
+The production of $t\bar{t}$ pairs is by far the predominant background
+in the selection of $W + bb$ events and hence a study in two separate
+control regions has been dedicated to assessing its contribution.
+The multilepton phase space, described in Section \ref{section:topbackgrounds}
+is particularly efficient with respect to $t\bar{t}$
+fully-leptonic decays and the transverse mass distribution
+of the selected events is represented in Figure~\ref{fig:ttbarFitemu}.
+The $t\bar{t}$ component has been fitted to the data and a global scale
+parameter has been extracted from the fit procedure with the following results:
+$$c_{t\bar{t}}^{e/\mu}(W \rightarrow e \nu + bb) = 1.044 \pm 0.31 \mathrm{,}$$
+$$c_{t\bar{t}}^{e/\mu}(W \rightarrow \mu \nu + bb) = 1.056 \pm 0.031 \mathrm{,}$$
+in the \texttt{SingleElectron} and \texttt{SingleMuon} primary datasets,
+respectively, where the associated uncertainty corresponds to
+the statistical uncertainty of the fit.
+The results of the fit are consistent in the two statistically independent
+samples and indicate an excess of data events with respect to the simulation.
+The disagreement is nevertheless compatible with the
+$t\bar{t}$ measured cross section,
+to which the pre-fit sample is normalized, within its corresponding uncertainty
+of $3.5\%$.
+
+The strong predominance of $t\bar{t}$ events at higher
+jet multiplicities is especially evident when looking at the fraction of simulated
+samples as a function of the jet multiplicity in Figure~\ref{fig:jetmultiplicity}.
+As a consequence of the different selection,
+it is fully uncorrelated from the previous $e/\mu$ control sample.
+The sample of selected events with this ``multi-jet''
+selection is reported in Figure~\ref{fig:ttbarFitmultijet}.
+The scaling factors extracted from the fit of the simulated $t\bar{t}$ sample
+to the data are the following:
+$$c_{t\bar{t}}^{\mathrm{multi-jet}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{t\bar{t}}^{\mathrm{multi-jet}}(W \rightarrow \mu \nu + bb) =1.118 \pm 0.013 \mathrm{,}$$
+and the excess of data is stronger in the multi-jet control sample.
+Still, experimental uncertainties have to be taken into account beside the
+$3.5\%$ $t\bar{t}$ cross section uncertainty and their contribution
+will be described in the next chapter.
+For example, the systematic uncertainty due to the $b$-tagging data/MC scale factors alone
+is of the order of $6\%$ and may partially explain such a disagreement.
+
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/electronsTOP.old/w_mt_wenu_bb_wide_doFit}
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/muonsTOP.old/w_mt_wmnu_bb_wide_doFit}
+        \end{center}
+        \caption{Sample of data and Monte Carlo events selected in the $t\bar{t}$ ``$e/\mu$'' control region.
+          The results in the electron (left) and muon (right) decay channel are reported.}
+        \label{fig:ttbarFitemu}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/electronsTOP/w_jetmultiplicity}
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/muonsTOP/w_jetmultiplicity}
+        \end{center}
+        \caption{The multiplicity of jets in the sample
+          of events selected with the $t\bar{t}$ multi-jet selection
+          criteria, described in~\ref{sec:ttbar}.}
+        \label{fig:jetmultiplicity}
+\end{figure}
+
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/electronsTOP/w_mt_wenu_bb_wide_doFit}
+                \includegraphics[width=0.49\textwidth]{figs/trieste_plots/muonsTOP/w_mt_wmnu_bb_wide_doFit}
+        \end{center}
+        \caption{Sample of data and Monte Carlo events selected in the $t\bar{t}$ ``multi-jet'' control region.
+          The results in the electron (left) and muon (right) decay channel are reported.}
+        \label{fig:ttbarFitmultijet}
+\end{figure}
+
+\subsection{Transverse mass distribution fit}
+\label{sec:transversemassfit}
+
+As it has already been noticed in the previous section when
+looking at the results in the $t\bar{t}$ control regions,
+a certain amount of disagreement between simulation and
+real data is to be accepted even after the reweighting
+of the simulated events with the data/MC efficiency scale factors
+for the $b$-tagging and lepton selections.
+In this section, an attempt to improve the description of the data
+is performed by calculating a set of global scale factors for the
+most important background samples in the signal region
+from a fit procedure based on some
+simple and reliable assumptions.
+Several fit procedures have been tried in order to test the stability
+of the results, and the most interesting ones will be described
+in the next paragraphs.
+The fit is performed on the transverse mass distribution in the range
+from $0$ to $200$~GeV. The transverse mass distribution has been found
+to yield the best possible discriminating power between the different
+samples and consequently the most stable fit results.
+This is particularly the case for the QCD background;
+in all the following fit procedures, the QCD background is treated as
+a special case and its normalization is left completely floating
+and not correlated with the remaining backgrounds.
+This assumption is justified by the fact that the estimation of QCD is
+completely relying on data and the stability of the fit is granted
+in any case by the very low shape affinity between the
+transverse mass distribution of QCD events and the other samples.
+
+\subsection{Uncorrelated top-antitop and W + bb fit}
+As a starting point, an uncorrelated fit of the $W + bb$ signal and of the
+$t\bar{t}$ samples has been performed by setting their normalizations
+free to float without any constraint during the fit, along with the
+QCD normalization.
+All other backgrounds have been kept out of the fitting procedure
+and their contribution estimated from the simulation prediction.
+A scale factor has been derived both for the $W + bb$ contribution:
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.770 \pm 0.211 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.575 \pm 0.163 \mathrm{,}$$
+and for the $t\bar{t}$ contributions:
+$$c_{t\bar{t}}(W \rightarrow e \nu + bb) = 1.107 \pm 0.064 \mathrm{,}$$
+$$c_{t\bar{t}}(W \rightarrow \mu \nu + bb) = 1.136 \pm 0.054 \mathrm{.}$$
+These results are graphically represented in Figure~\ref{fig:unconstrainedfit}.
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.95\textwidth]{figs/trieste_plots/fit1}
+        \end{center}
+        \caption{Results of fit to the $t\bar{t}$ and $W+bb$ components in the electron (left) and
+          muon (right) channel.}
+        \label{fig:unconstrainedfit}
+\end{figure}
+The $c_{W+bb}$ does not have any effect on the cross section measurement,
+as it is the case instead for the background samples scale factors which
+modify the background contributions to be subtracted from the data;
+the formula used to perform the background subtraction and cross section
+calculation will be described in the next chapter.
+As a consequence, $c_{W+bb}$ has to be regarded solely as an indication of the
+level of agreement to be expected between the theoretical and measured
+cross section.
+In the case of the the $c_{t\bar{t}}$, the results coming from the
+$t\bar{t}$ control regions have been deliberately ignored:
+the results of the fit are in good agreement with the results coming from
+the $t\bar{t}$ multi-jet control region. Such a behaviour may be
+explained by the fact that the phase space in which the $t\bar{t}$ multi-jet
+events are defined is most near to the signal definition.
+Consequently, in the following results,
+the $c_{t\bar{t}}^{\mathrm{multi-jet}}$ will be used when
+constraining the $t\bar{t}$ contribution to the results in the control
+region.
+This assumption may be biased by the fact that the other backgrounds are
+not varied during the fitting procedure. As it can be explained with the following results,
+the amount of such a bias is small due the fact that $t\bar{t}$ is by
+far the dominant background and the fit results are stable when
+introducing additional degrees of freedom.
+
+
+
+\subsection{Top-antitop constrained fit}
+In this second example the same kind of fit has been performed
+after constraining the $t\bar{t}$ contribution to the results
+obtained in the multi-jet control region:
+$$c_{t\bar{t}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{t\bar{t}}(W \rightarrow \mu \nu + bb) = 1.118 \pm 0.013 \mathrm{.}$$
+Not surprisingly, the output of the fitting procedure for the
+$c_{W+bb}$ scale factor is consistent within the statistical uncertainties
+with the results from the previous fit:
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.691 \pm 0.153 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.614 \pm 0.118 \mathrm{.}$$
+The the results are graphically represented in Figure~\ref{fig:intermediatefit1}.
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.95\textwidth]{figs/trieste_plots/fit2}
+        \end{center}
+        \caption{Results of fit to the $W + bb$ component with $t\bar{t}$ constrained to the
+          results in the multi-jet control region. Electron (left) and
+          muon (right) decay channel.}
+        \label{fig:intermediatefit1}
+\end{figure}
+
+\subsection{Top-antitop and W + bb correlated fit}
+Subsequently, a fit has been performed to the
+transverse mass distribution for the $t\bar{t}$ and $W + bb$
+samples, with the $t\bar{t}$ normalization constrained to the
+measured cross section reported in table~\ref{tab:mcxsecs}.
+The $3.5\%$ uncertainty on the $t\bar{t}$ cross section has been
+adopted to constrain the $t\bar{t}$ sample.
+An additional degree of freedom has been added to the fit by
+including a common $c_{\mathrm{scale}}$ correlating the $t\bar{t}$ and
+$c_{W+bb}$ samples and has been constrained to the
+values of $c_{t\bar{t}}^{\mathrm{multi-jet}}$ obtained in the
+$t\bar{t}$ multi-jet control region:
+$$c_{\mathrm{scale}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{\mathrm{scale}}(W \rightarrow \mu \nu + bb) = 1.118 \pm 0.013 \mathrm{,}$$
+As expected, the result of the fit for the $c_{t\bar{t}}$
+scale factors is consistent with unity:
+$$c_{t\bar{t}}(W \rightarrow e \nu + bb) = 0.991 \pm 0.030 \mathrm{,}$$
+$$c_{t\bar{t}}(W \rightarrow \mu \nu + bb) = 1.006 \pm 0.029 \mathrm{.}$$
+The signal $W+bb$ scale factor has been modified accordingly:
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.501 \pm 0.154 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.432 \pm 0.124 \mathrm{.}$$
+The results are graphically represented in Figure~\ref{fig:intermediatefit2}.
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.95\textwidth]{figs/trieste_plots/fit3}
+        \end{center}
+        \caption{Results of fit to the $t\bar{t}$ and $W+bb$ components correlated by
+          a common scale factor. The $t\bar{t}$ is constrained to the results
+          in the multi-jet control region. Electron (left) and
+          muon (right) channel.}
+        \label{fig:intermediatefit2}
+\end{figure}
+The results of this fit are, in practice, equivalent to the previous results
+with the only difference in the fact that the modification of the $t\bar{t}$
+contribution is delegated to the $c_{\mathrm{scale}}$ scale parameter that
+is in common with the signal sample; as a consequence, the fit converges to a
+smaller value of $c_{W+bb}$, which however does not affect the final cross section
+measurement.
+Indeed, this step aims at demonstrating a correlated general underestimation of data
+in simulation. Such a correlation is compatible with a systematic effect in the calibration
+and selection of the objects in the selected final state, common to all simulated
+samples; the jet energy corrections and the $b$-tagging efficiency scale factors
+may provide an explanation for this effect, since they have a big associated
+systematic uncertainty which will be described in the next chapter.
+
+
+\subsection{Baseline results}
+In this paragraph the fitting procedure adopted to estimate the
+cross section is described.
+In the same fashion as for the previous configuration,
+the $t\bar{t}$ normalization is constrained to its experimental
+value and uncertainty.
+The $c_{\mathrm{scale}}$ global scale is constrained to the
+results in the $t\bar{t}$ multi-jet control region:
+$$c_{\mathrm{scale}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{\mathrm{scale}}(W \rightarrow \mu \nu + bb) = 1.118 \pm 0.013 \mathrm{,}$$
+and it is now correlating the
+variation of all the simulated samples with the only exception
+of the QCD sample: top-antitop, Single~top, the light and $c$ fractions
+of the $W+$jets sample, the Drell-Yan sample and the di-boson samples.
+This modification has the effect of further reducing the
+$W+bb$ signal strength:
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.419 \pm 0.173 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.351 \pm 0.135 \mathrm{,}$$
+The results are graphically represented in Figure~\ref{fig:baselinefit}.
+\begin{figure}[htb]
+        \begin{center}
+                \leavevmode
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_mt_wenu_bb_wide_doFit}
+                \includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_mt_wmnu_bb_wide_doFit}
+        \end{center}
+        \caption{Results of fit to the $t\bar{t}$, $W+bb$, $W+$light, Single~$t$ and
+          di-boson samples, correlated by
+          a common scale factor. The $t\bar{t}$ is constrained to the results
+          in the multi-jet control region. Electron (top) and
+          muon (bottom) channel.}
+        \label{fig:baselinefit}
+\end{figure}
+The effects of the normalization scale factors obtained on the fit
+on the number of selected events is reported in table~\ref{tab:yieldsPostfit},
+to be compared with the pre-fit event yields reported in
+table~\ref{tab:yieldsPrefit}.
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Sample} & $W \rightarrow e \nu + bb$ & $W \rightarrow \mu \nu + bb$ \\
+\hline
+DATA        & 5073   & 5322 \\
+\hline
+$W + bb$    & 1182.2 & 1316.7 \\
+$W + c$     & 78.3   & 82.7 \\
+$W + light$ & 153.5  & 154.4 \\
+$W + (\rightarrow \tau \nu) + bb$  & 17.5 & 25.4 \\
+$t\bar{t}$  & 2315.1 & 2566.4 \\
+Single $t$  & 667.5  & 783.8 \\
+$VV$        & 106.0  & 126.8 \\
+$Z + jets$  & 96.1   & 144.7 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Selected event yields after the baseline fitting procedure described in
+  section~\ref{sec:transversemassfit}.}
+\label{tab:yieldsPostfit}
+\end{table}
+
+

@@ -48,8 +48,8 @@ void histoFillerTTbarProgression::Loop(
    Float_t nrWnJ, nrW1J, nrW2J, nrW3J, nrW4J;
    nrWnJ = 75865454;
    nrW1J = 52593689;
-   nrW2J = 64409521;
-   nrW3J = 30358906;
+   nrW2J = 64409521; //for CestPi Mars // 63806612; //for CestPiVV  
+   nrW3J = 29503114; // for Schweincomp // else 30358906;
    nrW4J = 13042592;
 
    std::vector<Float_t> ev;
@@ -66,23 +66,91 @@ void histoFillerTTbarProgression::Loop(
    else {nrEvents=ev[0]+ev[4];}
   }
 
+  nbrGoodMu = 0; 
+  nbrGoodMu = 
+   std::count_if(
+   goodMu_pt_vec->begin(),goodMu_pt_vec->end(),
+   std::bind2nd(std::greater_equal<int>(),30));
+  nbrVetoMu=0;
+  nbrVetoMu+=
+   std::count_if(
+   vetoMu_pt_vec->begin(),vetoMu_pt_vec->end(),
+   std::bind2nd(std::greater_equal<int>(),10));
+  nbrVetoMu -= nbrGoodMu;
+  nbrQCDMu=
+   std::count_if(
+   qcdMu_pt_vec->begin(),qcdMu_pt_vec->end(),
+   std::bind2nd(std::greater_equal<int>(),30));
+
+  nbrGoodEle = 0;
+  nbrGoodEle =
+   std::count_if(
+   goodEle_pt_vec->begin(),goodEle_pt_vec->end(),
+   std::bind2nd(std::greater_equal<int>(),30));
+  nbrVetoEle=0;
+  nbrVetoEle+=
+   std::count_if(
+   vetoEle_pt_vec->begin(),vetoEle_pt_vec->end(),
+   std::bind2nd(std::greater_equal<int>(),10));
+  nbrVetoEle -= nbrGoodEle;
+  nbrQCDEle=
+   std::count_if(
+   qcdEle_pt_vec->begin(),qcdEle_pt_vec->end(),
+   std::bind2nd(std::greater_equal<int>(),30));
+
   // dr J1 J2
-  dRgoodJ1J2 = -1.; 
+  goodJ1J2_dR = -1.;
   dphiJJ = dPhi(goodJ1_phi, goodJ2_phi);
   detaJJ = dEta(goodJ1_eta, goodJ2_eta);
-  dRgoodJ1J2 = std::sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
+  goodJ1J2_dR = std::sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
 
-  // Dijet Mass
+  // Dijets
   fourVec_J1.SetPtEtaPhiM(goodJ1_pt, goodJ1_eta, goodJ1_phi, goodJ1_mass);
   fourVec_J2.SetPtEtaPhiM(goodJ2_pt, goodJ2_eta, goodJ2_phi, goodJ2_mass);
   fourVec_J3.SetPtEtaPhiM(goodJ3_pt, goodJ3_eta, goodJ3_phi, goodJ3_mass);
   fourVec_J4.SetPtEtaPhiM(goodJ4_pt, goodJ4_eta, goodJ4_phi, goodJ4_mass);
+
   fourVec_J1J2 = fourVec_J1 + fourVec_J2;
   fourVec_J3J4 = fourVec_J3 + fourVec_J4;
+
+  goodJ1J2_pt   = fourVec_J1J2.Pt();
+  goodJ1J2_eta  = fourVec_J1J2.Eta();
+  goodJ1J2_phi  = fourVec_J1J2.Phi();
   goodJ1J2_mass = fourVec_J1J2.M();
-  goodJ1J2_pt = fourVec_J1J2.Pt();
+
+  goodJ3J4_pt   = fourVec_J3J4.Pt();
+  goodJ3J4_eta  = fourVec_J3J4.Eta();
+  goodJ3J4_phi  = fourVec_J3J4.Phi();
   goodJ3J4_mass = fourVec_J3J4.M();
 
+  // Dileptons
+  goodM1M2_pt   = -1.;
+  goodM1M2_eta  = -1.;
+  goodM1M2_phi  = -1.;
+  goodM1M2_mass = -1.;
+  goodE1E2_pt   = -1.;
+  goodE1E2_eta  = -1.;
+  goodE1E2_phi  = -1.;
+  goodE1E2_mass = -1.;
+
+  if (goodMu_pt_vec->size()>1){
+   fourVec_M1.SetPtEtaPhiM(goodMu_pt_vec->at(0), goodMu_eta_vec->at(0), goodMu_phi_vec->at(0), goodMu_mass_vec->at(0));
+   fourVec_M2.SetPtEtaPhiM(goodMu_pt_vec->at(1), goodMu_eta_vec->at(1), goodMu_phi_vec->at(1), goodMu_mass_vec->at(1));
+   fourVec_M1M2 = fourVec_M1 + fourVec_M2;
+   goodM1M2_pt   = fourVec_M1M2.Pt();
+   goodM1M2_eta  = fourVec_M1M2.Eta();
+   goodM1M2_phi  = fourVec_M1M2.Phi();
+   goodM1M2_mass = fourVec_M1M2.M();
+  }
+  if (goodEle_pt_vec->size()>1){
+   fourVec_E1.SetPtEtaPhiM(goodEle_pt_vec->at(0), goodEle_eta_vec->at(0), goodEle_phi_vec->at(0), goodEle_mass_vec->at(0));
+   fourVec_E2.SetPtEtaPhiM(goodEle_pt_vec->at(1), goodEle_eta_vec->at(1), goodEle_phi_vec->at(1), goodEle_mass_vec->at(1));
+   fourVec_E1E2 = fourVec_E1 + fourVec_E2;
+   goodE1E2_pt   = fourVec_E1E2.Pt();
+   goodE1E2_eta  = fourVec_E1E2.Eta();
+   goodE1E2_phi  = fourVec_E1E2.Phi();
+   goodE1E2_mass = fourVec_E1E2.M();
+  }
   // filter variables
   twoGoodLMuE = HLT_IsoMu24_eta2p1_v_fired
    && nrGoodEle==1 && nrVetoEle<=1

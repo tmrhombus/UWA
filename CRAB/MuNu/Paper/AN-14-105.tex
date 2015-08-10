@@ -1,0 +1,242 @@
+% Customizable fields and text areas start with % >> below.
+% Lines starting with the comment character (%) are normally removed before release outside the collaboration, but not those comments ending lines
+
+% svn info. These are modified by svn at checkout time.
+% The last version of these macros found before the maketitle will be the one on the front page,
+% so only the main file is tracked.
+% Do not edit by hand!
+\RCS$Revision: 274138 $
+\RCS$HeadURL: svn+ssh://svn.cern.ch/reps/tdr2/notes/AN-14-105/trunk/AN-14-105.tex $
+\RCS$Id: AN-14-105.tex 274138 2015-01-16 21:24:10Z tmperry $
+%%%%%%%%%%%%% local definitions %%%%%%%%%%%%%%%%%%%%%
+% This allows for switching between one column and two column (cms@external) layouts
+% The widths should  be modified for your particular figures. You'll need additional copies if you have more than one standard figure size.
+\newlength\cmsFigWidth
+\ifthenelse{\boolean{cms@external}}{\setlength\cmsFigWidth{0.85\columnwidth}}{\setlength\cmsFigWidth{0.4\textwidth}}
+\ifthenelse{\boolean{cms@external}}{\providecommand{\cmsLeft}{top}}{\providecommand{\cmsLeft}{left}}
+\ifthenelse{\boolean{cms@external}}{\providecommand{\cmsRight}{bottom}}{\providecommand{\cmsRight}{right}}
+
+
+% Useful aliases
+\newcommand\T{\rule{0pt}{2.3ex}}
+\newcommand\B{\rule[-1.0ex]{0pt}{0pt}}
+\newcommand{\AccEff}{\ensuremath{{\cal A}~\epsilon}}%
+\newcommand{\Lint}{\ensuremath{{\cal L}_{\mathrm{int}}}}
+\renewcommand{\lumi}{\ensuremath{\,\mathrm{(lum.)}}\xspace}
+\renewcommand{\theo}{\ensuremath{\,\mathrm{(theo.)}}\xspace}
+\def\MT       {\ensuremath{m_\mathrm{T}}}
+\def\ZnnH     {\ensuremath{\mathrm{Z}(\cPgn\cPgn)\mathrm{H}}}
+\def\ZllH     {\ensuremath{\mathrm{Z}(\ell\ell)\mathrm{H}}}
+\def\ZmmH     {\ensuremath{\mathrm{Z}(\Pgm\Pgm)\mathrm{H}}}
+\def\ZeeH     {\ensuremath{\mathrm{Z}(\Pe\Pe)\mathrm{H}}}
+\def\WlnH     {\ensuremath{\mathrm{W}(\ell\cPgn)\mathrm{H}}}
+\def\WmnH     {\ensuremath{\mathrm{W}(\Pgm\cPgn)\mathrm{H}} }
+\def\WenH     {\ensuremath{\mathrm{W}(\Pe\cPgn)\mathrm{H}}}
+\def\WtoLN    {\ensuremath{\mathrm{W}\to\ell\cPgn}}
+\def\WtoEN    {\ensuremath{\mathrm{W}\to\Pe\cPgn}}
+\def\WtoMN    {\ensuremath{\mathrm{W}\to\Pgm\cPgn}}
+\def\ZtoBB    {\ensuremath{\mathrm{Z}\to\bbbar}}
+\def\ZtoNN    {\ensuremath{\mathrm{Z}\to\cPgn\bar{\cPgn}}}
+\def\ZtoLL    {\ensuremath{\mathrm{Z}\to\ell\ell}}
+\def\ZtoMM    {\ensuremath{\mathrm{Z}\to\MM}}
+\def\ZtoEE    {\ensuremath{\mathrm{Z}\to\EE}}
+\def\gBB      {\ensuremath{\mathrm{g\to\bbbar}}}
+\def\WmnJ     {\ensuremath{\mathrm{W}(\Pgm\cPgn)\mathrm{+jets}}}
+\def\WmnJ     {\ensuremath{\mathrm{W}(\Pgm\cPgn)}}
+\def\ZmmJ     {\ensuremath{\mathrm{Z}(\Pgm\Pgm)\mathrm{+jets}}}
+\def\ZnnJ     {\ensuremath{\mathrm{Z}(\cPgn\bar{\cPgn})\mathrm{+jets}}}
+\def\WJ       {\ensuremath{\mathrm{W + jets}}}
+\def\HBB      {\ensuremath{\mathrm{H}\to\bbbar}}
+\def\HTT      {\ensuremath{\mathrm{H}\to\TT}}
+\def\mtW      {\ensuremath{M_{\mathrm{T}}}}
+\def\ptl      {\ensuremath{p_{\mathrm{T}}^{\ell}}}
+\def\MyZ      {\ensuremath{\mathrm{Z}}}
+\def\MyW      {\ensuremath{\mathrm{W}}}
+\def\MyH      {\ensuremath{\mathrm{H}}}
+\def\Vudscg   {\ensuremath{\mathrm{V+udscg}}}
+\def\Wudscg   {\ensuremath{\mathrm{W+udscg}}}
+\def\Wudsg   {\ensuremath{\mathrm{W+udsg}}}
+\def\Wenudscg {\ensuremath{\mathrm{W}(\Pe\cPgn)+\mathrm{udscg}}}
+\def\Wmnudscg {\ensuremath{\mathrm{W}(\Pgm\cPgn)+\mathrm{udscg}}}
+\def\Wenbb    {\ensuremath{\mathrm{W}(\Pe\cPgn)+\bbbar}}
+\def\Wmnbb    {\ensuremath{\mathrm{W}(\Pgm\cPgn)+\bbbar} }
+\def\Zeebb    {\ensuremath{\mathrm{Z}(\Pe\Pe)+\bbbar}}
+\def\Zmmbb    {\ensuremath{\mathrm{Z}(\Pgm\Pgm)+\bbbar }}
+\def\Zudsg    {\ensuremath{\mathrm{Z+udsg}}}
+\def\Zudscg   {\ensuremath{\mathrm{Z+udscg}}}
+\def\Zeeudscg {\ensuremath{\mathrm{Z}(\Pe\Pe)+\mathrm{udscg}}}
+\def\Zmmudscg {\ensuremath{\mathrm{Z}(\Pgm\Pgm)+\mathrm{udscg}}}
+\def\Zenbb    {\ensuremath{\mathrm{Z}(\Pe\cPgn)+\bbbar}}
+\def\Zmmbb    {\ensuremath{\mathrm{Z}(\Pgm\Pgm)+\bbbar }}
+\def\Wbb      {\ensuremath{\mathrm{W\bbbar}}}
+\def\Wc      {\ensuremath{\mathrm{W+c}}}
+\def\Wcc      {\ensuremath{\mathrm{W+\ccbar}}}
+\def\Zbb      {\ensuremath{\mathrm{Z\bbbar}}}
+\def\Zcc      {\ensuremath{\mathrm{Z\ccbar}}}
+\def\Vbb      {\ensuremath{\mathrm{V+\bbbar}}}
+\def\ttmnbbcs    {\ensuremath{\mathrm{\ttbar}(\Pgm\cPgn)+\bbbar+cs}}
+\def\Zll      {\ensuremath{Z(\ell\ell)}}
+\def\Zmm      {\ensuremath{Z(\mu\mu)}}
+\def\Zee      {\ensuremath{Z(ee)}}
+\def\Mjj      {\ensuremath{M(\mathrm{jj})}}
+\def\ptjj     {\ensuremath{{\pt}(\mathrm{jj})}}
+\def\MZ       {\ensuremath{M_{\mathrm{Z}}}}
+\def\dRJJ     {\ensuremath{\Delta R(\mathrm{J1,J2})}}
+\def\dEtaJJ   {\ensuremath{\Delta \eta(\mathrm{J1,J2})}}
+\def\dphiVH   {\ensuremath{\Delta\phi(\mathrm{V,H})}}
+\def\dphiWH   {\ensuremath{\Delta\phi(\mathrm{W,H})}}
+\def\dphiZH   {\ensuremath{\Delta\phi(\mathrm{Z,H})}}
+\def\dphiMJ   {\ensuremath{\Delta\phi(\mathrm{pfMET,J})}}
+\def\cosTH    {\ensuremath{\cos{\theta^*}}}
+\def\dThPull  {\ensuremath{\Delta\theta_{\mathrm{pull}}}}
+\def\ptV      {\ensuremath{p_{\mathrm{T}}(\mathrm{V})}}
+\def\ptH      {\ensuremath{p_{\mathrm{T}}(\mathrm{H})}}
+\def\ptZ      {\ensuremath{p_{\mathrm{T}}(\mathrm{Z})}}
+\def\ptW      {\ensuremath{p_{\mathrm{T}}(\mathrm{W})}}
+\def\ptmu     {\ensuremath{p_{\mathrm{T}}(\mu)}}
+\def\Naj      {\ensuremath{N_{\mathrm{aj}}}}
+\def\Nal      {\ensuremath{N_{\mathrm{al}}}}
+\def\etaTF    {\ensuremath{\left | \eta \right | < 2.5}}
+\def\Bexp     {\ensuremath{B_{\mathrm{exp}}}}
+\def\Bobs     {\ensuremath{B_{\mathrm{obs}}}}
+\def\Nobs     {\ensuremath{N_{\mathrm{obs}}}}
+
+
+%%%%%%%%%%%%%%%  Title page %%%%%%%%%%%%%%%%%%%%%%%%
+\cmsNoteHeader{AN-14-105} % This is over-written in the CMS environment: useful as preprint no. for export versions
+% >> Title: please make sure that the non-TeX equivalent is in PDFTitle below
+\title{Measurement of the production cross section for a W boson and two b jets in pp collisions at $\sqrt{s}=8$ TeV}
+
+% >> Authors
+%Author is always "The CMS Collaboration" for PAS and papers, so author, etc, below will be ignored in those cases
+%For multiple affiliations, create an address entry for the combination
+%To mark authors as primary, use the \author* form
+
+\author[]{Vuko Brigljevic}
+\author[]{Maria Cepeda}
+\author[]{Michele De Gruttola}
+\author[]{Giuseppe Della Ricca}
+\author[]{Philippe Gras}
+\author[]{Jelena Luetic}
+\author[]{Isobel Ojalvo}
+\author[]{Thomas Perry}
+\author[]{Tapas Sarangi}
+\author[]{Alexander Savin}
+\author[]{Andrea Schizzi}
+\author[]{Simon De Visscher}
+
+% >> Date
+% The date is in yyyy/mm/dd format. Today has been
+% redefined to match, but if the date needs to be fixed, please write it in this fashion.
+% For papers and PAS, \today is taken as the date the head file (this one) was last modified according to svn: see the RCS Id string above.
+% For the final version it is best to "touch" the head file to make sure it has the latest date.
+\date{\today}
+
+% >> Abstract
+% Abstract processing:
+% 1. **DO NOT use \include or \input** to include the abstract: our abstract extractor will not search through other files than this one.
+% 2. **DO NOT use %**                  to comment out sections of the abstract: the extractor will still grab those lines (and they won't be comments any longer!).
+% 3. For PASs: **DO NOT use tex macros**         in the abstract: CDS MathJax processor used on the abstract doesn't understand them _and_ will only look within $$. The abstracts for papers are hand formatted so macros are okay.
+\abstract{
+The production cross section for a $\PW$ boson and two $b$ jets is measured using proton-proton collisions at $\sqrt{s} = 8\TeV$ in a data sample collected with the CMS experiment at the LHC corresponding to an integrated luminosity of  19.8\fbinv.
+Both the $\PW\to\Pgm\Pgn$ and $\PW\to\Pe\Pe$ decay modes are considered, 
+assuming $\pt^{e,\mu}>30\GeV$ and pseudorapidity $\abs{\eta^{e,\mu}}<2.1$, 
+and exactly two $b$-tagged jets with $\pt>25\GeV$ and $\abs{\eta}<2.4$.
+The measured $\PW+\bbbar$ production cross section in the fiducial region,
+calculated at the level of final-state particles is 
+% $\sigma(\Pp\Pp\to \PW(e\nu)+\bbbar) \times {\mathcal{B}}=0.654 \pm 0.071\stat \pm 0.141\syst \unit{pb}$ and
+% $\sigma(\Pp\Pp\to \PW(\mu\nu)+\bbbar) \times {\mathcal{B}}=0.656 \pm 0.062\stat \pm 0.153\syst \unit{pb} $
+%which combine to give a total cross section of
+ $\sigma(\Pp\Pp\to \PW(\ell\nu)+\bbbar) \times {\mathcal{B}}=0.655 \pm 0.047\stat \pm 0.145\syst \unit{pb} $
+ in agreement with the standard model prediction.
+% and comparisons are made between 4-Flavor and 5-Flavor schemes.
+}
+
+% >> PDF Metadata
+% Do not comment out the following hypersetup lines (metadata). They will disappear in NODRAFT mode and are needed by CDS.
+% Also: make sure that the values of the metadata items are sensible and are in plain text:
+% (1) no TeX! -- for \sqrt{s} use sqrt(s) -- this will show with extra quote marks in the draft version but is okay).
+% (2) no %.
+% (3) No curly braces {}.
+\hypersetup{%
+pdfauthor={George Alverson, Lucas Taylor, A. Cern Person},%
+pdftitle={Measurement of the production cross section for a W boson and two b jets in pp collisions at sqrt(s)=8~TeV},%
+pdfsubject={CMS},%
+pdfkeywords={CMS, physics, software, computing}}
+
+\maketitle %maketitle comes after all the front information has been supplied
+% >> Text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Begin text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% **DO NOT REMOVE THE BIBLIOGRAPHY** which is located before the appendix.
+%% You can take the text between here and the bibiliography as an example which you should replace with the actual text of your document.
+%% If you include other TeX files, be sure to use "\input{filename}" rather than "\input filename".
+%% The latter works for you, but our parser looks for the braces and will break when uploading the document.
+%%%%%%%%%%%%%%%
+
+\input{Introduction.tex}
+
+\input{Samples.tex}
+
+\input{ObjectReco.tex}
+
+\input{EventSelection.tex}
+
+\input{Background.tex}
+
+\input{Fits.tex}
+
+\input{Distributions.tex}
+
+\input{CrossSection.tex}
+
+%
+%%The measured cross section, unfolded to the b-hadron level as described above, for muons with
+%%$\pt > 25\GeV$ and $|\eta|<2.1$ and two b-jets with
+%%$\pt > 25\GeV$ and $|\eta|<2.4$ is found to be 
+%%$1.17\pm  0.10\stat ^{+0.21}_{-0.17}\syst \pm 0.09 \theo \pm 0.03\lumi \unit{pb.}$
+%
+%% No quoting MCFM until we fix the C(parton, hadron) factor
+%
+%We have presented a measurement of the $\Wbb$ production
+%cross section in proton-proton collisions at 8\TeV. The $\PW+\bbbar$ events
+%have been  selected in the $\PW \to \mu\nu$ decay mode with a
+%lepton of $\pt>30\GeV$ and $|\eta|<2.1$, and two b jets with $\pt>25\GeV$ and $|\eta|<2.4$.
+%The data sample corresponds to an integrated luminosity of $19.8\fbinv$.
+%%is consistent with the SM prediction.
+%The measured cross section ***QUOTE RESULTS***
+%%$\sigma(pp\rightarrow \mathrm{W} + \bbbar, p_T^{\mathrm{b}}>25~\GeV, |\eta^{\mathrm{b}}|<2.4)\times {\cal{B}}(\Wmn, p_T^{\mu}>25~\GeV, |\eta^{\mu}|<2.1) =0.53\pm  0.05\stat \pm 0.09 \syst \pm 0.06 \theo \pm 0.01\lumi \unit{pb}$
+%for production of a $\PW$ boson in association with two b jets is in agreement with
+%the SM predictions.
+%This study provides the first measurement in this particular phase-space at 8\TeV,
+%therefore complementing previous measurements performed at the LHC ~\cite{Aad:2011kp}.
+%This result is approaching the precision of theoretical predictions at NNLO,
+%thus setting the grounds for sensitive tests of perturbative calculations in the SM.
+%
+%In addition to this measurement of the cross section, we have explored the kinematics of the $\Wbb$ system.
+%The observed distributions are well described by the simulation.
+%
+
+ 
+% >> acknowledgements (for journal papers)
+% Please include the latest version from https://twiki.cern.ch/twiki/bin/viewauth/CMS/Internal/PubAcknow.
+%\section*{Acknowledgements}
+% ack-text
+
+%% **DO NOT REMOVE BIBLIOGRAPHY**
+
+\bibliography{auto_generated}   
+
+% will be created by the tdr script.
+%\bibitem{ttbar}M. Maes ,J. D'Hont et al.,'''', CMS AN 11/232 (2012)
+%% examples of appendices. **DO NOT PUT \end{document} at the end
+\clearpage
+
+\appendix
+\input{Appendix_UWCrossSection.tex}
+\input{Appendix_LeptonEfficiency.tex}
+%\input{AppendixC.tex}
+%\input{AppendixD.tex}
+%\input{AppendixE.tex}
+
+%%% DO NOT ADD \end{document}!
+

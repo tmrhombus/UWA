@@ -685,6 +685,7 @@ def makeHenBHadrons():
     bHadronsPt = makeSimBHad("bhadrons","bHadronsPt","pt"),
     bHadronsEta = makeSimBHad("bhadrons","bHadronsEta","eta"),
     bHadronsPhi = makeSimBHad("bhadrons","bHadronsPhi","phi"),
+    bHadronsID = makeSimBHad("bhadrons","bHadronsID","pdgId"),
     nbHadrons = makeCollSize("bhadrons","nbHadrons"),
     genTs = makeCollSize("gentCands","genTs"),
     genTbars = makeCollSize("gentbarCands","genTbars"),
@@ -727,6 +728,209 @@ def makeGenJetInfo(srcAllJets='smearedAllJets'):
   )
   return jetGenInfo
 
+def makeGenInfo(srcGenParticles,srcGenLep,srcTaggedGenJets):
+
+ genInfo = cms.PSet(
+  genID = cms.PSet(
+          pluginType = cms.string("GenID"),
+          src        = cms.InputTag(srcGenParticles),
+  ),          
+  genID2 = cms.PSet(
+          pluginType = cms.string("GenID2"),
+          verbose    = cms.untracked.bool(False),
+          saveCs     = cms.untracked.bool(True),
+          saveBs     = cms.untracked.bool(True),
+          ptMin      = cms.untracked.double(0),
+          etaMax     = cms.untracked.double(10),
+           src        = cms.InputTag(srcGenParticles),
+  ), 
+
+  GEN_jetPT = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetPt"),
+          method     = cms.string("pt()"),
+          leadingOnly=cms.untracked.bool(False)
+    ),        
+
+  GEN_jetPHI = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetPhi"),
+          method     = cms.string("phi()"),
+          leadingOnly=cms.untracked.bool(False)
+    ),        
+
+  GEN_jetETA = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetEta"),
+          method     = cms.string("eta()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),        
+  GEN_jetPTDRHadron = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetPtDRHadron"),
+          method     = cms.string("userFloat('minDRBHadron')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),        
+
+  GEN_jetPTLeadB = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetPtLeadB"),
+          method     = cms.string("userFloat('leadJetBHadronPt')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),        
+  GEN_jetPTSecondB = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetPtSecondB"),
+          method     = cms.string("userFloat('secondJetBHadronPt')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),        
+  GEN_jetETALeadB = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetEtaLeadB"),
+          method     = cms.string("userFloat('leadJetBHadronEta')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),        
+  GEN_jetETASecondB = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetEtaSecondB"),
+          method     = cms.string("userFloat('secondJetBHadronEta')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),
+
+  GEN_jetPhiLeadB = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetPhiLeadB"),
+          method     = cms.string("userFloat('leadJetBHadronPhi')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),
+  GEN_jetPhiSecondB = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetPhiSecondB"),
+          method     = cms.string("userFloat('secondJetBHadronPhi')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),
+
+  GEN_jetAngleBs = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetAngleBs"),
+          method     = cms.string("userFloat('DR2BHadrons')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),
+
+  GEN_jetMatched = cms.PSet(
+          pluginType = cms.string("PATJetFiller"),
+          src        = cms.InputTag(srcTaggedGenJets),
+          tag        = cms.string("GEN_jetBsMatches"),
+          method     = cms.string("userFloat('matchedHadron')"),
+          leadingOnly=cms.untracked.bool(False)
+    ),
+
+    GEN_dressedLeptons = cms.PSet(
+           pluginType = cms.string("DressedLeptonFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonPDGID"),
+           method     = cms.string("pdgId()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_dressedLeptonsType = cms.PSet(
+           pluginType = cms.string("DressedLeptonFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonType"),
+           method     = cms.string("Type()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_dressedLeptonsMOM = cms.PSet(
+           pluginType = cms.string("DressedLeptonFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonMotherPDGID"),
+           method     = cms.string("MotherPDGID()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_dressedLeptonsOriginalPt = cms.PSet(
+           pluginType = cms.string("DressedLeptonFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonOriginalPT"),
+           method     = cms.string("originalPt()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_dressedLeptonsPT = cms.PSet(
+           pluginType = cms.string("DressedLeptonFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonPT"),
+           method     = cms.string("pt()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_dressedLeptonsETA = cms.PSet(
+           pluginType = cms.string("DressedLeptonFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonETA"),
+           method     = cms.string("eta()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_dressedLeptonsPHI = cms.PSet(
+           pluginType = cms.string("DressedLeptonFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonPHI"),
+           method     = cms.string("phi()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_neutrinosPDGID = cms.PSet(
+           pluginType = cms.string("PATGenParticleFiller"),
+           src        = cms.InputTag("neutrinos"),
+           tag        = cms.string("GEN_neutrinoPDGID"),
+           method     = cms.string("pdgId()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_neutrinosPT = cms.PSet(
+           pluginType = cms.string("PATGenParticleFiller"),
+           src        = cms.InputTag("neutrinos"),
+           tag        = cms.string("GEN_neutrinoPT"),
+           method     = cms.string("pt()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_neutrinosETA = cms.PSet(
+           pluginType = cms.string("PATGenParticleFiller"),
+           src        = cms.InputTag("neutrinos"),
+           tag        = cms.string("GEN_neutrinoETA"),
+           method     = cms.string("eta()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+    GEN_neutrinosPHI = cms.PSet(
+           pluginType = cms.string("PATGenParticleFiller"),
+           src        = cms.InputTag("neutrinos"),
+           tag        = cms.string("GEN_neutrinoPHI"),
+           method     = cms.string("phi()"),
+           leadingOnly=cms.untracked.bool(False)
+     ),
+
+    GEN_dressedLeptonsSIZE = cms.PSet(
+           pluginType = cms.string("CollectionSizeFiller"),
+           src        = cms.InputTag(srcGenLep),
+           tag        = cms.string("GEN_dressedLeptonSIZE"),
+     )
+ )
+ return genInfo
+
 def addEventTreeData(process,name,
       srcGLep,srcQLep,
       srcGMu='smearedGoodMuons',
@@ -754,7 +958,7 @@ def addEventTreeData(process,name,
      makeAllJetKinematics(srcAllJets=srcAJet),
      makeCSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
      makeSVJets(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
-     makeAltBTags(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
+     #makeAltBTags(srcGoodJets=srcGJet,srcFwdJets=srcFJet),
      makeMETobjects(srcGoodElectrons=srcGEle,srcQCDElectrons=srcQEle,
                   srcGoodMuons=srcGMu,srcQCDMuons=srcQMu,srcMET='wgtPUembedMET'),
      makeVertexInfo(),
@@ -794,7 +998,10 @@ def addEventTreeMC(process,name,
       srcFJet='smearedFwdJets',
       srcAJet='smearedAllJets', 
       srcCJet='smearedCleanJets',
-      lhep="externalLHEProducer"
+      lhep="externalLHEProducer",
+      srcGenParticles="genParticles",
+      srcGenLep="dressedLeptons",
+      srcTaggedGenJets="cleanGenJets"
       ):
    process.TFileService = cms.Service("TFileService", fileName = cms.string("analysis.root") )
    eventTree = cms.EDAnalyzer('EventTreeMaker',
@@ -832,6 +1039,7 @@ def addEventTreeMC(process,name,
                      srcGoodMuons=srcGMu, srcQCDMuons=srcQMu, srcMET='wgtPUembedMET'),
      makeHenBHadrons(),
      makeGenJetInfo(srcAllJets=srcAJet),
+     makeGenInfo(srcGenParticles=srcGenParticles,srcGenLep=srcGenLep,srcTaggedGenJets=srcTaggedGenJets),
      GBWeight = makeGenBWeight("GBWeight","theWeight"),
      coreCollections = cms.VInputTag(
        cms.InputTag(srcGMu),

@@ -50,7 +50,7 @@ void histoFiller::Loop(
    nrWnJ = 75865454;
    nrW1J = 52593689;
    nrW2J = 64409521; //for CestPi Mars // 63806612; //for CestPiVV  
-   nrW3J = 29503114; // for Schweincomp // else 30358906;
+   nrW3J = 29503114; //for Schweincomp//  30358906;  
    nrW4J = 13042592;
 
    std::vector<Float_t> ev;
@@ -302,8 +302,8 @@ void histoFiller::Loop(
   mt_mu_good_uesDown = mt_goodMuon_uesDn;
   if( shift=="JESUp" ) { mt_mu_good = mt_goodMuon_jesUp; }
   if( shift=="JESDown" ) { mt_mu_good = mt_goodMuon_jesDn; }
-  //if( shift=="LESUp" )  { mt_mu_good = mt_goodMuon_eesUp; }
-  //if( shift=="LESDown" ) { mt_mu_good = mt_goodMuon_eesDn; }
+  if( shift=="LESUp" )  { mt_mu_good = mt_goodMuon_eesUp; }
+  if( shift=="LESDown" ) { mt_mu_good = mt_goodMuon_eesDn; }
   lep_mu_good_pt = -99;
   lep_mu_good_eta = -99;
   lep_mu_good_phi = -99;
@@ -320,8 +320,8 @@ void histoFiller::Loop(
   mt_mu_qcd_uesDown = mt_qcdMuon_uesDn;
   if( shift=="JESUp" ) { mt_mu_qcd = mt_qcdMuon_jesUp; }
   if( shift=="JESDown" ) { mt_mu_qcd = mt_qcdMuon_jesDn; }
-  //if( shift=="LESUp" )  { mt_mu_qcd = mt_qcdMuon_eesUp; }
-  //if( shift=="LESDown" )  { mt_mu_qcd = mt_qcdMuon_eesDn; }
+  if( shift=="LESUp" )  { mt_mu_qcd = mt_qcdMuon_eesUp; }
+  if( shift=="LESDown" )  { mt_mu_qcd = mt_qcdMuon_eesDn; }
   lep_mu_qcd_pt =   -99; 
   lep_mu_qcd_eta =  -99; 
   lep_mu_qcd_phi =  -99; 
@@ -338,8 +338,8 @@ void histoFiller::Loop(
   mt_ele_good_uesDown = mt_goodElectron_uesDn;
   if( shift=="JESUp" ) { mt_ele_good = mt_goodElectron_jesUp; }
   if( shift=="JESDown" ) { mt_ele_good = mt_goodElectron_jesDn; }
-  //if( shift=="LESUp" )  { mt_ele_good = mt_goodElectron_eesUp; }
-  //if( shift=="LESDown" ) { mt_ele_good = mt_goodElectron_eesDn; }
+  if( shift=="LESUp" )  { mt_ele_good = mt_goodElectron_eesUp; }
+  if( shift=="LESDown" ) { mt_ele_good = mt_goodElectron_eesDn; }
   lep_ele_good_pt =   0; 
   lep_ele_good_eta =  0; 
   lep_ele_good_phi =  0; 
@@ -356,8 +356,8 @@ void histoFiller::Loop(
   mt_ele_qcd_uesDown = mt_qcdElectron_uesDn;
   if( shift=="JESUp" ) { mt_ele_qcd = mt_qcdElectron_jesUp; }
   if( shift=="JESDown" ) { mt_ele_qcd = mt_qcdElectron_jesDn; }
-  //if( shift=="LESUp" )  { mt_ele_qcd = mt_qcdElectron_eesUp; }
-  //if( shift=="LESDown" )  { mt_ele_qcd = mt_qcdElectron_eesDn; }
+  if( shift=="LESUp" )  { mt_ele_qcd = mt_qcdElectron_eesUp; }
+  if( shift=="LESDown" )  { mt_ele_qcd = mt_qcdElectron_eesDn; }
   lep_ele_qcd_pt =   -99; 
   lep_ele_qcd_eta =  -99; 
   lep_ele_qcd_phi =  -99; 
@@ -389,11 +389,11 @@ void histoFiller::Loop(
   diJetVVcut =  kTRUE; // For Ilya, DiJet Cuts
     // goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
 
-  passMET =         kTRUE; // MET_pt > 25. && dphiJ1Met > 0.4; // kTRUE; // 
-  passMT_goodMu =   kTRUE; // mt_mu_good  > 45; // 30; 
-  passMT_qcdMu =    kTRUE; // mt_mu_qcd   > 45; // 30; 
-  passMT_goodEle =  kTRUE; // mt_ele_good > 45; // 30; 
-  passMT_qcdEle =   kTRUE; // mt_ele_qcd  > 45; // 30; 
+  passMET =        kTRUE; // MET_pt > 25. && dphiJ1Met > 0.4; // kTRUE; // 
+  passMT_goodMu =  kTRUE; // mt_mu_good  > 45; // 30; 
+  passMT_qcdMu =   kTRUE; // mt_mu_qcd   > 45; // 30; 
+  passMT_goodEle = kTRUE; // mt_ele_good > 45; // 30; 
+  passMT_qcdEle =  kTRUE; // mt_ele_qcd  > 45; // 30; 
 
 
   ////////////////////////////////

@@ -13,6 +13,7 @@
 #include "DataFormats/PatCandidates/interface/Muon.h"
 #include "DataFormats/VertexReco/interface/VertexFwd.h"
 #include "DataFormats/VertexReco/interface/Vertex.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 
 /**
 * @class PATMuonRochesterCorrector
@@ -56,6 +57,8 @@ void PATMuonRochesterCorrector::produce( edm::Event& evt, const edm::EventSetup&
 
     for ( size_t i = 0; i < muons->size(); ++i )
     {
+
+        LogDebug("My Category")<<"Test debugger"<<" a";
         pat::Muon original_muon = muons->at(i);
         pat::Muon corrected_muon = original_muon;
         //std::cout<<original_muon.pt()<<std::endl;

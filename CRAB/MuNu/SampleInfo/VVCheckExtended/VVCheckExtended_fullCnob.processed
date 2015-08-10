@@ -1,0 +1,224 @@
+nohup: ignoring input
+
+VVCheckExtended fullCnob
+[3g            H             H             H             H             H             H  
+WJets_p1	 /nfs	 /hdfs
+  full	 1610	 1610
+  full/50	 33	 33
+  merged	 33	 33
+  SFs	 128	 128 
+  JESUp	 128	 128 
+  JESDown	 128	 128 
+  LESUp	 128	 128 
+  LESDown	 128	 128 
+
+WJets_p2	 /nfs	 /hdfs
+  full	 4735	 4718
+  full/50	 95	 95
+  merged	 95	 95
+  SFs	 128	 128 
+  JESUp	 128	 128 
+  JESDown	 128	 128 
+  LESUp	 128	 128 
+  LESDown	 128	 128 
+
+W1Jet_p1	 /nfs	 /hdfs
+  full	 1994	 1991
+  full/50	 40	 40
+  merged	 40	 40
+  SFs	 95	 95 
+  JESUp	 95	 95 
+  JESDown	 95	 95 
+  LESUp	 95	 95 
+  LESDown	 95	 95 
+
+W1Jet_p2	 /nfs	 /hdfs
+  full	 2773	 2747
+  full/50	 56	 55
+  merged	 55	 55
+  SFs	 95	 95 
+  JESUp	 95	 95 
+  JESDown	 95	 95 
+  LESUp	 95	 95 
+  LESDown	 95	 95 
+
+W2Jet_p1	 /nfs	 /hdfs
+  full	 3177	 3177
+  full/50	 64	 64
+  merged	 64	 64
+  SFs	 116	 116 
+  JESUp	 116	 116 
+  JESDown	 116	 116 
+  LESUp	 116	 116 
+  LESDown	 116	 116 
+
+W2Jet_p2	 /nfs	 /hdfs
+  full	 2606	 2579
+  full/50	 53	 52
+  merged	 52	 52
+  SFs	 116	 116 
+  JESUp	 116	 116 
+  JESDown	 116	 116 
+  LESUp	 116	 116 
+  LESDown	 116	 116 
+
+W3Jet_p1	 /nfs	 /hdfs
+  full	 1813	 1786
+  full/50	 37	 36
+  merged	 36	 36
+  SFs	 70	 70 
+  JESUp	 70	 70 
+  JESDown	 70	 70 
+  LESUp	 70	 70 
+  LESDown	 70	 70 
+
+W3Jet_p2	 /nfs	 /hdfs
+  full	 1713	 1696
+  full/50	 35	 34
+  merged	 34	 34
+  SFs	 70	 70 
+  JESUp	 70	 70 
+  JESDown	 70	 70 
+  LESUp	 70	 70 
+  LESDown	 70	 70 
+
+W4Jet	 /nfs	 /hdfs
+  full	 1330	 1296
+  full/50	 27	 26
+  merged	 26	 26
+  SFs	 26	 26 
+  JESUp	 26	 26 
+  JESDown	 26	 26 
+  LESUp	 26	 26 
+  LESDown	 26	 26 
+
+Wbb4F	 /nfs	 /hdfs
+  full	 1816	 1580
+  full/50	 37	 32
+  merged	 32	 32
+  SFs	 32	 32 
+  JESUp	 32	 32 
+  JESDown	 32	 32 
+  LESUp	 32	 32 
+  LESDown	 32	 32 
+
+TTbar_full	 /nfs	 /hdfs
+  full	 1167	 1028
+  full/50	 24	 21
+  merged	 21	 21
+  SFs	 21	 21 
+  JESUp	 21	 21 
+  JESDown	 21	 21 
+  LESUp	 21	 21 
+  LESDown	 21	 21 
+
+TTbar_semi	 /nfs	 /hdfs
+  full	 2830	 2738
+  full/50	 57	 55
+  merged	 55	 55
+  SFs	 55	 55 
+  JESUp	 55	 55 
+  JESDown	 55	 55 
+  LESUp	 55	 55 
+  LESDown	 55	 55 
+
+Drell	 /nfs	 /hdfs
+  full	 2577	 1981
+  full/50	 52	 40
+  merged	 40	 40
+  SFs	 40	 40 
+  JESUp	 40	 40 
+  JESDown	 40	 40 
+  LESUp	 40	 40 
+  LESDown	 40	 40 
+
+T_s	 /nfs	 /hdfs
+  full	 31	 31
+  full/50	 1	 1
+  merged	 1	 1
+  SFs	 1	 1 
+  JESUp	 1	 1 
+  JESDown	 1	 1 
+  LESUp	 1	 1 
+  LESDown	 1	 1 
+
+T_t	 /nfs	 /hdfs
+  full	 364	 364
+  full/50	 8	 8
+  merged	 8	 8
+  SFs	 8	 8 
+  JESUp	 8	 8 
+  JESDown	 8	 8 
+  LESUp	 8	 8 
+  LESDown	 8	 8 
+
+T_tW	 /nfs	 /hdfs
+  full	 58	 56
+  full/50	 2	 2
+  merged	 2	 2
+  SFs	 2	 2 
+  JESUp	 2	 2 
+  JESDown	 2	 2 
+  LESUp	 2	 2 
+  LESDown	 2	 2 
+
+Tbar_s	 /nfs	 /hdfs
+  full	 18	 18
+  full/50	 1	 1
+  merged	 1	 1
+  SFs	 1	 1 
+  JESUp	 1	 1 
+  JESDown	 1	 1 
+  LESUp	 1	 1 
+  LESDown	 1	 1 
+
+Tbar_t	 /nfs	 /hdfs
+  full	 174	 174
+  full/50	 4	 4
+  merged	 4	 4
+  SFs	 4	 4 
+  JESUp	 4	 4 
+  JESDown	 4	 4 
+  LESUp	 4	 4 
+  LESDown	 4	 4 
+
+Tbar_tW	 /nfs	 /hdfs
+  full	 53	 52
+  full/50	 2	 2
+  merged	 2	 2
+  SFs	 2	 2 
+  JESUp	 2	 2 
+  JESDown	 2	 2 
+  LESUp	 2	 2 
+  LESDown	 2	 2 
+
+WW	 /nfs	 /hdfs
+  full	 896	 896
+  full/50	 18	 18
+  merged	 18	 18
+  SFs	 18	 18 
+  JESUp	 18	 18 
+  JESDown	 18	 18 
+  LESUp	 18	 18 
+  LESDown	 18	 18 
+
+WZ	 /nfs	 /hdfs
+  full	 924	 922
+  full/50	 19	 19
+  merged	 19	 19
+  SFs	 19	 19 
+  JESUp	 19	 19 
+  JESDown	 19	 19 
+  LESUp	 19	 19 
+  LESDown	 19	 19 
+
+ZZ	 /nfs	 /hdfs
+  full	 886	 886
+  full/50	 18	 18
+  merged	 18	 18
+  SFs	 18	 18 
+  JESUp	 18	 18 
+  JESDown	 18	 18 
+  LESUp	 18	 18 
+  LESDown	 18	 18 
+

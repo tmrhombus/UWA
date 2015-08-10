@@ -1,8 +1,9 @@
+echo
+echo "version: ${version}"
+echo "runname: ${runname}"
 
-rebase="/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/Wbb8TeV"
-
-mkdir -p ${rebase}/SampleInfo/${version}/Analyzed_${runname}
-mkdir -p ${rebase}/SampleInfo/${version}/Plots_${runname}
+mkdir -p ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}
+mkdir -p ${wbbzone}/SampleInfo/${version}/Plots_${runname}
 
 for samplename in \
 "Drell" \
@@ -25,31 +26,31 @@ for samplename in \
 "ZZ" 
 
 do
- for myshift in "SFs" "JESUp" "JESDown" "LESUp" "LESDown"
+ for myshift in "SFs" "JESUp" "JESDown" "MESUp" "MESDown" "EESUp" "EESDown"
  do
-hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_${samplename}_${myshift}.root \
- ${hdfs}/${version}_${runname}-${samplename}_${myshift}_callHistoFiller*/*.root
- #${hdfs}/${version}/${version}_${runname}-${samplename}_${myshift}_callHistoFiller*/*.root
+  hadd \
+   ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_${samplename}_${myshift}.root \
+   ${hdfs}/${version}_${runname}-${samplename}_${myshift}_callHistoFiller*/*.root 
  done
 done
 
-for datasample in \
-"DataA_8TeVMu" \
-"DataB_8TeVMu" \
-"DataC_8TeVMu" \
-"DataD_8TeVMu" \
-"DataA_8TeVEle" \
-"DataB_8TeVEle" \
-"DataC_8TeVEle" \
-"DataD_8TeVEle" 
-
-do
- hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_${datasample}.root \
-  ${hdfs}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
-  #${hdfs}/${version}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
-done
-
-hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_mu.root \
- ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVMu*root
-hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_ele.root \
- ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVEle*root
+#for datasample in \
+#"DataA_8TeVMu" \
+#"DataB_8TeVMu" \
+#"DataC_8TeVMu" \
+#"DataD_8TeVMu" \
+#"DataA_8TeVEle" \
+#"DataB_8TeVEle" \
+#"DataC_8TeVEle" \
+#"DataD_8TeVEle" 
+#
+#do
+# hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_${datasample}.root \
+#  ${hdfs}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
+#  #${hdfs}/${version}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
+#done
+#
+#hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_mu.root \
+# ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVMu*root
+#hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_ele.root \
+# ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVEle*root

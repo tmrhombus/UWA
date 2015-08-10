@@ -1,0 +1,49 @@
+\section{Systematics}\label{Syst}
+
+Major sources of systematic uncertainties are described in this section. 
+Their contribution to the total uncertainty is presented in Table \ref{tab:NuisanceTable}. 
+
+
+\begin{itemize}
+\item One of the dominant uncertainties comes from the background normalization. 
+The initial yields of the background contributions are normalized wherever possible to the 
+corresponding cross sections as measured by CMS or to the NNLO predictions as listed in 
+Table~\ref{tab:MCSAMPLES}. 
+\item The uncertainties on the b-tagging are taken from Ref.~\cite{BTAGNOTE} and affect different 
+MC samples in different ways as presented in Table~\ref{tab:NuisanceTable}. 
+\item The Jet Energy Scale is allowed to vary up and down by one standard deviation, with values taken from the Jet Database \cite{}.
+This variance is added to the fit as a binned shape variation in a 2 dimensional fit.
+\item Muon Energy Scale: The Muon Energy Scale is allowed to vary up and down by $\pm 1 \%$ as recommended by the Muon POG. This variance is added to the fit as a binned shape variation in the 2 dimensional fit.
+%\item Pile-up multiplicity: The number of pile-up interactions from the monte carlo has been re-weighted to reproduce better the conditions of data. The uncertainty associated to this can be estimated by shifting the overall mean of the number of vertices up or down $\pm$ 0.6, to cover the uncertainties due to pile-up modeling
+\item Unclustered Energy: To account for $\MET$ uncertainty the component of $\MET$ that is not clustered in jets is scaled by $\pm10\%$ and added to the fit as a binned shape variation.
+%\item The uncertainties due to trigger simulation, 1\%, and due to lepton reconstruction, identification and isoltion, 2\% are also considered.
+\item The luminosity uncertainty, 2.6\% is taken from Ref.~\cite{LUMI}
+\item The QCD uncertainty in the 
+final fit is taken to be $\pm50\%$; this uncertainty comes directly from the uncertainty on the
+fit in the QCD background-enriched control region.
+\end{itemize}
+
+
+\begin{table}[htb]
+\begin{center}
+\small
+\begin{tabular}{|c|c|}
+\hline
+Nuisance&Uncertainty\\
+\hline
+b-Tag Efficiency& $12\%$\\
+b-Tag Efficiency Charm Sample& $24\%$\\
+b-Tag Fake Rate& $15\%$\\
+Luminosity& $2.6\%$\\
+Jet Energy Scale& 1 $\sigma$ from Jet Database\\
+Jet Energy Clustering& $10\%$\\
+Muon Energy Scale& $1\%$\\
+\hline
+\end{tabular}
+\caption{Nuisance parameters included in the minimization}%Add in MC Uncertainties here??
+\label{tab:NuisanceTable}
+\end{center}
+\end{table}
+
+
+

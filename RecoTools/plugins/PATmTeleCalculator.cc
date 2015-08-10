@@ -44,6 +44,7 @@ void PATmTeleCalculator::produce(edm::Event& iEvent, const edm::EventSetup& es) 
     using namespace edm;
     using namespace reco;
     double pt_ele,pt_met,phi_ele,phi_met,dphi,mt = -1.;
+    double diff_pt,pt_met_unsh=-1;
 
     // get the collections
     std::auto_ptr<pat::ElectronCollection> out(new pat::ElectronCollection);
@@ -59,9 +60,13 @@ void PATmTeleCalculator::produce(edm::Event& iEvent, const edm::EventSetup& es) 
         pat::MET met=mets->at(0);
         pt_met = met.pt();
         
-        std::string met_names[6] = {
+         //"eesUp",
+         //"eesDn",
+        std::string met_names_ees[2] = {
          "eesUp",
-         "eesDn",
+         "eesDn"
+        };
+        std::string met_names[4] = {
          "uesUp",
          "uesDn",
          "jesUp",
@@ -82,7 +87,7 @@ void PATmTeleCalculator::produce(edm::Event& iEvent, const edm::EventSetup& es) 
          //  " mT: "<<mt<<std::endl;
          electron.addUserFloat("mt",mt);
 
-         for ( size_t j = 0; j < 6; ++j){
+         for ( size_t j = 0; j < 4; ++j){
           pt_met = met.userFloat(met_names[j]+"_pt");
           phi_met = met.userFloat(met_names[j]+"_phi");
 
@@ -92,6 +97,24 @@ void PATmTeleCalculator::produce(edm::Event& iEvent, const edm::EventSetup& es) 
           //  " pT: "<<pt_met<<" phi: "<<phi_met<<
           //  " mT: "<<mt<<std::endl;
           electron.addUserFloat("mt_"+met_names[j],mt);
+         }
+
+         for ( size_t j = 0; j < 2; ++j){
+          pt_met_unsh = met.pt();
+
+          pt_met = met.userFloat(met_names_ees[j]+"_pt");
+          phi_met = met.userFloat(met_names_ees[j]+"_phi");
+
+          diff_pt = pt_met - pt_met_unsh;
+          diff_pt = diff_pt/6.;
+          pt_met = pt_met_unsh + diff_pt;
+
+          dphi = deltaPhi(phi_ele,phi_met);
+          mt = sqrt(2*pt_ele*pt_met*(1. - cos(dphi)));
+          //std::cout<<met_names[j]<<
+          //  " pT: "<<pt_met<<" phi: "<<phi_met<<
+          //  " mT: "<<mt<<std::endl;
+          electron.addUserFloat("mt_"+met_names_ees[j],mt);
          }
 
          out->push_back(electron);

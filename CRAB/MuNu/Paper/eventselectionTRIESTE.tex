@@ -1,0 +1,1445 @@
+\section{Selection of W + bb events - TRIESTE}
+\label{sec:EventSelection}
+
+%In this chapter the structure of the analysis is described 
+%in detail and detector level results are presented.
+%The primary datasets of proton-proton collisions at $\sqrt{s} = 8$~TeV
+%which have been used for this measurement are described in 
+%section~\ref{sec:dataset} and the corresponding samples of simulated events 
+%for the signal and background processes in section~\ref{sec:mcsamples}.
+%The aim of the offline selection implemented for the present analysis
+%is to select events where a $W$ boson decaying to an electron or muon 
+%and a neutrino has been produced in association with a pair of jets from 
+%$b$~quarks.
+%Primarily, a set of identification criteria is applied 
+%to the physics objects in final states, leptons and jets, 
+%in order to further reduce their misidentification rates at reconstruction level. 
+%These identification criteria 
+%are described in section~\ref{sec:preselection}.
+%The actual definition of the final state and its corresponding kinematic acceptance 
+%at detector level are presented in section~\ref{sec:wbbselection}.
+%%Along with the detector level kinematical acceptance, this section is dedicated to the 
+%%descritpion of the generator level acceptance, or phase space, of the analysis: 
+%%its precise definition is of fundamental importance
+%%for the cross section measurement and 
+%%its comparison with theoretical predictions.
+%Residual discrepancies between real data and simulation maybe due to a 
+%imperfect description of the lepton reconstruction and 
+%identification efficiencies and of the b-tagging efficiency. 
+%A set of scale factors is computed with data driven techniques and 
+%applied to the simulated events in order to mitigate these discrepancies.
+%This procedure is explained in section~\ref{sec:scalefactors} together 
+%with the details of the reweighting procedure applied to simulated events in 
+%order to reproduce the distribution of the multiplicity of pileup 
+%interactions in real data.
+%The last two sections,~\ref{sec:backgrounds} and~\ref{sec:detectorlevel},
+%are dedicated to the estimation and subtraction of all the 
+%non negligible backgrounds to the $W + bb$ events and to the presentation 
+%of the distribution of these events for the most interesting 
+%physical observables.
+%%-------------------
+
+In ths chapter there is the descrption of the analysis perfermed in Trieste.
+We should discuss how to merge everything. 
+The selection of objects and is redundant, while the section regarding the signal extraction 
+is totally different, of course...
+
+
+%-------------------
+\subsection{Primary datasets}
+\label{sec:dataset}
+
+The focus of the present analysis is to measure the production cross section 
+of $W$ bosons in association with $b$-jet pairs. A $W$ boson is most easily 
+identified when decaying to an electron or muon and a neutrino and indeed these are 
+the decay channels exploited in this measurement. 
+The analysis has been performed on top of the 
+\texttt{SingleElectron} and \texttt{SingleMuon} primary datasets. These datasets are a subsample
+of the proton-proton collision at the center of mass energy of $8$~TeV 
+recorded by CMS during 2012.
+In particular, the data stored in the \texttt{SingleElectron} and \texttt{SingleMuon} 
+datasets belong to events where at least 
+one of the several single lepton HLT trigger path has fired.
+These samples of events correspond to an integrated luminosity of about  
+$20~\mathrm{fb}^{-1}$: the details of the full integrated luminosity
+of both the datasets,
+along with the details of the integrated luminosity 
+for each subsample, can be found in table~\ref{tab:datasampleTS}.
+The so-called 2012A, 2012B, 2012C and 2012D subsamples are associated to the four data 
+acquisition periods between the three main LHC technical stops in May, July 
+and September 2012. The data taking conditions have evolved through each 
+technical stops to a higher instantaneous luminosity and, as a consequence,
+to a higher number of pileup interactions.
+The peak luminosity of $7\times10^{33}$~cm$^{-2}$s$^{-1}$ 
+has been reached during the 2012D data taking period and in this configuration 
+an average of $21$ pileup interactions per event were produced.
+
+\begin{table}[htb]
+\begin{center}
+\footnotesize
+%\scriptsize
+\begin{tabular}{|l|c|}\hline
+  Data sample &  Luminosity \\ \hline
+  /SingleMu/Run2012A-22Jan2013-v1/AOD & 889 pb$^{-1}$  \\
+  /SingleMu/Run2012B-22Jan2013-v1/AOD & 4422 pb$^{-1}$   \\
+  /SingleMu/Run2012C-22Jan2013-v1/AOD & 7137 pb$^{-1}$   \\
+  /SingleMu/Run2012D-22Jan2013-v1/AOD & 7318 pb$^{-1}$ \\\hline  \hline
+  /SingleElectron/Run2012A-22Jan2013-v1/AOD & 889 pb$^{-1}$  \\
+  /SingleElectron/Run2012B-22Jan2013-v1/AOD & 4422 pb$^{-1}$   \\
+  /SingleElectron/Run2012C-22Jan2013-v1/AOD & 7137 pb$^{-1}$   \\
+  /SingleElectron/Run2012D-22Jan2013-v1/AOD & 7318 pb$^{-1}$ \\\hline  \hline
+  
+  Total (Certified) &  $\cal{L}$ $= 19.8~{\rm fb}^{-1}$  \\ \hline
+\end{tabular}
+\end{center}
+\caption{Datasets and corresponding luminosities used in the analysis.} 
+\label{tab:datasampleTS}
+\end{table}
+
+
+\subsubsection{Trigger selection}
+
+As already mentioned, the \texttt{SingleElectron} and \texttt{SingleMuon} primary datasets
+are filled with events triggered by at least one single lepton HLT trigger path.
+Several trigger paths have been implemented in order to select events 
+containing at least one single isolated lepton and the kinematical and 
+identification cuts applied by each path have evolved through 2012 data taking 
+in order to accomodate the increasing instantaneous luminosity and keep 
+the rate of selected events compatible with the data recording capabilities.
+As it will be described in the next paragraphs, 
+the leptons selected in this analysis have been matched to 
+one particular trigger path, whose efficiency has been measured both in 
+simulation and real data and propagated to the cross section measurement. 
+The trigger path with the less demanding kinematical and identification
+requirements that has been kept unprescaled during the whole data acquisition 
+is, in the case of electrons:
+\begin{itemize}
+  \item HLT$\_$SingleEle27.
+\end{itemize}
+The cuts applied by the selected trigger path consist in a momentum threshold 
+at $p_{T} > 27$~GeV, along with some requirements in terms of isolation of the 
+calorimetric deposits associated to the electron candidate. No selection in 
+pseudorapidity is applied, the only limit being the calorimeter acceptance ($|\eta|<2.5$).
+The selected path in the case of muons is:
+\begin{itemize}
+  \item HLT$\_$IsoMu24$\_$eta2p1,
+\end{itemize}
+where the momentum threshold of this path has been set to $p_{T} > 24$~GeV
+along with a pseudorapidity cut at $|\eta| < 2.1$ and an isolation 
+requirement.
+The set of selections applied on top of leptons at trigger level 
+has been considered when applying the offline selection criteria described later in 
+this chapter. Offline selections have been tuned in order to be tighter both in kinematical 
+and identification cuts, with the aim of avoiding any inconsistency between the online 
+and offline selection. 
+%-------------------
+
+
+%-------------------
+\subsection{Monte Carlo samples}
+\label{sec:mcsamples}
+
+The same analysis has been performed on a sample of Monte Carlo generated events which 
+have undergone the full simulation of the CMS detector with \textsc{GEANT4}.
+The $W + bb$ signal process has been simulated with the 
+\textsc{MadGraph~5.11}~\cite{MADGRAPH} generator interfaced with \textsc{Pythia6} 
+(\textit{tuneZ2*})~\cite{pythia} for the hadronization of partons in the final state; 
+the parton distribution function adopted is \textsc{CTEQ6L}~\cite{cteq}.
+Two different samples of events, both generated with the same setup, 
+have been used in order to select the $W + bb$ signal process.
+The first sample consists in events of  associated 
+production of $W$ bosons and hadronic jets ($W + jets$),
+with the $W$ bosons decaying to leptons.
+This sample is fully inclusive with respect 
+to the hadronic part of the generated final states and thus 
+has been exploited in order to estimate both the fraction of events 
+genuinely corresponding to a $W + bb$ event and the fraction of events 
+where at least one of the jets in the final state is a light ($u$, $d$, $s$ or $g$) 
+quark or $c$~quark jet misidentified as a $b$~jet by the $b$-tagging
+algorithm. 
+The fraction of events where a $W$ boson has decayed to a $\tau$ 
+lepton has been estimated as well in this dataset.
+The exact definition of a $b$~jet at generator level will be given in 
+section~\ref{sec:genlevelEfficiency}.
+The contribution from $b$~quarks in the final states of this dataset
+is computed with the massless $5$~flavour scheme ($5$FS).
+The main limitation of the dataset described above is due to 
+the fact that the
+cross section for the production of a $W + bb$ final state
+is expected to be at least three orders of magnitude 
+smaller than the inclusive cross section for the production 
+%of a $W + jets$~\cite{wplusjets7tev}. As a consequence, 
+of a $W + jets$. As a consequence, 
+the sample of $W + bb$ events is strongly limited in statistics.
+In order to partially overcome this problem,
+the inclusive $W + jets$ sample has been enriched with events from exclusive samples
+with higher jet multiplicities. The four additional samples 
+correspond to the generation, with the same setup, of the following 
+four \textit{tree~level} processes: $W + 1 jet$, $W + 2 jets$, 
+$W + 3 jets$ and $W + 4 jets$.
+The exclusive samples have been summed to the inclusive sample after taking into account the 
+integrated luminosity of each sample and its corresponding 
+cross section, with the aim of achieving a consistent description of the 
+jet multiplicity in $W + jets$ final states. For the sake of simplicity,
+the higher jet multiplicities in the original $W + jets$ inclusive sample have 
+been neglected, given their very small impact on the statistics of the merged 
+sample.
+
+A second configuration has been used through the analysis in order to obtain a 
+pure sample of signal $W + bb$ events with better statistics when compared to 
+the sample of events selected in the $W + jets$ inclusive sample.
+For this purpose, the same generator setup has been exploited except for the fact that 
+calculations are based upon the massive $4$-flavour scheme (4FS) in this case.
+The sample of $W + bb$ events selected on top of these generated events has 
+been checked to provide a description of the interesting kinematical distribution of 
+the $W + bb$ system that is consistent within statistical uncertainties to the 
+one provided by the calculation in the $5$-flavour scheme.
+$W + bb$ events selected from the 5FS sample have been removed from the 
+final sample for consistency.
+In all the plots presented, unless otherwise specified, the 
+$4$FS exclusive sample has been adopted in order to simulate the signal events.
+
+All the physics processes with a final state that may be misidentified as a 
+$W + bb$ final state have been included in the generation process:
+\begin{itemize}
+  \item $t\bar{t}$: it has been generated with the \textsc{MadGraph} generator 
+    setup both in the fully leptonic and semi-leptonic decay channels;
+  \item single $t$: the contribution from the production of a single $t$~quark 
+    or $\bar{t}$~quark has been estimated in the $s$-channel, $t$-channel and 
+    $tW^{-}$ ($\bar{t}W^{+}$) production modes with events generated by the 
+    \textsc{powheg} generator~\cite{POWHEG} interfaced with \textsc{Pythia6} 
+    (\textit{tuneZ2*});
+  \item \textit{Drell-Yan} ($Z/\gamma* + jets$): these events have been generated with 
+    the \textsc{MadGraph} setup already described;
+  \item $WW$, $WZ$ and $ZZ$: the contribution from di-boson events is small when compared 
+    to the above processes and has been estimated directly with \textsc{Pythia6}.
+\end{itemize}
+
+The Monte Carlo samples used in this analysis, both for the simulation of the signal and 
+of the background processes, are summarized in
+in table~\ref{tab:mcsamples} along with the corresponding number of 
+generated events.
+Each sample has been rescaled to the integrated luminosity of the data with a correction 
+factor calculated with the following simple prescription:
+$$c_{norm} = \frac{\mathcal{L}_{DATA} \times \sigma_{MC}}{N_{MC}} \mathrm{,}$$
+with $\sigma_{MC}$ being the cross section for the particular process and $N_{MC}$ the 
+corresponding number of generated events.
+The theoretical prediction for the cross section $\sigma_{MC}$ of each 
+simulated process is reported in table~\ref{tab:mcxsecs}.
+These cross sections, used to rescale the generated samples, 
+represent the best available estimates for every process and 
+have been calculated taking into account higher order 
+corrections with respect to the setup used for generating the events.
+The only exception to this 
+procedure is represented by the $t\bar{t}$ full and semi leptonic samples, 
+which have been rescaled to the combination of the latest cross section measurement 
+from the CMS and ATLAS experiments at $\sqrt{s}=8$~TeV~\cite{ttbarxsecATLASCMS}.
+The experimental cross section, being inclusive with respect to the 
+$t\bar{t}$ decay modes, has been rescaled by the 
+branching ratio corresponding to each process.
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|r|l|l|}
+\hline
+%\begin{adjustwidth}{-4em}{-4em}
+%\bf &\bf & \bf{Reference Cross-Sections} \\ 
+\textbf{Process}&\textbf{Generator:}& $N_{events}$ \\ 
+\hline
+$W + $jets $5$FS   & \textsc{MadGraph}  & 57709905 \\ 
+$W + $1 jet $5$FS  & \textsc{MadGraph}  & 23141598 \\
+$W + $2 jets $5$FS & \textsc{MadGraph}  & 34044921 \\
+$W + $3 jets $5$FS & \textsc{MadGraph}  & 15539503 \\
+$W + $4 jets $5$FS & \textsc{MadGraph}  & 13382803 \\
+$W+b\bar{b}$ $4$FS & \textsc{MadGraph}  & 20646001 \\
+\hline
+$t\bar{t}$ Full leptonic & \textsc{MadGraph}  & 24963676 \\
+$t\bar{t}$ Semi leptonic        & \textsc{MadGraph}  & 12011428 \\
+$t$ t-channel      & \textsc{powheg}    & 3758227  \\ 
+$t$ s-channel      & \textsc{powheg}    & 259961   \\
+$t$ tW-channel     & \textsc{powheg}    & 493460   \\
+$\bar{t}$ t-channel  & \textsc{powheg}  & 1935072  \\
+$\bar{t}$ s-channel  & \textsc{powheg}  & 139974   \\
+$\bar{t}$ tW-channel & \textsc{powheg}  & 493460   \\
+\hline
+$Z + jets  $ & \textsc{MadGraph}        & 30459503 \\
+$WW     $    & \textsc{Pythia}          & 10000431 \\
+$WZ     $    & \textsc{Pythia}          & 10000283 \\
+$ZZ     $    & \textsc{Pythia}          & 9799908  \\
+\hline
+\end{tabular}
+%\end{adjustwidth}
+\end{center}
+\caption{Simulated samples used in the analysis.} 
+\label{tab:mcsamples}
+\end{table}
+
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|r|l|l|l|}
+\hline
+%\begin{adjustwidth}{-4em}{-4em}
+%\bf &\bf & \bf{Reference Cross-Sections}\\ 
+\textbf{Process}&\textbf{$\sigma$[pb]}& $\mathcal{O}(\alpha_{S}^{2})$& Generator \\ 
+\hline
+$W \rightarrow l\nu$ (incl.) $5$FS&36703           & NNLO   & \textsc{FEWZ} \\ 
+$W+b\bar{b}$ $4$FS   &138.9           & NLO    & \textsc{aMC@NLO} \\
+\hline                                         
+$t\bar{t}$ Full leptonic &240.6$\times$BR & DATA& \textsc{-}\\
+$t\bar{t}$ Semi leptonic &240.6$\times$BR & DATA& \textsc{-}\\
+$t$ t-channel        &46.4            & NLO    & \textsc{Hathor 2.1}\\ 
+$t$ s-channel        &3.97            & NNLO   & \cite{singletopXsec}\\
+$t$ tW-channel       &11.1            & NNLO   & \cite{singletopXsec}\\
+$\bar{t}$ t-channel  &30.7            & NLO    & \textsc{Hathor 2.1}\\
+$\bar{t}$ s-channel  &1.76            & NNLO   & \cite{singletopXsec}\\
+$\bar{t}$ tW-channel &11.1            & NNLO   & \cite{singletopXsec}\\
+\hline                                           
+$Z + jets  $         &3532            & NNLO   & \textsc{FEWZ}\\
+$WW     $            &54.838          & NLO    & \textsc{MCFM 6.6}\\
+$WZ     $            &33.21           & NLO    & \textsc{MCFM 6.6}\\
+$ZZ     $            &8.059           & NLO    & \textsc{MCFM 6.6}\\
+\hline
+\end{tabular}
+%\end{adjustwidth}
+\end{center}
+\caption{The theoretical cross section for each simulated 
+  process in the analysis. As the only exception, the $t\bar{t}$ sample 
+  has been rescaled to the combination of the latest ATLAS and CMS 
+  measurements at $\sqrt{s}=8$~TeV~\cite{ttbarxsecATLASCMS}.} 
+\label{tab:mcxsecs}
+\end{table}
+%-------------------
+
+
+%-------------------
+\subsection{Offline selection}
+\label{sec:preselection}
+
+Here, a set of additional selections performed on the 
+reconstructed objects of the $W + bb$ final state in the offline analysis 
+is presented.
+These offline selections are applied to muons, electrons and jets.
+In the case of leptons, a set of selection criteria is already applied at 
+trigger level; as described at the beginning of this chapter, isolated 
+leptons are in fact exploited in order to trigger the events in the 
+datasets used for this analysis. A second set of selections is 
+applied at reconstruction level, when looking for certain combinations 
+of signals in the subdetectors on top of which initiating the lepton 
+reconstruction algorithms.
+The guiding principle of selection criteria both at trigger and at 
+reconstruction level is to achieve the highest possible efficiency, 
+at the price of higher misidentification rates.
+In light of this fact, the offline selections are tuned 
+depending on the needs of the particular physics analysis in terms of 
+background rejection.
+The sample of selected $W + bb$ events has a strong contamination 
+from background processes and thus the tightest quality requirements have been applied 
+during the selection of leptons in the final states, together with the rejection of 
+particular event topologies as it will be described in section~\ref{sec:wbbselection}.
+Given the non negligible impact of these selections on the 
+final yield of events, the measurement of their corresponding efficiencies will 
+be discussed in detail in section~\ref{sec:tagandprobe}.
+
+\subsubsection{Muons}
+\label{sec:muonisooffline}
+
+The following requirements are applied on top of reconstructed muons in order to 
+enhance the purity of the selected sample. The first two items of the list are redundant 
+with respect to the selections already applied at trigger and reconstruction level,
+and aim at avoiding inconsistencies when estimating selection efficiencies:
+\begin{itemize}
+\item the muon is required to be a global muon, meaning that it needs to have a 
+  track from the inner tracking system associated to a track reconstructed in the 
+  external muon system, and it is required to pass all the identification 
+  requirements at PF reconstruction level;
+\item muon segments must be reconstructed in at least 
+  two muon stations;
+\item the $\chi^{2}/\mathrm{ndof}$ of the global track must be smaller than $10$;
+\item at least one good muon chamber hit must be included in the global muon track fit;
+\item the transverse and the longitudinal impact parameter of 
+  the inner track, $d_{xy}$ and $d_{z}$, as calculated with respect to 
+  the primary vertex, are required to satisfy 
+  the cuts: $|d_{xy}| < 0.2$~cm, $|d_{z}| < 0.5$~cm;
+\item the inner track of the muon must have more than $5$ associated hits in the 
+  silicon strip tracker and at least $1$ hit in the pixel detector.
+\end{itemize}
+This set of tight quality requirements for muons is labelled as muon 
+\textit{TightID}. A second set of looser criteria is defined and 
+adopted in order to reject events where more than one lepton has been reconstructed and 
+consists in the first two items of the \textit{TightID} prescription.
+This second set of selections replicates the trigger and reconstruction level 
+selections and is generally referred to as muon \textit{LooseID} and its usage 
+in the analysis will be clear in the next paragraphs.
+
+In addition to the set of cuts on identification variables described above,
+muons are required to be isolated within the detector.
+The presence of tracks or calorimetric deposits next to a reconstructed 
+muon, and in general to a lepton, is an indication that the lepton itself 
+descends with good probability from the hadronization process of a parton from the 
+hard scattering. This is the case, for example, of leptons produced 
+in the the semileptonic decay of $B$~hadrons within a $b$~jet.
+The isolation of PF muons is defined within a cone of radius
+$R = 0.4$ around the muon direction by the following formula:
+$$I_{\mathrm{rel}}^{\mathrm{PF}} = \frac{\Sigma p_{T}^{\mathrm{charged}}+\mathrm{max}\left( 0, \Sigma E_{T}^{\gamma} + \Sigma E_{T}^{\mathrm{neutral}} - 0.5\Sigma E_{T}^{\mathrm{charged PU}} \right)}{p_{T}^{muon}}$$
+with $\Sigma p_{T}^{\mathrm{charged}}$ the sum of transverse momentum of 
+all the charged PF particles within the isolation cone, $\Sigma E_{T}^{\mathrm{\gamma}}$ 
+and $\Sigma E_{T}^{neutral}$ the sum of the energy deposited in the calorimeters 
+by photons and neutral hadrons. The isolation term related to charged particles is corrected 
+from the contribution of pileup interactions thanks to the CHS procedure.
+The same assumption does not hold in the case of the terms including 
+photons and neutral hadrons contribution to isolation. 
+These terms are corrected for pileup effects 
+by subtracting the additional term $\Sigma E_{T}^{\mathrm{charged PU}}$.
+This term is the sum of the transverse momentum of all the charged PF particles 
+from pileup interactions within the isolation cone; 
+the contribution of photons and neutral hadrons from pileup to the 
+isolation has been estimated to be equivalent to half of the 
+contribution of charged particles~\cite{neutralpileupestimate-PAS-PFT-10-002},
+hence the $0.5$ multiplicative factor.
+This term is generally referred to as ``$\Delta\beta$~correction
+factor'' to the PF isolation.
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{rcc}
+\hline
+& \textit{LooseISO} & \textit{TightISO}\\
+\hline
+Muon PF isolation ($\Delta\beta$-corr.) $<$ & $0.20$ & $0.12$\\
+ \hline
+\end{tabular}
+\end{center}
+\caption{Muon PF based isolation corrected for pileup effects with the 
+  $\Delta\beta$-correction with thresholds for loose and tight selection
+  prescriptions.}
+\label{tab:muoniso}
+\end{table}
+The values of the cut on the isolation variable for muons are reported in 
+table~\ref{tab:muoniso} both for a \textit{TightISO} prescription
+to be used to select the decay lepton of the $W$ boson and for a 
+\textit{LooseISO} prescription to reject events with additional 
+reconstructed leptons.
+
+\subsubsection{Electrons}
+
+The offline selection for PF electrons is performed on three 
+different sets of variables concerning the identification of reconstructed 
+electrons, their isolation and the rejection of electrons generated from 
+the conversion of photons interacting with the detector material.
+
+\smallskip
+
+\textbf{Identification}
+
+The electron identification is performed on the following set of variables 
+describing the quality of the reconstructed electron:
+\begin{itemize}
+  \item $\Delta\eta$ and $\Delta\phi$ quantify the quality of the spatial matching between
+    the electron track in the inner tracking system and the associated supercluster
+    in the ECAL calorimeter;
+  \item $\sigma_{i\eta i\eta}$: the spread of the electron energy deposit along the 
+    $\eta$ direction. The spread due to radiative energy loss is concentrated along the 
+    $\phi$ direction as a consequence of the magnetic field configuration and thus an 
+    isolated electron is expected to have a small energy spread along $\eta$;
+  \item H/E: the fraction of energy deposited in the hadron calorimeter and 
+    in the electromagnetic calorimeter. The electromagnetic shower produced by an 
+    electron is fully absorbed within the ECAL and this ratio is expected to be small;
+  \item $d_{0}$ and $d_{Z}$ are the transverse and longitudinal impact parameters
+    of the electron track and are exploited to reject electrons not originated from 
+    the primary vertex of the event;
+  \item $|1/E - 1/p|$: the energy measured in the calorimeter and the momentum 
+    measured by the tracking system need to be consistent within certain limits.
+\end{itemize}
+
+\smallskip
+
+\textbf{Isolation}
+
+The isolation of PF electrons within the detector shares the same purpose and 
+the same problematics as the isolation definition in the case of muons, described in the previous 
+paragraph, and its definition is identical 
+for both the lepton species.
+The electron isolation is defined within a cone of radius $R=0.3$ around the electron 
+trajectory.
+The $\Delta\beta$~correction term is applied as well 
+in order to correct for pileup effects.
+
+\smallskip
+
+\textbf{Conversion rejection}
+
+The rejection of electrons generated from the conversion of photons 
+interacting with the detector material is performed by computing the 
+probability of the track fit when including the primary vertex in the track itself. 
+The probability is expected to be very low for electrons non originating from the 
+primary vertex of the event.
+In addition, the electron is rejected when the associated track in 
+the inner tracking system has a certain number of missing hits 
+in the innermost layers of the pixel detector, corresponding to the nearest 
+region to the beam interaction point: the tracks of electrons from photon 
+conversions have a higher probability to begin in the later tracker layers, 
+after a certain amount of material has been crossed. \\
+
+\bigskip
+
+In table~\ref{tab:elecutsbarrel} the identification, isolation and conversion rejection 
+variables cuts for PF electrons 
+detected in the ECAL barrel are reported, both for a \textit{tight} and a 
+\textit{loose} selection prescription. 
+As in the offline selection of muons, the \textit{tight} prescription 
+is adopted when selecting the decay electron of a $W$ boson, while 
+the \textit{loose} selection is exploited to reject events with additional 
+reconstructed leptons.
+The corresponding thresholds 
+for electrons detected in the 
+ECAL endcaps are listed in table~\ref{tab:elecutsendcaps}.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{rcc}
+\hline
+$|\eta| < 1.479$ & \textit{Loose} & \textit{Tight}\\
+\hline
+$|\Delta\eta| <$ & 0.007 & 0.004\\
+$|\Delta\phi| <$  & 0.15 & 0.03 \\
+$\sigma(i\eta i\eta) <$   & 0.01 & 0.01 \\
+H/E $<$  & 0.12 & 0.12 \\
+$|1/E - 1/p| <$   & 0.05 & 0.05 \\
+\hline
+$|d_{0}| <$ & 0.02 cm & 0.02 cm \\
+$|d_{Z}| <$  & 0.2 cm & 0.1 cm \\
+\hline
+PF Rel. Isolation $<$ & 0.15 & 0.10 \\
+\hline
+Vert. fit probability  & $10^{-6}$ & $10^{-6}$\\
+Missing hits $\leq$    & 1 & 0\\
+ \hline
+\end{tabular}
+\end{center}
+\caption{Identification, isolation and rejection of converted photons
+  variables for PF electrons with the corresponding threshold values for 
+  the \textit{TightID} and \textit{LooseID} selection criteria in the 
+  ECAL barrel ($|\eta| < 1.479$).}
+\label{tab:elecutsbarrel}
+\end{table}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{rcc}
+\hline
+$|\eta| > 1.479$ & \textit{Loose} & \textit{Tight}\\
+\hline
+$|\Delta\eta| <$ & 0.007 & 0.004\\
+$|\Delta\phi| <$  & 0.15 & 0.03 \\
+$\sigma(i\eta i\eta) <$   & 0.01 & 0.01 \\
+H/E $<$  & 0.12 & 0.12 \\
+$|1/E - 1/p| <$   & 0.05 & 0.05 \\
+\hline
+$|d_{0}| <$ & 0.02 cm & 0.02 cm \\
+$|d_{Z}| <$  & 0.2 cm & 0.1 cm \\
+\hline
+PF Rel. Isolation $<$ & 0.15 & 0.10 \\
+\hline
+Vert. fit probability  & $10^{-6}$ & $10^{-6}$\\
+Missing hits $\leq$    & 1 & 0\\
+ \hline
+\end{tabular}
+\end{center}
+\caption{Identification, isolation and rejection of converted photons
+  variables for PF electrons with the corresponding threshold values for 
+  the \textit{TightID} and \textit{LooseID} selection criteria in the 
+  ECAL endcaps ($|\eta| > 1.479$).}
+\label{tab:elecutsendcaps}
+\end{table}
+
+\subsection{Jets}
+A loose set of identification criteria is applied to PF jets as well, 
+in order to reject fake jets resulting from the clusterization of detector noise.
+The PF algorithm makes this task straightforward and the rejection is performed 
+with a set of requirements on the composition of the clustered jets.
+In particular, jets are required to be composed of at least two PF candidate 
+particles and at least one of them to be a charged particle. 
+%-------------------
+
+
+%-------------------
+\subsection{W + bb events}
+\label{sec:wbbselection}
+
+In this section the $W + bb$ final state is 
+defined along with the detector level kinematical 
+phase space in which the final state is selected.
+A reconstructed lepton is required to be present 
+in selected events, with transverse momentum $p_{T} > 30$~GeV 
+and pseudorapidity $|\eta| < 2.1$. In the particular case of electrons 
+the pseudorapidity range $1.4442 < |\eta| < 1.566$, corresponding 
+to the gap between the barrel and the endcaps of the ECAL, is 
+further excluded. The selected lepton needs to satisfy the set of 
+tight isolation and identification (\textit{TightID, TightISO}) 
+requirements described in the previous section.
+The lepton transverse momentum threshold at $p_{T} > 30$~GeV is imposed by 
+the trigger selection thresholds at $27$~GeV and $24$~GeV for electrons and 
+muons respectively: both the selected electron or muon are in fact 
+required to be triggered by the \texttt{SingleElectron} and 
+\texttt{SingleMuon} trigger paths (described in section~\ref{sec:dataset})
+respectively.
+Equivalently, the pseudorapidity range $|\eta| < 2.1$ corresponds to the 
+region where the best muon reconstruction performance is achieved.
+These kinematical cuts have been chosen to be symmetric for the two lepton 
+species in order to statistically combine the cross 
+section measurements in the two independent channels.
+The selection of a final state with one isolated lepton is meant to tag the 
+visible part of the decay of a $W$ boson.
+
+The contribution from events where a $Z$ boson, a pair of vector bosons 
+or a $t\bar{t}$~quark pair is produced has been reduced by rejecting 
+events with an additional reconstructed lepton. Looser requirements 
+are applied to the additional leptons to be vetoed: transverse momentum 
+$p_{T} > 10$~GeV; pseudorapidity $|\eta| < 2.4$, corresponding to the 
+acceptance of the tracking system; \textit{LooseID, LooseISO} identification 
+and isolation requirements.
+A single lepton final state may be faked as well by multijet events (QCD) where a lepton 
+has been produced in the hadronization process of a jet and misidentified 
+as an isolated lepton from the primary vertex.
+The rate of this kind of misidentification is very low, but, given the cross 
+section disparity of several orders of magnitudes in favour of multijet events,
+the contribution from QCD is not negligible, and has been estimated using the data driven 
+technique described in section~\ref{sec:qcd}. In order to reduce such a background 
+contribution, a threshold on the transverse mass $m_{\mathrm{T}}$ of the $W$ boson
+at $m_{\mathrm{T}} > 45$~GeV has been applied. 
+The transverse mass is computed as a function of the 
+transverse momentum of the lepton and of the neutrino from the decay of the $W$;
+the transverse momentum of the neutrino is assumed to be equal to missing transverse 
+momentum $\vec{E}_{T}^{miss}$ in the event:
+$$ m_{\mathrm{T}}(p_{T}^{lepton}, \vec{E}_{T}^{miss}) = \sqrt{2 p_{T}^{lepton} E_{T}^{miss} (1-\cos \Delta\phi)} \mathrm{,}$$
+with $\Delta\phi$ the polar distance between the transverse momenta.
+The missing transverse momentum in multijet events is virtually null and hence the 
+$m_{T}$ variable has a good discriminating power against QCD background 
+processes. More quantitative arguments in favour of the choice of the $m_T$ variable will 
+be described in section~\ref{sec:qcd}.
+
+Events are selected where two PF jets have been clustered with the 
+anti-$k_t$ algorithm (size parameter $R = 0.5$) in the tracker acceptance 
+($|\eta| < 2.4$) and with transverse momentum $p_{T} > 25$~GeV.
+Reconstructed jets with a distance $R < 0.5$ with respect to a reconstructed and isolated  
+lepton are rejected, in order to exclude leptons clustered as jets.
+Both the jets are required to satisfy a CSV tight $b$-tagging requirement
+(CSV discriminator~$> 0.898$). 
+Events with additional jets are rejected. The purpose of this extra-jet veto 
+is to control the amount of contamination from $t\bar{t}$~quark pair processes.
+The $t\bar{t}$ production is the most relevant contribution to the background 
+in the present analysis and it becomes the dominant process in events with an 
+associated jet multiplicity greater the $2$. 
+A dedicated study in a separate control region for the $t\bar{t}$ process 
+will be described in section~\ref{sec:ttbar}.
+In addition to these selections, events are rejected if any jet is 
+reconstructed in the forward region of the detector at pseudorapidity 
+$|\eta| > 2.4$. Such a forward jet veto is expected to reduce the contribution 
+from the production of single $t$~quarks: the topology of these events is 
+characterized by the emission of a forward jet in the $s$-channel production mode.
+%-------------------
+
+
+%-------------------
+\subsection{Monte Carlo reweighting and selection efficiency}
+\label{sec:scalefactors}
+%\markboth{\MakeUppercase{\chaptername\ \thechapter. \ The $W+bb$ process}}{}
+
+All the known sources of discrepancy between data and Monte Carlo simulation 
+have been taken into account in this section, and the 
+measurement of a set of ad-hoc weights or scaling factors to be applied on an 
+event-by-event basis 
+will be described with the aim of
+obtaining a consistent description 
+of real data in simulation.
+
+\subsubsection{Pileup multiplicity}
+\label{sec:pileupreweight}
+
+The number of pileup interactions 
+per event is strongly dependent on the operating 
+conditions of the LHC colliding beams of protons.
+This contribution can be split into the fraction of collisions 
+between protons belonging to the colliding bunches (\textit{in-time} 
+pileup) and between protons belonging to the tails of bunches adjacent 
+to the colliding ones (\textit{out-of-time} pileup).
+During the 2012 acquisition period, an average of $21$ pileup interactions per 
+event were produced, with a peak of $78$ reconstructed pileup vertices 
+registered in the 2012D dataset.
+A graphical reconstruction of such a harsh pileup condition is represented in 
+picture~\ref{fig:highpileup}.
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.6\textwidth]{figs/trieste_plots/highpileup}
+	\end{center}
+	\caption{Graphical reconstruction of an event with a record number 
+          of $78$ reconstructed interaction vertices.}
+	\label{fig:highpileup}
+\end{figure}
+
+The pileup regime has evolved during the data taking in a way that was not known 
+a priori with sufficient detail. 
+As a consequence, the simulated events have been generated with a 
+distribution of the number of pileup interactions that can be easily reweighted in
+order to obtain the actual pileup distribution in real data.
+In order to achieve this result, an event-by-event weight has been calculated, starting from
+the minimum bias cross section together with the instantaneous luminosity for each bunch crossing,
+as the ratio between the observed number of pile-up events in data and in simulation:
+%the ratio between the total number of events in data with a certain number $i$ 
+%of reconstructed vertices and the corresponding number of events in MC with 
+%the same number of generated pileup interactions:
+$$ w_{PU}(i) = \frac{N_{data}(i)}{N_{MC}(i) \mathrm{.}}$$
+The pile-up events distribution in data is calculated by the convolution of the 
+bunch crossing instantaneous luminosity and the total inelastic pp cross section.
+In figure~\ref{fig:pileupreweighting} the distribution of the number of 
+reconstructed vertices is compared 
+in the 2012 \texttt{SingleMuon} dataset and in simulation before and after the 
+pileup reweighting procedure, showing that the simulation achieves an acceptable degree
+of agreement with respect to the real data pileup conditions after the 
+application of the weights.
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/muons/h_recoVTX}
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/muons/w_recoVTX}
+	\end{center}
+	\caption{The distribution of the number of reconstructed vertices in simulation is 
+          compared against 
+          the reconstructed number of vertices in real data (black dots) before and 
+          after the pileup reweighting procedure, in the left and right plots respectively.}
+	\label{fig:pileupreweighting}
+\end{figure}
+
+\subsubsection{Lepton efficiency}
+\label{sec:tagandprobe}
+
+Leptons have been exploited to trigger the events in the datasets 
+for this analysis 
+and to tag the final state of a $W$ boson decay. 
+In these steps several quality requirements have been applied on 
+top of the reconstructed leptons, 
+as described earlier in this chapter. 
+Selection criteria are applied as well at reconstruction level, 
+as described in the previous chapter.
+The overall efficiency related to these lepton selection requirements plays a 
+leading role in the global efficiency with which $W + bb$ events are
+selected within the defined kinematical phase space.
+This efficiency has been measured with a data driven technique, 
+generally referred to as ``\textit{Tag\&Probe}'' method.
+The \textit{Tag\&Probe} exploits the kinematical properties of the 
+$Z$ boson decay in order to provide an estimate of selection efficiencies 
+independent from simulation. A sample of $Z$ boson decays is tagged by selecting
+events with one isolated lepton and compatible with tight isolation and 
+identification requirements. The focus of this \textit{tag} lepton selection 
+is to avoid any possible bias on the identification of additional 
+leptons in the event, that would mystify the efficiency measurement.
+The actual efficiency measurement is performed on top of the second decay lepton,
+called \textit{probe}, 
+of the $Z$ with the following simple relation:
+$$ \epsilon = \frac{ N_{passing}^{probes}}{N_{passing}^{probes} + N_{failing}^{probes} } \mathrm{.}$$
+Both the samples of probes that pass or fail the selection, and its efficiency 
+is to be measured, contain a fraction of background events where a $Z$ boson has not 
+been really produced. The fraction of background to both the samples is subtracted 
+by means of an extended Maximum-Likelihood fit to the invariant mass 
+of the tag and probe leptons around the $Z$ mass value. 
+The signal fraction is parametrized by the convolution of 
+a $Z$ generator shape and a Gaussian spread function taking into account 
+the response of the detector, while the background is parametrized with several combinations 
+of exponential and polynomial functions depending on the kinematical configuration of the 
+tag and probe lepton pair: the efficiency is measured in fact  as a function of the 
+probe lepton transverse momentum and pseudorapidity. To a smaller extent, 
+lepton efficiencies depend on the jet multiplicity and number of pileup interactions 
+in the event as well; these dependencies have not been taken into account, since they  
+have been found to be negligible within the 
+statistical uncertainties on the measured efficiency.
+In figure~\ref{fig:tagandprobefit} an example of a \textit{Tag\&Probe} fit 
+is shown.
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.6\textwidth]{figs/trieste_plots/tap}
+	\end{center}
+	\caption{Example of a \textit{Tag\&Probe} fit. In green and red 
+          the fit to the invariant mass distribution of the 
+          tag and probe lepton pairs for the distribution of the probes 
+          respectively passing and failing the selection criterium of 
+          which the efficiency is to be measured.
+          In blue the final simultaneous fit on the global distribution 
+          in order to compute the efficiency.}
+	\label{fig:tagandprobefit}
+\end{figure}
+
+In this particular analysis the efficiency of trigger, reconstruction and 
+offline selection has been separately measured for electrons and muons both 
+in data and in Monte Carlo events. From these efficiencies, 
+a set of Monte Carlo scale factors has been derived as a function of the 
+lepton transverse momentum and pseudorapidity:
+$$SF_{HLT,~reco,~offline~ID/ISO} (p_{T},\eta) = \frac{\epsilon_{HLT,~reco,~offline~ID/ISO}^{data}}{\epsilon_{HLT,~reco,~offline~ID/ISO}^{MC}} \mathrm{.}$$
+These scale factors have been used to reweight simulated events in order obtain 
+a consistent description of lepton selection effeciencies with respect to real data.
+
+\subsubsection{b-tagging efficiency}
+
+The $b$-tagging efficiency is the second most important ingredient to the 
+selection efficiency of the present analysis, after the lepton selection 
+efficiencies described in the previous section.
+%The actual measurement and calculation of a set of Monte Carlo scale factors 
+%to make the jet $b$-tagging efficiency in simulation consistent with data has been 
+%described in detail in section~\ref{sec:btagefficiency}.
+The usage of these scale factor is strongly dependent on the number of jets 
+in final state and the $b$-tagging requirements applied on top of these jets.
+In this analysis two jets are selected and both of them are required to pass 
+$b$-tagging requirements. After carrying out the combinatory logic for this 
+configuration, the correct Monte Carlo weight is found to be described by the 
+following formula:
+$$ w(2|2) = SF_{b,\mathrm{light}}(\mathrm{1st~jet}) \times SF_{b,\mathrm{light}}(\mathrm{2nd~jet}) \mathrm{.}$$
+Since these scale factors are applied to Monte Carlo events, the choice 
+between the application of the $SF_{b}$ and $SF_{\mathrm{light}}$ scale 
+factor relies on generator level information: as it will be explained later 
+in the next section, $b$-jets at generator level are defined as jets containing
+at least one $B$~hadron among the jet constituents within a distance of $R=0.4$ 
+from the axis; when a jet is $b$-tagged at generator level, $SF_{b}$ is used 
+in place of $SF_{\mathrm{light}}$.
+
+\subsubsection{Selection efficiency}
+\label{sec:genlevelEfficiency}
+
+The efficiency of all the selections applied in this analysis
+is estimated in simulation within 
+the generator level fiducial region defined by:
+\begin{itemize}
+  \item one electron or muon with transverse momentum $p_{T} > 30$~GeV and 
+    pseudorapidity $|\eta| < 2.1$;
+  \item exactly two $b$-jets with transverse momentum $p_{T} > 25$~GeV and 
+    pseudorapidity $|\eta| < 2.4$;
+\end{itemize}
+events with additional leptons or jets are rejected.
+The selected leptons energy has been corrected by summing 
+the vector four-momenta of 
+all the photons generated within a cone of radius $R = 0.1$
+around the lepton. This correction is meant to recover the 
+energy radiated via electroweak final state radiation 
+by leptons produced in the hard scattering process.
+Additionally, leptons generated from the decay of a $B$~hadron have 
+been rejected, in order to suppress the contribution from 
+semileptonic $b$ decays.
+
+Generator level jets are clustered on top of the full list of generated 
+stable particles in the event with the exception of neutrinos.
+Jets with a distance smaller than $R = 0.5$ with respect to a 
+lepton are rejected.
+The definition of a 
+$b$~jet at generator level consists in the requirement of a $B$~hadron to be 
+present among the jet constituents and within a cone of radius $R = 0.4$ 
+with respect to the jet axis.
+No additional cut is applied on the transverse mass of the $W$ boson.
+In this fiducial region, the selection efficiency for this analysis has 
+been measured to be equal to:
+$$\epsilon (W \rightarrow e \nu + bb) = (6.99 \pm 1.14) ~ \% $$
+$$\epsilon (W \rightarrow \mu \nu + bb) = (8.20 \pm 1.23) ~ \% $$
+The measurement has been performed on top of the sample of signal $W + bb$ events 
+generated with \textsc{MadGraph} in the $4$-flavour scheme (see section~\ref{sec:mcsamples}
+for details) and the associated uncertainty corresponds to the propagation of statistical 
+uncertainties on the sample of generated events.
+The theoretical uncertainty related to the particular choice of 
+the PDF and of the renormalization and factorization scales have not been taken into account here. 
+%This point wil be discussed again in the next chapter together with the estimate of 
+%systematic uncertainties. 
+As a reference, the contribution of PDF and 
+renormalization and factorization scales in the 
+measurement of the selection efficiency has been 
+estimated in the previous $W + bb$ analysis performed 
+in CMS on the sample of proton-proton collisions at $7$~TeV~\cite{cmsWbb7tev} and 
+has been found to contribute for the $10\%$ of the measured cross section.
+%-------------------
+
+
+%-------------------
+\subsection{Background estimation}
+\label{sec:backgrounds}
+
+In figure~\ref{fig:transvMassPrefit} the transverse mass distribution for events 
+selected with the prescription described in section~\ref{sec:wbbselection} both 
+in the electron and the muon decay channels of the $W$ boson is shown.
+The black dots indicate the events from real data samples. The colored areas indicate 
+the contribution from simulated signal (light dashed yellow) and 
+background events, as described in section~\ref{sec:mcsamples}.
+The simulated events have been reweighted with the set of Monte Carlo scale factors 
+described in the previous paragraphs.
+The numerical yields of each contribution are reported in table~\ref{tab:yieldsPrefit}.
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_mt_wenu_bb_wide}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_mt_wmnu_bb_wide}
+	\end{center}
+	\caption{The transverse mass distribution of events in the signal region for the 
+        electron (top) and muon (bottom) decay channels of the $W$ bosons.}
+	\label{fig:transvMassPrefit}
+\end{figure}
+
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Sample} & $W \rightarrow e \nu + bb$ & $W \rightarrow \mu \nu + bb$ \\ 
+\hline
+DATA        & 5073   & 5322 \\
+\hline             
+$W + bb$    & 729.3  & 872.0 \\
+$W + c$     & 68.6   & 74.0 \\
+$W + light$ & 134.5  & 138.1 \\
+$W(\rightarrow \tau \nu) + bb$  & 15.4 & 22.6 \\
+$t\bar{t}$  & 2028.6 & 2295.9 \\
+Single $t$  & 584.9  & 701.2 \\
+$WW$        & 92.9   & 113.4 \\
+%$WZ$        & - & - \\
+%$ZZ$        & - & - \\
+$Z + jets$  & 84.2   & 129.4 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Selected number of events with the selections and event-by-event scale factors
+  described in sections~\ref{sec:wbbselection} and~\ref{sec:scalefactors}.} 
+\label{tab:yieldsPrefit}
+\end{table}
+
+
+\subsubsection{QCD estimation}
+\label{sec:qcd}
+
+The contribution from QCD events, shown in green in figure~\ref{fig:transvMassPrefit},
+has been modelled in a QCD enriched sample of events in real data.
+Such a sample has been obtained by performing on the \texttt{SingleElectron} and 
+\texttt{SingleMuon} datasets a set of selections in every aspect identical to the 
+one described for signal events, with the following exceptions:
+\begin{itemize}
+  \item an anti-isolation requirement is applied when selecting leptons.
+    PF isolation is required to be $I_{rel} > 0.15$ in the case of electrons 
+    and $I_{rel} > 0.20$ in the case of muons, in place of the standard isolation 
+    cuts described in tables~\ref{tab:muoniso}, \ref{tab:elecutsbarrel} and~\ref{tab:elecutsendcaps};
+  \item no matching between selected leptons and single lepton trigger 
+    paths is required; trigger selection includes isolation requirements that 
+    would spoil the effect of the previous anti-isolation cut.
+\end{itemize}
+The transverse mass distribution of the sample of events selected with such requirements
+in the case of electrons
+is shown in figure~\ref{fig:qcdprefit}, where the black dots represent the data.
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.6\textwidth]{figs/trieste_plots/electronsQCD/w_mt_wenu_bb_wide}
+	\end{center}
+	\caption{QCD enriched sample of events selected by requiring one anti-isoleted electron.
+        The black dots represent the data, the colored areas represent the contributions 
+        from simulated signal ($W + bb$) and background events.}
+	\label{fig:qcdprefit}
+\end{figure}
+
+The same selection has been performed on all the simulated processes 
+and is represented in the same plot with the same color conventions as in the 
+signal region distribution: the only visible contribution here 
+comes from $t\bar{t}$ processes. All the simulated contributions from 
+the $W + bb$ signal events 
+and from the background processes has been subtracted to this sample and the resulting 
+shape has been taken as a template in order to estimate the QCD contribution in the 
+signal region.
+The normalization of the multijet sample in the signal region has been initialized to 
+a reasonable value by performing a fit of the shape
+on a sideband of the transverse mass distribution ($m_{T} < 20$ GeV) in the signal
+region. The outcome of this fit is shown in figure~\ref{fig:qcdpostfit}.
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.6\textwidth]{figs/trieste_plots/electronsQCD/w_mt_wenu_bb_wide_doFit}
+	\end{center}
+	\caption{The shape of the multijet sample obtained in the dedicated control region is fitted 
+          to the sideband ($m_{T} < 20$~GeV) of the transverse mass distribution in the signal region.
+          Indeed, the contribution of QCD events is estimated with during the final 
+          signal extraction procedure described in section~\ref{sec:transversemassfit}.}
+	\label{fig:qcdpostfit}
+\end{figure}
+
+The QCD contribution has been normalized to the output of this fit on the 
+plot shown in figure~\ref{fig:transvMassPrefit}.
+The result of such a fit is not to be considered completely reliable 
+because of the very limited statistics and background contamination,
+hence the precise estimate of the QCD contribution has been delegated 
+to a more sophisticated fit procedure (see section~\ref{sec:transversemassfit}) 
+on the full transverse mass distribution 
+meant to estimate the signal component for the cross section measurement.
+
+\subsubsection{Top-antitop control region}
+\label{sec:ttbar}
+
+The production of $t\bar{t}$ pairs is by far the predominant background 
+in the selection of $W + bb$ events and hence a dedicate study in two separate 
+control regions has been dedicated to its contribution.
+The first control region has been obtained from the signal selection 
+defined in section~\ref{sec:wbbselection} by adding the requirement of an 
+additional lepton with opposite flavour:
+events are selected when one electron and one muon are identified with 
+transverse momentum $p_{T}>30$~GeV, pseudorapidity $|\eta|<2.1$ and tight identification 
+and isolation requirements.
+Events with additional leptons are rejected with the same criteria previously described.
+Jet selection is unchanged.
+This ``$e/\mu$'' selection is particularly efficient with respect to $t\bar{t}$ 
+fully-leptonic decays and the transverse mass distribution 
+of the selected events is represented in figure~\ref{fig:ttbarFitemu}.
+The $t\bar{t}$ component, by far the dominant one, has been fitted to the data and a global scale 
+parameter has been extracted from the fit procedure with the following results:
+$$c_{t\bar{t}}^{e/\mu}(W \rightarrow e \nu + bb) = 1.044 \pm 0.31 \mathrm{,}$$
+$$c_{t\bar{t}}^{e/\mu}(W \rightarrow \mu \nu + bb) = 1.056 \pm 0.031 \mathrm{,}$$
+in the \texttt{SingleElectron} and \texttt{SingleMuon} primary datasets, 
+respectively, where the associated uncertainty corresponds to 
+the statistical uncertainty of the fit.
+The results of the fit are consistent in the two statistically independent 
+samples and indicate an excess of data events with respect to the simulation. 
+The disagreement is nevertheless compatible with the 
+$t\bar{t}$ measured cross section,
+to which the pre-fit sample is normalized, within its corresponding uncertainty 
+of $3.5\%$ (see section~\ref{sec:mcsamples} for details).
+
+A second control region has been defined with an alternative selection 
+on the multiplicity of jets: events are selected when containing at least $3$ jets 
+with transverse momentum $p_{T}>25$~GeV and pseudorapidity $|\eta|<2.4$. 
+Events are rejected when additional jets with transverse momentum $p_{T}>25$~GeV 
+have been clustered in the forward region of the detector ($2.4<|\eta|<5.0$).
+The selection applied to leptons is unchanged with respect to the signal selection 
+(sec.~\ref{sec:wbbselection}). The strong predominance of $t\bar{t}$ events at higher 
+jet multiplicities is especially evident when looking at the fraction of simulated 
+samples as a function of the jet multiplicity in figure~\ref{fig:jetmultiplicity}:
+this second control sample is more efficient than respect to $t\bar{t}$ 
+semi-leptonic decays. As a consequence of the different selection,
+it is fully uncorrelated from the previous $e/\mu$ control sample.
+The sample of selected events with this ``multi-jet'' 
+selection is reported in figure~\ref{fig:ttbarFitmultijet}.
+The scaling factors extracted from the fit of the simulated $t\bar{t}$ sample 
+to the data are the following:
+$$c_{t\bar{t}}^{\mathrm{multi-jet}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{t\bar{t}}^{\mathrm{multi-jet}}(W \rightarrow \mu \nu + bb) =1.118 \pm 0.013 \mathrm{,}$$
+and the excess of data is stronger in the multi-jet control sample. 
+Still, experimental uncertainties have to be taken into account beside the 
+$3.5\%$ $t\bar{t}$ cross section uncertainty and their contribution 
+will be described in the next chapter.
+For example, the systematic uncertainty due to the $b$-tagging data/MC scale factors alone 
+is of the order of $6\%$ and may partially explain such a disagreement.
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/electronsTOP.old/w_mt_wenu_bb_wide_doFit}
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/muonsTOP.old/w_mt_wmnu_bb_wide_doFit}
+	\end{center}
+	\caption{Sample of data and Monte Carlo events selected in the $t\bar{t}$ ``$e/\mu$'' control region. 
+          The results in the electron (left) and muon (right) decay channel are reported.}
+	\label{fig:ttbarFitemu}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/electronsTOP/w_jetmultiplicity}
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/muonsTOP/w_jetmultiplicity}
+	\end{center}
+	\caption{The multiplicity of jets in the sample 
+          of events selected with the $t\bar{t}$ multi-jet selection 
+          criteria, described in~\ref{sec:ttbar}.}
+	\label{fig:jetmultiplicity}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/electronsTOP/w_mt_wenu_bb_wide_doFit}
+		\includegraphics[width=0.49\textwidth]{figs/trieste_plots/muonsTOP/w_mt_wmnu_bb_wide_doFit}
+	\end{center}
+	\caption{Sample of data and Monte Carlo events selected in the $t\bar{t}$ ``multi-jet'' control region. 
+          The results in the electron (left) and muon (right) decay channel are reported.}
+	\label{fig:ttbarFitmultijet}
+\end{figure}
+
+\subsubsection{Transverse mass distribution fit}
+\label{sec:transversemassfit}
+
+As it has already been noticed in the previous section when 
+looking at the results in the $t\bar{t}$ control regions,
+a certain amount of disagreement between simulation and 
+real data is to be accepted even after the reweighting 
+of the simulated events with the data/MC efficiency scale factors
+for the $b$-tagging and lepton selections.
+In this section, an attempt to improve the description of the data 
+is performed by calculating a set of global scale factors for the 
+most important background samples in the signal region 
+from a fit procedure based on some
+simple and reliable assumptions. 
+Several fit procedures have been tried in order to test the stability 
+of the results, and the most interesting ones will be described
+in the next paragraphs.
+The fit is performed on the transverse mass distribution in the range 
+from $0$ to $200$~GeV. The transverse mass distribution has been found 
+to yield the best possible discriminating power between the different 
+samples and consequently the most stable fit results.
+This sentence is especially true in the case of the QCD background.
+In all the following fit procedures, the QCD background is treated as 
+a special case and its normalization is left completely floating
+and not correlated with the remaining backgrounds.
+This assumption is justified by the fact that the estimation of QCD is 
+completely relying on data and the stability of the fit is granted 
+in any case by the very low shape affinity between the 
+transverse mass distribution of QCD events and the other samples.
+
+\subsubsection{Uncorrelated top-antitop and W + bb fit}
+As a starting point, an uncorrelated fit of the $W + bb$ signal and of the 
+$t\bar{t}$ samples has been performed by setting their normalizations 
+free to float without any constraint during the fit, along with the 
+QCD normalization.
+All other backgrounds have been kept out of the fitting procedure 
+and their contribution estimated from the simulation prediction.
+A scale factor has been derived both for the $W + bb$ contribution:
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.770 \pm 0.211 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.575 \pm 0.163 \mathrm{,}$$
+and for the $t\bar{t}$ contributions:
+$$c_{t\bar{t}}(W \rightarrow e \nu + bb) = 1.107 \pm 0.064 \mathrm{,}$$
+$$c_{t\bar{t}}(W \rightarrow \mu \nu + bb) = 1.136 \pm 0.054 \mathrm{.}$$
+These results are graphically represented in figure~\ref{fig:unconstrainedfit}.
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.95\textwidth]{figs/trieste_plots/fit1}
+	\end{center}
+	\caption{Results of fit to the $t\bar{t}$ and $W+bb$ components in the electron (left) and 
+          muon (right) channel.}
+	\label{fig:unconstrainedfit}
+\end{figure}
+The $c_{W+bb}$ does not have any effect on the cross section measurement, 
+as it is the case instead for the background samples scale factors which 
+modify the background contributions to be subtracted from the data;
+the formula used to perform the background subtraction and cross section 
+calculation will be described in the next chapter. 
+As a consequence, $c_{W+bb}$ has to be regarded solely as an indication of the 
+level of agreement to be expected between the theoretical and measured 
+cross section.
+In the case of the the $c_{t\bar{t}}$, the results coming from the 
+$t\bar{t}$ control regions have been deliberately ignored: 
+the results of the fit are in good agreement with the results coming from 
+the $t\bar{t}$ multi-jet control region. Such a behaviour may be 
+explained by the fact that the phase space in which the $t\bar{t}$ multi-jet 
+events are defined is most near to the signal definition.
+Consequently, in the following results, 
+the $c_{t\bar{t}}^{\mathrm{multi-jet}}$ will be used when 
+constraining the $t\bar{t}$ contribution to the results in the control 
+region.
+This assumption may be biased by the fact that the other backgrounds are 
+not varied during the fitting procedure. As it can be explained with the following results, 
+the amount of such a bias is small due the fact that $t\bar{t}$ is by 
+far the dominant background and the fit results are stable when 
+introducing additional degrees of freedom.
+
+\subsubsection{Top-antitop constrained fit}
+In this second example the same kind of fit has been performed 
+after constraining the $t\bar{t}$ contribution to the results 
+obtained in the multi-jet control region:
+$$c_{t\bar{t}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{t\bar{t}}(W \rightarrow \mu \nu + bb) = 1.118 \pm 0.013 \mathrm{.}$$
+Not surprisingly, the output of the fitting procedure for the 
+$c_{W+bb}$ scale factor is consistent within the statistical uncertainties
+with the results from the previous fit: 
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.691 \pm 0.153 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.614 \pm 0.118 \mathrm{.}$$
+The the results are graphically represented in figure~\ref{fig:intermediatefit1}.
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.95\textwidth]{figs/trieste_plots/fit2}
+	\end{center}
+	\caption{Results of fit to the $W + bb$ component with $t\bar{t}$ constrained to the 
+          results in the multi-jet control region. Electron (left) and 
+          muon (right) decay channel.}
+	\label{fig:intermediatefit1}
+\end{figure}
+
+\subsubsection{Top-antitop and W + bb correlated fit}
+Subsequently, a fit has been performed to the 
+transverse mass distribution for the $t\bar{t}$ and $W + bb$ 
+samples, with the $t\bar{t}$ normalization constrained to the 
+measured cross section reported in table~\ref{tab:mcxsecs}.
+The $3.5\%$ uncertainty on the $t\bar{t}$ cross section has been
+adopted to constrain the $t\bar{t}$ sample.
+An additional degree of freedom has been added to the fit by 
+including a common $c_{\mathrm{scale}}$ correlating the $t\bar{t}$ and 
+$c_{W+bb}$ samples and has been constrained to the 
+values of $c_{t\bar{t}}^{\mathrm{multi-jet}}$ obtained in the 
+$t\bar{t}$ multi-jet control region:
+$$c_{\mathrm{scale}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{\mathrm{scale}}(W \rightarrow \mu \nu + bb) = 1.118 \pm 0.013 \mathrm{,}$$
+As expected, the result of the fit for the $c_{t\bar{t}}$
+scale factors is consistent with unity:
+$$c_{t\bar{t}}(W \rightarrow e \nu + bb) = 0.991 \pm 0.030 \mathrm{,}$$
+$$c_{t\bar{t}}(W \rightarrow \mu \nu + bb) = 1.006 \pm 0.029 \mathrm{.}$$
+The signal $W+bb$ scale factor has been modified accordingly:
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.501 \pm 0.154 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.432 \pm 0.124 \mathrm{.}$$
+The results are graphically represented in figure~\ref{fig:intermediatefit2}.
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.95\textwidth]{figs/trieste_plots/fit3}
+	\end{center}
+	\caption{Results of fit to the $t\bar{t}$ and $W+bb$ components correlated by 
+          a common scale factor. The $t\bar{t}$ is constrained to the results 
+          in the multi-jet control region. Electron (left) and 
+          muon (right) channel.}
+	\label{fig:intermediatefit2}
+\end{figure}
+The results of this fit are, in practice, equivalent to the previous results 
+with the only difference in the fact that the modification of the $t\bar{t}$
+contribution is delegated to the $c_{\mathrm{scale}}$ scale parameter that 
+is in common with the signal sample; as a consequence, the fit converges to a 
+smaller value of $c_{W+bb}$, which however does not affect the final cross section 
+measurement.
+Indeed, this step aims at demonstrating a correlated general underestimation of data 
+in simulation. Such a correlation is compatible with a systematic effect in the calibration 
+and selection of the objects in the selected final state, common to all simulated
+samples; the jet energy corrections and the $b$-tagging efficiency scale factors
+may provide an explanation for this effect, since they have a big associated 
+systematic uncertainty which will be described in the next chapter.
+
+\subsubsection{Baseline results}
+In this paragraph the fitting procedure adopted to estimate the 
+cross section is described.
+In the same fashion as for the previous configuration, 
+the $t\bar{t}$ normalization is constrained to its experimental 
+value and uncertainty.
+The $c_{\mathrm{scale}}$ global scale is constrained to the 
+results in the $t\bar{t}$ multi-jet control region:
+$$c_{\mathrm{scale}}(W \rightarrow e \nu + bb) = 1.141 \pm 0.016 \mathrm{,}$$
+$$c_{\mathrm{scale}}(W \rightarrow \mu \nu + bb) = 1.118 \pm 0.013 \mathrm{,}$$
+and it is now correlating the 
+variation of all the simulated samples with the only exception 
+of the QCD sample: top-antitop, Single~top, the light and $c$ fractions 
+of the $W+$jets sample, the Drell-Yan sample and the di-boson samples.
+This modification has the effect of further reducing the 
+$W+bb$ signal strength:
+$$c_{W+bb}(W \rightarrow e \nu + bb) = 1.419 \pm 0.173 \mathrm{,}$$
+$$c_{W+bb}(W \rightarrow \mu \nu + bb) = 1.351 \pm 0.135 \mathrm{,}$$
+The results are graphically represented in figure~\ref{fig:baselinefit}.
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_mt_wenu_bb_wide_doFit}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_mt_wmnu_bb_wide_doFit}
+	\end{center}
+	\caption{Results of fit to the $t\bar{t}$, $W+bb$, $W+$light, Single~$t$ and 
+          di-boson samples, correlated by 
+          a common scale factor. The $t\bar{t}$ is constrained to the results 
+          in the multi-jet control region. Electron (top) and 
+          muon (bottom) channel.}
+	\label{fig:baselinefit}
+\end{figure}
+The effects of the normalization scale factors obtained on the fit 
+on the number of selected events is reported in table~\ref{tab:yieldsPostfit}, 
+to be compared with the pre-fit event yields reported in 
+table~\ref{tab:yieldsPrefit}.
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Sample} & $W \rightarrow e \nu + bb$ & $W \rightarrow \mu \nu + bb$ \\ 
+\hline
+DATA        & 5073   & 5322 \\
+\hline             
+$W + bb$    & 1182.2 & 1316.7 \\
+$W + c$     & 78.3   & 82.7 \\
+$W + light$ & 153.5  & 154.4 \\
+$W + (\rightarrow \tau \nu) + bb$  & 17.5 & 25.4 \\
+$t\bar{t}$  & 2315.1 & 2566.4 \\
+Single $t$  & 667.5  & 783.8 \\
+$VV$        & 106.0  & 126.8 \\
+$Z + jets$  & 96.1   & 144.7 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Selected event yields after the baseline fitting procedure described in 
+  section~\ref{sec:transversemassfit}.} 
+\label{tab:yieldsPostfit}
+\end{table}
+%-------------------
+
+
+
+%-------------------
+\subsection{Detector level distributions}
+\label{sec:detectorlevel}
+
+The interesting kinematical observables of the $W + bb$ system are presented here
+for the selection described in section~\ref{sec:wbbselection} performed on the 
+data and Monte Carlo samples listed in section~\ref{sec:dataset}.
+The signal component has been selected in the sample of $W + bb$ generated with 
+\textsc{MadGraph} in the $4$-flavour number scheme.
+The simulated events have been reweighted with the procedures 
+described in section~\ref{sec:scalefactors},
+in order to achieve the best possible 
+agreement with real data.
+The signal $W + bb$ contribution, along with the contribution of top-antitop, QCD and 
+Single~top background processes, has been estimated with the fitting procedure 
+described in the previous section (sec.~\ref{sec:transversemassfit}).
+The distributions are shown at detector level, 
+meaning that no effort has been spent in
+deconvolving the detector response function from the measured distributions.
+Results are shown both for the $W \rightarrow e \nu + bb$ and for the 
+$W \rightarrow \mu \nu + bb$.
+The following list includes all the relevant kinematical distribution of 
+the $W + bb$ system presented here:
+\begin{itemize}
+  \item the transverse momentum $p_{T}$ of the first and of the second $b$-jet
+    in the event, in order of decreasing $p_{T}$, are shown in 
+    figures~\ref{fig:1stjetpt} and~\ref{fig:2ndjetpt};
+  \item the pseudorapidity $\eta$ of the first and of the second $b$-jet, 
+    in figures~\ref{fig:1stjeteta} and~\ref{fig:2ndjeteta};
+  \item the $p_{T}$ and $\eta$ of the di-jet system, defined as the 
+     two $b$-jets four-momentum vector sum in figures~\ref{fig:dijetpt} and~\ref{fig:dijeteta};
+  \item the transverse momentum $p_{T}$ of the $W$ boson, defined as the 
+    vector sum of the $\vec{E}_{T}^{miss}$ and the $p_{T}$ of the lepton,
+    in figure~\ref{fig:Wpt};
+  \item the angular distance $\Delta R$ in the $(\phi,\eta)$~space between the two 
+    $b$-jets, in figure~\ref{fig:bjetDeltaR};
+  \item the polar angle $\Delta \phi$ between the two 
+    $b$-jets, in figure~\ref{fig:bjetDeltaPhi};
+  \item the jet $H_{T}$ observable, defined as the scalar sum of the 
+    transverse momentum of all the jets in the event ($H_{T} = \sum_{i = jets} p_{T}(i)$),
+    in figure~\ref{fig:jetHt};
+\end{itemize}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_first_jet_pt_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_first_jet_pt_bb}
+	\end{center}
+	\caption{Spectrum of the most energetic $b$-jet $p_{T}$. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:1stjetpt}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_second_jet_pt_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_second_jet_pt_bb}
+	\end{center}
+	\caption{Spectrum of the second $b$-jet $p_{T}$. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:2ndjetpt}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_first_jet_eta_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_first_jet_eta_bb}
+	\end{center}
+	\caption{Pseudorapidity of the most energetic $b$-jet. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:1stjeteta}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_second_jet_eta_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_second_jet_eta_bb}
+	\end{center}
+	\caption{Pseudorapidity of the second $b$-jet. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:2ndjeteta}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_dijet_pt_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_dijet_pt_bb}
+	\end{center}
+	\caption{The $p_{T}$ of the four-vector sum of the two $b$-jets in the event. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:dijetpt}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_dijet_eta_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_dijet_eta_bb}
+	\end{center}
+	\caption{The pseudorapidity of the four-vector sum of the two jets in the event. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:dijeteta}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_pt_W_wenu_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_pt_W_wmnu_bb}
+	\end{center}
+	\caption{The $p_{T}$ of the $W$ boson. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:Wpt}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_deltaR_wenu_2b}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_deltaR_wmnu_2b}
+	\end{center}
+	\caption{The angular distance $\Delta R$ between the two $b$-jets in the event. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:bjetDeltaR}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_delta_wenu_2b}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_delta_wmnu_2b}
+	\end{center}
+	\caption{The azimuthal distance $\Delta\phi$ between the two $b$-jets in the event. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:bjetDeltaPhi}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\leavevmode
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/electrons/w_Ht_bb}
+		\includegraphics[width=0.8\textwidth]{figs/trieste_plots/muons/w_Ht_bb}
+	\end{center}
+	\caption{The jet $H_{T}$ of the event, defined as the scalar sum of the 
+          $p_{T}$ of all the jets in the event. 
+          The electron decay channel is on the top plot, 
+          the muon decay channel on the bottom.}
+	\label{fig:jetHt}
+\end{figure}

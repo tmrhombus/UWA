@@ -1,0 +1,267 @@
+WARNING: In non-interactive mode release checks e.g. deprecated releases, production architectures are disabled.
+Using grid catalog type: UNKNOWN
+Using grid catalog : (null)
+VO name: cms
+Checksum type: None
+Trying SURL srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/Bastille_wbb-W2Jet_EESUp_callHistoFiller/user_code.tgz ...
+Source SE type: SRMv2
+Source SRM Request Token: get:331091
+Source URL: srm://cmssrm2.hep.wisc.edu:8443/srm/v2/server?SFN=/hdfs/HighReplicaCondorUserFiles//nfs_scratch/tperry/Bastille_wbb-W2Jet_EESUp_callHistoFiller/user_code.tgz
+File size: 69521204
+Source URL for copy: gsiftp://g14n30.hep.wisc.edu//hdfs/HighReplicaCondorUserFiles/nfs_scratch/tperry/Bastille_wbb-W2Jet_EESUp_callHistoFiller/user_code.tgz
+Destination URL: file:/var/condor/execute/dir_1724/user_code.tgz
+# streams: 1
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst
+            0 bytes      0.00 KB/sec avg      0.00 KB/sec inst
+      1048576 bytes    256.00 KB/sec avg    512.25 KB/sec inst
+      1048576 bytes    256.00 KB/sec avg    512.25 KB/sec inst
+      1048576 bytes    256.00 KB/sec avg    512.25 KB/sec inst
+
+Transfer took 6110 ms
+Info in <TUnixSystem::ACLiC>: creating shared library /var/condor/execute/dir_1724/./histoFiller_C.so
+In file included from /var/condor/execute/dir_1724/./histoFiller.C:2:0,
+                 from /var/condor/execute/dir_1724/histoFiller_C_ACLiC_dict.h:34,
+                 from /var/condor/execute/dir_1724/histoFiller_C_ACLiC_dict.cxx:17:
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'lep_pt' [-Wunused-parameter]
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'lep_eta' [-Wunused-parameter]
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'lep_phi' [-Wunused-parameter]
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'lep_mass' [-Wunused-parameter]
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'dilep_pt' [-Wunused-parameter]
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'dilep_eta' [-Wunused-parameter]
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'dilep_phi' [-Wunused-parameter]
+/var/condor/execute/dir_1724/./histoFiller.h:1881:8: warning: unused parameter 'dilep_mass' [-Wunused-parameter]
+Error in <TChain::AddFile>: No file name; no files connected
+150808 18:15:35 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:15:35 001 Xrd: GoToAnotherServer: Going to: g19n24.hep.wisc.edu:31094
+150808 18:17:16 001 Xrd: GoToAnotherServer: Going to: g20n04.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:18:13 001 Xrd: GoToAnotherServer: Going to: s15n05.hep.wisc.edu:31094
+150808 18:18:13 001 Xrd: GoToAnotherServer: Going to: g14n01.hep.wisc.edu:31094
+150808 18:19:18 001 Xrd: GoToAnotherServer: Going to: g26n07.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:20:42 001 Xrd: GoToAnotherServer: Going to: g27n25.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:22:09 001 Xrd: GoToAnotherServer: Going to: g26n14.hep.wisc.edu:31094
+150808 18:22:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:23:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:24:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:24:49 001 Xrd: GoToAnotherServer: Going to: g18n23.hep.wisc.edu:31094
+150808 18:26:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:26:05 001 Xrd: GoToAnotherServer: Going to: g18n26.hep.wisc.edu:31094
+150808 18:27:30 001 Xrd: GoToAnotherServer: Going to: g18n23.hep.wisc.edu:31094
+150808 18:27:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:28:31 001 Xrd: GoToAnotherServer: Going to: g26n18.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:30:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:30:30 001 Xrd: GoToAnotherServer: Going to: g18n32.hep.wisc.edu:31094
+150808 18:31:58 001 Xrd: GoToAnotherServer: Going to: g19n08.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:32:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:33:26 001 Xrd: GoToAnotherServer: Going to: g23n03.hep.wisc.edu:31094
+150808 18:34:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:34:37 001 Xrd: GoToAnotherServer: Going to: g23n03.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:35:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:35:44 001 Xrd: GoToAnotherServer: Going to: s15n01.hep.wisc.edu:31094
+150808 18:35:44 001 Xrd: GoToAnotherServer: Going to: g19n30.hep.wisc.edu:31094
+150808 18:36:45 001 Xrd: GoToAnotherServer: Going to: g18n32.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:38:12 001 Xrd: GoToAnotherServer: Going to: g19n11.hep.wisc.edu:31094
+150808 18:38:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:38:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:39:35 001 Xrd: GoToAnotherServer: Going to: g26n06.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:40:34 001 Xrd: GoToAnotherServer: Going to: g26n17.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:41:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:41:52 001 Xrd: GoToAnotherServer: Going to: g19n07.hep.wisc.edu:31094
+150808 18:41:53 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:43:06 001 Xrd: GoToAnotherServer: Going to: s15n04.hep.wisc.edu:31094
+150808 18:43:07 001 Xrd: GoToAnotherServer: Going to: g27n10.hep.wisc.edu:31094
+150808 18:43:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:43:59 001 Xrd: GoToAnotherServer: Going to: g23n03.hep.wisc.edu:31094
+150808 18:43:59 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:44:59 001 Xrd: GoToAnotherServer: Going to: g26n14.hep.wisc.edu:31094
+150808 18:44:59 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 18:45:00 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:46:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:46:14 001 Xrd: GoToAnotherServer: Going to: g24n07.hep.wisc.edu:31094
+150808 18:47:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:47:28 001 Xrd: GoToAnotherServer: Going to: g25n01.hep.wisc.edu:31094
+150808 18:48:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:48:43 001 Xrd: GoToAnotherServer: Going to: g19n08.hep.wisc.edu:31094
+150808 18:48:43 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 18:49:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:49:48 001 Xrd: GoToAnotherServer: Going to: g26n14.hep.wisc.edu:31094
+150808 18:50:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:50:58 001 Xrd: GoToAnotherServer: Going to: g19n11.hep.wisc.edu:31094
+150808 18:50:58 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:51:54 001 Xrd: GoToAnotherServer: Going to: g18n26.hep.wisc.edu:31094
+150808 18:51:54 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 18:52:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:53:08 001 Xrd: GoToAnotherServer: Going to: g26n29.hep.wisc.edu:31094
+150808 18:54:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:54:16 001 Xrd: GoToAnotherServer: Going to: g18n32.hep.wisc.edu:31094
+150808 18:54:16 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 18:55:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:55:23 001 Xrd: GoToAnotherServer: Going to: g19n24.hep.wisc.edu:31094
+150808 18:55:23 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 18:56:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:56:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 18:57:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:57:25 001 Xrd: GoToAnotherServer: Going to: g19n15.hep.wisc.edu:31094
+150808 18:58:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:58:33 001 Xrd: GoToAnotherServer: Going to: g18n04.hep.wisc.edu:31094
+150808 18:59:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 18:59:46 001 Xrd: GoToAnotherServer: Going to: g27n09.hep.wisc.edu:31094
+150808 19:00:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:00:39 001 Xrd: GoToAnotherServer: Going to: g26n30.hep.wisc.edu:31094
+150808 19:01:24 001 Xrd: GoToAnotherServer: Going to: g18n23.hep.wisc.edu:31094
+150808 19:01:24 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:02:18 001 Xrd: GoToAnotherServer: Going to: g26n03.hep.wisc.edu:31094
+150808 19:02:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:03:11 001 Xrd: GoToAnotherServer: Going to: g19n10.hep.wisc.edu:31094
+150808 19:03:12 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:04:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:04:08 001 Xrd: GoToAnotherServer: Going to: g26n06.hep.wisc.edu:31094
+150808 19:04:08 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:04:53 001 Xrd: GoToAnotherServer: Going to: g18n22.hep.wisc.edu:31094
+150808 19:04:54 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:05:38 001 Xrd: GoToAnotherServer: Going to: g18n32.hep.wisc.edu:31094
+150808 19:05:38 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:06:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:06:29 001 Xrd: GoToAnotherServer: Going to: g26n29.hep.wisc.edu:31094
+150808 19:06:29 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:06:30 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:07:11 001 Xrd: GoToAnotherServer: Going to: g27n25.hep.wisc.edu:31094
+150808 19:07:11 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:07:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:07:57 001 Xrd: GoToAnotherServer: Going to: g19n13.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:08:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:08:51 001 Xrd: GoToAnotherServer: Going to: g26n07.hep.wisc.edu:31094
+150808 19:08:51 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:09:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:09:39 001 Xrd: GoToAnotherServer: Going to: g26n03.hep.wisc.edu:31094
+150808 19:09:39 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:10:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:10:21 001 Xrd: GoToAnotherServer: Going to: g26n19.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:11:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:11:02 001 Xrd: GoToAnotherServer: Going to: g19n13.hep.wisc.edu:31094
+150808 19:11:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:11:54 001 Xrd: GoToAnotherServer: Going to: g26n24.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:12:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:12:37 001 Xrd: GoToAnotherServer: Going to: g27n19.hep.wisc.edu:31094
+150808 19:13:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:13:25 001 Xrd: GoToAnotherServer: Going to: g26n25.hep.wisc.edu:31094
+150808 19:14:10 001 Xrd: GoToAnotherServer: Going to: g23n13.hep.wisc.edu:31094
+150808 19:14:59 001 Xrd: GoToAnotherServer: Going to: g26n25.hep.wisc.edu:31094
+150808 19:14:59 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:15:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:15:43 001 Xrd: GoToAnotherServer: Going to: g18n12.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:16:32 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:16:36 001 Xrd: GoToAnotherServer: Going to: g27n07.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:17:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:17:22 001 Xrd: GoToAnotherServer: Going to: g20n04.hep.wisc.edu:31094
+150808 19:17:22 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:18:02 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:18:07 001 Xrd: GoToAnotherServer: Going to: g19n09.hep.wisc.edu:31094
+150808 19:18:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:18:58 001 Xrd: GoToAnotherServer: Going to: g19n24.hep.wisc.edu:31094
+150808 19:18:58 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:19:49 001 Xrd: GoToAnotherServer: Going to: g19n13.hep.wisc.edu:31094
+150808 19:19:49 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:20:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:20:40 001 Xrd: GoToAnotherServer: Going to: g19n07.hep.wisc.edu:31094
+150808 19:20:40 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:21:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:21:25 001 Xrd: GoToAnotherServer: Going to: g14n21.hep.wisc.edu:31094
+Warning in <TVector3::PseudoRapidity>: transvers momentum = 0! return +/- 10e10
+150808 19:22:01 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:22:10 001 Xrd: GoToAnotherServer: Going to: g25n01.hep.wisc.edu:31094
+150808 19:22:10 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:22:31 2522 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+150808 19:22:54 001 Xrd: GoToAnotherServer: Going to: g26n17.hep.wisc.edu:31094
+150808 19:22:54 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:23:17 001 Xrd: GoToAnotherServer: Going to: g18n08.hep.wisc.edu:31094
+150808 19:23:17 001 Xrd: GoToAnotherServer: Going to: g18n26.hep.wisc.edu:31094
+150808 19:23:17 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:23:17 001 Xrd: GoToAnotherServer: Going to: g18n32.hep.wisc.edu:31094
+150808 19:23:17 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:23:18 001 Xrd: GoToAnotherServer: Going to: g19n09.hep.wisc.edu:31094
+150808 19:23:18 001 Xrd: GoToAnotherServer: Going to: g18n25.hep.wisc.edu:31094
+150808 19:23:18 001 Xrd: GoToAnotherServer: Going to: g26n25.hep.wisc.edu:31094
+150808 19:23:18 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:23:18 001 Xrd: GoToAnotherServer: Going to: g26n24.hep.wisc.edu:31094
+150808 19:23:18 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:23:18 001 Xrd: GoToAnotherServer: Going to: g27n11.hep.wisc.edu:31094
+150808 19:23:18 001 Xrd: GoToAnotherServer: Going to: g27n07.hep.wisc.edu:31094
+150808 19:23:18 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:23:19 001 Xrd: GoToAnotherServer: Going to: g26n28.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: GoToAnotherServer: Going to: g27n15.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: GoToAnotherServer: Going to: g19n10.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:23:20 001 Xrd: GoToAnotherServer: Going to: g23n12.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: GoToAnotherServer: Going to: g18n13.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: GoToAnotherServer: Going to: g25n01.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: GoToAnotherServer: Going to: g18n22.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:23:20 001 Xrd: GoToAnotherServer: Going to: g19n15.hep.wisc.edu:31094
+150808 19:23:20 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: g26n20.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: g26n14.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: g18n12.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: g24n07.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: g26n07.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: CheckErrorStatus: Server [cmsxrootd.hep.wisc.edu:1094] declared: session not found(error code: 3011)
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: s15n03.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: g12n21.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: s15n06.hep.wisc.edu:31094
+150808 19:23:21 001 Xrd: GoToAnotherServer: Going to: g19n25.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: s15n09.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: g12n05.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: s15n10.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: g14n17.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: s15n08.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: g14n27.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: s15n02.hep.wisc.edu:31094
+150808 19:23:22 001 Xrd: GoToAnotherServer: Going to: g14n06.hep.wisc.edu:31094
+150808 19:23:23 001 Xrd: GoToAnotherServer: Going to: s15n01.hep.wisc.edu:31094
+150808 19:23:23 001 Xrd: CheckErrorStatus: Server [144.92.181.17:1094] declared: session not found(error code: 3011)
+150808 19:23:23 001 Xrd: GoToAnotherServer: Going to: g19n27.hep.wisc.edu:31094
+terminate called after throwing an instance of 'St9bad_alloc'
+  what():  std::bad_alloc
