@@ -7,7 +7,7 @@ cmsenv
 #export version="Qercury"
 #export version="JeComp"
 export version="Interlochen"
-export runname="wbb_mt0"
+export runname="irhml"
 #export runname="drell"
 ##export version="Schweincomp"
 ##export runname="wbb_mtLES"
