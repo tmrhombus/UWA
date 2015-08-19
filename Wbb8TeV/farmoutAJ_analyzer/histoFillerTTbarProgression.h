@@ -19,45 +19,51 @@ public :
    Int_t           fCurrent; //!current Tree number in a TChain
 
    // Histograms
-   std::vector<TString> PSpace;  // 12 ttme0b, ttme1b, ttme2b, ttme0bJv, ttme1bJv, ttme2bJv, ttme0bMt, ttme1bMt, ttme2bMt, ttme0bJvMt, ttme1bJvMt, ttme2bJvMt
+   std::vector<TString> PSpace;  // 14 ttme0b, ttme1bta, ttme1btb, ttme2bt, ttme1bma, ttme1bmb, ttme2bm, ttme0bJv, ttme1btaJv, ttme1btbJv, ttme2btJv, ttme1bmaJv, ttme1bmbJv, ttme2bmJv,
+
    std::vector<TString> EMu;     // 2
-   std::vector<TString> QCD;     // 2
-   std::vector<TString> Syst;    // 7
+   std::vector<TString> QCD;     // 1
+   std::vector<TString> Syst;    // 1
    std::vector<TString> WFlav;   // 5
-   TH1F hists_met[12][2][2][7][5];
-   TH1F hists_met_phi[12][2][2][7][5];
-   TH1F hists_mt[12][2][2][7][5];
-   TH1F hists_goodLep_pt[12][2][2][7][5];
-   TH1F hists_goodJ1_pt[12][2][2][7][5];
-   TH1F hists_goodJ2_pt[12][2][2][7][5];
-   TH1F hists_goodJ1J2_dR[12][2][2][7][5];
-   TH1F hists_goodJ1J2_mass[12][2][2][7][5];
-   TH1F hists_goodJ1J2_pt[12][2][2][7][5];
-   TH1F hists_goodJ1_CSV[12][2][2][7][5];
-   TH1F hists_goodJ1_mass_SV_unweighted[12][2][2][7][5];
-   TH1F hists_goodJ1_mass_SV_corrected[12][2][2][7][5];
-   TH1F hists_goodJ1_mass_SV_weighted[12][2][2][7][5];
-   TH1F hists_goodJ2_CSV[12][2][2][7][5]; 
-   TH1F hists_goodJ3J4_mass[12][2][2][7][5]; 
-   TH1F hists_vertices[12][2][2][7][5]; 
+   TH1F hists_met[14][2][1][1][5];
+   TH1F hists_met_phi[14][2][1][1][5];
+   TH1F hists_mt[14][2][1][1][5];
+   TH1F hists_goodLep_pt[14][2][1][1][5];
+   TH1F hists_goodJ1_pt[14][2][1][1][5];
+   TH1F hists_goodJ2_pt[14][2][1][1][5];
+   TH1F hists_goodJ1J2_dR[14][2][1][1][5];
+   TH1F hists_goodJ1J2_mass[14][2][1][1][5];
+   TH1F hists_goodJ1J2_pt[14][2][1][1][5];
+   TH1F hists_goodJ1_CSV[14][2][1][1][5];
+   TH1F hists_goodJ1_mass_SV_unweighted[14][2][1][1][5];
+   TH1F hists_goodJ1_mass_SV_corrected[14][2][1][1][5];
+   TH1F hists_goodJ1_mass_SV_weighted[14][2][1][1][5];
+   TH1F hists_goodJ2_CSV[14][2][1][1][5]; 
+   TH1F hists_goodJ3J4_mass[14][2][1][1][5]; 
+   TH1F hists_vertices[14][2][1][1][5]; 
+
+   Int_t nbrGoodMu ;
+   Int_t nbrVetoMu ;
+   Int_t nbrQCDMu ;
+   Int_t nbrGoodEle ;
+   Int_t nbrVetoEle ;
+   Int_t nbrQCDEle ;
 
    // For Cuts
-
    Bool_t twoGoodLMuE;
    Bool_t twoGoodLEMu;
    Bool_t twoQCDLMuE;
    Bool_t twoQCDLEMu;
 
-   Bool_t mtOver45_mu_good;
-   Bool_t mtOver45_mu_qcd;
-   Bool_t mtOver45_ele_good;
-   Bool_t mtOver45_ele_qcd;
-
    Bool_t min2goodJs;
    Bool_t vetoJ3;
    Bool_t btag0J;
-   Bool_t btag1J;
-   Bool_t btag2J;
+   Bool_t btag1Jta;
+   Bool_t btag1Jtb;
+   Bool_t btag2Jt;
+   Bool_t btag1Jma;
+   Bool_t btag1Jmb;
+   Bool_t btag2Jm;
 
    // W splitting
    Bool_t twoCs;
@@ -68,11 +74,13 @@ public :
    Bool_t isWcc;
    Bool_t isWbb;
 
-   // universal scale factors
-   Float_t SF_top2BJs;
-   Float_t SF_topBJ;
-   Float_t SF_CSVrwt2gJs ;
-   Float_t SF_CSVrwtgJfJ ;
+   // btag scale factors
+   Float_t SF_1bta;
+   Float_t SF_1btb;
+   Float_t SF_2bt;
+   Float_t SF_1bma;
+   Float_t SF_1bmb;
+   Float_t SF_2bm;
 
    // histogram variables
    Float_t mt_ele_qcd;
@@ -106,373 +114,46 @@ public :
    Float_t MET_phi_uesUp;
    Float_t MET_phi_uesDown;
    
+   // DiJets
    TLorentzVector fourVec_J1;
    TLorentzVector fourVec_J2;
    TLorentzVector fourVec_J1J2;
    TLorentzVector fourVec_J3;
    TLorentzVector fourVec_J4;
    TLorentzVector fourVec_J3J4;
-   double goodJ1J2_mass;
    double goodJ1J2_pt;
+   double goodJ1J2_eta;
+   double goodJ1J2_phi;
+   double goodJ1J2_mass;
+   double goodJ3J4_pt;
+   double goodJ3J4_eta;
+   double goodJ3J4_phi;
    double goodJ3J4_mass;
-   Float_t dRgoodJ1J2;
+   Float_t goodJ1J2_dR;
    Float_t dphiJJ;
    Float_t detaJJ;
    Float_t dphiJ1Met;
 
    // Id/Iso/HLT (EMu) Scale Factors
-   // ttme1b
-   Float_t SF_ttme_mu_good_IDIsoHLT       ; 
-   Float_t SF_ttme_mu_good_IDIsoHLT_errUp ;
-   Float_t SF_ttme_mu_good_IDIsoHLT_errDn ;
-   Float_t SF_ttme_mu_qcd_IDIsoHLT       ; 
-   Float_t SF_ttme_mu_qcd_IDIsoHLT_errUp ;
-   Float_t SF_ttme_mu_qcd_IDIsoHLT_errDn ;
-   Float_t SF_ttme_ele_good_IDIsoHLT       ; 
-   Float_t SF_ttme_ele_good_IDIsoHLT_errUp ;
-   Float_t SF_ttme_ele_good_IDIsoHLT_errDn ;
-   Float_t SF_ttme_ele_qcd_IDIsoHLT       ; 
-   Float_t SF_ttme_ele_qcd_IDIsoHLT_errUp ;
-   Float_t SF_ttme_ele_qcd_IDIsoHLT_errDn ;
+   Float_t SF_ttme_mu_good_IDIsoHLT  ; 
+   Float_t SF_ttme_ele_good_IDIsoHLT ; 
 
    // Weights
-   // ttme1b
-   Float_t weight_ttme0b_mu_good  ;
-   Float_t weight_ttme0b_mu_qcd   ;
-   Float_t weight_ttme0b_ele_good ;
-   Float_t weight_ttme0b_ele_qcd  ;
-   // ttme1b CSV
-   Float_t weight_ttme0b_mu_good_CSVUp  ;
-   Float_t weight_ttme0b_mu_qcd_CSVUp   ;
-   Float_t weight_ttme0b_ele_good_CSVUp ;
-   Float_t weight_ttme0b_ele_qcd_CSVUp  ;
-   Float_t weight_ttme0b_mu_good_CSVDown  ;
-   Float_t weight_ttme0b_mu_qcd_CSVDown   ;
-   Float_t weight_ttme0b_ele_good_CSVDown ;
-   Float_t weight_ttme0b_ele_qcd_CSVDown  ;
-   // ttme1b EMu
-   Float_t weight_ttme0b_mu_good_EMuUp  ;
-   Float_t weight_ttme0b_mu_qcd_EMuUp   ;
-   Float_t weight_ttme0b_ele_good_EMuUp ;
-   Float_t weight_ttme0b_ele_qcd_EMuUp  ;
-   Float_t weight_ttme0b_mu_good_EMuDown  ;
-   Float_t weight_ttme0b_mu_qcd_EMuDown   ;
-   Float_t weight_ttme0b_ele_good_EMuDown ;
-   Float_t weight_ttme0b_ele_qcd_EMuDown  ;
+   Float_t weight_ttme0b_mu_good   ;
+   Float_t weight_ttme1bta_mu_good ;
+   Float_t weight_ttme1btb_mu_good ;
+   Float_t weight_ttme2bt_mu_good  ;
+   Float_t weight_ttme1bma_mu_good ;
+   Float_t weight_ttme1bmb_mu_good ;
+   Float_t weight_ttme2bm_mu_good  ;
 
-   // ttme1b
-   Float_t weight_ttme1b_mu_good  ;
-   Float_t weight_ttme1b_mu_qcd   ;
-   Float_t weight_ttme1b_ele_good ;
-   Float_t weight_ttme1b_ele_qcd  ;
-   // ttme1b CSV
-   Float_t weight_ttme1b_mu_good_CSVUp  ;
-   Float_t weight_ttme1b_mu_qcd_CSVUp   ;
-   Float_t weight_ttme1b_ele_good_CSVUp ;
-   Float_t weight_ttme1b_ele_qcd_CSVUp  ;
-   Float_t weight_ttme1b_mu_good_CSVDown  ;
-   Float_t weight_ttme1b_mu_qcd_CSVDown   ;
-   Float_t weight_ttme1b_ele_good_CSVDown ;
-   Float_t weight_ttme1b_ele_qcd_CSVDown  ;
-   // ttme1b EMu
-   Float_t weight_ttme1b_mu_good_EMuUp  ;
-   Float_t weight_ttme1b_mu_qcd_EMuUp   ;
-   Float_t weight_ttme1b_ele_good_EMuUp ;
-   Float_t weight_ttme1b_ele_qcd_EMuUp  ;
-   Float_t weight_ttme1b_mu_good_EMuDown  ;
-   Float_t weight_ttme1b_mu_qcd_EMuDown   ;
-   Float_t weight_ttme1b_ele_good_EMuDown ;
-   Float_t weight_ttme1b_ele_qcd_EMuDown  ;
-
-   // ttme2b
-   Float_t weight_ttme2b_mu_good  ;
-   Float_t weight_ttme2b_mu_qcd   ;
-   Float_t weight_ttme2b_ele_good ;
-   Float_t weight_ttme2b_ele_qcd  ;
-   // ttme2b CSV
-   Float_t weight_ttme2b_mu_good_CSVUp  ;
-   Float_t weight_ttme2b_mu_qcd_CSVUp   ;
-   Float_t weight_ttme2b_ele_good_CSVUp ;
-   Float_t weight_ttme2b_ele_qcd_CSVUp  ;
-   Float_t weight_ttme2b_mu_good_CSVDown  ;
-   Float_t weight_ttme2b_mu_qcd_CSVDown   ;
-   Float_t weight_ttme2b_ele_good_CSVDown ;
-   Float_t weight_ttme2b_ele_qcd_CSVDown  ;
-   // ttme2b EMu
-   Float_t weight_ttme2b_mu_good_EMuUp  ;
-   Float_t weight_ttme2b_mu_qcd_EMuUp   ;
-   Float_t weight_ttme2b_ele_good_EMuUp ;
-   Float_t weight_ttme2b_ele_qcd_EMuUp  ;
-   Float_t weight_ttme2b_mu_good_EMuDown  ;
-   Float_t weight_ttme2b_mu_qcd_EMuDown   ;
-   Float_t weight_ttme2b_ele_good_EMuDown ;
-   Float_t weight_ttme2b_ele_qcd_EMuDown  ;
-
-   // ttme0bJv
-   Float_t weight_ttme0bJv_mu_good  ;
-   Float_t weight_ttme0bJv_mu_qcd   ;
-   Float_t weight_ttme0bJv_ele_good ;
-   Float_t weight_ttme0bJv_ele_qcd  ;
-   // ttme0bJv CSV
-   Float_t weight_ttme0bJv_mu_good_CSVUp  ;
-   Float_t weight_ttme0bJv_mu_qcd_CSVUp   ;
-   Float_t weight_ttme0bJv_ele_good_CSVUp ;
-   Float_t weight_ttme0bJv_ele_qcd_CSVUp  ;
-   Float_t weight_ttme0bJv_mu_good_CSVDown  ;
-   Float_t weight_ttme0bJv_mu_qcd_CSVDown   ;
-   Float_t weight_ttme0bJv_ele_good_CSVDown ;
-   Float_t weight_ttme0bJv_ele_qcd_CSVDown  ;
-   // ttme0bJv EMu
-   Float_t weight_ttme0bJv_mu_good_EMuUp  ;
-   Float_t weight_ttme0bJv_mu_qcd_EMuUp   ;
-   Float_t weight_ttme0bJv_ele_good_EMuUp ;
-   Float_t weight_ttme0bJv_ele_qcd_EMuUp  ;
-   Float_t weight_ttme0bJv_mu_good_EMuDown  ;
-   Float_t weight_ttme0bJv_mu_qcd_EMuDown   ;
-   Float_t weight_ttme0bJv_ele_good_EMuDown ;
-   Float_t weight_ttme0bJv_ele_qcd_EMuDown  ;
-
-   // ttme1bJv
-   Float_t weight_ttme1bJv_mu_good  ;
-   Float_t weight_ttme1bJv_mu_qcd   ;
-   Float_t weight_ttme1bJv_ele_good ;
-   Float_t weight_ttme1bJv_ele_qcd  ;
-   // ttme1bJv CSV
-   Float_t weight_ttme1bJv_mu_good_CSVUp  ;
-   Float_t weight_ttme1bJv_mu_qcd_CSVUp   ;
-   Float_t weight_ttme1bJv_ele_good_CSVUp ;
-   Float_t weight_ttme1bJv_ele_qcd_CSVUp  ;
-   Float_t weight_ttme1bJv_mu_good_CSVDown  ;
-   Float_t weight_ttme1bJv_mu_qcd_CSVDown   ;
-   Float_t weight_ttme1bJv_ele_good_CSVDown ;
-   Float_t weight_ttme1bJv_ele_qcd_CSVDown  ;
-   // ttme1bJv EMu
-   Float_t weight_ttme1bJv_mu_good_EMuUp  ;
-   Float_t weight_ttme1bJv_mu_qcd_EMuUp   ;
-   Float_t weight_ttme1bJv_ele_good_EMuUp ;
-   Float_t weight_ttme1bJv_ele_qcd_EMuUp  ;
-   Float_t weight_ttme1bJv_mu_good_EMuDown  ;
-   Float_t weight_ttme1bJv_mu_qcd_EMuDown   ;
-   Float_t weight_ttme1bJv_ele_good_EMuDown ;
-   Float_t weight_ttme1bJv_ele_qcd_EMuDown  ;
-
-   // ttme2bJv
-   Float_t weight_ttme2bJv_mu_good  ;
-   Float_t weight_ttme2bJv_mu_qcd   ;
-   Float_t weight_ttme2bJv_ele_good ;
-   Float_t weight_ttme2bJv_ele_qcd  ;
-   // ttme2bJv CSV
-   Float_t weight_ttme2bJv_mu_good_CSVUp  ;
-   Float_t weight_ttme2bJv_mu_qcd_CSVUp   ;
-   Float_t weight_ttme2bJv_ele_good_CSVUp ;
-   Float_t weight_ttme2bJv_ele_qcd_CSVUp  ;
-   Float_t weight_ttme2bJv_mu_good_CSVDown  ;
-   Float_t weight_ttme2bJv_mu_qcd_CSVDown   ;
-   Float_t weight_ttme2bJv_ele_good_CSVDown ;
-   Float_t weight_ttme2bJv_ele_qcd_CSVDown  ;
-   // ttme2bJv EMu
-   Float_t weight_ttme2bJv_mu_good_EMuUp  ;
-   Float_t weight_ttme2bJv_mu_qcd_EMuUp   ;
-   Float_t weight_ttme2bJv_ele_good_EMuUp ;
-   Float_t weight_ttme2bJv_ele_qcd_EMuUp  ;
-   Float_t weight_ttme2bJv_mu_good_EMuDown  ;
-   Float_t weight_ttme2bJv_mu_qcd_EMuDown   ;
-   Float_t weight_ttme2bJv_ele_good_EMuDown ;
-   Float_t weight_ttme2bJv_ele_qcd_EMuDown  ;
-
-   // ttme0bMt
-   Float_t weight_ttme0bMt_mu_good  ;
-   Float_t weight_ttme0bMt_mu_qcd   ;
-   Float_t weight_ttme0bMt_ele_good ;
-   Float_t weight_ttme0bMt_ele_qcd  ;
-   // ttme0bMt CSV
-   Float_t weight_ttme0bMt_mu_good_CSVUp  ;
-   Float_t weight_ttme0bMt_mu_qcd_CSVUp   ;
-   Float_t weight_ttme0bMt_ele_good_CSVUp ;
-   Float_t weight_ttme0bMt_ele_qcd_CSVUp  ;
-   Float_t weight_ttme0bMt_mu_good_CSVDown  ;
-   Float_t weight_ttme0bMt_mu_qcd_CSVDown   ;
-   Float_t weight_ttme0bMt_ele_good_CSVDown ;
-   Float_t weight_ttme0bMt_ele_qcd_CSVDown  ;
-   // ttme0bMt EMu
-   Float_t weight_ttme0bMt_mu_good_EMuUp  ;
-   Float_t weight_ttme0bMt_mu_qcd_EMuUp   ;
-   Float_t weight_ttme0bMt_ele_good_EMuUp ;
-   Float_t weight_ttme0bMt_ele_qcd_EMuUp  ;
-   Float_t weight_ttme0bMt_mu_good_EMuDown  ;
-   Float_t weight_ttme0bMt_mu_qcd_EMuDown   ;
-   Float_t weight_ttme0bMt_ele_good_EMuDown ;
-   Float_t weight_ttme0bMt_ele_qcd_EMuDown  ;
-
-   // ttme1bMt
-   Float_t weight_ttme1bMt_mu_good  ;
-   Float_t weight_ttme1bMt_mu_qcd   ;
-   Float_t weight_ttme1bMt_ele_good ;
-   Float_t weight_ttme1bMt_ele_qcd  ;
-   // ttme1bMt CSV
-   Float_t weight_ttme1bMt_mu_good_CSVUp  ;
-   Float_t weight_ttme1bMt_mu_qcd_CSVUp   ;
-   Float_t weight_ttme1bMt_ele_good_CSVUp ;
-   Float_t weight_ttme1bMt_ele_qcd_CSVUp  ;
-   Float_t weight_ttme1bMt_mu_good_CSVDown  ;
-   Float_t weight_ttme1bMt_mu_qcd_CSVDown   ;
-   Float_t weight_ttme1bMt_ele_good_CSVDown ;
-   Float_t weight_ttme1bMt_ele_qcd_CSVDown  ;
-   // ttme1bMt EMu
-   Float_t weight_ttme1bMt_mu_good_EMuUp  ;
-   Float_t weight_ttme1bMt_mu_qcd_EMuUp   ;
-   Float_t weight_ttme1bMt_ele_good_EMuUp ;
-   Float_t weight_ttme1bMt_ele_qcd_EMuUp  ;
-   Float_t weight_ttme1bMt_mu_good_EMuDown  ;
-   Float_t weight_ttme1bMt_mu_qcd_EMuDown   ;
-   Float_t weight_ttme1bMt_ele_good_EMuDown ;
-   Float_t weight_ttme1bMt_ele_qcd_EMuDown  ;
-
-   // ttme2bMt
-   Float_t weight_ttme2bMt_mu_good  ;
-   Float_t weight_ttme2bMt_mu_qcd   ;
-   Float_t weight_ttme2bMt_ele_good ;
-   Float_t weight_ttme2bMt_ele_qcd  ;
-   // ttme2bMt CSV
-   Float_t weight_ttme2bMt_mu_good_CSVUp  ;
-   Float_t weight_ttme2bMt_mu_qcd_CSVUp   ;
-   Float_t weight_ttme2bMt_ele_good_CSVUp ;
-   Float_t weight_ttme2bMt_ele_qcd_CSVUp  ;
-   Float_t weight_ttme2bMt_mu_good_CSVDown  ;
-   Float_t weight_ttme2bMt_mu_qcd_CSVDown   ;
-   Float_t weight_ttme2bMt_ele_good_CSVDown ;
-   Float_t weight_ttme2bMt_ele_qcd_CSVDown  ;
-   // ttme2bMt EMu
-   Float_t weight_ttme2bMt_mu_good_EMuUp  ;
-   Float_t weight_ttme2bMt_mu_qcd_EMuUp   ;
-   Float_t weight_ttme2bMt_ele_good_EMuUp ;
-   Float_t weight_ttme2bMt_ele_qcd_EMuUp  ;
-   Float_t weight_ttme2bMt_mu_good_EMuDown  ;
-   Float_t weight_ttme2bMt_mu_qcd_EMuDown   ;
-   Float_t weight_ttme2bMt_ele_good_EMuDown ;
-   Float_t weight_ttme2bMt_ele_qcd_EMuDown  ;
-
-   // ttme0bJvMt
-   Float_t weight_ttme0bJvMt_mu_good  ;
-   Float_t weight_ttme0bJvMt_mu_qcd   ;
-   Float_t weight_ttme0bJvMt_ele_good ;
-   Float_t weight_ttme0bJvMt_ele_qcd  ;
-   // ttme0bJvMt CSV
-   Float_t weight_ttme0bJvMt_mu_good_CSVUp  ;
-   Float_t weight_ttme0bJvMt_mu_qcd_CSVUp   ;
-   Float_t weight_ttme0bJvMt_ele_good_CSVUp ;
-   Float_t weight_ttme0bJvMt_ele_qcd_CSVUp  ;
-   Float_t weight_ttme0bJvMt_mu_good_CSVDown  ;
-   Float_t weight_ttme0bJvMt_mu_qcd_CSVDown   ;
-   Float_t weight_ttme0bJvMt_ele_good_CSVDown ;
-   Float_t weight_ttme0bJvMt_ele_qcd_CSVDown  ;
-   // ttme0bJvMt EMu
-   Float_t weight_ttme0bJvMt_mu_good_EMuUp  ;
-   Float_t weight_ttme0bJvMt_mu_qcd_EMuUp   ;
-   Float_t weight_ttme0bJvMt_ele_good_EMuUp ;
-   Float_t weight_ttme0bJvMt_ele_qcd_EMuUp  ;
-   Float_t weight_ttme0bJvMt_mu_good_EMuDown  ;
-   Float_t weight_ttme0bJvMt_mu_qcd_EMuDown   ;
-   Float_t weight_ttme0bJvMt_ele_good_EMuDown ;
-   Float_t weight_ttme0bJvMt_ele_qcd_EMuDown  ;
-
-   // ttme1bJvMt
-   Float_t weight_ttme1bJvMt_mu_good  ;
-   Float_t weight_ttme1bJvMt_mu_qcd   ;
-   Float_t weight_ttme1bJvMt_ele_good ;
-   Float_t weight_ttme1bJvMt_ele_qcd  ;
-   // ttme1bJvMt CSV
-   Float_t weight_ttme1bJvMt_mu_good_CSVUp  ;
-   Float_t weight_ttme1bJvMt_mu_qcd_CSVUp   ;
-   Float_t weight_ttme1bJvMt_ele_good_CSVUp ;
-   Float_t weight_ttme1bJvMt_ele_qcd_CSVUp  ;
-   Float_t weight_ttme1bJvMt_mu_good_CSVDown  ;
-   Float_t weight_ttme1bJvMt_mu_qcd_CSVDown   ;
-   Float_t weight_ttme1bJvMt_ele_good_CSVDown ;
-   Float_t weight_ttme1bJvMt_ele_qcd_CSVDown  ;
-   // ttme1bJvMt EMu
-   Float_t weight_ttme1bJvMt_mu_good_EMuUp  ;
-   Float_t weight_ttme1bJvMt_mu_qcd_EMuUp   ;
-   Float_t weight_ttme1bJvMt_ele_good_EMuUp ;
-   Float_t weight_ttme1bJvMt_ele_qcd_EMuUp  ;
-   Float_t weight_ttme1bJvMt_mu_good_EMuDown  ;
-   Float_t weight_ttme1bJvMt_mu_qcd_EMuDown   ;
-   Float_t weight_ttme1bJvMt_ele_good_EMuDown ;
-   Float_t weight_ttme1bJvMt_ele_qcd_EMuDown  ;
-
-   // ttme2bJvMt
-   Float_t weight_ttme2bJvMt_mu_good  ;
-   Float_t weight_ttme2bJvMt_mu_qcd   ;
-   Float_t weight_ttme2bJvMt_ele_good ;
-   Float_t weight_ttme2bJvMt_ele_qcd  ;
-   // ttme2bJvMt CSV
-   Float_t weight_ttme2bJvMt_mu_good_CSVUp  ;
-   Float_t weight_ttme2bJvMt_mu_qcd_CSVUp   ;
-   Float_t weight_ttme2bJvMt_ele_good_CSVUp ;
-   Float_t weight_ttme2bJvMt_ele_qcd_CSVUp  ;
-   Float_t weight_ttme2bJvMt_mu_good_CSVDown  ;
-   Float_t weight_ttme2bJvMt_mu_qcd_CSVDown   ;
-   Float_t weight_ttme2bJvMt_ele_good_CSVDown ;
-   Float_t weight_ttme2bJvMt_ele_qcd_CSVDown  ;
-   // ttme2bJvMt EMu
-   Float_t weight_ttme2bJvMt_mu_good_EMuUp  ;
-   Float_t weight_ttme2bJvMt_mu_qcd_EMuUp   ;
-   Float_t weight_ttme2bJvMt_ele_good_EMuUp ;
-   Float_t weight_ttme2bJvMt_ele_qcd_EMuUp  ;
-   Float_t weight_ttme2bJvMt_mu_good_EMuDown  ;
-   Float_t weight_ttme2bJvMt_mu_qcd_EMuDown   ;
-   Float_t weight_ttme2bJvMt_ele_good_EMuDown ;
-   Float_t weight_ttme2bJvMt_ele_qcd_EMuDown  ;
-
-   // selection-dependent counters
-   Int_t nrEntries_mu_ttme0b_good_postcut;
-   Int_t nrEntries_mu_ttme0b_qcd_postcut;
-   Int_t nrEntries_ele_ttme0b_good_postcut;
-   Int_t nrEntries_ele_ttme0b_qcd_postcut;
-   Int_t nrEntries_mu_ttme1b_good_postcut;
-   Int_t nrEntries_mu_ttme1b_qcd_postcut;
-   Int_t nrEntries_ele_ttme1b_good_postcut;
-   Int_t nrEntries_ele_ttme1b_qcd_postcut;
-   Int_t nrEntries_mu_ttme2b_good_postcut;
-   Int_t nrEntries_mu_ttme2b_qcd_postcut;
-   Int_t nrEntries_ele_ttme2b_good_postcut;
-   Int_t nrEntries_ele_ttme2b_qcd_postcut;
-   Int_t nrEntries_mu_ttme0bJv_good_postcut;
-   Int_t nrEntries_mu_ttme0bJv_qcd_postcut;
-   Int_t nrEntries_ele_ttme0bJv_good_postcut;
-   Int_t nrEntries_ele_ttme0bJv_qcd_postcut;
-   Int_t nrEntries_mu_ttme1bJv_good_postcut;
-   Int_t nrEntries_mu_ttme1bJv_qcd_postcut;
-   Int_t nrEntries_ele_ttme1bJv_good_postcut;
-   Int_t nrEntries_ele_ttme1bJv_qcd_postcut;
-   Int_t nrEntries_mu_ttme2bJv_good_postcut;
-   Int_t nrEntries_mu_ttme2bJv_qcd_postcut;
-   Int_t nrEntries_ele_ttme2bJv_good_postcut;
-   Int_t nrEntries_ele_ttme2bJv_qcd_postcut;
-   Int_t nrEntries_mu_ttme0bMt_good_postcut;
-   Int_t nrEntries_mu_ttme0bMt_qcd_postcut;
-   Int_t nrEntries_ele_ttme0bMt_good_postcut;
-   Int_t nrEntries_ele_ttme0bMt_qcd_postcut;
-   Int_t nrEntries_mu_ttme1bMt_good_postcut;
-   Int_t nrEntries_mu_ttme1bMt_qcd_postcut;
-   Int_t nrEntries_ele_ttme1bMt_good_postcut;
-   Int_t nrEntries_ele_ttme1bMt_qcd_postcut;
-   Int_t nrEntries_mu_ttme2bMt_good_postcut;
-   Int_t nrEntries_mu_ttme2bMt_qcd_postcut;
-   Int_t nrEntries_ele_ttme2bMt_good_postcut;
-   Int_t nrEntries_ele_ttme2bMt_qcd_postcut;
-   Int_t nrEntries_mu_ttme0bJvMt_good_postcut;
-   Int_t nrEntries_mu_ttme0bJvMt_qcd_postcut;
-   Int_t nrEntries_ele_ttme0bJvMt_good_postcut;
-   Int_t nrEntries_ele_ttme0bJvMt_qcd_postcut;
-   Int_t nrEntries_mu_ttme1bJvMt_good_postcut;
-   Int_t nrEntries_mu_ttme1bJvMt_qcd_postcut;
-   Int_t nrEntries_ele_ttme1bJvMt_good_postcut;
-   Int_t nrEntries_ele_ttme1bJvMt_qcd_postcut;
-   Int_t nrEntries_mu_ttme2bJvMt_good_postcut;
-   Int_t nrEntries_mu_ttme2bJvMt_qcd_postcut;
-   Int_t nrEntries_ele_ttme2bJvMt_good_postcut;
-   Int_t nrEntries_ele_ttme2bJvMt_qcd_postcut;
+   Float_t weight_ttme0b_ele_good  ;
+   Float_t weight_ttme1bta_ele_good;
+   Float_t weight_ttme1btb_ele_good;
+   Float_t weight_ttme2bt_ele_good ;
+   Float_t weight_ttme1bma_ele_good;
+   Float_t weight_ttme1bmb_ele_good;
+   Float_t weight_ttme2bm_ele_good ;
 
    // Declaration of leaf types
    UInt_t          EVENT;
@@ -1094,28 +775,17 @@ public :
 #ifdef histoFillerTTbarProgression_cxx
 histoFillerTTbarProgression::histoFillerTTbarProgression(TTree *tree, Bool_t isMC) : fChain(0) 
 {
-// if parameter tree is not specified (or zero), connect the file
-// used to generate this class and read the Tree.
-   if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
-      if (!f || !f->IsOpen()) {
-         f = new TFile("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
-      }
-      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
-      dir->GetObject("eventTree",tree);
-
-
-//      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root");
+//// if parameter tree is not specified (or zero), connect the file
+//// used to generate this class and read the Tree.
+//   if (tree == 0) {
+//      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
 //      if (!f || !f->IsOpen()) {
-//         f = new TFile("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root");
+//         f = new TFile("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
 //      }
-//      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/CestPi_TTbar_semi-mergeFilesJob/mergeFilesJob-MuEle-PATMC_V7A-patTuple_cfg-C260AFA1-CA87-E211-8A38-0002C94CD0BA.root:/muEleEventTree");
+//      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
 //      dir->GetObject("eventTree",tree);
-      //std::cout<<"f->GetPath() "<<f->GetPath()<<std::endl;
-      //std::cout<<"dir->GetPath() "<<dir->GetPath()<<std::endl;
-
-   }
-   Init(tree, isMC);
+//   }
+//   Init(tree, isMC);
 }
 
 histoFillerTTbarProgression::~histoFillerTTbarProgression()
@@ -1146,86 +816,37 @@ Long64_t histoFillerTTbarProgression::LoadTree(Long64_t entry)
 
 void histoFillerTTbarProgression::Init(TTree *tree, Bool_t isMC)
 {
-   // selection-dependent counters
-   nrEntries_mu_ttme0b_good_postcut = 0;
-   nrEntries_mu_ttme0b_qcd_postcut = 0;
-   nrEntries_ele_ttme0b_good_postcut = 0;
-   nrEntries_ele_ttme0b_qcd_postcut = 0;
-   nrEntries_mu_ttme1b_good_postcut = 0;
-   nrEntries_mu_ttme1b_qcd_postcut = 0;
-   nrEntries_ele_ttme1b_good_postcut = 0;
-   nrEntries_ele_ttme1b_qcd_postcut = 0;
-   nrEntries_mu_ttme2b_good_postcut = 0;
-   nrEntries_mu_ttme2b_qcd_postcut = 0;
-   nrEntries_ele_ttme2b_good_postcut = 0;
-   nrEntries_ele_ttme2b_qcd_postcut = 0;
-   nrEntries_mu_ttme0bJv_good_postcut = 0;
-   nrEntries_mu_ttme0bJv_qcd_postcut = 0;
-   nrEntries_ele_ttme0bJv_good_postcut = 0;
-   nrEntries_ele_ttme0bJv_qcd_postcut = 0;
-   nrEntries_mu_ttme1bJv_good_postcut = 0;
-   nrEntries_mu_ttme1bJv_qcd_postcut = 0;
-   nrEntries_ele_ttme1bJv_good_postcut = 0;
-   nrEntries_ele_ttme1bJv_qcd_postcut = 0;
-   nrEntries_mu_ttme2bJv_good_postcut = 0;
-   nrEntries_mu_ttme2bJv_qcd_postcut = 0;
-   nrEntries_ele_ttme2bJv_good_postcut = 0;
-   nrEntries_ele_ttme2bJv_qcd_postcut = 0;
-   nrEntries_mu_ttme0bMt_good_postcut = 0;
-   nrEntries_mu_ttme0bMt_qcd_postcut = 0;
-   nrEntries_ele_ttme0bMt_good_postcut = 0;
-   nrEntries_ele_ttme0bMt_qcd_postcut = 0;
-   nrEntries_mu_ttme1bMt_good_postcut = 0;
-   nrEntries_mu_ttme1bMt_qcd_postcut = 0;
-   nrEntries_ele_ttme1bMt_good_postcut = 0;
-   nrEntries_ele_ttme1bMt_qcd_postcut = 0;
-   nrEntries_mu_ttme2bMt_good_postcut = 0;
-   nrEntries_mu_ttme2bMt_qcd_postcut = 0;
-   nrEntries_ele_ttme2bMt_good_postcut = 0;
-   nrEntries_ele_ttme2bMt_qcd_postcut = 0;
-   nrEntries_mu_ttme0bJvMt_good_postcut = 0;
-   nrEntries_mu_ttme0bJvMt_qcd_postcut = 0;
-   nrEntries_ele_ttme0bJvMt_good_postcut = 0;
-   nrEntries_ele_ttme0bJvMt_qcd_postcut = 0;
-   nrEntries_mu_ttme1bJvMt_good_postcut = 0;
-   nrEntries_mu_ttme1bJvMt_qcd_postcut = 0;
-   nrEntries_ele_ttme1bJvMt_good_postcut = 0;
-   nrEntries_ele_ttme1bJvMt_qcd_postcut = 0;
-   nrEntries_mu_ttme2bJvMt_good_postcut = 0;
-   nrEntries_mu_ttme2bJvMt_qcd_postcut = 0;
-   nrEntries_ele_ttme2bJvMt_good_postcut = 0;
-   nrEntries_ele_ttme2bJvMt_qcd_postcut = 0;
-
-
    PSpace.clear();
    EMu.clear();
    QCD.clear();
    Syst.clear();
    WFlav.clear();
+
    PSpace.push_back("ttme0b");
-   PSpace.push_back("ttme1b");
-   PSpace.push_back("ttme2b");
+   PSpace.push_back("ttme1bta");
+   PSpace.push_back("ttme1btb");
+   PSpace.push_back("ttme2bt");
+   PSpace.push_back("ttme1bma");
+   PSpace.push_back("ttme1bmb");
+   PSpace.push_back("ttme2bm");
    PSpace.push_back("ttme0bJv");
-   PSpace.push_back("ttme1bJv");
-   PSpace.push_back("ttme2bJv");
-   PSpace.push_back("ttme0bMt");
-   PSpace.push_back("ttme1bMt");
-   PSpace.push_back("ttme2bMt");
-   PSpace.push_back("ttme0bJvMt");
-   PSpace.push_back("ttme1bJvMt");
-   PSpace.push_back("ttme2bJvMt");
+   PSpace.push_back("ttme1btaJv");
+   PSpace.push_back("ttme1btbJv");
+   PSpace.push_back("ttme2btJv");
+   PSpace.push_back("ttme1bmaJv");
+   PSpace.push_back("ttme1bmbJv");
+   PSpace.push_back("ttme2bmJv");
    EMu.push_back("mu");
    EMu.push_back("ele");
    QCD.push_back("good");
-   QCD.push_back("qcd");
    Syst.push_back("");
    //Syst.push_back("_SFs");
-   Syst.push_back("_CSVUp");
-   Syst.push_back("_CSVDown");
-   Syst.push_back("_EMuUp");
-   Syst.push_back("_EMuDown");
-   Syst.push_back("_UESUp");
-   Syst.push_back("_UESDown");
+   //Syst.push_back("_CSVUp");
+   //Syst.push_back("_CSVDown");
+   //Syst.push_back("_EMuUp");
+   //Syst.push_back("_EMuDown");
+   //Syst.push_back("_UESUp");
+   //Syst.push_back("_UESDown");
    WFlav.push_back("");
    WFlav.push_back("_Wl");
    WFlav.push_back("_Wc");
@@ -1711,7 +1332,7 @@ Bool_t histoFillerTTbarProgression::FillHistograms(int i, int j, int k, int l, i
  hists_goodLep_pt[i][j][k][l][m].Fill(lep_pt,weight);
  hists_goodJ1_pt[i][j][k][l][m].Fill(goodJ1_pt,weight);
  hists_goodJ2_pt[i][j][k][l][m].Fill(goodJ2_pt,weight);
- hists_goodJ1J2_dR[i][j][k][l][m].Fill(dRgoodJ1J2,weight);
+ hists_goodJ1J2_dR[i][j][k][l][m].Fill(goodJ1J2_dR,weight);
  hists_goodJ1J2_mass[i][j][k][l][m].Fill(goodJ1J2_mass,weight);
  hists_goodJ1J2_pt[i][j][k][l][m].Fill(goodJ1J2_pt,weight);
  hists_goodJ1_CSV[i][j][k][l][m].Fill(goodJ1_CSV,weight);
@@ -1816,7 +1437,7 @@ Bool_t histoFillerTTbarProgression::fillHistWriter(
 }
 
 Bool_t histoFillerTTbarProgression::writeHistWriter( int pspace_nr, int syst_nr, Bool_t isW ){
- for(int qcd_nr=0; qcd_nr<2; ++qcd_nr){
+ for(int qcd_nr=0; qcd_nr<1; ++qcd_nr){
   for(int emu_nr=0; emu_nr<2; ++emu_nr){
    if(isW){
     for(int wflav_nr=0; wflav_nr<5; ++wflav_nr){
