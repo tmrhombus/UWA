@@ -18,8 +18,6 @@ for samplename in \
  "W2Jet" \
  "W3Jet" \
  "Drell" \
- "TTbar_full" \
- "TTbar_semi" \
  "T_s" \
  "T_t" \
  "T_tW" \
@@ -28,6 +26,8 @@ for samplename in \
  "Tbar_tW" \
  "W4Jet" \
  "Wbb4F" \
+ "TTbar_full" \
+ "TTbar_semi" \
  "WW" \
  "WZ" \
  "ZZ" 
@@ -101,15 +101,15 @@ do
   sed -i "s@SHIFT@${theshift}@g"                    "./Submit_${version}/${samplename}_${theshift}_callHistoFillerTTbarProgression.cc"
   sed -i "s@TREENAME@${treename}@g"                 "./Submit_${version}/${samplename}_${theshift}_callHistoFillerTTbarProgression.cc"
 
-#  farmoutAnalysisJobs \
-#   --infer-cmssw-path \
-#   --fwklite \
-#   --input-file-list=${mylist} \
-#   --input-files-per-job=30 \
-#   --use-hdfs \
-#   --extra-inputs=${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.C,${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.h \
-#   ${version}_${runname} \
-#   "./Submit_${version}/${samplename}_${theshift}_callHistoFillerTTbarProgression.cc"
+  farmoutAnalysisJobs \
+   --infer-cmssw-path \
+   --fwklite \
+   --input-file-list=${mylist} \
+   --input-files-per-job=30 \
+   --use-hdfs \
+   --extra-inputs=${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.C,${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.h \
+   ${version}_${runname} \
+   "./Submit_${version}/${samplename}_${theshift}_callHistoFillerTTbarProgression.cc"
 
  done # theshift in shifts[@]
 done # samplename in mc_samples
@@ -161,15 +161,15 @@ do
  sed -i "s@SHIFT@${theshift}@g"                   "./Submit_${version}/${samplename}${theshift}_callHistoFillerTTbarProgression.cc"
  sed -i "s@TREENAME@${treename}@g"                "./Submit_${version}/${samplename}${theshift}_callHistoFillerTTbarProgression.cc"
 
-# farmoutAnalysisJobs \
-#  --infer-cmssw-path \
-#  --fwklite \
-#  --use-hdfs \
-#  --input-file-list=${mylist} \
-#  --input-files-per-job=30 \
-#  --extra-inputs=${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.C,${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.h \
-#  ${version}_${runname} \
-#  "./Submit_${version}/${samplename}${theshift}_callHistoFillerTTbarProgression.cc"
+ farmoutAnalysisJobs \
+  --infer-cmssw-path \
+  --fwklite \
+  --use-hdfs \
+  --input-file-list=${mylist} \
+  --input-files-per-job=30 \
+  --extra-inputs=${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.C,${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.h \
+  ${version}_${runname} \
+  "./Submit_${version}/${samplename}${theshift}_callHistoFillerTTbarProgression.cc"
 
 done # samplename in data_samples
 

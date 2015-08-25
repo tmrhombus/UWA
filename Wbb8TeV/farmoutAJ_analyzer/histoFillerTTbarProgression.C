@@ -151,24 +151,23 @@ void histoFillerTTbarProgression::Loop(
 //   goodE1E2_phi  = fourVec_E1E2.Phi();
 //   goodE1E2_mass = fourVec_E1E2.M();
 //  }
-  // filter variables
-  twoGoodLMuE = HLT_IsoMu24_eta2p1_v_fired
-   && nrGoodEle==1 && nrVetoEle<=1
-   && nrGoodMu==1  && nrVetoMu<=1;
-  twoGoodLEMu = HLT_Ele27_WP80_fired
-   && nrGoodEle==1 && nrVetoEle<=1
-   && nrGoodMu==1  && nrVetoMu<=1;
-  twoQCDLMuE =  HLT_IsoMu24_eta2p1_v_fired && //
-   nrQCDMu==1   && nrVetoMu==0 &&
-   nrGoodEle==1 && nrVetoEle<=1;
-  twoQCDLEMu =  HLT_Ele27_WP80_fired && //
-   nrQCDEle==1   && nrVetoEle==0 &&
-   nrGoodMu==1 && nrVetoMu<=1;
 
-  min2goodJs = 
-   nrGoodJets>=2 && nrFwdJets==0;
-  vetoJ3 = 
-   nrGoodJets==2 && nrFwdJets==0;
+  // filter variables
+  twoGoodLMuE = kFALSE; 
+  twoGoodLEMu = kFALSE; 
+
+  twoGoodLMuE = HLT_IsoMu24_eta2p1_v_fired
+   && nbrGoodEle==1 && nbrVetoEle==0
+   && nbrGoodMu==1  && nbrVetoMu==0;
+  twoGoodLEMu = HLT_Ele27_WP80_fired
+   && nbrGoodEle==1 && nbrVetoEle==0
+   && nbrGoodMu==1  && nbrVetoMu==0;
+
+  min2goodJs =
+   goodJ1_pt>25 && goodJ2_pt>25 && fwdJ1_pt<25;
+  vetoJ3 =
+   min2goodJs && goodJ3_pt<25;
+
   btag0J = kTRUE ;
   btag1Jta = goodJ1_CSV>0.898 ;
   btag1Jtb = goodJ2_CSV>0.898 ;
@@ -317,7 +316,6 @@ void histoFillerTTbarProgression::Loop(
    weight_ttme1bmb_ele_good = 1.;
    weight_ttme2bm_ele_good  = 1.;
   }
-
 
   mt_mu_qcd = 1.;
   mt_ele_qcd = 1.;
