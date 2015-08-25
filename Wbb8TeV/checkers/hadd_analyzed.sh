@@ -6,13 +6,13 @@ mkdir -p ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}
 mkdir -p ${wbbzone}/SampleInfo/${version}/Plots_${runname}
 
 for samplename in \
+"Tbar_s" \
 "Drell" \
 "TTbar_full" \
 "TTbar_semi" \
 "T_s" \
 "T_t" \
 "T_tW" \
-"Tbar_s" \
 "Tbar_t" \
 "Tbar_tW" \
 "W1Jet" \
@@ -26,6 +26,7 @@ for samplename in \
 "ZZ" 
 
 do
+ #for myshift in "noshift"
  for myshift in "SFs" "JESUp" "JESDown" "MESUp" "MESDown" "EESUp" "EESDown"
  do
   hadd \
@@ -34,23 +35,27 @@ do
  done
 done
 
-#for datasample in \
-#"DataA_8TeVMu" \
-#"DataB_8TeVMu" \
-#"DataC_8TeVMu" \
-#"DataD_8TeVMu" \
-#"DataA_8TeVEle" \
-#"DataB_8TeVEle" \
-#"DataC_8TeVEle" \
-#"DataD_8TeVEle" 
-#
-#do
-# hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_${datasample}.root \
-#  ${hdfs}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
-#  #${hdfs}/${version}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
-#done
-#
-#hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_mu.root \
-# ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVMu*root
-#hadd ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_ele.root \
-# ${rebase}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVEle*root
+for datasample in \
+"DataA_8TeVMu" \
+"DataB_8TeVMu" \
+"DataC_8TeVMu" \
+"DataD_8TeVMu" \
+"DataA_8TeVEle" \
+"DataB_8TeVEle" \
+"DataC_8TeVEle" \
+"DataD_8TeVEle" 
+
+do
+  hadd \
+   ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_${datasample}.root \
+   ${hdfs}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
+  #${hdfs}/${version}/${version}_${runname}-${datasample}_callHistoFiller*/*.root
+done
+
+hadd ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_mu.root \
+ ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVMu*root
+hadd ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data_ele.root \
+ ${wbbzone}/SampleInfo/${version}/Analyzed_${runname}/Analyzed_Data*_8TeVEle*root
+
+echo
+echo "${wbbzone}/SampleInfo/${version}/Analyzed_${runname}"
