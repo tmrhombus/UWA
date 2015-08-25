@@ -3,8 +3,15 @@ echo "version: ${version}"
 echo "runname: ${runname}"
 
   countmerged="Truex"
-countanalyzed="Truex"
+countanalyzed="True"
 
+## TT
+#shifts[0]="noshift"
+
+## Drell
+#shifts[0]="SFs"
+
+# Wbb
 shifts[0]="SFs"
 shifts[1]="JESUp"
 shifts[2]="JESDown"
@@ -19,6 +26,9 @@ tabs 15
 # Count MC
 ####
 for MCsample in \
+ "TTbar_semi" \
+ "TTbar_full" \
+ "Wbb4F" \
  "WJets_p1" \
  "WJets_p2" \
  "W1Jet_p1" \
@@ -28,9 +38,6 @@ for MCsample in \
  "W3Jet_p1" \
  "W3Jet_p2" \
  "W4Jet" \
- "Wbb4F" \
- "TTbar_full" \
- "TTbar_semi" \
  "Drell" \
  "T_s" \
  "T_t" \
@@ -45,10 +52,9 @@ for MCsample in \
 do
  # ntuples
  nfs_full=$(ls -d /nfs_scratch/tperry/${version}_${MCsample}-MuEle-PATMC*/*/ | wc -l)
- nfs_mergecount=`python -c "from math import ceil; print ceil(${nfs_full}/400.)"`
- #hdfs_full=$(ls -1 /hdfs/store/user/tperry/${version}/${version}_${MCsample}-MuEle-PATMC*/*.root | wc -l)
- hdfs_full=$(ls -1 /hdfs/store/user/tperry/${version}_${MCsample}-MuEle-PATMC*/*.root | wc -l)
- hdfs_mergecount=`python -c "from math import ceil; print ceil(${hdfs_full}/400.)"`
+ nfs_mergecount=`python -c "from math import ceil; print ceil(${nfs_full}/30.)"`
+ hdfs_full=$(ls -1 ${hdfs}/${version}/roots/ntuple/${version}_${MCsample}-*PATMC*/*root | wc -l)
+ hdfs_mergecount=`python -c "from math import ceil; print ceil(${hdfs_full}/30.)"`
  hdfs_mc_full_total=$(($hdfs_mc_full_total+$hdfs_full)) 
  nfs_mc_full_total=$(($nfs_mc_full_total+$nfs_full)) 
  
@@ -57,7 +63,7 @@ do
 
  echo -e "${MCsample}\t /nfs\t /hdfs"
  echo -e "  full\t ${nfs_full}\t ${hdfs_full}\t  ${percent_completed}% Complete"
- echo -e "  full/50\t ${nfs_mergecount}\t ${hdfs_mergecount}\t ${failed_jobs} failed ntuples"
+ echo -e "  full/30\t ${nfs_mergecount}\t ${hdfs_mergecount}\t ${failed_jobs} failed ntuples"
 
  # merged 
  if [ "$countmerged" = "True" ]
@@ -88,7 +94,6 @@ do
  echo
 done
 
-
 percent_mc_completed_total=`echo "${hdfs_mc_full_total} ${nfs_mc_full_total}" | awk '{printf "%.5f \n", 100*$1/$2}'`
 echo
 echo "Total MC"
@@ -110,9 +115,9 @@ for sample in \
 do
  
  nfs_full=$(ls -d /nfs_scratch/tperry/${version}_${sample}-*-PATData/*/ | wc -l)
- nfs_mergecount=`python -c "from math import ceil; print ceil(${nfs_full}/400.)"`
- hdfs_full=$(ls -1 /hdfs/store/user/tperry/${version}_${sample}-*-PATData/*.root | wc -l)
- hdfs_mergecount=`python -c "from math import ceil; print ceil(${hdfs_full}/400.)"`
+ nfs_mergecount=`python -c "from math import ceil; print ceil(${nfs_full}/30.)"`
+ hdfs_full=$(ls -1 ${hdfs}/${version}/roots/ntuple/${version}_${sample}-*PATData/*root | wc -l)
+ hdfs_mergecount=`python -c "from math import ceil; print ceil(${hdfs_full}/30.)"`
  hdfs_data_full_total=$(($hdfs_data_full_total+$hdfs_full)) 
  nfs_data_full_total=$(($nfs_data_full_total+$nfs_full)) 
 
@@ -121,7 +126,7 @@ do
 
  echo -e "${sample}\t /nfs\t /hdfs"
  echo -e "  full\t ${nfs_full}\t ${hdfs_full}\t  ${percent_completed}% Complete"
- echo -e "  full/100\t ${nfs_mergecount}\t ${hdfs_mergecount}\t ${failed_jobs} failed ntuples"
+ echo -e "  full/30\t ${nfs_mergecount}\t ${hdfs_mergecount}\t ${failed_jobs} failed ntuples"
 
  if [ "$countmerged" = "True" ]
  then
@@ -136,7 +141,8 @@ do
  then
   nfs_analyzed=$(ls -d /nfs_scratch/tperry/${version}_${runname}-${sample}_callHistoFiller*/*/ | wc -l)
   hdfs_analyzed=$(ls -1 /hdfs/store/user/tperry/${version}_${runname}-${sample}_callHistoFiller*/*.root | wc -l) 
-  echo -e "  \t ${nfs_analyzed}\t ${hdfs_analyzed} "
+   analyzed_diff=$(($nfs_analyzed-$hdfs_analyzed))
+  echo -e "  \t ${nfs_analyzed}\t ${hdfs_analyzed}\t ${analyzed_diff} failed analyzers"
  fi
  echo
 done
@@ -148,9 +154,7 @@ echo "/nfs ${nfs_data_full_total}   /hdfs ${hdfs_data_full_total}  ${percent_dat
 echo
 echo
 
-
-
-## for checking individual files
-# grep -l "exited with status 0" /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_good.txt
-# ls /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_all.txt
-# grep -Fvf good_dataAEle.txt all_dataAEle.txt > dataAEle_bad.txt
+### for checking individual files
+## grep -l "exited with status 0" /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_good.txt
+## ls /nfs_scratch/tperry/Earth_DataA_8TeVEle-Ele-PATData/*/*out > dataAEle_all.txt
+## grep -Fvf good_dataAEle.txt all_dataAEle.txt > dataAEle_bad.txt
