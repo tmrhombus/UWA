@@ -21,7 +21,6 @@ void histoFiller::Loop(
  Long64_t nb = 0;
 
  for (Long64_t jentry=0; jentry<nrEntries;jentry++) {
-   std::cout<<"    entry "<<jentry<<std::endl;
   if(jentry%100000==0) std::cout<<"    entry "<<jentry<<std::endl;
   Long64_t ientry = LoadTree(jentry);
   if (ientry < 0) break;
@@ -44,13 +43,13 @@ void histoFiller::Loop(
    isWbb =  someBs;
 
    // these numbers are the total number of events in the samples
-   //  output from UWAnalysis/CRAB/MuNu/countEvents.sh 
+   //  output from UWAnalysis/Wbb8TeV/farmoutAJ_analyzer/countEvents.sh 
    //      WJets, W1Jet, W2Jet, W3Jet, W4Jet 
    Float_t nrWnJ, nrW1J, nrW2J, nrW3J, nrW4J;
    nrWnJ = 75865454;
    nrW1J = 52593689;
-   nrW2J = 64409521; //for CestPi Mars // 63806612; //for CestPiVV  
-   nrW3J = 30358906; // 29503114; //for Schweincomp//   
+   nrW2J = 64409521;
+   nrW3J = 30358906;
    nrW4J = 13042592;
 
    std::vector<Float_t> ev;
@@ -99,7 +98,6 @@ void histoFiller::Loop(
    std::count_if(
    qcdEle_pt_vec->begin(),qcdEle_pt_vec->end(), 
    std::bind2nd(std::greater_equal<int>(),30));
-
 
   // dr J1 J2
   goodJ1J2_dR = -1.; 
@@ -390,11 +388,10 @@ void histoFiller::Loop(
     // goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
 
   passMET =        kTRUE; // MET_pt > 25. && dphiJ1Met > 0.4; // kTRUE; // 
-  passMT_goodMu =  kTRUE; // mt_mu_good  > 45; // 30; 
-  passMT_qcdMu =   kTRUE; // mt_mu_qcd   > 45; // 30; 
-  passMT_goodEle = kTRUE; // mt_ele_good > 45; // 30; 
-  passMT_qcdEle =  kTRUE; // mt_ele_qcd  > 45; // 30; 
-
+  passMT_goodMu =  kTRUE; // mt_mu_good  > 45; // 30;
+  passMT_qcdMu =   kTRUE; // mt_mu_qcd   > 45; // 30;
+  passMT_goodEle = kTRUE; // mt_ele_good > 45; // 30;
+  passMT_qcdEle =  kTRUE; // mt_ele_qcd  > 45; // 30;
 
   ////////////////////////////////
   // begin wjj, wbb Selection 3,0
@@ -1221,8 +1218,8 @@ void histoFiller::Loop(
   Bool_t pass_dyjj_ele_qcd=kFALSE;
   Bool_t pass_dybb_ele_good=kFALSE;
   Bool_t pass_dybb_ele_qcd=kFALSE;
-  //if( twoGoodMuons && exactly2goodJs ) // mu good
-  if( twoGoodMuons && exactly2goodJsOneB ){ // mu good
+  //if( twoGoodMuons && exactly2goodJsOneB ){ // mu good
+  if( twoGoodMuons && exactly2goodJs ){ // mu good
    pass_dyjj_mu_good=kTRUE; 
    nbrEntries_mu_dyjj_good_postcut++;
    if ( exactly2goodBJs ){
@@ -1237,8 +1234,8 @@ void histoFiller::Loop(
      - std::sqrt( pow(SF_goodMu_IDIsoHLT_errDn->at(0),2) + pow(SF_goodMu_IDIso_errDn->at(1),2) );
    }
   }
-  //if( twoQCDMuons && exactly2goodJs ) // mu qcd
-  if( twoQCDMuons && exactly2goodJsOneB ){ // mu qcd
+  //if( twoQCDMuons && exactly2goodJsOneB ){ // mu qcd
+  if( twoQCDMuons && exactly2goodJs ){ // mu qcd
    pass_dyjj_mu_qcd=kTRUE; 
    nbrEntries_mu_dyjj_qcd_postcut++;
    if ( exactly2goodBJs ){
@@ -1253,8 +1250,8 @@ void histoFiller::Loop(
      - std::sqrt( pow(SF_goodMu_IDIsoHLT_errDn->at(0),2) + pow(SF_qcdMu_IDIso_errDn,2) );
    }
   }
-  //if( twoGoodElectrons && exactly2goodJs ) // ele good
-  if( twoGoodElectrons && exactly2goodJsOneB ){ // ele good
+  //if( twoGoodElectrons && exactly2goodJsOneB ){ // ele good
+  if( twoGoodElectrons && exactly2goodJs ){ // ele good
    pass_dyjj_ele_good=kTRUE; 
    nbrEntries_ele_dyjj_good_postcut++;
    if ( exactly2goodBJs ){
@@ -1269,8 +1266,8 @@ void histoFiller::Loop(
      - std::sqrt( pow(SF_goodEle_IDIsoHLT_errDn->at(0),2) + pow(SF_goodEle_IDIso_errDn->at(1),2) );
    }
   }
-  //if( twoQCDElectrons && exactly2goodJs ) // ele qcd
-  if( twoQCDElectrons && exactly2goodJsOneB ){ // ele qcd
+  //if( twoQCDElectrons && exactly2goodJsOneB ){ // ele qcd
+  if( twoQCDElectrons && exactly2goodJs ){ // ele qcd
    pass_dyjj_ele_qcd=kTRUE; 
    nbrEntries_ele_dyjj_qcd_postcut++;
    if ( exactly2goodBJs ){
@@ -1287,29 +1284,52 @@ void histoFiller::Loop(
   }
   // total weight
   if( isMC ){
+   //// dyjj
+   //weight_dyjj_mu_good  = SF_oneGoodBJ * ( SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_mu_qcd   = SF_oneGoodBJ * ( SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_ele_good = SF_oneGoodBJ * ( SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //weight_dyjj_ele_qcd  = SF_oneGoodBJ * ( SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //// dyjj CSV
+   //weight_dyjj_mu_good_CSVUp    = SF_oneGoodBJ_errUp * ( SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_mu_qcd_CSVUp     = SF_oneGoodBJ_errUp * ( SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_ele_good_CSVUp   = SF_oneGoodBJ_errUp * ( SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //weight_dyjj_ele_qcd_CSVUp    = SF_oneGoodBJ_errUp * ( SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //weight_dyjj_mu_good_CSVDown  = SF_oneGoodBJ_errDn * ( SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_mu_qcd_CSVDown   = SF_oneGoodBJ_errDn * ( SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_ele_good_CSVDown = SF_oneGoodBJ_errDn * ( SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //weight_dyjj_ele_qcd_CSVDown  = SF_oneGoodBJ_errDn * ( SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //// dyjj EMu
+   //weight_dyjj_mu_good_EMuUp    = SF_oneGoodBJ * ( SF_dyjj_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_mu_qcd_EMuUp     = SF_oneGoodBJ * ( SF_dyjj_mu_qcd_IDIsoHLT_errUp   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_ele_good_EMuUp   = SF_oneGoodBJ * ( SF_dyjj_ele_good_IDIsoHLT_errUp * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //weight_dyjj_ele_qcd_EMuUp    = SF_oneGoodBJ * ( SF_dyjj_ele_qcd_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //weight_dyjj_mu_good_EMuDown  = SF_oneGoodBJ * ( SF_dyjj_mu_good_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_mu_qcd_EMuDown   = SF_oneGoodBJ * ( SF_dyjj_mu_qcd_IDIsoHLT_errDn   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
+   //weight_dyjj_ele_good_EMuDown = SF_oneGoodBJ * ( SF_dyjj_ele_good_IDIsoHLT_errDn * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   //weight_dyjj_ele_qcd_EMuDown  = SF_oneGoodBJ * ( SF_dyjj_ele_qcd_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
    // dyjj
-   weight_dyjj_mu_good  = SF_oneGoodBJ * ( SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_mu_qcd   = SF_oneGoodBJ * ( SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_ele_good = SF_oneGoodBJ * ( SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
-   weight_dyjj_ele_qcd  = SF_oneGoodBJ * ( SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   weight_dyjj_mu_good  = SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents;
+   weight_dyjj_mu_qcd   = SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents;
+   weight_dyjj_ele_good = SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents;
+   weight_dyjj_ele_qcd  = SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents;
    // dyjj CSV
-   weight_dyjj_mu_good_CSVUp    = SF_oneGoodBJ_errUp * ( SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_mu_qcd_CSVUp     = SF_oneGoodBJ_errUp * ( SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_ele_good_CSVUp   = SF_oneGoodBJ_errUp * ( SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
-   weight_dyjj_ele_qcd_CSVUp    = SF_oneGoodBJ_errUp * ( SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
-   weight_dyjj_mu_good_CSVDown  = SF_oneGoodBJ_errDn * ( SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_mu_qcd_CSVDown   = SF_oneGoodBJ_errDn * ( SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_ele_good_CSVDown = SF_oneGoodBJ_errDn * ( SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
-   weight_dyjj_ele_qcd_CSVDown  = SF_oneGoodBJ_errDn * ( SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   weight_dyjj_mu_good_CSVUp    = SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_mu_qcd_CSVUp     = SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_ele_good_CSVUp   = SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
+   weight_dyjj_ele_qcd_CSVUp    = SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
+   weight_dyjj_mu_good_CSVDown  = SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_mu_qcd_CSVDown   = SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_ele_good_CSVDown = SF_dyjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
+   weight_dyjj_ele_qcd_CSVDown  = SF_dyjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
    // dyjj EMu
-   weight_dyjj_mu_good_EMuUp    = SF_oneGoodBJ * ( SF_dyjj_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_mu_qcd_EMuUp     = SF_oneGoodBJ * ( SF_dyjj_mu_qcd_IDIsoHLT_errUp   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_ele_good_EMuUp   = SF_oneGoodBJ * ( SF_dyjj_ele_good_IDIsoHLT_errUp * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
-   weight_dyjj_ele_qcd_EMuUp    = SF_oneGoodBJ * ( SF_dyjj_ele_qcd_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
-   weight_dyjj_mu_good_EMuDown  = SF_oneGoodBJ * ( SF_dyjj_mu_good_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_mu_qcd_EMuDown   = SF_oneGoodBJ * ( SF_dyjj_mu_qcd_IDIsoHLT_errDn   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents );
-   weight_dyjj_ele_good_EMuDown = SF_oneGoodBJ * ( SF_dyjj_ele_good_IDIsoHLT_errDn * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
-   weight_dyjj_ele_qcd_EMuDown  = SF_oneGoodBJ * ( SF_dyjj_ele_qcd_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents );
+   weight_dyjj_mu_good_EMuUp    = SF_dyjj_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_mu_qcd_EMuUp     = SF_dyjj_mu_qcd_IDIsoHLT_errUp   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_ele_good_EMuUp   = SF_dyjj_ele_good_IDIsoHLT_errUp * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
+   weight_dyjj_ele_qcd_EMuUp    = SF_dyjj_ele_qcd_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
+   weight_dyjj_mu_good_EMuDown  = SF_dyjj_mu_good_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_mu_qcd_EMuDown   = SF_dyjj_mu_qcd_IDIsoHLT_errDn   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents ;
+   weight_dyjj_ele_good_EMuDown = SF_dyjj_ele_good_IDIsoHLT_errDn * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
+   weight_dyjj_ele_qcd_EMuDown  = SF_dyjj_ele_qcd_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents ;
    // dybb
    weight_dybb_mu_good  = SF_dyjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwt2gJs * SF_top2BJs / nrEvents;
    weight_dybb_mu_qcd   = SF_dyjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwt2gJs * SF_top2BJs / nrEvents;
