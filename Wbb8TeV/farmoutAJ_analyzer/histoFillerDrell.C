@@ -49,8 +49,8 @@ void histoFillerDrell::Loop(
    Float_t nrWnJ, nrW1J, nrW2J, nrW3J, nrW4J;
    nrWnJ = 75865454;
    nrW1J = 52593689;
-   nrW2J = 64409521; //for CestPi Mars // 63806612; //for CestPiVV  
-   nrW3J = 29503114; // for Schweincomp // else 30358906;
+   nrW2J = 64409521;
+   nrW3J = 30358906;
    nrW4J = 13042592;
 
    std::vector<Float_t> ev;
@@ -66,7 +66,6 @@ void histoFillerDrell::Loop(
    else if( LHEProduct==8 ){nrEvents=ev[0]+ev[3];}
    else {nrEvents=ev[0]+ev[4];}
   }
-
 
   nbrGoodMu = 0;
   nbrGoodMu = 
@@ -228,38 +227,11 @@ void histoFillerDrell::Loop(
   xFJ = fwdJ1_pt<25;
   mB1 = goodJ1_CSV>0.679;
   tB1 = goodJ1_CSV>0.898;
+  //mB1a = goodJ2_CSV>0.679;
+  //tB1a = goodJ2_CSV>0.898;
   mB2 = mB1 && goodJ2_CSV>0.679;
   tB2 = tB1 && goodJ2_CSV>0.898;
 
-//  min2goodBJs = 
-//   min2goodJs
-//   && goodJ1_CSV>0.679 && goodJ2_CSV>0.679;
-//  exactly2goodBJs = 
-//   exactly2goodJs 
-//   && goodJ1_CSV>0.679 && goodJ2_CSV>0.679;
-//  aGoodBJaFwdJ = 
-//   nrGoodJets==1 && nrFwdJets==1 
-//   && goodJ1_CSV>0.679;
-  min2goodBJs = 
-     min2goodJs
-     && goodJ1_CSV>0.898 && goodJ2_CSV>0.898;
-  exactly2goodBJs = 
-     exactly2goodJs 
-     && goodJ1_CSV>0.898 && goodJ2_CSV>0.898;
-  exactly2goodJsOneB = 
-     exactly2goodJs 
-     && goodJ1_CSV>0.898;
-  aGoodBJaFwdJ = 
-     goodJ1_pt>25 && fwdJ1_pt>25
-     && goodJ1_CSV>0.898;
-  min3gJs2gBJs = 
-     min2goodBJs && goodJ3_pt>25;
-
-  // SFs for CSV
-//  SF_top2BJs = goodJ1_SF_CSVM * goodJ2_SF_CSVM; 
-//  SF_top2BJs_errUp = goodJ1_SF_CSVM_errUp * goodJ2_SF_CSVM_errUp;
-//  SF_top2BJs_errDn = goodJ1_SF_CSVM_errDn * goodJ2_SF_CSVM_errDn; 
-//  SF_oneGoodBJ = goodJ1_SF_CSVM;
   SF_mB1 = goodJ1_SF_CSVM;
   SF_mB2 = goodJ1_SF_CSVM * goodJ2_SF_CSVM;
   SF_tB1 = goodJ1_SF_CSVT;
@@ -289,14 +261,6 @@ void histoFillerDrell::Loop(
    MET_pt = met_jesDn_pt;
    MET_phi = met_jesDn_phi;
   }
-  if( shift=="LESUp" ) { 
-   MET_pt = met_eesUp_pt;
-   MET_phi = met_eesUp_phi;
-  }
-  if( shift=="LESDown" ) {
-   MET_pt = met_eesDn_pt;
-   MET_phi = met_eesDn_phi;
-  }
 
   // MT
   // good mu
@@ -305,8 +269,6 @@ void histoFillerDrell::Loop(
   mt_mu_good_uesDown = mt_goodMuon_uesDn;
   if( shift=="JESUp" ) { mt_mu_good = mt_goodMuon_jesUp; }
   if( shift=="JESDown" ) { mt_mu_good = mt_goodMuon_jesDn; }
-  if( shift=="LESUp" )  { mt_mu_good = mt_goodMuon_eesUp; }
-  if( shift=="LESDown" ) { mt_mu_good = mt_goodMuon_eesDn; }
   lep_mu_good_pt = -99;
   lep_mu_good_eta = -99;
   lep_mu_good_phi = -99;
@@ -323,8 +285,6 @@ void histoFillerDrell::Loop(
   mt_mu_qcd_uesDown = mt_qcdMuon_uesDn;
   if( shift=="JESUp" ) { mt_mu_qcd = mt_qcdMuon_jesUp; }
   if( shift=="JESDown" ) { mt_mu_qcd = mt_qcdMuon_jesDn; }
-  if( shift=="LESUp" )  { mt_mu_qcd = mt_qcdMuon_eesUp; }
-  if( shift=="LESDown" )  { mt_mu_qcd = mt_qcdMuon_eesDn; }
   lep_mu_qcd_pt =   -99; 
   lep_mu_qcd_eta =  -99; 
   lep_mu_qcd_phi =  -99; 
@@ -341,8 +301,6 @@ void histoFillerDrell::Loop(
   mt_ele_good_uesDown = mt_goodElectron_uesDn;
   if( shift=="JESUp" ) { mt_ele_good = mt_goodElectron_jesUp; }
   if( shift=="JESDown" ) { mt_ele_good = mt_goodElectron_jesDn; }
-  if( shift=="LESUp" )  { mt_ele_good = mt_goodElectron_eesUp; }
-  if( shift=="LESDown" ) { mt_ele_good = mt_goodElectron_eesDn; }
   lep_ele_good_pt =   0; 
   lep_ele_good_eta =  0; 
   lep_ele_good_phi =  0; 
@@ -359,8 +317,6 @@ void histoFillerDrell::Loop(
   mt_ele_qcd_uesDown = mt_qcdElectron_uesDn;
   if( shift=="JESUp" ) { mt_ele_qcd = mt_qcdElectron_jesUp; }
   if( shift=="JESDown" ) { mt_ele_qcd = mt_qcdElectron_jesDn; }
-  if( shift=="LESUp" )  { mt_ele_qcd = mt_qcdElectron_eesUp; }
-  if( shift=="LESDown" )  { mt_ele_qcd = mt_qcdElectron_eesDn; }
   lep_ele_qcd_pt =   -99; 
   lep_ele_qcd_eta =  -99; 
   lep_ele_qcd_phi =  -99; 

@@ -7,61 +7,51 @@ mkdir -p ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists
 mkdir -p ./Submit_${version}
 
 # general parameters
-lumi_mu="19783"  # Schweincomp CestPiVV Earth Q,Mercury
-lumi_ele="19671" # Schweincomp CestPiVV Earth Q,Mercury
+lumi_mu="19780" # Interlochen
+lumi_ele="19671" # Interlochen
 
 shifts[0]="SFs"
-shifts[1]="JESUp"
-shifts[2]="JESDown"
-shifts[3]="LESUp"
-shifts[4]="LESDown"
+#shifts[1]="JESUp"
+#shifts[2]="JESDown"
+#shifts[3]="EESUp"
+#shifts[4]="EESDown"
+#shifts[3]="MESUp"
+#shifts[4]="MESDown"
 
 
- #"Drell" 
 ###
 # choose sample
 for samplename in \
+ "Drell" \
  "Wbb4F" \
  "W1Jet" \
  "W2Jet" \
  "W3Jet" \
  "W4Jet" \
  "WJets" \
- "TTbar_full" \
- "TTbar_semi" \
  "T_s" \
  "T_t" \
  "T_tW" \
  "Tbar_s" \
  "Tbar_t" \
  "Tbar_tW" \
+ "TTbar_full" \
+ "TTbar_semi" \
  "WW" \
  "WZ" \
  "ZZ" 
 
 do
  echo "${samplename}"
- initevents="${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/initialEvents.txt"
- touch initevents
  # count the total number of events, put in a file if it's not there
- if ! grep -F "${samplename} " ${initevents}
+ initevents="${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/initialEvents.txt"
+ touch ${initevents} 
+ if ! grep -F "${samplename}" ${initevents} 
  then 
   echo "Need to count events.. making list"
   # make a list of all the sample filenames
-  #find ${hdfs}/${version}_${samplename}*/*root > \ # unmerged samples
-  if ! [[ ${samplename} == W*Jet* ]] || [[ ${samplename} == W4Jet ]]
-  then
-   #find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
-   find ${hdfs}/${version}/${version}_${samplename}-mergeFilesJob/*root > \
-    ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
-  else 
-   #find ${hdfs}/${version}_${samplename}_p1-mergeFilesJob/*root > \
-   find ${hdfs}/${version}/${version}_${samplename}_p1-mergeFilesJob/*root > \
-    ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
-   #find ${hdfs}/${version}_${samplename}_p2-mergeFilesJob/*root >> \
-   find ${hdfs}/${version}/${version}_${samplename}_p2-mergeFilesJob/*root >> \
-    ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
-  fi
+  find ${hdfs}/${version}/roots/ntuple/${version}_${samplename}*PATMC*/*root > \ 
+   ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
   
   cp "${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt" \
      "${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/xrd_list_${samplename}.txt" #
@@ -77,6 +67,7 @@ do
  else
   mylist="${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/xrd_list_${samplename}.txt"
  fi
+
  # or just set it by hand(:
  #mylist="${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/xrd_list_${samplename}.txt" 
 
@@ -98,12 +89,14 @@ do
  # for shift in list above
  for theshift in "${shifts[@]}"
  do
-
+  treename="muEleEventTree/eventTree"
   if [[ ${theshift} == SFs ]]     ; then treename="muEleEventTree/eventTree"         ; fi
   if [[ ${theshift} == JESUp ]]   ; then treename="muEleEventTreeJetUp/eventTree"    ; fi
   if [[ ${theshift} == JESDown ]] ; then treename="muEleEventTreeJetDown/eventTree"  ; fi
-  if [[ ${theshift} == LESUp ]]   ; then treename="muEleEventTreeMuonUp/eventTree"   ; fi
-  if [[ ${theshift} == LESDown ]] ; then treename="muEleEventTreeMuonDown/eventTree" ; fi
+  if [[ ${theshift} == EESUp ]]   ; then treename="muEleEventTreeElectronUp/eventTree"   ; fi
+  if [[ ${theshift} == EESDown ]] ; then treename="muEleEventTreeElectronDown/eventTree" ; fi
+  if [[ ${theshift} == MESUp ]]   ; then treename="muEleEventTreeMuonUp/eventTree"   ; fi
+  if [[ ${theshift} == MESDown ]] ; then treename="muEleEventTreeMuonDown/eventTree" ; fi
 
   # make correct executable xx_callHistoFillerDrell()
   cp template_callHistoFillerDrell.cc               "./Submit_${version}/${samplename}_${theshift}_callHistoFillerDrell.cc"
@@ -122,7 +115,7 @@ do
    --infer-cmssw-path \
    --fwklite \
    --input-file-list=${mylist} \
-   --input-files-per-job=200 \
+   --input-files-per-job=30 \
    --use-hdfs \
    --extra-inputs=${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerDrell.C,${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerDrell.h \
    ${version}_${runname} \
@@ -132,8 +125,8 @@ do
 done # samplename in mc_samples
 
 
-# "DataA_8TeVMu" 
 for samplename in \
+ "DataA_8TeVMu" \
  "DataB_8TeVMu" \
  "DataC_8TeVMu" \
  "DataD_8TeVMu" \
@@ -146,8 +139,7 @@ do
  echo "${samplename}"
  # make a list of all the sample filenames
 
- #find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
- find ${hdfs}/${version}/${version}_${samplename}-mergeFilesJob/*root > \
+ find ${hdfs}/${version}/roots/ntuple/${version}_${samplename}-*PATData/*root > \
   ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt #
 
  cp "${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt" \
@@ -184,7 +176,7 @@ do
   --fwklite \
   --use-hdfs \
   --input-file-list=${mylist} \
-  --input-files-per-job=200 \
+  --input-files-per-job=30 \
   --extra-inputs=${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerDrell.C,${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerDrell.h \
   ${version}_${runname} \
   "./Submit_${version}/${samplename}${theshift}_callHistoFillerDrell.cc"
