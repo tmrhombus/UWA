@@ -26,6 +26,10 @@ void callHistoFiller()
 {
  int error = 0;
 
+ //gROOT->ProcessLine(".L histoFillerJetVeto.C++", &error);
+ //if(error!=0){std::cerr<<"ERROR LOADING histoFiller.C"<<std::endl;}
+ //histoFillerJetVeto m;
+
  //gROOT->ProcessLine(".L histoFillerDrell.C++", &error);
  //if(error!=0){std::cerr<<"ERROR LOADING histoFiller.C"<<std::endl;}
  //histoFillerDrell m;
@@ -49,12 +53,14 @@ void callHistoFiller()
  TString path="./test/";
 
  TString shift="SFs";
- TString sample="Drell";
- Bool_t isMC_ = kFALSE ;
+ TString sample="Wbb";
+ Bool_t isMC_ = kTRUE ;
  Bool_t isW_ = kFALSE ;
 
  TString outfileName = path+"A_"+sample+"_"+shift+".root" ;
- TString infileName = "/hdfs/store/user/tperry/Interlochen/roots/ntuple/Interlochen_Drell-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-00037C53-AAD1-E111-B1BE-003048D45F38.root";
+ //TString infileName = "/hdfs/store/user/tperry/Interlochen/roots/ntuple/Interlochen_GJ200to400-MuEle-PATMCl/MuEle-PATMCl-patTuple_cfg-003B91A2-F0DA-E111-BC65-003048678B7C.root";
+ TString infileName = "/hdfs/store/user/tperry/Interlochen/roots/ntuple/Interlochen_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root";
+ //TString infileName = "/hdfs/store/user/tperry/Interlochen/roots/ntuple/Interlochen_Drell-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-00037C53-AAD1-E111-B1BE-003048D45F38.root";
  //TString infileName = "/hdfs/store/user/tperry/Interlochen/roots/ntuple/Interlochen_Tbar_s-MuEle-PATMCs/MuEle-PATMCs-*root";
  //TString infileName = "/hdfs/store/user/tperry/Interlochen/roots/ntuple/Interlochen_TTbar_full-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-000560C1-FD97-E211-9F33-00*root";
  //TString infileName = "/hdfs/store/user/tperry/Interlochen_TTbar_full-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-000560C1-FD97-E211-9F33-00304867924E.root";
