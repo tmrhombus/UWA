@@ -1,9 +1,14 @@
 cmsenv
 
 export version="Interlochen"
-export runname="drell"
+#export runname="nofjv"
+#export runname="drell"
 #export runname="ttbar_multilep_v2"
-#export runname="wbb_mt0_x30"
+export runname="wbbmt0"
+#export runname="xprng_L30"
+#export runname="wbb_mtL30_x30"
+#export runname="wbb_mt30_x30"
+#export runname="wbb_mt60_x30"
 #export runname="wbb_mt45_x30"
 #export version="Interlochen_Iso04"
 export xrootd="root://cmsxrootd.hep.wisc.edu//store/user/${USER}"
