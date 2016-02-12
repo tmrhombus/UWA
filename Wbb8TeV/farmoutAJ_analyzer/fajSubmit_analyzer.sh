@@ -18,27 +18,40 @@ shifts[4]="MESDown"
 shifts[5]="EESUp"
 shifts[6]="EESDown"
 
-###
+#
+##
+####
 # choose sample
 for samplename in \
+ "Drell" \
+ "DrellLM"  \
+ "GJ40to100" \
+ "GJ100to200" \
+ "GJ200to400" \
+ "GJ400toInf" \
  "Wbb4F" \
  "W1Jet" \
  "W2Jet" \
+ "TTbar_semi" \
+ "TTbar_full" \
  "W3Jet" \
  "W4Jet" \
  "WJets" \
- "TTbar_full" \
- "TTbar_semi" \
- "Drell" \
- "T_s" \
  "T_t" \
+ "T_s" \
  "T_tW" \
- "Tbar_s" \
  "Tbar_t" \
+ "Tbar_s" \
  "Tbar_tW" \
  "WW" \
  "WZ" \
- "ZZ" 
+ "ZZ" \
+ "QCDBCtoE20to30"   \
+ "QCDBCtoE30to80"   \
+ "QCDBCtoE80to170"  \
+ "QCDBCtoE170to250" \
+ "QCDBCtoE250to350" \
+ "QCDBCtoE350toInf"
 
 do
  echo "${samplename}"
@@ -52,7 +65,8 @@ do
   # make a list of all the sample filenames
 
   # unmerged
-  find ${hdfs}/${version}_${samplename}*/*root > \
+  #find ${hdfs}/${version}/roots/ntuple/${version}_${samplename}*/*root > \
+  find ${hdfs}/${version}/roots/ntuple/${version}_${samplename}-*/*root > \
     ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt 
   
   cp "${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt" \
@@ -127,20 +141,20 @@ done # samplename in mc_samples
 
 
 for samplename in \
+ "DataA_8TeVEle" \
  "DataA_8TeVMu" \
  "DataB_8TeVMu" \
- "DataC_8TeVMu" \
- "DataD_8TeVMu" \
- "DataA_8TeVEle" \
  "DataB_8TeVEle" \
  "DataC_8TeVEle" \
- "DataD_8TeVEle"
+ "DataD_8TeVEle" \
+ "DataC_8TeVMu" \
+ "DataD_8TeVMu" 
 
 do
  echo "${samplename}"
  # make a list of all the sample filenames
  # unmerged
- find ${hdfs}/${version}_${samplename}*/*root > \
+ find ${hdfs}/${version}/roots/ntuple/${version}_${samplename}*/*root > \
    ${uwa}/Wbb8TeV/SampleInfo/${version}/Lists/list_${samplename}.txt 
 
  ##find ${hdfs}/${version}_${samplename}-mergeFilesJob/*root > \
