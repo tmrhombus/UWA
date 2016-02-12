@@ -41,7 +41,9 @@ with open(list_of_files) as f:
 # read cross section from list 
 # https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat8TeV
 # https://twiki.cern.ch/twiki/bin/viewauth/CMS/SingleTopSigma
+# https://github.com/amarini/VPlusJets/blob/master/post-process/xSec.ini
 if    samplename == "Drell" : xc="3531.9" # 1177.3*3 (Z/a* 50)
+elif  samplename == "DrellLM" : xc="860.5" 
 elif  samplename == "TTbar_full" : xc="25.1" # 239*0.324*0.324
 elif  samplename == "TTbar_semi" : xc="104.7" # 239*0.324*0.676*2
 elif  samplename == "T_s" : xc="3.79"
@@ -59,6 +61,16 @@ elif  samplename == "Wbb4F" : xc="138.9" # 46.3*3
 elif  samplename == "WW" : xc="56.0" 
 elif  samplename == "WZ" : xc="33.6"  # 21.0(W+) + 12.6(W-)
 elif  samplename == "ZZ" : xc="8.2"  # m(ll)>40
+elif  samplename == "GJ40to100"  : xc="20709.1" 
+elif  samplename == "GJ100to200" : xc="5319.97" 
+elif  samplename == "GJ200to400" : xc="972.735"
+elif  samplename == "GJ400toInf" : xc="106.721"
+elif  samplename == "QCDBCtoE20to30"   : xc="167410.04" 
+elif  samplename == "QCDBCtoE30to80"   : xc="167353.425" 
+elif  samplename == "QCDBCtoE80to170"  : xc="12970.564" 
+elif  samplename == "QCDBCtoE170to250" : xc="631.54728" 
+elif  samplename == "QCDBCtoE250to350" : xc="103.119966" 
+elif  samplename == "QCDBCtoE350toInf" : xc="23.893702" 
 
 outfile = open(outfile_name,'a')
 outfile.write("%s Events: %s\n"%(samplename,int(total_events)))
