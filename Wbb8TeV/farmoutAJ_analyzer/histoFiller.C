@@ -66,7 +66,6 @@ void histoFiller::Loop(
    else {nrEvents=ev[0]+ev[4];}
   }
 
-
   nbrGoodMu = 0;
   nbrGoodMu = 
    std::count_if(
@@ -99,12 +98,6 @@ void histoFiller::Loop(
    qcdEle_pt_vec->begin(),qcdEle_pt_vec->end(), 
    std::bind2nd(std::greater_equal<int>(),30));
 
-  // dr J1 J2
-  goodJ1J2_dR = -1.; 
-  dphiJJ = dPhi(goodJ1_phi, goodJ2_phi);
-  detaJJ = dEta(goodJ1_eta, goodJ2_eta);
-  goodJ1J2_dR = std::sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
-
   // Dijets
   fourVec_J1.SetPtEtaPhiM(goodJ1_pt, goodJ1_eta, goodJ1_phi, goodJ1_mass);
   fourVec_J2.SetPtEtaPhiM(goodJ2_pt, goodJ2_eta, goodJ2_phi, goodJ2_mass);
@@ -123,6 +116,22 @@ void histoFiller::Loop(
   goodJ3J4_eta  = fourVec_J3J4.Eta();
   goodJ3J4_phi  = fourVec_J3J4.Phi();
   goodJ3J4_mass = fourVec_J3J4.M();
+
+//  // dr J1 Lep
+//  goodJ1Lep_dR = -1.; 
+//  dphiJ1Lep = dPhi(goodJ1_phi, goodLep_phi);
+//  detaJ1Lep = dEta(goodJ1_eta, goodLep_eta);
+//  goodJ1Lep_dR = std::sqrt( (detaJ1Lep*detaJ1Lep) + (dphiJ1Lep*dphiJ1Lep) );
+//  // dr J1J2 Lep
+//  goodJ1J2Lep_dR = -1.; 
+//  dphiJ1J2Lep = dPhi(goodJ1J2_phi, goodLep_phi);
+//  detaJ1J2Lep = dEta(goodJ1J2_eta, goodLep_eta);
+//  goodJ1J2Lep_dR = std::sqrt( (detaJ1J2Lep*detaJ1J2Lep) + (dphiJ1J2Lep*dphiJ1J2Lep) );
+  // dr J1 J2
+  goodJ1J2_dR = -1.; 
+  dphiJJ = dPhi(goodJ1_phi, goodJ2_phi);
+  detaJJ = dEta(goodJ1_eta, goodJ2_eta);
+  goodJ1J2_dR = std::sqrt( ((goodJ1_eta-goodJ2_eta)*(goodJ1_eta-goodJ2_eta)) + (dphiJJ*dphiJJ) );
 
   goodM1M2_pt   = -1.; 
   goodM1M2_eta  = -1.; 
@@ -221,9 +230,9 @@ void histoFiller::Loop(
    && nbrGoodMu==1 && nbrVetoMu==0;
 
   min2goodJs = 
-   goodJ1_pt>25 && goodJ2_pt>25 && fwdJ1_pt<25;
+   goodJ1_pt>25 && goodJ2_pt>25;
   exactly2goodJs = 
-   min2goodJs && goodJ3_pt<25;
+   min2goodJs && goodJ3_pt<25 && fwdJ1_pt<25;
 //  min2goodBJs = 
 //   min2goodJs
 //   && goodJ1_CSV>0.679 && goodJ2_CSV>0.679;
@@ -388,10 +397,10 @@ void histoFiller::Loop(
     // goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
 
   passMET =        kTRUE; // MET_pt > 25. && dphiJ1Met > 0.4; // kTRUE; // 
-  passMT_goodMu =  kTRUE; // mt_mu_good  > 45; // 30;
-  passMT_qcdMu =   kTRUE; // mt_mu_qcd   > 45; // 30;
-  passMT_goodEle = kTRUE; // mt_ele_good > 45; // 30;
-  passMT_qcdEle =  kTRUE; // mt_ele_qcd  > 45; // 30;
+  passMT_goodMu =   kTRUE; //mt_mu_good  > 30; // > 30; // 60; // 45; // 
+  passMT_qcdMu =    kTRUE; //mt_mu_qcd   > 30; // > 30; // 60; // 45; // 
+  passMT_goodEle =  kTRUE; //mt_ele_good > 30; // > 30; // 60; // 45; // 
+  passMT_qcdEle =   kTRUE; //mt_ele_qcd  > 30; // > 30; // 60; // 45; // 
 
   ////////////////////////////////
   // begin wjj, wbb Selection 3,0
@@ -405,32 +414,14 @@ void histoFiller::Loop(
   Bool_t pass_wbb_ele_good=kFALSE;
   Bool_t pass_wbb_ele_qcd=kFALSE;
   //if( oneGoodMuon && exactly2goodJsOneB && diJetVVcut && passMET && passMT_goodMu ) // mu good
+  //if( oneGoodMuon && min2goodJs && diJetVVcut && passMET && passMT_goodMu ){ // mu good
   if( oneGoodMuon && exactly2goodJs && diJetVVcut && passMET && passMT_goodMu ){ // mu good
    pass_wjj_mu_good=kTRUE; 
    nbrEntries_mu_wjj_good_postcut++;
    //std::cout<<"Pass wjj mu"<<std::endl;
    //std::cout<<"CSVrwt J1: "<<goodJ1_CSVreweight<<" CSVrwt J2: "<<goodJ2_CSVreweight<<std::endl;
+   //if ( min2goodBJs ){
    if ( exactly2goodBJs ){
-    if ( isWl ){  
-//    std::cout<<"Wl EVENT passing wbb Mu: "<<EVENT<<std::endl;   //////////////////////
-//    std::cout<<"SF_top2BJs_errUp: "<<SF_top2BJs_errUp<<std::endl;
-//    std::cout<<"SF_top2BJs      : "<<SF_top2BJs      <<std::endl;
-//    std::cout<<"SF_top2BJs_errDn: "<<SF_top2BJs_errDn<<std::endl;
-//    std::cout<<" goodJ1_pt: "<<goodJ1_pt<<std::endl;
-//    std::cout<<" goodJ2_pt: "<<goodJ2_pt<<std::endl;
-//    std::cout<<" goodJ3_pt: "<<goodJ3_pt<<std::endl;
-//    std::cout<<" goodJ4_pt: "<<goodJ4_pt<<std::endl;
-//    std::cout<<" fwdJ1_pt: "<<fwdJ1_pt<<std::endl;
-//    std::cout<<" fwdJ2_pt: "<<fwdJ2_pt<<std::endl;
-//    std::cout<<" nrCleanJets: "<<nrCleanJets<<std::endl;
-//    std::cout<<" nrAllJets: "<<nrAllJets<<std::endl;
-//    std::cout<<" met_pt: "<<met_pt<<std::endl;
-//    std::cout<<" met_jesDn_pt: "<<met_jesDn_pt<<std::endl;
-//    std::cout<<" met_jesUp_pt: "<<met_jesUp_pt<<std::endl;
-//    std::cout<<" mt_goodMuon: "<<mt_goodMuon<<std::endl;
-//    std::cout<<" mt_goodMuon_jesUp: "<<mt_goodMuon_jesUp<<std::endl;
-//    std::cout<<" mt_goodMuon_jesDn: "<<mt_goodMuon_jesDn<<std::endl;
-    }
     pass_wbb_mu_good=kTRUE; 
     nbrEntries_mu_wbb_good_postcut++;
     //std::cout<<"Pass wbb mu"<<std::endl;
@@ -444,9 +435,11 @@ void histoFiller::Loop(
   }
   //if( oneQCDMuon && exactly2goodJs ) // mu qcd'
   //if( oneQCDMuon && exactly2goodJsOneB && diJetVVcut && passMET && passMT_qcdMu ) // mu qcd
+  //if( oneQCDMuon && min2goodJs && diJetVVcut && passMET && passMT_qcdMu ){ // mu qcd
   if( oneQCDMuon && exactly2goodJs && diJetVVcut && passMET && passMT_qcdMu ){ // mu qcd
    pass_wjj_mu_qcd=kTRUE; 
    nbrEntries_mu_wjj_qcd_postcut++;
+   //if ( min2goodBJs ){
    if ( exactly2goodBJs ){
     pass_wbb_mu_qcd=kTRUE; 
     nbrEntries_mu_wbb_qcd_postcut++;
@@ -457,39 +450,13 @@ void histoFiller::Loop(
     SF_wjj_mu_qcd_IDIsoHLT_errDn = SF_wjj_mu_qcd_IDIsoHLT - SF_qcdMu_IDIso_errDn;
    }
   }
-  if( oneGoodElectron && exactly2goodJs && diJetVVcut && passMET && passMT_goodEle ){ // ele good
   //if( oneGoodElectron && exactly2goodJsOneB && diJetVVcut && passMET && passMT_goodEle ) // ele good
+  //if( oneGoodElectron && min2goodJs && diJetVVcut && passMET && passMT_goodEle ){ // ele good
+  if( oneGoodElectron && exactly2goodJs && diJetVVcut && passMET && passMT_goodEle ){ // ele good
    pass_wjj_ele_good=kTRUE; 
    nbrEntries_ele_wjj_good_postcut++;
+   //if ( min2goodBJs ){
    if ( exactly2goodBJs ){
-//    if ( isWl ){
-//     std::cout<<"Wl EVENT passing wbb Ele: "<<EVENT<<std::endl;   //////////////////////
-//    }
-//    std::cout<<"SF_top2BJs_errUp: "<<SF_top2BJs_errUp<<std::endl;
-//    std::cout<<"SF_top2BJs      : "<<SF_top2BJs      <<std::endl;
-//    std::cout<<"SF_top2BJs_errDn: "<<SF_top2BJs_errDn<<std::endl;
-//    std::cout<<" goodJ1_pt: "<<goodJ1_pt<<std::endl;
-//    std::cout<<" goodJ2_pt: "<<goodJ2_pt<<std::endl;
-//    std::cout<<" goodJ3_pt: "<<goodJ3_pt<<std::endl;
-//    std::cout<<" goodJ4_pt: "<<goodJ4_pt<<std::endl;
-//    std::cout<<" fwdJ1_pt: "<<fwdJ1_pt<<std::endl;
-//    std::cout<<" fwdJ2_pt: "<<fwdJ2_pt<<std::endl;
-//    std::cout<<" nrCleanJets: "<<nrCleanJets<<std::endl;
-//    std::cout<<" nrAllJets: "<<nrAllJets<<std::endl;
-//    std::cout<<" met_pt: "<<met_pt<<std::endl;
-//    std::cout<<" met_jesDn_pt: "<<met_jesDn_pt<<std::endl;
-//    std::cout<<" met_jesUp_pt: "<<met_jesUp_pt<<std::endl;
-//    std::cout<<" met_uesDn_pt: "<<met_uesDn_pt<<std::endl;
-//    std::cout<<" met_uesUp_pt: "<<met_uesUp_pt<<std::endl;
-//    std::cout<<" met_eesDn_pt: "<<met_eesDn_pt<<std::endl;
-//    std::cout<<" met_eesUp_pt: "<<met_eesUp_pt<<std::endl;
-//    std::cout<<" mt_goodElectron: "<<mt_goodMuon<<std::endl;
-//    std::cout<<" mt_goodElectron_jesUp: "<<mt_goodMuon_jesUp<<std::endl;
-//    std::cout<<" mt_goodElectron_jesDn: "<<mt_goodMuon_jesDn<<std::endl;
-//    std::cout<<" mt_goodElectron_uesUp: "<<mt_goodMuon_uesUp<<std::endl;
-//    std::cout<<" mt_goodElectron_uesDn: "<<mt_goodMuon_uesDn<<std::endl;
-//    std::cout<<" mt_goodElectron_eesUp: "<<mt_goodMuon_eesUp<<std::endl;
-//    std::cout<<" mt_goodElectron_eesDn: "<<mt_goodMuon_eesDn<<std::endl;
     pass_wbb_ele_good=kTRUE; 
     nbrEntries_ele_wbb_good_postcut++;
    }
@@ -500,10 +467,12 @@ void histoFiller::Loop(
    }
   }
   //if( oneQCDElectron && exactly2goodJs ) // ele qcd'
-  if( oneQCDElectron && exactly2goodJs && diJetVVcut && passMET && passMT_qcdEle ){ // ele qcd
   //if( oneQCDElectron && exactly2goodJsOneB && diJetVVcut && passMET && passMT_qcdEle ) // ele qcd
+  //if( oneQCDElectron && min2goodJs && diJetVVcut && passMET && passMT_qcdEle ){ // ele qcd
+  if( oneQCDElectron && exactly2goodJs && diJetVVcut && passMET && passMT_qcdEle ){ // ele qcd
    pass_wjj_ele_qcd=kTRUE; 
    nbrEntries_ele_wjj_qcd_postcut++;
+   //if ( min2goodBJs ){
    if ( exactly2goodBJs ){
     pass_wbb_ele_qcd=kTRUE; 
     nbrEntries_ele_wbb_qcd_postcut++;
@@ -517,28 +486,31 @@ void histoFiller::Loop(
   // total weight
   if( isMC ){
    // wjj
-   weight_wjj_mu_good  = SF_oneGoodBJ * ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_mu_qcd   = SF_oneGoodBJ * ( SF_wjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_ele_good = SF_oneGoodBJ * ( SF_wjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
-   weight_wjj_ele_qcd  = SF_oneGoodBJ * ( SF_wjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   //weight_wjj_mu_good  = SF_oneGoodBJ * ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_good  = ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_qcd   = ( SF_wjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_ele_good = ( SF_wjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   weight_wjj_ele_qcd  = ( SF_wjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
    // wjj CSV 
-   weight_wjj_mu_good_CSVUp    = SF_oneGoodBJ_errUp * ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_mu_qcd_CSVUp     = SF_oneGoodBJ_errUp * ( SF_wjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_ele_good_CSVUp   = SF_oneGoodBJ_errUp * ( SF_wjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
-   weight_wjj_ele_qcd_CSVUp    = SF_oneGoodBJ_errUp * ( SF_wjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
-   weight_wjj_mu_good_CSVDown  = SF_oneGoodBJ_errDn * ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_mu_qcd_CSVDown   = SF_oneGoodBJ_errDn * ( SF_wjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_ele_good_CSVDown = SF_oneGoodBJ_errDn * ( SF_wjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
-   weight_wjj_ele_qcd_CSVDown  = SF_oneGoodBJ_errDn * ( SF_wjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   //weight_wjj_mu_good_CSVUp    = SF_oneGoodBJ_errUp * ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_good_CSVUp    = ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_qcd_CSVUp     = ( SF_wjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_ele_good_CSVUp   = ( SF_wjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   weight_wjj_ele_qcd_CSVUp    = ( SF_wjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   weight_wjj_mu_good_CSVDown  = ( SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_qcd_CSVDown   = ( SF_wjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_ele_good_CSVDown = ( SF_wjj_ele_good_IDIsoHLT * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   weight_wjj_ele_qcd_CSVDown  = ( SF_wjj_ele_qcd_IDIsoHLT  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
    // wjj EMu
-   weight_wjj_mu_good_EMuUp    = SF_oneGoodBJ  * ( SF_wjj_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_mu_qcd_EMuUp     = SF_oneGoodBJ  * ( SF_wjj_mu_qcd_IDIsoHLT_errUp   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_ele_good_EMuUp   = SF_oneGoodBJ  * ( SF_wjj_ele_good_IDIsoHLT_errUp * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
-   weight_wjj_ele_qcd_EMuUp    = SF_oneGoodBJ  * ( SF_wjj_ele_qcd_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
-   weight_wjj_mu_good_EMuDown  = SF_oneGoodBJ  * ( SF_wjj_mu_good_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_mu_qcd_EMuDown   = SF_oneGoodBJ  * ( SF_wjj_mu_qcd_IDIsoHLT_errDn   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
-   weight_wjj_ele_good_EMuDown = SF_oneGoodBJ  * ( SF_wjj_ele_good_IDIsoHLT_errDn * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
-   weight_wjj_ele_qcd_EMuDown  = SF_oneGoodBJ  * ( SF_wjj_ele_qcd_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   //weight_wjj_mu_good_EMuUp    = SF_oneGoodBJ  * ( SF_wjj_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_good_EMuUp    = ( SF_wjj_mu_good_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_qcd_EMuUp     = ( SF_wjj_mu_qcd_IDIsoHLT_errUp   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_ele_good_EMuUp   = ( SF_wjj_ele_good_IDIsoHLT_errUp * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   weight_wjj_ele_qcd_EMuUp    = ( SF_wjj_ele_qcd_IDIsoHLT_errUp  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   weight_wjj_mu_good_EMuDown  = ( SF_wjj_mu_good_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_mu_qcd_EMuDown   = ( SF_wjj_mu_qcd_IDIsoHLT_errDn   * SF_lumiWeightPU * lumi_mu * crossSec / nrEvents);
+   weight_wjj_ele_good_EMuDown = ( SF_wjj_ele_good_IDIsoHLT_errDn * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
+   weight_wjj_ele_qcd_EMuDown  = ( SF_wjj_ele_qcd_IDIsoHLT_errDn  * SF_lumiWeightPU * lumi_ele * crossSec / nrEvents);
    // wbb
    weight_wbb_mu_good  = SF_wjj_mu_good_IDIsoHLT  * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwt2gJs * SF_top2BJs / nrEvents;
    weight_wbb_mu_qcd   = SF_wjj_mu_qcd_IDIsoHLT   * SF_lumiWeightPU * lumi_mu * crossSec * SF_CSVrwt2gJs * SF_top2BJs / nrEvents;

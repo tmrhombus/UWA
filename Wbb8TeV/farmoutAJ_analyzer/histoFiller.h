@@ -62,6 +62,9 @@ public :
    TH1F hists_goodJ4_mass[7][2][2][7][5];                           //
    TH1F hists_goodJ4_CSV[7][2][2][7][5];                            //
                                                                     //
+//   TH1F hists_goodJ1Lep_dR[7][2][2][7][5];                          //
+//   TH1F hists_goodJ2Lep_dR[7][2][2][7][5];                          //
+//   TH1F hists_goodJ1J2Lep_dR[7][2][2][7][5];                        //
    TH1F hists_goodJ1J2_dR[7][2][2][7][5];                           //
    TH1F hists_goodJ1J2_pt[7][2][2][7][5];                           //
    TH1F hists_goodJ1J2_eta[7][2][2][7][5];                          //
@@ -196,9 +199,18 @@ public :
    double goodJ3J4_eta;
    double goodJ3J4_phi;
    double goodJ3J4_mass;
-   Float_t goodJ1J2_dR;
+   //Float_t dphiJ2Lep;
+   //Float_t detaJ2Lep;
+   //Float_t goodJ2Lep_dR;
+   //Float_t dphiJ1Lep;
+   //Float_t detaJ1Lep;
+   //Float_t goodJ1Lep_dR;
+   //Float_t dphiJ1J2Lep;
+   //Float_t detaJ1J2Lep;
+   //Float_t goodJ1J2Lep_dR;
    Float_t dphiJJ;
    Float_t detaJJ;
+   Float_t goodJ1J2_dR;
    Float_t dphiJ1Met;
 
    // DiLeptons
@@ -1136,18 +1148,18 @@ public :
 #ifdef histoFiller_cxx
 histoFiller::histoFiller(TTree *tree, Bool_t isMC) : fChain(0) 
 {
-// if parameter tree is not specified (or zero), connect the file
-// used to generate this class and read the Tree.
-   if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
-      if (!f || !f->IsOpen()) {
-         f = new TFile("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
-      }
-      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
-      dir->GetObject("eventTree",tree);
-
-   }
-   Init(tree, isMC);
+//// if parameter tree is not specified (or zero), connect the file
+//// used to generate this class and read the Tree.
+//   if (tree == 0) {
+//      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
+//      if (!f || !f->IsOpen()) {
+//         f = new TFile("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root");
+//      }
+//      TDirectory * dir = (TDirectory*)f->Get("/hdfs/store/user/tperry/Schweincomp/Schweincomp_Wbb4F-MuEle-PATMCs/MuEle-PATMCs-patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root:/muEleEventTree");
+//      dir->GetObject("eventTree",tree);
+//
+//   }
+//   Init(tree, isMC);
 }
 
 histoFiller::~histoFiller()
@@ -1282,6 +1294,10 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         TString histoname_goodJ4_mass = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ4_mass"+Syst[l]+WFlav[m];
         TString histoname_goodJ4_CSV  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ4_CSV"+Syst[l]+WFlav[m];
 
+        //TString histoname_goodJ1Lep_dR   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1Lep_dR"+Syst[l]+WFlav[m];
+        //TString histoname_goodJ2Lep_dR   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ2Lep_dR"+Syst[l]+WFlav[m];
+        //TString histoname_goodJ1J2Lep_dR   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2Lep_dR"+Syst[l]+WFlav[m];
+
         TString histoname_goodJ1J2_dR   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_dR"+Syst[l]+WFlav[m];
         TString histoname_goodJ1J2_pt   = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_pt"+Syst[l]+WFlav[m];
         TString histoname_goodJ1J2_eta  = "h_"+PSpace[i]+"_"+EMu[j]+"_"+QCD[k]+"_goodJ1J2_eta"+Syst[l]+WFlav[m];
@@ -1330,7 +1346,7 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
                                                                                                                                                    //
                                                                                                                                                    //
         hists_goodJ1_pt[i][j][k][l][m].Clear();                                                                                                    //
-        hists_goodJ1_pt[i][j][k][l][m] = TH1F(histoname_goodJ1_pt, "Leading Jet pT", 40, 0., 200.);                                                //
+        hists_goodJ1_pt[i][j][k][l][m] = TH1F(histoname_goodJ1_pt, "Leading Jet pT", 400, 0., 400.);                                               //
         hists_goodJ1_pt[i][j][k][l][m].Sumw2();                                                                                                    //
                                                                                                                                                    //
         hists_goodJ1_eta[i][j][k][l][m].Clear();                                                                                                   //
@@ -1424,6 +1440,18 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         hists_goodJ4_CSV[i][j][k][l][m] = TH1F(histoname_goodJ4_CSV, "Fourth Jet CSV", 40, 0., 1.);                                                //
         hists_goodJ4_CSV[i][j][k][l][m].Sumw2();                                                                                                   //
                                                                                                                                                    //
+
+        //hists_goodJ2Lep_dR[i][j][k][l][m].Clear();                                                                                                 //
+        //hists_goodJ2Lep_dR[i][j][k][l][m] = TH1F(histoname_goodJ2Lep_dR, "dR(J2,Lep)", 16, 0., 8.);                                                //
+        //hists_goodJ2Lep_dR[i][j][k][l][m].Sumw2();                                                                                                 //
+
+        //hists_goodJ1Lep_dR[i][j][k][l][m].Clear();                                                                                                 //
+        //hists_goodJ1Lep_dR[i][j][k][l][m] = TH1F(histoname_goodJ1Lep_dR, "dR(J1,Lep)", 16, 0., 8.);                                                //
+        //hists_goodJ1Lep_dR[i][j][k][l][m].Sumw2();                                                                                                 //
+        //                                                                                                                                           //
+        //hists_goodJ1J2Lep_dR[i][j][k][l][m].Clear();                                                                                               //
+        //hists_goodJ1J2Lep_dR[i][j][k][l][m] = TH1F(histoname_goodJ1J2Lep_dR, "dR(J1J2,Lep)", 16, 0., 8.);                                          //
+        //hists_goodJ1J2Lep_dR[i][j][k][l][m].Sumw2();                                                                                               //
                                                                                                                                                    //
         hists_goodJ1J2_dR[i][j][k][l][m].Clear();                                                                                                  //
         hists_goodJ1J2_dR[i][j][k][l][m] = TH1F(histoname_goodJ1J2_dR, "dR(J1,J2)", 16, 0., 8.);                                                   //
@@ -1442,7 +1470,7 @@ void histoFiller::Init(TTree *tree, Bool_t isMC)
         hists_goodJ1J2_phi[i][j][k][l][m].Sumw2();                                                                                                 //
                                                                                                                                                    //
         hists_goodJ1J2_mass[i][j][k][l][m].Clear();                                                                                                //
-        hists_goodJ1J2_mass[i][j][k][l][m] = TH1F(histoname_goodJ1J2_mass, "mass(J1,J2)", 40, 0., 200.);                                           //
+        hists_goodJ1J2_mass[i][j][k][l][m] = TH1F(histoname_goodJ1J2_mass, "mass(J1,J2)", 600, 0., 600.);                                           //
         hists_goodJ1J2_mass[i][j][k][l][m].Sumw2();                                                                                                //
                                                                                                                                                    //
                                                                                                                                                    //
@@ -1921,6 +1949,9 @@ Bool_t histoFiller::FillHistograms(
  hists_goodJ4_mass[i][j][k][l][m].Fill(goodJ4_mass,weight);                                                  //
  hists_goodJ4_CSV[i][j][k][l][m].Fill(goodJ4_CSV,weight);                                                    //
                                                                                                              //
+ //hists_goodJ1Lep_dR[i][j][k][l][m].Fill(goodJ1Lep_dR,weight);                                                //
+ //hists_goodJ2Lep_dR[i][j][k][l][m].Fill(goodJ2Lep_dR,weight);                                                //
+ //hists_goodJ1J2Lep_dR[i][j][k][l][m].Fill(goodJ1J2Lep_dR,weight);                                            //
  hists_goodJ1J2_dR[i][j][k][l][m].Fill(goodJ1J2_dR,weight);                                                  //
  hists_goodJ1J2_pt[i][j][k][l][m].Fill(goodJ1J2_pt,weight);                                                  //
  hists_goodJ1J2_eta[i][j][k][l][m].Fill(goodJ1J2_eta,weight);                                                //
@@ -1976,6 +2007,9 @@ Bool_t histoFiller::WriteHistograms(int i, int j, int k, int l, int m){
  hists_goodJ4_mass[i][j][k][l][m].Write();                          //
  hists_goodJ4_CSV[i][j][k][l][m].Write();                           //
                                                                     //
+ //hists_goodJ1Lep_dR[i][j][k][l][m].Write();                         //
+ //hists_goodJ2Lep_dR[i][j][k][l][m].Write();                         //
+ //hists_goodJ1J2Lep_dR[i][j][k][l][m].Write();                       //
  hists_goodJ1J2_dR[i][j][k][l][m].Write();                          //
  hists_goodJ1J2_pt[i][j][k][l][m].Write();                          //
  hists_goodJ1J2_eta[i][j][k][l][m].Write();                         //
@@ -2031,6 +2065,9 @@ Bool_t histoFiller::DeleteHistograms(int i, int j, int k, int l, int m){
  hists_goodJ4_mass[i][j][k][l][m].Delete();                    //
  hists_goodJ4_CSV[i][j][k][l][m].Delete();                     //
                                                                //
+ //hists_goodJ1Lep_dR[i][j][k][l][m].Delete();                   //
+ //hists_goodJ2Lep_dR[i][j][k][l][m].Delete();                   //
+ //hists_goodJ1J2Lep_dR[i][j][k][l][m].Delete();                 //
  hists_goodJ1J2_dR[i][j][k][l][m].Delete();                    //
  hists_goodJ1J2_pt[i][j][k][l][m].Delete();                    //
  hists_goodJ1J2_eta[i][j][k][l][m].Delete();                   //
@@ -2071,19 +2108,22 @@ Bool_t histoFiller::fillHistWriter(
   FillHistograms(pspace_nr,0,0,syst_nr,1,
    met_pt_val,met_phi_val,mt_mu_good_val,
    lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
-   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, 
+   weight_mu_good_val); } 
 
  if( pass_mu_good && isWc )  {
   FillHistograms(pspace_nr,0,0,syst_nr,2,
    met_pt_val,met_phi_val,mt_mu_good_val,
    lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
-   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, 
+   weight_mu_good_val); } 
 
  if( pass_mu_good && isWcc ) {
   FillHistograms(pspace_nr,0,0,syst_nr,3,
    met_pt_val,met_phi_val,mt_mu_good_val,
    lep_mu_good_pt, lep_mu_good_eta, lep_mu_good_phi, lep_mu_good_mass,
-   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, weight_mu_good_val); } 
+   goodM1M2_pt, goodM1M2_eta, goodM1M2_phi, goodM1M2_mass, 
+   weight_mu_good_val); } 
 
  if( pass_mu_good && isWbb ) {
   FillHistograms(pspace_nr,0,0,syst_nr,4,
