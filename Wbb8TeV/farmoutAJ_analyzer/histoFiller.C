@@ -255,7 +255,7 @@ void histoFiller::Loop(
      goodJ1_pt>25 && fwdJ1_pt>25
      && goodJ1_CSV>0.898;
   min3gJs2gBJs = 
-     min2goodBJs && goodJ3_pt>25;
+     min2goodBJs && goodJ3_pt>25  && fwdJ1_pt<25; //
 
   // SFs for CSV
 //  SF_top2BJs = goodJ1_SF_CSVM * goodJ2_SF_CSVM; 
@@ -397,10 +397,10 @@ void histoFiller::Loop(
     // goodJ1_pt>40 && goodJ2_pt>35 && goodJ1J2_pt>70 && detaJJ<1.5;
 
   passMET =        kTRUE; // MET_pt > 25. && dphiJ1Met > 0.4; // kTRUE; // 
-  passMT_goodMu =   kTRUE; //mt_mu_good  > 30; // > 30; // 60; // 45; // 
-  passMT_qcdMu =    kTRUE; //mt_mu_qcd   > 30; // > 30; // 60; // 45; // 
-  passMT_goodEle =  kTRUE; //mt_ele_good > 30; // > 30; // 60; // 45; // 
-  passMT_qcdEle =   kTRUE; //mt_ele_qcd  > 30; // > 30; // 60; // 45; // 
+  passMT_goodMu =  kTRUE; // mt_mu_good  < 30; // 60; // 45; // 
+  passMT_qcdMu =   kTRUE; // mt_mu_qcd   < 30; // 60; // 45; // 
+  passMT_goodEle = kTRUE; // mt_ele_good < 30; // 60; // 45; // 
+  passMT_qcdEle =  kTRUE; // mt_ele_qcd  < 30; // 60; // 45; // 
 
   ////////////////////////////////
   // begin wjj, wbb Selection 3,0
