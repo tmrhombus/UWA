@@ -40,12 +40,31 @@ public:
   TAxis* _ax;
   TAxis* _ay;
 
+  // Data points
+  vector< TString > _dentry;
+  vector< Float_t >   _dval;
+  vector< Float_t >   _dstatup;
+  vector< Float_t >   _dsystup;
+  vector< Float_t >   _dtheoup;
+  vector< Float_t >   _dstatlo;
+  vector< Float_t >   _dsystlo;
+  vector< Float_t >   _dtheolo;
+  vector< Float_t >   _dlumi;
+  vector< Int_t   >   _dmarker;
+  vector< Float_t >   _dsize;
+  vector< Int_t   >   _dcolor;
+  vector< Int_t   >   _dndigit;
+
+  TString _dfirstError ;
+  TString _dsecondError;
+
+  // MC points
   vector< TString > _entry;
   vector< Float_t >   _val;
-  vector< Float_t >   _statup;
-  vector< Float_t >   _systup;
-  vector< Float_t >   _statlo;
-  vector< Float_t >   _systlo;
+  vector< Float_t >   _dpsup;
+  vector< Float_t >   _pdfup;
+  vector< Float_t >   _dpslo;
+  vector< Float_t >   _pdflo;
   vector< Float_t >   _lumi;
   vector< Int_t   >   _marker;
   vector< Float_t >   _size;
@@ -95,6 +114,7 @@ public:
   bool _hasLegend;
   TString _legend;
   TString _theory;
+  TString _theory2;
 
   TString _labelOuterBand, _labelInnerBand, _labelMiddleBand;
 
@@ -159,33 +179,41 @@ public:
  
   void addArxivReference(const char* TEXT, float a, float b, float sizeRef);
  
-  void addEntry( const char* entry=0, 
-		 float val=0, float stat=0, float syst=0, float lumi=0, 
-		 int marker=20, float size=1, int color=kBlack,
-		 int ndigit=3 );  
-  void addEntry( const char* entry, 
-		 float val, float stat, 
-		 float systexp, float systtheo, float lumi, 
-		 int marker=20, float size=1, int color=kBlack,
-		 int ndigit=3 );  
+ 
+//  void addEntry( const char* entry=0, 
+//		 float val=0, float stat=0, float syst=0, float lumi=0, 
+//		 int marker=20, float size=1, int color=kBlack,
+//		 int ndigit=3 );  
+//  void addEntry( const char* entry, 
+//		 float val, float stat, 
+//		 float systexp, float systtheo, float lumi, 
+//		 int marker=20, float size=1, int color=kBlack,
+//		 int ndigit=3 );  
   void addEntry( const char* entry,
                  float val, 
                  float systPDF, float systDPS, TString statLabel, TString sysLabel,
                  int marker=20, float size=1, int color=kBlack,
                  int ndigit=3 );  
-  void addEntry( const char* entry,
-                 float val,
-                 float systPDF, float systPDFUp, float systDPS, TString statLabel, TString sysLabel,
+
+  void addData( const char* entry,
+                 float val, 
+                 float uncStat, float uncSyst, float uncTheo, float uncLumi,
                  int marker=20, float size=1, int color=kBlack,
-                 int ndigit=2 );
-  void addEntry( const char* entry, 
-		 float val, 
-		 float statup, float statlo, 
-		 float systup, float systlo, 
-                 float lumi,
-                 TString statLabel, TString sysLabel, TString lumiLabel,
-		 int marker=20, float size=1, int color=kBlack,
-		 int ndigit=3 );  
+                 int ndigit=3 );  
+
+//  void addEntry( const char* entry,
+//                 float val,
+//                 float systPDF, float systPDFUp, float systDPS, TString statLabel, TString sysLabel,
+//                 int marker=20, float size=1, int color=kBlack,
+//                 int ndigit=2 );
+//  void addEntry( const char* entry, 
+//		 float val, 
+//		 float statup, float statlo, 
+//		 float systup, float systlo, 
+//                 float lumi,
+//                 TString statLabel, TString sysLabel, TString lumiLabel,
+//		 int marker=20, float size=1, int color=kBlack,
+//		 int ndigit=3 );  
   void setTheoryBandAndLegend( float val, float dminus, float dplus,
 			       const char* legend=0, 
 			       int nblk1=0, int nblk2=0 );
@@ -194,7 +222,7 @@ public:
                                const char* legend=0,int ndecimals=2,
                                int nblk1=0, int nblk2=0 );
 
-  void setCMSMeasurement2( float val, float stat, float sys, float sys2,
+  void setCMSMeasurement2( float val, float stat, float syst, float theo, float lumi,
                                const char* legend=0,int ndecimals=2,
                                int nblk1=0, int nblk2=0 );
 
@@ -354,7 +382,7 @@ LEPStyle::setCMSMeasurement( float val, float stat, float sys,
 
 
 void
-LEPStyle::setCMSMeasurement2( float val, float stat, float sys, float sys2,
+LEPStyle::setCMSMeasurement2( float val, float stat, float syst, float theo, float lumi,
                                   const char* legend, int ndecimals,
                                   int nblk1, int nblk2 )
 {
@@ -362,12 +390,12 @@ LEPStyle::setCMSMeasurement2( float val, float stat, float sys, float sys2,
   _middleband=true;
   _innerband=true;
   _bx0 = val;
-  _bxmin = _bx0-sqrt(stat*stat+sys*sys+sys2*sys2);
-  _bxmax = _bx0+sqrt(stat*stat+sys*sys+sys2*sys2);
-  _mbxmin = _bx0-sqrt(stat*stat+sys*sys);
-  _mbxmax = _bx0+sqrt(stat*stat+sys*sys);
-  _ibxmin = _bx0-stat;
-  _ibxmax = _bx0+stat;
+  //_bxmin = _bx0-sqrt(stat*stat+sys*sys+sys2*sys2);
+  //_bxmax = _bx0+sqrt(stat*stat+sys*sys+sys2*sys2);
+  //_mbxmin = _bx0-sqrt(stat*stat+sys*sys);
+  //_mbxmax = _bx0+sqrt(stat*stat+sys*sys);
+  //_ibxmin = _bx0-stat;
+  //_ibxmax = _bx0+stat;
 
    _innerbandFillColor=kYellow;
    _bandFillColor=kOrange;
@@ -381,13 +409,29 @@ LEPStyle::setCMSMeasurement2( float val, float stat, float sys, float sys2,
       _legend = " ";
       _legend += legend;
 
+//      _theory = "";
+//      for( int ii=0; ii<nblk1; ii++ ) _theory += " ";
+//      char line_[512];
+//      if(ndecimals==3) sprintf( line_, "%-4.3f #pm %-4.3f (stat) #pm %-4.3f (syst) #pm %-4.3f (theo)  #pm %-4.3f (lumi) pb",_bx0,stat,syst,theo,lumi);
+//       else  sprintf( line_, "%-4.2f #pm %-4.2f (stat) #pm %-4.2f (syst) #pm %-4.2f (theo)  #pm %-4.2f (lumi) pb",_bx0,stat,syst,theo,lumi);
+//      _theory += line_;
+//      _theory += _unit;
+//      for( int ii=0; ii<nblk2; ii++ ) _theory += " ";
+//
+
+
       _theory = "";
+      _theory2 = "";
       for( int ii=0; ii<nblk1; ii++ ) _theory += " ";
+      for( int ii=0; ii<nblk1; ii++ ) _theory2 += " ";
       char line_[512];
-      if(ndecimals==3) sprintf( line_, "%-4.3f #pm %-4.3f (stat) #pm %-4.3f (sys) #pm %-4.2f (th) pb",_bx0,stat,sys,sys2);
-	else sprintf( line_, "%-4.2f #pm %-4.2f (stat) #pm %-4.2f (sys) #pm %-4.2f (th) pb",_bx0,stat,sys,sys2);
+      char line2_[512];
+      if(ndecimals==3) sprintf( line_, "%-4.3f #pm %-4.3f (stat) #pm %-4.3f (syst)",_bx0,stat,syst);
+       else  sprintf( line_, "%-4.2f #pm %-4.2f (stat) #pm %-4.2f (syst)",_bx0,stat,syst);
+      if(ndecimals==3) sprintf( line2_, "#pm %-4.3f (theo) #pm %-4.3f (lumi) pb",theo,lumi);
+       else  sprintf( line2_, "#pm %-4.2f (theo) #pm %-4.2f (lumi) pb",theo,lumi);
       _theory += line_;
-      _theory += _unit;
+      _theory2 += line2_;
       for( int ii=0; ii<nblk2; ii++ ) _theory += " ";
     }
 
@@ -490,7 +534,7 @@ void LEPStyle::draw()
       pl_->SetFillColor(_bandFillColor);
       pl_->SetLineWidth(3);
       pl_->SetLineColor( kOrange );
-      pl_->DrawClone("FSame");
+      //pl_->DrawClone("FSame");
 
 	TPolyLine* pl3_, *pl2_ ;
 
@@ -501,7 +545,7 @@ void LEPStyle::draw()
         pl3_->SetFillColor(_middlebandFillColor);
         pl3_->SetLineWidth(3);
         pl3_->SetLineColor( _middlebandFillColor );
-        pl3_->DrawClone("FSame");
+        //pl3_->DrawClone("FSame");
 	}
 
 
@@ -512,7 +556,7 @@ void LEPStyle::draw()
       	pl2_->SetFillColor(_innerbandFillColor);
       	pl2_->SetLineWidth(3);
       	pl2_->SetLineColor( _innerbandFillColor );
-      	pl2_->DrawClone("FSame");
+      	//pl2_->DrawClone("FSame");
 
       }
 
@@ -536,10 +580,10 @@ void LEPStyle::draw()
         }
 
 
-      TLine* l_ = new TLine( _bx0, _ymin+eps1_, _bx0, _ymax-eps2_  );
-      l_->SetLineWidth(4);
-      l_->SetLineColor( kViolet );
-      l_->DrawClone();
+//      TLine* l_ = new TLine( _bx0, _ymin+eps1_, _bx0, _ymax-eps2_  );
+//      l_->SetLineWidth(4);
+//      l_->SetLineColor( kViolet );
+//      l_->DrawClone();
 
 
 
@@ -553,15 +597,22 @@ void LEPStyle::draw()
 	  _x0 = _xmax - 0.05*(_xmax-_xmin);
 	  
 	  TLatex leg1_;
-	  leg1_.SetTextSize(_scale*0.05);      
+	  leg1_.SetTextSize(_scale*0.08);      
 	  leg1_.SetTextAlign(23); 
-	  leg1_.DrawLatex( _bx0, _y0-_dy+0.25, _legend );
+	  leg1_.DrawLatex( _bx0, _y0-_dy+0.35, _legend );
+	  //leg1_.DrawLatex( _bx0, _y0-_dy+0.25, _legend );
 	  
 	  
 	  TLatex leg2_;
 	  leg2_.SetTextSize(_scale*0.05);      
 	  leg2_.SetTextAlign(23); 
 	  leg2_.DrawLatex( _bx0, _y0-_dy, _theory );
+
+	  TLatex leg3_;
+	  leg3_.SetTextSize(_scale*0.05);      
+	  leg3_.SetTextAlign(23); 
+	  leg3_.DrawLatex( _bx0, _y0-_dy-0.25, _theory2 );
+
 
 	}
 
@@ -577,18 +628,28 @@ void LEPStyle::draw()
 
     }
 
+
+  // Draw MC points
   for( size_t ii=0; ii<_entry.size(); ii++ )
     {
       if( _entry[ii]==("SPACE") ) continue;
-      Float_t  xval_[1];
-      Float_t  yval_[1];
-      Float_t    ey_[1];
+      Float_t xval_[1];
+      Float_t yval_[1];
+      Float_t ey_[1];
+      Float_t epdfup_[1];
+      Float_t epdflo_[1];
+      Float_t edpsup_[1];
+      Float_t edpslo_[1];
+      Float_t etotup_[1];
+      Float_t etotlo_[1];
+      Float_t ectlup_[1];
+      Float_t ectllo_[1];
+
+
       Float_t estatup_[1];
       Float_t ecombup_[1];
-      Float_t etotup_[1];
-      Float_t estatlo_[1];
       Float_t ecomblo_[1];
-      Float_t etotlo_[1];
+      Float_t estatlo_[1];
 
       Double_t yyv2_ = (Double_t)_n-(Float_t)ii;
       //Double_t yy_[5] = { _ymin+eps1_, _ymin+eps1_, _ymax-eps2_, _ymax-eps2_, _ymin+eps1_ };
@@ -598,36 +659,72 @@ void LEPStyle::draw()
       //yy_ = (float)_n-(float)ii;
       xval_[0] = _val[ii];
       yval_[0] = yyv2_;
-      ey_[0] = 0;
+      ey_[0] = 0.2;
 
-      estatup_[0] = _statup[ii];
-      ecombup_[0] = sqrt( pow( _statup[ii],2 ) + pow( _systup[ii],2 ) );
-      etotup_[0] = ecombup_[0] + _lumi[ii];
+      ectllo_[0] = 0.001;
+      ectlup_[0] = 0.001;
+      epdfup_[0] = _pdfup[ii];
+      epdflo_[0] = _pdflo[ii];
+      edpsup_[0] = _dpsup[ii];
+      edpslo_[0] = _dpslo[ii];
+      etotup_[0] = sqrt( pow( _pdfup[ii],2 ) + pow( _dpsup[ii],2 ) );
+      etotlo_[0] = sqrt( pow( _pdflo[ii],2 ) + pow( _dpslo[ii],2 ) );      
 
-      estatlo_[0] = _statlo[ii];
-      ecomblo_[0] = sqrt( pow( _statlo[ii],2 ) + pow( _systlo[ii],2 ) );      
-      etotlo_[0] = ecomblo_[0] + _lumi[ii];
+      //estatup_[0] = _statup[ii];
+      //etotup_[0] = ecombup_[0] + _lumi[ii];
 
-      TGraphAsymmErrors* gtot_  = new TGraphAsymmErrors( 1, xval_, yval_, etotlo_, etotup_, ey_, ey_ );
-      gtot_->SetLineColor( kGreen );
-      TGraphAsymmErrors* gcomb_ = new TGraphAsymmErrors( 1, xval_, yval_, ecomblo_, ecombup_, ey_, ey_ );
-      gcomb_->SetLineColor( kBlack );
-      TGraphAsymmErrors* gstat_ = new TGraphAsymmErrors( 1, xval_, yval_, estatlo_, estatup_, ey_, ey_ );
-      gstat_->SetLineColor( kBlue );
-      gstat_->SetLineWidth( 2 );
-      gstat_->SetMarkerStyle( _marker[ii] );
-      gstat_->SetMarkerSize( _size[ii] );
-      gstat_->SetMarkerColor( _color[ii] );
+      //estatlo_[0] = _statlo[ii];
+      //etotlo_[0] = ecomblo_[0] + _lumi[ii];
 
-      gcomb_->SetLineWidth( 2 );
+      TGraphAsymmErrors* gtot_ = new TGraphAsymmErrors( 1, xval_, yval_, etotlo_, etotup_, ey_, ey_ );
+      TGraphAsymmErrors* gctl_ = new TGraphAsymmErrors( 1, xval_, yval_, ectllo_, ectlup_, ey_, ey_ );
+      TGraphAsymmErrors* gpdf_ = new TGraphAsymmErrors( 1, xval_, yval_, epdflo_, epdfup_, ey_, ey_ );
+      TGraphAsymmErrors* gdps_ = new TGraphAsymmErrors( 1, xval_, yval_, edpslo_, edpsup_, ey_, ey_ );
+
+      gtot_->SetLineColor( kOrange   );
+      gtot_->SetFillColor( kOrange   );
+      gpdf_->SetLineColor( kOrange-3 );
+      gpdf_->SetFillColor( kOrange-3 );
+      gdps_->SetLineColor( kYellow   );
+      gdps_->SetFillColor( kYellow   );
+      gctl_->SetLineColor( kViolet   );
+      gctl_->SetFillColor( kViolet   );
+      //gcomb_->SetLineColor( kBlack );
+
+
+//      gstat_->SetLineColor( kBlue );
+//      gstat_->SetLineWidth( 2 );
+//      gstat_->SetMarkerStyle( _marker[ii] );
+//      gstat_->SetMarkerSize( _size[ii] );
+//      gstat_->SetMarkerColor( _color[ii] );
+//
+//
+//  kYellow
+//  kOrange
+//  kOrange-3
+//
+//      gcomb_->SetLineWidth( 2 );
 
       gtot_->SetLineWidth( 2 );
 
-      if( _lumi[ii]>0 )
-	gtot_->Draw();
 
-      gcomb_->DrawClone();
-      gstat_->DrawClone("P");
+   gtot_->Draw("2,sames");
+   gdps_->Draw("2,sames");
+   gpdf_->Draw("2,sames");
+   gctl_->Draw("2,sames");
+
+//   //gtot_->SetFillColor(2);
+//   gtot_->SetFillStyle(1001);
+//	gtot_->Draw("P2,sames");
+   //gtot_->Draw("a2,sames");
+   //gtot_->Draw("p,sames");
+
+
+//      if( _lumi[ii]>0 )
+//	gtot_->Draw("P");
+//
+//      gcomb_->DrawClone();
+//      //gstat_->DrawClone("a4");
 
 
 
@@ -644,7 +741,7 @@ void LEPStyle::draw()
 	TMarker a;
 	a.SetMarkerStyle(_marker[ii]);	
         a.SetMarkerSize(_size[ii]);
-	a.DrawMarker(xtxt_-0.01*(_xmax-_xmin), yyv2_);
+	//a.DrawMarker(xtxt_-0.01*(_xmax-_xmin), yyv2_);
 
       ltx1_.SetTextSize(_scale*_size1);      
       ltx1_.SetTextAlign(_align1);
@@ -674,13 +771,13 @@ void LEPStyle::draw()
        sprintf( line_,  "%-4.2f", _val[ii] );
       valstr_ = line_;
 
-      if( fabs( _statup[ii]-_statlo[ii] )<0.001 )
+      if( fabs( _pdfup[ii]-_pdflo[ii] )<0.001 )
 	{
-	  sprintf( line_, format_.Data(), _statlo[ii] );
+	  sprintf( line_, format_.Data(), _pdflo[ii] );
 	}
       else
 	{
-	  sprintf( line_, "#scale[0.7]{#splitline{+%-4.2f}{-%-4.2f}}", _statup[ii], _statlo[ii] );
+	  sprintf( line_, "#scale[0.7]{#splitline{+%-4.2f}{-%-4.2f}}", _pdfup[ii], _pdflo[ii] );
 	}
 
       if( _firstError=="")  _firstError="PDF";
@@ -691,15 +788,15 @@ void LEPStyle::draw()
       str_ +=  _firstError;
       str_ += "}";
 
-      if( _systup[ii]>0 )
+      if( _dpsup[ii]>0 )
 	{
-	  if( fabs( _systup[ii]-_systlo[ii] )<0.01 )
+	  if( fabs( _dpsup[ii]-_dpslo[ii] )<0.01 )
 	    {
-	      sprintf( line_, format_.Data(), _systlo[ii] );
+	      sprintf( line_, format_.Data(), _dpslo[ii] );
 	    }
 	  else 
 	    {
-	      sprintf( line_, "#scale[0.7]{#splitline{+%-4.2f}{- %-4.2f}}_", _systup[ii], _systlo[ii] );
+	      sprintf( line_, "#scale[0.7]{#splitline{+%-4.2f}{- %-4.2f}}_", _dpsup[ii], _dpslo[ii] );
 	    }
 	  syststr_ = line_;
 	  str_ += pmstr_;
@@ -731,6 +828,94 @@ void LEPStyle::draw()
 	ltx2_.DrawLatex( xtxt_+0.02*(_xmax-_xmin), yyv2_+E_-e_, str_ );
     }
 
+  /// Draw Data Points 
+  for( size_t ii=0; ii<_dentry.size(); ii++ )
+    {
+      if( _entry[ii]==("SPACE") ) continue;
+      Float_t  xval_[1];
+      Float_t  yval_[1];
+      Float_t    ey_[1];
+      Float_t estatup_[1];
+      Float_t esystup_[1];
+      Float_t etheoup_[1];
+      Float_t elumiup_[1];
+      Float_t etotup_[1];
+      Float_t ecombup_[1]; //
+      Float_t estatlo_[1];
+      Float_t esystlo_[1];
+      Float_t etheolo_[1];
+      Float_t elumilo_[1];
+      Float_t etotlo_[1];
+
+      Double_t yyv2_ = (Double_t)_n-(Float_t)ii;
+      //Double_t yy_[5] = { _ymin+eps1_, _ymin+eps1_, _ymax-eps2_, _ymax-eps2_, _ymin+eps1_ };
+      //yy_[ii] = (Double_t)_n-(Double_t)ii;
+      //float yy_ = _n-(Float_t)ii;
+      //yy_ = _n-(Float_t)ii;
+      //yy_ = (float)_n-(float)ii;
+      xval_[0] = _dval[ii];
+      yval_[0] = yyv2_;
+      ey_[0] = 0;
+
+      // stat, sys, theo, lumi
+      estatup_[0] = _dstatup[ii];
+      esystup_[0] = _dsystup[ii];
+      etheoup_[0] = _dtheoup[ii];
+      elumiup_[0] = _dlumi[ii];
+      etotup_[0] = sqrt( pow(_dstatup[ii],2) + pow(_dsystup[ii],2) + pow(_dtheoup[ii],2) + pow(_dlumi[ii],2) );
+  
+      estatlo_[0] = _dstatlo[ii];
+      esystlo_[0] = _dsystlo[ii];
+      etheolo_[0] = _dtheolo[ii];
+      elumilo_[0] = _dlumi[ii];
+      etotlo_[0] = sqrt( pow(_dstatlo[ii],2) + pow(_dsystlo[ii],2) + pow(_dtheolo[ii],2) + pow(_dlumi[ii],2) );
+  
+
+      //ecombup_[0] = sqrt( pow( _dstatup[ii],2 ) + pow( _dsystup[ii],2 ) );
+      //etotup_[0] = ecombup_[0] + _dlumi[ii];
+
+      //estatlo_[0] = _dstatlo[ii];
+      //ecomblo_[0] = sqrt( pow( _dstatlo[ii],2 ) + pow( _dsystlo[ii],2 ) );      
+      //etotlo_[0] = ecomblo_[0] + _dlumi[ii];
+
+      TGraphAsymmErrors* dgstat_ = new TGraphAsymmErrors( 1, xval_, yval_, estatlo_, estatup_, ey_, ey_ );
+      TGraphAsymmErrors* dgsyst_ = new TGraphAsymmErrors( 1, xval_, yval_, esystlo_, esystup_, ey_, ey_ );
+      TGraphAsymmErrors* dgtheo_ = new TGraphAsymmErrors( 1, xval_, yval_, etheolo_, etheoup_, ey_, ey_ );
+      TGraphAsymmErrors* dglumi_ = new TGraphAsymmErrors( 1, xval_, yval_, elumilo_, elumiup_, ey_, ey_ );
+      TGraphAsymmErrors* dgtot_ = new TGraphAsymmErrors( 1, xval_, yval_, etotlo_, etotup_, ey_, ey_ );
+
+
+      //TGraphAsymmErrors* gtot_  = new TGraphAsymmErrors( 1, xval_, yval_, etotlo_, etotup_, ey_, ey_ );
+      //TGraphAsymmErrors* gcomb_ = new TGraphAsymmErrors( 1, xval_, yval_, ecomblo_, ecombup_, ey_, ey_ );
+
+      dgtot_->SetMarkerStyle( _marker[ii] );
+      dgtot_->SetMarkerSize( _size[ii] );
+      dgtot_->SetMarkerColor( _color[ii] );
+
+      dgtot_->SetLineColor( kBlack );
+      dgstat_->SetLineColor( kGreen-1 );
+      dgsyst_->SetLineColor( kGreen+2 );
+      dgtheo_->SetLineColor( kBlue );
+      dglumi_->SetLineColor( kCyan+1 );
+
+      dgtot_ ->SetLineWidth( 2 );
+      dgstat_->SetLineWidth( 2 );
+      dgsyst_->SetLineWidth( 2 );
+      dgtheo_->SetLineWidth( 2 );
+      dglumi_->SetLineWidth( 2 );
+
+      dgtot_->Draw("P");
+      dgsyst_->Draw();
+      dgtheo_->Draw();
+      dgstat_->Draw();
+      dglumi_->Draw();
+
+      //gcomb_->DrawClone();
+      //gstat_->DrawClone("p");
+
+    }
+
+
   if(_addArxivRef){
       TLatex ltxREF_;
       ltxREF_.SetTextSize(_sizeRef);
@@ -748,79 +933,103 @@ void LEPStyle::print()
   if( _canv!=0 ) {_canv->Print(".png"); _canv->Print(".eps"); _canv->Print(".pdf"); }
 }
 
-void LEPStyle::addEntry( const char* entry, 
-			 float val, float stat, float syst, 
-			 float lumi, 
-			 int marker, float size, int color, int ndigit )
-{
-  if( entry==0 )
-    {
-      entry = "SPACE";
-    }
-  _entry.push_back( entry );
-  _val.push_back( val );
-  _statup.push_back( stat );
-  _systup.push_back( syst );
-  _statlo.push_back( stat );
-  _systlo.push_back( syst );
-  _lumi.push_back( lumi );
-  _marker.push_back( marker );
-  _size.push_back( size );
-  _color.push_back( color );
-  _ndigit.push_back( ndigit );
-}
+//void LEPStyle::addEntry( const char* entry, 
+//			 float val, float stat, float syst, 
+//			 float lumi, 
+//			 int marker, float size, int color, int ndigit )
+//{
+//  if( entry==0 )
+//    {
+//      entry = "SPACE";
+//    }
+//  _entry.push_back( entry );
+//  _val.push_back( val );
+//  _statup.push_back( stat );
+//  _systup.push_back( syst );
+//  _statlo.push_back( stat );
+//  _systlo.push_back( syst );
+//  _lumi.push_back( lumi );
+//  _marker.push_back( marker );
+//  _size.push_back( size );
+//  _color.push_back( color );
+//  _ndigit.push_back( ndigit );
+//}
+//
+//void LEPStyle::addEntry( const char* entry, 
+//			 float val, 
+//			 float statup, float statlo, 
+//			 float systup, float systlo,
+//                         float lumi,
+//			 TString statLabel, TString sysLabel, TString lumiLabel,
+//			 int marker, float size, int color, int ndigit )
+//{
+//  if( entry==0 )
+//    {
+//      entry = "SPACE";
+//    }
+//  _entry.push_back( entry );
+//  _val.push_back( val );
+//  _statup.push_back( statup );
+//  _systup.push_back( systup );
+//  _statlo.push_back( statlo );
+//  _systlo.push_back( systlo );
+//  _firstError =statLabel ;
+//  _secondError =sysLabel ;
+//  _thirdError =lumiLabel ;
+//  _lumi.push_back( lumi );
+//  _marker.push_back( marker );
+//  _size.push_back( size );
+//  _color.push_back( color );
+//  _ndigit.push_back( ndigit );
+//}
+//
+//void LEPStyle::addEntry( const char* entry, 
+//			 float val, 
+//			 float stat, 
+//			 float systexp, float systtheo,
+//			 float lumi, 
+//			 int marker, float size, int color, int ndigit )
+//{
+//  if( entry==0 )
+//    {
+//      entry = "SPACE";
+//    }
+//  float syst = sqrt( pow(systexp,2)+pow(systtheo,2) );
+//  _entry.push_back( entry );
+//  _val.push_back( val );
+//  _statup.push_back( stat );
+//  _systup.push_back( syst );
+//  _statlo.push_back( stat );
+//  _systlo.push_back( syst );
+//  _lumi.push_back( lumi );
+//  _marker.push_back( marker );
+//  _size.push_back( size );
+//  _color.push_back( color );
+//  _ndigit.push_back( ndigit );
+//}
 
-void LEPStyle::addEntry( const char* entry, 
-			 float val, 
-			 float statup, float statlo, 
-			 float systup, float systlo,
-                         float lumi,
-			 TString statLabel, TString sysLabel, TString lumiLabel,
-			 int marker, float size, int color, int ndigit )
+void LEPStyle::addData( const char* entry,
+                         float val,
+                         float uncStat, float uncSyst, float uncTheo, float uncLumi,
+                         int marker, float size, int color, int ndigit )
 {
   if( entry==0 )
     {
       entry = "SPACE";
     }
-  _entry.push_back( entry );
-  _val.push_back( val );
-  _statup.push_back( statup );
-  _systup.push_back( systup );
-  _statlo.push_back( statlo );
-  _systlo.push_back( systlo );
-  _firstError =statLabel ;
-  _secondError =sysLabel ;
-  _thirdError =lumiLabel ;
-  _lumi.push_back( lumi );
-  _marker.push_back( marker );
-  _size.push_back( size );
-  _color.push_back( color );
-  _ndigit.push_back( ndigit );
-}
-
-void LEPStyle::addEntry( const char* entry, 
-			 float val, 
-			 float stat, 
-			 float systexp, float systtheo,
-			 float lumi, 
-			 int marker, float size, int color, int ndigit )
-{
-  if( entry==0 )
-    {
-      entry = "SPACE";
-    }
-  float syst = sqrt( pow(systexp,2)+pow(systtheo,2) );
-  _entry.push_back( entry );
-  _val.push_back( val );
-  _statup.push_back( stat );
-  _systup.push_back( syst );
-  _statlo.push_back( stat );
-  _systlo.push_back( syst );
-  _lumi.push_back( lumi );
-  _marker.push_back( marker );
-  _size.push_back( size );
-  _color.push_back( color );
-  _ndigit.push_back( ndigit );
+  _dentry.push_back( entry );
+  _dval.push_back( val );
+  _dstatup.push_back( uncStat );
+  _dstatlo.push_back( uncStat );
+  _dsystup.push_back( uncSyst );
+  _dsystlo.push_back( uncSyst );
+  _dtheoup.push_back( uncTheo );
+  _dtheolo.push_back( uncTheo );
+  _dlumi.push_back( uncLumi );
+  _dmarker.push_back( marker );
+  _dsize.push_back( size );
+  _dcolor.push_back( color );
+  _dndigit.push_back( ndigit );
 }
 
 void LEPStyle::addEntry( const char* entry,
@@ -834,10 +1043,10 @@ void LEPStyle::addEntry( const char* entry,
     }
   _entry.push_back( entry );
   _val.push_back( val );
-  _statup.push_back( systPDF );
-  _systup.push_back(  systDPS );
-  _statlo.push_back( systPDF );
-  _systlo.push_back( systDPS );
+  _pdfup.push_back( systPDF );
+  _dpsup.push_back( systDPS );
+  _pdflo.push_back( systPDF );
+  _dpslo.push_back( systDPS );
   _firstError =pdfLabel;
   _secondError =sysLabelDPS ;
   _lumi.push_back( 0 );
@@ -848,29 +1057,29 @@ void LEPStyle::addEntry( const char* entry,
 }
 
 
-void LEPStyle::addEntry( const char* entry,
-                         float val,
-                 float systPDF, float systPDFUp, float systDPS, TString pdfLabel, TString sysLabelDPS,
-                         int marker, float size, int color, int ndigit )
-{
-  if( entry==0 )
-    {
-      entry = "SPACE";
-    }
-  _entry.push_back( entry );
-  _val.push_back( val );
-  _statup.push_back( systPDFUp );
-  _systup.push_back(  systDPS );
-  _statlo.push_back( systPDF );
-  _systlo.push_back( systDPS );
-  _firstError =pdfLabel;
-  _secondError =sysLabelDPS ;
-  _lumi.push_back( 0 );
-  _marker.push_back( marker );
-  _size.push_back( size );
-  _color.push_back( color );
-  _ndigit.push_back( 3 );
-}
+//void LEPStyle::addEntry( const char* entry,
+//                         float val,
+//                 float systPDF, float systPDFUp, float systDPS, TString pdfLabel, TString sysLabelDPS,
+//                         int marker, float size, int color, int ndigit )
+//{
+//  if( entry==0 )
+//    {
+//      entry = "SPACE";
+//    }
+//  _entry.push_back( entry );
+//  _val.push_back( val );
+//  _statup.push_back( systPDFUp );
+//  _systup.push_back(  systDPS );
+//  _statlo.push_back( systPDF );
+//  _systlo.push_back( systDPS );
+//  _firstError =pdfLabel;
+//  _secondError =sysLabelDPS ;
+//  _lumi.push_back( 0 );
+//  _marker.push_back( marker );
+//  _size.push_back( size );
+//  _color.push_back( color );
+//  _ndigit.push_back( 3 );
+//}
 
 void
 LEPStyle::addText( const char* txt, float x1, float y1, int align, float size,
