@@ -14,19 +14,10 @@ process.load("UWAnalysis/Configuration/2012FullJSON")
 #process.source.lumisToProcess = LumiList.LumiList(filename = '/afs/hep.wisc.edu/cms/tperry/Wbb_CMSSW_5_3_14_patch1/src/UWAnalysis/CRAB/MuNu/weights/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.json').getVLuminosityBlockRange()
 
 process.source.fileNames= cms.untracked.vstring(
-#'file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/data_Cut5_00176847-0073-E211-9FFE-0030487DE7C5.root'
-#'file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/data_FullOut_00176847-0073-E211-9FFE-0030487DE7C5.root'
-#'file:///nfs_scratch/taroni/prova.root'
-#'file:///hdfs/store/user/taroni/SingleElectron/Run2012A-22Jan2013-v1/AOD/Fall2014PATTuples_V1/patTuple_cfg-00176847-0073-E211-9FFE-0030487DE7C5.root'
-#'root://cmsxrootd.hep.wisc.edu//store/user/taroni/SingleElectron/Run2012C-22Jan2013-v1/AOD/Fall2014PATTuples_V1/patTuple_cfg-0000284C-308B-E211-90D5-003048FEB8AE.root'
-#'root://cmsxrootd.hep.wisc.edu//store/user/tperry/TEST3_DataA_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-00176847-0073-E211-9FFE-0030487DE7C5.root'
-
-#'root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataA_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-44A90D36-9B72-E211-BFBF-002481E0D50C.root',
-#'root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataB_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-B017536D-7D7F-E211-85FA-003048F16F9C.root',
-#'root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataC_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-2A57BDF5-E984-E211-A19A-003048FEADCC.root',
-#'root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataD_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-0076C476-BE92-E211-9437-002354EF3BE3.root',
-'root://cmsxrootd.hep.wisc.edu//store/user/tperry/DataD_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-D6E0E8C3-8695-E211-B77E-0025905964B4.root',
-
+## Electron Data
+ "file:///hdfs/store/user/tperry/PatTuples_8TeV/DataD_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-8032822F-F693-E211-99A5-003048678B12.root"
+ #"file:///hdfs/store/user/tuanqui/DataD_8TeV_skimpattuple-skimpattuple_cfg/skimpattuple_cfg-skimpattuple_cfg-patTuple_cfg-8032822F-F693-E211-99A5-003048678B12.root"
+#
 )
 process.source.inputCommands=cms.untracked.vstring(
  'keep *', 'drop *_finalState*_*_*',
@@ -66,7 +57,7 @@ addEventTreeData(process,'electronEventTree',
       srcCJet='cleanJets'
    )   
 addEventSummary(process,True)
-process.TFileService.fileName = cms.string('V1_DataD_Ele_D6E0E8C3-8695-E211-B77E-0025905964B4.root')
+process.TFileService.fileName = cms.string('Full_Ele_8032822F-F693-E211-99A5-003048678B12.root')
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",

@@ -44,20 +44,32 @@ with open(list_of_files) as f:
 # https://github.com/amarini/VPlusJets/blob/master/post-process/xSec.ini
 if    samplename == "Drell" : xc="3531.9" # 1177.3*3 (Z/a* 50)
 elif  samplename == "DrellLM" : xc="860.5" 
-elif  samplename == "TTbar_full" : xc="25.1" # 239*0.324*0.324
-elif  samplename == "TTbar_semi" : xc="104.7" # 239*0.324*0.676*2
-elif  samplename == "T_s" : xc="3.79"
+
+# https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO 
+# XC ttbar = 252.9 +- 14.5 (5.74 pc) 
+elif  samplename == "TTbar_full" : xc="26.5" # 252.9*0.324*0.324
+elif  samplename == "TTbar_semi" : xc="110.8" # 252.9*0.324*0.676*2
+# XC t_t = 54.87 +- 2.3 (4.18 pc) 
+# XC t_s = 3.79 +- 0.1 (3.90 pc) 
+# XC t_w = 11.19 +- 0.8 (6.81 pc) 
+# XC tb_t = 29.74 +- 1.7 (5.60 pc) 
+# XC tb_s = 1.76 +- 0.1 (4.58 pc) 
+# XC tb_w = 11.19 +- 0.8 (6.81 pc)
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/SingleTopSigma
 elif  samplename == "T_t" : xc="17.8" # 54.87*0.327
-elif  samplename == "T_tW" : xc="11.1" 
-elif  samplename == "Tbar_s" : xc="1.76"
+elif  samplename == "T_s" : xc="3.79"
+elif  samplename == "T_tW" : xc="11.19" 
 elif  samplename == "Tbar_t" : xc="9.6" # 29.74*0.324 
-elif  samplename == "Tbar_tW" : xc="11.1" 
+elif  samplename == "Tbar_s" : xc="1.76"
+elif  samplename == "Tbar_tW" : xc="11.19" 
+
 elif  samplename == "W1Jet" : xc="36703.2" # 12234.4*3
 elif  samplename == "W2Jet" : xc="36703.2" 
 elif  samplename == "W3Jet" : xc="36703.2" 
 elif  samplename == "W4Jet" : xc="36703.2" 
 elif  samplename == "WJets" : xc="36703.2" 
-elif  samplename == "Wbb4F" : xc="138.9" # 46.3*3 
+elif  samplename == "Wbb4F" : xc="122.3" # 377.4 * 3(0.108)
+#elif  samplename == "Wbb4F" : xc="138.9" # 46.3*3  .. where did this come from?
 elif  samplename == "WW" : xc="56.0" 
 elif  samplename == "WZ" : xc="33.6"  # 21.0(W+) + 12.6(W-)
 elif  samplename == "ZZ" : xc="8.2"  # m(ll)>40
@@ -76,3 +88,10 @@ outfile = open(outfile_name,'a')
 outfile.write("%s Events: %s\n"%(samplename,int(total_events)))
 outfile.write("%s XC: %s\n"%(samplename,xc))
 outfile.close()
+
+
+
+ # ttbar from cms measurement  239 +-2(stat)+-11(syst)+-6(lumi)
+ # ttbar from cms/atlas theory agreement 252.9 +6.4-8.6(scale) +-11.7(pdf+alpha_s)
+#elif  samplename == "TTbar_full" : xc="25.1" # 239*0.324*0.324
+#elif  samplename == "TTbar_semi" : xc="104.7" # 239*0.324*0.676*2

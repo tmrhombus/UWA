@@ -15,6 +15,16 @@ void histoFiller::Loop(
      )
 {
 
+ mcut1=0;
+ mcut2=0;
+ mcut3=0;
+ mcut4=0;
+ mcut5=0;
+ ecut1=0;
+ ecut2=0;
+ ecut3=0;
+ ecut4=0;
+ ecut5=0;
  if (fChain == 0) return;
  //Long64_t nrEntries = fChain->GetEntries();
  Long64_t nrEntries = fChain->GetEntriesFast();
@@ -401,6 +411,44 @@ void histoFiller::Loop(
   passMT_qcdMu =   kTRUE; // mt_mu_qcd   < 30; // 60; // 45; // 
   passMT_goodEle = kTRUE; // mt_ele_good < 30; // 60; // 45; // 
   passMT_qcdEle =  kTRUE; // mt_ele_qcd  < 30; // 60; // 45; // 
+
+
+  // COUTS for THESIS Cutflow
+  if( HLT_Ele27_WP80_fired && nbrGoodEle>0){
+   ecut1++;
+   if(oneGoodElectron){
+    ecut2++;
+    if (min2goodJs){
+     ecut3++;
+     if(exactly2goodJs){
+      ecut4++;
+      if(exactly2goodBJs){
+       ecut5++;
+      } // cut 5 bjet
+     } // cut 4 jet veto
+    } // cut 3 jets
+   } // cut 2 lep veto
+  } // cut 1 at least one good lep
+
+
+  // COUTS for THESIS Cutflow
+  if( HLT_IsoMu24_eta2p1_v_fired && nbrGoodMu > 0){
+   mcut1++;
+   if(oneGoodMuon){
+    mcut2++;
+    if (min2goodJs){
+     mcut3++;
+     if(exactly2goodJs){
+      mcut4++;
+      if(exactly2goodBJs){
+       mcut5++;
+      } // cut 5 bjet
+     } // cut 4 jet veto
+    } // cut 3 jets
+   } // cut 2 lep veto
+  } // cut 1 at least one good lep
+
+
 
   ////////////////////////////////
   // begin wjj, wbb Selection 3,0
@@ -1551,6 +1599,21 @@ std::cout<<"finished looping, about to write log"<<std::endl;
  logfile<<"  Nr. Entries Passing QCD Cut Mu: "<<nbrEntries_mu_dybb_qcd_postcut<<std::endl;
  logfile<<"  Nr. Entries Passing Good Cut Ele: "<<nbrEntries_ele_dybb_good_postcut<<std::endl;
  logfile<<"  Nr. Entries Passing QCD Cut Ele: "<<nbrEntries_ele_dybb_qcd_postcut<<std::endl;
+
+ logfile<<"-----------------------------------------------------"<<std::endl;
+ logfile<<"--           CUTFLOW                               --"<<std::endl;
+ logfile<<"-----------------------------------------------------"<<std::endl;
+ logfile<<" mcut1: "<<mcut1<<std::endl;
+ logfile<<" mcut2: "<<mcut2<<std::endl;
+ logfile<<" mcut3: "<<mcut3<<std::endl;
+ logfile<<" mcut4: "<<mcut4<<std::endl;
+ logfile<<" mcut5: "<<mcut5<<std::endl;
+ logfile<<" ecut1: "<<ecut1<<std::endl;
+ logfile<<" ecut2: "<<ecut2<<std::endl;
+ logfile<<" ecut3: "<<ecut3<<std::endl;
+ logfile<<" ecut4: "<<ecut4<<std::endl;
+ logfile<<" ecut5: "<<ecut5<<std::endl;
+
  logfile.close();
  
 

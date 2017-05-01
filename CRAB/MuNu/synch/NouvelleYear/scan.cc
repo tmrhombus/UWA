@@ -54,6 +54,10 @@ New_Tree->Scan(columns,cuts,"colsize=10")
 
 _file0->cd();
 muNuEventTree->cd();
+TString columns = "EVENT:goodMu_pt_vec";
+TString cuts = "goodMu_pt_vec[0]>30 && goodMu_eta_vec[0]<2.1" ;
+TString cuts = "" ;
+
 TString columns = "EVENT:allJ1_pt:allJ1_eta:allJ1_phi:allJ2_pt:allJ2_eta:allJ2_phi:allJ3_pt:allJ3_eta:allJ3_phi:allJ4_pt:allJ4_eta:allJ4_phi";
 TString columns = "EVENT:goodJ1_pt:goodJ1_eta:goodJ1_phi:goodJ2_pt:goodJ2_eta:goodJ2_phi:goodJ3_pt:goodJ3_eta:goodJ3_phi:goodJ4_pt:goodJ4_eta:goodJ4_phi";
 TString columns = "EVENT:J1_pt_gen_NoNu:J1_eta_gen_NoNu:J1_phi_gen_NoNu:J2_pt_gen_NoNu:J2_eta_gen_NoNu:J2_phi_gen_NoNu:J3_pt_gen_NoNu:J3_eta_gen_NoNu:J3_phi_gen_NoNu:J4_pt_gen_NoNu:J4_eta_gen_NoNu:J4_phi_gen_NoNu";
@@ -86,3 +90,56 @@ New_Tree->Scan(columns,cuts,"colsize=9")
 
 
 
+
+
+
+
+
+
+TString columns = "EVENT:goodMu_pt_vec:GEN_jetPtLeadB:GEN_jetPtSecondB:goodJ1_pt:goodJ2_pt:goodJ1_CSV:goodJ2_CSV";
+TString cuts = "allMu_pt_vec[0]>30 && allMu_eta_vec[0]<2.1" ;
+
+TString cuts = "" ;
+TString cuts = "goodMu_pt_vec[0]>30 && goodMu_eta_vec[0]<2.1" ;
+TString cuts = "goodMu_pt_vec[0]>30 && goodMu_eta_vec[0]<2.1 && HLT_IsoMu24_eta2p1_v_fired" ;
+TString cuts = "goodMu_pt_vec[0]>30 && goodMu_eta_vec[0]<2.1 && HLT_IsoMu24_eta2p1_v_fired && goodJ1_pt>25 && goodJ2_pt>25" ;
+TString cuts = "goodMu_pt_vec[0]>30 && goodMu_eta_vec[0]<2.1 && HLT_IsoMu24_eta2p1_v_fired && goodJ1_pt>25 && goodJ2_pt>25 && goodJ1_CSV>0.898 && goodJ2_CSV>0.898" ;
+
+TString cuts = "goodJ1_pt>25 && goodJ2_pt>25" ;
+TString cuts = "goodJ1_pt>25 && goodJ2_pt>25 && abs(goodJ1_partonFlavour)=5 && abs(goodJ2_partonFlavour)=5" ;
+TString cuts = "goodJ1_pt>25 && goodJ2_pt>25 && abs(goodJ1_partonFlavour)=5 && abs(goodJ2_partonFlavour)=5 && goodJ1_CSV>0.898 && goodJ2_CSV>0.898" ;
+
+TString cuts = "J1_pt_gen_NoNu>25 && J2_pt_gen_NoNu>25 && J3_pt_gen_NoNu<25 && abs(J1_eta_gen_NoNu)<2.5 && abs(J2_eta_gen_NoNu)<2.5 && GEN_jetPtLeadB>5  && GEN_jetPtSecondB>5" ;
+
+
+TString cuts = "goodJ1_pt>25 && goodJ2_pt>25 && J1_pt_gen_NoNu>25 && J2_pt_gen_NoNu>25 && abs(J1_eta_gen_NoNu)<2.5 && abs(J2_eta_gen_NoNu)<2.5" ;
+
+TString cuts = "J1_pt_gen_NoNu>25 && J2_pt_gen_NoNu>25 && abs(J1_eta_gen_NoNu)<2.5 && abs(J2_eta_gen_NoNu)<2.5 && GEN_jetPtLeadB>5  && GEN_jetPtSecondB>5" ;
+TString cuts = "J1_pt_gen_NoNu>25 && J2_pt_gen_NoNu>25 && abs(J1_eta_gen_NoNu)<2.5 && abs(J2_eta_gen_NoNu)<2.5 && abs(goodJ1_partonFlavour)=5 && abs(goodJ2_partonFlavour)=5" ;
+TString cuts = "J1_pt_gen_NoNu>25 && J2_pt_gen_NoNu>25 && abs(J1_eta_gen_NoNu)<2.5 && abs(J2_eta_gen_NoNu)<2.5" ;
+
+
+
+TString cuts = "goodJ1_pt>25 && goodJ2_pt>25 && abs(goodJ1_partonFlavour)=5 && abs(goodJ2_partonFlavour)=5 && goodJ1_CSV>0.898 && goodJ2_CSV>0.898" ;
+
+
+
+
+
+
+
+
+
+
+
+TTree* tree0 = _file0.Get("muEleEventTree/eventTree");
+((TTreePlayer*)(tree0->GetPlayer()))->SetScanRedirect(true);
+((TTreePlayer*)(tree0->GetPlayer()))->SetScanFileName("TT_1.txt");
+TString columns = "EVENT"
+
+TString cuts = "goodJ1_pt>25 && goodJ2_pt>25 && goodJ1_CSV>0.898 && goodJ2_CSV>0.898 && goodJ3_pt<25 && fwdJ1_pt<25" ;
+TString cuts = "goodJ1_pt>25 && goodJ2_pt>25 && goodJ1_CSV>0.898 && goodJ2_CSV>0.898 && goodJ3_pt<25 && fwdJ1_pt<25 && goodMu_pt_vec[0]>30 && goodMu_eta_vec[0]<2.1" ;
+
+TString cuts = "J1_pt_gen_NoNu>25 && J2_pt_gen_NoNu>25 && abs(J1_eta_gen_NoNu)<2.5 && abs(J2_eta_gen_NoNu)<2.5 && GEN_jetPtLeadB>5  && GEN_jetPtSecondB>5 && GEN_dressedLeptonPT[0]>30 && GEN_dressedLeptonType[0]==1 && abs(GEN_dressedLeptonPDGID)==13" ;
+
+tree0->Scan(columns,cuts,"colsize=10");

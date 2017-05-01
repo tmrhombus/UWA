@@ -18,6 +18,7 @@ for samplename in \
  "W2Jet" \
  "W3Jet" \
  "Drell" \
+ "DrellLM" \
  "T_s" \
  "T_t" \
  "T_tW" \
@@ -166,7 +167,7 @@ do
   --fwklite \
   --use-hdfs \
   --input-file-list=${mylist} \
-  --input-files-per-job=30 \
+  --input-files-per-job=100 \
   --extra-inputs=${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.C,${uwa}/Wbb8TeV/farmoutAJ_analyzer/histoFillerTTbarProgression.h \
   ${version}_${runname} \
   "./Submit_${version}/${samplename}${theshift}_callHistoFillerTTbarProgression.cc"

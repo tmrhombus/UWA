@@ -13,28 +13,50 @@ process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(-1)
 )
 
+#thisoutname = "Skim_Wbb_52ACD3C8-500D-E211-A574-001E67396A1D.root"
+#thisoutname = "Skim_WnP1_24A0CB36-7DCE-E111-891D-001E673984C1.root"
+#thisoutname = "Skim_WnP2_700C4833-FDEF-E111-A160-003048673FFC.root"
+#thisoutname = "Skim_W2P1_30324BC7-1208-E211-A16E-0030487EBB27.root"
+thisoutname = "Skim_T_22360C75-D7DE-E111-AB2D-00259073E3F2.root"
+
 process.source = cms.Source("PoolSource",
  fileNames = cms.untracked.vstring(
-#"file:///hdfs/store/user/nsmith/DYJetsToLL_M-10To50filter_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/ZHinv2015/patTuple_cfg-005F1D61-E0EF-E111-AE51-E0CB4E29C4D5.root"
 
+## Muon Data
+# "file:///hdfs/store/user/tperry/PatTuples_8TeV/SingleMu/Run2012C-22Jan2013-v1/AOD/Spring2014PATTuples_v3/patTuple_cfg-0002C13A-B775-E211-B671-90E6BA442F06.root"
+# "file:///hdfs/store/user/tuanqui/SingleMu_Run2012C-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-0002C13A-B775-E211-B671-90E6BA442F06.root"
+#
+## Electron Data
+# "file:///hdfs/store/user/tperry/PatTuples_8TeV/DataD_8TeVEle-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-8032822F-F693-E211-99A5-003048678B12.root"
+# "file:///hdfs/store/user/tuanqui/DataD_8TeV_skimpattuple-skimpattuple_cfg/skimpattuple_cfg-skimpattuple_cfg-patTuple_cfg-8032822F-F693-E211-99A5-003048678B12.root"
+#
+## Wbb
+ #"file:///hdfs/store/user/tperry/PatTuples_8TeV/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-52ACD3C8-500D-E211-A574-001E67396A1D.root"
+ #"file:///hdfs/store/user/tuanqui/WbbJetsToLNu-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-52ACD3C8-500D-E211-A574-001E67396A1D.root"
+#
+## Wnjets p1
+ #"file:///hdfs/store/user/tperry/PatTuples_8TeV/WJets_p1_s-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-24A0CB36-7DCE-E111-891D-001E673984C1.root"
+ #"file:///hdfs/store/user/tuanqui/WJets_p1_s_skimpattuple-skimpattuple_cfg/skimpattuple_cfg-skimpattuple_cfg-patTuple_cfg-24A0CB36-7DCE-E111-891D-001E673984C1.root"
+#
+## Wnjets p2
+ #"file:///hdfs/store/user/tperry/PatTuples_8TeV/WJets_p2_s-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-700C4833-FDEF-E111-A160-003048673FFC.root"
+ #"file:///hdfs/store/user/tuanqui/WJets_p2_s_skimpattuple-skimpattuple_cfg/skimpattuple_cfg-skimpattuple_cfg-patTuple_cfg-700C4833-FDEF-E111-A160-003048673FFC.root"
+#
+## W2jets p1
+ #"file:///hdfs/store/user/tperry/PatTuples_8TeV/W2Jet_p1_s-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-30324BC7-1208-E211-A16E-0030487EBB27.root"
+ #"file:///hdfs/store/user/tuanqui/W2Jet_p1_s_skimpattuple-skimpattuple_cfg/skimpattuple_cfg-skimpattuple_cfg-patTuple_cfg-30324BC7-1208-E211-A16E-0030487EBB27.root"
+#
+## W2jets p2
+# "file:///hdfs/store/user/tperry/PatTuples_8TeV/W2Jet_p2_l-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-429A0E9E-A6E1-E211-8148-003048678FE4.root"
+# "file:///hdfs/store/user/tuanqui/W2Jet_p2_l_skimpattuple-skimpattuple_cfg/skimpattuple_cfg-skimpattuple_cfg-patTuple_cfg-429A0E9E-A6E1-E211-8148-003048678FE4.root"
+#
+## T_t
+ #"file:///hdfs/store/user/tperry/PatTuples_8TeV/TToLeptons_t-channel_8TeV-powheg-tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-22360C75-D7DE-E111-AB2D-00259073E3F2.root"
+ "file:///hdfs/store/user/tuanqui/TToLeptons_t-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-22360C75-D7DE-E111-AB2D-00259073E3F2.root"
 
-"file:///hdfs/store/user/tperry/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-0003D872-C40E-E211-8C51-003048673FE6.root"
-#"file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/PatTools/test/SKIMTEST_W2Jet_p2-64628488-9FE4-E211-96FF-0026189438D5.root"
-#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W1Jet_p1_s-skimpattuple_cfg/skimpattuple_cfg-patTuple_cfg-00035FC4-C903-E211-BB66-003048D477C2.root",
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root" # "source"
+#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/PatTuples_8TeV/WbbJetsToLNu_Massive_TuneZ2star_8TeV-madgraph-pythia6_tauola/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2015PATTuples_v1/patTuple_cfg-000A8A1E-C50D-E211-A5F4-001E67397E90.root" # "source"
+#"file:///afs/hep.wisc.edu/cms/tperry/FSAv2_CMSSW_5_3_14/src/FinalStateAnalysis/PatTools/test/SKIMTEST_wbb.root"
 
-#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-84403EFB-54CE-E111-BF8A-001E673969FF.root" # "source"
-#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-00065798-2704-E211-B308-0025901D4C44.root" # "source"
-#"root://cmsxrootd.hep.wisc.edu//hdfs/store/user/tperry/W1JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V7A-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-4C1B8B0D-4603-E211-8B77-002590200B60.root" # "source"
-#"root://cmsxrootd.hep.wisc.edu//store/user/tperry/W2JetsToLNu_TuneZ2Star_8TeV-madgraph/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-0004D7A5-74E4-E211-9F79-002618943963.root"  #"externalLHEProducer"
-
-# synch files
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-02CCD580-BA87-E211-93B5-842B2B185476.root", 
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-00277FF2-7B84-E211-9475-782BCB27B958.root", 
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-5ACBC7A4-7D84-E211-A0B6-782BCB27B958.root", 
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-AED5F4C3-6E84-E211-B83B-0002C90EEE6E.root", 
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-002D70FC-7F84-E211-A7E6-782BCB6E0938.root", 
-#"root://cmsxrootd.hep.wisc.edu//store/user/mcepeda/TTJets_SemiLeptMGDecays_8TeV-madgraph-tauola/Summer12_DR53X-PU_S10_START53_V7C-v1/AODSIM/Fall2014PATTuples_V1/patTuple_cfg-5ADB775B-A284-E211-B0A2-90B11C18B19E.root", 
  ),
  inputCommands=cms.untracked.vstring(
   'keep *',
@@ -384,7 +406,7 @@ addEventTreeMC(process,'muEleEventTreeElectronDown',
       srcTaggedGenJets="btaggedGenJets"
       )
 
-process.TFileService.fileName = cms.string('Bastille_Wbb4F_g.root') 
+process.TFileService.fileName = cms.string(thisoutname) 
 
 ## makes EDM output of all collections
 #process.out = cms.OutputModule("PoolOutputModule",
